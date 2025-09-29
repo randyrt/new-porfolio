@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+
+body {
+  margin: 0;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f4f8;
+  color: #2c3e50;
+  font-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-semibold;
+}
+
+
+.btn-blue {
+  @apply px-6 py-2.5 bg-sky-500 text-white font-semibold rounded-lg shadow-md 
+         transition-all duration-300 ease-in-out transform
+         hover:bg-sky-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 
+         active:scale-95 cursor-pointer;
+}
+
+
+.btn-yellow {
+  @apply px-6 py-2.5 bg-yellow-500 text-white font-semibold rounded-lg shadow-md 
+         transition-all duration-300 ease-in-out transform
+         hover:bg-yellow-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 
+         active:scale-95 cursor-pointer;
+}
+
+.card {
+  @apply rounded-lg shadow-lg border-sky-100 bg-sky-50 mt-6 md:mt-0;
+}
+
+
+a {
+  @apply text-blue-500 hover:underline no-underline;
+}
+
+
+.bg-sky-gradient-customized {
+  @apply bg-gradient-to-b from-sky-200 to-sky-400;
+}
+
