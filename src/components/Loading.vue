@@ -32,7 +32,7 @@ export default defineComponent({
   width: 40px;
   height: 40px;
   border: 4px solid rgba(0, 0, 0, 0.2);
-  border-top-color: #0ce6ee; 
+  border-top-color: #bc0fd3; 
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 10px;

@@ -23,7 +23,7 @@
         </p>
       </div>
       <div class="w-full max-w-4xl flex justify-center p-4 " data-aos="fade-left">
-        <button class="btn-yellow inline-block text-center decoration click-me">
+        <button class="btn-violet inline-block text-center decoration click-me">
           En savoir plus
         </button>
       </div>

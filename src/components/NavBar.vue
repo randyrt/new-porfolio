@@ -9,8 +9,8 @@
           v-for="route in routes"
           :key="route.path"
           :to="route.path"
-          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-gray-100"
-          active-class="bg-gray-200 font-bold"
+          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-yellow-100"
+          active-class="bg-yellow-200 font-bold"
         >
           {{ route.name }}
         </router-link>

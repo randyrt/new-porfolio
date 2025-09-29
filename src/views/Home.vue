@@ -27,7 +27,7 @@
           <p class="text-lg text-gray-700">
             Dans mes projets, j’utilise régulièrement <span class="font-semibold">Vue.js</span> et <span
               class="font-semibold">TypeScript</span> pour construire des interfaces réactives, <span
-              class="font-semibold">TailwindCSS</span> pour des designs modernes, et <span
+              class="font-semibold">TailwindCSS</span> pour des designs modernes en plus d'avoir une solide expérience en <span class="font-semibold"> UX et UI design</span>, et <span
               class="font-semibold">Laravel</span> pour le backend.
             Ainsi qu’avec <span class="font-semibold">Docker Engine et Docker Compose</span> pour
             containeriser et orchestrer mes applications. Côté mobile, je me familiarise avec <span
@@ -41,7 +41,7 @@
           </p>
         </div>
         <div class="flex justify-center mt-2">
-          <button class="btn-yellow inline-block text-center decoration click-me" @click="notify">
+          <button class="btn-violet inline-block text-center decoration click-me" @click="notify">
             Voir mon CV
           </button>
         </div>
@@ -79,23 +79,6 @@ onMounted(() => {
   }, 1000);
 });
 
-
-// interface User {
-//   id: number;
-//   name: string;
-//   email: string;
-// }
-
-// const users = ref<User[]>([]);
-
-// onMounted(async () => {
-//   try {
-//     users.value = await getData<User[]>('/user');
-//     console.log('Users fetched:', users.value);
-//   } finally {
-//     loading.value = false;
-//   }
-// });
 </script>
 
 <style scoped>
@@ -151,13 +134,13 @@ onMounted(() => {
 }
 
 .box::before {
-  background: linear-gradient(0deg, transparent, transparent, #1cac99fd, #18b6a1, #1b9988);
+  background: linear-gradient(0deg, transparent, transparent, #1cac99fd, #939797, #1b9988);
   z-index: 0;
   animation: 6s linear infinite animate
 }
 
 .box::after {
-  background: linear-gradient(0deg, transparent, transparent, #998d23, #fff59d, #fff17679);
+  background: linear-gradient(0deg, transparent, transparent, #56435f, #811a9b, #9108a379);
   z-index: -1;
   animation: 6s linear -3s infinite animate
 }
