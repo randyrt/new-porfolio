@@ -72,66 +72,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.animated-gradient-text {
-  background: linear-gradient(90deg, #facc15, #f87171, #3b82f6, #10b981, #facc15);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-move 5s ease infinite;
-}
-
-@keyframes gradient-move {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 img {
   border-radius: 8px;
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   filter: grayscale(100%) brightness(0.9);
-}
-
-.emoji {
-  display: inline-block;
-  animation: rotateEmoji 2s infinite alternate ease-in-out;
-}
-
-@keyframes rotateEmoji {
-  0% {
-    transform: rotate(0deg) translateY(0);
-  }
-
-  50% {
-    transform: rotate(15deg) translateY(-10px);
-  }
-
-  100% {
-    transform: rotate(-15deg) translateY(0);
-  }
-}
-
-.click-me {
-  display: inline-block;
-  animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.2);
-  }
 }
 </style>

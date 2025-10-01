@@ -110,26 +110,5 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.animated-gradient-text {
-  background: linear-gradient(90deg, #facc15, #f87171, #3b82f6, #10b981, #facc15);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-move 5s ease infinite;
-}
 
-@keyframes gradient-move {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
 </style>

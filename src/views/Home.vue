@@ -1,7 +1,7 @@
 <template>
   <Loading v-if="loading" message="Page d'accueil..." />
   <div v-else class="p-8 flex flex-col">
-    <div class="card w-full p-4 flex justify-center">
+    <div class="card w-full p-4 flex justify-center mb-4">
       <span class="animated-gradient-text text-sm italic text-center font-semibold" data-aos="fade-up">
         « Le code ne dort jamais, et moi non plus tant que je n’ai pas atteint mes objectifs. »
       </span>
@@ -82,125 +82,19 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.animated-gradient-text {
-  background: linear-gradient(90deg, #facc15, #f87171, #3b82f6, #10b981, #facc15);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-move 5s ease infinite;
-}
-
-@keyframes gradient-move {
-  0% {
-    background-position: 0% 50%;
+@media screen and (max-width: 748px) {
+  .decoration {
+    font-size: 10px !important;
   }
-
-  50% {
-    background-position: 100% 50%;
+  .box {
+    margin-left: 40px;
+    margin-bottom: 20px;
   }
-
-  100% {
-    background-position: 0% 50%;
+  p, span, boutton, h1 {
+    font-size: 10px !important;
   }
-}
-
-
-
-.box {
-  position: relative;
-  overflow: hidden !important;
-  border-radius: 8px;
-  width: 317px;
-  height: auto;
-  background: #000;
-  z-index: 1;
-  box-sizing: border-box
-}
-
-.box .randy-img {
-  width: 305px !important
-}
-
-.box::after,
-.box::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 350px;
-  height: 450px;
-  transform-origin: bottom right
-}
-
-.box::before {
-  background: linear-gradient(0deg, transparent, transparent, #1cac99fd, #939797, #1b9988);
-  z-index: 0;
-  animation: 6s linear infinite animate
-}
-
-.box::after {
-  background: linear-gradient(0deg, transparent, transparent, #56435f, #811a9b, #9108a379);
-  z-index: -1;
-  animation: 6s linear -3s infinite animate
-}
-
-img {
-  position: relative;
-  width: 300px;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  z-index: 1;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  filter: grayscale(100%) brightness(0.9);
-}
-
-@keyframes animate {
-  0% {
-    transform: rotate(0)
-  }
-
-  100% {
-    transform: rotate(360deg)
-  }
-}
-
-.emoji {
-  display: inline-block;
-  animation: rotateEmoji 2s infinite alternate ease-in-out;
-}
-
-@keyframes rotateEmoji {
-  0% {
-    transform: rotate(0deg) translateY(0);
-  }
-
-  50% {
-    transform: rotate(15deg) translateY(-10px);
-  }
-
-  100% {
-    transform: rotate(-15deg) translateY(0);
-  }
-}
-
-.decoration {
-  text-decoration: none;
-}
-
-.click-me {
-  display: inline-block;
-  animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.2);
+  .click-me {
+    animation: none;
   }
 }
 </style>
