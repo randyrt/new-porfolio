@@ -8,10 +8,11 @@
 import Navbar from './components/NavBar.vue';
 
 const navRoutes = [
-  { path: '/', name: 'Page d\'accueil' },
-  { path: '/webcup24', name: 'Webcup 2024' },
-  { path: '/quality', name: 'Mes qualités' },
-  { path: '/skills', name: 'Mes compétences' },
+  { path: '/', name: 'Accueil' },
+  { path: '/webcup24', name: 'Webcup' },
+  { path: '/quality', name: 'Qualités' },
+  { path: '/skills', name: 'Compétences' },
+  { path: '/technology', name: 'technologies' },
   { path: '/about', name: 'À propos' }
 ];
 </script>

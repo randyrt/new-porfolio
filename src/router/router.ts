@@ -4,12 +4,14 @@ import About from './../views/About.vue'
 import WebCup24 from '../views/WebCup24.vue'
 import Quality from '../views/Quality.vue'
 import Skills from '../views/Skills.vue'
+import Technology from '../views/Technology.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
   { path: '/about', name: 'about', component: About },
   { path: '/webcup24', name: 'webcup24', component: WebCup24 },
   { path: '/quality', name: 'quality', component: Quality },
+  { path: '/technology', name: 'technology', component: Technology },
   { path: '/skills', name: 'skills', component: Skills },
 ] as RouteRecordRaw[]  
 
