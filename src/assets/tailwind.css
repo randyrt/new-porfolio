@@ -330,3 +330,9 @@ img {
     animation: none !important;
   }
 }
+
+/* TOAST INFO  */
+.Toastify__toast--info {
+  background-color: #1e293b !important;
+  color: #fff !important;
+}

@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     AnimatedTitle: typeof import('./src/components/AnimatedTitle.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
+    LogoSection: typeof import('./src/components/logoSection.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

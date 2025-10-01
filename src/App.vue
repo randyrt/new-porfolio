@@ -12,7 +12,7 @@ const navRoutes = [
   { path: '/webcup24', name: 'Webcup' },
   { path: '/quality', name: 'Qualités' },
   { path: '/skills', name: 'Compétences' },
-  { path: '/technology', name: 'technologies' },
+  { path: '/technology', name: 'Technologies' },
   { path: '/about', name: 'À propos' }
 ];
 </script>
