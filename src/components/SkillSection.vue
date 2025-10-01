@@ -1,5 +1,5 @@
 <template>
-    <div :class="[bgColor, 'border border-yellow-50 w-1/3 h-auto rounded-lg p-2']">
+    <div :class="[bgColor, 'border border-yellow-50 h-auto rounded-lg p-2 flex-1 min-w-[200px]']">
         <p class="p-4 card mt-2 text-center rounded-lg font-bold text-lg">
             {{ title }}
         </p>
@@ -51,3 +51,15 @@ const props = withDefaults(defineProps<{
     ]
 });
 </script>
+
+<style scoped>
+@media screen and (max-width: 748px) {
+  .aos-animation {
+    animation: none !important;
+  }
+
+  p, h3, span, h1 {
+    font-size: 10px !important;
+  }
+}
+</style>

@@ -10,7 +10,7 @@
             <section class="section-anime">
                 <div class="container mt-10 p-4">
                     <div class="row wrapper">
-                        <div class="p-4 mr-4 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="p-4 mr-4 col-md-3">
                             <h4 class="text-center">Apprentissage continu</h4>
                             <p class="text-center">
                                 "Je crois que l’apprentissage continu est essentiel pour rester en avance dans le monde
@@ -20,7 +20,7 @@
                             </p>
                         </div>
 
-                        <div class="p-4 mr-4 col-md-3" data-aos="fade-down" data-aos-delay="200">
+                        <div class="p-4 mr-4 col-md-3" >
                             <h4 class="text-center">Résolution de problèmes</h4>
                             <p class="text-center">
                                 "J’aborde chaque défi avec l’objectif de trouver des solutions efficaces et créatives
@@ -30,7 +30,7 @@
                             </p>
                         </div>
 
-                        <div class="p-4 mr-4 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                        <div class="p-4 mr-4 col-md-3">
                             <h4 class="text-center">Sens du design responsive</h4>
                             <p class="text-center">
                                 "J’ai fait de nombreux efforts, recherches et pratiques afin de garantir que chaque
@@ -41,7 +41,7 @@
                             </p>
                         </div>
 
-                        <div class="p-4 mr-4 col-md-3" data-aos="fade-down" data-aos-delay="400">
+                        <div class="p-4 mr-4 col-md-3">
                             <h4 class="text-center">Minimalisme</h4>
                             <p class="text-center">
                                 "Le minimalisme est une façon de concevoir qui vise à produire un design épuré, clair et
@@ -51,7 +51,7 @@
                             </p>
                         </div>
 
-                        <div class="p-4 mr-4 col-md-3" data-aos="fade-up" data-aos-delay="500">
+                        <div class="p-4 mr-4 col-md-3">
                             <h4 class="text-center">Persévérance et créativité</h4>
                             <p class="text-center">
                                 "On m’a souvent dit que le talent seul ne suffit pas pour réussir. Pour moi, l’essentiel
@@ -63,7 +63,7 @@
                             </p>
                         </div>
 
-                        <div class="p-4 mr-4 col-md-3" data-aos="fade-down" data-aos-delay="600">
+                        <div class="p-4 mr-4 col-md-3">
                             <h4 class="text-center">Esprit d’équipe</h4>
                             <p class="text-center">
                                 "Le facteur le plus important dans l’évolution d’une entreprise est l’esprit d’équipe et
@@ -98,4 +98,9 @@ onMounted(() => {
 
 <style scoped>
 
+@media screen and (max-width: 748px) {
+  span {
+    font-size: 10px !important;
+  }
+}
 </style>

@@ -59,6 +59,7 @@ const isOpen = ref(false);
 @media screen and (max-width: 748px) {
   .decoration {
     font-size: 10px !important;
+    text-decoration: none !important;
   }
 
 }

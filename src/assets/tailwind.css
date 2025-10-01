@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 
-body, html {
+body,
+html {
   margin: 0;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,32 +23,20 @@ h6 {
 
 
 .btn-blue {
-  @apply px-6 py-2.5 bg-sky-500 text-white font-semibold rounded-lg shadow-md 
-         transition-all duration-300 ease-in-out transform
-         hover:bg-sky-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 
-         active:scale-95 cursor-pointer;
+  @apply px-6 py-2.5 bg-sky-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-sky-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
 
 
 .btn-yellow {
-  @apply px-6 py-2.5 bg-yellow-500 text-white font-semibold rounded-lg shadow-md 
-         transition-all duration-300 ease-in-out transform
-         hover:bg-yellow-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 
-         active:scale-95 cursor-pointer;
+  @apply px-6 py-2.5 bg-yellow-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-yellow-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
 
 .btn-violet {
-  @apply px-6 py-2.5 bg-violet-500 text-white font-semibold rounded-lg shadow-md 
-         transition-all duration-300 ease-in-out transform
-         hover:bg-violet-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 
-         active:scale-95 cursor-pointer;
+  @apply px-6 py-2.5 bg-violet-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-violet-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
 
 .btn-sky {
-  @apply px-6 py-2.5 bg-sky-500 text-white font-semibold rounded-lg shadow-md 
-         transition-all duration-300 ease-in-out transform
-         hover:bg-sky-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 
-         active:scale-95 cursor-pointer;
+  @apply px-6 py-2.5 bg-sky-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-sky-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
 
 .card {
@@ -109,6 +98,7 @@ img {
   width: 300px;
   height: 100%;
   object-fit: cover;
+  width: 100%;
   border-radius: 8px;
   z-index: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -192,142 +182,128 @@ img {
 /* -------------------------------------------------------------------------------------------------------- */
 
 .decoration {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 /* QUALITY VIEWS CSS */
 .section-anime {
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    height: auto;
-    margin: auto;
-    padding: 20px 0;
-    box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  padding: 20px 0;
+  box-sizing: border-box;
 }
 
 .wrapper {
-    display: flex;
-    width: 200%;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    padding: 100px;
-    box-sizing: border-box;
-    animation: 90s linear infinite scroll;
+  display: flex;
+  width: 200%;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  padding: 100px;
+  box-sizing: border-box;
+  animation: 90s linear infinite scroll;
 }
 
 .wrapper .col-md-3 {
-    background-color: #2ca9ad07;
-    border: 1px solid #3333;
-    border-radius: 10px;
-    font-weight: 300;
-    color: #1e2d3c;
-    min-height: 200px;
-    height: auto !important;
+  background-color: #2ca9ad07;
+  border: 1px solid #3333;
+  border-radius: 10px;
+  font-weight: 300;
+  color: #1e2d3c;
+  min-height: 200px;
+  height: auto !important;
 }
 
 .wrapper h4 {
-    font-weight: 600;
-    color: #1e2d3c;
+  font-weight: 600;
+  color: #1e2d3c;
 }
 
 @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(0);
+  }
 
-    50% {
-        transform: translateX(-50%);
-    }
+  50% {
+    transform: translateX(-50%);
+  }
 }
 
 @media screen and (max-width: 1400px) {
-    .wrapper {
-        display: flex;
-        animation: 90s linear infinite scroll;
-    }
+  .wrapper {
+    display: flex;
+    animation: 90s linear infinite scroll;
+  }
 
-    .wrapper .col-md-3 {
-        font-size: small;
-        border: none;
-        box-shadow: 1px 2px 25px 1px rgba(48, 46, 46, 0.129);
-        border-radius: 10px;
-        transform: scale(1.1);
-        padding: 100px;
-        flex: 0 0 30%;
-    }
+  .wrapper .col-md-3 {
+    font-size: small;
+    border: none;
+    box-shadow: 1px 2px 25px 1px rgba(48, 46, 46, 0.129);
+    border-radius: 10px;
+    transform: scale(1.1);
+    padding: 100px;
+    flex: 0 0 30%;
+  }
 
-    .wrapper .col-md-2 {
-        font-size: small;
-    }
+  .wrapper .col-md-2 {
+    font-size: small;
+  }
 
-    .wrapper .col-md-2 .logo {
-        width: 200px;
-        height: 200px;
-    }
+  .wrapper .col-md-2 .logo {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 @media screen and (max-width: 1400px) {
-    .wrapper {
-        display: flex;
-        animation: 90s linear infinite scroll;
-    }
+  .wrapper {
+    display: flex;
+    animation: 90s linear infinite scroll;
+  }
 
-    .wrapper .col-md-3 {
-        font-size: small;
-        border: none;
-        box-shadow: 1px 2px 25px 1px rgba(48, 46, 46, 0.129);
-        border-radius: 10px;
-        transform: scale(1.05);
-        padding: 40px;
-        flex: 0 0 30%;
-    }
+  .wrapper .col-md-3 {
+    font-size: small;
+    border: none;
+    box-shadow: 1px 2px 25px 1px rgba(48, 46, 46, 0.129);
+    border-radius: 10px;
+    transform: scale(1.05);
+    padding: 40px;
+    flex: 0 0 30%;
+  }
 
-    .wrapper .col-md-2 {
-        font-size: small;
-    }
+  .wrapper .col-md-2 {
+    font-size: small;
+  }
 
-    .wrapper .col-md-2 .logo {
-        width: 180px;
-        height: 180px;
-    }
+  .wrapper .col-md-2 .logo {
+    width: 180px;
+    height: 180px;
+  }
 }
 
-@media screen and (max-width: 720px) {
-    .intro {
-        font-size: 32px;
-    }
+@media screen and (max-width: 748px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+    animation: none;
+    padding: 20px !important;
+  }
 
-
-    .wrapper {
-        display: flex;
-        width: 200%;
-    }
-
-    .wrapper .col-md-3 {
-        border: none;
-        border-radius: 6px;
-        transform: scale(1.02);
-        padding: 20px;
-        flex: 0 0 90%;
-        margin: 0 auto;
-        width: 300px;
-        height: 300px !important;
-    }
-
-    .col-md-2 {
-        width: 150px;
-        font-size: 12px !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .box-container .row {
-        width: 100%;
-        margin-left: 0;
-    }
+  .wrapper .col-md-3 {
+    font-size: 10px !important;
+    border: none;
+    box-shadow: 1px 2px 25px 1px rgba(48, 46, 46, 0.129);
+    border-radius: 10px;
+    transform: scale(1.05);
+    padding: 10px !important;
+    animation: none !important;
+    margin-bottom: 20px !important;
+    align-items: center !important;
+  }
 }
 
 

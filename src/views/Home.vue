@@ -7,7 +7,7 @@
       </span>
     </div>
     <div class="flex justify-between space-x-8 items-center flex-col md:flex-row min-h-screen">
-      <div class="box p-2" data-aos="fade-down">
+      <div class="box p-2 view" data-aos="fade-down">
         <span class="borderline"></span>
         <img src="/src/assets/images/me/randy.jpg" alt="Photo de Randy">
       </div>

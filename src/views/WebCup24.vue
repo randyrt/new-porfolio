@@ -30,7 +30,7 @@
     </div>
 
     <div class="min-h-screen p-8 flex items-center">
-      <div class=" w-full max-w-4xl border p-8 card justify-center" data-aos="fade-up">
+      <div class=" w-full max-w-4xl border p-8 card justify-center" >
         <h1 class="text-3xl font-bold mt-0 mb-2 text-black">WebCup 2024 <span class="text-5xl emoji">🏆</span> !</h1>
         <p class="text-lg text-gray-700 mb-4">
           La WebCup est une compétition de développement web qui se déroule chaque année à Madagascar. En 2024, j'ai eu
@@ -72,10 +72,34 @@ onMounted(() => {
 </script>
 
 <style scoped>
-img {
-  border-radius: 8px;
-  width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  filter: grayscale(100%) brightness(0.9);
+@media screen and (max-width: 748px) {
+  .flex.justify-between {
+    flex-direction: column;
+    padding: 1rem; 
+  }
+
+  .flex.justify-between > div {
+    min-height: auto;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .card {
+    margin-bottom: 1.5rem;
+  }
+
+  .click-me {
+    animation: none !important;
+  }
+
+  p, h1, button, span {
+    font-size: 10px;
+  }
 }
+
 </style>
