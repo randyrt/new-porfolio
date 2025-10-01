@@ -17,7 +17,7 @@
     <SkillSection :title="'Compétences en VueJs'" :bgColor="'bg-yellow-100'" :borderColor="'border-yellow-200'" :skills="[
       {
         name: 'VueJS avec Typescript',
-        description: 'Je peux combiner les types et composants de manière claire. Je peux aussi créer des classes solides, typées. Gérer des interfaces et des décorateurs.'
+        description: 'Je peux créer des composants typés de façon claire. Je peux aussi définir des interfaces solides, sécurisées. Gérer des classes et des décorateurs efficacement.'
       },
       {
         name: 'SPA (Single Page Application)',
