@@ -7,11 +7,11 @@
       </span>
     </div>
   </div>
-  <div class="w-full h-auto mt-[100px] flex flex-wrap items-center justify-between text-lg text-gray-500"
+  <div class="w-full h-auto mt-[100px] flex justify-center items-center  text-lg text-gray-500"
     data-aos="fade-down">
     <h1 class="p-4">
       Voici les détails de mes compétences acquises au cours de ces cinq dernières années dans le monde professionel.
-      <span class="center">😊</span>
+      <span>😊</span>
     </h1>
   </div>
   <div class=" flex items-center flex-wrap bg-gray-100 gap-4 p-4 mt-8 text-lg" data-aos="fade-up">
@@ -114,11 +114,6 @@ onMounted(() => {
 
   p, h3, span, h1 {
     font-size: 10px !important;
-  }
-
-  .center {
-    display: flex;
-    justify-content: center;
   }
 }
 </style>
