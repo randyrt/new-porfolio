@@ -6,23 +6,19 @@
                 « Voici quelques capture de mes plus grands et récents projets »
             </span>
         </div>
-        <!-- <div class="h-[300px] mt-16 card p-2">
-            <Swiper :modules="[Navigation, Pagination, Autoplay]" :slides-per-view="3" :space-between="20" :loop="true"
-                :autoplay="{ delay: 3000 }" :pagination="pagination" navigation class="my-swiper">
-                
-            </Swiper>
-        </div> -->
-
-        <div class="h-[300px] mt-8 p-2">
-            <Swiper :space-between="30" :pagination="{ clickable: true }"  :modules="[Pagination, Navigation, Autoplay]"
-                class="mySwiper" :loop="true" :autoplay="{ delay: 2500 }" navigation>
+        <div class="h-[300px] mt-4 p-2 flex justify-between">
+            <Swiper :pagination="pagination" :modules="[Pagination, Navigation, Autoplay]" class="mySwiper"
+                :loop="true" :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
                     <!-- <img :src="img" alt="slide" class="w-full h-48 object-cover rounded-lg shadow-md" /> -->
                 </SwiperSlide>
             </Swiper>
-        </div>
-    </div>
+            <div class="flex justify-center  card h-[283px] w-1/3">
 
+            </div>
+        </div>
+
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -34,7 +30,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 
 import 'swiper/css'
-import 'swiper/css/navigation'
+// import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const loading = ref<boolean>(true)
@@ -72,6 +68,7 @@ const pagination = {
 .swiper {
     width: 50%;
     height: 100%;
+    border-radius: 5px;
 }
 
 .swiper-slide {
@@ -91,14 +88,16 @@ const pagination = {
     object-fit: cover;
 }
 
+
 .swiper-pagination-bullet {
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    line-height: 20px;
-    font-size: 30px !important;
-    color: #10a9e6;
-    opacity: 1;
-    background: rgba(0, 0, 0, 0.2);
+  background-color: #888;   
+  opacity: 1;               
+  width: 12px;            
+  height: 12px;             
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #199ed3 !important; 
+  transform: scale(1.2) !important;     
 }
 </style>
