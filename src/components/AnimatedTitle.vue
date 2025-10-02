@@ -1,17 +1,25 @@
 <template>
-  <m-motion
-    :initial="{ opacity: 0, y: -30 }"
-    :enter="{ opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }"
-    :while-hover="{ scale: 1.05 }"
-    class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-black text-center md:text-left"
-  >
-    <slot />
-  </m-motion>
+  <div class="card w-full p-4 flex justify-center mb-4">
+    <span 
+      class="animated-gradient-text text-sm italic text-center font-semibold"
+      :data-aos="aos"
+    >
+      {{ text }}
+    </span>
+  </div>
 </template>
 
-
 <script setup lang="ts">
-import { Motion } from "motion-v";
-defineExpose({ 'm-motion': Motion });
+defineProps<{
+  text: string
+  aos?: string   
+}>()
 </script>
 
+<style scoped>
+@media screen and (max-width: 748px) {
+  span {
+    font-size: 10px !important;
+  }
+}
+</style>

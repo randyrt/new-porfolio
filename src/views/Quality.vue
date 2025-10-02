@@ -1,11 +1,7 @@
 <template>
     <Loading v-if="loading" message="Mes qualités..." />
     <div v-else class="p-4">
-        <div class="card w-full p-4 flex justify-center">
-            <span class="animated-gradient-text text-sm italic text-center font-semibold" data-aos="fade-left">
-                « Randy en tant que dévellopeur web et mobile »
-            </span>
-        </div>
+        <AnimatedTitle text=" « Randy en tant que dévellopeur web et mobile  » " aos="fade-down" />
         <div class=" min-h-screen p-4 flex flex-col items-center justify-center">
             <section class="section-anime">
                 <div class="container mt-10 p-4">
@@ -20,12 +16,13 @@
                             </p>
                         </div>
 
-                        <div class="p-4 mr-4 col-md-3" >
+                        <div class="p-4 mr-4 col-md-3">
                             <h4 class="text-center">Résolution de problèmes</h4>
                             <p class="text-center">
                                 "J’aborde chaque défi avec l’objectif de trouver des solutions efficaces et créatives
                                 plutôt que de me laisser freiner par les obstacles.
-                                En ce qui me concene, chaque problème est une opportunité d’innover et d’améliorer, et j’aime
+                                En ce qui me concene, chaque problème est une opportunité d’innover et d’améliorer, et
+                                j’aime
                                 relever les situations complexes avec une approche stratégique fiable et durable"
                             </p>
                         </div>
@@ -84,6 +81,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Loading from '../components/Loading.vue';
+import AnimatedTitle from '../components/AnimatedTitle.vue';
 
 const loading = ref(true);
 
@@ -97,10 +95,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
 @media screen and (max-width: 748px) {
-  span {
-    font-size: 10px !important;
-  }
+    span {
+        font-size: 10px !important;
+    }
 }
 </style>

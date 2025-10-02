@@ -1,36 +1,53 @@
 <template>
     <Loading v-if="loading" message="Mes récents projets..." />
     <div v-else>
-        <div class="card w-full p-4 flex justify-center">
-            <span class="animated-gradient-text text-sm italic text-center font-semibold" data-aos="fade-right">
-                « Voici quelques capture de mes plus grands et récents projets »
-            </span>
-        </div>
-        <div class="h-[300px] mt-4 p-2 flex justify-between">
-            <Swiper :pagination="pagination" :modules="[Pagination, Navigation, Autoplay]" class="mySwiper"
+        <AnimatedTitle text="« Voici quelques capture de mes plus grands et récents projets »" />
+        <div class="h-[250px] mt-4 p-2 flex justify-between">
+            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper"
                 :loop="true" :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
-                    <!-- <img :src="img" alt="slide" class="w-full h-48 object-cover rounded-lg shadow-md" /> -->
+                    <img :src="img" alt="slide" class="w-full h-48 object-cover rounded-lg shadow-md" />
                 </SwiperSlide>
             </Swiper>
-            <div class="flex justify-center  card h-[283px] w-1/3">
-
+            <div class="flex justify-center card h-[230px] w-1/3">
+                <p class="text-center">Explication</p>
             </div>
         </div>
-
+        <div class="h-[250px] mt-4 p-2 flex justify-between">
+            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper"
+                :loop="true" :autoplay="{ delay: 2500 }" navigation>
+                <SwiperSlide v-for="(img, index) in images" :key="index">
+                    <img :src="img" alt="slide" class="w-full h-48 object-cover rounded-lg shadow-md" />
+                </SwiperSlide>
+            </Swiper>
+            <div class="flex justify-center card h-[230px] w-1/3">
+                <p class="text-center">Explication</p>
+            </div>
+        </div>
+        <div class="h-[250px] mt-4 p-2 flex justify-between">
+            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper"
+                :loop="true" :autoplay="{ delay: 2500 }" navigation>
+                <SwiperSlide v-for="(img, index) in images" :key="index">
+                    <img :src="img" alt="slide" class="w-full h-48 object-cover rounded-lg shadow-md" />
+                </SwiperSlide>
+            </Swiper>
+            <div class="flex justify-center card h-[230px] w-1/3">
+                <p class="text-center">Explication</p>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import Loading from '../components/Loading.vue';
+import AnimatedTitle from '../components/AnimatedTitle.vue';
 
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Pagination, Autoplay } from 'swiper/modules'
 
 
 import 'swiper/css'
-// import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 const loading = ref<boolean>(true)
@@ -65,39 +82,27 @@ const pagination = {
 </script>
 
 <style scoped>
-.swiper {
-    width: 50%;
-    height: 100%;
-    border-radius: 5px;
-}
+@media screen and (max-width: 748px) {
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #ffff;
+    span,
+    p {
+        font-size: 10px !important;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    }
 
-.swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+    .flex {
+        flex-direction: column;
+        gap: 16px;
+    }
 
+    .mySwiper {
+        width: 100% !important;
+        height: 250px;
+    }
 
-.swiper-pagination-bullet {
-  background-color: #888;   
-  opacity: 1;               
-  width: 12px;            
-  height: 12px;             
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #199ed3 !important; 
-  transform: scale(1.2) !important;     
+    .card {
+        width: 100% !important;
+        height: auto !important;
+    }
 }
 </style>

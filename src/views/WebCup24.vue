@@ -1,11 +1,7 @@
 <template>
   <Loading v-if="loading" message="Webcup 2024..." />
   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
-    <div class="card w-full p-4 flex flex-col justify-center">
-      <span class="animated-gradient-text text-sm italic text-center font-semibold" data-aos="fade-down">
-        « Qu'est-ce qui rend Randy unique ? »
-      </span>
-    </div>
+     <AnimatedTitle text=" « Qu'est-ce qui rend Randy unique ? » " aos="fade-down"/>
   </div>
 
   <div class="flex justify-between p-8">
@@ -59,7 +55,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import Loading from '../components/Loading.vue';
+import Loading from '../components/Loading.vue'
+import AnimatedTitle from '../components/AnimatedTitle.vue'
 
 const loading = ref<boolean>(true);
 
@@ -101,5 +98,4 @@ onMounted(() => {
     font-size: 10px;
   }
 }
-
 </style>

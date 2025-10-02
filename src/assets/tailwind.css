@@ -337,38 +337,39 @@ img {
   color: #fff !important;
 }
 
-
+/* SWIPER */
+.swiper {
+    width: 50%;
+    height: 100%;
+    border-radius: 5px;
+}
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #444;
+    text-align: center;
+    font-size: 18px;
+    background: #ffff;
 
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
+
 .swiper-pagination-bullet {
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  line-height: 20px;
-  font-size: 12px;
-  color: #08cbee;
-  opacity: 1;
-  background: rgba(0, 0, 0, 0.2);
+  background-color: #888;   
+  opacity: 1;               
+  width: 12px;            
+  height: 12px;             
 }
 
 .swiper-pagination-bullet-active {
-  color: #fff;
-  background: #007aff;
+  background-color: #a53292 !important; 
+  transform: scale(1.2) !important;     
 }

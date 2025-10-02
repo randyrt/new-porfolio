@@ -1,11 +1,7 @@
 <template>
   <Loading v-if="loading" message="Mes compétences..." />
   <div v-else>
-    <div class="card w-full p-4 flex justify-center">
-      <span class="animated-gradient-text text-sm italic text-center font-semibold" data-aos="fade-right">
-        « Entrons dans le vif du sujet, Parlons un peu de mes compétences »
-      </span>
-    </div>
+    <AnimatedTitle text=" « Entrons dans le vif du sujet, Parlons un peu de mes compétences » " aos="fade-down" />
   </div>
   <div class="w-full h-auto mt-[100px] flex justify-center items-center  text-lg text-gray-500" data-aos="fade-down">
     <h1 class="p-4">
@@ -93,7 +89,7 @@
 import { ref, onMounted } from 'vue';
 import Loading from '../components/Loading.vue';
 import SkillSection from '../components/SkillSection.vue';
-
+import AnimatedTitle from '../components/AnimatedTitle.vue'
 
 const loading = ref<boolean>(true);
 

@@ -1,11 +1,7 @@
 <template>
   <Loading v-if="loading" message="Page d'accueil..." />
   <div v-else class="p-8 flex flex-col">
-    <div class="card w-full p-4 flex justify-center mb-4">
-      <span class="animated-gradient-text text-sm italic text-center font-semibold" data-aos="fade-up">
-        « Le code ne dort jamais, et moi non plus tant que je n’ai pas atteint mes objectifs. »
-      </span>
-    </div>
+    <AnimatedTitle text="« Le code ne dort jamais, et moi non plus tant que je n’ai pas atteint mes objectifs. »"  aos="fade-down" />
     <div class="flex justify-between space-x-8 items-center flex-col md:flex-row min-h-screen">
       <div class="box p-2 view" data-aos="fade-down">
         <span class="borderline"></span>
@@ -56,6 +52,7 @@ import { ref, onMounted } from 'vue';
 import Loading from '../components/Loading.vue';
 import { getData } from '../services/api';
 import { useToast } from 'vue-toastification'
+import AnimatedTitle from '../components/AnimatedTitle.vue';
 
 const toast = useToast()
 const clickCount = ref<number>(0)
