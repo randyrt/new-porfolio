@@ -69,6 +69,18 @@ onMounted(() => {
 </script>
 
 <style scoped>
+img {
+  position: relative;
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 8px;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  filter: grayscale(100%) brightness(0.9);
+}
+
 @media screen and (max-width: 748px) {
   .flex.justify-between {
     flex-direction: column;
