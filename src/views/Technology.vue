@@ -1,11 +1,7 @@
 <template>
     <Loading v-if="loading" message="Technologies utilisées..." />
     <div v-else data-aos="fade-up">
-        <div class="card w-full p-4 flex justify-center">
-            <span class="animated-gradient-text text-sm italic text-center font-semibold" data-aos="fade-right">
-                « Explorons maintenant les technologies que j’utilise quotidiennement »
-            </span>
-        </div>
+         <AnimatedTitle text="« Explorons maintenant les technologies que j’utilise quotidiennement »"  />
         <div>
             <logoSection title="DESIGN" />
             <div class="flex gap-8 justify-center mt-6">
@@ -76,10 +72,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import Loading from '../components/Loading.vue';
-import TechLogo from '../components/TechLogo.vue';
-import logoSection from '../components/logoSection.vue';
+import { ref, onMounted } from 'vue'
+import Loading from '../components/Loading.vue'
+import TechLogo from '../components/TechLogo.vue'
+import logoSection from '../components/logoSection.vue'
+import AnimatedTitle from '../components/AnimatedTitle.vue'
 import { useToast } from 'vue-toastification'
 
 const toast = useToast()
