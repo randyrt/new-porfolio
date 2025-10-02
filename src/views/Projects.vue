@@ -17,7 +17,7 @@
             <Swiper :space-between="30" :pagination="{ clickable: true }"  :modules="[Pagination, Navigation, Autoplay]"
                 class="mySwiper" :loop="true" :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
-                    <img :src="img" alt="slide" class="w-full h-48 object-cover rounded-lg shadow-md" />
+                    <!-- <img :src="img" alt="slide" class="w-full h-48 object-cover rounded-lg shadow-md" /> -->
                 </SwiperSlide>
             </Swiper>
         </div>
