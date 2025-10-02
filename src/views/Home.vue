@@ -58,7 +58,8 @@ import { getData } from '../services/api';
 import { useToast } from 'vue-toastification'
 
 const toast = useToast()
-const clickCount = ref(0)
+const clickCount = ref<number>(0)
+const loading = ref<boolean>(true);
 
 function notify() {
   clickCount.value++
@@ -71,7 +72,7 @@ function notify() {
   }
 }
 
-const loading = ref(true);
+
 
 onMounted(() => {
   setTimeout(() => {

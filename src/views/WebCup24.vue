@@ -61,7 +61,7 @@
 import { ref, onMounted } from 'vue';
 import Loading from '../components/Loading.vue';
 
-const loading = ref(true);
+const loading = ref<boolean>(true);
 
 onMounted(() => {
   setTimeout(() => {

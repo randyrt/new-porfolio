@@ -81,12 +81,9 @@ import Loading from '../components/Loading.vue';
 import TechLogo from '../components/TechLogo.vue';
 import logoSection from '../components/logoSection.vue';
 import { useToast } from 'vue-toastification'
-import { TYPE } from "vue-toastification";
-
-
 
 const toast = useToast()
-const loading = ref(true);
+const loading = ref<boolean>(true);
 
 onMounted(() => {
     setTimeout(() => {
@@ -98,4 +95,26 @@ onMounted(() => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+@media screen and (max-width: 748px) {
+  .flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px !important; 
+  }
+
+  .card {
+    padding: 8px !important;
+    text-align: center;
+  }
+
+  .card span {
+    font-size: 10px !important;
+  }
+
+  .tech-logo img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+</style>

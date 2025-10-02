@@ -14,7 +14,7 @@ defineProps<{
 
 @media screen and (max-width: 748px) {
     h1 {
-        font-size: 20px !important;
+        font-size: 15px !important;
     }
 }
 
