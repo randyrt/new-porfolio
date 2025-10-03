@@ -12,6 +12,7 @@ declare module 'vue' {
     Loading: typeof import('./src/components/Loading.vue')['default']
     LogoSection: typeof import('./src/components/logoSection.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
+    ProjectGallery: typeof import('./src/components/ProjectGallery.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SkillSection: typeof import('./src/components/SkillSection.vue')['default']

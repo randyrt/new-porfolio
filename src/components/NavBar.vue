@@ -15,10 +15,12 @@
     </header>
     <nav v-if="isOpen" class="md:hidden flex flex-col bg-gray-50 shadow px-4 py-2 space-y-2">
       <router-link v-for="route in routes" :key="route.path" :to="route.path"
-        class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100"
-        active-class="bg-violet-200 font-bold" @click="isOpen = false">
-        {{ route.name }}
+        class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100 flex items-center gap-2"
+        active-class="bg-violet-200 font-bold">
+        <font-awesome-icon :icon="route.icon" class="text-gray-500" />
+        <span>{{ route.name }}</span>
       </router-link>
+
     </nav>
     <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50">
       <div class="p-6 text-xl font-bold">
@@ -26,10 +28,12 @@
       </div>
       <nav class="flex-1 flex flex-col px-4 space-y-2">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
-          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100"
+          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100 flex items-center gap-2"
           active-class="bg-violet-200 font-bold">
-          {{ route.name }}
+          <font-awesome-icon :icon="route.icon" class="text-gray-500" />
+          <span>{{ route.name }}</span>
         </router-link>
+
       </nav>
     </aside>
 
@@ -43,6 +47,7 @@
 import { ref, defineProps } from 'vue';
 
 interface RouteItem {
+  icon: any;
   path: string;
   name: string;
 }

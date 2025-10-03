@@ -8,6 +8,17 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faUser, faClock, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle)
+library.add(faUser, faClock, faPlus, faEnvelope, faGithub)
+
+
 
 const options = {
   position: "top-right",
@@ -24,6 +35,7 @@ const options = {
 
 const app = createApp(App)
 
+app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(Toast, options)
 app.use(router as any)
 app.mount('#app')
