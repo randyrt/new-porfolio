@@ -22,7 +22,7 @@ library.add(faUser, faClock, faPlus, faEnvelope, faGithub)
 
 const options = {
   position: "top-right",
-  timeout: 10000,
+  timeout: 5000,
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,

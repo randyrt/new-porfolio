@@ -13,8 +13,8 @@ const navRoutes = [
   { path: '/quality', name: 'Qualités', icon: 'star' },
   { path: '/skills', name: 'Compétences', icon: 'code' },
   { path: '/technology', name: 'Technologies', icon: 'cogs' },
-  { path: '/testimoniales', name: 'Testimoniales', icon: 'quote-right' },
   { path: '/projects', name: 'Projects', icon: 'project-diagram' },
+  { path: '/testimoniales', name: 'Testimoniales', icon: 'quote-right' },
   { path: '/contact', name: 'Contact', icon: 'user' }
 ];
 
