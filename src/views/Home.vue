@@ -33,7 +33,7 @@
           </p>
           <p class="text-lg text-gray-700 mt-4">
             N'hésitez pas à parcourir mon portfolio pour découvrir mes projets, compétences et expériences.
-            Si vous avez des questions ou souhaitez collaborer, n'hésitez pas à me contacter !
+            Si vous avez des questions ou souhaitez collaborer, n'hésitez pas à me <span class="text-sky-700 cursor-pointer underline" @click="goToContact">contacter</span> !
           </p>
         </div>
         <div class="flex justify-center mt-2">
@@ -49,14 +49,16 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'
 import Loading from '../components/Loading.vue';
 import { getData } from '../services/api';
 import { useToast } from 'vue-toastification'
-import AnimatedTitle from '../components/AnimatedTitle.vue';
+import AnimatedTitle from '../components/AnimatedTitle.vue'
 
 const toast = useToast()
+const router = useRouter()
 const clickCount = ref<number>(0)
-const loading = ref<boolean>(true);
+const loading = ref<boolean>(true)
 
 function notify() {
   clickCount.value++
@@ -69,6 +71,9 @@ function notify() {
   }
 }
 
+const goToContact = () => {
+  router.push('/contact')
+}
 
 
 onMounted(() => {
