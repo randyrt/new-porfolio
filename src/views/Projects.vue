@@ -35,39 +35,39 @@ import ProjectGallery from '../components/ProjectGallery.vue'
 const loading = ref<boolean>(true);
 
 const images1: string[] = [
-    '/src/assets/images/projects/fid-connect/capture1.png',
-    '/src/assets/images/projects/fid-connect/capture2.png',
-    '/src/assets/images/projects/fid-connect/capture3.png',
-    '/src/assets/images/projects/fid-connect/capture_end.png',
-    '/src/assets/images/projects/fid-connect/capture12.png',
-    '/src/assets/images/projects/fid-connect/capture7.png',
-    '/src/assets/images/projects/fid-connect/capture13.png',
-    '/src/assets/images/projects/fid-connect/capture9.png',
-    '/src/assets/images/projects/fid-connect/capture10.png'
+    '/images/projects/fid-connect/capture1.png',
+    '/images/projects/fid-connect/capture2.png',
+    '/images/projects/fid-connect/capture3.png',
+    '/images/projects/fid-connect/capture_end.png',
+    '/images/projects/fid-connect/capture12.png',
+    '/images/projects/fid-connect/capture7.png',
+    '/images/projects/fid-connect/capture13.png',
+    '/images/projects/fid-connect/capture9.png',
+    '/images/projects/fid-connect/capture10.png'
 ];
 
 const images2: string[] = [
-    '/src/assets/images/projects/QCP/capture1.png',
-    '/src/assets/images/projects/QCP/capture2.png',
-    '/src/assets/images/projects/QCP/capture3.png',
-    '/src/assets/images/projects/QCP/capture4.png',
-    '/src/assets/images/projects/QCP/capture5.png',
-    '/src/assets/images/projects/QCP/capture6.png',
-    '/src/assets/images/projects/QCP/capture7.png',
-    '/src/assets/images/projects/QCP/capture8.png',
-    '/src/assets/images/projects/QCP/capture9.png',
-    '/src/assets/images/projects/QCP/capture10.png',
-    '/src/assets/images/projects/QCP/capture11.png'
+    '/images/projects/QCP/capture1.png',
+    '/images/projects/QCP/capture2.png',
+    '/images/projects/QCP/capture3.png',
+    '/images/projects/QCP/capture4.png',
+    '/images/projects/QCP/capture5.png',
+    '/images/projects/QCP/capture6.png',
+    '/images/projects/QCP/capture7.png',
+    '/images/projects/QCP/capture8.png',
+    '/images/projects/QCP/capture9.png',
+    '/images/projects/QCP/capture10.png',
+    '/images/projects/QCP/capture11.png'
 ];
 
 const images3: string[] = [
-    '/src/assets/images/projects/nurser-dinner/capture1.png',
-    '/src/assets/images/projects/nurser-dinner/capture2.png',
-    '/src/assets/images/projects/nurser-dinner/capture3.png',
-    '/src/assets/images/projects/nurser-dinner/capture4.png',
-    '/src/assets/images/projects/nurser-dinner/capture5.png',
-    '/src/assets/images/projects/nurser-dinner/capture6.png',
-    '/src/assets/images/projects/nurser-dinner/capture7.png',
+    '/images/projects/nurser-dinner/capture1.png',
+    '/images/projects/nurser-dinner/capture2.png',
+    '/images/projects/nurser-dinner/capture3.png',
+    '/images/projects/nurser-dinner/capture4.png',
+    '/images/projects/nurser-dinner/capture5.png',
+    '/images/projects/nurser-dinner/capture6.png',
+    '/images/projects/nurser-dinner/capture7.png',
 ];
 
 const selectedImage = ref<string | null>(null);

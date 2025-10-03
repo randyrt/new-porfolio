@@ -7,7 +7,7 @@
   <div class="flex justify-between p-8">
     <div class="min-h-screen p-8 space-y-16">
       <div class="w-full max-w-4xl card p-4 " data-aos="fade-right">
-        <img src="/src/assets/images/webcup24/webcup.jpg" alt="WebCup 2024"
+        <img src="/images/webcup24/webcup.jpg" alt="WebCup 2024"
           class="w-full rounded-lg shadow-lg filter grayscale brightness-90" />
       </div>
       <div class="w-full card p-4 flex justify-center" data-aos="fade-down">

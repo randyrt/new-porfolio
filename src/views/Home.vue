@@ -5,7 +5,7 @@
     <div class="flex justify-between space-x-8 items-center flex-col md:flex-row min-h-screen">
       <div class="box p-2 view" data-aos="fade-down">
         <span class="borderline"></span>
-        <img src="/src/assets/images/me/randy.jpg" alt="Photo de Randy">
+        <img src="/images/me/randy.jpg" alt="Photo de Randy">
       </div>
       <div class="md:text-sm lg:text-base max-w-3xl border p-6 card flex flex-col justify-between min-h-[500px]"
         data-aos="fade-up">
@@ -64,7 +64,7 @@ function notify() {
   if (clickCount.value === 1) {
     toast.info("Mon CV est en anglais 😄. Cliquez une deuxième fois sur le bouton si cela ne vous pose  pas de problème !");
   } else if (clickCount.value === 2) {
-    window.open("/src/assets/images/cv/RandyAndriantsioryResume.pdf", "_blank")
+    window.open("/images/cv/RandyAndriantsioryResume.pdf", "_blank")
     clickCount.value = 0
   }
 }
