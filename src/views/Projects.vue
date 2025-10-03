@@ -6,10 +6,10 @@
             description="Fid-Connect est une plateforme tout-en-un qui aide les entreprises et les professionnels à gérer efficacement leurs tâches comptables, fiscales et administratives. Développée avec Vue.js et Laravel, elle est conçue pour se conformer aux réglementations belges, afin de simplifier les processus complexes tout en améliorant la productivité."
             @open-image="openImage" />
         <ProjectGallery :images="images2" title="QCP"
-            description="QCP est une application de gestion de la qualité pour les laboratoires, permettant le suivi des processus, la gestion documentaire et la conformité réglementaire. Elle offre une interface intuitive et des outils d’analyse avancés pour optimiser la performance des équipes."
+            description="QCP est une application sur mesure développée pour un client belge, axée sur la gestion du crédit, le suivi de l’amortissement et la planification financière. Propulsée par Vue.js et Laravel, elle offre une interface intelligente et intuitive qui simplifie les opérations financières complexes, automatise les calculs et permet une génération fluide de documents"
             @open-image="openImage" />
         <ProjectGallery :images="images3" title="NURSES"
-            description="NURSES est une plateforme dédiée à la gestion des plannings et des interventions pour les infirmiers(ères) à domicile. Elle facilite la coordination, le suivi des patients et la communication entre professionnels de santé."
+            description="Souper of Nurses est un restaurant belge qui accueille de grands événements sur de longues périodes. Ce site web permet aux utilisateurs de faire des réservations de groupe en ligne, de contacter directement le restaurant, et comprend un panneau d’administration pour gérer les inscriptions, les événements et les places VIP."
             @open-image="openImage" />
         <div v-if="selectedImage" class="fixed inset-0 flex items-center justify-center z-50 card  modal-backdrop"
             @click.self="closeImage">
