@@ -11,17 +11,22 @@
         <ProjectGallery :images="images3" title="NURSES"
             description="Souper of Nurses est un restaurant belge qui accueille de grands événements sur de longues périodes. Ce site web permet aux utilisateurs de faire des réservations de groupe en ligne, de contacter directement le restaurant, et comprend un panneau d’administration pour gérer les inscriptions, les événements et les places VIP."
             @open-image="openImage" />
-        <div v-if="selectedImage" class="fixed inset-0 flex items-center justify-center z-50 card  modal-backdrop"
-            @click.self="closeImage">
-            <div class="relative">
-                <button @click="closeImage"
-                    class="absolute -top-10 -right-10 bg-violet-400 text-white px-2 py-1 rounded cursor-pointer">
-                    ✕
-                </button>
-                <img :src="selectedImage" alt="Image sélectionnée"
-                    class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg" />
+        <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 scale-95"
+            enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-200 ease-in"
+            leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+            <div v-if="selectedImage" class="fixed inset-0 flex items-center justify-center z-50 card modal-backdrop"
+                @click.self="closeImage">
+                <div class="relative">
+                    <button @click="closeImage"
+                        class="absolute -top-10 -right-10 bg-violet-400 text-white px-2 py-1 rounded cursor-pointer">
+                        ✕
+                    </button>
+                    <img :src="selectedImage" alt="Image sélectionnée"
+                        class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg" />
+                </div>
             </div>
-        </div>
+        </transition>
+
     </div>
 </template>
 
