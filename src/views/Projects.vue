@@ -1,11 +1,11 @@
 <template>
     <Loading v-if="loading" message="Mes récents projets..." />
     <div v-else>
-        <AnimatedTitle text="« Voici quelques capture de mes plus grands et récents projets »"  aos="fade-down"/>
+        <AnimatedTitle text="« Voici quelques captures de mes plus grands et récents projets »" aos="fade-down" />
         <div class="h-[470px] mt-4 p-2 flex justify-between items-center">
-            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card" :loop="true"
-                :autoplay="{ delay: 2500 }" navigation>
-                <SwiperSlide v-for="(img, index) in images" :key="index">
+            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card"
+                :loop="true" :autoplay="{ delay: 2500 }" navigation>
+                <SwiperSlide v-for="(img, index) in images1" :key="index">
                     <img :src="img" alt="slide" class="w-full h-auto object-contain rounded-lg shadow-md cursor-pointer"
                         @click="openImage(img)" />
                 </SwiperSlide>
@@ -22,11 +22,52 @@
                 </p>
             </div>
         </div>
+        <div class="h-[470px] mt-4 p-2 flex justify-between items-center">
+            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card"
+                :loop="true" :autoplay="{ delay: 2500 }" navigation>
+                <SwiperSlide v-for="(img, index) in images2" :key="index">
+                    <img :src="img" alt="slide" class="w-full h-auto object-contain rounded-lg shadow-md cursor-pointer"
+                        @click="openImage(img)" />
+                </SwiperSlide>
+            </Swiper>
+            <div class="flex justify-center card h-auto w-1/3">
+                <p class="flex flex-col items-center p-6 text-gray-600">
+                    <span class="text-lg not-even:text-gray-800">- QCP -</span>
+                    <span>
+                        Fid-Connect est une plateforme tout-en-un qui aide les entreprises et les professionnels à gérer
+                        efficacement leurs tâches comptables, fiscales et administratives. Développée avec Vue.js et
+                        Laravel, elle est conçue pour se conformer aux réglementations belges, afin de simplifier les
+                        processus complexes tout en améliorant la productivité.
+                    </span>
+                </p>
+            </div>
+        </div>
+              <div class="h-[470px] mt-4 p-2 flex justify-between items-center">
+            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card"
+                :loop="true" :autoplay="{ delay: 2500 }" navigation>
+                <SwiperSlide v-for="(img, index) in images3" :key="index">
+                    <img :src="img" alt="slide" class="w-full h-auto object-contain rounded-lg shadow-md cursor-pointer"
+                        @click="openImage(img)" />
+                </SwiperSlide>
+            </Swiper>
+            <div class="flex justify-center card h-auto w-1/3">
+                <p class="flex flex-col items-center p-6 text-gray-600">
+                    <span class="text-lg not-even:text-gray-800">- NURSES -</span>
+                    <span>
+                        Fid-Connect est une plateforme tout-en-un qui aide les entreprises et les professionnels à gérer
+                        efficacement leurs tâches comptables, fiscales et administratives. Développée avec Vue.js et
+                        Laravel, elle est conçue pour se conformer aux réglementations belges, afin de simplifier les
+                        processus complexes tout en améliorant la productivité.
+                    </span>
+                </p>
+            </div>
+        </div>
 
         <div v-if="selectedImage" class="fixed inset-0 flex items-center justify-center z-50 card  modal-backdrop"
             @click.self="closeImage">
             <div class="relative">
-                <button @click="closeImage" class="absolute -top-10 -right-10 bg-violet-500 text-black px-2 py-1 rounded cursor-pointer">
+                <button @click="closeImage"
+                    class="absolute -top-10 -right-10 bg-violet-500 text-black px-2 py-1 rounded cursor-pointer">
                     ✕
                 </button>
                 <img :src="selectedImage" alt="selected" class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg" />
@@ -49,7 +90,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 const loading = ref<boolean>(true);
-const images: string[] = [
+
+const images1: string[] = [
     '/src/assets/images/projects/fid-connect/capture1.png',
     '/src/assets/images/projects/fid-connect/capture2.png',
     '/src/assets/images/projects/fid-connect/capture3.png',
@@ -58,8 +100,35 @@ const images: string[] = [
     '/src/assets/images/projects/fid-connect/capture7.png',
     '/src/assets/images/projects/fid-connect/capture13.png',
     '/src/assets/images/projects/fid-connect/capture9.png',
-    '/src/assets/images/projects/fid-connect/capture10.png',
+    '/src/assets/images/projects/fid-connect/capture10.png'
 ];
+
+const images2: string[] = [
+    '/src/assets/images/projects/QCP/capture1.png',
+    '/src/assets/images/projects/QCP/capture2.png',
+    '/src/assets/images/projects/QCP/capture3.png',
+    '/src/assets/images/projects/QCP/capture4.png',
+    '/src/assets/images/projects/QCP/capture5.png',
+    '/src/assets/images/projects/QCP/capture6.png',
+    '/src/assets/images/projects/QCP/capture7.png',
+    '/src/assets/images/projects/QCP/capture8.png',
+    '/src/assets/images/projects/QCP/capture9.png',
+    '/src/assets/images/projects/QCP/capture10.png',
+    '/src/assets/images/projects/QCP/capture11.png'
+];
+
+
+const images3: string[] = [
+    '/src/assets/images/projects/nurser-dinner/capture1.png',
+    '/src/assets/images/projects/nurser-dinner/capture2.png',
+    '/src/assets/images/projects/nurser-dinner/capture3.png',
+    '/src/assets/images/projects/nurser-dinner/capture4.png',
+    '/src/assets/images/projects/nurser-dinner/capture5.png',
+    '/src/assets/images/projects/nurser-dinner/capture6.png',
+    '/src/assets/images/projects/nurser-dinner/capture7.png',
+];
+
+
 const selectedImage = ref<string | null>(null);
 const toast = useToast()
 
@@ -75,7 +144,7 @@ function closeImage() {
 onMounted(() => {
     setTimeout(() => {
         loading.value = false;
-        toast.info("Cliquez sur une image pour l'agrandir !");
+        toast.info("Cliquez sur une image pour l'agrandir 🙂 !");
     }, 1000);
 });
 </script>
@@ -83,9 +152,9 @@ onMounted(() => {
 
 <style scoped>
 .modal-backdrop {
-  background-color: rgba(59, 61, 63, 0); 
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(6px); 
+    background-color: rgba(59, 61, 63, 0);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 
@@ -104,7 +173,7 @@ onMounted(() => {
 
     .mySwiper {
         width: 100% !important;
-        height: 250px;
+        height: auto !important;
     }
 
     .card {
