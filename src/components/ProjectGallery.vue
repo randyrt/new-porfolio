@@ -40,7 +40,7 @@ img {
     border-radius: 8px;
     z-index: 1;
     box-shadow: 0 4px 8px rgba(144, 122, 156, 0);
-    filter: grayscale(10%) brightness(0.9);
+    filter: grayscale(5%) brightness(0.9);
 }
 
 @media screen and (max-width: 748px) {

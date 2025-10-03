@@ -1,5 +1,5 @@
 <template>
-   <Loading v-if="loading" message="Page d'accueil..." />
+   <Loading v-if="loading" message="Me contacter..." />
   <div v-else class="p-6">
     <h1 class="text-2xl font-bold">Contact</h1>
   </div>
