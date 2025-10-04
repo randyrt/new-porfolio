@@ -90,7 +90,7 @@ const sendEmail = async () => {
     form.value = { name: "", email: "", message: "" }
 
   } catch (error) {
-    toast.error("Erreur lors de l’envoi. Vérifiez votre connnexion internet .")
+    toast.error("Erreur lors de l’envoi. Vérifiez votre connnexion internet 🥶.")
   } finally {
     sending.value = false
     toast.success("Message envoyé avec succès 🎉 !")
