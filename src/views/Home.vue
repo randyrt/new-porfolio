@@ -67,7 +67,7 @@ function notify() {
   if (clickCount.value === 1) {
     toast.info("Mon CV est en anglais 😄. Cliquez une deuxième fois sur le bouton si cela ne vous pose  pas de problème !");
   } else if (clickCount.value === 2) {
-    window.open("/images/cv/randy.pdf", "_blank")
+    window.open("/images/cv/cv.pdf", "_blank")
     clickCount.value = 0
   }
 }
