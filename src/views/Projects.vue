@@ -31,9 +31,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import Loading from '../components/Loading.vue';
-import AnimatedTitle from '../components/AnimatedTitle.vue';
+import AnimatedTitle from '../components/AnimatedTitle.vue'
 import { useToast } from 'vue-toastification'
 import ProjectGallery from '../components/ProjectGallery.vue'
 
@@ -75,7 +75,7 @@ const images3: string[] = [
     '/images/projects/nurser-dinner/capture7.png',
 ];
 
-const selectedImage = ref<string | null>(null);
+const selectedImage = ref<string | null>(null)
 const toast = useToast()
 
 function openImage(img: string) {
@@ -83,13 +83,13 @@ function openImage(img: string) {
 }
 
 function closeImage() {
-    selectedImage.value = null;
+    selectedImage.value = null
 }
 
 onMounted(() => {
     setTimeout(() => {
-        loading.value = false;
-        toast.info("Cliquez sur une image pour l'agrandir 🙂 !");
+        loading.value = false
+        toast.info("Cliquez sur une image pour l'agrandir 🙂 !")
     }, 1000);
 });
 </script>

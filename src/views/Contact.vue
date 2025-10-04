@@ -29,10 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import Loading from '../components/Loading.vue'
 import { useToast } from 'vue-toastification'
-import confetti from "canvas-confetti";
+import confetti from "canvas-confetti"
 import emailjs from "@emailjs/browser"
 
 const toast = useToast()
@@ -56,7 +56,7 @@ const form = ref({
 
 onMounted(() => {
   setTimeout(() => {
-    loading.value = false;
+    loading.value = false
   }, 1000);
 });
 
@@ -67,7 +67,7 @@ onMounted(() => {
 
 const sendEmail = async () => {
   if (!form.value.name || !form.value.email || !form.value.message) {
-    toast.info("Veuillez remplir tous les champs 👮‍♂️ !");
+    toast.error("Veuillez remplir tous les champs 👮‍♂️ !");
     return;
   }
 
@@ -84,7 +84,6 @@ const sendEmail = async () => {
     launchConfetti();
     form.value = { name: "", email: "", message: "" };
   } catch (error) {
-    console.error(error);
     toast.error("Erreur lors de l’envoi. Vérifiez les champs.");
   } finally {
     sending.value = false;

@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="w-full max-w-4xl flex justify-center p-4 " data-aos="fade-left">
-        <button class="btn-violet inline-block text-center decoration click-me">
+        <button class="btn-violet inline-block text-center decoration click-me" @click="webCup">
           En savoir plus
         </button>
       </div>
@@ -54,12 +54,12 @@
 
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import Loading from '../components/Loading.vue'
 import AnimatedTitle from '../components/AnimatedTitle.vue'
 import confetti from "canvas-confetti"
 
-const loading = ref<boolean>(true);
+const loading = ref<boolean>(true)
 
 const launchConfetti = () => {
   confetti({
@@ -67,15 +67,20 @@ const launchConfetti = () => {
     spread: 70,
     origin: { y: 0.6 },
     colors: ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4", "#6A4C93"]
-  });
-};
+  })
+}
 
 onMounted(() => {
   setTimeout(() => {
     loading.value = false
     launchConfetti()
-  }, 1000);
-});
+  }, 1000)
+})
+
+
+function webCup(){
+  window.open("https://www.facebook.com/WebcupMadagascar", "_blank")
+}
 
 </script>
 

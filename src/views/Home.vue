@@ -48,10 +48,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import Loading from '../components/Loading.vue';
-import { getData } from '../services/api';
+import Loading from '../components/Loading.vue'
+import { getData } from '../services/api'
 import { useToast } from 'vue-toastification'
 import AnimatedTitle from '../components/AnimatedTitle.vue'
 
@@ -79,7 +79,7 @@ const goToContact = () => {
 
 onMounted(() => {
   setTimeout(() => {
-    loading.value = false;
+    loading.value = false
   }, 1000);
 });
 

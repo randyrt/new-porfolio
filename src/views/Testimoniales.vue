@@ -24,16 +24,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import Loading from '../components/Loading.vue'
 
-const loading = ref<boolean>(true);
+const loading = ref<boolean>(true)
 
 onMounted(() => {
     setTimeout(() => {
-        loading.value = false;
-    }, 1000);
-});
+        loading.value = false
+    }, 1000)
+})
 
 </script>
 

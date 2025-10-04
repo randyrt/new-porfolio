@@ -80,16 +80,14 @@ import AnimatedTitle from '../components/AnimatedTitle.vue'
 import { useToast } from 'vue-toastification'
 
 const toast = useToast()
-const loading = ref<boolean>(true);
+const loading = ref<boolean>(true)
 
 onMounted(() => {
     setTimeout(() => {
         loading.value = false;
-        toast.info("Survolez le logo pour afficher le nom du tecno 🙂");
-    }, 1000);
-
-
-});
+        toast.info("Survolez le logo pour afficher le nom du tecno 🙂")
+    }, 1000)
+})
 </script>
 
 <style scoped>
