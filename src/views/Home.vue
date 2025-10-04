@@ -7,7 +7,7 @@
         <span class="borderline"></span>
         <img src="/images/me/randy.jpg" alt="Photo de Randy">
       </div>
-      <div class="md:text-sm lg:text-base max-w-3xl border p-6 card flex flex-col justify-between min-h-[500px]"
+      <div class="md:text-sm lg:text-base max-w-3xl pad border p-6 card flex flex-col justify-between min-h-[500px]"
         data-aos="fade-up">
         <div>
           <h1 class="text-3xl font-bold mt-6 mb-2 text-black">Bienvenue sur mon portfolio <span
@@ -55,6 +55,7 @@ import { getData } from '../services/api';
 import { useToast } from 'vue-toastification'
 import AnimatedTitle from '../components/AnimatedTitle.vue'
 
+
 const toast = useToast()
 const router = useRouter()
 const clickCount = ref<number>(0)
@@ -98,6 +99,16 @@ img {
 }
 
 @media screen and (max-width: 748px) {
+
+  .flex {
+    padding: 5px !important;
+    width: 100%;
+  }
+
+  .pad {
+    padding: 5px !important;
+  }
+
   .decoration {
     font-size: 10px !important;
   }

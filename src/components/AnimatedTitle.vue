@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-full p-4 flex justify-center mb-4">
+  <div class="card w-full p-4 flex justify-center mb-4 this-div">
     <span 
       class="animated-gradient-text text-sm italic text-center font-semibold"
       :data-aos="aos"

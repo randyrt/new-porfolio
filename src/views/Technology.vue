@@ -85,7 +85,7 @@ const loading = ref<boolean>(true);
 onMounted(() => {
     setTimeout(() => {
         loading.value = false;
-        toast.info("Survolez le logo pour afficher son nom 🙂");
+        toast.info("Survolez le logo pour afficher le nom du tecno 🙂");
     }, 1000);
 
 

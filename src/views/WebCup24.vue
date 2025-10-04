@@ -57,12 +57,23 @@
 import { ref, onMounted } from 'vue';
 import Loading from '../components/Loading.vue'
 import AnimatedTitle from '../components/AnimatedTitle.vue'
+import confetti from "canvas-confetti"
 
 const loading = ref<boolean>(true);
 
+const launchConfetti = () => {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4", "#6A4C93"]
+  });
+};
+
 onMounted(() => {
   setTimeout(() => {
-    loading.value = false;
+    loading.value = false
+    launchConfetti()
   }, 1000);
 });
 
@@ -82,6 +93,11 @@ img {
 }
 
 @media screen and (max-width: 748px) {
+
+  .min-h-screen {
+    padding: 0 !important;
+  }
+
   .flex.justify-between {
     flex-direction: column;
     padding: 1rem; 
