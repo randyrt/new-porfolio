@@ -8,19 +8,20 @@
       <div class="contact-form card p-8">
         <div class="form-group">
           <input type="text" v-model="form.name" required />
-          <label>Nom</label>
+          <label class="text-gray-500 !font-bold">Nom</label>
         </div>
 
         <div class="form-group">
           <input type="email" v-model="form.email" required />
-          <label>Email</label>
+          <label class="text-gray-500 !font-bold">Email</label>
         </div>
 
         <div class="form-group">
           <textarea rows="6" v-model="form.message" required></textarea>
-          <label>Message</label>
+          <label class="text-gray-500 !font-bold">Message</label>
         </div>
-        <button class="submit-btn" type="submit" :disabled="sending" @click="sendEmail">
+        <button :class="[sending ? 'cursor-not-allowed submit-btn btn-violet' : 'submit-btn btn-violet']" type="submit"
+          :disabled="sending" @click="sendEmail">
           {{ sending ? "Envoi..." : "Envoyer" }}
         </button>
       </div>
@@ -71,6 +72,13 @@ const sendEmail = async () => {
     return;
   }
 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(form.value.email)) {
+    toast.error("Veuillez entrer une adresse e-mail valide 😏 !")
+    return;
+  }
+
   sending.value = true;
 
   try {
@@ -80,13 +88,14 @@ const sendEmail = async () => {
       message: form.value.message
     });
 
-    toast.success("Message envoyé avec succès 🎉 !");
-    launchConfetti();
-    form.value = { name: "", email: "", message: "" };
+    form.value = { name: "", email: "", message: "" }
+
   } catch (error) {
-    toast.error("Erreur lors de l’envoi. Vérifiez les champs.");
+    toast.error("Erreur lors de l’envoi. Vérifiez les champs.")
   } finally {
     sending.value = false;
+    toast.success("Message envoyé avec succès 🎉 !")
+    launchConfetti()
   }
 };
 </script>
@@ -108,7 +117,7 @@ const sendEmail = async () => {
 .form-group textarea {
   width: 100%;
   border: none;
-  border-bottom: 2px solid #a0aec0;
+  border-bottom: 2px solid rgb(233, 211, 211);
   background: transparent;
   padding: 12px 0;
   font-size: 1rem;
@@ -121,8 +130,6 @@ const sendEmail = async () => {
   position: absolute;
   top: 12px;
   left: 0;
-  color: #a019c2;
-  font-size: 1rem;
   pointer-events: none;
   transition: all 0.3s ease;
 }
@@ -140,26 +147,20 @@ const sendEmail = async () => {
 .form-group textarea:valid+label {
   top: -10px;
   font-size: 0.85rem;
-  color: #881da8;
+  color: #989699;
 }
 
 
 .submit-btn {
   display: block;
-  width: 100%;
-  background: #a40ab8a8;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  cursor: pointer;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
   transition: 0.3s ease;
 }
 
 .submit-btn:hover {
-  background: #9211ce;
+  background: #a267be96;
 }
 
 
