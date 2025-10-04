@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import Loading from '../components/Loading.vue'
 import { useToast } from 'vue-toastification'
 import confetti from "canvas-confetti"
@@ -55,16 +55,17 @@ const form = ref({
   message: ""
 });
 
-onMounted(() => {
-  setTimeout(() => {
-    loading.value = false
-  }, 1000);
-});
 
 onMounted(() => {
   emailjs.init("ZgI5TYSPYNESKjLKs");
   setTimeout(() => (loading.value = false), 1000);
 });
+
+
+const isEmailValid = computed(() => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return emailRegex.test(form.value.email)
+})
 
 const sendEmail = async () => {
   if (!form.value.name || !form.value.email || !form.value.message) {
@@ -72,9 +73,7 @@ const sendEmail = async () => {
     return;
   }
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  if (!emailRegex.test(form.value.email)) {
+  if (!isEmailValid.value) {
     toast.error("Veuillez entrer une adresse e-mail valide 😏 !")
     return;
   }
@@ -91,7 +90,7 @@ const sendEmail = async () => {
     form.value = { name: "", email: "", message: "" }
 
   } catch (error) {
-    toast.error("Erreur lors de l’envoi. Vérifiez les champs.")
+    toast.error("Erreur lors de l’envoi. Vérifiez votre connnexion internet .")
   } finally {
     sending.value = false;
     toast.success("Message envoyé avec succès 🎉 !")
