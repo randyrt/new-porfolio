@@ -26,12 +26,20 @@
         </button>
       </div>
     </div>
+    <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg" data-aos="fade-up">
+      <font-awesome-icon :icon="['fab', 'github']"
+        class="text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg" />
+      <font-awesome-icon :icon="['fab', 'linkedin']"
+        class="text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg" />
+      <font-awesome-icon :icon="['far', 'envelope']"
+        class="text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg" />
+    </div>
+
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import Loading from '../components/Loading.vue'
 import { useToast } from 'vue-toastification'
 import confetti from "canvas-confetti"
 import emailjs from "@emailjs/browser"
@@ -178,6 +186,11 @@ const sendEmail = async () => {
 
   label {
     font-size: 10px !important;
+  }
+
+  .media {
+    margin-top: 40px;
+    padding: 5px !important;
   }
 }
 </style>

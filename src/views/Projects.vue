@@ -32,10 +32,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import Loading from '../components/Loading.vue';
-import AnimatedTitle from '../components/AnimatedTitle.vue'
 import { useToast } from 'vue-toastification'
-import ProjectGallery from '../components/ProjectGallery.vue'
+
 
 const loading = ref<boolean>(true);
 

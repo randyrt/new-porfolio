@@ -80,9 +80,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import Loading from '../components/Loading.vue'
-import AnimatedTitle from '../components/AnimatedTitle.vue'
-
 const loading = ref(true)
 
 onMounted(() => {

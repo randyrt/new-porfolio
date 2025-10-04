@@ -73,10 +73,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import Loading from '../components/Loading.vue'
-import TechLogo from '../components/TechLogo.vue'
-import logoSection from '../components/logoSection.vue'
-import AnimatedTitle from '../components/AnimatedTitle.vue'
 import { useToast } from 'vue-toastification'
 
 const toast = useToast()
