@@ -8,17 +8,15 @@
       <div class="contact-form card p-8">
         <div class="form-group">
           <input type="text" v-model="form.name" required />
-          <label class="text-gray-500 !font-bold">Nom</label>
+          <label class="text-gray-500 !font-semibold">Nom</label>
         </div>
-
         <div class="form-group">
           <input type="email" v-model="form.email" required />
-          <label class="text-gray-500 !font-bold">Email</label>
+          <label class="text-gray-500 !font-semibold">Email</label>
         </div>
-
         <div class="form-group">
           <textarea rows="6" v-model="form.message" required></textarea>
-          <label class="text-gray-500 !font-bold">Message</label>
+          <label class="text-gray-500 !font-semibold">Message</label>
         </div>
         <button :class="[sending ? 'cursor-not-allowed submit-btn btn-violet' : 'submit-btn btn-violet']" type="submit"
           :disabled="sending" @click="sendEmail">
@@ -26,15 +24,15 @@
         </button>
       </div>
     </div>
-    <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg" data-aos="fade-up">
-      <font-awesome-icon :icon="['fab', 'github']"
-        class="text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg" />
-      <font-awesome-icon :icon="['fab', 'linkedin']"
-        class="text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg" />
-      <font-awesome-icon :icon="['far', 'envelope']"
-        class="text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg" />
+    <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
+      data-aos="fade-up">
+      <font-awesome-icon :icon="['fab', 'github']" class="font-awesome" @click="openGithub" />
+      <font-awesome-icon :icon="['fab', 'linkedin']" class="font-awesome" @click="openLinkeden" />
+      <a :href="`mailto:${email}`" :aria-label="`Envoyer un mail à ${email}`" class="inline-flex items-center">
+        <font-awesome-icon :icon="['far', 'envelope']" class="font-awesome cursor-pointer" />
+        <span class="sr-only">Envoyer un e-mail</span>
+      </a>
     </div>
-
   </div>
 </template>
 
@@ -47,6 +45,8 @@ import emailjs from "@emailjs/browser"
 const toast = useToast()
 const loading = ref<boolean>(true)
 const sending = ref<boolean>(false)
+const email: string = 'randytsiory@gmail.com';
+
 
 const launchConfetti = () => {
   confetti({
@@ -105,6 +105,17 @@ const sendEmail = async () => {
     launchConfetti()
   }
 };
+
+function openGithub() {
+  window.open("https://github.com/randyrt", "_blank")
+}
+
+function openLinkeden() {
+  window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
+}
+
+
+
 </script>
 
 
