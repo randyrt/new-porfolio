@@ -14,9 +14,8 @@ const navRoutes = [
   { path: '/skills', name: 'Compétences', icon: 'code' },
   { path: '/technology', name: 'Technologies', icon: 'cogs' },
   { path: '/projects', name: 'Projets', icon: 'project-diagram' },
-  { path: '/testimoniales', name: 'Testimoniales', icon: 'user' },
-  { path: '/contact', name: 'Contact', icon: ['far', 'envelope'] }
+  { path: '/testimoniales', name: 'Testimoniales', icon: 'quote-right' },
+  { path: '/contact', name: 'Contact', icon: 'user' }
 ];
-
 </script>
 
