@@ -45,7 +45,7 @@ import emailjs from "@emailjs/browser"
 const toast = useToast()
 const loading = ref<boolean>(true)
 const sending = ref<boolean>(false)
-const email: string = 'randytsiory@gmail.com';
+const email: string = 'randytsiory@gmail.com'
 
 
 const launchConfetti = () => {
@@ -54,8 +54,8 @@ const launchConfetti = () => {
     spread: 70,
     origin: { y: 0.6 },
     colors: ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4", "#6A4C93"]
-  });
-};
+  })
+}
 
 const form = ref({
   name: "",
@@ -65,9 +65,9 @@ const form = ref({
 
 
 onMounted(() => {
-  emailjs.init("ZgI5TYSPYNESKjLKs");
-  setTimeout(() => (loading.value = false), 1000);
-});
+  emailjs.init("ZgI5TYSPYNESKjLKs")
+  setTimeout(() => (loading.value = false), 1000)
+})
 
 
 const isEmailValid = computed(() => {
@@ -77,8 +77,8 @@ const isEmailValid = computed(() => {
 
 const sendEmail = async () => {
   if (!form.value.name || !form.value.email || !form.value.message) {
-    toast.error("Veuillez remplir tous les champs 👮‍♂️ !");
-    return;
+    toast.error("Veuillez remplir tous les champs 👮‍♂️ !")
+    return
   }
 
   if (!isEmailValid.value) {
@@ -93,7 +93,7 @@ const sendEmail = async () => {
       from_name: form.value.name,
       from_email: form.value.email,
       message: form.value.message
-    });
+    })
 
     form.value = { name: "", email: "", message: "" }
 
@@ -113,8 +113,6 @@ function openGithub() {
 function openLinkeden() {
   window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
 }
-
-
 
 </script>
 

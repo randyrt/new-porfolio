@@ -6,9 +6,7 @@
         </div>
         <div class="w-full flex justify-between items-center p-16 gap-16 testimonials-container" data-aos="fade-up">
             <div class="w-1/2 h-[200px] card p-4 flex flex-col justify-center items-center testimonial-card">
-                <p class="mb-3 text-center">« Randy est dynamique, travaille de manière soignée et professionnelle, et
-                    j’apprécie
-                    vraiment collaborer avec lui. Je le considère sincèrement comme un excellent développeur. »</p>
+                <p class="mb-3 text-center">« Randy est dynamique, travaille de manière soignée et professionnelle. J'aime collaborer avec lui et l'apprécie aussi en tant que développeur. »</p>
                 <h6 class="text-xs italic">— <em>Olivier Le Grand</em> (Manager, FID-CONNECT)</h6>
             </div>
 
