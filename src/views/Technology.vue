@@ -1,7 +1,7 @@
 <template>
     <Loading v-if="loading" message="Technologies utilisées..." />
     <div v-else data-aos="fade-up">
-         <AnimatedTitle text="« Explorons maintenant les technologies que j’utilise quotidiennement »"  />
+        <AnimatedTitle text="« Explorons maintenant les technologies que j’utilise quotidiennement »" />
         <div>
             <logoSection title="DESIGN" />
             <div class="flex gap-8 justify-center mt-6">
@@ -46,16 +46,16 @@
                 <TechLogo logo="/images/tecnos/lunix.png" name="LUNIX" />
                 <TechLogo logo="/images/tecnos/vscode.png" name="VSCODE" />
                 <TechLogo logo="/images/tecnos/git.png" name="GIT" />
-                 <TechLogo logo="/images/tecnos/github-action.jpeg" name="ACTION" />
                 <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
                 <TechLogo logo="/images/tecnos/postman.png" name="POSTMAN" />
                 <TechLogo logo="/images/tecnos/chrome.png" name="CHROME" />
             </div>
         </div>
         <div>
-            <logoSection title="DEVOPS & SECURISATION" />
+            <logoSection title="GITOPS & SECURISATION" />
             <div class="flex gap-8 justify-center mt-6">
                 <TechLogo logo="/images/tecnos/ci&cd.png" name="CI/CD" />
+                <TechLogo logo="/images/tecnos/github-action.jpeg" name="ACTION" />
                 <TechLogo logo="/images/tecnos/ftp.png" name="FTP" />
                 <TechLogo logo="/images/tecnos/tls.webp" name="TLS" />
                 <TechLogo logo="/images/tecnos/ssh.jpg" name="SSH" />
@@ -82,31 +82,31 @@ const loading = ref<boolean>(true)
 onMounted(() => {
     setTimeout(() => {
         loading.value = false;
-        toast.info("Survolez le logo pour afficher le nom du tecno 🙂")
+        toast.info("Survolez le logo pour afficher le nom du techno 🙂")
     }, 1000)
 })
 </script>
 
 <style scoped>
 @media screen and (max-width: 748px) {
-  .flex {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px !important; 
-  }
+    .flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px !important;
+    }
 
-  .card {
-    padding: 8px !important;
-    text-align: center;
-  }
+    .card {
+        padding: 8px !important;
+        text-align: center;
+    }
 
-  .card span {
-    font-size: 10px !important;
-  }
+    .card span {
+        font-size: 10px !important;
+    }
 
-  .tech-logo img {
-    width: 40px !important;
-    height: 40px !important;
-  }
+    .tech-logo img {
+        width: 40px !important;
+        height: 40px !important;
+    }
 }
 </style>
