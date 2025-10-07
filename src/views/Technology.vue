@@ -46,6 +46,7 @@
                 <TechLogo logo="/images/tecnos/lunix.png" name="LUNIX" />
                 <TechLogo logo="/images/tecnos/vscode.png" name="VSCODE" />
                 <TechLogo logo="/images/tecnos/git.png" name="GIT" />
+                 <TechLogo logo="/images/tecnos/github-action.jpeg" name="ACTION" />
                 <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
                 <TechLogo logo="/images/tecnos/postman.png" name="POSTMAN" />
                 <TechLogo logo="/images/tecnos/chrome.png" name="CHROME" />
