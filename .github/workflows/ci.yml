@@ -1,6 +1,6 @@
 name: CI - Test & Build Vue Project
 
-
+# 🔁 Déclenchement du workflow à chaque push ou pull request sur master
 on:
   push:
     branches: [ master ]
@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
+      # 1️⃣ Cloner ton dépôt
       - name: Checkout du code
         uses: actions/checkout@v3
 
+      # 2️⃣ Installer Node.js (ajuste la version si besoin)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
