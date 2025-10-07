@@ -28,9 +28,16 @@ jobs:
 
       # 4️⃣ Vérifier le typage TypeScript
       - name: Vérifier le typage TypeScript
-        run: npm run type-check
+        run: |
+          # Assure-toi que le script type-check existe
+          if ! grep -q '"type-check"' package.json; then
+            echo "Ajout du script type-check dans package.json"
+            jq '.scripts["type-check"]="vue-tsc --noEmit"' package.json > package.tmp.json
+            mv package.tmp.json package.json
+          fi
+          npm run type-check
 
-      # 5️⃣ Lancer les tests (si tu en as)
+      # 5️⃣ Lancer les tests (si présents)
       - name: Lancer les tests
         run: npm run test --if-present
 
@@ -41,4 +48,9 @@ jobs:
       # 7️⃣ Déclencher le déploiement Netlify via le hook
       - name: Déployer sur Netlify
         if: success()
-        run: curl -X POST -d '{}' ${{ secrets.NETLIFY_DEPLOY_HOOK }}
+        run: |
+          if [ -z "${{ secrets.NETLIFY_DEPLOY_HOOK }}" ]; then
+            echo "Erreur : le secret NETLIFY_DEPLOY_HOOK n'est pas défini"
+            exit 1
+          fi
+          curl -X POST -H "Content-Type: application/json" -d '{}' --fail "${{ secrets.NETLIFY_DEPLOY_HOOK }}"
