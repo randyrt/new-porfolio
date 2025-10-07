@@ -57,6 +57,8 @@
 import { ref, onMounted } from 'vue'
 import confetti from "canvas-confetti"
 
+
+
 const loading = ref<boolean>(true)
 
 const launchConfetti = () => {

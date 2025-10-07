@@ -180,6 +180,7 @@ function openLinkeden() {
 }
 
 
+
 @media screen and (max-width: 748px) {
   .testimonials-container {
     flex-direction: column;
