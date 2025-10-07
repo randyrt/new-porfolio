@@ -1,6 +1,6 @@
 name: CI - Test & Build Vue Project
 
-# 🔁 Déclenchement du workflow à chaque push ou pull request sur master
+
 on:
   push:
     branches: [ master ]
