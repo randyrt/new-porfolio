@@ -1,0 +1,44 @@
+name: CI - Test & Build Vue Project
+
+# 🔁 Déclenchement du workflow à chaque push ou pull request sur master
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Cloner ton dépôt
+      - name: Checkout du code
+        uses: actions/checkout@v3
+
+      # 2️⃣ Installer Node.js (ajuste la version si besoin)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # 3️⃣ Installer les dépendances
+      - name: Installer les dépendances
+        run: npm ci
+
+      # 4️⃣ Vérifier le typage TypeScript
+      - name: Vérifier le typage TypeScript
+        run: npm run type-check
+
+      # 5️⃣ Lancer les tests (si tu en as)
+      - name: Lancer les tests
+        run: npm run test --if-present
+
+      # 6️⃣ Construire le projet
+      - name: Build du projet
+        run: npm run build
+
+      # 7️⃣ Déclencher le déploiement Netlify via le hook
+      - name: Déployer sur Netlify
+        if: success()
+        run: curl -X POST -d '{}' ${{ secrets.NETLIFY_DEPLOY_HOOK }}
