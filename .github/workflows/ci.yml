@@ -1,6 +1,5 @@
 name: Porfolio app
 
-# 🔁 Déclenchement du workflow à chaque push ou pull request sur master
 on:
   push:
     branches: [ master ]
