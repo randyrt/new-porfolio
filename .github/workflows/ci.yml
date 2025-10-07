@@ -29,7 +29,6 @@ jobs:
       # 4️⃣ Vérifier le typage TypeScript
       - name: Vérifier le typage TypeScript
         run: |
-          # Assure-toi que le script type-check existe
           if ! grep -q '"type-check"' package.json; then
             echo "Ajout du script type-check dans package.json"
             jq '.scripts["type-check"]="vue-tsc --noEmit"' package.json > package.tmp.json
