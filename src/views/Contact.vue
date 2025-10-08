@@ -18,7 +18,7 @@
           <textarea rows="6" v-model="form.message" required></textarea>
           <label class="text-gray-500 !font-semibold">Message</label>
         </div>
-        <button :class="[sending ? 'cursor-not-allowed submit-btn btn-violet' : 'submit-btn btn-violet']" type="submit"
+        <button :class="[sending ? 'cursor-not-allowed submit-btn btn-effect-5' : 'submit-btn btn-effect-5']" type="submit"
           :disabled="sending" @click="sendEmail">
           {{ sending ? "Envoi..." : "Envoyer" }}
         </button>
@@ -172,14 +172,7 @@ function openLinkeden() {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
-  transition: 0.3s ease;
 }
-
-.submit-btn:hover {
-  background: #a267be96;
-}
-
-
 
 @media screen and (max-width: 748px) {
   .testimonials-container {
