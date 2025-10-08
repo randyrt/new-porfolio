@@ -19,7 +19,7 @@
         </p>
       </div>
       <div class="w-full max-w-4xl flex justify-center p-4 " data-aos="fade-left">
-        <button class="btn-violet inline-block text-center decoration click-me" @click="webCup">
+        <button class="btn-violet inline-block text-center decoration btn-effect-5" @click="webCup">
           En savoir plus
         </button>
       </div>

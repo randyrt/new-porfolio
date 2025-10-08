@@ -24,6 +24,19 @@ h6 {
   @apply text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg;
 }
 
+button {
+  position: relative;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  color: white;
+}
+
 
 .btn-blue {
   @apply px-6 py-2.5 bg-sky-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-sky-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
@@ -45,6 +58,124 @@ h6 {
 .btn-white {
   @apply px-6 py-2.5 bg-white text-black font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-white hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
+
+.btn-effect-1 {
+  border: 2px solid #0ff;
+  background: transparent;
+  color: #0ff;
+  box-shadow: 0 0 5px #0ff;
+}
+
+.btn-effect-1:hover {
+  background: #0ff;
+  color: #111;
+  box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+}
+
+.btn-effect-5 {
+  border: 2px solid #8B5CF6;
+  background: transparent;
+  color: #8B5CF6;
+}
+
+.btn-effect-5::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #8B5CF6 !important;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.btn-effect-5:hover {
+  color: #ffff;
+}
+
+.btn-effect-5:hover::before {
+  width: 100%;
+}
+
+
+.btn-effect-10 {
+  background: #27ae60;
+}
+
+.btn-effect-10:hover {
+  animation: blur 0.5s forwards;
+  letter-spacing: 3px;
+}
+
+.btn-effect-16 {
+  background: #2c3e50;
+  color: #ecf0f1;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-effect-16:hover {
+  animation: strobe 0.3s infinite;
+}
+
+@keyframes strobe {
+  0% {
+    background: #fad
+  }
+
+  10% {
+    transform: translate(-2px, -2px);
+  }
+
+  20% {
+    transform: translate(2px, 2px);
+  }
+
+  30% {
+    transform: translate(-1px, 1px);
+  }
+
+  40%,
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.btn-effect-20 {
+  background-color: #7d4e8b;
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-effect-20::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #ff0 0%, #fff 70%);
+  opacity: 0;
+  scale: 1.2
+}
+
+.btn-effect-20:hover::before {
+  animation: shineRotate 3s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes shineRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 
 .card {
   @apply rounded-lg shadow-lg border-sky-100 bg-sky-50;
