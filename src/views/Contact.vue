@@ -18,7 +18,7 @@
           <textarea rows="6" v-model="form.message" required></textarea>
           <label class="text-gray-500 !font-semibold">Message</label>
         </div>
-        <button :class="[sending ? 'cursor-not-allowed submit-btn btn-effect-5' : 'submit-btn btn-effect-5']" type="submit"
+        <button :class="[sending ? 'cursor-not-allowed submit-btn btn-violet btn-effect-5' : 'submit-btn btn-violet btn-effect-5']" type="submit"
           :disabled="sending" @click="sendEmail">
           {{ sending ? "Envoi..." : "Envoyer" }}
         </button>
@@ -85,7 +85,7 @@ const sendEmail = async () => {
     toast.error("Veuillez entrer une adresse e-mail valide 😏 !")
     return;
   }
-
+ 
   sending.value = true
 
   try {
@@ -172,7 +172,9 @@ function openLinkeden() {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  transition: 0.3s ease;
 }
+
 
 @media screen and (max-width: 748px) {
   .testimonials-container {
