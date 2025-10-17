@@ -13,6 +13,7 @@ declare module 'vue' {
     LogoSection: typeof import('./src/components/logoSection.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     ProjectGallery: typeof import('./src/components/ProjectGallery.vue')['default']
+    QRcode: typeof import('./src/components/QRcode.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SkillSection: typeof import('./src/components/SkillSection.vue')['default']

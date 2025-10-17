@@ -2,7 +2,7 @@
   <Loading v-if="loading" message="Me contacter..." />
   <div v-else>
     <div class="p-4 w-full  flex flex-col items-center justify-center">
-      <AnimatedTitle text=" « Vous pouvez me contacer ici  » " aos="fade-down" />
+      <AnimatedTitle text=" « Vous pouvez me contacter ici de deux façons.  » " aos="fade-down" />
     </div>
     <div class="w-full flex justify-center items-center p-16 gap-16 testimonials-container" data-aos="fade-up">
       <div class="contact-form card p-8">
@@ -23,6 +23,9 @@
           {{ sending ? "Envoi..." : "Envoyer" }}
         </button>
       </div>
+      <div class="card contact-form card p-8">
+        <QRcode />
+      </div>
     </div>
     <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
       data-aos="fade-up">
@@ -41,6 +44,7 @@ import { ref, onMounted, computed } from 'vue'
 import { useToast } from 'vue-toastification'
 import confetti from "canvas-confetti"
 import emailjs from "@emailjs/browser"
+
 
 const toast = useToast()
 const loading = ref<boolean>(true)

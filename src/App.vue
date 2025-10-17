@@ -16,6 +16,5 @@ const navRoutes = [
   { path: '/projects', name: 'Projets', icon: 'project-diagram' },
   { path: '/testimoniales', name: 'Testimoniales', icon: 'quote-right' },
   { path: '/contact', name: 'Contact', icon: 'user' },
-  // { path: '/About', name: 'about', icon: 'heart' }
 ];
 </script>
