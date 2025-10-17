@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center p-6">
-    <h2 class="text-lg font-semibold mb-4">Contactez-moi sur WhatsApp 📱</h2>
+    <h2 class="text-lg font-semibold mb-4">Contactez-moi sur <span class="text-green-500">WhatsApp</span> 📱</h2>
     <img
       v-if="qrDataUrl"
       :src="qrDataUrl"
