@@ -20,7 +20,6 @@
         <font-awesome-icon :icon="route.icon" class="text-gray-500" />
         <span>{{ route.name }}</span>
       </router-link>
-
     </nav>
     <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50">
       <div class="p-6 text-xl font-bold">
