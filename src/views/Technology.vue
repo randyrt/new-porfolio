@@ -5,56 +5,56 @@
         <div data-aos="fade-up">
             <div>
                 <logoSection title="DESIGN" />
-                <div class="flex gap-8 justify-center mt-6">
+                <DivSlot>
                     <TechLogo logo="/images/tecnos/photoshop.png" name="PHOTOSHOP" />
                     <TechLogo logo="/images/tecnos/figma.png" name="FIGMA" />
                     <TechLogo logo="/images/tecnos/canva.png" name="CANVA" />
-                </div>
+                </DivSlot>
             </div>
             <div>
                 <logoSection title="FRONTEND" />
-                <div class="flex gap-8 justify-center mt-6">
+                <DivSlot>
                     <TechLogo logo="/images/tecnos/css.png" name="HTML" />
                     <TechLogo logo="/images/tecnos/html5.png" name="CSS" />
                     <TechLogo logo="/images/tecnos/tailwinds.png" name="TAILWINDCSS" />
                     <TechLogo logo="/images/tecnos/js.png" name="JAVASCRIPT" />
                     <TechLogo logo="/images/tecnos/jquery.png" name="JQUERY" />
-                </div>
+                </DivSlot>
             </div>
             <div>
                 <logoSection title="BACKEND & SGBD" />
-                <div class="flex gap-8 justify-center mt-6">
+                <DivSlot>
                     <TechLogo logo="/images/tecnos/php.png" name="PHP" />
                     <TechLogo logo="/images/tecnos/node.webp" name="NODEJS" />
                     <TechLogo logo="/images/tecnos/dbeaver.png" name="DBEAVER" />
                     <TechLogo logo="/images/tecnos/mysql.jpg" name="MYSQL" />
                     <TechLogo logo="/images/tecnos/mariadb.png" name="MARIADB" />
-                </div>
+                </DivSlot>
             </div>
             <div>
                 <logoSection title="FRAMEWORKS" />
-                <div class="flex gap-8 justify-center mt-6">
+                <DivSlot>
                     <TechLogo logo="/images/tecnos/vuejs.jpg" name="VUEJS" />
                     <TechLogo logo="/images/tecnos/nuxt.webp" name="NUXTJS" />
                     <TechLogo logo="/images/tecnos/expressjs.webp" name="EXPRESSJS" />
                     <TechLogo logo="/images/tecnos/laravel.png" name="LARAVEL" />
                     <TechLogo logo="/images/tecnos/ionic.png" name="IONIC" />
-                </div>
+                </DivSlot>
             </div>
             <div>
                 <logoSection title="ENVIRONNEMENT DE DEV" />
-                <div class="flex gap-8 justify-center mt-6">
+                <DivSlot>
                     <TechLogo logo="/images/tecnos/lunix.png" name="LUNIX" />
                     <TechLogo logo="/images/tecnos/vscode.png" name="VSCODE" />
                     <TechLogo logo="/images/tecnos/git.png" name="GIT" />
                     <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
                     <TechLogo logo="/images/tecnos/postman.png" name="POSTMAN" />
                     <TechLogo logo="/images/tecnos/chrome.png" name="CHROME" />
-                </div>
+                </DivSlot>
             </div>
             <div>
                 <logoSection title="GITOPS & SECURISATION" />
-                <div class="flex gap-8 justify-center mt-6">
+                <DivSlot>
                     <TechLogo logo="/images/tecnos/ci&cd.png" name="CI/CD" />
                     <TechLogo logo="/images/tecnos/github-action.jpeg" name="ACTION" />
                     <TechLogo logo="/images/tecnos/ftp.png" name="FTP" />
@@ -62,13 +62,13 @@
                     <TechLogo logo="/images/tecnos/ssh.jpg" name="SSH" />
                     <TechLogo logo="/images/tecnos/ssl.png" name="SSL" />
                     <TechLogo logo="/images/tecnos/filezilla.jpg" name="FILZELLA" />
-                </div>
+                </DivSlot>
             </div>
             <div>
                 <logoSection title="SCRIPT & AUTOMATISATION" />
-                <div class="flex gap-8 justify-center mt-6">
+                <DivSlot>
                     <TechLogo logo="/images/tecnos/python.jpeg" name="PYTHON" />
-                </div>
+                </DivSlot>
             </div>
         </div>
     </div>
