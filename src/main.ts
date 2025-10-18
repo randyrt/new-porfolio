@@ -11,18 +11,12 @@ import Particles from "vue3-particles"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-
 import {
   faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
   faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
   faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake
 } from '@fortawesome/free-solid-svg-icons'
-
-
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
-
-
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 
