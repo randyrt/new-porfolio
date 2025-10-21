@@ -49,24 +49,13 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getData } from '../services/api'
-import { useToast } from 'vue-toastification'
 
 
-
-const toast = useToast()
 const router = useRouter()
-const clickCount = ref<number>(0)
 const loading = ref<boolean>(true)
 
 function notify() {
-  clickCount.value++
-
-  if (clickCount.value === 1) {
-    toast.info("Mon CV est en anglais 😄. Cliquez une deuxième fois sur le bouton si cela ne vous pose  pas de problème !");
-  } else if (clickCount.value === 2) {
-    window.open("/images/cv/cv.pdf", "_blank")
-    clickCount.value = 0
-  }
+    window.open("/images/cv/Randy.pdf", "_blank")
 }
 
 const goToContact = () => {
