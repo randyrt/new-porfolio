@@ -35,7 +35,7 @@
           </p>
         </div>
         <div class="flex justify-center mt-2">
-          <button class="btn-violet inline-block text-center decoration click-me" @click="notify">
+          <button class="btn-violet inline-block text-center btn-effect-5" @click="notify">
             Voir mon CV
           </button>
         </div>
