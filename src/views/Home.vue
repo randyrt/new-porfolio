@@ -35,7 +35,7 @@
           </p>
         </div>
         <div class="flex justify-center mt-2">
-          <button class="btn-violet inline-block text-center decoration btn-effect-5" @click="notify">
+          <button class="btn-violet inline-block text-center decoration click-me" @click="notify">
             Voir mon CV
           </button>
         </div>
@@ -49,13 +49,14 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getData } from '../services/api'
+import { useToast } from 'vue-toastification'
 
-
+const toast = useToast()
 const router = useRouter()
 const loading = ref<boolean>(true)
 
 function notify() {
-    window.open("/images/cv/Randy.pdf", "_blank")
+    window.open("/images/cv/RandyAndriantsioryResume.pdf", "_blank")
 }
 
 const goToContact = () => {
