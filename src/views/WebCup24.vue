@@ -79,7 +79,7 @@ onMounted(() => {
 
 
 function webCup(){
-  window.open("https://www.facebook.com/WebcupMadagascar", "_blank")
+  window.open("https://24h.webcup.fr/madagascar", "_blank")
 }
 
 </script>
