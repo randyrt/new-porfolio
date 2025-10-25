@@ -31,10 +31,6 @@
       data-aos="fade-up">
       <font-awesome-icon :icon="['fab', 'github']" class="font-awesome" @click="openGithub" />
       <font-awesome-icon :icon="['fab', 'linkedin']" class="font-awesome" @click="openLinkeden" />
-      <a :href="`mailto:${email}`" :aria-label="`Envoyer un mail à ${email}`" class="inline-flex items-center">
-        <font-awesome-icon :icon="['far', 'envelope']" class="font-awesome cursor-pointer" />
-        <span class="sr-only">Envoyer un e-mail</span>
-      </a>
     </div>
   </div>
 </template>
@@ -49,7 +45,6 @@ import emailjs from "@emailjs/browser"
 const toast = useToast()
 const loading = ref<boolean>(true)
 const sending = ref<boolean>(false)
-const email: string = 'randytsiory@gmail.com'
 
 
 const launchConfetti = () => {
