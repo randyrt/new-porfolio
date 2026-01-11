@@ -48,10 +48,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { getData } from '../services/api'
-import { useToast } from 'vue-toastification'
 
-const toast = useToast()
+
 const router = useRouter()
 const loading = ref<boolean>(true)
 
