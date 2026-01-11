@@ -41,7 +41,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -54,7 +53,7 @@ const router = useRouter()
 const loading = ref<boolean>(true)
 
 function notify() {
-    window.open("/images/cv/RandyAndriantsioryResum.pdf", "_blank")
+    window.open("/images/cv/randy2.pdf", "_blank")
 }
 
 const goToContact = () => {
