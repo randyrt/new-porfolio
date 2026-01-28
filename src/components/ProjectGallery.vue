@@ -1,7 +1,6 @@
 <template>
     <div class="h-[470px] mt-4 p-2 flex justify-between items-center">
-        <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card" :loop="true"
-            :autoplay="{ delay: 2500 }" navigation>
+        <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card" :loop="true" :autoplay="{ delay: 2500 }" navigation>
             <SwiperSlide v-for="(img, index) in images" :key="index">
                 <img :src="img" :alt="`${title} capture ${index + 1}`"
                     class="w-full h-auto object-contain rounded-lg shadow-md cursor-pointer"
