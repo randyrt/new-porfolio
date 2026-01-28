@@ -14,6 +14,7 @@ html {
 
 ::-webkit-scrollbar {
   height: 7px;
+  
   width: 8px; 
 }
 
@@ -465,7 +466,7 @@ a {
 }
 
 
-/* GLOBAL MEDIA QUERIS */
+/* GLOBAL MEDIA QUERIS FOR DIFFERENT WEB NAVIGATION */
 @media only screen and (max-width: 768px) {
   .aos-animate {
 
