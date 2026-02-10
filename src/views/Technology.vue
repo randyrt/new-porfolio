@@ -61,7 +61,7 @@
                     <TechLogo logo="/images/tecnos/tls.webp" name="TLS" />
                     <TechLogo logo="/images/tecnos/ssh.jpg" name="SSH" />
                     <TechLogo logo="/images/tecnos/ssl.png" name="SSL" />
-                    <TechLogo logo="/images/tecnos/filezilla.jpg" name="FILZELLA" />
+                    <TechLogo logo="/images/tecnos/filezilla.jpg" name="FILEZELLA" />
                 </DivSlot>
             </div>
             <div>
