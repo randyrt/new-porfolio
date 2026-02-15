@@ -74,7 +74,7 @@
       },
       {
         name: 'Intégration avec Vue',
-        description: 'Je peux intégrer IONIC avec Angular ou Vue.js pour des interfaces dynamiques. Offre une expérience utilisateur réactive.'
+        description: 'Je peux intégrer IONIC avec Vue.js pour des interfaces dynamiques. Offre une expérience utilisateur réactive et dynamique.'
       },
       {
         name: 'Plugins natifs',
