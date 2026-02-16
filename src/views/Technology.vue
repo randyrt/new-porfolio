@@ -102,7 +102,7 @@ onMounted(() => {
         text-align: center;
     }
 
-    .card span {
+    .card span { 
         font-size: 10px !important;
     }
 
