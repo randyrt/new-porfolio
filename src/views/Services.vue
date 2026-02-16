@@ -34,7 +34,7 @@
           <li>✔ Laravel / Eloquent</li>
           <li>✔ REST API</li>
           <li>✔ Auth & permissions</li>
-          <li>✔ Optimisation SQL</li>
+          <li>✔ Optimisation de rêquete SQL</li>
         </ul>
       </div>
 
