@@ -18,12 +18,15 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import { faBriefcase } from '@fortawesome/free-solid-svg-icons'
+
 
 
 library.add(
   faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle,
   faUser, faClock, faPlus, faEnvelope, faGithub, faLinkedin,
-  faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake
+  faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
+  faBriefcase
 )
 
 
