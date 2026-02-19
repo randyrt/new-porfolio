@@ -1,13 +1,13 @@
 <template>
   <Loading v-if="loading" message="Mes service..." />
-  <div v-else class="flex flex-col space-y-10">
+  <div v-else class="flex flex-col space-y-10 ">
     <AnimatedTitle text="Découvrons ensemble les services que je propose pour donner vie à vos projets numériques"
       aos="fade-down" />
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6" data-aos="fade-up">
 
       <!-- Version control -->
-      <div class="card p-6 service card !bg-pink-100" data-aos="fade-up" >
+      <div class="card p-6 service card !bg-pink-100"  >
         <h2 class="title">Git & version control</h2>
         <p class="text-gray-600">
           Gestion efficace du code source avec Git, incluant le travail en équipe,
@@ -22,7 +22,7 @@
       </div>
 
       <!-- Team workflow -->
-      <div class="card p-6 service card !bg-sky-100" data-aos="fade-up">
+      <div class="card p-6 service card !bg-sky-100" >
         <h2 class="title">Team workflow & merges</h2>
         <p class="text-gray-600">
           Mise en place de workflows efficaces pour équipes de développement,
@@ -38,7 +38,7 @@
       </div>
 
       <!-- Deployment -->
-      <div class="card p-6 service card !bg-green-100" data-aos="fade-up" data-aos-delay="200">
+      <div class="card p-6 service card !bg-green-100" >
         <h2 class="title">Deployment & server security</h2>
         <p class="text-gray-600">
           Déploiement d’applications web sur serveurs Linux avec configuration
@@ -53,7 +53,7 @@
       </div>
 
       <!-- Personnalisation -->
-      <div class="card p-6 service card !bg-pink-100" data-aos="fade-up">
+      <div class="card p-6 service card !bg-pink-100" >
         <h2 class="title">Personnalisation sur mesure</h2>
         <p class="text-gray-600">
           Je suis ouvert à discuter de service personnalisés adaptés à vos besoins spécifiques.
@@ -69,7 +69,7 @@
 
 
       <!-- Collaboration -->
-      <div class="card p-6 service card !bg-sky-100" data-aos="fade-up" data-aos-delay="200">
+      <div class="card p-6 service card !bg-sky-100" >
         <h2 class="title">Collaboration & partenariat</h2>
         <p class="text-gray-600">
           Je suis également intéressé par des collaborations à long terme ou des partenariats pour développer des
@@ -83,7 +83,7 @@
       </div>
 
        <!-- Autres service cards -->
-      <div class="card p-6 service card !bg-green-100" data-aos="fade-up">
+      <div class="card p-6 service card !bg-green-100" >
         <h2 class="title">Autres...</h2>
         <p class="text-gray-600">
           En plus de mes compétences principales, je propose également des service
