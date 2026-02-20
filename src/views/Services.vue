@@ -14,10 +14,10 @@
           la résolution de conflits et la structuration propre des branches.
         </p>
         <ul>
-          <li class="text-sm text-gray-700">✔ Branching strategies (feature, staging, production)</li>
-          <li class="text-sm text-gray-700">✔ Conflict resolution</li>
-          <li class="text-sm text-gray-700">✔ Clean commits & history</li>
-          <li class="text-sm text-gray-700">✔ Code reviews ready workflow</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Branching strategies (feature, staging, production)</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Conflict resolution</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Clean commits & history</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Code reviews ready workflow</li>
         </ul>
       </div>
 
@@ -30,10 +30,10 @@
           coordination entre développeurs.
         </p>
         <ul>
-          <li class="text-sm text-gray-700">✔ Pull requests workflow</li>
-          <li class="text-sm text-gray-700">✔ Safe merges</li>
-          <li class="text-sm text-gray-700">✔ Release management</li>
-          <li class="text-sm text-gray-700">✔ Collaboration GitHub / GitLab</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Pull requests workflow</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Safe merges</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Release management</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Collaboration GitHub / GitLab</li>
         </ul>
       </div>
 
@@ -45,10 +45,10 @@
           sécurisée, gestion des accès et optimisation pour la production.
         </p>
         <ul>
-          <li class="text-sm text-gray-700">✔ Linux server setup</li>
-          <li class="text-sm text-gray-700">✔ Secure SSH & permissions</li>
-          <li class="text-sm text-gray-700">✔ Environment configuration</li>
-          <li class="text-sm text-gray-700">✔ Production deployment</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Linux server setup</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Secure SSH & permissions</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Environment configuration</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Production deployment</li>
         </ul>
       </div>
 
@@ -60,9 +60,9 @@
           N’hésitez pas à me contacter pour en parler !
         </p>
         <ul>
-          <li class="text-sm text-gray-700">✔ Service personnalisés</li>
-          <li class="text-sm text-gray-700">✔ Adaptation aux besoins</li>
-          <li class="text-sm text-gray-700">✔ Flexibilité</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Service personnalisés</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Adaptation aux besoins</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Flexibilité</li>
         </ul>
 
       </div>
@@ -76,9 +76,9 @@
           projets innovants ensemble. N’hésitez pas à me contacter pour en discuter !
         </p>
         <ul>
-          <li class="text-sm text-gray-700">✔ Collaborations à long terme</li>
-          <li class="text-sm text-gray-700">✔ Partenariats</li>
-          <li class="text-sm text-gray-700">✔ Projets innovants</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Collaborations à long terme</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Partenariats</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Projets innovants</li>
         </ul>
       </div>
 
@@ -90,9 +90,9 @@
           de conseil technique, de revue de code et d’accompagnement pour vos projets numériques.
         </p>
         <ul>
-          <li class="text-sm text-gray-700">✔ Conseil technique</li>
-          <li class="text-sm text-gray-700">✔ Revue de code</li>
-          <li class="text-sm text-gray-700">✔ Accompagnement projet</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Conseil technique</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Revue de code</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Accompagnement projet</li>
         </ul>
       </div>
     </div>
