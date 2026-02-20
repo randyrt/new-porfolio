@@ -1,5 +1,5 @@
 <template>
-    <div class="h-[470px] mt-4 p-2 flex justify-between items-center">
+    <div class="h-[400px] mt-4 p-2 flex justify-between items-center">
         <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card" :loop="true" :autoplay="{ delay: 2500 }" navigation>
             <SwiperSlide v-for="(img, index) in images" :key="index">
                 <img :src="img" :alt="`${title} capture ${index + 1}`"
@@ -39,7 +39,7 @@ img {
     border-radius: 8px;
     z-index: 1;
     box-shadow: 0 4px 8px rgba(144, 122, 156, 0);
-    filter: grayscale(5%) brightness(0.9);
+    filter: grayscale(5%) brightness(1);
 }
 
 @media screen and (max-width: 748px) {
