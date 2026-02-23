@@ -7,8 +7,34 @@ html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0f4f8;
-  color: #2c3e50;
+  background-color: var(--bg-color, #f0f4f8);
+  color: var(--text-color, #2c3e50);
+}
+
+:root {
+  --bg-color: #f0f4f8;
+  --text-color: #2c3e50;
+  --muted-color: #6b7280;
+  --card-bg: #ffffff;
+}
+
+/* Dark theme using class 'dark' on <html> */
+.dark {
+  --bg-color: #0b1220;
+  --text-color: #e6eef8;
+  --muted-color: #9aa7b8;
+  --card-bg: #071226;
+}
+
+/* Inverted / contraire du mode sombre : applique un filtre global
+   et corrige images/videos/svg pour qu'elles restent visibles */
+.inverted {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+.inverted img,
+.inverted video,
+.inverted svg {
+  filter: invert(1) hue-rotate(180deg) !important;
 }
 
 
