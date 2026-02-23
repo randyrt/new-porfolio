@@ -54,8 +54,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, onMounted, computed } from 'vue';
-import { toggleTheme, getStoredTheme } from '../services/theme';
+import { ref, onMounted, computed } from 'vue';
+import { toggleTheme, getStoredTheme } from '../services/theme.js';
 
 
 interface RouteItem {
