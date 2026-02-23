@@ -28,7 +28,7 @@
     </nav>
     <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50">
       <div class="p-6 text-xl font-bold flex items-center justify-between">
-        <span class="animated-gradient-text">{{ brand }}</span>
+        <span class="animated-gradient-text cursor-pointer" @click="goHome">{{ brand }}</span>
         <span class="rounded-full p-1 border-2 border-violet-500 bg-white
          hover:bg-white hover:shadow-[0_0_14px_rgba(255,255,255,0.95)]
          hover:-translate-y-[1px]
@@ -56,6 +56,8 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { toggleTheme, getStoredTheme } from '../services/theme.js';
+import { RouterLink } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 
 interface RouteItem {
@@ -71,6 +73,7 @@ const props = defineProps<{
 
 const isOpen = ref(false);
 const currentTheme = ref<string>(getStoredTheme());
+const router = useRouter();
 
 // Icône du thème en fonction de currentTheme
 const themeIcon = computed(() => {
@@ -80,6 +83,10 @@ const themeIcon = computed(() => {
 function cycleTheme() {
   const next = toggleTheme();
   currentTheme.value = next;
+}
+
+function goHome() {
+  router.push('/')
 }
 
 onMounted(() => {
