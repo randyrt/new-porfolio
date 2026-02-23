@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/router.js'
 import './assets/tailwind.css'
+import { initTheme } from './services/theme.js'
 import Toast from "vue-toastification/dist/index.mjs"
 import "vue-toastification/dist/index.css"
 import AOS from 'aos'
@@ -18,15 +19,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons'
-
+import { faSun, faMoon, faBriefcase } from '@fortawesome/free-solid-svg-icons'; 
 
 
 library.add(
   faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle,
   faUser, faClock, faPlus, faEnvelope, faGithub, faLinkedin,
   faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
-  faBriefcase
+  faBriefcase, faSun, faMoon
 )
 
 
@@ -42,6 +42,9 @@ const options = {
   closeButton: 'button',
   icon: true,
 }
+
+// initialize theme (reads localStorage or system preference)
+initTheme()
 
 const app = createApp(App)
 
