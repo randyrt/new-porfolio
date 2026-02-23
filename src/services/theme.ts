@@ -13,7 +13,7 @@ export function setTheme(theme: Theme) {
     applyTheme(theme)
     localStorage.setItem(STORAGE_KEY, theme)
   } catch (e) {
-    // noop
+    console.error('Failed to set theme:', e)
   }
 }
 

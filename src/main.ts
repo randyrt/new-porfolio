@@ -43,7 +43,7 @@ const options = {
   icon: true,
 }
 
-// initialize theme (reads localStorage or system preference)
+// initialize theme (reads localStorage and applies)
 initTheme()
 
 const app = createApp(App)

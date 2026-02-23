@@ -29,6 +29,11 @@
             l’expérience avec <span class="font-semibold">Python</span> pour des scripts et
             automatisations,
           </p>
+
+          <p class="text-lg text-gray-700 mt-4">
+            Plus de 5 ans d'expérience dans le développement web, Plus de 15 projets réalisés. J'ai également participé à la <RouterLink to="/webcup24" class="!text-sky-700 !underline">Webcup 2024</RouterLink>, une compétition de développement web, où j'ai pu mettre mes compétences à l'épreuve et apprendre de nouvelles techniques.  
+          </p> 
+
           <p class="text-lg text-gray-700 mt-4">
             N'hésitez pas à parcourir mon portfolio pour découvrir mes projets, compétences et expériences.
             Si vous avez des questions ou souhaitez collaborer, n'hésitez pas à me <span class="text-sky-700 cursor-pointer underline" @click="goToContact">contacter</span> !
