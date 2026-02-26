@@ -4,7 +4,7 @@
       <div class="flex items-center gap-3">
         <span class="animated-gradient-text font-bold text-xl">{{ brand }}</span>
         <span class="rounded-full p-1 border-3 border-violet-500 bg-white cursor-pointer" @click="cycleTheme">
-          <font-awesome-icon :icon="themeIcon" class="text-yellow-500" />
+          <font-awesome-icon :icon="themeIcon" class="text-gray-500" />
         </span>
       </div>
       <button @click="isOpen = !isOpen" class="p-2 focus:outline-none">
