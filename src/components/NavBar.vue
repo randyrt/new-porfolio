@@ -4,7 +4,7 @@
       <div class="flex items-center gap-3">
         <span class="animated-gradient-text font-bold text-xl">{{ brand }}</span>
         <span class="rounded-full p-1 border-3 border-violet-500 bg-white cursor-pointer" @click="cycleTheme">
-          <font-awesome-icon :icon="themeIcon" class="text-gray-500" />
+          <font-awesome-icon :icon="themeIcon" class="text-yellow-500" />
         </span>
       </div>
       <button @click="isOpen = !isOpen" class="p-2 focus:outline-none">
@@ -29,12 +29,29 @@
     <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50">
       <div class="p-6 text-xl font-bold flex items-center justify-between">
         <span class="animated-gradient-text cursor-pointer" @click="goHome">{{ brand }}</span>
-        <span class="rounded-full p-1 border-2 border-violet-500 bg-white
-         hover:bg-white hover:shadow-[0_0_14px_rgba(255,255,255,0.95)]
-         hover:-translate-y-[1px]
-         transition duration-300 cursor-pointer" @click="cycleTheme">
-          <font-awesome-icon :icon="themeIcon" class="text-yellow-500" />
-        </span>
+        <div class="relative ml-6" @click="cycleTheme">
+          <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+            bg-gray-900 text-white text-xs py-1 px-2 rounded
+            opacity-0 group-hover:opacity-100 transition-opacity duration-200
+            pointer-events-none">
+            Changer de thème
+            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
+                border-4 border-transparent border-t-gray-900"></div>
+          </div>
+
+          <span class="group relative flex h-10 w-10 items-center justify-center
+               bg-gradient-to-br from-violet-500 to-purple-600
+               rounded-xl shadow-lg shadow-violet-500/30
+               hover:shadow-[0_0_25px_rgba(139,92,246,0.7)]
+               hover:scale-110 hover:from-violet-400 hover:to-purple-500
+               active:scale-95
+               transition-all duration-300 ease-out cursor-pointer
+               border border-white/30
+               animate-pulse-slow">
+            <font-awesome-icon :icon="themeIcon" class="text-white text-lg filter drop-shadow-md
+                              group-hover:rotate-12 transition-transform duration-300" />
+          </span>
+        </div>
       </div>
       <nav class="flex-1 flex flex-col px-4 space-y-2">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
