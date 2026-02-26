@@ -7,14 +7,15 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6" data-aos="fade-up">
 
       <!-- Version control -->
-      <div class="card p-6 service card !bg-pink-100"  >
+      <div class="card p-6 service card !bg-pink-100">
         <h2 class="title">Git & version control</h2>
         <p class="text-gray-600">
           Gestion efficace du code source avec Git, incluant le travail en équipe,
           la résolution de conflits et la structuration propre des branches.
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Branching strategies (feature, staging, production)</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Branching strategies (feature, staging,
+            production)</li>
           <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Conflict resolution</li>
           <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Clean commits & history</li>
           <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Code reviews ready workflow</li>
@@ -22,7 +23,7 @@
       </div>
 
       <!-- Team workflow -->
-      <div class="card p-6 service card !bg-sky-100" >
+      <div class="card p-6 service card !bg-pink-100">
         <h2 class="title">Team workflow & merges</h2>
         <p class="text-gray-600">
           Mise en place de workflows efficaces pour équipes de développement,
@@ -38,7 +39,7 @@
       </div>
 
       <!-- Deployment -->
-      <div class="card p-6 service card !bg-green-100" >
+      <div class="card p-6 service card !bg-pink-100">
         <h2 class="title">Deployment & server security</h2>
         <p class="text-gray-600">
           Déploiement d’applications web sur serveurs Linux avec configuration
@@ -53,7 +54,7 @@
       </div>
 
       <!-- Personnalisation -->
-      <div class="card p-6 service card !bg-pink-100" >
+      <div class="card p-6 service card !bg-green-100">
         <h2 class="title">Personnalisation sur mesure</h2>
         <p class="text-gray-600">
           Je suis ouvert à discuter de service personnalisés adaptés à vos besoins spécifiques.
@@ -69,7 +70,7 @@
 
 
       <!-- Collaboration -->
-      <div class="card p-6 service card !bg-sky-100" >
+      <div class="card p-6 service card !bg-green-100">
         <h2 class="title">Collaboration & partenariat</h2>
         <p class="text-gray-600">
           Je suis également intéressé par des collaborations à long terme ou des partenariats pour développer des
@@ -82,8 +83,8 @@
         </ul>
       </div>
 
-       <!-- Autres service cards -->
-      <div class="card p-6 service card !bg-green-100" >
+      <!-- Autres service cards -->
+      <div class="card p-6 service card !bg-green-100">
         <h2 class="title">Autres...</h2>
         <p class="text-gray-600">
           En plus de mes compétences principales, je propose également des service
@@ -95,6 +96,53 @@
           <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Accompagnement projet</li>
         </ul>
       </div>
+    </div>
+
+    <!-- Service cards - Compétences communication & documentation -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Carte 1: Rédaction fonctionnelle -->
+      <div class="card p-6 service card !bg-amber-50">
+        <h2 class="title">Documentation fonctionnelle</h2>
+        <p class="text-gray-600">
+          Je transforme vos besoins en spécifications claires et détaillées. Rédaction de cahiers des charges, user
+          stories et documentations techniques adaptées à tous les intervenants.
+        </p>
+        <ul class="mt-4">
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Cahiers des charges</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Spécifications fonctionnelles</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Documentation utilisateur</li>
+        </ul>
+      </div>
+
+      <!-- Carte 2: Pédagogie & vulgarisation technique -->
+      <div class="card p-6 service card !bg-amber-50">
+        <h2 class="title">Pédagogie client</h2>
+        <p class="text-gray-600">
+          J'explique simplement des concepts techniques complexes. Formation, démonstration et accompagnement pour que
+          vous maîtrisiez parfaitement vos outils.
+        </p>
+        <ul class="mt-4">
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Vulgarisation technique</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Sessions de formation</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Supports pédagogiques</li>
+        </ul>
+      </div>
+
+      <!-- Carte 3: Conseil business & communication -->
+      <div class="card p-6 service card !bg-amber-50">
+        <h2 class="title">Stratégie business</h2>
+        <p class="text-gray-600">
+          Vision orientée métier et résultats. Je vous aide à aligner votre projet avec vos objectifs commerciaux et à
+          communiquer efficacement avec toutes les parties prenantes.
+        </p>
+        <ul class="mt-4">
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Alignement métier/technique</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Communication partenaires</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Conseil en stratégie digitale</li>
+        </ul>
+      </div>
+
     </div>
 
 
@@ -127,7 +175,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.service  {
+.service {
   transition: all 0.25s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
