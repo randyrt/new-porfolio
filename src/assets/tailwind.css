@@ -71,6 +71,20 @@ h6 {
   @apply text-sky-500 text-2xl cursor-pointer transition transform hover:text-sky-600 hover:scale-110 hover:shadow-lg;
 }
 
+/* Dans votre fichier CSS global */
+@keyframes pulse-slow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(139, 92, 246, 0.4);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite;
+}
+
 button {
   position: relative;
   padding: 15px 30px;
