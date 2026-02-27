@@ -49,7 +49,7 @@ const duration = 2000
 
 const values = [
   { icon: "🚀", title: "Innovation", description: "Toujours à la pointe de la technologie" },
-  { icon: "🤝", title: "Confiance", description: "Relation transparente avec nos clients" },
+  { icon: "🤝", title: "Confiance", description: "Relation transparente avec les clients" },
   { icon: "💡", title: "Créativité", description: "Des solutions uniques pour chaque projet" }
 ]
 
