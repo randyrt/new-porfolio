@@ -6,7 +6,7 @@
   <div  class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
     <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
       <div v-for="value in values" :key="value.title" class="text-center p-4">
-        <div class="text-4xl mb-2">{{ value.icon }}</div>
+        <div class="text-6xl mb-2">{{ value.icon }}</div>
         <h3 class="font-bold">{{ value.title }}</h3>
         <p class="text-sm text-gray-500">{{ value.description }}</p>
       </div>
@@ -14,7 +14,7 @@
 
     <section class="stats-section flex flex-wrap justify-center gap-8 py-8">
       <div v-for="stat in stats" :key="stat.label" class="text-center">
-        <div class="text-4xl font-bold text-violet-600">
+        <div class="text-6xl font-bold text-violet-600">
           {{ stat.displayValue }}{{ stat.suffix }}
         </div>
         <div class="text-sm text-gray-500">{{ stat.label }}</div>
