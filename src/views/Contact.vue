@@ -27,11 +27,6 @@
         <QRcode />
       </div>
     </div>
-    <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
-      data-aos="fade-up">
-      <font-awesome-icon :icon="['fab', 'github']" class="font-awesome" @click="openGithub" />
-      <font-awesome-icon :icon="['fab', 'linkedin']" class="font-awesome" @click="openLinkeden" />
-    </div>
   </div>
 </template>
 
@@ -104,14 +99,6 @@ const sendEmail = async () => {
     launchConfetti()
   }
 };
-
-function openGithub() {
-  window.open("https://github.com/randyrt", "_blank")
-}
-
-function openLinkeden() {
-  window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
-}
 
 </script>
 
