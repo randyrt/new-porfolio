@@ -1,9 +1,9 @@
 <template>
   <Loading v-if="loading" message="À propos" />
   
-  <div v-else class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto min-h-screen">
-    
-    <section class="grid md:grid-cols-3 gap-6" data-aos="fade-up">
+  <div v-else class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
+     <AnimatedTitle text=" « Rien à dire à part ceci » " aos="fade-down" />
+    <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
       <div v-for="value in values" :key="value.title" class="text-center p-4">
         <div class="text-3xl mb-2">{{ value.icon }}</div>
         <h3 class="font-bold">{{ value.title }}</h3>
@@ -38,7 +38,7 @@ const loading = ref(true)
 const stats = ref([
   { value: 15, displayValue: 0, label: "Projets réalisés", suffix: "+" },
   { value: 15, displayValue: 0, label: "Clients satisfaits", suffix: "+" },
-  { value: 5, displayValue: 0, label: "Années d'expérience", suffix: "" },
+  { value: 5, displayValue: 0, label: "Années d'expérience", suffix: "+" },
 ])
 
 let animationFrame: number
