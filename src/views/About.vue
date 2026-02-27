@@ -1,9 +1,9 @@
 <template>
-  <Loading v-if="loading" message="À propos" />
-  
-  <div v-else class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
-     <AnimatedTitle text=" « Rien d'autre à dire, à part ceci » " aos="fade-down" />
-
+  <Loading v-if="loading" message="Pour en conclure..." />
+   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
+       <AnimatedTitle text=" « Rien d'autre à dire, à part ceci » " aos="fade-down" />
+  </div>
+  <div  class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
     <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
       <div v-for="value in values" :key="value.title" class="text-center p-4">
         <div class="text-4xl mb-2">{{ value.icon }}</div>
