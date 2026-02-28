@@ -1,10 +1,14 @@
 <template>
     <div class="h-[400px] mt-4 p-2 flex justify-between items-center">
-        <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card" :loop="true" :autoplay="{ delay: 2500 }" navigation>
+        <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card" :loop="true"
+            :autoplay="{ delay: 2500 }" navigation>
             <SwiperSlide v-for="(img, index) in images" :key="index">
-                <img :src="img" :alt="`${title} capture ${index + 1}`"
-                    class="w-full h-auto object-contain rounded-lg shadow-md cursor-pointer"
-                    @click="$emit('open-image', img)" />
+                <div class="relative group overflow-hidden rounded-lg shadow-md">
+                    <img :src="img" :alt="`${title} capture ${index + 1}`"
+                        class="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                        @click="$emit('open-image', img)" /> 
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all"></div>
+                </div>
             </SwiperSlide>
         </Swiper>
         <div class="flex justify-center card h-auto w-1/3">
@@ -36,10 +40,8 @@ img {
     height: 100%;
     object-fit: cover;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 8px !important;
     z-index: 1;
-    box-shadow: 0 4px 8px rgba(144, 122, 156, 0);
-    filter: grayscale(5%) brightness(1);
 }
 
 @media screen and (max-width: 748px) {
