@@ -1,5 +1,5 @@
 <template>
-    <div class="h-[400px] mt-4 p-2 flex justify-between items-center">
+    <div class="h-[400px] mt-4 flex justify-between items-center">
         <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card" :loop="true"
             :autoplay="{ delay: 2500 }" navigation>
             <SwiperSlide v-for="(img, index) in images" :key="index">
