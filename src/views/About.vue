@@ -11,7 +11,6 @@
         <p class="text-sm text-gray-500">{{ value.description }}</p>
       </div>
     </section>
-
     <section class="stats-section flex flex-wrap justify-center gap-8 py-8">
       <div v-for="stat in stats" :key="stat.label" class="text-center">
         <div class="text-6xl font-bold text-violet-600">
@@ -20,13 +19,11 @@
         <div class="text-sm text-gray-500">{{ stat.label }}</div>
       </div>
     </section>
-    
     <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
       data-aos="fade-up">
       <font-awesome-icon :icon="['fab', 'github']" class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openGithub" />
       <font-awesome-icon :icon="['fab', 'linkedin']" class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openLinkeden" />
     </div>
-    
   </div>
 </template>
 
