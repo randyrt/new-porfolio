@@ -1,6 +1,6 @@
 <template>
   <Loading v-if="loading" message="Pour en conclure..." />
-   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
+  <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
        <AnimatedTitle text=" « Rien d'autre à dire, à part ceci » " aos="fade-down" />
   </div>
   <div  class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
@@ -91,7 +91,3 @@ function openLinkeden() {
   window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
 }
 </script>
-
-<style scoped>
-
-</style>

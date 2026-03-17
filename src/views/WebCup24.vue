@@ -24,7 +24,6 @@
         </button>
       </div>
     </div>
-
     <div class="min-h-screen p-8 flex items-center">
       <div class=" w-full max-w-4xl border p-8 card justify-center" >
         <h1 class="text-3xl font-bold mt-0 mb-2 text-black">WebCup 2024 !<span class="text-5xl emoji">🏆</span></h1>

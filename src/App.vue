@@ -17,6 +17,8 @@ const navRoutes = [
   { path: '/services', name: 'Autres services', icon: 'briefcase' },
   { path: '/testimoniales', name: 'Témoignages', icon: 'quote-right' },
   { path: '/contact', name: 'Contact', icon: ['far', 'envelope'] },
- { path: '/about', name: 'À propos', icon: ['fas', 'info-circle'] } 
+  { path: '/chatbot', name: 'ChatBot', icon: ['fas', 'brain'] },
+  { path: '/about', name: 'À propos', icon: ['fas', 'info-circle'] },
+
 ];
 </script>

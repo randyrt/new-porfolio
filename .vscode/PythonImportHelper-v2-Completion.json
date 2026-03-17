@@ -1,0 +1,71 @@
+[
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "ChatRequest",
+        "kind": 6,
+        "importPath": "backendFastAPI.main",
+        "description": "backendFastAPI.main",
+        "peekOfCode": "class ChatRequest(BaseModel):\n    message: str\nclass ChatResponse(BaseModel):\n    response: str\n@app.get(\"/\")\ndef read_root(): \n    return {\"message\": \"API du portfolio - FastAPI fonctionne! 🚀\"}\n@app.get(\"/api/test\")\ndef test_endpoint():\n    return {\"response\": \"Connexion réussie avec le backend!\"}",
+        "detail": "backendFastAPI.main",
+        "documentation": {}
+    },
+    {
+        "label": "ChatResponse",
+        "kind": 6,
+        "importPath": "backendFastAPI.main",
+        "description": "backendFastAPI.main",
+        "peekOfCode": "class ChatResponse(BaseModel):\n    response: str\n@app.get(\"/\")\ndef read_root(): \n    return {\"message\": \"API du portfolio - FastAPI fonctionne! 🚀\"}\n@app.get(\"/api/test\")\ndef test_endpoint():\n    return {\"response\": \"Connexion réussie avec le backend!\"}\n@app.post(\"/api/chat\", response_model=ChatResponse)\nasync def chat_endpoint(request: ChatRequest):",
+        "detail": "backendFastAPI.main",
+        "documentation": {}
+    },
+    {
+        "label": "read_root",
+        "kind": 2,
+        "importPath": "backendFastAPI.main",
+        "description": "backendFastAPI.main",
+        "peekOfCode": "def read_root(): \n    return {\"message\": \"API du portfolio - FastAPI fonctionne! 🚀\"}\n@app.get(\"/api/test\")\ndef test_endpoint():\n    return {\"response\": \"Connexion réussie avec le backend!\"}\n@app.post(\"/api/chat\", response_model=ChatResponse)\nasync def chat_endpoint(request: ChatRequest):\n    \"\"\"\n    Reçoit un message et retourne une réponse\n    \"\"\"",
+        "detail": "backendFastAPI.main",
+        "documentation": {}
+    },
+    {
+        "label": "test_endpoint",
+        "kind": 2,
+        "importPath": "backendFastAPI.main",
+        "description": "backendFastAPI.main",
+        "peekOfCode": "def test_endpoint():\n    return {\"response\": \"Connexion réussie avec le backend!\"}\n@app.post(\"/api/chat\", response_model=ChatResponse)\nasync def chat_endpoint(request: ChatRequest):\n    \"\"\"\n    Reçoit un message et retourne une réponse\n    \"\"\"\n    user_message = request.message\n    print(f\"Message reçu: {user_message}\") \n    ia_response = f\"Message reçu: '{user_message}'. (IA en cours de dévellopement...)\"",
+        "detail": "backendFastAPI.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "backendFastAPI.main",
+        "description": "backendFastAPI.main",
+        "peekOfCode": "app = FastAPI()\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\n        \"http://localhost:5173\",\n        \"http://127.0.0.1:5173\",\n    ],\n    allow_credentials=True,\n    allow_methods=[\"*\"],\n    allow_headers=[\"*\"],",
+        "detail": "backendFastAPI.main",
+        "documentation": {}
+    }
+]

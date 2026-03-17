@@ -26,7 +26,7 @@ library.add(
   faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle,
   faUser, faClock, faPlus, faEnvelope, faGithub, faLinkedin,
   faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
-  faBriefcase, faSun, faMoon
+  faBriefcase, faSun, faMoon, faBrain
 )
 
 
