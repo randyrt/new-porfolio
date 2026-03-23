@@ -26,6 +26,9 @@ const api: AxiosInstance = axios.create({
 
 const handleResponse = async <T = any>(request: Promise<AxiosResponse<ResponseService<T>>>): Promise<T> => {
   const response = await request;
+  if (!response.data.success) {
+    throw new Error(response.data.message || 'Erreur API');
+  }
   return response.data.data;
 };
 
@@ -36,8 +39,13 @@ export const deleteData = <T = any>(url: string) => handleResponse<T>(api.delete
 
 
 export const sendMessageToIA = async (message: string): Promise<ChatResponse> => {
-  const response = await api.post<ChatResponse>('/chat', { message });
-  return response.data;
+  const response = await api.post<ResponseService<ChatResponse>>('/chat', { message });
+  
+  if (!response.data.success) {
+    throw new Error(response.data.message || 'Erreur lors de la communication avec l\'IA');
+  }
+  
+  return response.data.data; 
 };
 
 export default api;
