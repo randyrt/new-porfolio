@@ -1,9 +1,9 @@
 <template>
   <Loading v-if="loading" message="Pour en conclure..." />
   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
-       <AnimatedTitle text=" « Rien d'autre à dire, à part ceci » " aos="fade-down" />
+    <AnimatedTitle text=" « Rien d'autre à dire, à part ceci » " aos="fade-down" />
   </div>
-  <div  class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
+  <div class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
     <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
       <div v-for="value in values" :key="value.title" class="text-center p-4">
         <div class="text-6xl mb-2">{{ value.icon }}</div>
@@ -21,8 +21,16 @@
     </section>
     <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
       data-aos="fade-up">
-      <font-awesome-icon :icon="['fab', 'github']" class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openGithub" />
-      <font-awesome-icon :icon="['fab', 'linkedin']" class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openLinkeden" />
+
+      <font-awesome-icon :icon="['fab', 'github']"
+        class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openGithub" />
+
+      <font-awesome-icon :icon="['fab', 'linkedin']"
+        class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openLinkeden" />
+
+      <font-awesome-icon :icon="['fas', 'briefcase']"
+        class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openMalt" />
+
     </div>
   </div>
 </template>
@@ -53,11 +61,11 @@ const values = [
 const animateCounters = (timestamp: number) => {
   if (!startTime) startTime = timestamp
   const progress = Math.min((timestamp - startTime) / duration, 1)
-  
+
   stats.value.forEach(stat => {
     stat.displayValue = Math.floor(progress * stat.value)
   })
-  
+
   if (progress < 1) {
     animationFrame = requestAnimationFrame(animateCounters)
   } else {
@@ -73,7 +81,7 @@ onMounted(() => {
     setTimeout(() => {
       animationFrame = requestAnimationFrame(animateCounters)
     }, 500)
-    
+
   }, 1000)
 })
 
@@ -89,5 +97,9 @@ function openGithub() {
 
 function openLinkeden() {
   window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
+}
+
+function openMalt() {
+  window.open("https://www.malt.fr/profile/randyandriantsiory", "_blank")
 }
 </script>

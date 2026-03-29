@@ -12,21 +12,22 @@ import Particles from "vue3-particles"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import {
   faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
   faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
-  faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake
+  faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
+  faSun, faMoon, faBriefcase
 } from '@fortawesome/free-solid-svg-icons'
+
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { faSun, faMoon, faBriefcase } from '@fortawesome/free-solid-svg-icons'; 
-
 
 library.add(
   faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle,
   faUser, faClock, faPlus, faEnvelope, faGithub, faLinkedin,
-  faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
-  faBriefcase, faSun, faMoon, faBrain
+  faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain,
+  faMountain, faHandshake, faBriefcase, faSun, faMoon
 )
 
 

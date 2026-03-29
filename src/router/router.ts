@@ -9,7 +9,6 @@ import Projects from '../views/Projects.vue'
 import Testimoniales from '../views/Testimoniales.vue'
 import Services from '../views/Services.vue'
 import About from '../views/About.vue'
-import ChatBot from '../views/ChatBot.vue'
 
 const routes = [
   { path: '/', name: 'home', component: Home },
@@ -21,8 +20,7 @@ const routes = [
   { path: '/projects', name: 'projects', component: Projects },
   { path: '/testimoniales', name: 'testimoniales', component: Testimoniales },
   { path: '/services', name: 'services', component: Services },
-  { path: '/about', name: 'about', component: About },
-  {path: '/chatBot', name: 'chatbot', component: ChatBot}
+  { path: '/about', name: 'about', component: About }
 ] as RouteRecordRaw[]
 
 
