@@ -28,7 +28,7 @@
       <font-awesome-icon :icon="['fab', 'linkedin']"
         class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openLinkeden" />
 
-      <font-awesome-icon :icon="['fas', 'rocket']"
+      <font-awesome-icon :icon="['fas', 'business-time']"
         class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openMalt" />
 
     </div>
