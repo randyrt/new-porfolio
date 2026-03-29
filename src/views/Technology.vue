@@ -44,6 +44,7 @@
             <div>
                 <logoSection title="ENVIRONNEMENT DE DEV" />
                 <DivSlot>
+                      <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
                     <TechLogo logo="/images/tecnos/lunix.png" name="LUNIX" />
                     <TechLogo logo="/images/tecnos/vscode.png" name="VSCODE" />
                     <TechLogo logo="/images/tecnos/git.png" name="GIT" />
