@@ -10,8 +10,8 @@
       <div class="md:text-sm lg:text-base max-w-3xl pad border p-6 card flex flex-col justify-between min-h-[500px]"
         data-aos="fade-up">
         <div>
-          <h1 class="text-3xl font-bold mt-6 mb-2 text-black">Bienvenue sur mon portfolio <span
-              class="text-5xl emoji">😎</span> !</h1>
+          <h1 class="text-3xl font-bold mt-6 mb-2 text-black">Bienvenue sur mon portfolio !<span
+              class="text-5xl ml-2 emoji"> 😎</span></h1>
           <p class="text-lg text-gray-700 mb-4">
             Je suis Randy, un développeur <span class="font-semibold">fullStack</span> passionné par la création d'applications web et mobile, modernes et performantes.  J'adore explorer les nouvelles technologies et relever des défis techniques.
             Cela signifique que je suis capable de mener un projet de A à Z, du design de l'interface utilisateur
