@@ -17,7 +17,7 @@ import {
   faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
   faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
   faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
-  faSun, faMoon, faBriefcase
+  faSun, faMoon, faBriefcase, faRocket
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
@@ -27,7 +27,7 @@ library.add(
   faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle,
   faUser, faClock, faPlus, faEnvelope, faGithub, faLinkedin,
   faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain,
-  faMountain, faHandshake, faBriefcase, faSun, faMoon
+  faMountain, faHandshake, faBriefcase, faSun, faMoon, faRocket
 )
 
 
