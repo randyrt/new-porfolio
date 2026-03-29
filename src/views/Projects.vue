@@ -3,7 +3,7 @@
     <div v-else>
         <AnimatedTitle text="« Voici quelques captures de mes plus grands et récents projets »" aos="fade-down" />
         <ProjectGallery :images="images1" title="FID-CONNECT"
-            description="Fid-Connect est une plateforme tout-en-un qui aide les entreprises et les professionnels à gérer efficacement leurs tâches comptables, fiscales et administratives. Développée avec Vue.js et Laravel, elle est conçue pour se conformer aux réglementations belges, afin de simplifier les processus complexes tout en améliorant la productivité."
+            description="Fid-Connect est une plateforme tout-en-un qui centralise la gestion comptable, fiscale et administrative des entreprises. Elle va au-delà du simple suivi des tâches en intégrant la gestion des réformes fiscales, le suivi des parts, la génération de lettres d’engagement et l’automatisation de processus clés, ammortissement, gestion de rendez-vous, ect. Développée avec Vue.js et Laravel, elle est adaptée aux exigences de la réglementation belge et permet d’optimiser la productivité tout en sécurisant les opérations."
             @open-image="openImage" />
         <ProjectGallery :images="images2" title="QCP"
             description="QCP est une application sur mesure développée pour un client belge, axée sur la gestion du crédit, le suivi de l’amortissement et la planification financière. Propulsée par Vue.js et Laravel, elle offre une interface intelligente et intuitive qui simplifie les opérations financières complexes, automatise les calculs et permet une génération fluide de documents"
