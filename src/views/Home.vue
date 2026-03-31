@@ -53,7 +53,7 @@ const router = useRouter()
 const loading = ref<boolean>(true)
 
 function notify() {
-    window.open("/images/cv/Randy_real_cv.pdf", "_blank")
+    window.open("/images/cv/randy_cv_new_file.pdf", "_blank")
 }
 
 const goToContact = () => {
