@@ -1,21 +1,29 @@
 <template>
-    <div class="flex flex-col items-center justify-center w-full p-4 mt-16">
-        <h1 class="text-lg text-gray-400">{{ title }}</h1>
+    <div class="section-header">
+        <h2 class="section-title">{{ title }}</h2>
+        <div class="section-divider"></div>
     </div>
 </template>
 
 <script lang="ts" setup>
 defineProps<{
-  title: string;     
+    title: string;
 }>();
 </script>
 
 <style scoped>
-
-@media screen and (max-width: 748px) {
-    h1 {
-        font-size: 15px !important;
-    }
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
 }
 
+
+.section-divider {
+    width: 50px;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.589);
+    border-radius: 2px;
+}
 </style>
