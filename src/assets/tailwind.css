@@ -581,8 +581,6 @@ a {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    letter-spacing: 1px;
-    text-transform: uppercase;
     margin-bottom: 0.5rem;
 }
 

@@ -6,7 +6,7 @@
         <div data-aos="fade-up" class="tech-grid">
             <!-- EN COURS D'APPRENTISSAGE -->
             <div class="card tech-category">
-                <logoSection title="EN COURS D'APPRENTISSAGE" />
+                <logoSection title="En cours d'apprentissage" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/flutter.png" name="FLUTTER" />
                     <TechLogo logo="/images/tecnos/c++.png" name="C++" />
@@ -16,7 +16,7 @@
 
             <!-- DESIGN -->
             <div class="card tech-category">
-                <logoSection title="DESIGN" />
+                <logoSection title="Design" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/photoshop.png" name="PHOTOSHOP" />
                     <TechLogo logo="/images/tecnos/figma.png" name="FIGMA" />
@@ -26,7 +26,7 @@
 
             <!-- FRONTEND -->
             <div class="card tech-category">
-                <logoSection title="FRONTEND" />
+                <logoSection title="Frontend" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/html5.png" name="HTML5" />
                     <TechLogo logo="/images/tecnos/css.png" name="CSS3" />
@@ -38,7 +38,7 @@
 
             <!-- BACKEND & SGBD -->
             <div class="card tech-category">
-                <logoSection title="BACKEND & SGBD" />
+                <logoSection title="Backend & SGBD" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/php.png" name="PHP" />
                     <TechLogo logo="/images/tecnos/node.webp" name="NODEJS" />
@@ -50,7 +50,7 @@
 
             <!-- FRAMEWORKS -->
             <div class="card tech-category">
-                <logoSection title="FRAMEWORKS" />
+                <logoSection title="Frameworks" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/vuejs.jpg" name="VUE.JS" />
                     <TechLogo logo="/images/tecnos/nuxt.webp" name="NUXT.JS" />
@@ -62,7 +62,7 @@
 
             <!-- ENVIRONNEMENT DE DEV -->
             <div class="card tech-category">
-                <logoSection title="ENVIRONNEMENT DE DEV" />
+                <logoSection title="Environnement de dev" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
                     <TechLogo logo="/images/tecnos/lunix.png" name="LINUX" />
@@ -76,7 +76,7 @@
 
             <!-- GITOPS & SECURISATION -->
             <div class="card tech-category">
-                <logoSection title="GITOPS & SÉCURISATION" />
+                <logoSection title="GitOps & Sécurisation" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/ci&cd.png" name="CI/CD" />
                     <TechLogo logo="/images/tecnos/github-action.jpeg" name="GITHUB ACTIONS" />
@@ -90,7 +90,7 @@
 
             <!-- SCRIPT & AUTOMATISATION -->
             <div class="card tech-category">
-                <logoSection title="SCRIPT & AUTOMATISATION" />
+                <logoSection title="Script & Automatisation" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/python.jpeg" name="PYTHON" />
                 </DivSlot>
