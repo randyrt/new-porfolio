@@ -5,7 +5,7 @@
 
         <div data-aos="fade-up" class="tech-grid">
             <!-- EN COURS D'APPRENTISSAGE -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="EN COURS D'APPRENTISSAGE" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/flutter.png" name="FLUTTER" />
@@ -13,7 +13,7 @@
             </div>
 
             <!-- DESIGN -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="DESIGN" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/photoshop.png" name="PHOTOSHOP" />
@@ -23,7 +23,7 @@
             </div>
 
             <!-- FRONTEND -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="FRONTEND" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/html5.png" name="HTML5" />
@@ -35,7 +35,7 @@
             </div>
 
             <!-- BACKEND & SGBD -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="BACKEND & SGBD" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/php.png" name="PHP" />
@@ -47,7 +47,7 @@
             </div>
 
             <!-- FRAMEWORKS -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="FRAMEWORKS" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/vuejs.jpg" name="VUE.JS" />
@@ -59,7 +59,7 @@
             </div>
 
             <!-- ENVIRONNEMENT DE DEV -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="ENVIRONNEMENT DE DEV" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
@@ -73,7 +73,7 @@
             </div>
 
             <!-- GITOPS & SECURISATION -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="GITOPS & SÉCURISATION" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/ci&cd.png" name="CI/CD" />
@@ -87,7 +87,7 @@
             </div>
 
             <!-- SCRIPT & AUTOMATISATION -->
-            <div class="tech-category">
+            <div class="card tech-category">
                 <logoSection title="SCRIPT & AUTOMATISATION" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/python.jpeg" name="PYTHON" />
@@ -128,7 +128,6 @@ onMounted(() => {
 }
 
 .tech-category {
-    background: rgba(255, 255, 255, 0.05);
     border-radius: 1rem;
     padding: 1.5rem;
     backdrop-filter: blur(10px);
