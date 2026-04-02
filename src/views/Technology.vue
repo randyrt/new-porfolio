@@ -69,9 +69,10 @@
                     <TechLogo logo="/images/tecnos/vscode.png" name="VS CODE" />
                     <TechLogo logo="/images/tecnos/git.png" name="GIT" />
                     <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
+                    <TechLogo logo="/images/tecnos/ubuntu_terminal.png" name="UBUNTU TERMINAL" />
                     <TechLogo logo="/images/tecnos/postman.png" name="POSTMAN" />
                     <TechLogo logo="/images/tecnos/chrome.png" name="CHROME DEVTOOLS" />
-                    <TechLogo logo="/images/tecnos/ubuntu_terminal.png" name="UBUNTU TERMINAL" />
+
                 </DivSlot>
             </div>
 
