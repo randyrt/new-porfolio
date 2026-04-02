@@ -9,6 +9,8 @@
                 <logoSection title="EN COURS D'APPRENTISSAGE" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/flutter.png" name="FLUTTER" />
+                    <TechLogo logo="/images/tecnos/c++.png" name="C++" />
+                    <TechLogo logo="/images/tecnos/go.png" name="GOLANG" />
                 </DivSlot>
             </div>
 
