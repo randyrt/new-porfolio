@@ -21,7 +21,6 @@
     </section>
     <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
       data-aos="fade-up">
-
       <font-awesome-icon :icon="['fab', 'github']"
         class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openGithub" />
 
@@ -30,7 +29,6 @@
 
       <font-awesome-icon :icon="['fas', 'chart-line']"
         class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="perfomanceTest" />
-
     </div>
   </div>
 </template>
