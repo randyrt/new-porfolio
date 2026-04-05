@@ -39,7 +39,7 @@
               class="text-sky-700 cursor-pointer underline" @click="goToContact">contacter</span> !
           </p>
         </div>
-        <div class="flex justify-center space-x-2 mt-2">
+        <div class="flex justify-center space-x-4 mt-2">
           <button class="btn-violet inline-block text-center btn-effect-5" @click="viewCV">
             Voir mon CV
           </button>
