@@ -1,9 +1,9 @@
 <template>
     <div class="project-container mb-16 card p-4">
         <!-- Section existante avec Swiper et description -->
-        <div class="h-[400px] mt-4 flex justify-between items-center gap-4 flex-wrap">
-            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]" class="mySwiper card p-4"
-                :loop="true" :autoplay="{ delay: 2500 }" navigation>
+        <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 gap-4 md:gap-0">
+            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]"
+                class="mySwiper card p-4 w-full md:w-2/3" :loop="true" :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
                     <div class="relative group overflow-hidden rounded-lg shadow-md">
                         <img :src="img" :alt="`${title} capture ${index + 1}`"
@@ -14,7 +14,7 @@
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div class="flex justify-center card h-auto w-1/3">
+            <div class="flex justify-center card h-auto w-full md:w-1/3 mt-4 md:mt-0">
                 <p class="flex flex-col items-center p-6 text-gray-600">
                     <span class="text-lg not-even:text-gray-800">- {{ title }} -</span>
                     <span>{{ description }}</span>
@@ -52,7 +52,7 @@
                                 <div class="bg-white p-4 rounded-lg shadow">
                                     <div class="text-sm text-gray-600">Chiffre d'affaires</div>
                                     <div class="text-2xl font-bold text-violet-600">{{ formatCurrency(demoData.revenue)
-                                        }}</div>
+                                    }}</div>
                                     <input type="range" v-model="demoData.revenue" min="0" max="100000" step="1000"
                                         class="w-full mt-2">
                                 </div>
@@ -80,7 +80,7 @@
                                     Actualiser les données
                                 </button>
                                 <p v-if="actionMessage" class="text-sm text-green-600 mt-2 text-center">{{ actionMessage
-                                    }}</p>
+                                }}</p>
                             </div>
                         </div>
                     </div>
@@ -113,7 +113,7 @@
                                     <div class="flex justify-between">
                                         <span>Mensualité</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>Total payé</span>
@@ -331,15 +331,8 @@ img {
 }
 
 @media screen and (max-width: 748px) {
-
-    span,
-    p {
+    span, p {
         font-size: 10px !important;
-    }
-
-    .flex {
-        flex-direction: column;
-        gap: 16px;
     }
 
     .mySwiper {
@@ -351,28 +344,22 @@ img {
         width: 100% !important;
         height: auto !important;
     }
-
+    
     .demo-wrapper {
         font-size: 12px;
     }
 
-    .demo-header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
+    .project-container .flex {
+        flex-direction: column !important;
     }
-
-    .demo-toggle-btn {
-        min-height: 44px;
-        min-width: 44px;
-        font-size: 12px;
-        padding: 8px 12px;
+    
+    .mySwiper {
+        order: 1;
     }
-
-    .demo-section {
-        margin-top: 20px;
-        clear: both;
+    
+    .card:last-child {
+        order: 2;
+        margin-top: 1rem;
     }
 }
 </style>
