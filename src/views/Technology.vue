@@ -8,6 +8,7 @@
             <div class="card tech-category">
                 <logoSection title="En cours d'apprentissage" />
                 <DivSlot>
+                    <TechLogo logo="/images/tecnos/synfony.png" name="SYMFONY" />
                     <TechLogo logo="/images/tecnos/flutter.png" name="FLUTTER" />
                     <TechLogo logo="/images/tecnos/c++.png" name="C++" />
                     <TechLogo logo="/images/tecnos/go.png" name="GOLANG" />
