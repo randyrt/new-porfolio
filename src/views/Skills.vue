@@ -1,7 +1,7 @@
 <template>
   <Loading v-if="loading" message="Mes compétences..." />
   <div v-else>
-    <AnimatedTitle text=" « Entrons dans le vif du sujet, Parlons un peu de mes compétences » " aos="fade-down" />
+    <AnimatedTitle text=" « Entrons dans le vif du sujet, Parlons de mes compétences » " aos="fade-down" />
   </div>
   <div class="w-full h-auto mt-[100px] flex justify-center items-center  text-lg text-gray-500" data-aos="fade-down">
     <h1 class="p-4">
