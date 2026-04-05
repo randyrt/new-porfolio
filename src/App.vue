@@ -14,7 +14,7 @@ const navRoutes = [
   { path: '/technology', name: 'Technologies', icon: 'cogs' },
   { path: '/webcup24', name: 'Webcup', icon: 'trophy' },
   { path: '/projects', name: 'Projets', icon: 'project-diagram' },
-  { path: '/services', name: 'Autres services', icon: 'briefcase' },
+  { path: '/services', name: 'Autres atouts', icon: 'briefcase' },
   { path: '/testimoniales', name: 'Témoignages', icon: 'quote-right' },
   { path: '/contact', name: 'Contact', icon: ['far', 'envelope'] },
   { path: '/about', name: 'À propos', icon: ['fas', 'info-circle'] },
