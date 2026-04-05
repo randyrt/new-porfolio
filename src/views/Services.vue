@@ -1,5 +1,5 @@
 <template>
-  <Loading v-if="loading" message="Mes service..." />
+  <Loading v-if="loading" message="Mes services..." />
   <div v-else class="flex flex-col space-y-10 ">
     <AnimatedTitle text="Découvrons ensemble les services que je propose pour donner vie à vos projets numériques"
       aos="fade-down" />
