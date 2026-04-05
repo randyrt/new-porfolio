@@ -209,9 +209,7 @@ const emit = defineEmits<{
 const toast = useToast();
 const showDemo = ref(false);
 
-// Fonction toggle explicite
 const toggleDemo = () => {
-    console.log('Toggle demo clicked', showDemo.value);
     showDemo.value = !showDemo.value;
 };
 
