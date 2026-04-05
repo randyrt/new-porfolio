@@ -28,8 +28,8 @@
       <font-awesome-icon :icon="['fab', 'linkedin']"
         class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openLinkeden" />
 
-      <font-awesome-icon :icon="['fas', 'business-time']"
-        class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openMalt" />
+      <font-awesome-icon :icon="['fas', 'chart-line']"
+        class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="perfomanceTest" />
 
     </div>
   </div>
@@ -99,7 +99,7 @@ function openLinkeden() {
   window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
 }
 
-function openMalt() {
-  window.open("https://www.malt.fr/profile/randyandriantsiory", "_blank")
+function perfomanceTest() {
+  window.open("https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/z4quxm7vah?form_factor=desktop", "_blank")
 }
 </script>
