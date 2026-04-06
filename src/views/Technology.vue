@@ -65,15 +65,15 @@
             <div class="card tech-category">
                 <logoSection title="Environnement de dev" />
                 <DivSlot>
-                    <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
                     <TechLogo logo="/images/tecnos/lunix.png" name="LINUX" />
                     <TechLogo logo="/images/tecnos/vscode.png" name="VS CODE" />
                     <TechLogo logo="/images/tecnos/git.png" name="GIT" />
                     <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
+                    <TechLogo logo="/images/tecnos/pma.png" name="PHPMYADMIN" />
                     <TechLogo logo="/images/tecnos/ubuntu_terminal.png" name="UBUNTU TERMINAL" />
+                     <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
                     <TechLogo logo="/images/tecnos/postman.png" name="POSTMAN" />
                     <TechLogo logo="/images/tecnos/chrome.png" name="CHROME DEVTOOLS" />
-
                 </DivSlot>
             </div>
 
