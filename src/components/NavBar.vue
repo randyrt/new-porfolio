@@ -26,7 +26,7 @@
         <span>{{ route.name }}</span>
       </router-link>
     </nav>
-    <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50">
+    <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-violet-50">
       <div class="p-6 text-xl font-bold flex items-center justify-between">
         <span class="animated-gradient-text cursor-pointer" @click="goHome">{{ brand }}</span>
         <div class="relative ml-6" @click="cycleTheme">

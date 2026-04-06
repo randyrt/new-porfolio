@@ -19,6 +19,20 @@
         <div class="text-sm text-gray-500">{{ stat.label }}</div>
       </div>
     </section>
+
+    <div
+      class="card p-2 service bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-xl shadow-sm hover:shadow-md transition-all">
+      <div class="flex items-center justify-between gap-3">
+        <p class="text-gray-700 text-sm flex-1">Vous êtes curieux ?
+          <span class="font-medium text-gray-800">Découvrez la performance brute de mon portfolio</span>
+        </p>
+        <button @click="perfomanceTest" class="btn-violet inline-block text-center btn-effect-5"
+          aria-label="Voir la performance brute">
+          <font-awesome-icon :icon="['fas', 'chart-line']" />
+          <span class="text-sm">Analyser</span>
+        </button>
+      </div>
+    </div>
     <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
       data-aos="fade-up">
       <font-awesome-icon :icon="['fab', 'github']"
@@ -27,21 +41,6 @@
       <font-awesome-icon :icon="['fab', 'linkedin']"
         class="font-awesome cursor-pointer hover:text-violet-600 transition-colors" @click="openLinkeden" />
     </div>
-    <div
-      class="card p-2 service bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-xl shadow-sm hover:shadow-md transition-all">
-      <div class="flex items-center justify-between gap-3">
-        <p class="text-gray-700 text-sm flex-1">Vous êtes curieux ?
-          <span class="font-medium text-gray-800">Découvrez la performance brute de mon portfolio</span>
-        </p>
-        <button @click="perfomanceTest"
-          class="btn-violet inline-block text-center btn-effect-5"
-          aria-label="Voir la performance brute">
-          <font-awesome-icon :icon="['fas', 'chart-line']" />
-          <span class="text-sm">Analyser</span>
-        </button>
-      </div>
-    </div>
-
   </div>
 </template>
 
