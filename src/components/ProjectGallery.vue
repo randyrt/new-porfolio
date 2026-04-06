@@ -1,6 +1,5 @@
 <template>
     <div class="project-container mb-16 card p-4">
-        <!-- Section existante avec Swiper et description -->
         <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 gap-4 md:gap-0">
             <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]"
                 class="mySwiper card p-4 w-full md:w-2/3" :loop="true" :autoplay="{ delay: 2500 }" navigation>
@@ -22,7 +21,6 @@
             </div>
         </div>
 
-        <!-- NOUVEAU : Section Démo Interactive -->
         <div class="demo-section mt-8">
             <div class="demo-header p-8">
                 <h3 class="text-xl font-semibold text-gray-600"></h3>
@@ -39,12 +37,10 @@
                 leave-from-class="opacity-100 transform translate-y-0"
                 leave-to-class="opacity-0 transform -translate-y-4">
                 <div v-if="showDemo" class="demo-wrapper border rounded-xl overflow-hidden shadow-lg">
-                    <!-- Différentes démos selon le projet -->
                     <div class="bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-2">
                         <span class="text-white text-sm font-mono">Live Demo • {{ title }}</span>
                     </div>
 
-                    <!-- Démo FID-CONNECT (Dashboard) -->
                     <div v-if="demoType === 'fid-connect'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-4">
@@ -85,7 +81,6 @@
                         </div>
                     </div>
 
-                    <!-- Démo QCP (Calculateur d'amortissement) -->
                     <div v-else-if="demoType === 'qcp'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-4">
@@ -135,7 +130,6 @@
                         </div>
                     </div>
 
-                    <!-- Démo NURSES (Réservation) -->
                     <div v-else-if="demoType === 'nurses'" class="p-6 bg-gray-50">
                         <div class="max-w-md mx-auto">
                             <h4 class="font-bold text-gray-800 mb-4">Simulateur de réservation</h4>
@@ -170,7 +164,6 @@
                         </div>
                     </div>
 
-                    <!-- Démo générique pour autres projets -->
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
@@ -213,7 +206,7 @@ const toggleDemo = () => {
     showDemo.value = !showDemo.value;
 };
 
-// Déterminer le type de démo selon le titre
+
 const demoType = computed(() => {
     const title = props.title.toLowerCase();
     if (title.includes('fid') || title.includes('connect')) return 'fid-connect';
@@ -222,12 +215,12 @@ const demoType = computed(() => {
     return 'generic';
 });
 
-// Données pour FID-CONNECT
+
 const demoData = ref({ revenue: 50000, clients: 250 });
 const actionMessage = ref('');
 const growthRate = computed(() => Math.round((demoData.value.revenue / 100000) * 100));
 
-// Données pour QCP
+
 const loan = ref({ amount: 50000, rate: 5, years: 10 });
 const monthlyPayment = computed(() => {
     const monthlyRate = loan.value.rate / 100 / 12;
@@ -240,12 +233,12 @@ const totalPayment = computed(() => monthlyPayment.value * loan.value.years * 12
 const totalInterest = computed(() => totalPayment.value - loan.value.amount);
 const amortizationPercent = computed(() => (monthlyPayment.value > 0 ? (loan.value.amount / totalPayment.value) * 100 : 0));
 
-// Données pour NURSES
+
 const booking = ref({ guests: 2, date: new Date().toISOString().split('T')[0], service: 'soir' });
 const reservationMessage = ref('');
 const minDate = new Date().toISOString().split('T')[0];
 
-// Fonctions utilitaires
+
 const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('fr-BE', { style: 'currency', currency: 'EUR' }).format(value);
 };
