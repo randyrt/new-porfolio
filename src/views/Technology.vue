@@ -30,8 +30,8 @@
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/html5.png" name="HTML5" />
                     <TechLogo logo="/images/tecnos/css.png" name="CSS3" />
-                    <TechLogo logo="/images/tecnos/tailwinds.png" name="TAILWINDCSS" />
                     <TechLogo logo="/images/tecnos/js.png" name="JAVASCRIPT" />
+                    <TechLogo logo="/images/tecnos/tailwinds.png" name="TAILWINDCSS" />
                     <TechLogo logo="/images/tecnos/jquery.png" name="JQUERY" />
                 </DivSlot>
             </div>
@@ -71,7 +71,7 @@
                     <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
                     <TechLogo logo="/images/tecnos/pma.png" name="PHPMYADMIN" />
                     <TechLogo logo="/images/tecnos/ubuntu_terminal.png" name="UBUNTU TERMINAL" />
-                     <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
+                    <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
                     <TechLogo logo="/images/tecnos/postman.png" name="POSTMAN" />
                     <TechLogo logo="/images/tecnos/chrome.png" name="CHROME DEVTOOLS" />
                 </DivSlot>
