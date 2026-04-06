@@ -85,8 +85,8 @@
                     <TechLogo logo="/images/tecnos/github-action.jpeg" name="GITHUB ACTIONS" />
                     <TechLogo logo="/images/tecnos/ftp.png" name="FTP" />
                     <TechLogo logo="/images/tecnos/tls.webp" name="TLS" />
-                    <TechLogo logo="/images/tecnos/ssh.jpg" name="SSH" />
                     <TechLogo logo="/images/tecnos/ssl.png" name="SSL" />
+                    <TechLogo logo="/images/tecnos/ssh.jpg" name="SSH" />
                     <TechLogo logo="/images/tecnos/filezilla.jpg" name="FILEZILLA" />
                 </DivSlot>
             </div>
