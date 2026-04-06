@@ -8,7 +8,6 @@
             <div class="card tech-category">
                 <logoSection title="En cours d'apprentissage" />
                 <DivSlot>
-                    <TechLogo logo="/images/tecnos/synfony.png" name="SYMFONY" />
                     <TechLogo logo="/images/tecnos/flutter.png" name="FLUTTER" />
                     <TechLogo logo="/images/tecnos/c++.png" name="C++" />
                     <TechLogo logo="/images/tecnos/go.png" name="GOLANG" />
@@ -55,9 +54,10 @@
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/vuejs.jpg" name="VUE.JS" />
                     <TechLogo logo="/images/tecnos/nuxt.webp" name="NUXT.JS" />
-                    <TechLogo logo="/images/tecnos/express.png" name="EXPRESS.JS" />
-                    <TechLogo logo="/images/tecnos/laravel.png" name="LARAVEL" />
                     <TechLogo logo="/images/tecnos/ionic.png" name="IONIC" />
+                    <TechLogo logo="/images/tecnos/laravel.png" name="LARAVEL" />
+                    <TechLogo logo="/images/tecnos/synfony.png" name="SYMFONY" />
+                    <TechLogo logo="/images/tecnos/express.png" name="EXPRESS.JS" />
                 </DivSlot>
             </div>
 
