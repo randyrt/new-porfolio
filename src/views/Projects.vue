@@ -8,7 +8,7 @@
         <ProjectGallery :images="images2" title="QCP"
             description="QCP est une application sur mesure développée pour un client belge, axée sur la gestion du crédit, le suivi de l’amortissement et la planification financière. Propulsée par Vue.js et Laravel, elle offre une interface intelligente et intuitive qui simplifie les opérations financières complexes, automatise les calculs et permet une génération fluide de documents essentiels. Conçue pour répondre aux besoins spécifiques du client, elle optimise la gestion financière et améliore la prise de décision grâce à des fonctionnalités avancées et une expérience utilisateur exceptionnelle."
             @open-image="openImage" />
-        <ProjectGallery :images="images4" title="echo-webLine"
+        <ProjectGallery :images="images4" title="ECHO-WEBLINE"
             description="echo-webLine est une plateforme web développée pour un client basé à Paris, spécialisée dans l’imagerie cardiovasculaire et la gestion d’événements scientifiques. Conçue avec Nuxt.js et Laravel, elle propose une interface moderne et dynamique permettant de présenter des contenus médicaux, gérer les inscriptions à des congrès et valoriser les activités d’une communauté professionnelle. L’application met l’accent sur une expérience utilisateur fluide, une navigation intuitive et une mise en avant visuelle des informations clés, tout en garantissant performance et fiabilité."
             @open-image="openImage" />
         <ProjectGallery :images="images3" title="NURSES"
