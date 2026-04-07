@@ -72,11 +72,10 @@
                                     </div>
                                 </div>
                                 <button @click="simulateAction"
-                                    class="mt-4 w-full bg-violet-500 text-white py-2 rounded hover:bg-violet-600 transition">
+                                    class="mt-4 w-full btn-violet inline-block text-center btn-effect-5 ">
                                     Actualiser les données
                                 </button>
-                                <p v-if="actionMessage" class="text-sm text-green-600 mt-2 text-center">{{ actionMessage
-                                }}</p>
+                                <p v-if="actionMessage" class="text-sm text-green-600 mt-2 text-center">{{ actionMessage }}</p>
                             </div>
                         </div>
                     </div>
@@ -153,7 +152,7 @@
                                     </select>
                                 </div>
                                 <button @click="makeReservation"
-                                    class="w-full bg-violet-500 text-white py-2 rounded hover:bg-violet-600 transition">
+                                    class="w-full btn-violet inline-block text-center btn-effect-5">
                                     Réserver (démo)
                                 </button>
                                 <div v-if="reservationMessage"
@@ -178,7 +177,7 @@
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">Événements à venir</span>
                                         <button @click="addEvent" 
-                                            class="text-sm bg-violet-500 text-white px-2 py-1 rounded hover:bg-violet-600 transition">
+                                            class="btn-violet inline-block text-center btn-effect-5">
                                             + Nouvel événement
                                         </button>
                                     </div>
@@ -246,7 +245,7 @@
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">Paramètres cardiaques</span>
                                         <button @click="simulateHeartData" 
-                                            class="text-sm bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition">
+                                            class="w-1/2 btn-violet inline-block text-center btn-effect-5">
                                             Simuler nouvelle donnée
                                         </button>
                                     </div>
@@ -312,12 +311,12 @@
                                         <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
                                             <span class="text-sm">📄 Guide pratique cardiologie</span>
                                             <button @click="downloadResource" 
-                                                class="text-xs bg-violet-500 text-white px-2 py-1 rounded">Télécharger</button>
+                                                class="btn-violet inline-block text-center btn-effect-5">Télécharger</button>
                                         </div>
                                         <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
                                             <span class="text-sm">🎥 Webinaire - Nouvelles technologies</span>
                                             <button @click="downloadResource" 
-                                                class="text-xs bg-violet-500 text-white px-2 py-1 rounded">Voir</button>
+                                                class="btn-violet inline-block text-center btn-effect-5">Voir</button>
                                         </div>
                                     </div>
                                     <p v-if="downloadMessage" class="text-xs text-green-600 mt-2 text-center">{{ downloadMessage }}</p>
