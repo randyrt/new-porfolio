@@ -122,7 +122,7 @@
                                 <div class="mt-4 pt-3 border-t">
                                     <div class="text-sm text-gray-600">Amortissement</div>
                                     <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
-                                        <div class="bg-violet-2000 rounded-full h-2"
+                                        <div class="bg-green-500 rounded-full h-2"
                                             :style="{ width: amortizationPercent + '%' }"></div>
                                     </div>
                                 </div>
