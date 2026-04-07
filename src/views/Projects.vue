@@ -8,6 +8,9 @@
         <ProjectGallery :images="images2" title="QCP"
             description="QCP est une application sur mesure développée pour un client belge, axée sur la gestion du crédit, le suivi de l’amortissement et la planification financière. Propulsée par Vue.js et Laravel, elle offre une interface intelligente et intuitive qui simplifie les opérations financières complexes, automatise les calculs et permet une génération fluide de documents essentiels. Conçue pour répondre aux besoins spécifiques du client, elle optimise la gestion financière et améliore la prise de décision grâce à des fonctionnalités avancées et une expérience utilisateur exceptionnelle."
             @open-image="openImage" />
+        <ProjectGallery :images="images4" title="echo-webLine"
+            description="echo-webLine est une plateforme web développée pour un client basé à Paris, spécialisée dans l’imagerie cardiovasculaire et la gestion d’événements scientifiques. Conçue avec Nuxt.js et Laravel, elle propose une interface moderne et dynamique permettant de présenter des contenus médicaux, gérer les inscriptions à des congrès et valoriser les activités d’une communauté professionnelle. L’application met l’accent sur une expérience utilisateur fluide, une navigation intuitive et une mise en avant visuelle des informations clés, tout en garantissant performance et fiabilité."
+            @open-image="openImage" />
         <ProjectGallery :images="images3" title="NURSES"
             description="Souper of Nurses est un restaurant belge qui accueille de grands événements sur de longues périodes. Ce site web permet aux utilisateurs de faire des réservations de groupe en ligne, de contacter directement le restaurant, et comprend un panneau d’administration pour gérer les inscriptions, les événements et les places VIP. Développé avec Vue.js et Laravel, il offre une expérience utilisateur fluide et une gestion efficace des réservations, tout en mettant en valeur les événements à venir et les services exclusifs du restaurant."
             @open-image="openImage" />
@@ -32,6 +35,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
+import ProjectGallery from '../components/ProjectGallery.vue';
 
 
 const loading = ref<boolean>(true);
@@ -70,6 +74,16 @@ const images3: string[] = [
     '/images/projects/nurser-dinner/capture5.png',
     '/images/projects/nurser-dinner/capture6.png',
     '/images/projects/nurser-dinner/capture7.png',
+];
+
+const images4: string[] = [
+    '/images/projects/echo-webLine/echo-1.PNG',
+    '/images/projects/echo-webLine/echo-3.PNG',
+    '/images/projects/echo-webLine/echo-4.PNG',
+    '/images/projects/echo-webLine/echo-6.PNG',
+    '/images/projects/echo-webLine/echo-7.PNG',
+    '/images/projects/echo-webLine/echo-8.PNG',
+    '/images/projects/echo-webLine/echo-12.PNG',
 ];
 
 const selectedImage = ref<string | null>(null)

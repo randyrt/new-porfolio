@@ -164,6 +164,168 @@
                         </div>
                     </div>
 
+                    <div v-else-if="demoType === 'echo-webLine'" class="p-6 bg-gray-50">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Gestion des événements scientifiques -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    <span class="text-2xl">📅</span>
+                                    Gestion des événements
+                                </h4>
+                                
+                                <!-- Liste des événements -->
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="font-semibold text-gray-700">Événements à venir</span>
+                                        <button @click="addEvent" 
+                                            class="text-sm bg-violet-500 text-white px-2 py-1 rounded hover:bg-violet-600 transition">
+                                            + Nouvel événement
+                                        </button>
+                                    </div>
+                                    <div class="space-y-2 max-h-64 overflow-y-auto">
+                                        <div v-for="(event, idx) in events" :key="idx"
+                                            class="p-3 border rounded-lg hover:shadow-md transition cursor-pointer"
+                                            :class="{'border-violet-300 bg-violet-50': selectedEvent === idx}"
+                                            @click="selectEvent(idx)">
+                                            <div class="flex justify-between items-start">
+                                                <div>
+                                                    <div class="font-semibold text-gray-800">{{ event.title }}</div>
+                                                    <div class="text-sm text-gray-600">{{ event.date }}</div>
+                                                    <div class="text-xs text-gray-500">{{ event.participants }} participants</div>
+                                                </div>
+                                                <div class="flex gap-1 items-center">
+                                                    <span class="text-xs px-2 py-1 rounded" 
+                                                        :class="event.status === 'ouvert' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'">
+                                                        {{ event.status === 'ouvert' ? 'Ouvert' : 'Complet' }}
+                                                    </span>
+                                                    <button @click.stop="deleteEvent(idx)" 
+                                                        class="text-red-500 hover:text-red-700 text-sm">✕</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Formulaire d'inscription -->
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold text-gray-700 mb-3">Inscription à un événement</h5>
+                                    <div class="space-y-3">
+                                        <input type="text" v-model="registration.name" placeholder="Nom complet"
+                                            class="w-full p-2 border rounded text-sm">
+                                        <input type="email" v-model="registration.email" placeholder="Email"
+                                            class="w-full p-2 border rounded text-sm">
+                                        <select v-model="registration.eventId" class="w-full p-2 border rounded text-sm">
+                                            <option value="">Sélectionner un événement</option>
+                                            <option v-for="(event, idx) in events" :key="idx" :value="idx" 
+                                                :disabled="event.status === 'complet'">
+                                                {{ event.title }} ({{ event.status === 'complet' ? 'Complet' : 'Disponible' }})
+                                            </option>
+                                        </select>
+                                        <button @click="registerToEvent"
+                                            :disabled="!canRegister"
+                                            class="w-full bg-violet-500 text-white py-2 rounded hover:bg-violet-600 transition disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                            S'inscrire
+                                        </button>
+                                        <p v-if="registrationMessage" class="text-sm text-center"
+                                            :class="registrationMessage.includes('✓') ? 'text-green-600' : 'text-red-600'">
+                                            {{ registrationMessage }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Imagerie cardiovasculaire -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    <span class="text-2xl">❤️</span>
+                                    Imagerie cardiovasculaire
+                                </h4>
+                                
+                                <!-- Visualisation des données médicales -->
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="font-semibold text-gray-700">Paramètres cardiaques</span>
+                                        <button @click="simulateHeartData" 
+                                            class="text-sm bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600 transition">
+                                            Simuler nouvelle donnée
+                                        </button>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <div class="flex justify-between text-sm">
+                                                <span>Fréquence cardiaque</span>
+                                                <span class="font-semibold" :class="heartData.heartRate > 100 ? 'text-red-600' : 'text-green-600'">
+                                                    {{ heartData.heartRate }} bpm
+                                                </span>
+                                            </div>
+                                            <input type="range" v-model="heartData.heartRate" min="40" max="180" step="1"
+                                                class="w-full mt-1">
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-sm">
+                                                <span>Tension artérielle</span>
+                                                <span class="font-semibold">{{ heartData.systolic }}/{{ heartData.diastolic }} mmHg</span>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                <input type="range" v-model="heartData.systolic" min="80" max="200" step="1"
+                                                    class="w-full mt-1">
+                                                <input type="range" v-model="heartData.diastolic" min="50" max="120" step="1"
+                                                    class="w-full mt-1">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-sm">
+                                                <span>Niveau d'oxygène</span>
+                                                <span class="font-semibold" :class="heartData.oxygen < 94 ? 'text-orange-600' : 'text-green-600'">
+                                                    {{ heartData.oxygen }}%
+                                                </span>
+                                            </div>
+                                            <input type="range" v-model="heartData.oxygen" min="70" max="100" step="1"
+                                                class="w-full mt-1">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Graphique simplifié -->
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold text-gray-700 mb-2">Historique des mesures</h5>
+                                    <div class="relative h-32">
+                                        <div class="absolute bottom-0 left-0 right-0 flex items-end justify-between h-full">
+                                            <div v-for="(point, idx) in heartHistory" :key="idx"
+                                                class="flex flex-col items-center" style="width: 12%">
+                                                <div class="w-full bg-violet-400 rounded-t transition-all duration-300"
+                                                    :style="{ height: (point.heartRate / 180 * 100) + '%', minHeight: '4px' }">
+                                                </div>
+                                                <div class="text-xs text-gray-500 mt-1">{{ point.time }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center text-xs text-gray-500 mt-4">
+                                        Dernières 8 mesures (bpm)
+                                    </div>
+                                </div>
+
+                                <!-- Ressources médicales -->
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold text-gray-700 mb-2">Ressources disponibles</h5>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                            <span class="text-sm">📄 Guide pratique cardiologie</span>
+                                            <button @click="downloadResource" 
+                                                class="text-xs bg-violet-500 text-white px-2 py-1 rounded">Télécharger</button>
+                                        </div>
+                                        <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                            <span class="text-sm">🎥 Webinaire - Nouvelles technologies</span>
+                                            <button @click="downloadResource" 
+                                                class="text-xs bg-violet-500 text-white px-2 py-1 rounded">Voir</button>
+                                        </div>
+                                    </div>
+                                    <p v-if="downloadMessage" class="text-xs text-green-600 mt-2 text-center">{{ downloadMessage }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
@@ -206,21 +368,21 @@ const toggleDemo = () => {
     showDemo.value = !showDemo.value;
 };
 
-
 const demoType = computed(() => {
     const title = props.title.toLowerCase();
     if (title.includes('fid') || title.includes('connect')) return 'fid-connect';
     if (title.includes('qcp')) return 'qcp';
     if (title.includes('nurses') || title.includes('souper')) return 'nurses';
+    if (title.includes('echo') || title.includes('webline')) return 'echo-webLine';
     return 'generic';
 });
 
-
+// FID-CONNECT demo data
 const demoData = ref({ revenue: 50000, clients: 250 });
 const actionMessage = ref('');
 const growthRate = computed(() => Math.round((demoData.value.revenue / 100000) * 100));
 
-
+// QCP demo data
 const loan = ref({ amount: 50000, rate: 5, years: 10 });
 const monthlyPayment = computed(() => {
     const monthlyRate = loan.value.rate / 100 / 12;
@@ -233,12 +395,131 @@ const totalPayment = computed(() => monthlyPayment.value * loan.value.years * 12
 const totalInterest = computed(() => totalPayment.value - loan.value.amount);
 const amortizationPercent = computed(() => (monthlyPayment.value > 0 ? (loan.value.amount / totalPayment.value) * 100 : 0));
 
-
+// NURSES demo data
 const booking = ref({ guests: 2, date: new Date().toISOString().split('T')[0], service: 'soir' });
 const reservationMessage = ref('');
 const minDate = new Date().toISOString().split('T')[0];
 
+// ECHO-WEBLINE demo data
+interface Event {
+    title: string;
+    date: string;
+    participants: number;
+    status: 'ouvert' | 'complet';
+    maxParticipants: number;
+}
 
+const events = ref<Event[]>([
+    { title: 'Congrès Européen de Cardiologie', date: '2024-06-15', participants: 145, status: 'ouvert', maxParticipants: 200 },
+    { title: 'Symposium sur l\'Imagerie Cardiaque', date: '2024-07-20', participants: 89, status: 'ouvert', maxParticipants: 150 },
+    { title: 'Atelier Échocardiographie', date: '2024-08-10', participants: 50, status: 'complet', maxParticipants: 50 }
+]);
+
+const selectedEvent = ref<number | null>(null);
+const registration = ref({ name: '', email: '', eventId: '' });
+const registrationMessage = ref('');
+const downloadMessage = ref('');
+
+const heartData = ref({ heartRate: 72, systolic: 120, diastolic: 80, oxygen: 98 });
+const heartHistory = ref<Array<{ heartRate: number; time: string }>>([]);
+
+// Initialiser l'historique
+for (let i = 7; i >= 0; i--) {
+    const hour = new Date().getHours() - i;
+    heartHistory.value.push({
+        heartRate: Math.floor(Math.random() * 40) + 60,
+        time: `${hour}h`
+    });
+}
+
+const canRegister = computed(() => {
+    return registration.value.name && registration.value.email && registration.value.eventId !== '';
+});
+
+const addEvent = () => {
+    const newEvent: Event = {
+        title: `Nouvel événement ${events.value.length + 1}`,
+        date: new Date().toISOString().split('T')[0],
+        participants: 0,
+        status: 'ouvert',
+        maxParticipants: 100
+    };
+    events.value.push(newEvent);
+    toast.success('Nouvel événement créé !');
+};
+
+const selectEvent = (idx: number) => {
+    selectedEvent.value = idx;
+    registration.value.eventId = idx.toString();
+};
+
+const deleteEvent = (idx: number) => {
+    if (confirm('Supprimer cet événement ?')) {
+        events.value.splice(idx, 1);
+        if (selectedEvent.value === idx) {
+            selectedEvent.value = null;
+            registration.value.eventId = '';
+        }
+        toast.info('Événement supprimé');
+    }
+};
+
+const registerToEvent = () => {
+    const eventId = parseInt(registration.value.eventId);
+    const event = events.value[eventId];
+    
+    if (!event) {
+        registrationMessage.value = '❌ Événement non trouvé';
+        return;
+    }
+    
+    if (event.status === 'complet') {
+        registrationMessage.value = '❌ Cet événement est déjà complet';
+        return;
+    }
+    
+    if (event.participants + 1 > event.maxParticipants) {
+        event.status = 'complet';
+        registrationMessage.value = '❌ Désolé, cet événement vient d\'être complet';
+        return;
+    }
+    
+    event.participants++;
+    if (event.participants === event.maxParticipants) {
+        event.status = 'complet';
+    }
+    
+    registrationMessage.value = `✓ Inscription confirmée pour ${registration.value.name} à "${event.title}"`;
+    registration.value = { name: '', email: '', eventId: '' };
+    
+    setTimeout(() => {
+        registrationMessage.value = '';
+    }, 3000);
+};
+
+const simulateHeartData = () => {
+    heartData.value.heartRate = Math.floor(Math.random() * 80) + 60;
+    heartData.value.systolic = Math.floor(Math.random() * 60) + 100;
+    heartData.value.diastolic = Math.floor(Math.random() * 40) + 60;
+    heartData.value.oxygen = Math.floor(Math.random() * 15) + 90;
+    
+    heartHistory.value.shift();
+    heartHistory.value.push({
+        heartRate: heartData.value.heartRate,
+        time: `${new Date().getHours()}h`
+    });
+    
+    toast.info('Nouvelle mesure simulée');
+};
+
+const downloadResource = () => {
+    downloadMessage.value = '✓ Démonstration : ressource téléchargée';
+    setTimeout(() => {
+        downloadMessage.value = '';
+    }, 2000);
+};
+
+// Utilitaires
 const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('fr-BE', { style: 'currency', currency: 'EUR' }).format(value);
 };
