@@ -1091,11 +1091,6 @@ const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('fr-BE', { style: 'currency', currency: 'EUR' }).format(value);
 };
 
-const simulateAction = () => {
-    actionMessage.value = '✅ Données mises à jour !';
-    setTimeout(() => { actionMessage.value = ''; }, 2000);
-};
-
 
 const notifyDemo = () => {
     toast.info("Merci ! Vous serez notifié quand la démo sera disponible.");
