@@ -246,7 +246,7 @@
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
-                                                        class="text-gray-400 hover:text-red-500 text-xs">✕</button>
+                                                        class="!text-gray-400  hover:text-red-500 text-xs">✕</button>
                                                 </div>
                                                 <p class="text-gray-700 text-sm mt-1">{{ post.content }}</p>
                                                 <div v-if="post.media"
@@ -255,15 +255,13 @@
                                                 </div>
                                                 <div class="flex gap-4 mt-3 text-sm">
                                                     <button @click="likePost(idx)"
-                                                        class="flex items-center gap-1 text-gray-500 hover:text-red-500">
+                                                        class="flex items-center gap-1 !text-gray-500">
                                                         ❤️ {{ post.likes }}
                                                     </button>
                                                     <button @click="toggleComment(idx)"
-                                                        class="flex items-center gap-1 text-gray-500 hover:text-violet-500">
+                                                        class="flex items-center gap-1 !text-gray-500">
                                                         💬 {{ post.comments.length }}
                                                     </button>
-                                                    <button class="text-gray-500 hover:text-green-500">🔄
-                                                        Partager</button>
                                                 </div>
 
                                                 <!-- Section commentaires -->
