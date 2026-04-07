@@ -763,10 +763,6 @@
             class="relative bg-white rounded-xl shadow-2xl p-6 w-96 max-w-[90%] transform transition-all animate-fade-in">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-bold text-gray-800">📝 Créer un nouveau groupe</h3>
-                <button @click="cancelCreateGroup"
-                    class="bg-violet-400 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-violet-300 transition">
-                    &times;
-                </button>
             </div>
 
             <div class="mb-4">
@@ -776,13 +772,13 @@
                     @keyup.enter="confirmCreateGroup" autofocus>
             </div>
 
-            <div class="flex gap-2">
+            <div class="flex gap-2 space-x-4 justify-center">
                 <button @click="cancelCreateGroup"
-                    class="flex-1 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition">
+                    class="btn-violet btn-effect-5">
                     Annuler
                 </button>
                 <button @click="confirmCreateGroup" :disabled="isCreatingGroup || !newGroupName.trim()"
-                    class="flex-1 bg-gradient-to-r from-violet-500 to-purple-600 text-white py-2 rounded-lg hover:from-violet-600 hover:to-purple-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                     class="btn-violet btn-effect-5">
                     {{ isCreatingGroup ? 'Création...' : 'Valider' }}
                 </button>
             </div>
