@@ -10,7 +10,7 @@
       </div>
       <div class="md:text-sm lg:text-base max-w-3xl pad border p-6 card flex flex-col justify-between min-h-[500px]"
         data-aos="fade-up">
-        <div>
+        <div class="p-3">
           <h1 class="text-3xl font-bold mt-6 mb-2 text-black">Bienvenue sur mon portfolio !<span
               class="text-5xl ml-2 emoji"> 😎</span></h1>
           <p class="text-lg text-gray-700 mb-4">
