@@ -26,7 +26,7 @@
                 @click.self="closeImage">
                 <div class="relative">
                     <button @click="closeImage"
-                        class="absolute -top-2 -right-1 bg-violet-800 text-white rounded cursor-pointer">
+                        class="absolute -top-2 -right-1 bg-violet-800 text-white rounded-full cursor-pointer">
                         ✕
                     </button>
                     <img :src="selectedImage" alt="Image sélectionnée"

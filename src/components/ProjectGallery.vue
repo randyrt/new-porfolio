@@ -47,7 +47,7 @@
                                 <div class="bg-white p-4 rounded-lg shadow">
                                     <div class="text-sm text-gray-600">Chiffre d'affaires</div>
                                     <div class="text-2xl font-bold text-violet-600">{{ formatCurrency(demoData.revenue)
-                                    }}</div>
+                                        }}</div>
                                     <input type="range" v-model="demoData.revenue" min="0" max="100000" step="1000"
                                         class="w-full mt-2">
                                 </div>
@@ -75,7 +75,7 @@
                                     Actualiser les données
                                 </button>
                                 <p v-if="actionMessage" class="text-sm text-green-600 mt-2 text-center">{{ actionMessage
-                                }}</p>
+                                    }}</p>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                                     <div class="flex justify-between">
                                         <span>Mensualité</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>Total payé</span>
@@ -179,7 +179,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -220,7 +220,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -305,7 +305,7 @@
                                         </div>
 
                                         <button @click="processPayment" :disabled="isProcessing"
-                                            class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white py-2 rounded hover:from-amber-600 hover:to-orange-600 transition disabled:opacity-50 text-sm font-medium">
+                                            class="w-full btn-effect-5-submit rounded text-sm font-medium">
                                             {{ isProcessing ? 'Traitement...' : 'Soutenir maintenant' }}
                                         </button>
 
@@ -414,7 +414,7 @@
                                 </h4>
 
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <div class="space-y-3 max-h-80 overflow-y-auto">
+                                    <div class="space-y-3 max-h-90 overflow-y-auto">
                                         <div v-for="(event, idx) in nurseEvents" :key="idx"
                                             class="border rounded-lg p-3 hover:shadow-md transition cursor-pointer"
                                             :class="{ 'border-amber-400 bg-amber-50': selectedEvent === idx }"
@@ -473,7 +473,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">Réservations</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -537,13 +537,13 @@
                                                     <div class="text-xs text-gray-500">{{ event.participants }}
                                                         participants</div>
                                                 </div>
-                                                <div class="flex gap-1 items-center">
+                                                <div class="flex gap-1 items-center space-x-6">
                                                     <span class="text-xs px-2 py-1 rounded"
                                                         :class="event.status === 'ouvert' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'">
                                                         {{ event.status === 'ouvert' ? 'Ouvert' : 'Complet' }}
                                                     </span>
                                                     <button @click.stop="deleteEvent(idx)"
-                                                        class="text-red-500 hover:text-red-700 text-sm">✕</button>
+                                                        class="btn-effect-5-delete">Supprimer</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -942,14 +942,12 @@ const selectEvent = (idx: number) => {
 };
 
 const deleteEvent = (idx: number) => {
-    if (confirm('Supprimer cet événement ?')) {
-        events.value.splice(idx, 1);
-        if (selectedEvent.value === idx) {
-            selectedEvent.value = null;
-            registration.value.eventId = '';
-        }
-        toast.info('Événement supprimé');
+    events.value.splice(idx, 1);
+    if (selectedEvent.value === idx) {
+        selectedEvent.value = null;
+        registration.value.eventId = '';
     }
+    toast.info('Événement supprimé');
 };
 
 const registerToEvent = () => {

@@ -151,6 +151,24 @@ button {
   transition: 0.5s;
 }
 
+.btn-effect-5-delete {
+  border: 2px solid #8B5CF6;
+  background: transparent;
+  color: #8B5CF6;
+}
+
+.btn-effect-5::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #8B5CF6 !important;
+  z-index: -1;
+  transition: 0.5s;
+}
+
 .btn-effect-5:hover {
   color: #ffff;
 }
@@ -159,6 +177,76 @@ button {
   width: 100%;
 }
 
+.btn-effect-5-delete {
+  border: 2px solid #EF4444;
+  background: transparent;
+  color: #EF4444;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.5s;
+}
+
+.btn-effect-5-delete::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #EF4444 !important;
+  z-index: -1;
+  transition: width 0.5s;
+}
+
+.btn-effect-5-delete:hover {
+  color: #ffffff;
+}
+
+.btn-effect-5-delete:hover::before {
+  width: 100%;
+}
+
+.btn-effect-5-submit {
+  border: 0px solid transparent;
+  background: linear-gradient(to right, #F59E0B, #EA580C);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.5s;
+}
+
+.btn-effect-5-submit::before {
+  content: '';
+  position: absolute;
+  color: #ffffff;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, #D97706, #0ca7c2) !important;
+  z-index: -1;
+  transition: width 0.5s;
+}
+
+.btn-effect-5-submit:hover {
+  color: #ffffff;
+  border-color: #F59E0B;
+}
+
+.btn-effect-5-submit:hover::before {
+  width: 100%;
+}
+
+.btn-effect-5-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-effect-5-submit:disabled:hover::before {
+  width: 0;
+}
 
 .btn-effect-10 {
   background: #27ae60;
@@ -290,6 +378,10 @@ a {
   background: linear-gradient(0deg, transparent, transparent, #56435f, #811a9b, #9108a379);
   z-index: -1;
   animation: 6s linear -3s infinite animate
+}
+
+.custom-shadow-amber {
+    box-shadow: 0 20px 25px -5px rgba(245, 158, 11, 0.2), 0 8px 10px -6px rgba(245, 158, 11, 0.1);
 }
 
 
