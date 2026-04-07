@@ -239,7 +239,7 @@ button {
 
 
 .card {
-  @apply rounded-lg shadow-lg border-sky-100 bg-sky-50;
+  @apply rounded-lg shadow-lg border-sky-100 bg-sky-50 p-2;
 }
 
 

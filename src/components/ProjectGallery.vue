@@ -2,7 +2,7 @@
     <div class="project-container mb-16 card p-4">
         <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 gap-4 md:gap-0">
             <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]"
-                class="mySwiper p-4 w-full md:w-2/3" :loop="true" :autoplay="{ delay: 2500 }" navigation>
+                class="mySwiper w-full md:w-2/3  rounded-lg" :loop="true" :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
                     <div class="relative group overflow-hidden rounded-lg shadow-md">
                         <img :src="img" :alt="`${title} capture ${index + 1}`"
@@ -628,7 +628,7 @@
                                             <input type="range" v-model="heartData.oxygen" min="70" max="100" step="1"
                                                 class="w-full mt-1">
                                         </div>
-                                         <button @click="simulateHeartData"
+                                        <button @click="simulateHeartData"
                                             class="w-1/2 btn-violet inline-block text-center btn-effect-5">
                                             Simuler nouvelle donnée
                                         </button>
@@ -1246,8 +1246,12 @@ img {
 
 .mySwiper {
     position: relative;
+    width: 800px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
     z-index: 1;
-    pointer-events: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .project-container {

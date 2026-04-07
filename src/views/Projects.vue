@@ -73,7 +73,6 @@ const images3: string[] = [
     '/images/projects/nurser-dinner/capture1.png',
     '/images/projects/nurser-dinner/capture2.png',
     '/images/projects/nurser-dinner/capture3.png',
-    '/images/projects/nurser-dinner/capture4.png',
     '/images/projects/nurser-dinner/capture5.png',
     '/images/projects/nurser-dinner/capture6.png',
     '/images/projects/nurser-dinner/capture7.png',
