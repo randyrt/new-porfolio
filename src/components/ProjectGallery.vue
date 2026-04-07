@@ -344,34 +344,169 @@
                     </div>
 
                     <div v-else-if="demoType === 'nurses'" class="p-6 bg-gray-50">
-                        <div class="max-w-md mx-auto">
-                            <h4 class="font-bold text-gray-800 mb-4">Simulateur de réservation</h4>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Section Réservation -->
                             <div class="space-y-4">
-                                <div>
-                                    <label class="text-sm text-gray-600">Nombre de personnes</label>
-                                    <input type="number" v-model="booking.guests" min="1" max="50"
-                                        class="w-full p-2 border rounded">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    <span class="text-2xl">🍽️</span>
+                                    Simulateur de réservation
+                                </h4>
+
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="text-sm text-gray-600 font-medium">Nombre de personnes</label>
+                                            <div class="flex items-center gap-2 mt-1">
+                                                <button @click="booking.guests = Math.max(1, booking.guests - 1)"
+                                                    class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
+                                                    -
+                                                </button>
+                                                <input type="number" v-model.number="booking.guests" min="1" max="50"
+                                                    class="flex-1 p-2 border rounded text-center">
+                                                <button @click="booking.guests = Math.min(50, booking.guests + 1)"
+                                                    class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label class="text-sm text-gray-600 font-medium">Date</label>
+                                            <input type="date" v-model="booking.date" :min="minDate"
+                                                class="w-full p-2 border rounded mt-1">
+                                        </div>
+
+                                        <div>
+                                            <label class="text-sm text-gray-600 font-medium">Service</label>
+                                            <select v-model="booking.service" class="w-full p-2 border rounded mt-1">
+                                                <option value="midi">🍳 Déjeuner (12h-14h)</option>
+                                                <option value="soir">🌙 Dîner (19h-22h)</option>
+                                                <option value="vip">✨ VIP (service exclusif)</option>
+                                            </select>
+                                        </div>
+
+                                        <div v-if="booking.service === 'vip'"
+                                            class="p-3 bg-amber-50 rounded border border-amber-200">
+                                            <p class="text-sm text-amber-800">🎁 Service VIP inclus :</p>
+                                            <ul class="text-xs text-amber-700 mt-1 space-y-1">
+                                                <li>✓ Accès au salon privé</li>
+                                                <li>✓ Menu dégustation personnalisé</li>
+                                                <li>✓ Accueil par le chef</li>
+                                            </ul>
+                                        </div>
+
+                                        <button @click="makeReservation"
+                                            class="w-full btn-violet inline-block text-center btn-effect-5 py-2 rounded-lg">
+                                            Réserver (démo)
+                                        </button>
+
+                                        <div v-if="reservationMessage"
+                                            :class="['p-3 rounded text-center', reservationMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700']">
+                                            {{ reservationMessage }}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <label class="text-sm text-gray-600">Date</label>
-                                    <input type="date" v-model="booking.date" :min="minDate"
-                                        class="w-full p-2 border rounded">
+                            </div>
+
+                            <!-- Section Événements à venir -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    <span class="text-2xl">🎉</span>
+                                    Événements à venir
+                                </h4>
+
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <div class="space-y-3 max-h-80 overflow-y-auto">
+                                        <div v-for="(event, idx) in nurseEvents" :key="idx"
+                                            class="border rounded-lg p-3 hover:shadow-md transition cursor-pointer"
+                                            :class="{ 'border-amber-400 bg-amber-50': selectedEvent === idx }"
+                                            @click="selectNurseEvent(idx)">
+                                            <div class="flex justify-between items-start">
+                                                <div>
+                                                    <div class="font-semibold text-gray-800">{{ event.title }}</div>
+                                                    <div class="text-sm text-gray-600">📅 {{ event.date }}</div>
+                                                    <div class="text-xs text-gray-500">👥 {{ event.participants }}
+                                                        participants</div>
+                                                </div>
+                                                <div class="text-right">
+                                                    <div class="text-sm font-semibold text-amber-600">{{ event.price }}
+                                                    </div>
+                                                    <div class="text-xs"
+                                                        :class="event.spots > 10 ? 'text-green-600' : 'text-orange-600'">
+                                                        {{ event.spots }} places restantes
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 flex gap-2">
+                                                <span class="text-xs px-2 py-1 rounded-full"
+                                                    :class="event.type === 'gala' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'">
+                                                    {{ event.type === 'gala' ? '🎭 Gala' : '🍷 Dégustation' }}
+                                                </span>
+                                                <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">
+                                                    ⏰ {{ event.time }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button @click="reserveEvent" :disabled="selectedEvent === null"
+                                        class="w-full mt-4 bg-amber-500 text-white py-2 rounded-lg hover:bg-amber-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                                        Réserver pour cet événement
+                                    </button>
+                                    <p v-if="eventReservationMessage" class="text-sm text-center mt-2"
+                                        :class="eventReservationMessage.includes('✓') ? 'text-green-600' : 'text-red-600'">
+                                        {{ eventReservationMessage }}
+                                    </p>
                                 </div>
-                                <div>
-                                    <label class="text-sm text-gray-600">Service</label>
-                                    <select v-model="booking.service" class="w-full p-2 border rounded">
-                                        <option value="midi">Déjeuner (12h-14h)</option>
-                                        <option value="soir">Dîner (19h-22h)</option>
-                                        <option value="vip">VIP (service exclusif)</option>
-                                    </select>
+                            </div>
+                        </div>
+
+                        <!-- Section Admin simplifiée -->
+                        <div class="mt-6">
+                            <div class="bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg shadow p-4">
+                                <div class="flex justify-between items-center mb-3">
+                                    <h4 class="font-bold text-white flex items-center gap-2">
+                                        <span class="text-xl">👑</span>
+                                        Panneau d'administration
+                                    </h4>
+                                    <button @click="showAdminPanel = !showAdminPanel" class="text-white text-sm">
+                                        {{ showAdminPanel ? '▲ Masquer' : '▼ Afficher' }}
+                                    </button>
                                 </div>
-                                <button @click="makeReservation"
-                                    class="w-full btn-violet inline-block text-center btn-effect-5">
-                                    Réserver (démo)
-                                </button>
-                                <div v-if="reservationMessage"
-                                    :class="['p-3 rounded text-center', reservationMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700']">
-                                    {{ reservationMessage }}
+
+                                <div v-if="showAdminPanel" class="space-y-3">
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                        <div class="bg-white/10 rounded p-2 text-center">
+                                            <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
+                                            }}</div>
+                                            <div class="text-xs text-gray-300">Réservations</div>
+                                        </div>
+                                        <div class="bg-white/10 rounded p-2 text-center">
+                                            <div class="text-2xl font-bold text-white">{{ adminStats.vipReservations }}
+                                            </div>
+                                            <div class="text-xs text-gray-300">VIP</div>
+                                        </div>
+                                        <div class="bg-white/10 rounded p-2 text-center">
+                                            <div class="text-2xl font-bold text-white">{{ adminStats.totalGuests }}
+                                            </div>
+                                            <div class="text-xs text-gray-300">Couverts</div>
+                                        </div>
+                                        <div class="bg-white/10 rounded p-2 text-center">
+                                            <div class="text-2xl font-bold text-white">{{ nurseEvents.length }}</div>
+                                            <div class="text-xs text-gray-300">Événements</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex gap-2">
+                                        <button @click="addDemoEvent"
+                                            class="flex-1 bg-green-600 text-white py-1 rounded text-sm hover:bg-green-700 transition">
+                                            + Ajouter un événement
+                                        </button>
+                                        <button @click="resetDemoData"
+                                            class="flex-1 bg-orange-600 text-white py-1 rounded text-sm hover:bg-orange-700 transition">
+                                            Réinitialiser
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -651,10 +786,114 @@ const totalPayment = computed(() => monthlyPayment.value * loan.value.years * 12
 const totalInterest = computed(() => totalPayment.value - loan.value.amount);
 const amortizationPercent = computed(() => (monthlyPayment.value > 0 ? (loan.value.amount / totalPayment.value) * 100 : 0));
 
-// NURSES demo data
+// NURSES demo data enrichi
 const booking = ref({ guests: 2, date: new Date().toISOString().split('T')[0], service: 'soir' });
 const reservationMessage = ref('');
 const minDate = new Date().toISOString().split('T')[0];
+
+// Événements du restaurant
+const nurseEvents = ref([
+    {
+        title: 'Soirée de Gala Annuel',
+        date: '2024-12-15',
+        time: '19h30',
+        participants: 89,
+        price: '150€',
+        spots: 11,
+        type: 'gala'
+    },
+    {
+        title: 'Dîner aux Chandelles',
+        date: '2024-11-20',
+        time: '20h00',
+        participants: 45,
+        price: '85€',
+        spots: 5,
+        type: 'gala'
+    },
+    {
+        title: 'Dégustation de Vins Belges',
+        date: '2024-10-25',
+        time: '18h30',
+        participants: 32,
+        price: '65€',
+        spots: 18,
+        type: 'degustation'
+    }
+]);
+
+const eventReservationMessage = ref('');
+const showAdminPanel = ref(false);
+
+const adminStats = ref({
+    totalReservations: 127,
+    vipReservations: 34,
+    totalGuests: 486
+});
+
+const makeReservation = () => {
+    const serviceNames = { midi: 'déjeuner', soir: 'dîner', vip: 'service VIP' };
+    const vipBonus = booking.value.service === 'vip' ? ' (avec accès VIP)' : '';
+
+    reservationMessage.value = `✓ Réservation confirmée pour ${booking.value.guests} personne(s) le ${booking.value.date} (${serviceNames[booking.value.service as keyof typeof serviceNames]})${vipBonus}`;
+
+    adminStats.value.totalReservations++;
+    adminStats.value.totalGuests += booking.value.guests;
+    if (booking.value.service === 'vip') {
+        adminStats.value.vipReservations++;
+    }
+
+    setTimeout(() => { reservationMessage.value = ''; }, 3000);
+};
+
+const selectNurseEvent = (idx: number) => {
+    selectedEvent.value = idx;
+};
+
+const reserveEvent = () => {
+    if (selectedEvent.value === null) {
+        eventReservationMessage.value = '❌ Veuillez sélectionner un événement';
+        return;
+    }
+
+    const event = nurseEvents.value[selectedEvent.value];
+    if (event.spots <= 0) {
+        eventReservationMessage.value = '❌ Désolé, cet événement est complet';
+        return;
+    }
+
+    event.spots--;
+    event.participants++;
+    adminStats.value.totalReservations++;
+
+    eventReservationMessage.value = `✓ Réservation confirmée pour "${event.title}" !`;
+
+    setTimeout(() => { eventReservationMessage.value = ''; }, 3000);
+};
+
+const addDemoEvent = () => {
+    nurseEvents.value.push({
+        title: `Nouvel événement ${nurseEvents.value.length + 1}`,
+        date: new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0],
+        time: '20h00',
+        participants: 0,
+        price: '70€',
+        spots: 30,
+        type: Math.random() > 0.5 ? 'gala' : 'degustation'
+    });
+    toast.success('Événement ajouté !');
+};
+
+const resetDemoData = () => {
+    nurseEvents.value = [
+        { title: 'Soirée de Gala Annuel', date: '2024-12-15', time: '19h30', participants: 89, price: '150€', spots: 11, type: 'gala' },
+        { title: 'Dîner aux Chandelles', date: '2024-11-20', time: '20h00', participants: 45, price: '85€', spots: 5, type: 'gala' },
+        { title: 'Dégustation de Vins Belges', date: '2024-10-25', time: '18h30', participants: 32, price: '65€', spots: 18, type: 'degustation' }
+    ];
+    adminStats.value = { totalReservations: 127, vipReservations: 34, totalGuests: 486 };
+    selectedEvent.value = null;
+    toast.info('Données réinitialisées');
+};
 
 // ECHO-WEBLINE demo data
 interface Event {
@@ -785,11 +1024,6 @@ const simulateAction = () => {
     setTimeout(() => { actionMessage.value = ''; }, 2000);
 };
 
-const makeReservation = () => {
-    const serviceNames = { midi: 'déjeuner', soir: 'dîner', vip: 'service VIP' };
-    reservationMessage.value = `✓ Réservation confirmée pour ${booking.value.guests} personne(s) le ${booking.value.date} (${serviceNames[booking.value.service as keyof typeof serviceNames]})`;
-    setTimeout(() => { reservationMessage.value = ''; }, 3000);
-};
 
 const notifyDemo = () => {
     toast.info("Merci ! Vous serez notifié quand la démo sera disponible.");
