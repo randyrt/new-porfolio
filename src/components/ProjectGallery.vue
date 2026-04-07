@@ -6,7 +6,7 @@
                 <SwiperSlide v-for="(img, index) in images" :key="index">
                     <div class="relative group overflow-hidden rounded-lg shadow-md">
                         <img :src="img" :alt="`${title} capture ${index + 1}`"
-                            class="w-full h-auto cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                            class="cursor-pointer transition-transform duration-300 group-hover:scale-105"
                             @click="$emit('open-image', img)" />
                         <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all">
                         </div>
