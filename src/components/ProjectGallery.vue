@@ -23,7 +23,7 @@
         <div class="demo-section mt-8">
             <div class="demo-header p-8">
                 <h3 class="text-xl font-semibold text-gray-600"></h3>
-                <button @click.stop="toggleDemo" class="demo-toggle-btn">
+                <button @click.stop="toggleDemo" class="btn-effect-5">
                     {{ showDemo ? 'Masquer la démo' : 'Voir la démo en action' }}
                     <span class="ml-1">{{ showDemo ? '▲' : '▼' }}</span>
                 </button>
