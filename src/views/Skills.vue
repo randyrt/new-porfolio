@@ -9,7 +9,7 @@
       <span>😊</span>
     </h1>
   </div>
-  <div class=" flex items-center flex-wrap bg-gray-100 gap-4 p-4 mt-8 text-lg" data-aos="fade-up">
+ <div class="flex items-stretch flex-wrap bg-gray-100 gap-4 p-4 mt-8 text-lg" data-aos="fade-up">
     <SkillSection :title="'Compétences en VueJs'" :bgColor="'bg-yellow-100'" :borderColor="'border-yellow-200'" :skills="[
       {
         name: 'VueJS avec Typescript',

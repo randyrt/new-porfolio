@@ -1,14 +1,14 @@
 <template>
-    <div :class="[bgColor, 'border border-yellow-50 h-auto rounded-lg p-2 flex-1 min-w-[200px]']">
+    <div :class="[bgColor, 'border border-yellow-50 h-auto rounded-lg p-2 flex-1 min-w-[200px]', 'flex flex-col']">
         <p class="p-4 card mt-2 text-center rounded-lg font-bold text-lg">
             {{ title }}
         </p>
 
-        <div class="mt-4 p-4 card rounded-lg text-sm text-gray-700  space-y-3">
+        <div class="mt-4 p-4 card rounded-lg text-sm text-gray-700 space-y-3 flex-1">
             <div v-for="(skill, index) in skills" :key="index"
                 :class="['p-4', 'last:border-0', 'border-b', borderColor]">
                 <h3 class="font-semibold text-gray-600 mb-2">{{ skill.name }}</h3>
-                <p class="text-gray-600 ">{{ skill.description }}</p>
+                <p class="text-gray-600">{{ skill.description }}</p>
             </div>
         </div>
     </div>
