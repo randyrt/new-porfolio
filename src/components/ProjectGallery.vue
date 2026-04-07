@@ -390,7 +390,7 @@
                                             <ul class="text-xs text-amber-700 mt-1 space-y-1">
                                                 <li>✓ Accès au salon privé</li>
                                                 <li>✓ Menu dégustation personnalisé</li>
-                                                <li>✓ Accueil par le chef</li>
+                                                <li>✓ Accueil par le chef cuisinier</li>
                                             </ul>
                                         </div>
 
