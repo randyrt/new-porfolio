@@ -85,7 +85,7 @@
 
       <!-- Autres service cards -->
       <div class="card p-6 service card !bg-green-100">
-        <h2 class="title">Autres...</h2>
+        <h2 class="title">Maintenance</h2>
         <p class="text-gray-600">
           En plus de mes compétences principales, je propose également des service
           de conseil technique, de revue de code et d’accompagnement pour vos projets numériques.
