@@ -570,7 +570,7 @@
                                             </option>
                                         </select>
                                         <button @click="registerToEvent" :disabled="!canRegister"
-                                            class="w-full bg-violet-2000 text-white py-2 rounded hover:bg-violet-600 transition disabled:bg-gray-400 disabled:cursor-not-allowed">
+                                            class="w-full btn-violet inline-block text-center btn-effect-5">
                                             S'inscrire
                                         </button>
                                         <p v-if="registrationMessage" class="text-sm text-center"
