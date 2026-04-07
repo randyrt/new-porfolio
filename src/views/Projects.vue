@@ -11,6 +11,9 @@
         <ProjectGallery :images="images4" title="ECHO-WEBLINE"
             description="echo-webLine est une plateforme web développée pour un client basé à Paris, spécialisée dans l’imagerie cardiovasculaire et la gestion d’événements scientifiques. Conçue avec Nuxt.js et Laravel, elle propose une interface moderne et dynamique permettant de présenter des contenus médicaux, gérer les inscriptions à des congrès et valoriser les activités d’une communauté professionnelle. L’application met l’accent sur une expérience utilisateur fluide, une navigation intuitive et une mise en avant visuelle des informations clés, tout en garantissant performance et fiabilité."
             @open-image="openImage" />
+        <ProjectGallery :images="images5" title="AFR FAN"
+            description="Afr-fan est un réseau social dédié à la communauté africaine, offrant une plateforme pour partager des contenus culturels, sociaux et économiques. Développé avec Nuxt.js et Laravel, il propose une interface moderne et intuitive qui facilite les interactions entre les membres, la création de groupes d’intérêt et la diffusion de contenus variés. Afr-fan vise à renforcer les liens au sein de la diaspora africaine en fournissant un espace de partage sécurisé et engageant, tout en mettant en avant les richesses culturelles du continent. Il y a aussi un mode de payement en ligne par VISA ou Paypal pour les utilisateurs qui souhaitent soutenir la plateforme ou accéder à des fonctionnalités premium."
+            @open-image="openImage" />
         <ProjectGallery :images="images3" title="NURSES"
             description="Souper of Nurses est un restaurant belge qui accueille de grands événements sur de longues périodes. Ce site web permet aux utilisateurs de faire des réservations de groupe en ligne, de contacter directement le restaurant, et comprend un panneau d’administration pour gérer les inscriptions, les événements et les places VIP. Développé avec Vue.js et Laravel, il offre une expérience utilisateur fluide et une gestion efficace des réservations, tout en mettant en valeur les événements à venir et les services exclusifs du restaurant."
             @open-image="openImage" />
@@ -84,6 +87,13 @@ const images4: string[] = [
     '/images/projects/echo-webLine/echo-7.PNG',
     '/images/projects/echo-webLine/echo-8.PNG',
     '/images/projects/echo-webLine/echo-12.PNG',
+];
+
+const images5: string[] = [
+    '/images/projects/afr/afr-1.PNG',
+    '/images/projects/afr/afr-2.PNG',
+    '/images/projects/afr/afr-3.PNG',
+    '/images/projects/afr/afr-4.PNG',
 ];
 
 const selectedImage = ref<string | null>(null)
