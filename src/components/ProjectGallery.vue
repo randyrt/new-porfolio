@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="demo-section mt-8">
+        <div class="demo-section mt-8  p-8">
             <div class="demo-header p-8">
                 <h3 class="text-xl font-semibold text-gray-600"></h3>
                 <button @click.stop="toggleDemo" class="btn-effect-5">
@@ -35,7 +35,7 @@
                 leave-active-class="transition-all duration-200 ease-in"
                 leave-from-class="opacity-100 transform translate-y-0"
                 leave-to-class="opacity-0 transform -translate-y-4">
-                <div v-if="showDemo" class="demo-wrapper border rounded-xl overflow-hidden shadow-lg">
+                <div v-if="showDemo" class="demo-wrapper border rounded-xl overflow-hidden shadow-lg ">
                     <div class="bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-2">
                         <span class="text-white text-sm font-mono">Live Demo • {{ title }}</span>
                     </div>
