@@ -469,12 +469,9 @@
                                         <span class="text-xl">👑</span>
                                         Panneau d'administration
                                     </h4>
-                                    <button @click="showAdminPanel = !showAdminPanel" class="text-white text-sm">
-                                        {{ showAdminPanel ? '▲ Masquer' : '▼ Afficher' }}
-                                    </button>
                                 </div>
 
-                                <div v-if="showAdminPanel" class="space-y-3">
+                                <div class="space-y-3">
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
@@ -823,7 +820,6 @@ const nurseEvents = ref([
 ]);
 
 const eventReservationMessage = ref('');
-const showAdminPanel = ref(false);
 
 const adminStats = ref({
     totalReservations: 127,
