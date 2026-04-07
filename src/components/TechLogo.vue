@@ -1,10 +1,10 @@
 <template>
-  <div class="tech-logo-wrapper card" @click="haha">
+  <div class="tech-logo-wrapper" @click="haha">
     <div class="tech-logo-inner card p-1">
       <img
         :src="logo"
         :alt="name"
-        class="tech-logo-img card"
+        class="tech-logo-img"
         loading="lazy"
       />
       <div class="tech-logo-tooltip">
