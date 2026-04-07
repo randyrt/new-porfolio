@@ -678,7 +678,6 @@
                     </div>
 
 
-
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
