@@ -41,41 +41,104 @@
                     </div>
 
                     <div v-if="demoType === 'fid-connect'" class="p-6 bg-gray-50">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Tableau de bord fiscal -->
                             <div class="space-y-4">
-                                <h4 class="font-bold text-gray-800">Simulateur de Dashboard</h4>
-                                <div class="bg-white p-4 rounded-lg shadow">
-                                    <div class="text-sm text-gray-600">Chiffre d'affaires</div>
-                                    <div class="text-2xl font-bold text-violet-600">{{ formatCurrency(demoData.revenue)
-                                        }}</div>
-                                    <input type="range" v-model="demoData.revenue" min="0" max="100000" step="1000"
-                                        class="w-full mt-2">
-                                </div>
-                                <div class="bg-white p-4 rounded-lg shadow">
-                                    <div class="text-sm text-gray-600">Clients actifs</div>
-                                    <div class="text-2xl font-bold text-violet-600">{{ demoData.clients }}</div>
-                                    <input type="range" v-model="demoData.clients" min="0" max="500"
-                                        class="w-full mt-2">
-                                </div>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg shadow">
-                                <h4 class="font-bold mb-3">Performances</h4>
-                                <div class="space-y-2">
-                                    <div class="flex justify-between">
-                                        <span>Taux de croissance</span>
-                                        <span class="font-semibold text-green-600">+{{ growthRate }}%</span>
+                                <h4 class="font-bold text-gray-800">📊 Simulation fiscale & comptable</h4>
+
+                                <!-- Période comptable -->
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="font-semibold">Exercice fiscal 2024</span>
+                                        <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">En
+                                            cours</span>
                                     </div>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-green-500 rounded-full h-2" :style="{ width: growthRate + '%' }">
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between text-sm">
+                                            <span>Chiffre d'affaires</span>
+                                            <span class="font-semibold">{{ formatCurrency(fiscalData.revenue) }}</span>
+                                        </div>
+                                        <input type="range" v-model="fiscalData.revenue" min="0" max="500000"
+                                            step="5000" class="w-full">
+
+                                        <div class="flex justify-between text-sm mt-2">
+                                            <span>Charges déductibles</span>
+                                            <span class="font-semibold">{{ formatCurrency(fiscalData.expenses) }}</span>
+                                        </div>
+                                        <input type="range" v-model="fiscalData.expenses" min="0"
+                                            :max="fiscalData.revenue" step="1000" class="w-full">
+
+                                        <div class="flex justify-between text-sm mt-2">
+                                            <span>Résultat imposable</span>
+                                            <span class="font-semibold"
+                                                :class="taxableResult < 0 ? 'text-green-600' : 'text-orange-600'">
+                                                {{ formatCurrency(taxableResult) }}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                                <button @click="simulateAction"
-                                    class="mt-4 w-full btn-violet inline-block text-center btn-effect-5 ">
-                                    Actualiser les données
-                                </button>
-                                <p v-if="actionMessage" class="text-sm text-green-600 mt-2 text-center">{{ actionMessage
+
+                                <!-- Calcul TVA -->
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold mb-2">💰 TVA due (21%)</h5>
+                                    <div class="text-2xl font-bold text-violet-600">{{ formatCurrency(vatAmount) }}
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-1">Déclaration à soumettre avant le 20 du mois
+                                    </div>
+                                    <button @click="generateTaxDeclaration" class="mt-3 w-full btn-violet text-sm py-2">
+                                        📄 Générer la déclaration
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Amortissements et lettres -->
+                            <div class="space-y-4">
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold mb-2">📉 Plan d'amortissement</h5>
+                                    <div class="space-y-2">
+                                        <div v-for="asset in assets" :key="asset.name"
+                                            class="flex justify-between text-sm">
+                                            <span>{{ asset.name }}</span>
+                                            <div class="flex gap-4">
+                                                <span>{{ formatCurrency(asset.value) }}</span>
+                                                <span class="text-gray-500">{{ asset.amortization }}% / an</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 pt-2 border-t text-xs text-gray-500">
+                                        Amortissement linéaire • Valeur nette comptable: {{ formatCurrency(netBookValue)
+                                        }}
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold mb-2">📋 Génération de documents</h5>
+                                    <div class="space-y-2">
+                                        <button @click="generateDocument('letter')"
+                                            class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
+                                            📝 Lettre d'engagement client
+                                        </button>
+                                        <button @click="generateDocument('report')"
+                                            class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
+                                            📊 Rapport fiscal annuel
+                                        </button>
+                                        <button @click="generateDocument('invoice')"
+                                            class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
+                                            🧾 Facture pro forma
+                                        </button>
+                                    </div>
+                                    <p v-if="docMessage" class="text-green-600 text-xs mt-2 text-center">{{ docMessage
                                     }}</p>
+                                </div>
+
+                                <div class="bg-blue-50 rounded-lg p-3 text-sm">
+                                    <span class="font-semibold">🔔 Alertes fiscales :</span>
+                                    <ul class="text-xs mt-1 space-y-1">
+                                        <li>✓ Déclaration TVA due dans 12 jours</li>
+                                        <li>✓ Réforme fiscale 2025 : nouvelles déductions possibles</li>
+                                        <li>✓ Amortissement matériel à réviser</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -763,9 +826,27 @@ const demoType = computed(() => {
 });
 
 // FID-CONNECT demo data
-const demoData = ref({ revenue: 50000, clients: 250 });
-const actionMessage = ref('');
-const growthRate = computed(() => Math.round((demoData.value.revenue / 100000) * 100));
+const fiscalData = ref({ revenue: 250000, expenses: 145000 });
+const taxableResult = computed(() => fiscalData.value.revenue - fiscalData.value.expenses);
+const vatAmount = computed(() => fiscalData.value.revenue * 0.21);
+const docMessage = ref('');
+
+const assets = ref([
+    { name: 'Matériel informatique', value: 15000, amortization: 20 },
+    { name: 'Mobilier de bureau', value: 8000, amortization: 10 },
+    { name: 'Logiciels', value: 5000, amortization: 33 }
+]);
+const netBookValue = computed(() => assets.value.reduce((sum, a) => sum + a.value * (1 - a.amortization / 100), 0));
+
+const generateTaxDeclaration = () => {
+    toast.success(`Déclaration fiscale générée - TVA due: ${formatCurrency(vatAmount.value)}`);
+};
+
+const generateDocument = (type: string) => {
+    const names = { letter: 'lettre d\'engagement', report: 'rapport fiscal', invoice: 'facture' };
+    docMessage.value = `✓ ${names[type as keyof typeof names]} généré (démo)`;
+    setTimeout(() => { docMessage.value = ''; }, 2000);
+};
 
 // QCP demo data
 const loan = ref({ amount: 50000, rate: 5, years: 10 });
