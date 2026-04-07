@@ -8,8 +8,7 @@
                         <img :src="img" :alt="`${title} capture ${index + 1}`"
                             class="cursor-pointer transition-transform duration-300 group-hover:scale-105"
                             @click="$emit('open-image', img)" />
-                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all">
-                        </div>
+                        <div class="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-10 transition-all"></div>
                     </div>
                 </SwiperSlide>
             </Swiper>
@@ -702,7 +701,7 @@
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-lg font-bold text-gray-800">📝 Créer un nouveau groupe</h3>
                 <button @click="cancelCreateGroup"
-                    class="bg-violet-500 rounded-full w-6 h-6 flex items-center justify-center hover:bg-violet-400 transition">
+                    class="bg-violet-400 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-violet-300 transition">
                     &times;
                 </button>
             </div>

@@ -17,18 +17,20 @@
         <ProjectGallery :images="images3" title="NURSES"
             description="Souper of Nurses est un restaurant belge qui accueille de grands événements sur de longues périodes. Ce site web permet aux utilisateurs de faire des réservations de groupe en ligne, de contacter directement le restaurant, et comprend un panneau d’administration pour gérer les inscriptions, les événements et les places VIP. Développé avec Vue.js et Symfony, il offre une expérience utilisateur fluide et une gestion efficace des réservations, tout en mettant en valeur les événements à venir et les services exclusifs du restaurant."
             @open-image="openImage" />
+
         <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 scale-95"
             enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-200 ease-in"
             leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+
             <div v-if="selectedImage" class="fixed inset-0 flex items-center justify-center z-50 card modal-backdrop"
                 @click.self="closeImage">
                 <div class="relative">
                     <button @click="closeImage"
-                        class="absolute -top-1 left-1 bg-violet-400 text-white p-1 rounded cursor-pointer">
+                        class="absolute -top-2 -right-1 bg-violet-800 text-white rounded cursor-pointer">
                         ✕
                     </button>
                     <img :src="selectedImage" alt="Image sélectionnée"
-                        class="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg" />
+                        class="max-h-[70vh] max-w-[70vw] rounded-lg shadow-lg ring-4 ring-violet-800" />
                 </div>
             </div>
         </transition>
