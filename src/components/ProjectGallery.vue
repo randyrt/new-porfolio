@@ -310,7 +310,7 @@
                                                 <div class="font-medium text-gray-800 text-sm">{{ group.name }}</div>
                                                 <div class="text-xs text-gray-500">{{ group.members }} membres</div>
                                             </div>
-                                            <button class="text-xs"
+                                            <button class="text-xs font-medium transition btn-effect-20"
                                                 :class="group.joined ? 'text-green-600' : 'text-violet-500'">
                                                 {{ group.joined ? '✓ Membre' : '+ Rejoindre' }}
                                             </button>
@@ -511,7 +511,7 @@
                                     </div>
 
                                     <button @click="reserveEvent" :disabled="selectedEvent === null"
-                                        class="w-full mt-4 bg-amber-500 text-white py-2 rounded-lg hover:bg-amber-600 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                                        class="w-full btn-effect-5-submit transition disabled:opacity-50 disabled:cursor-not-allowed mt-4">
                                         Réserver pour cet événement
                                     </button>
                                     <p v-if="eventReservationMessage" class="text-sm text-center mt-2"
@@ -557,7 +557,7 @@
 
                                     <div class="flex gap-2">
                                         <button @click="addDemoEvent"
-                                            class="flex-1 bg-green-600 text-white py-1 rounded text-sm hover:bg-green-700 transition">
+                                            class="flex-1 bg-violet-600 text-white py-1 rounded text-sm hover:bg-violet-700 transition">
                                             + Ajouter un événement
                                         </button>
                                         <button @click="resetDemoData"
