@@ -591,10 +591,6 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">Paramètres cardiaques</span>
-                                        <button @click="simulateHeartData"
-                                            class="w-1/2 btn-violet inline-block text-center btn-effect-5">
-                                            Simuler nouvelle donnée
-                                        </button>
                                     </div>
                                     <div class="space-y-3">
                                         <div>
@@ -632,6 +628,10 @@
                                             <input type="range" v-model="heartData.oxygen" min="70" max="100" step="1"
                                                 class="w-full mt-1">
                                         </div>
+                                         <button @click="simulateHeartData"
+                                            class="w-1/2 btn-violet inline-block text-center btn-effect-5">
+                                            Simuler nouvelle donnée
+                                        </button>
                                     </div>
                                 </div>
 
