@@ -348,10 +348,9 @@
                             <!-- Section Réservation -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    <span class="text-2xl">🍽️</span>
+                                    <span class="text-2xl">🍷</span> <!-- Verre de vin -->
                                     Simulateur de réservation
                                 </h4>
-
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="space-y-4">
                                         <div>
