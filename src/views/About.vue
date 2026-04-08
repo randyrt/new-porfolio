@@ -139,7 +139,7 @@ const registerToEvent = (event: Event): boolean => { ... }</pre>
               <div class="border-l-4 border-green-500 pl-4">
                 <h4 class="font-bold text-lg flex items-center gap-2">
                   <font-awesome-icon :icon="['fab', 'github']" class="text-gray-700" />
-                  <span>GitHub Actions CI/CD</span>
+                  <span>Github Actions CI/CD</span>
                 </h4>
                 <div class="bg-gray-900 text-green-400 p-3 rounded-md text-xs font-mono mt-2">
                   <pre>name: Portfolio App
@@ -186,8 +186,8 @@ jobs:
                   </div>
                   <div>
                     <font-awesome-icon :icon="['fas', 'check-circle']" class="text-violet-600 text-xl mb-1" />
-                    <div class="text-2xl font-bold text-violet-600">CI/CD</div>
-                    <div class="text-xs text-gray-600">Github Action (Commit)</div>
+                    <div class="text-2xl font-bold text-violet-600">Check</div>
+                    <div class="text-xs text-gray-600">Github Actions (Commit)</div>
                   </div>
                   <div>
                     <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="text-violet-600 text-xl mb-1" />
