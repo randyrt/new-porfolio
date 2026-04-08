@@ -201,7 +201,7 @@ jobs:
                 Code source 
                 <a href="https://github.com/randyrt/new-porfolio" target="_blank"
                   class="text-violet-600 hover:text-violet-400 transition-colors !underline">Voir sur GitHub</a> |
-                    Performances <a href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/cqdgyeqkqx?form_factor=desktop" target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors !underline">Voir PageSpeed Insights</a>
+                    Performances <a href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/cqdgyeqkqx?form_factor=desktop" target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors !underline">Voir sur PageSpeed Insights</a>
               </div>
             </div>
           </div>
