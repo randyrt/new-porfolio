@@ -38,7 +38,7 @@
         <div v-if="showTechDetails"
           class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           @click.self="showTechDetails = false">
-          <div class="bg-white rounded-xl max-w-4xl w-full max-h-[80vh] overflow-y-auto">
+          <div class="bg-white max-w-4xl w-full max-h-[80vh] overflow-y-auto">
             <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
               <h3 class="text-xl font-bold flex items-center gap-2">
                 <font-awesome-icon :icon="['fas', 'tools']" class="text-violet-600" />
