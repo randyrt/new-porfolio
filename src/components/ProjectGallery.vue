@@ -35,7 +35,8 @@
                 leave-active-class="transition-all duration-200 ease-in"
                 leave-from-class="opacity-100 transform translate-y-0"
                 leave-to-class="opacity-0 transform -translate-y-4">
-                <div v-if="showDemo" class="demo-wrapper  border-2 border-violet-500 rounded-xl overflow-hidden shadow-lg ">
+                <div v-if="showDemo"
+                    class="demo-wrapper  border-2 border-violet-500 rounded-xl overflow-hidden shadow-lg ">
                     <div class="bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-2">
                         <span class="text-white text-sm font-mono">Live Demo • {{ title }}</span>
                     </div>
@@ -128,7 +129,7 @@
                                         </button>
                                     </div>
                                     <p v-if="docMessage" class="text-green-600 text-xs mt-2 text-center">{{ docMessage
-                                        }}</p>
+                                    }}</p>
                                 </div>
 
                                 <div class="bg-blue-50 rounded-lg p-3 text-sm">
@@ -170,7 +171,7 @@
                                     <div class="flex justify-between">
                                         <span>Mensualité</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>Total payé</span>
@@ -242,7 +243,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -281,7 +282,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -534,7 +535,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">Réservations</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -632,9 +633,11 @@
                                             class="w-full btn-violet inline-block text-center btn-effect-5">
                                             S'inscrire
                                         </button>
-                                        <p v-if="registrationMessage" class="text-sm text-center italic" :class="registrationMessage.includes('✓')
-                                            ? 'text-green-600'
-                                            : 'text-red-600 font-thin'">
+                                        <p v-if="registrationMessage"
+                                            class="text-xs text-center italic p-2 w-fit flex justify-center rounded mx-auto"
+                                            :class="registrationMessage.includes('✓')
+                                                ? 'text-green-600 bg-green-300'
+                                                : 'text-red-600 font-thin bg-red-300'">
                                             {{ registrationMessage }}
                                         </p>
                                     </div>
