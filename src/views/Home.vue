@@ -62,15 +62,15 @@ const loading = ref<boolean>(true)
 
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "/images/cv/the_real_final_cv.pdf";
-  link.download = "the_real_final_cv.pdf"; 
+  link.href = "/images/cv/Randy_real_cv.pdf";
+  link.download = "Randy_real_cv.pdf"; 
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 }
 
 function viewCV() {
-  window.open("/images/cv/the_real_final_cv.pdf", "_blank");
+  window.open("/images/cv/Randy_real_cv.pdf", "_blank");
 }
 
 const goToContact = () => {
