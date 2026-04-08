@@ -80,7 +80,7 @@
               <!-- TypeScript -->
               <div class="border-l-4 border-blue-500 pl-4">
                 <h4 class="font-bold text-lg flex items-center gap-2">
-                  <font-awesome-icon :icon="['fas', 'code']" class="text-blue-600" />
+                  <span class="text-xs text-blue-700 px-1">TS</span>
                   <span>TypeScript strict</span>
                 </h4>
                 <div class="bg-gray-900 text-green-400 p-3 rounded-md text-xs font-mono mt-2">
