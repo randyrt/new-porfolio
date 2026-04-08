@@ -7,7 +7,7 @@ import Toast from "vue-toastification/dist/index.mjs"
 import "vue-toastification/dist/index.css"
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-
+import { createHead } from '@vueuse/head'
 import Particles from "vue3-particles"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -67,11 +67,15 @@ const options = {
 initTheme()
 
 const app = createApp(App)
+const head = createHead()
 
+app.use(head)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(Toast, options)
 app.use(router as any)
 app.use(Particles)
+
+
 app.mount('#app')
 
 

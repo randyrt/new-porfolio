@@ -8,7 +8,7 @@
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit",
-     "test": "vitest",
+    "test": "vitest",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
@@ -21,6 +21,7 @@
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/vue-fontawesome": "^3.1.2",
     "@tailwindcss/vite": "^4.1.13",
+    "@vueuse/head": "^2.0.0",
     "aos": "^2.3.4",
     "axios": "^1.12.2",
     "canvas-confetti": "^1.9.3",

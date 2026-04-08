@@ -53,6 +53,18 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Accueil - Randy Portfolio',
+  meta: [
+    {
+      name: 'description',
+      content: 'Bienvenue sur le portfolio de Randy.'
+    }
+  ]
+})
+
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 
