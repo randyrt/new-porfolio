@@ -221,7 +221,7 @@
                                                         class="text-gray-500 hover:text-violet-500 text-sm">📅
                                                         Événement</button>
                                                 </div>
-                                                <button @click="createPost" :disabled="!newPost.content.trim()"
+                                                <button @click="createPost"
                                                     class="btn-violet inline-block text-center btn-effect-5 disabled:bg-gray-400 text-sm">
                                                     Publier
                                                 </button>
@@ -628,12 +628,12 @@
                                                     'Disponible' }})
                                             </option>
                                         </select>
-                                        <button @click="registerToEvent" :disabled="!canRegister"
+                                        <button @click="registerToEvent"
                                             class="w-full btn-violet inline-block text-center btn-effect-5">
                                             S'inscrire
                                         </button>
                                         <p v-if="registrationMessage" class="text-sm text-center"
-                                            :class="registrationMessage.includes('✓') ? 'text-green-600' : 'text-red-600'">
+                                            :class="registrationMessage.includes('✓') ? 'text-green-600' : 'text-red-400'">
                                             {{ registrationMessage }}
                                         </p>
                                     </div>
@@ -775,7 +775,7 @@
                     class="btn-violet btn-effect-5">
                     Annuler
                 </button>
-                <button @click="confirmCreateGroup" :disabled="isCreatingGroup || !newGroupName.trim()"
+                <button @click="confirmCreateGroup" :disabled="isCreatingGroup"
                      class="btn-violet btn-effect-5">
                     {{ isCreatingGroup ? 'Création...' : 'Valider' }}
                 </button>
@@ -1025,23 +1025,36 @@ const deleteEvent = (idx: number) => {
     toast.info('Événement supprimé');
 };
 
+
+const showMessage = (message: string, isError = true) => {
+    registrationMessage.value = message;
+    setTimeout(() => {
+        registrationMessage.value = '';
+    }, 3000);
+};
+
 const registerToEvent = () => {
     const eventId = parseInt(registration.value.eventId);
     const event = events.value[eventId];
 
+    if(!canRegister.value) {
+        showMessage('👮‍♂️ Veuillez remplir tous les champs ');
+        return;
+    }
+
     if (!event) {
-        registrationMessage.value = '❌ Événement non trouvé';
+        showMessage('❌ Événement non trouvé');
         return;
     }
 
     if (event.status === 'complet') {
-        registrationMessage.value = '❌ Cet événement est déjà complet';
+        showMessage('❌ Cet événement est déjà complet');
         return;
     }
 
     if (event.participants + 1 > event.maxParticipants) {
         event.status = 'complet';
-        registrationMessage.value = '❌ Désolé, cet événement vient d\'être complet';
+        showMessage('❌ Désolé, cet événement vient d\'être complet');
         return;
     }
 
@@ -1146,7 +1159,10 @@ const isProcessing = ref(false);
 const paymentMessage = ref('');
 
 const createPost = () => {
-    if (!newPost.value.content.trim()) return;
+    if (!newPost.value.content.trim()) {
+        toast.warning('Le contenu de la publication ne peut pas être vide 👮‍♂️');
+        return;
+    }
 
     posts.value.unshift({
         author: 'Vous',
@@ -1208,7 +1224,7 @@ const createGroup = () => {
 
 const confirmCreateGroup = () => {
     if (!newGroupName.value.trim()) {
-        toast.warning('Veuillez entrer un nom de groupe');
+        toast.warning('Veuillez entrer le nom du groupe 👮‍♂️');
         return;
     }
 
