@@ -128,7 +128,7 @@
                                         </button>
                                     </div>
                                     <p v-if="docMessage" class="text-green-600 text-xs mt-2 text-center">{{ docMessage
-                                    }}</p>
+                                        }}</p>
                                 </div>
 
                                 <div class="bg-blue-50 rounded-lg p-3 text-sm">
@@ -170,7 +170,7 @@
                                     <div class="flex justify-between">
                                         <span>Mensualité</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>Total payé</span>
@@ -242,7 +242,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                        }}</span>
+                                                            }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -281,7 +281,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                            }}</span>
+                                                                }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -534,7 +534,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                                }}</div>
+                                            }}</div>
                                             <div class="text-xs text-gray-300">Réservations</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -632,8 +632,9 @@
                                             class="w-full btn-violet inline-block text-center btn-effect-5">
                                             S'inscrire
                                         </button>
-                                        <p v-if="registrationMessage" class="text-sm text-center"
-                                            :class="registrationMessage.includes('✓') ? 'text-green-600' : 'text-red-400'">
+                                        <p v-if="registrationMessage" class="text-sm text-center italic" :class="registrationMessage.includes('✓')
+                                            ? 'text-green-600'
+                                            : 'text-red-600 font-thin'">
                                             {{ registrationMessage }}
                                         </p>
                                     </div>
@@ -771,12 +772,10 @@
             </div>
 
             <div class="flex gap-2 space-x-4 justify-center">
-                <button @click="cancelCreateGroup"
-                    class="btn-violet btn-effect-5">
+                <button @click="cancelCreateGroup" class="btn-violet btn-effect-5">
                     Annuler
                 </button>
-                <button @click="confirmCreateGroup" :disabled="isCreatingGroup"
-                     class="btn-violet btn-effect-5">
+                <button @click="confirmCreateGroup" :disabled="isCreatingGroup" class="btn-violet btn-effect-5">
                     {{ isCreatingGroup ? 'Création...' : 'Valider' }}
                 </button>
             </div>
@@ -1037,8 +1036,8 @@ const registerToEvent = () => {
     const eventId = parseInt(registration.value.eventId);
     const event = events.value[eventId];
 
-    if(!canRegister.value) {
-        showMessage('👮‍♂️ Veuillez remplir tous les champs ');
+    if (!canRegister.value) {
+        showMessage('❌ Veuillez remplir tous les champs ');
         return;
     }
 
