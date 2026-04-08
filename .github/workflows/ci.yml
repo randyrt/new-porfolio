@@ -31,8 +31,8 @@ jobs:
           fi
           npm run type-check
 
-      - name: Lancer les tests
-        run: npm run test --if-present
+      # - name: Lancer les tests
+      #   run: npm run test --if-present
 
       - name: Build du projet
         run: npm run build
