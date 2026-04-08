@@ -21,7 +21,7 @@
     </section>
 
     <div
-      class="card p-2 service bg-gradient-to-r from-green-50 to-green-100 border border-green-200 rounded-xl shadow-sm hover:shadow-md transition-all">
+      class="card p-2">
       <div class="flex items-center justify-between gap-3">
         <p class="text-gray-700 text-sm flex-1">Vous êtes curieux ?
           <span class="font-medium text-gray-800">Découvrez la performance brute de mon portfolio</span>
