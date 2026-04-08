@@ -186,8 +186,8 @@ jobs:
                   </div>
                   <div>
                     <font-awesome-icon :icon="['fas', 'check-circle']" class="text-violet-600 text-xl mb-1" />
-                    <div class="text-2xl font-bold text-violet-600">Check</div>
-                    <div class="text-xs text-gray-600">Github Actions (Commit)</div>
+                    <div class="text-2xl font-bold text-violet-600">Push</div>
+                    <div class="text-xs text-gray-600">Pipeline CI (Build commit)</div>
                   </div>
                   <div>
                     <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="text-violet-600 text-xl mb-1" />
