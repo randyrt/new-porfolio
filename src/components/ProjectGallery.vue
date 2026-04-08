@@ -636,8 +636,8 @@
                                         <p v-if="registrationMessage"
                                             class="text-xs text-center italic p-2 w-fit flex justify-center rounded mx-auto"
                                             :class="registrationMessage.includes('✓')
-                                                ? 'text-green-600 bg-green-300'
-                                                : 'text-red-600 font-thin bg-red-300'">
+                                                ? 'text-green-600 border-1 border-green-600'
+                                                : 'text-red-600 border-1 border-red-600'">
                                             {{ registrationMessage }}
                                         </p>
                                     </div>
