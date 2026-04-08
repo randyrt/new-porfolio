@@ -142,7 +142,7 @@ const registerToEvent = (event: Event): boolean => { ... }</pre>
                   <span>Github Actions CI/CD</span>
                 </h4>
                 <div class="bg-gray-900 text-green-400 p-3 rounded-md text-xs font-mono mt-2">
-                  <pre>name: Portfolio App
+                  <pre>name: Porfolio App
 on: [push, pull_request]
 
 jobs:
