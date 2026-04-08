@@ -198,9 +198,9 @@ jobs:
               </div>
 
               <div class="text-center text-sm text-gray-500 border-t pt-4">
-                Code source disponible sur GitHub
+                Code source 
                 <a href="https://github.com/randyrt/new-porfolio" target="_blank"
-                  class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur GitHub</a>
+                  class="text-violet-600 hover:text-violet-400 transition-colors !underline">Voir sur GitHub</a>
               </div>
             </div>
           </div>
