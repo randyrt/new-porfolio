@@ -684,3 +684,7 @@ a {
         width: 40px;
     }
 }
+
+/* .badge-tech {
+  @apply bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full inline-flex items-center justify-center;
+} */

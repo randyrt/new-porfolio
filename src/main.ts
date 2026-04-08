@@ -13,21 +13,40 @@ import Particles from "vue3-particles"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import { 
+  faVuejs, 
+  faGithub, 
+  faLinkedin, 
+  faJs,          
+  faNodeJs,      
+  faNpm,          
+  faGitAlt       
+} from '@fortawesome/free-brands-svg-icons'
+
+
 import {
   faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
   faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
   faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
-  faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime
+  faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
+  faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
+  faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
+  faTimes, faChartPie
 } from '@fortawesome/free-solid-svg-icons'
 
+
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+
 
 library.add(
-  faHome, faTrophy, faStar, faCode, faCogs, faQuoteRight, faProjectDiagram, faInfoCircle,
-  faUser, faClock, faPlus, faEnvelope, faGithub, faLinkedin,
-  faIdBadge, faLightbulb, faChartLine, faHeart, faTools, faWrench, faBrain,
-  faMountain, faHandshake, faBriefcase, faSun, faMoon, faRocket, faSuitcase, faBusinessTime
+  faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
+  faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
+  faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
+  faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
+  faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
+  faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
+  faTimes, faChartPie,faEnvelope,
+  faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt
 )
 
 
