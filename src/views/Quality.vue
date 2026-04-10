@@ -2,7 +2,12 @@
     <Loading v-if="loading" message="Mes qualités..." />
     <div v-else class="p-4">
         <AnimatedTitle text=" « Randy en tant que dévellopeur web et mobile  » " aos="fade-down" />
-        <div class=" min-h-screen p-4 flex flex-col items-center justify-center">
+        <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-16" data-aos="fade-up">
+            <p class="text-lg italic text-gray-700 dark:text-gray-300">
+               <span class="text-violet-800 text-lg">«</span>  Au fil des projets que j'ai réalisés seul ou avec une équipe, j’ai compris que les compétences techniques ne suffisent pas. Ce qui différencie un développeur efficace, c’est son état d’esprit. Voici les principes qui guident mon travail au quotidien. <span  class="text-violet-800 text-lg">»</span> 
+            </p>
+        </div>
+        <div class=" p-4 flex flex-col items-center justify-center">
             <section class="section-anime">
                 <div class="container mt-10 p-4">
                     <div class="row wrapper">
@@ -74,19 +79,29 @@
                 </div>
             </section>
         </div>
+        <div class="flex justify-center items-center">
+            <button class="btn-violet btn-effect-5" @click="viewMyProject">Voir mes projets</button>
+        </div>
     </div>
 </template>
 
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
 const loading = ref(true)
+const router = useRouter()
 
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
     }, 1000)
 })
+
+function viewMyProject() {
+     router.push('/projects')
+}
 
 
 </script>

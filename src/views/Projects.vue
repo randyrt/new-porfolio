@@ -1,7 +1,7 @@
 <template>
     <Loading v-if="loading" message="Mes récents projets..." />
     <div v-else>
-        <AnimatedTitle text="« Voici quelques captures de mes plus grands et récents projets »" aos="fade-down" />
+        <AnimatedTitle text="« Quelques projets dont je suis particulièrement fier »" aos="fade-down" />
         <ProjectGallery :images="images1" title="FID-CONNECT"
             description="Fid-Connect est une plateforme tout-en-un qui centralise la gestion comptable, fiscale et administrative des entreprises. Elle va au-delà du simple suivi des tâches en intégrant la gestion des réformes fiscales, le suivi des parts, la génération de lettres d’engagement, l’automatisation de processus clés, ammortissement, TVA, gestion de rendez-vous, payment en ligne, ect. Développée avec Vue.js et Laravel, elle est adaptée aux exigences de la réglementation belge et permet d’optimiser la productivité tout en sécurisant les opérations."
             @open-image="openImage" />
