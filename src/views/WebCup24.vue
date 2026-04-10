@@ -26,7 +26,7 @@
     </div>
     <div class="min-h-screen p-8 flex items-center">
       <div class=" w-full max-w-4xl border card justify-center !p-8" >
-        <h1 class="text-3xl font-bold mt-0 mb-2 text-violet-800">WebCup 2024 !<span class="text-5xl emoji">🏆</span></h1>
+        <h1 class="text-2xl font-bold mt-0 mb-2 !text-violet-800">WebCup 2024 !<span class="text-5xl emoji">🏆</span></h1>
         <p class="text-lg text-gray-700 mb-4">
           La webCup est une compétition de développement web qui se déroule chaque année à Madagascar. En 2024, j'ai eu
           l'honneur de participer à cet événement prestigieux et de me classer à la 2ème place.

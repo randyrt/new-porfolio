@@ -11,7 +11,7 @@
       <div class="md:text-sm lg:text-base max-w-3xl pad border p-6 card flex flex-col justify-between min-h-[500px]"
         data-aos="fade-up">
         <div class="p-8">
-          <h1 class="text-3xl font-bold mt-6 mb-2 !text-violet-800">Bienvenue sur mon portfolio !<span
+          <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800">Bienvenue sur mon portfolio !<span
               class="text-5xl ml-2 emoji"> 😎</span></h1>
           <p class="text-lg text-gray-700 mb-4">
             Je suis Randy, un développeur <span class="font-semibold">fullStack</span> passionné par la création

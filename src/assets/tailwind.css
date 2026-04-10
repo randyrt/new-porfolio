@@ -524,6 +524,7 @@ a {
 .wrapper h4 {
   font-weight: 600;
   color: #5b21b6;
+  font-size: 1.25rem;
 }
 
 @keyframes scroll {
