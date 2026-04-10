@@ -3,17 +3,17 @@
     <div class="crystal-cube">
       <div class="crystal-cube">
         <!-- Face avant - Vue.js -->
-        <div class="cube-face front">
+        <div class="cube-face right">
           <font-awesome-icon icon="fab fa-vuejs" class="cube-icon vue-icon" />
         </div>
 
         <!-- Face arrière - Laravel -->
-        <div class="cube-face back">
+        <div class="cube-face front">
           <font-awesome-icon icon="fab fa-laravel" class="cube-icon laravel-icon" />
         </div>
 
         <!-- Face droite - TypeScript -->
-        <div class="cube-face right">
+        <div class="cube-face back">
           <font-awesome-icon :icon="['fab', 'js']" class="cube-icon typescript-icon" />
         </div>
 
@@ -87,27 +87,27 @@ export default defineComponent({
 }
 
 .vue-icon {
-  color: rgba(65, 184, 131, 0.9); 
+  color: rgba(65, 184, 131, 0.9);
 }
 
 .typescript-icon {
-  color: rgba(244, 248, 9, 0.9); 
+  color: rgba(244, 248, 9, 0.9);
 }
 
 .docker-icon {
-  color: rgba(0, 147, 221, 0.9); 
+  color: rgba(0, 147, 221, 0.9);
 }
 
 .mysql-icon {
-  color: rgba(0, 117, 143, 0.9); 
+  color: rgba(0, 117, 143, 0.9);
 }
 
 .laravel-icon {
-  color: rgba(255, 56, 56, 0.9); 
+  color: rgba(255, 56, 56, 0.9);
 }
 
 .github-icon {
-  color: rgba(19, 3, 3, 0.9); 
+  color: rgba(19, 3, 3, 0.9);
 }
 
 
