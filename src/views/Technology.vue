@@ -30,7 +30,7 @@
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/html5.png" name="HTML5" />
                     <TechLogo logo="/images/tecnos/css.png" name="CSS3" />
-                    <TechLogo logo="/images/tecnos/js.png" name="JAVASCRIPT" />
+                    <TechLogo logo="/images/tecnos/js.jpeg" name="JAVASCRIPT" />
                     <TechLogo logo="/images/tecnos/tailwinds.png" name="TAILWINDCSS" />
                     <TechLogo logo="/images/tecnos/jquery.png" name="JQUERY" />
                 </DivSlot>
@@ -42,8 +42,7 @@
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/php.png" name="PHP" />
                     <TechLogo logo="/images/tecnos/node.webp" name="NODEJS" />
-                    <TechLogo logo="/images/tecnos/dbeaver.png" name="DBEAVER" />
-                    <TechLogo logo="/images/tecnos/mysql.jpg" name="MYSQL" />
+                    <TechLogo logo="/images/tecnos/sql.png" name="MYSQL" />
                     <TechLogo logo="/images/tecnos/mariadb.png" name="MARIADB" />
                 </DivSlot>
             </div>
@@ -53,7 +52,7 @@
                 <logoSection title="Frameworks" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/vuejs.jpg" name="VUE.JS" />
-                    <TechLogo logo="/images/tecnos/nuxt.webp" name="NUXT.JS" />
+                    <TechLogo logo="/images/tecnos/nuxt.png" name="NUXT.JS" />
                     <TechLogo logo="/images/tecnos/ionic.png" name="IONIC" />
                     <TechLogo logo="/images/tecnos/laravel.png" name="LARAVEL" />
                     <TechLogo logo="/images/tecnos/synfony.png" name="SYMFONY" />
@@ -70,7 +69,7 @@
                     <TechLogo logo="/images/tecnos/git.png" name="GIT" />
                     <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
                     <TechLogo logo="/images/tecnos/pma.png" name="PHPMYADMIN" />
-                    <TechLogo logo="/images/tecnos/ubuntu_terminal.png" name="UBUNTU TERMINAL" />
+                    <TechLogo logo="/images/tecnos/dbeaver.png" name="DBEAVER" />
                     <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
                     <TechLogo logo="/images/tecnos/postman.png" name="POSTMAN" />
                     <TechLogo logo="/images/tecnos/chrome.png" name="CHROME DEVTOOLS" />
@@ -81,13 +80,12 @@
             <div class="card tech-category">
                 <logoSection title="GitOps & Sécurisation" />
                 <DivSlot>
-                    <TechLogo logo="/images/tecnos/ci&cd.png" name="CI/CD" />
-                    <TechLogo logo="/images/tecnos/github-action.jpeg" name="GITHUB ACTIONS" />
+                    <TechLogo logo="/images/tecnos/ci_cd.png" name="CI/CD" />
                     <TechLogo logo="/images/tecnos/ftp.png" name="FTP" />
                     <TechLogo logo="/images/tecnos/tls.webp" name="TLS" />
                     <TechLogo logo="/images/tecnos/ssl.png" name="SSL" />
                     <TechLogo logo="/images/tecnos/ssh.jpg" name="SSH" />
-                    <TechLogo logo="/images/tecnos/filezilla.jpg" name="FILEZILLA" />
+                    <TechLogo logo="/images/tecnos/fl.png" name="FILEZILLA" />
                 </DivSlot>
             </div>
 
@@ -95,7 +93,7 @@
             <div class="card tech-category">
                 <logoSection title="Script & Automatisation" />
                 <DivSlot>
-                    <TechLogo logo="/images/tecnos/python.jpeg" name="PYTHON" />
+                    <TechLogo logo="/images/tecnos/python.png" name="PYTHON" />
                 </DivSlot>
             </div>
         </div>

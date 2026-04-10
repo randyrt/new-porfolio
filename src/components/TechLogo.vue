@@ -1,10 +1,10 @@
 <template>
   <div class="tech-logo-wrapper" @click="haha">
-    <div class="tech-logo-inner card p-1">
+    <div class="tech-logo-inner shadow-lg p-1 rounded-full">
       <img
         :src="logo"
         :alt="name"
-        class="tech-logo-img"
+        class="tech-logo-img rounded-full"
         loading="lazy"
       />
       <div class="tech-logo-tooltip">
@@ -44,8 +44,8 @@ defineProps<{
 }
 
 .tech-logo-img {
-  width: 70px;
-  height: 70px;
+  width: 67px;
+  height: 67px;
   object-fit: contain;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
