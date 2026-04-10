@@ -26,11 +26,11 @@
                 @click.self="closeImage">
                 <div class="relative">
                     <button @click="closeImage"
-                        class="absolute -top-2 -right-1 bg-violet-800 hover:bg-violet-600 text-white rounded-full cursor-pointer">
+                        class="absolute -top-2 -right-1 bg-purple-500 hover:bg-violet-600 text-white rounded-full cursor-pointer">
                         x
                     </button>
                     <img :src="selectedImage" alt="Image sélectionnée"
-                        class="max-h-[70vh] max-w-[70vw] rounded-lg shadow-lg ring-4 ring-violet-800" />
+                        class="max-h-[70vh] max-w-[70vw] rounded-lg shadow-lg ring-4 ring-purple-500" />
                 </div>
             </div>
         </transition>
