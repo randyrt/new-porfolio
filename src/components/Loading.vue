@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <p class="text-sm text-violet-400 font-semibold mt-6" v-if="message">{{ message }}</p>
+    <p class="text-sm !text-violet-400 !font-semibold mt-6" v-if="message">{{ message }}</p>
   </div>
 </template>
 
