@@ -14,7 +14,7 @@
             </Swiper>
             <div class="flex justify-center card h-auto w-full md:w-1/3 mt-4 md:mt-0">
                 <p class="flex flex-col items-center p-6 text-gray-600">
-                    <span class="text-lg not-even:text-gray-800">- {{ title }} -</span>
+                    <span class="text-lg text-violet-800">- {{ title }} -</span>
                     <span>{{ description }}</span>
                 </p>
             </div>

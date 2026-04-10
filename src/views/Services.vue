@@ -189,6 +189,7 @@ onMounted(() => {
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 10px;
+  color:  #5b21b6;
 }
 
 ul {

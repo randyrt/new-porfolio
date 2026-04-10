@@ -1,6 +1,6 @@
 <template>
     <div :class="[bgColor, 'border border-yellow-50 h-auto rounded-lg p-2 flex-1 min-w-[200px]', 'flex flex-col']">
-        <p class="p-4 card mt-2 text-center rounded-lg font-bold text-lg">
+        <p class="p-4 card mt-2 text-center rounded-lg !font-bold text-lg !text-violet-800">
             {{ title }}
         </p>
 

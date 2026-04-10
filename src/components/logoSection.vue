@@ -19,6 +19,10 @@ defineProps<{
     margin-bottom: 1.5rem;
 }
 
+.section-title {
+    color:#5b21b6;
+}
+
 
 .section-divider {
     width: 50px;
