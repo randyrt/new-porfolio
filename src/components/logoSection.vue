@@ -20,7 +20,7 @@ defineProps<{
 }
 
 .section-title {
-    color: #5b21b6;
+    color: #6B21A8;
     font-size: 1.25rem;
 }
 

@@ -145,8 +145,7 @@
 
     </div>
 
-
-    <div class="flex justify-center mt-6">
+    <div class="flex justify-center mt-2">
       <button class="btn-violet btn-effect-5" @click="goToContact">
         Travaillons ensemble
       </button>

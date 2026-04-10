@@ -4,6 +4,15 @@
     <div class="p-4 w-full  flex flex-col items-center justify-center">
       <AnimatedTitle text=" « Vous pouvez me contacter ici de deux façons.  » " aos="fade-down" />
     </div>
+    <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-16" data-aos="fade-up">
+      <p class="text-lg italic text-gray-700 dark:text-gray-300">
+        <span class="text-violet-800 text-lg">«</span>
+        Travailler avec des équipes et décideurs internationaux m’a appris une chose : la meilleure technologie ne
+        remplace pas une bonne discussion.
+        Parlons de votre projet — sans engagement, avec sérieux et bienveillance.
+        <span class="text-violet-800 text-lg">»</span>
+      </p>
+    </div>
     <div class="w-full flex justify-center items-center p-16 gap-16 testimonials-container" data-aos="fade-up">
       <div class="contact-form card p-8">
         <div class="form-group">
@@ -18,8 +27,9 @@
           <textarea rows="6" v-model="form.message" required></textarea>
           <label class="text-gray-500 !font-semibold">Message</label>
         </div>
-        <button :class="[sending ? 'cursor-not-allowed submit-btn btn-violet btn-effect-5' : 'submit-btn btn-violet btn-effect-5']" type="submit"
-          :disabled="sending" @click="sendEmail">
+        <button
+          :class="[sending ? 'cursor-not-allowed submit-btn btn-violet btn-effect-5' : 'submit-btn btn-violet btn-effect-5']"
+          type="submit" :disabled="sending" @click="sendEmail">
           {{ sending ? "Envoi..." : "Envoyer" }}
         </button>
       </div>
@@ -79,7 +89,7 @@ const sendEmail = async () => {
     toast.error("Veuillez entrer une adresse e-mail valide 😏 !")
     return;
   }
- 
+
   sending.value = true
 
   try {
