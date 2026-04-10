@@ -28,7 +28,7 @@ defineProps<{
 .section-divider {
     width: 50px;
     height: 3px;
-    background: rgba(0, 0, 0, 0.589);
+    background: #5b21b6;
     border-radius: 2px;
 }
 </style>
