@@ -715,14 +715,10 @@ a {
     width: 40px;
   }
 }
-  
+
 @media screen and (max-width: 748px) {
   .italic {
     font-size: 10px !important;
   }
 
 }
-
-/* .badge-tech {
-  @apply bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full inline-flex items-center justify-center;
-} */
