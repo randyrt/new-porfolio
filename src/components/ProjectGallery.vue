@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="text-xs text-gray-500 mt-1">Déclaration à soumettre avant le 20 du mois
                                     </div>
-                                    <button @click="generateTaxDeclaration" class="mt-3 w-full btn-violet text-sm py-2">
+                                    <button @click="generateTaxDeclaration" class="mt-3 w-full btn-violet btn-effect-5 text-sm py-2">
                                         📄 Générer la déclaration
                                     </button>
                                 </div>
