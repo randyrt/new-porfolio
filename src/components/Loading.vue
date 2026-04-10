@@ -57,8 +57,8 @@ export default defineComponent({
 
 .cube-face {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(217, 70, 239, 0.2));
   border: 1.5px solid rgba(168, 85, 247, 0.5);
   backdrop-filter: blur(4px);
