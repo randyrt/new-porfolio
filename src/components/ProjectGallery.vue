@@ -2,7 +2,8 @@
     <div class="project-container mb-16 card p-4">
         <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 gap-4 md:gap-0">
             <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]"
-                class="mySwiper w-full md:w-2/3 rounded-lg border-3 border-purple-500" :loop="true" :autoplay="{ delay: 2500 }" navigation>
+                class="mySwiper w-full md:w-2/3 rounded-lg border-3 border-purple-500" :loop="true"
+                :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
                     <div class="relative group overflow-hidden rounded-lg shadow-md">
                         <img :src="img" :alt="`${title} capture ${index + 1}`"
@@ -86,7 +87,8 @@
                                     </div>
                                     <div class="text-xs text-gray-500 mt-1">Déclaration à soumettre avant le 20 du mois
                                     </div>
-                                    <button @click="generateTaxDeclaration" class="mt-3 w-full btn-violet btn-effect-5 text-sm py-2">
+                                    <button @click="generateTaxDeclaration"
+                                        class="mt-3 w-full btn-violet btn-effect-5 text-sm py-2">
                                         📄 Générer la déclaration
                                     </button>
                                 </div>
@@ -128,8 +130,10 @@
                                             🧾 Facture pro forma
                                         </button>
                                     </div>
-                                    <p v-if="docMessage" class="text-green-600 text-xs mt-2 text-center">{{ docMessage
-                                    }}</p>
+                                    <div v-if="docMessage" class="text-center text-sm p-2 mt-2 rounded"
+                                        :class="docMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
+                                        {{ docMessage }}
+                                    </div>
                                 </div>
 
                                 <div class="bg-blue-50 rounded-lg p-3 text-sm">
@@ -171,7 +175,7 @@
                                     <div class="flex justify-between">
                                         <span>Mensualité</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>Total payé</span>
@@ -243,7 +247,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                        }}</span>
+                                                            }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -282,7 +286,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                            }}</span>
+                                                                }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -535,7 +539,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                                }}</div>
+                                            }}</div>
                                             <div class="text-xs text-gray-300">Réservations</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
