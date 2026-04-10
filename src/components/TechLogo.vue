@@ -8,7 +8,7 @@
         loading="lazy"
       />
       <div class="tech-logo-tooltip">
-        <p class="tech-name">{{ name }}</p>
+        <span class="tech-name ">{{ name }}</span>
       </div>
     </div>
   </div>

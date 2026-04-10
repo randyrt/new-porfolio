@@ -633,13 +633,13 @@
                                             class="w-full btn-violet inline-block text-center btn-effect-5">
                                             S'inscrire
                                         </button>
-                                        <p v-if="registrationMessage"
+                                        <span v-if="registrationMessage"
                                             class="text-xs text-center italic p-2 w-fit flex justify-center rounded mx-auto"
                                             :class="registrationMessage.includes('✓')
                                                 ? 'text-green-600 border-1 border-green-600'
                                                 : 'text-red-600 border-1 border-red-600'">
                                             {{ registrationMessage }}
-                                        </p>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
