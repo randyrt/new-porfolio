@@ -5,9 +5,9 @@ body,
 html {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  font-weight: 400; 
-  font-size: 16px; 
-  line-height: 1.5; 
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-color, #f0f4f8);
@@ -15,19 +15,23 @@ html {
 }
 
 
-h1, h2, h3 {
-  font-weight: 500; 
+h1,
+h2,
+h3 {
+  font-weight: 500;
   letter-spacing: -0.01em;
 }
 
 p {
-  font-weight: 400 !important; 
+  font-weight: 400 !important;
   letter-spacing: -0.01em;
   color: var(--text-color, #2c3e50);
 }
 
 
-.text-sm, small, .caption {
+.text-sm,
+small,
+.caption {
   font-weight: 450;
 }
 
@@ -710,6 +714,13 @@ a {
   .section-divider {
     width: 40px;
   }
+}
+  
+@media screen and (max-width: 748px) {
+  .italic {
+    font-size: 10px !important;
+  }
+
 }
 
 /* .badge-tech {
