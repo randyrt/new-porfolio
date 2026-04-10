@@ -21,8 +21,9 @@ h1, h2, h3 {
 }
 
 p {
-  font-weight: 400; 
+  font-weight: 400 !important; 
   letter-spacing: -0.01em;
+  color: var(--text-color, #2c3e50);
 }
 
 
