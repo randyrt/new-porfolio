@@ -20,7 +20,19 @@ import {
   faJs,          
   faNodeJs,      
   faNpm,          
-  faGitAlt       
+  faGitAlt,
+  faLaravel,      
+  faMicrosoft,    
+  faDocker,       
+  faPhp,          
+  faReact,        
+  faAngular,      
+  faSymfony,     
+  faPython,       
+  faNode,         
+  faGitlab,       
+  faFigma,        
+  faBootstrap,    
 } from '@fortawesome/free-brands-svg-icons'
 
 
@@ -31,7 +43,7 @@ import {
   faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
-  faTimes, faChartPie
+  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -45,10 +57,25 @@ library.add(
   faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
-  faTimes, faChartPie,faEnvelope,
-  faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt
+  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt,
+  
+  faEnvelope,
+  
+  faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
+  
+  faLaravel,      
+  faMicrosoft,    
+  faDocker,       
+  faPhp,          
+  faReact,        
+  faAngular,      
+  faSymfony,      
+  faPython,       
+  faNode,         
+  faGitlab,       
+  faFigma,        
+  faBootstrap,   
 )
-
 
 const options = {
   position: "top-right",
