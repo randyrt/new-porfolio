@@ -20,6 +20,11 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
+p {
+  font-weight: 400; 
+  letter-spacing: -0.01em;
+}
+
 
 .text-sm, small, .caption {
   font-weight: 450;
@@ -554,6 +559,7 @@ a {
     width: 200px;
     height: 200px;
   }
+
 }
 
 @media screen and (max-width: 1400px) {
