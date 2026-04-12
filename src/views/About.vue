@@ -60,17 +60,17 @@
                     <font-awesome-icon :icon="['fab', 'vuejs']" class="text-green-600" />
                     <span>Vue.js 3 - Composition API</span>
                   </h4>
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
-                    <span class="text-sm font-mono bg-gray-100 rounded px-2 py-1">
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2 text-center">
+                    <span class="text-sm font-mono card rounded px-2 py-1">
                       <font-awesome-icon :icon="['fas', 'code']" class="mr-1 text-xs" /> ref() / reactive()
                     </span>
-                    <span class="text-sm font-mono bg-gray-100 rounded px-2 py-1">
+                    <span class="text-sm font-mono card rounded px-2 py-1">
                       <font-awesome-icon :icon="['fas', 'chart-line']" class="mr-1 text-xs" /> computed()
                     </span>
-                    <span class="text-sm font-mono bg-gray-100 rounded px-2 py-1">
+                    <span class="text-sm font-mono card rounded px-2 py-1">
                       <font-awesome-icon :icon="['fas', 'eye']" class="mr-1 text-xs" /> watch()
                     </span>
-                    <span class="text-sm font-mono bg-gray-100 rounded px-2 py-1">
+                    <span class="text-sm font-mono card rounded px-2 py-1">
                       <font-awesome-icon :icon="['fas', 'sync']" class="mr-1 text-xs" /> Cycle de vie
                     </span>
                   </div>
@@ -105,28 +105,28 @@ const registerToEvent = (event: Event): boolean => { ... }</pre>
                     <span>Tests & Qualité</span>
                   </h4>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
-                    <div class="bg-gray-100 p-3 rounded-md flex items-start gap-2">
+                    <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'check-circle']" class="text-green-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">Vitest</span>
                         <p class="text-xs text-gray-600">Tests unitaires + intégration</p>
                       </div>
                     </div>
-                    <div class="bg-gray-100 p-3 rounded-md flex items-start gap-2">
+                    <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'flask']" class="text-purple-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">Vue Test Utils</span>
                         <p class="text-xs text-gray-600">Montage de composants</p>
                       </div>
                     </div>
-                    <div class="bg-gray-100 p-3 rounded-md flex items-start gap-2">
+                    <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'chart-pie']" class="text-blue-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">Coverage</span>
                         <p class="text-xs text-gray-600">Rapport de couverture</p>
                       </div>
                     </div>
-                    <div class="bg-gray-100 p-3 rounded-md flex items-start gap-2">
+                    <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'shield-alt']" class="text-indigo-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">vue-tsc</span>
@@ -173,7 +173,7 @@ jobs:
                 </div>
 
                 <!-- Stats -->
-                <div class="bg-gradient-to-r from-violet-50 to-indigo-50 p-4 rounded-lg">
+                <div class="card p-4 rounded-lg">
                   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                     <div>
                       <font-awesome-icon :icon="['fas', 'check-double']" class="text-violet-600 text-xl mb-1" />
@@ -201,7 +201,7 @@ jobs:
                 <div class="text-center text-sm text-gray-500 border-t pt-4">
                   Code source
                   <a href="https://github.com/randyrt/new-porfolio" target="_blank"
-                    class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur GitHub</a> |
+                    class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur GitHub</a> <span class="text-violet-700">|</span>
                   Qualité web <a
                     href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/sc142ifq6r?form_factor=desktop"
                     target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur PageSpeed
