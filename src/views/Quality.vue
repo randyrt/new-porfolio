@@ -87,6 +87,18 @@
 
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Qualité - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: ' Randy en tant que dévellopeur web et mobile'
+    }
+  ]
+})
+
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 

@@ -175,7 +175,7 @@
                                     <div class="flex justify-between">
                                         <span>Mensualité</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>Total payé</span>
@@ -247,7 +247,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -286,7 +286,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -517,10 +517,10 @@
                                         class="w-full btn-effect-5-submit transition disabled:opacity-50 disabled:cursor-not-allowed mt-4">
                                         Réserver pour cet événement
                                     </button>
-                                    <p v-if="eventReservationMessage" class="text-sm text-center mt-2"
-                                        :class="eventReservationMessage.includes('✓') ? 'text-green-600' : 'text-red-600'">
+                                    <div v-if="eventReservationMessage" class="text-center text-sm p-2 rounded mt-2"
+                                        :class="eventReservationMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
                                         {{ eventReservationMessage }}
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -539,7 +539,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">Réservations</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">

@@ -38,6 +38,18 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Projets - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Quelques projets dont je suis particulièrement fier '
+    }
+  ]
+})
+
 import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import ProjectGallery from '../components/ProjectGallery.vue';

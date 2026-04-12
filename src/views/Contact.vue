@@ -39,6 +39,18 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Contacter - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Contacte-moi ici de deux façons.'
+    }
+  ]
+})
+
 import { ref, onMounted, computed } from 'vue'
 import { useToast } from 'vue-toastification'
 import confetti from "canvas-confetti"
@@ -79,12 +91,12 @@ const isEmailValid = computed(() => {
 
 const sendEmail = async () => {
   if (!form.value.name || !form.value.email || !form.value.message) {
-    toast.error("Veuillez remplir tous les champs 👮‍♂️ !")
+    toast.warning("Veuillez remplir tous les champs 👮‍♂️ !")
     return
   }
 
   if (!isEmailValid.value) {
-    toast.error("Veuillez entrer une adresse e-mail valide 😏 !")
+    toast.warning("Veuillez entrer une adresse e-mail valide 😏 !")
     return;
   }
 

@@ -53,6 +53,19 @@
 
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'WebCup2024 - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Qu\'est-ce qui rend Randy unique ?'
+    }
+  ]
+})
+
+
 import { ref, onMounted } from 'vue'
 import confetti from "canvas-confetti"
 

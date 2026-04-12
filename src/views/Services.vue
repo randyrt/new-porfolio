@@ -154,6 +154,18 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Services - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Découvrons ensemble les services que je propose pour donner vie à vos projets numériques'
+    }
+  ]
+})
+
 import { useRouter } from 'vue-router'
 import { ref, onMounted } from 'vue'
 
@@ -188,7 +200,7 @@ onMounted(() => {
   font-weight: bold;
   font-size: 1.2rem;
   margin-bottom: 10px;
-  color:  #5b21b6;
+  color: #5b21b6;
 }
 
 ul {

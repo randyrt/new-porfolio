@@ -101,6 +101,18 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Technologies - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: ' Explorons maintenant les technologies que j’utilise quotidiennement'
+    }
+  ]
+})
+
 import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 

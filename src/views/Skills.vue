@@ -86,6 +86,19 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Compétences - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Parlons de mes compétences '
+    }
+  ]
+})
+
+
 import { ref, onMounted } from 'vue'
 
 

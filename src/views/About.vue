@@ -229,6 +229,18 @@ jobs:
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'A propos - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Pour en conclure, voici les statistique'
+    }
+  ]
+})
+
 import { ref, onMounted, onUnmounted } from "vue"
 
 const loading = ref(true)

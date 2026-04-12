@@ -32,6 +32,18 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Témoignages - Randy',
+  meta: [
+    {
+      name: 'description',
+      content: 'Quelque témoignages venant de mes clients et employeurs '
+    }
+  ]
+})
+
 import { ref, onMounted } from 'vue'
 
 const loading = ref<boolean>(true)
