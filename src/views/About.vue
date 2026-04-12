@@ -232,7 +232,7 @@ jobs:
 import { useHead } from '@vueuse/head'
 
 useHead({
-  title: 'A propos - Randy',
+  title: 'A propos de Randy',
   meta: [
     {
       name: 'description',

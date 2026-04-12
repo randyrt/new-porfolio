@@ -35,7 +35,7 @@
 import { useHead } from '@vueuse/head'
 
 useHead({
-  title: 'Témoignages - Randy',
+  title: 'Témoignages sur Randy',
   meta: [
     {
       name: 'description',

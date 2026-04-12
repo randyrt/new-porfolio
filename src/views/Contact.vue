@@ -42,7 +42,7 @@
 import { useHead } from '@vueuse/head'
 
 useHead({
-  title: 'Contacter - Randy',
+  title: 'Contact de Randy',
   meta: [
     {
       name: 'description',

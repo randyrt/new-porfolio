@@ -104,7 +104,7 @@
 import { useHead } from '@vueuse/head'
 
 useHead({
-  title: 'Technologies - Randy',
+  title: 'Technologies de Randy',
   meta: [
     {
       name: 'description',
