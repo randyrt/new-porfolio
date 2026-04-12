@@ -1,9 +1,7 @@
 <template>
   <Loading v-if="loading" message="Me contacter..." />
   <div v-else>
-    <div class="p-4 w-full  flex flex-col items-center justify-center">
-      <AnimatedTitle text=" « Vous pouvez me contacter ici de deux façons.  » " aos="fade-down" />
-    </div>
+    <AnimatedTitle text=" « Vous pouvez me contacter ici de deux façons.  » " aos="fade-down" />
     <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-16" data-aos="fade-up">
       <p class="text-lg italic text-gray-700 dark:text-gray-300">
         <span class="text-violet-800 text-lg">«</span>
