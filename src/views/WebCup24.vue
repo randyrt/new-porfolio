@@ -59,7 +59,7 @@ useHead({
   title: 'WebCup2024 de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Défis',
       content: 'Qu\'est-ce qui rend Randy unique ?'
     }
   ]

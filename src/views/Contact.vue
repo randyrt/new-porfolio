@@ -45,7 +45,7 @@ useHead({
   title: 'Contact de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Communication',
       content: 'Contacte-moi ici de deux façons.'
     }
   ]

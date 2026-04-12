@@ -59,7 +59,7 @@ useHead({
   title: 'Accueil de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Bienvenu',
       content: 'Bienvenue sur le portfolio de Randy.'
     }
   ]

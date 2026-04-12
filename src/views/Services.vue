@@ -160,7 +160,7 @@ useHead({
   title: 'Services de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Atouts',
       content: 'Découvrons ensemble les services que je propose pour donner vie à vos projets numériques'
     }
   ]

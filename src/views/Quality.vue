@@ -93,7 +93,7 @@ useHead({
   title: 'Qualités de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Différence',
       content: ' Randy en tant que dévellopeur web et mobile'
     }
   ]

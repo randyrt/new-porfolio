@@ -235,7 +235,7 @@ useHead({
   title: 'A propos de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Conclusion',
       content: 'Pour en conclure, voici les statistique'
     }
   ]

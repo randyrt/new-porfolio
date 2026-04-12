@@ -38,7 +38,7 @@ useHead({
   title: 'Témoignages sur Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Satisfacation',
       content: 'Quelque témoignages venant de mes clients et employeurs '
     }
   ]

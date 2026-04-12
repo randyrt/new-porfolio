@@ -92,7 +92,7 @@ useHead({
   title: 'Compétences de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Valorisation',
       content: 'Parlons de mes compétences '
     }
   ]

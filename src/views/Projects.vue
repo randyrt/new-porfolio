@@ -44,7 +44,7 @@ useHead({
   title: 'Projets de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Réalisation',
       content: 'Quelques projets dont je suis particulièrement fier '
     }
   ]

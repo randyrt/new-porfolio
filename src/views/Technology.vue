@@ -107,7 +107,7 @@ useHead({
   title: 'Technologies de Randy',
   meta: [
     {
-      name: 'description',
+      name: 'Tech',
       content: ' Explorons maintenant les technologies que j’utilise quotidiennement'
     }
   ]
