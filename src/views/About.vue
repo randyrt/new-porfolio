@@ -39,7 +39,8 @@
           <div v-if="showTechDetails"
             class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             @click.self="showTechDetails = false">
-            <div class="bg-white max-w-4xl w-full max-h-[80vh] rounded-overflow overflow-y-auto transition-all duration-300">
+            <div
+              class="bg-white max-w-4xl w-full max-h-[80vh] rounded-overflow overflow-y-auto transition-all duration-300">
               <div class="sticky top-0 bg-white  border-b p-4 flex justify-between items-center">
                 <h3 class="text-xl font-bold flex items-center gap-2">
                   <font-awesome-icon :icon="['fas', 'tools']" class="text-violet-600" />
@@ -137,7 +138,7 @@ const registerToEvent = (event: Event): boolean => { ... }</pre>
                 </div>
 
                 <!-- CI/CD Pipeline -->
-                <div class="border-l-4 border-green-500 pl-4">
+                <div class="border-l-4 border-black pl-4">
                   <h4 class="font-bold text-lg flex items-center gap-2">
                     <font-awesome-icon :icon="['fab', 'github']" class="text-gray-700" />
                     <span>Github Actions CI/CD</span>
@@ -172,28 +173,30 @@ jobs:
                     automatique</p>
                 </div>
 
-                <!-- Stats -->
-                <div class="card p-4 rounded-lg">
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                    <div>
-                      <font-awesome-icon :icon="['fas', 'check-double']" class="text-violet-600 text-xl mb-1" />
-                      <div class="text-2xl font-bold text-violet-600">100%</div>
-                      <div class="text-xs text-gray-600">TypeScript strict</div>
-                    </div>
-                    <div>
-                      <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="text-violet-600 text-xl mb-1" />
-                      <div class="text-2xl font-bold text-violet-600">&lt;2s</div>
-                      <div class="text-xs text-gray-600">Temps d'exécution tests</div>
-                    </div>
-                    <div>
-                      <font-awesome-icon :icon="['fas', 'check-circle']" class="text-violet-600 text-xl mb-1" />
-                      <div class="text-2xl font-bold text-violet-600">Push</div>
-                      <div class="text-xs text-gray-600">Pipeline CI (Chaque commit)</div>
-                    </div>
-                    <div>
-                      <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="text-violet-600 text-xl mb-1" />
-                      <div class="text-2xl font-bold text-violet-600">Auto</div>
-                      <div class="text-xs text-gray-600">Déploiement Netlify</div>
+                <div class="relative pl-4">
+                  <div class="absolute left-0 top-0 h-full w-1 custom-multi-gradient"></div>
+                  <div class="card p-4 rounded-lg">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                      <div>
+                        <font-awesome-icon :icon="['fas', 'check-double']" class="text-violet-600 text-xl mb-1" />
+                        <div class="text-2xl font-bold text-violet-600">100%</div>
+                        <div class="text-xs text-gray-600">TypeScript strict</div>
+                      </div>
+                      <div>
+                        <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="text-violet-600 text-xl mb-1" />
+                        <div class="text-2xl font-bold text-violet-600">&lt;2s</div>
+                        <div class="text-xs text-gray-600">Temps d'exécution tests</div>
+                      </div>
+                      <div>
+                        <font-awesome-icon :icon="['fas', 'check-circle']" class="text-violet-600 text-xl mb-1" />
+                        <div class="text-2xl font-bold text-violet-600">Push</div>
+                        <div class="text-xs text-gray-600">Pipeline CI (Chaque commit)</div>
+                      </div>
+                      <div>
+                        <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="text-violet-600 text-xl mb-1" />
+                        <div class="text-2xl font-bold text-violet-600">Auto</div>
+                        <div class="text-xs text-gray-600">Déploiement Netlify</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -201,7 +204,8 @@ jobs:
                 <div class="text-center text-sm text-gray-500 border-t pt-4">
                   Code source
                   <a href="https://github.com/randyrt/new-porfolio" target="_blank"
-                    class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur GitHub</a> <span class="text-violet-700">|</span>
+                    class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur GitHub</a> <span
+                    class="text-violet-700">|</span>
                   Qualité web <a
                     href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/sc142ifq6r?form_factor=desktop"
                     target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur PageSpeed
@@ -325,4 +329,17 @@ const perfomanceTest = () => {
   transform: scale(1);
   opacity: 1;
 }
+
+.custom-multi-gradient {
+    background: linear-gradient(to bottom, 
+      #22c55e 0%,     
+      #22c55e 25%,    
+      #3b82f6 25%,    
+      #3b82f6 50%,    
+      #8b5cf6 50%,    
+      #8b5cf6 75%,
+      #000000 75%,   
+      #000000 100%
+    );
+  }
 </style>
