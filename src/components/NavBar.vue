@@ -124,7 +124,7 @@
     </nav>
     <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50">
       <div class="p-6 text-xl font-bold flex items-center justify-between">
-        <span class="animated-gradient-text cursor-pointer" @click="goHome">{{ brand }}</span>
+        <span class="animated-gradient-text cursor-pointer text-3xl" @click="goHome">{{ brand }}</span>
       </div>
       <div class="flex items-center gap-4 mb-4 ml-6">
         <!-- Language Switcher -->
