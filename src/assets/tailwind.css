@@ -355,7 +355,8 @@ button {
 
 
 .card {
-  @apply rounded-lg shadow-lg border-sky-100 bg-sky-50 p-2;
+  @apply rounded-lg shadow-lg bg-sky-50 p-2;
+  border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 
@@ -517,7 +518,7 @@ a {
 
 .wrapper .col-md-3 {
   background-color: #2ca9ad07;
-  border: 1px solid #3333;
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: 10px;
   font-weight: 300;
   color: #1e2d3c;

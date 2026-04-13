@@ -4,12 +4,13 @@
         <AnimatedTitle :text="$t('quality.quote')" aos="fade-down" />
         <div class="text-center max-w-2xl mx-auto px-4 mt-4 mb-10" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
-               <span class="text-violet-800 text-lg">«</span>  {{ $t('quality.description') }} <span  class="text-violet-800 text-lg">»</span> 
+                <span class="text-violet-800 text-lg">«</span> {{ $t('quality.description') }} <span
+                    class="text-violet-800 text-lg">»</span>
             </p>
         </div>
         <div class="p-4 flex flex-col items-center justify-center">
             <section class="section-anime">
-                <div class="container p-4"> 
+                <div class="container p-4">
                     <div class="row wrapper">
                         <div class="p-4 mr-4 col-md-3">
                             <h4 class="text-center">{{ $t('quality.q1_title') }}</h4>
@@ -73,13 +74,13 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 useHead({
-  title: computed(() => t('quality.meta_title')),
-  meta: [
-    {
-      name: 'Différence',
-      content: computed(() => t('quality.meta_desc'))
-    }
-  ]
+    title: computed(() => t('quality.meta_title')),
+    meta: [
+        {
+            name: 'Différence',
+            content: computed(() => t('quality.meta_desc'))
+        }
+    ]
 })
 
 const loading = ref(true)
@@ -92,7 +93,7 @@ onMounted(() => {
 })
 
 function viewMyProject() {
-     router.push('/projects')
+    router.push('/projects')
 }
 
 
