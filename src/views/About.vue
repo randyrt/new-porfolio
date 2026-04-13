@@ -203,7 +203,7 @@ jobs:
                   {{ $t('about.source_code') }}
                   <a href="https://github.com/randyrt/new-porfolio" target="_blank"
                     class="text-violet-600 hover:text-violet-400 transition-colors">{{ $t('about.view_github') }}</a>
-                  <span class="text-violet-700">|</span>
+                  <span class="text-violet-700"> | </span>
                   {{ $t('about.web_quality') }} <a
                     href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/sc142ifq6r?form_factor=desktop"
                     target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors">{{
