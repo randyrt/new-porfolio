@@ -1,8 +1,7 @@
 <template>
   <Loading v-if="loading" :message="$t('home.loading')" />
   <div v-else class="p-8 flex flex-col">
-    <AnimatedTitle :text="$t('home.quote')"
-      aos="fade-down" />
+    <AnimatedTitle :text="$t('home.quote')" aos="fade-down" />
     <div class="flex justify-between space-x-8 items-center flex-col md:flex-row min-h-screen">
       <div class="box p-2 view" data-aos="fade-down">
         <span class="borderline"></span>
@@ -16,8 +15,8 @@
           <p class="text-lg text-gray-700 mb-4" v-html="$t('home.p1')"></p>
           <p class="text-lg text-gray-700" v-html="$t('home.p2')"></p>
           <p class="text-lg text-gray-700 mt-4">
-            {{ $t('home.p3_1') }}<span
-              class="text-sky-700 cursor-pointer underline" @click="goToContact">{{ $t('home.p3_contact') }}</span>{{ $t('home.p3_2') }}
+            {{ $t('home.p3_1') }}<span class="text-sky-700 cursor-pointer underline" @click="goToContact">{{
+              $t('home.p3_contact') }}</span>{{ $t('home.p3_2') }}
           </p>
         </div>
         <div class="flex justify-center space-x-4 mt-2">
@@ -57,7 +56,7 @@ const loading = ref<boolean>(true)
 function downloadCV() {
   const link = document.createElement('a');
   link.href = "/images/cv/Randy_real_cv.pdf";
-  link.download = "Randy_real_cv.pdf"; 
+  link.download = "Randy_real_cv.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

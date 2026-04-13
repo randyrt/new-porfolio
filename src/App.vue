@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, provide } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 
@@ -24,4 +24,19 @@ const navRoutes = computed(() => [
   { path: '/about', name: t('nav.about'), icon: ['fas', 'info-circle'] },
 
 ]);
+
+
 </script>
+
+<style>
+.dark {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+</style>

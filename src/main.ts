@@ -15,26 +15,26 @@ import i18n from './i18n.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { 
-  faVuejs, 
-  faGithub, 
-  faLinkedin, 
-  faJs,          
-  faNodeJs,      
-  faNpm,          
+import {
+  faVuejs,
+  faGithub,
+  faLinkedin,
+  faJs,
+  faNodeJs,
+  faNpm,
   faGitAlt,
-  faLaravel,      
-  faMicrosoft,    
-  faDocker,       
-  faPhp,          
-  faReact,        
-  faAngular,      
-  faSymfony,     
-  faPython,       
-  faNode,         
-  faGitlab,       
-  faFigma,        
-  faBootstrap,    
+  faLaravel,
+  faMicrosoft,
+  faDocker,
+  faPhp,
+  faReact,
+  faAngular,
+  faSymfony,
+  faPython,
+  faNode,
+  faGitlab,
+  faFigma,
+  faBootstrap
 } from '@fortawesome/free-brands-svg-icons'
 
 
@@ -45,7 +45,7 @@ import {
   faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
-  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt
+  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -53,30 +53,33 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 
 
 library.add(
-  faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
+  faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode,
   faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
   faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
   faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
   faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt,
-  
+
   faEnvelope,
-  
+
   faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
-  
-  faLaravel,      
-  faMicrosoft,    
-  faDocker,       
-  faPhp,          
-  faReact,        
-  faAngular,      
-  faSymfony,      
-  faPython,       
-  faNode,         
-  faGitlab,       
-  faFigma,        
-  faBootstrap,   
+
+  faLaravel,
+  faMicrosoft,
+  faDocker,
+  faPhp,
+  faReact,
+  faAngular,
+  faSymfony,
+  faPython,
+  faNode,
+  faGitlab,
+  faFigma,
+  faBootstrap,
+  faCogs,
+  faCog,
+  faTextHeight
 )
 
 const options = {
