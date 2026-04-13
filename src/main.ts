@@ -10,6 +10,8 @@ import 'aos/dist/aos.css'
 import { createHead } from '@vueuse/head'
 import Particles from "vue3-particles"
 
+import i18n from './i18n.js'
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -101,6 +103,7 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(Toast, options)
 app.use(router as any)
 app.use(Particles)
+app.use(i18n)
 
 
 app.mount('#app')

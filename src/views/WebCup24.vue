@@ -1,7 +1,7 @@
 <template>
-  <Loading v-if="loading" message="Webcup 2024..." />
+  <Loading v-if="loading" :message="$t('webcup.loading')" />
   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
-     <AnimatedTitle text=" « Qu'est-ce qui rend Randy unique ? » " aos="fade-down"/>
+     <AnimatedTitle :text="$t('webcup.quote')" aos="fade-down"/>
   </div>
 
   <div class="flex justify-between p-8">
@@ -12,7 +12,7 @@
       </div>
       <div class="w-full card p-4 flex justify-center" data-aos="fade-down">
         <p class="text-lg text-gray-700">
-          Le prix a été remis par M. Sylvain, le directeur de l'entreprise IT
+          {{ $t('webcup.award_by') }}
           <span class="ml-1" aria-label="https://www.fulldigits.com">
             <a href="https://www.fulldigits.com" class="fullDigits" target="_blank">FullDigits</a>
           </span>
@@ -20,31 +20,24 @@
       </div>
       <div class="w-full max-w-4xl flex justify-center p-4 " data-aos="fade-left">
         <button class="btn-violet inline-block text-center decoration btn-effect-5" @click="webCup">
-          En savoir plus
+          {{ $t('webcup.more_info') }}
         </button>
       </div>
     </div>
     <div class="min-h-screen p-8 flex items-center">
       <div class=" w-full max-w-4xl border card justify-center !p-8" >
-        <h1 class="text-2xl font-bold mt-0 mb-2 !text-violet-800">WebCup 2024 !<span class="text-5xl emoji">🏆</span></h1>
+        <h1 class="text-2xl font-bold mt-0 mb-2 !text-violet-800">{{ $t('webcup.title') }}<span class="text-5xl emoji">🏆</span></h1>
         <p class="text-lg text-gray-700 mb-4">
-          La webCup est une compétition de développement web qui se déroule chaque année à Madagascar. En 2024, j'ai eu
-          l'honneur de participer à cet événement prestigieux et de me classer à la 2ème place.
+          {{ $t('webcup.p1') }}
         </p>
         <p class="text-lg text-gray-700 mb-4">
-          Durant cette compétition, j'ai pu mettre en pratique mes compétences en développement web, en travaillant sur
-          des projets concrets et en collaborant avec d'autres développeurs talentueux. J'ai également eu l'occasion
-          d'apprendre de nouvelles technologies et de relever des défis techniques stimulants.
+          {{ $t('webcup.p2') }}
         </p>
         <p class="text-lg text-gray-700 mb-4">
-          Cette expérience a été extrêmement enrichissante pour moi, tant sur le plan professionnel que personnel. Elle
-          m'a permis de renforcer mes compétences en développement web, de développer mon esprit d'équipe et de
-          découvrir de nouvelles perspectives dans le domaine du développement web.
+          {{ $t('webcup.p3') }}
         </p>
         <p class="text-lg text-gray-700 mb-4">
-          Je suis fier de cette réalisation et je suis motivé à continuer à progresser dans ma carrière de développeur
-          web. La WebCup 2024 restera une étape importante dans mon parcours professionnel, et je suis reconnaissant
-          pour l'opportunité qui m'a été offerte de participer à cet événement exceptionnel.
+          {{ $t('webcup.p4') }}
         </p>
       </div>
     </div>
@@ -54,21 +47,23 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-
-useHead({
-  title: 'WebCup2024 de Randy',
-  meta: [
-    {
-      name: 'Défis',
-      content: 'Qu\'est-ce qui rend Randy unique ?'
-    }
-  ]
-})
-
-
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import confetti from "canvas-confetti"
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
+
+watchEffect(() => {
+  useHead({
+    title: t('webcup.meta_title'),
+    meta: [
+      {
+        name: 'Défis',
+        content: t('webcup.meta_desc')
+      }
+    ]
+  })
+})
 
 
 const loading = ref<boolean>(true)

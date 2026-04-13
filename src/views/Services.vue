@@ -1,17 +1,16 @@
 <template>
-  <Loading v-if="loading" message="Mes services..." />
+  <Loading v-if="loading" :message="$t('services.loading')" />
   <div v-else class="flex flex-col space-y-10 ">
-    <AnimatedTitle text="Découvrons ensemble les services que je propose pour donner vie à vos projets numériques"
+    <AnimatedTitle :text="$t('services.quote')"
       aos="fade-down" />
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6" data-aos="fade-up">
 
       <!-- Version control -->
       <div class="card p-6 service card !bg-pink-100">
-        <h2 class="title">Git & version control</h2>
+        <h2 class="title">{{ $t('services.git_title') }}</h2>
         <p class="text-gray-600">
-          Gestion efficace du code source avec Git, incluant le travail en équipe,
-          la résolution de conflits et la structuration propre des branches.
+          {{ $t('services.git_desc') }}
         </p>
         <ul>
           <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Branching strategies (feature, staging,
@@ -24,11 +23,9 @@
 
       <!-- Team workflow -->
       <div class="card p-6 service card !bg-pink-100">
-        <h2 class="title">Team workflow & merges</h2>
+        <h2 class="title">{{ $t('services.team_title') }}</h2>
         <p class="text-gray-600">
-          Mise en place de workflows efficaces pour équipes de développement,
-          assurant des merges propres, des releases stables et une bonne
-          coordination entre développeurs.
+          {{ $t('services.team_desc') }}
         </p>
         <ul>
           <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Pull requests workflow</li>
@@ -40,10 +37,9 @@
 
       <!-- Deployment -->
       <div class="card p-6 service card !bg-pink-100">
-        <h2 class="title">Deployment & server security</h2>
+        <h2 class="title">{{ $t('services.deploy_title') }}</h2>
         <p class="text-gray-600">
-          Déploiement d’applications web sur serveurs Linux avec configuration
-          sécurisée, gestion des accès et optimisation pour la production.
+          {{ $t('services.deploy_desc') }}
         </p>
         <ul>
           <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Linux server setup</li>
@@ -55,15 +51,14 @@
 
       <!-- Personnalisation -->
       <div class="card p-6 service card !bg-green-100">
-        <h2 class="title">Personnalisation sur mesure</h2>
+        <h2 class="title">{{ $t('services.custom_title') }}</h2>
         <p class="text-gray-600">
-          Je suis ouvert à discuter de service personnalisés adaptés à vos besoins spécifiques.
-          N’hésitez pas à me contacter pour en parler !
+          {{ $t('services.custom_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Service personnalisés</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Adaptation aux besoins</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Flexibilité</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.custom_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.custom_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.custom_li3') }}</li>
         </ul>
 
       </div>
@@ -71,29 +66,27 @@
 
       <!-- Collaboration -->
       <div class="card p-6 service card !bg-green-100">
-        <h2 class="title">Collaboration & partenariat</h2>
+        <h2 class="title">{{ $t('services.collab_title') }}</h2>
         <p class="text-gray-600">
-          Je suis également intéressé par des collaborations à long terme ou des partenariats pour développer des
-          projets innovants ensemble. N’hésitez pas à me contacter pour en discuter !
+          {{ $t('services.collab_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Collaborations à long terme</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Partenariats</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Projets innovants</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.collab_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.collab_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.collab_li3') }}</li>
         </ul>
       </div>
 
       <!-- Autres service cards -->
       <div class="card p-6 service card !bg-green-100">
-        <h2 class="title">Maintenance</h2>
+        <h2 class="title">{{ $t('services.maintenance_title') }}</h2>
         <p class="text-gray-600">
-          En plus de mes compétences principales, je propose également des service
-          de conseil technique, de revue de code et d’accompagnement pour vos projets numériques.
+          {{ $t('services.maintenance_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Conseil technique</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Revue de code</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Accompagnement projet</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li3') }}</li>
         </ul>
       </div>
     </div>
@@ -103,43 +96,40 @@
 
       <!-- Carte 1: Rédaction fonctionnelle -->
       <div class="card p-6 service card !bg-amber-50">
-        <h2 class="title">Documentation fonctionnelle</h2>
+        <h2 class="title">{{ $t('services.doc_title') }}</h2>
         <p class="text-gray-600">
-          Je transforme vos besoins en spécifications claires et détaillées. Rédaction de cahiers des charges, user
-          stories et documentations techniques adaptées à tous les intervenants.
+          {{ $t('services.doc_desc') }}
         </p>
         <ul class="mt-4">
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Cahiers des charges</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Spécifications fonctionnelles</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Documentation utilisateur</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.doc_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.doc_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.doc_li3') }}</li>
         </ul>
       </div>
 
       <!-- Carte 2: Pédagogie & vulgarisation technique -->
       <div class="card p-6 service card !bg-amber-50">
-        <h2 class="title">Pédagogie client</h2>
+        <h2 class="title">{{ $t('services.pedagogy_title') }}</h2>
         <p class="text-gray-600">
-          J'explique simplement des concepts techniques complexes. Formation, démonstration et accompagnement pour que
-          vous maîtrisiez parfaitement vos outils.
+          {{ $t('services.pedagogy_desc') }}
         </p>
         <ul class="mt-4">
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Vulgarisation technique</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Sessions de formation</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Supports pédagogiques</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.pedagogy_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.pedagogy_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.pedagogy_li3') }}</li>
         </ul>
       </div>
 
       <!-- Carte 3: Conseil business & communication -->
       <div class="card p-6 service card !bg-amber-50">
-        <h2 class="title">Stratégie business</h2>
+        <h2 class="title">{{ $t('services.biz_title') }}</h2>
         <p class="text-gray-600">
-          Vision orientée métier et résultats. Je vous aide à aligner votre projet avec vos objectifs commerciaux et à
-          communiquer efficacement avec toutes les parties prenantes.
+          {{ $t('services.biz_desc') }}
         </p>
         <ul class="mt-4">
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Alignement métier/technique</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Communication partenaires</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Conseil en stratégie digitale</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.biz_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.biz_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.biz_li3') }}</li>
         </ul>
       </div>
 
@@ -147,7 +137,7 @@
 
     <div class="flex justify-center mt-2">
       <button class="btn-violet btn-effect-5" @click="goToContact">
-        Travaillons ensemble
+        {{ $t('services.work_together') }}
       </button>
     </div>
   </div>
@@ -155,19 +145,23 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-
-useHead({
-  title: 'Services de Randy',
-  meta: [
-    {
-      name: 'Atouts',
-      content: 'Découvrons ensemble les services que je propose pour donner vie à vos projets numériques'
-    }
-  ]
-})
-
 import { useRouter } from 'vue-router'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+watchEffect(() => {
+  useHead({
+    title: t('services.meta_title'),
+    meta: [
+      {
+        name: 'Atouts',
+        content: t('services.meta_desc')
+      }
+    ]
+  })
+})
 
 const loading = ref<boolean>(true)
 const router = useRouter()

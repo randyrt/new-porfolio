@@ -1,10 +1,10 @@
 <template>
-    <Loading v-if="loading" message="Mes qualités..." />
+    <Loading v-if="loading" :message="$t('quality.loading')" />
     <div v-else class="p-4">
-        <AnimatedTitle text=" « Randy en tant que dévellopeur web et mobile  » " aos="fade-down" />
+        <AnimatedTitle :text="$t('quality.quote')" aos="fade-down" />
         <div class="text-center max-w-2xl mx-auto px-4 mt-4 mb-10" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
-               <span class="text-violet-800 text-lg">«</span>  Au fil des projets que j'ai réalisés seul ou avec une équipe, j’ai compris que les compétences techniques ne suffisent pas. Ce qui différencie un développeur efficace, c’est son état d’esprit. Voici les principes qui guident mon travail au quotidien. <span  class="text-violet-800 text-lg">»</span> 
+               <span class="text-violet-800 text-lg">«</span>  {{ $t('quality.description') }} <span  class="text-violet-800 text-lg">»</span> 
             </p>
         </div>
         <div class="p-4 flex flex-col items-center justify-center">
@@ -12,66 +12,44 @@
                 <div class="container p-4"> 
                     <div class="row wrapper">
                         <div class="p-4 mr-4 col-md-3">
-                            <h4 class="text-center">Apprentissage continu</h4>
+                            <h4 class="text-center">{{ $t('quality.q1_title') }}</h4>
                             <p class="text-center">
-                                "Je crois que l’apprentissage continu est essentiel pour rester en avance dans le monde
-                                en constante évolution des technologies.
-                                Je cherche toujours à enrichir mes compétences, et ma capacité à apprendre rapidement me
-                                permet de m’adapter aux nouveaux outils."
+                                {{ $t('quality.q1_desc') }}
                             </p>
                         </div>
 
                         <div class="p-4 mr-4 col-md-3">
-                            <h4 class="text-center">Résolution de problèmes</h4>
+                            <h4 class="text-center">{{ $t('quality.q2_title') }}</h4>
                             <p class="text-center">
-                                "J’aborde chaque défi avec l’objectif de trouver des solutions efficaces et créatives
-                                plutôt que de me laisser freiner par les obstacles.
-                                En ce qui me concene, chaque problème est une opportunité d’innover et d’améliorer, et
-                                j’aime
-                                relever les situations complexes avec une approche stratégique fiable et durable"
+                                {{ $t('quality.q2_desc') }}
                             </p>
                         </div>
 
                         <div class="p-4 mr-4 col-md-3">
-                            <h4 class="text-center">Sens du design responsive</h4>
+                            <h4 class="text-center">{{ $t('quality.q3_title') }}</h4>
                             <p class="text-center">
-                                "J’ai fait de nombreux efforts, recherches et pratiques afin de garantir que chaque
-                                produit soit accessible sur tous les appareils, qu’il s’agisse d’un smartphone ou d’un
-                                ordinateur.
-                                Cette approche permet d’apporter des solutions adaptées et d’élargir efficacement la
-                                cible de nos projets."
+                                {{ $t('quality.q3_desc') }}
                             </p>
                         </div>
 
                         <div class="p-4 mr-4 col-md-3">
-                            <h4 class="text-center">Minimalisme</h4>
+                            <h4 class="text-center">{{ $t('quality.q4_title') }}</h4>
                             <p class="text-center">
-                                "Le minimalisme est une façon de concevoir qui vise à produire un design épuré, clair et
-                                agréable à utiliser.
-                                Cela permet de créer une expérience simple mais complète, qui économise du temps tout en
-                                garantissant un rendu de qualité."
+                                {{ $t('quality.q4_desc') }}
                             </p>
                         </div>
 
                         <div class="p-4 mr-4 col-md-3">
-                            <h4 class="text-center">Persévérance et créativité</h4>
+                            <h4 class="text-center">{{ $t('quality.q5_title') }}</h4>
                             <p class="text-center">
-                                "On m’a souvent dit que le talent seul ne suffit pas pour réussir. Pour moi, l’essentiel
-                                réside dans le soutien mutuel, la persistance, la volonté d’agir et les efforts fournis
-                                pour acquérir de l’expérience.
-                                Le développement web est une forme d’art et d'inspiration, où la créativité et la
-                                persévérance font toute
-                                la différence."
+                                {{ $t('quality.q5_desc') }}
                             </p>
                         </div>
 
                         <div class="p-4 mr-4 col-md-3">
-                            <h4 class="text-center">Esprit d’équipe</h4>
+                            <h4 class="text-center">{{ $t('quality.q6_title') }}</h4>
                             <p class="text-center">
-                                "Le facteur le plus important dans l’évolution d’une entreprise est l’esprit d’équipe et
-                                la qualité des relations entre collaborateurs.
-                                Il est essentiel de créer des liens solides, de collaborer dans
-                                une bonne ambiance et d’apporter un soutien réciproque."
+                                {{ $t('quality.q6_desc') }}
                             </p>
                         </div>
 
@@ -80,7 +58,7 @@
             </section>
         </div>
         <div class="flex justify-center items-center">
-            <button class="btn-violet btn-effect-5" @click="viewMyProject">Voir mes projets</button>
+            <button class="btn-violet btn-effect-5" @click="viewMyProject">{{ $t('quality.view_projects') }}</button>
         </div>
     </div>
 </template>
@@ -88,19 +66,23 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-
-useHead({
-  title: 'Qualités de Randy',
-  meta: [
-    {
-      name: 'Différence',
-      content: ' Randy en tant que dévellopeur web et mobile'
-    }
-  ]
-})
-
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+watchEffect(() => {
+  useHead({
+    title: t('quality.meta_title'),
+    meta: [
+      {
+        name: 'Différence',
+        content: t('quality.meta_desc')
+      }
+    ]
+  })
+})
 
 const loading = ref(true)
 const router = useRouter()

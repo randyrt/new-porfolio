@@ -1,7 +1,7 @@
 <template>
-  <Loading v-if="loading" message="Pour en conclure..." />
+  <Loading v-if="loading" :message="$t('about.loading')" />
   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
-    <AnimatedTitle text=" « Rien d'autre à dire, à part ceci » " aos="fade-down" />
+    <AnimatedTitle :text="$t('about.quote')" aos="fade-down" />
   </div>
   <div class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
     <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
@@ -12,24 +12,24 @@
       </div>
     </section>
     <section class="stats-section flex flex-wrap justify-center gap-8 py-8">
-      <div v-for="stat in stats" :key="stat.label" class="text-center">
+      <div v-for="stat in stats" :key="stat.labelKey" class="text-center">
         <div class="text-6xl font-bold text-violet-600">
           {{ stat.displayValue }}{{ stat.suffix }}
         </div>
-        <div class="text-sm text-gray-500">{{ stat.label }}</div>
+        <div class="text-sm text-gray-500">{{ $t(stat.labelKey) }}</div>
       </div>
     </section>
 
     <div class="card p-2">
       <div class="p-2">
         <div class="flex items-center justify-between gap-3">
-          <p class="text-gray-700 text-sm flex-1">Vous êtes curieux ?
-            <span class="font-medium text-gray-800">Découvrez l'architecture technique de ce portfolio</span>
+          <p class="text-gray-700 text-sm flex-1">{{ $t('about.curious') }}
+            <span class="font-medium text-gray-800">{{ $t('about.discover_arch') }}</span>
           </p>
           <button @click="perfomanceTest" class="btn-violet inline-block text-center btn-effect-5"
-            aria-label="Voir la performance brute">
+            :aria-label="$t('about.view_perf')">
             <font-awesome-icon :icon="['fas', 'chart-line']" />
-            <span class="text-sm">Explorer</span>
+            <span class="text-sm">{{ $t('about.explore') }}</span>
           </button>
         </div>
       </div>
@@ -45,12 +45,12 @@
                 <h3 class="text-xl font-bold flex items-center gap-2">
                   <font-awesome-icon :icon="['fas', 'tools']" class="text-violet-600" />
                   <span class="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-                    Stack technique
+                    {{ $t('about.tech_stack') }}
                   </span>
                 </h3>
                 <button @click="showTechDetails = false"
                   class="text-white bg-violet-500 px-3 py-1 rounded hover:bg-violet-400 transition-colors">
-                  Fermer
+                  {{ $t('about.close') }}
                 </button>
               </div>
 
@@ -72,18 +72,17 @@
                       <font-awesome-icon :icon="['fas', 'eye']" class="mr-1 text-xs" /> watch()
                     </span>
                     <span class="text-sm font-mono card rounded px-2 py-1">
-                      <font-awesome-icon :icon="['fas', 'sync']" class="mr-1 text-xs" /> Cycle de vie
+                      <font-awesome-icon :icon="['fas', 'sync']" class="mr-1 text-xs" /> {{ $t('about.vue_lifecycle') }}
                     </span>
                   </div>
-                  <p class="text-sm text-gray-600 mt-2">Réactivité fine basée sur Proxy, meilleure performance et
-                    réutilisation du code</p>
+                  <p class="text-sm text-gray-600 mt-2">{{ $t('about.vue_desc') }}</p>
                 </div>
 
                 <!-- TypeScript -->
                 <div class="border-l-4 border-blue-500 pl-4">
                   <h4 class="font-bold text-lg flex items-center gap-2">
                     <span class="text-xs text-blue-700 px-1">TS</span>
-                    <span>TypeScript strict</span>
+                    <span>{{ $t('about.ts_strict') }}</span>
                   </h4>
                   <div class="bg-gray-900 text-green-400 p-3 rounded-md text-xs font-mono mt-2">
                     <pre>type Event = {
@@ -96,42 +95,42 @@
 
 const registerToEvent = (event: Event): boolean => { ... }</pre>
                   </div>
-                  <p class="text-sm text-gray-600 mt-2">100% type-safe, inférence automatique, refactoring serein</p>
+                  <p class="text-sm text-gray-600 mt-2">{{ $t('about.ts_desc') }}</p>
                 </div>
 
                 <!-- Tests & Qualité -->
                 <div class="border-l-4 border-purple-500 pl-4">
                   <h4 class="font-bold text-lg flex items-center gap-2">
                     <font-awesome-icon :icon="['fas', 'vial']" class="text-purple-600" />
-                    <span>Tests & Qualité</span>
+                    <span>{{ $t('about.tests_quality') }}</span>
                   </h4>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
                     <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'check-circle']" class="text-green-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">Vitest</span>
-                        <p class="text-xs text-gray-600">Tests unitaires + intégration</p>
+                        <p class="text-xs text-gray-600">{{ $t('about.tests_unit') }}</p>
                       </div>
                     </div>
                     <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'flask']" class="text-purple-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">Vue Test Utils</span>
-                        <p class="text-xs text-gray-600">Montage de composants</p>
+                        <p class="text-xs text-gray-600">{{ $t('about.tests_mount') }}</p>
                       </div>
                     </div>
                     <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'chart-pie']" class="text-blue-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">Coverage</span>
-                        <p class="text-xs text-gray-600">Rapport de couverture</p>
+                        <p class="text-xs text-gray-600">{{ $t('about.tests_coverage') }}</p>
                       </div>
                     </div>
                     <div class="card p-3 rounded-md flex items-start gap-2">
                       <font-awesome-icon :icon="['fas', 'shield-alt']" class="text-indigo-500 mt-0.5" />
                       <div>
                         <span class="font-mono text-sm font-medium">vue-tsc</span>
-                        <p class="text-xs text-gray-600">Vérification type en CI</p>
+                        <p class="text-xs text-gray-600">{{ $t('about.tests_type') }}</p>
                       </div>
                     </div>
                   </div>
@@ -141,7 +140,7 @@ const registerToEvent = (event: Event): boolean => { ... }</pre>
                 <div class="border-l-4 border-black pl-4">
                   <h4 class="font-bold text-lg flex items-center gap-2">
                     <font-awesome-icon :icon="['fab', 'github']" class="text-gray-700" />
-                    <span>Github Actions CI/CD</span>
+                    <span>{{ $t('about.ci_cd') }}</span>
                   </h4>
                   <div class="bg-gray-900 text-green-400 p-3 rounded-md text-xs font-mono mt-2">
                     <pre>name: Porfolio App
@@ -169,8 +168,7 @@ jobs:
                       Deploy ✓
                     </span>
                   </div>
-                  <p class="text-sm text-gray-600 mt-2">À chaque push : typage vérifié, tests passants, déploiement
-                    automatique</p>
+                  <p class="text-sm text-gray-600 mt-2">{{ $t('about.ci_desc') }}</p>
                 </div>
 
                 <div class="relative pl-4">
@@ -180,36 +178,36 @@ jobs:
                       <div>
                         <font-awesome-icon :icon="['fas', 'check-double']" class="text-violet-600 text-xl mb-1" />
                         <div class="text-2xl font-bold text-violet-600">100%</div>
-                        <div class="text-xs text-gray-600">TypeScript strict</div>
+                        <div class="text-xs text-gray-600">{{ $t('about.ts_strict') }}</div>
                       </div>
                       <div>
                         <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="text-violet-600 text-xl mb-1" />
                         <div class="text-2xl font-bold text-violet-600">&lt;2s</div>
-                        <div class="text-xs text-gray-600">Temps d'exécution tests</div>
+                        <div class="text-xs text-gray-600">{{ $t('about.perf_time') }}</div>
                       </div>
                       <div>
                         <font-awesome-icon :icon="['fas', 'check-circle']" class="text-violet-600 text-xl mb-1" />
                         <div class="text-2xl font-bold text-violet-600">Push</div>
-                        <div class="text-xs text-gray-600">Pipeline CI (Chaque commit)</div>
+                        <div class="text-xs text-gray-600">{{ $t('about.pipeline') }}</div>
                       </div>
                       <div>
                         <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="text-violet-600 text-xl mb-1" />
                         <div class="text-2xl font-bold text-violet-600">Auto</div>
-                        <div class="text-xs text-gray-600">Déploiement Netlify</div>
+                        <div class="text-xs text-gray-600">{{ $t('about.deploy') }}</div>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div class="text-center text-sm text-gray-500 border-t pt-4">
-                  Code source
+                  {{ $t('about.source_code') }}
                   <a href="https://github.com/randyrt/new-porfolio" target="_blank"
-                    class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur GitHub</a> <span
-                    class="text-violet-700">|</span>
-                  Qualité web <a
+                    class="text-violet-600 hover:text-violet-400 transition-colors">{{ $t('about.view_github') }}</a>
+                  <span class="text-violet-700">|</span>
+                  {{ $t('about.web_quality') }} <a
                     href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/sc142ifq6r?form_factor=desktop"
-                    target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors">Voir sur PageSpeed
-                    Insights</a>
+                    target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors">{{
+                      $t('about.view_pagespeed') }}</a>
                 </div>
               </div>
             </div>
@@ -217,49 +215,46 @@ jobs:
         </Transition>
       </Teleport>
     </div>
-
-    <div class="card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg"
-      data-aos="fade-up">
-      <font-awesome-icon :icon="['fab', 'github']"
-        class="font-awesome cursor-pointer hover:text-violet-600 transition-colors text-2xl" @click="openGithub" />
-      <font-awesome-icon :icon="['fab', 'linkedin']"
-        class="font-awesome cursor-pointer hover:text-violet-600 transition-colors text-2xl" @click="openLinkedin" />
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
+import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue"
+import { useI18n } from 'vue-i18n'
 
-useHead({
-  title: 'A propos de Randy',
-  meta: [
-    {
-      name: 'Conclusion',
-      content: 'Pour en conclure, voici les statistique'
-    }
-  ]
+const { t } = useI18n()
+
+watchEffect(() => {
+  useHead({
+    title: t('about.meta_title'),
+    meta: [
+      {
+        name: 'Conclusion',
+        content: t('about.meta_desc')
+      }
+    ]
+  })
 })
 
-import { ref, onMounted, onUnmounted } from "vue"
 
 const loading = ref(true)
 
 const stats = ref([
-  { value: 15, displayValue: 0, label: "Projets réalisés", suffix: "+" },
-  { value: 15, displayValue: 0, label: "Clients satisfaits", suffix: "+" },
-  { value: 5, displayValue: 0, label: "Années d'expérience", suffix: "+" },
+  { value: 15, displayValue: 0, labelKey: "about.stats.projects", suffix: "+" },
+  { value: 15, displayValue: 0, labelKey: "about.stats.clients", suffix: "+" },
+  { value: 5, displayValue: 0, labelKey: "about.stats.years", suffix: "+" },
 ])
 
 let animationFrame: number
 let startTime: number | null = null
 const duration = 2000
 
-const values = [
-  { icon: "🚀", title: "Innovation", description: "Toujours à la pointe de la technologie" },
-  { icon: "🤝", title: "Confiance", description: "Relation transparente avec les clients" },
-  { icon: "💡", title: "Créativité", description: "Des solutions uniques pour chaque projet" }
-]
+const values = computed(() => [
+  { icon: "🚀", title: t('about.values.innovation_title'), description: t('about.values.innovation_desc') },
+  { icon: "🤝", title: t('about.values.trust_title'), description: t('about.values.trust_desc') },
+  { icon: "💡", title: t('about.values.creativity_title'), description: t('about.values.creativity_desc') }
+])
 
 const animateCounters = (timestamp: number) => {
   if (!startTime) startTime = timestamp
@@ -293,13 +288,7 @@ onUnmounted(() => {
   }
 })
 
-function openGithub() {
-  window.open("https://github.com/randyrt", "_blank")
-}
 
-function openLinkedin() {
-  window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
-}
 
 const showTechDetails = ref(false)
 
@@ -343,15 +332,14 @@ const perfomanceTest = () => {
 }
 
 .custom-multi-gradient {
-    background: linear-gradient(to bottom, 
-      #22c55e 0%,     
-      #22c55e 25%,    
-      #3b82f6 25%,    
-      #3b82f6 50%,    
-      #8b5cf6 50%,    
+  background: linear-gradient(to bottom,
+      #22c55e 0%,
+      #22c55e 25%,
+      #3b82f6 25%,
+      #3b82f6 50%,
+      #8b5cf6 50%,
       #8b5cf6 75%,
-      #000000 75%,   
-      #000000 100%
-    );
-  }
+      #000000 75%,
+      #000000 100%);
+}
 </style>

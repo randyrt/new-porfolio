@@ -1,20 +1,18 @@
 <template>
-    <Loading v-if="loading" message="Technologies utilisées..." />
+    <Loading v-if="loading" :message="$t('technology.loading')" />
     <div v-else class="technologies-container">
-        <AnimatedTitle text="« Explorons maintenant les technologies que j’utilise quotidiennement »" aos="fade-down" />
+        <AnimatedTitle :text="$t('technology.quote')" aos="fade-down" />
         <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
                 <span class="text-violet-800 text-lg">«</span>
-                Être polyvalent, ce n'est pas connaître un peu de tout, c'est savoir s'adapter et choisir la bonne
-                technologie pour chaque défi.
-                Voici les outils que j'utilise au quotidien pour concrétiser vos idées.
+                {{ $t('technology.description') }}
                 <span class="text-violet-800 text-lg">»</span>
             </p>
         </div>
         <div data-aos="fade-up" class="tech-grid">
             <!-- EN COURS D'APPRENTISSAGE -->
             <div class="card tech-category">
-                <logoSection title="En cours d'apprentissage" />
+                <logoSection :title="$t('technology.learning')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/flutter.png" name="FLUTTER" />
                     <TechLogo logo="/images/tecnos/c++.png" name="C++" />
@@ -24,7 +22,7 @@
 
             <!-- DESIGN -->
             <div class="card tech-category">
-                <logoSection title="Design" />
+                <logoSection :title="$t('technology.design')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/photoshop.png" name="PHOTOSHOP" />
                     <TechLogo logo="/images/tecnos/figma.png" name="FIGMA" />
@@ -34,7 +32,7 @@
 
             <!-- FRONTEND -->
             <div class="card tech-category">
-                <logoSection title="Frontend" />
+                <logoSection :title="$t('technology.frontend')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/html5.png" name="HTML5" />
                     <TechLogo logo="/images/tecnos/css.png" name="CSS3" />
@@ -46,7 +44,7 @@
 
             <!-- BACKEND & SGBD -->
             <div class="card tech-category">
-                <logoSection title="Backend & SGBD" />
+                <logoSection :title="$t('technology.backend')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/php.png" name="PHP" />
                     <TechLogo logo="/images/tecnos/node.webp" name="NODEJS" />
@@ -57,7 +55,7 @@
 
             <!-- FRAMEWORKS -->
             <div class="card tech-category">
-                <logoSection title="Frameworks" />
+                <logoSection :title="$t('technology.frameworks')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/vuejs.jpg" name="VUE.JS" />
                     <TechLogo logo="/images/tecnos/nuxt.png" name="NUXT.JS" />
@@ -70,7 +68,7 @@
 
             <!-- ENVIRONNEMENT DE DEV -->
             <div class="card tech-category">
-                <logoSection title="Environnement de dev" />
+                <logoSection :title="$t('technology.dev_env')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/lunix.png" name="LINUX" />
                     <TechLogo logo="/images/tecnos/vscode.png" name="VS CODE" />
@@ -86,7 +84,7 @@
 
             <!-- GITOPS & SECURISATION -->
             <div class="card tech-category">
-                <logoSection title="GitOps & Sécurisation" />
+                <logoSection :title="$t('technology.gitops')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/ci_cd.png" name="CI/CD" />
                     <TechLogo logo="/images/tecnos/ftp.png" name="FTP" />
@@ -99,7 +97,7 @@
 
             <!-- SCRIPT & AUTOMATISATION -->
             <div class="card tech-category">
-                <logoSection title="Script & Automatisation" />
+                <logoSection :title="$t('technology.scripting')" />
                 <DivSlot>
                     <TechLogo logo="/images/tecnos/python.png" name="PYTHON" />
                 </DivSlot>
@@ -110,19 +108,23 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-
-useHead({
-    title: 'Technologies de Randy',
-    meta: [
-        {
-            name: 'Tech',
-            content: ' Explorons maintenant les technologies que j’utilise quotidiennement'
-        }
-    ]
-})
-
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+watchEffect(() => {
+    useHead({
+        title: t('technology.meta_title'),
+        meta: [
+            {
+                name: 'Tech',
+                content: t('technology.meta_desc')
+            }
+        ]
+    })
+})
 
 const toast = useToast()
 const loading = ref<boolean>(true)
@@ -130,7 +132,7 @@ const loading = ref<boolean>(true)
 onMounted(() => {
     setTimeout(() => {
         loading.value = false;
-        toast.info("Survolez le logo pour afficher le nom du techno 🙂")
+        toast.info(t('technology.toast_hover'))
     }, 1000)
 })
 </script>

@@ -1,21 +1,21 @@
 <template>
-    <Loading v-if="loading" message="Mes récents projets..." />
+    <Loading v-if="loading" :message="$t('projects.loading')" />
     <div v-else>
-        <AnimatedTitle text="« Quelques projets dont je suis particulièrement fier »" aos="fade-down" />
+        <AnimatedTitle :text="$t('projects.quote')" aos="fade-down" />
         <ProjectGallery :images="images1" title="FID-CONNECT"
-            description="Fid-Connect est une plateforme tout-en-un qui centralise la gestion comptable, fiscale et administrative des entreprises. Elle va au-delà du simple suivi des tâches en intégrant la gestion des réformes fiscales, le suivi des parts, la génération de lettres d’engagement, l’automatisation de processus clés, ammortissement, TVA, gestion de rendez-vous, payment en ligne, ect. Développée avec Vue.js et Laravel, elle est adaptée aux exigences de la réglementation belge et permet d’optimiser la productivité tout en sécurisant les opérations."
+            :description="$t('projects.fid_connect')"
             @open-image="openImage" />
         <ProjectGallery :images="images2" title="QCP"
-            description="QCP est une application sur mesure développée pour un client belge, axée sur la gestion du crédit, le suivi de l’amortissement et la planification financière. Propulsée par Vue.js et Laravel, elle offre une interface intelligente et intuitive qui simplifie les opérations financières complexes, automatise les calculs et permet une génération fluide de documents essentiels. Conçue pour répondre aux besoins spécifiques du client, elle optimise la gestion financière et améliore la prise de décision grâce à des fonctionnalités avancées et une expérience utilisateur exceptionnelle."
+            :description="$t('projects.qcp')"
             @open-image="openImage" />
         <ProjectGallery :images="images4" title="ECHO WEBLINE"
-            description="echo-webLine est une plateforme web développée pour un client basé à Paris, spécialisée dans l’imagerie cardiovasculaire et la gestion d’événements scientifiques. Conçue avec Nuxt.js et Laravel, elle propose une interface moderne et dynamique permettant de présenter des contenus médicaux, gérer les inscriptions à des congrès et valoriser les activités d’une communauté professionnelle. L’application met l’accent sur une expérience utilisateur fluide, une navigation intuitive et une mise en avant visuelle des informations clés, tout en garantissant performance et fiabilité."
+            :description="$t('projects.echo_webline')"
             @open-image="openImage" />
         <ProjectGallery :images="images5" title="AFR FAN"
-            description="Afr-fan est un réseau social dédié à la communauté africaine, offrant une plateforme pour échanger des contenus culturels, sociaux et économiques. Développé avec Nuxt.js et Laravel, il propose une interface moderne et intuitive qui facilite les interactions entre membres, la création de groupes d'intérêt et la diffusion de contenus variés. Afr-fan vise à renforcer les liens au sein de la diaspora africaine en fournissant un espace de partage sécurisé et engageant, tout en mettant à l'honneur les richesses culturelles du continent. La plateforme intègre également un système de paiement en ligne par VISA ou PayPal permettant aux utilisateurs de soutenir la communauté ou d'accéder à des fonctionnalités premium."
+            :description="$t('projects.afr_fan')"
             @open-image="openImage" />
         <ProjectGallery :images="images3" title="NURSES"
-            description="Souper of Nurses est un restaurant belge qui accueille de grands événements sur de longues périodes. Ce site web permet aux utilisateurs de faire des réservations de groupe en ligne, de contacter directement le restaurant, et comprend un panneau d’administration pour gérer les inscriptions, les événements et les places VIP. Développé avec Vue.js et Symfony, il offre une expérience utilisateur fluide et une gestion efficace des réservations, tout en mettant en valeur les événements à venir et les services exclusifs du restaurant."
+            :description="$t('projects.nurses')"
             @open-image="openImage" />
 
         <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 scale-95"
@@ -39,21 +39,24 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-
-useHead({
-  title: 'Projets de Randy',
-  meta: [
-    {
-      name: 'Réalisation',
-      content: 'Quelques projets dont je suis particulièrement fier '
-    }
-  ]
-})
-
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import { useToast } from 'vue-toastification'
 import ProjectGallery from '../components/ProjectGallery.vue';
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
+
+watchEffect(() => {
+  useHead({
+    title: t('projects.meta_title'),
+    meta: [
+      {
+        name: 'Réalisation',
+        content: t('projects.meta_desc')
+      }
+    ]
+  })
+})
 
 const loading = ref<boolean>(true);
 
@@ -123,7 +126,7 @@ function closeImage() {
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
-        toast.info("Cliquez sur une image pour l'agrandir 🙂 !")
+        toast.info(t('projects.toast_click'))
     }, 1000);
 });
 </script>

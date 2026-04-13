@@ -1,13 +1,11 @@
 <template>
-  <Loading v-if="loading" message="Me contacter..." />
+  <Loading v-if="loading" :message="$t('contact.loading')" />
   <div v-else>
-    <AnimatedTitle text=" « Vous pouvez me contacter ici de deux façons.  » " aos="fade-down" />
+    <AnimatedTitle :text="$t('contact.quote')" aos="fade-down" />
     <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
       <p class="text-lg italic text-gray-700 dark:text-gray-300">
         <span class="text-violet-800 text-lg">«</span>
-        Travailler avec des équipes et décideurs internationaux m’a appris une chose : la meilleure technologie ne
-        remplace pas une bonne discussion.
-        Parlons de votre projet — sans engagement, avec sérieux et bienveillance.
+        {{ $t('contact.p') }}
         <span class="text-violet-800 text-lg">»</span>
       </p>
     </div>
@@ -15,20 +13,20 @@
       <div class="contact-form card p-8">
         <div class="form-group">
           <input type="text" v-model="form.name" required />
-          <label class="text-gray-500 !font-semibold">Nom</label>
+          <label class="text-gray-500 !font-semibold">{{ $t('contact.form_name') }}</label>
         </div>
         <div class="form-group">
           <input type="email" v-model="form.email" required />
-          <label class="text-gray-500 !font-semibold">Email</label>
+          <label class="text-gray-500 !font-semibold">{{ $t('contact.form_email') }}</label>
         </div>
         <div class="form-group">
           <textarea rows="6" v-model="form.message" required></textarea>
-          <label class="text-gray-500 !font-semibold">Message</label>
+          <label class="text-gray-500 !font-semibold">{{ $t('contact.form_message') }}</label>
         </div>
         <button
           :class="[sending ? 'cursor-not-allowed submit-btn btn-violet btn-effect-5' : 'submit-btn btn-violet btn-effect-5']"
           type="submit" :disabled="sending" @click="sendEmail">
-          {{ sending ? "Envoi..." : "Envoyer" }}
+          {{ sending ? $t('contact.sending') : $t('contact.send') }}
         </button>
       </div>
       <div class="card contact-form card p-8">
@@ -40,21 +38,25 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-
-useHead({
-  title: 'Contact de Randy',
-  meta: [
-    {
-      name: 'Communication',
-      content: 'Contacte-moi ici de deux façons.'
-    }
-  ]
-})
-
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watchEffect } from 'vue'
 import { useToast } from 'vue-toastification'
 import confetti from "canvas-confetti"
 import emailjs from "@emailjs/browser"
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+watchEffect(() => {
+  useHead({
+    title: t('contact.meta_title'),
+    meta: [
+      {
+        name: 'Communication',
+        content: t('contact.meta_desc')
+      }
+    ]
+  })
+})
 
 
 const toast = useToast()
@@ -91,12 +93,12 @@ const isEmailValid = computed(() => {
 
 const sendEmail = async () => {
   if (!form.value.name || !form.value.email || !form.value.message) {
-    toast.warning("Veuillez remplir tous les champs 👮‍♂️ !")
+    toast.warning(t('contact.toast_fill_all'))
     return
   }
 
   if (!isEmailValid.value) {
-    toast.warning("Veuillez entrer une adresse e-mail valide 😏 !")
+    toast.warning(t('contact.toast_invalid_email'))
     return;
   }
 
@@ -112,10 +114,10 @@ const sendEmail = async () => {
     form.value = { name: "", email: "", message: "" }
 
   } catch (error) {
-    toast.error("Erreur lors de l’envoi. Vérifiez votre connnexion internet 🥶.")
+    toast.error(t('contact.toast_error'))
   } finally {
     sending.value = false
-    toast.success("Message envoyé avec succès 🎉 !")
+    toast.success(t('contact.toast_success'))
     launchConfetti()
   }
 };
