@@ -46,11 +46,15 @@ import {
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
   faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight,
-  faLocationDot
+  faLocationDot,
+  faFlag,
+  faLandmark,
+  faBuilding,
+  faCity
 } from '@fortawesome/free-solid-svg-icons'
 
 
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faEnvelope, faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
 
 
 library.add(
@@ -61,6 +65,11 @@ library.add(
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
   faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faLocationDot,
+  faFlag,
+  faLandmark,
+  faBuilding,
+  faCity,
+  faBuildingRegular,
 
   faEnvelope,
 

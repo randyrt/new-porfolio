@@ -61,7 +61,7 @@ if (__VLS_ctx.loading) {
 }
 else {
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-        ...{ class: "p-8 flex flex-col" },
+        ...{ class: "p-4 flex flex-col" },
     });
     const __VLS_6 = {}.AnimatedTitle;
     /** @type {[typeof __VLS_components.AnimatedTitle, ]} */ ;
@@ -158,7 +158,7 @@ else {
     // @ts-ignore
     [$t,];
 }
-/** @type {__VLS_StyleScopedClasses['p-8']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-4']} */ ;
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;

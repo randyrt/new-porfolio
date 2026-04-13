@@ -30,12 +30,6 @@ const fiscalData = ref({ revenue: 250000, expenses: 145000 });
 const taxableResult = computed(() => fiscalData.value.revenue - fiscalData.value.expenses);
 const vatAmount = computed(() => fiscalData.value.revenue * 0.21);
 const docMessage = ref('');
-const assets = ref([
-    { name: 'Matériel informatique', value: 15000, amortization: 20 },
-    { name: 'Mobilier de bureau', value: 8000, amortization: 10 },
-    { name: 'Logiciels', value: 5000, amortization: 33 }
-]);
-const netBookValue = computed(() => assets.value.reduce((sum, a) => sum + a.value * (1 - a.amortization / 100), 0));
 const generateTaxDeclaration = () => {
     toast.success(`Déclaration fiscale générée - TVA due: ${formatCurrency(vatAmount.value)}`);
 };
@@ -418,7 +412,7 @@ Swiper;
 const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0({
     pagination: ({ clickable: true }),
     modules: ([__VLS_ctx.Pagination, __VLS_ctx.Autoplay]),
-    ...{ class: "mySwiper w-full md:w-2/3 rounded-lg border-3 border-purple-500" },
+    ...{ class: "mySwiper w-full md:w-2/3 rounded-lg border-1 border-violet-300" },
     loop: (true),
     autoplay: ({ delay: 2500 }),
     navigation: true,
@@ -426,7 +420,7 @@ const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0({
 const __VLS_2 = __VLS_1({
     pagination: ({ clickable: true }),
     modules: ([__VLS_ctx.Pagination, __VLS_ctx.Autoplay]),
-    ...{ class: "mySwiper w-full md:w-2/3 rounded-lg border-3 border-purple-500" },
+    ...{ class: "mySwiper w-full md:w-2/3 rounded-lg border-1 border-violet-300" },
     loop: (true),
     autoplay: ({ delay: 2500 }),
     navigation: true,
@@ -679,49 +673,6 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-4" },
         });
-        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-            ...{ class: "bg-white rounded-lg shadow p-4" },
-        });
-        __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
-            ...{ class: "font-semibold mb-2" },
-        });
-        (__VLS_ctx.$t('demo.fid_connect.amortization_title'));
-        // @ts-ignore
-        [$t,];
-        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-            ...{ class: "space-y-2" },
-        });
-        for (const [asset] of __VLS_getVForSourceType((__VLS_ctx.assets))) {
-            // @ts-ignore
-            [assets,];
-            __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-                key: (asset.name),
-                ...{ class: "flex justify-between text-sm" },
-            });
-            __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
-            (asset.name);
-            __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-                ...{ class: "flex gap-4" },
-            });
-            __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
-            (__VLS_ctx.formatCurrency(asset.value));
-            // @ts-ignore
-            [formatCurrency,];
-            __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
-                ...{ class: "text-gray-500" },
-            });
-            (asset.amortization);
-            (__VLS_ctx.$t('demo.fid_connect.per_year'));
-            // @ts-ignore
-            [$t,];
-        }
-        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-            ...{ class: "mt-3 pt-2 border-t text-xs text-gray-500" },
-        });
-        (__VLS_ctx.$t('demo.fid_connect.amortization_line'));
-        (__VLS_ctx.formatCurrency(__VLS_ctx.netBookValue));
-        // @ts-ignore
-        [$t, formatCurrency, netBookValue,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
@@ -1417,7 +1368,8 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [processPayment, isProcessing,];
-        (__VLS_ctx.isProcessing ? __VLS_ctx.$t('demo.afr_fan.processing') : __VLS_ctx.$t('demo.afr_fan.support_now'));
+        (__VLS_ctx.isProcessing ? __VLS_ctx.$t('demo.afr_fan.processing') :
+            __VLS_ctx.$t('demo.afr_fan.support_now'));
         // @ts-ignore
         [$t, $t, isProcessing,];
         if (__VLS_ctx.paymentMessage) {
@@ -1512,9 +1464,6 @@ if (__VLS_ctx.showDemo) {
         });
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-gray-800 flex items-center gap-2" },
-        });
-        __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
-            ...{ class: "text-2xl" },
         });
         (__VLS_ctx.$t('demo.nurses.title'));
         // @ts-ignore
@@ -1681,9 +1630,6 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-gray-800 flex items-center gap-2" },
         });
-        __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
-            ...{ class: "text-2xl" },
-        });
         (__VLS_ctx.$t('demo.nurses.events_title'));
         // @ts-ignore
         [$t,];
@@ -1759,7 +1705,8 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-xs px-2 py-1 rounded-full" },
                 ...{ class: (event.type === 'gala' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700') },
             });
-            (event.type === 'gala' ? __VLS_ctx.$t('demo.nurses.event_gala') : __VLS_ctx.$t('demo.nurses.event_degust'));
+            (event.type === 'gala' ? __VLS_ctx.$t('demo.nurses.event_gala') :
+                __VLS_ctx.$t('demo.nurses.event_degust'));
             // @ts-ignore
             [$t, $t,];
             __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
@@ -1801,9 +1748,6 @@ if (__VLS_ctx.showDemo) {
         });
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-white flex items-center gap-2" },
-        });
-        __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
-            ...{ class: "text-xl" },
         });
         (__VLS_ctx.$t('demo.nurses.admin_title'));
         // @ts-ignore
@@ -1911,9 +1855,6 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-gray-800 flex items-center gap-2" },
         });
-        __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
-            ...{ class: "text-2xl" },
-        });
         (__VLS_ctx.$t('demo.echo.title'));
         // @ts-ignore
         [$t,];
@@ -1994,7 +1935,8 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-xs px-2 py-1 rounded" },
                 ...{ class: (event.status === 'ouvert' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700') },
             });
-            (event.status === 'ouvert' ? __VLS_ctx.$t('demo.echo.status_open') : __VLS_ctx.$t('demo.echo.status_full'));
+            (event.status === 'ouvert' ? __VLS_ctx.$t('demo.echo.status_open') :
+                __VLS_ctx.$t('demo.echo.status_full'));
             // @ts-ignore
             [$t, $t,];
             __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
@@ -2102,9 +2044,6 @@ if (__VLS_ctx.showDemo) {
         });
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-gray-800 flex items-center gap-2" },
-        });
-        __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
-            ...{ class: "text-2xl" },
         });
         (__VLS_ctx.$t('demo.echo.cardio_title'));
         // @ts-ignore
@@ -2440,8 +2379,8 @@ if (__VLS_ctx.showGroupModal) {
 /** @type {__VLS_StyleScopedClasses['w-full']} */ ;
 /** @type {__VLS_StyleScopedClasses['md:w-2/3']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
-/** @type {__VLS_StyleScopedClasses['border-3']} */ ;
-/** @type {__VLS_StyleScopedClasses['border-purple-500']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-1']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-violet-300']} */ ;
 /** @type {__VLS_StyleScopedClasses['relative']} */ ;
 /** @type {__VLS_StyleScopedClasses['group']} */ ;
 /** @type {__VLS_StyleScopedClasses['overflow-hidden']} */ ;
@@ -2556,24 +2495,6 @@ if (__VLS_ctx.showGroupModal) {
 /** @type {__VLS_StyleScopedClasses['text-sm']} */ ;
 /** @type {__VLS_StyleScopedClasses['py-2']} */ ;
 /** @type {__VLS_StyleScopedClasses['space-y-4']} */ ;
-/** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
-/** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
-/** @type {__VLS_StyleScopedClasses['shadow']} */ ;
-/** @type {__VLS_StyleScopedClasses['p-4']} */ ;
-/** @type {__VLS_StyleScopedClasses['font-semibold']} */ ;
-/** @type {__VLS_StyleScopedClasses['mb-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['space-y-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['flex']} */ ;
-/** @type {__VLS_StyleScopedClasses['justify-between']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-sm']} */ ;
-/** @type {__VLS_StyleScopedClasses['flex']} */ ;
-/** @type {__VLS_StyleScopedClasses['gap-4']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-gray-500']} */ ;
-/** @type {__VLS_StyleScopedClasses['mt-3']} */ ;
-/** @type {__VLS_StyleScopedClasses['pt-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['border-t']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-xs']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-gray-500']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['shadow']} */ ;
@@ -2954,7 +2875,6 @@ if (__VLS_ctx.showGroupModal) {
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['items-center']} */ ;
 /** @type {__VLS_StyleScopedClasses['gap-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-2xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['shadow']} */ ;
@@ -3037,7 +2957,6 @@ if (__VLS_ctx.showGroupModal) {
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['items-center']} */ ;
 /** @type {__VLS_StyleScopedClasses['gap-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-2xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['shadow']} */ ;
@@ -3107,7 +3026,6 @@ if (__VLS_ctx.showGroupModal) {
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['items-center']} */ ;
 /** @type {__VLS_StyleScopedClasses['gap-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['space-y-3']} */ ;
 /** @type {__VLS_StyleScopedClasses['grid']} */ ;
 /** @type {__VLS_StyleScopedClasses['grid-cols-2']} */ ;
@@ -3179,7 +3097,6 @@ if (__VLS_ctx.showGroupModal) {
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['items-center']} */ ;
 /** @type {__VLS_StyleScopedClasses['gap-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-2xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['shadow']} */ ;
@@ -3266,7 +3183,6 @@ if (__VLS_ctx.showGroupModal) {
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['items-center']} */ ;
 /** @type {__VLS_StyleScopedClasses['gap-2']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-2xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['shadow']} */ ;
@@ -3452,8 +3368,6 @@ const __VLS_self = (await import('vue')).defineComponent({
         taxableResult: taxableResult,
         vatAmount: vatAmount,
         docMessage: docMessage,
-        assets: assets,
-        netBookValue: netBookValue,
         generateTaxDeclaration: generateTaxDeclaration,
         generateDocument: generateDocument,
         loan: loan,

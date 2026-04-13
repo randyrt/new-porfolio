@@ -422,5 +422,15 @@
       "btn_create": "Validate",
       "creating": "Creating..."
     }
+  },
+  "clock": {
+    "cities": {
+      "antananarivo": "Antananarivo",
+      "paris": "Paris",
+      "new_york": "New York",
+      "tokyo": "Tokyo",
+      "london": "London",
+      "dubai": "Dubai"
+    }
   }
 }

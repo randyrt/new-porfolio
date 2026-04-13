@@ -19,6 +19,8 @@ const __VLS_ctx = {};
 let __VLS_elements;
 let __VLS_components;
 let __VLS_directives;
+// CSS variable injection 
+// CSS variable injection end 
 __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({});
 /** @type {[typeof Navbar, ]} */ ;
 // @ts-ignore

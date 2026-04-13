@@ -5,7 +5,7 @@
             <div class="clock-item">
                 <div class="city-name">
                     <font-awesome-icon :icon="currentCity.icon" class="text-violet-400 text-sm" />
-                    <span>{{ currentCity.name }}</span>
+                    <span>{{ $t(currentCity.nameKey) }}</span>
                 </div>
                 <div class="city-time">{{ currentTime }}</div>
                 <div class="city-date">{{ currentDate }}</div>
@@ -14,7 +14,7 @@
 
         <div class="dots-container">
             <div class="dots">
-                <span v-for="(city, index) in cities" :key="city.name" class="dot"
+                <span v-for="(city, index) in cities" :key="city.nameKey" class="dot"
                     :class="{ active: index === currentIndex }" @click="setActiveCity(index)">
                 </span>
             </div>
@@ -24,6 +24,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t, locale } = useI18n()
 
 const currentIndex = ref(0)
 const currentTime = ref('--:--:--')
@@ -32,12 +35,12 @@ let rotationInterval: ReturnType<typeof setInterval> | null = null
 let clockInterval: ReturnType<typeof setInterval> | null = null
 
 const cities = [
-    { name: 'Antananarivo', timezone: 'Indian/Antananarivo', icon: 'fa-solid fa-location-dot' },
-    { name: 'Paris', timezone: 'Europe/Paris', icon: 'fa-solid fa-flag' },
-    { name: 'New York', timezone: 'America/New_York', icon: 'fa-regular fa-building' },
-    { name: 'Tokyo', timezone: 'Asia/Tokyo', icon: 'fa-solid fa-landmark' },
-    { name: 'London', timezone: 'Europe/London', icon: 'fa-solid fa-building' },
-    { name: 'Dubai', timezone: 'Asia/Dubai', icon: 'fa-solid fa-city' }
+    { nameKey: 'clock.cities.antananarivo', timezone: 'Indian/Antananarivo', icon: 'fa-solid fa-location-dot' },
+    { nameKey: 'clock.cities.paris', timezone: 'Europe/Paris', icon: 'fa-solid fa-flag' },
+    { nameKey: 'clock.cities.new_york', timezone: 'America/New_York', icon: 'fa-regular fa-building' },
+    { nameKey: 'clock.cities.tokyo', timezone: 'Asia/Tokyo', icon: 'fa-solid fa-landmark' },
+    { nameKey: 'clock.cities.london', timezone: 'Europe/London', icon: 'fa-solid fa-building' },
+    { nameKey: 'clock.cities.dubai', timezone: 'Asia/Dubai', icon: 'fa-solid fa-city' }
 ]
 
 const currentCity = computed(() => cities[currentIndex.value])
@@ -68,8 +71,8 @@ const updateCurrentClock = () => {
         year: 'numeric'
     }
 
-    currentTime.value = new Intl.DateTimeFormat('fr-FR', timeOptions).format(now)
-    let date = new Intl.DateTimeFormat('fr-FR', dateOptions).format(now)
+    currentTime.value = new Intl.DateTimeFormat(locale.value, timeOptions).format(now)
+    let date = new Intl.DateTimeFormat(locale.value, dateOptions).format(now)
 
     // Mettre la première lettre du jour en majuscule
     // Exemple: "lundi 15 janvier 2024" -> "Lundi 15 janvier 2024"
@@ -126,10 +129,6 @@ onBeforeUnmount(() => {
     min-width: 200px;
 }
 
-.clock-item:hover {
-    transform: translateY(-2px);
-    background: rgba(139, 92, 246, 0.1);
-}
 
 .city-name {
     font-size: 1rem;
