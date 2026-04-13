@@ -239,8 +239,8 @@
       </div>
       <nav class="flex-1 flex flex-col px-4 space-y-2 mt-2">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
-          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100 flex items-center gap-2"
-          active-class="bg-violet-200 font-bold">
+          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
+          active-class="bg-purple-200 font-bold">
           <font-awesome-icon :icon="route.icon" class="text-gray-500" />
           <span>{{ route.name }}</span>
         </router-link>
