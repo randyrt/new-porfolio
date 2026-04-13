@@ -2,7 +2,15 @@
     <Loading v-if="loading" message="Technologies utilisées..." />
     <div v-else class="technologies-container">
         <AnimatedTitle text="« Explorons maintenant les technologies que j’utilise quotidiennement »" aos="fade-down" />
-
+        <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
+            <p class="text-lg italic text-gray-700 dark:text-gray-300">
+                <span class="text-violet-800 text-lg">«</span>
+                Être polyvalent, ce n'est pas connaître un peu de tout, c'est savoir s'adapter et choisir la bonne
+                technologie pour chaque défi.
+                Voici les outils que j'utilise au quotidien pour concrétiser vos idées.
+                <span class="text-violet-800 text-lg">»</span>
+            </p>
+        </div>
         <div data-aos="fade-up" class="tech-grid">
             <!-- EN COURS D'APPRENTISSAGE -->
             <div class="card tech-category">
@@ -104,13 +112,13 @@
 import { useHead } from '@vueuse/head'
 
 useHead({
-  title: 'Technologies de Randy',
-  meta: [
-    {
-      name: 'Tech',
-      content: ' Explorons maintenant les technologies que j’utilise quotidiennement'
-    }
-  ]
+    title: 'Technologies de Randy',
+    meta: [
+        {
+            name: 'Tech',
+            content: ' Explorons maintenant les technologies que j’utilise quotidiennement'
+        }
+    ]
 })
 
 import { ref, onMounted } from 'vue'

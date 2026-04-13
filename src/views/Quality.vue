@@ -2,7 +2,7 @@
     <Loading v-if="loading" message="Mes qualités..." />
     <div v-else class="p-4">
         <AnimatedTitle text=" « Randy en tant que dévellopeur web et mobile  » " aos="fade-down" />
-        <div class="text-center max-w-2xl mx-auto px-4 mt-16 mb-10" data-aos="fade-up">
+        <div class="text-center max-w-2xl mx-auto px-4 mt-4 mb-10" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
                <span class="text-violet-800 text-lg">«</span>  Au fil des projets que j'ai réalisés seul ou avec une équipe, j’ai compris que les compétences techniques ne suffisent pas. Ce qui différencie un développeur efficace, c’est son état d’esprit. Voici les principes qui guident mon travail au quotidien. <span  class="text-violet-800 text-lg">»</span> 
             </p>

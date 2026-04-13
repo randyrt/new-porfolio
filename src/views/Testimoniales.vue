@@ -4,7 +4,7 @@
     <div class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
       <AnimatedTitle text=" « Quelque témoignages venant de mes clients et employeurs » " aos="fade-down" />
     </div>
-    <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-16" data-aos="fade-up">
+    <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
       <p class="text-lg italic text-gray-700 dark:text-gray-300">
         <span class="text-violet-800 text-lg">«</span>
         Ayant eu l'opportunité de collaborer avec de nombreux clients et hauts responsables à l'international, j'ai pu
