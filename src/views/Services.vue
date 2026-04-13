@@ -146,21 +146,19 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
 import { useRouter } from 'vue-router'
-import { ref, onMounted, watchEffect } from 'vue'
+import { computed, ref, onMounted, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-watchEffect(() => {
-  useHead({
-    title: t('services.meta_title'),
-    meta: [
-      {
-        name: 'Atouts',
-        content: t('services.meta_desc')
-      }
-    ]
-  })
+useHead({
+  title: computed(() => t('services.meta_title')),
+  meta: [
+    {
+      name: 'Atouts',
+      content: computed(() => t('services.meta_desc'))
+    }
+  ]
 })
 
 const loading = ref<boolean>(true)

@@ -1,17 +1,15 @@
 import { useHead } from '@vueuse/head';
-import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue";
+import { ref, onMounted, onUnmounted, computed } from "vue";
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
-watchEffect(() => {
-    useHead({
-        title: t('about.meta_title'),
-        meta: [
-            {
-                name: 'Conclusion',
-                content: t('about.meta_desc')
-            }
-        ]
-    });
+useHead({
+    title: computed(() => t('about.meta_title')),
+    meta: [
+        {
+            name: 'Conclusion',
+            content: computed(() => t('about.meta_desc'))
+        }
+    ]
 });
 const loading = ref(true);
 const stats = ref([
@@ -56,12 +54,6 @@ onUnmounted(() => {
         cancelAnimationFrame(animationFrame);
     }
 });
-function openGithub() {
-    window.open("https://github.com/randyrt", "_blank");
-}
-function openLinkedin() {
-    window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank");
-}
 const showTechDetails = ref(false);
 const perfomanceTest = () => {
     showTechDetails.value = true;
@@ -726,54 +718,6 @@ if (__VLS_ctx.showTechDetails) {
 }
 var __VLS_23;
 var __VLS_18;
-__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-    ...{ class: "card media p-4 w-max flex justify-center gap-6 mx-auto h-auto bg-white shadow-md rounded-lg" },
-    'data-aos': "fade-up",
-});
-const __VLS_105 = {}.FontAwesomeIcon;
-/** @type {[typeof __VLS_components.FontAwesomeIcon, typeof __VLS_components.fontAwesomeIcon, ]} */ ;
-// @ts-ignore
-FontAwesomeIcon;
-// @ts-ignore
-const __VLS_106 = __VLS_asFunctionalComponent(__VLS_105, new __VLS_105({
-    ...{ 'onClick': {} },
-    icon: (['fab', 'github']),
-    ...{ class: "font-awesome cursor-pointer hover:text-violet-600 transition-colors text-2xl" },
-}));
-const __VLS_107 = __VLS_106({
-    ...{ 'onClick': {} },
-    icon: (['fab', 'github']),
-    ...{ class: "font-awesome cursor-pointer hover:text-violet-600 transition-colors text-2xl" },
-}, ...__VLS_functionalComponentArgsRest(__VLS_106));
-let __VLS_109;
-let __VLS_110;
-const __VLS_111 = ({ click: {} },
-    { onClick: (__VLS_ctx.openGithub) });
-// @ts-ignore
-[openGithub,];
-var __VLS_108;
-const __VLS_113 = {}.FontAwesomeIcon;
-/** @type {[typeof __VLS_components.FontAwesomeIcon, typeof __VLS_components.fontAwesomeIcon, ]} */ ;
-// @ts-ignore
-FontAwesomeIcon;
-// @ts-ignore
-const __VLS_114 = __VLS_asFunctionalComponent(__VLS_113, new __VLS_113({
-    ...{ 'onClick': {} },
-    icon: (['fab', 'linkedin']),
-    ...{ class: "font-awesome cursor-pointer hover:text-violet-600 transition-colors text-2xl" },
-}));
-const __VLS_115 = __VLS_114({
-    ...{ 'onClick': {} },
-    icon: (['fab', 'linkedin']),
-    ...{ class: "font-awesome cursor-pointer hover:text-violet-600 transition-colors text-2xl" },
-}, ...__VLS_functionalComponentArgsRest(__VLS_114));
-let __VLS_117;
-let __VLS_118;
-const __VLS_119 = ({ click: {} },
-    { onClick: (__VLS_ctx.openLinkedin) });
-// @ts-ignore
-[openLinkedin,];
-var __VLS_116;
 /** @type {__VLS_StyleScopedClasses['p-4']} */ ;
 /** @type {__VLS_StyleScopedClasses['w-full']} */ ;
 /** @type {__VLS_StyleScopedClasses['space-y-8']} */ ;
@@ -1131,36 +1075,12 @@ var __VLS_116;
 /** @type {__VLS_StyleScopedClasses['text-violet-600']} */ ;
 /** @type {__VLS_StyleScopedClasses['hover:text-violet-400']} */ ;
 /** @type {__VLS_StyleScopedClasses['transition-colors']} */ ;
-/** @type {__VLS_StyleScopedClasses['card']} */ ;
-/** @type {__VLS_StyleScopedClasses['media']} */ ;
-/** @type {__VLS_StyleScopedClasses['p-4']} */ ;
-/** @type {__VLS_StyleScopedClasses['w-max']} */ ;
-/** @type {__VLS_StyleScopedClasses['flex']} */ ;
-/** @type {__VLS_StyleScopedClasses['justify-center']} */ ;
-/** @type {__VLS_StyleScopedClasses['gap-6']} */ ;
-/** @type {__VLS_StyleScopedClasses['mx-auto']} */ ;
-/** @type {__VLS_StyleScopedClasses['h-auto']} */ ;
-/** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
-/** @type {__VLS_StyleScopedClasses['shadow-md']} */ ;
-/** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
-/** @type {__VLS_StyleScopedClasses['font-awesome']} */ ;
-/** @type {__VLS_StyleScopedClasses['cursor-pointer']} */ ;
-/** @type {__VLS_StyleScopedClasses['hover:text-violet-600']} */ ;
-/** @type {__VLS_StyleScopedClasses['transition-colors']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-2xl']} */ ;
-/** @type {__VLS_StyleScopedClasses['font-awesome']} */ ;
-/** @type {__VLS_StyleScopedClasses['cursor-pointer']} */ ;
-/** @type {__VLS_StyleScopedClasses['hover:text-violet-600']} */ ;
-/** @type {__VLS_StyleScopedClasses['transition-colors']} */ ;
-/** @type {__VLS_StyleScopedClasses['text-2xl']} */ ;
 var __VLS_dollars;
 const __VLS_self = (await import('vue')).defineComponent({
     setup: () => ({
         loading: loading,
         stats: stats,
         values: values,
-        openGithub: openGithub,
-        openLinkedin: openLinkedin,
         showTechDetails: showTechDetails,
         perfomanceTest: perfomanceTest,
     }),

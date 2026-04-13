@@ -1,19 +1,17 @@
 import { useHead } from '@vueuse/head';
-import { ref, onMounted, watchEffect } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useToast } from 'vue-toastification';
 import ProjectGallery from '../components/ProjectGallery.vue';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
-watchEffect(() => {
-    useHead({
-        title: t('projects.meta_title'),
-        meta: [
-            {
-                name: 'Réalisation',
-                content: t('projects.meta_desc')
-            }
-        ]
-    });
+useHead({
+    title: computed(() => t('projects.meta_title')),
+    meta: [
+        {
+            name: 'Réalisation',
+            content: computed(() => t('projects.meta_desc'))
+        }
+    ]
 });
 const loading = ref(true);
 const images1 = [

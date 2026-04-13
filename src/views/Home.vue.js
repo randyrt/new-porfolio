@@ -1,18 +1,16 @@
 import { useHead } from '@vueuse/head';
-import { ref, onMounted, watchEffect } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 const { t, locale } = useI18n();
-watchEffect(() => {
-    useHead({
-        title: t('home.meta_title'),
-        meta: [
-            {
-                name: 'Bienvenu',
-                content: t('home.meta_desc')
-            }
-        ]
-    });
+useHead({
+    title: computed(() => t('home.meta_title')),
+    meta: [
+        {
+            name: 'Bienvenu',
+            content: computed(() => t('home.meta_desc'))
+        }
+    ]
 });
 const router = useRouter();
 const loading = ref(true);

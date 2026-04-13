@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col items-center p-6">
-    <h2 class="text-lg font-semibold mb-4">Contactez-moi sur <span class="text-green-500">WhatsApp</span> 📱</h2>
-    <img v-if="qrDataUrl" :src="qrDataUrl" alt="QR Code WhatsApp" class="w-64 h-64 border rounded-xl shadow-md" />
+    <h2 class="text-lg font-semibold mb-4">{{ $t('contact.whatsapp.title') }} <span class="text-green-500">WhatsApp</span> 📱</h2>
+    <img v-if="qrDataUrl" :src="qrDataUrl" :alt="$t('contact.whatsapp.qr_alt')" class="w-64 h-64 border rounded-xl shadow-md" />
     <p class="mt-4 text-gray-700">
-      Scannez ce QR pour m’écrire sur WhatsApp mobile
+      {{ $t('contact.whatsapp.scan_message') }}
     </p>
     <a :href="whatsappLink" target="_blank" class="mt-3 text-blue-600 underline">
-      Ou cliquez ici pour ouvrir directement WhatsApp web
+      {{ $t('contact.whatsapp.click_link') }}
     </a>
   </div>
 </template>

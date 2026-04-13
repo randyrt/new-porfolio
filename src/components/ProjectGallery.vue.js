@@ -501,9 +501,9 @@ __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
 });
 // @ts-ignore
 [toggleDemo,];
-(__VLS_ctx.showDemo ? 'Masquer la démo' : 'Voir la démo en action');
+(__VLS_ctx.showDemo ? __VLS_ctx.$t('demo.hide') : __VLS_ctx.$t('demo.show'));
 // @ts-ignore
-[showDemo,];
+[showDemo, $t, $t,];
 __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
     ...{ class: "ml-1" },
 });
@@ -544,9 +544,10 @@ if (__VLS_ctx.showDemo) {
     __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
         ...{ class: "text-white text-sm font-mono" },
     });
+    (__VLS_ctx.$t('demo.live'));
     (__VLS_ctx.title);
     // @ts-ignore
-    [title,];
+    [title, $t,];
     if (__VLS_ctx.demoType === 'fid-connect') {
         // @ts-ignore
         [demoType,];
@@ -562,6 +563,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-gray-800" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
@@ -571,6 +575,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.period'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-xs bg-green-100 text-green-700 px-2 py-1 rounded" },
         });
@@ -581,6 +588,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between text-sm" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.fid_connect.revenue'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
         });
@@ -601,6 +611,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between text-sm mt-2" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.fid_connect.expenses'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
         });
@@ -621,6 +634,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between text-sm mt-2" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.fid_connect.tax_result'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
             ...{ class: (__VLS_ctx.taxableResult < 0 ? 'text-green-600' : 'text-orange-600') },
@@ -636,6 +652,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold mb-2" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.vat_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-2xl font-bold text-violet-600" },
         });
@@ -645,12 +664,18 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-500 mt-1" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.vat_desc'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.generateTaxDeclaration) },
             ...{ class: "mt-3 w-full btn-violet btn-effect-5 text-sm py-2" },
         });
         // @ts-ignore
         [generateTaxDeclaration,];
+        (__VLS_ctx.$t('demo.fid_connect.generate_tax'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-4" },
         });
@@ -660,6 +685,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold mb-2" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.amortization_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-2" },
         });
@@ -683,19 +711,26 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-gray-500" },
             });
             (asset.amortization);
+            (__VLS_ctx.$t('demo.fid_connect.per_year'));
+            // @ts-ignore
+            [$t,];
         }
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "mt-3 pt-2 border-t text-xs text-gray-500" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.amortization_line'));
         (__VLS_ctx.formatCurrency(__VLS_ctx.netBookValue));
         // @ts-ignore
-        [formatCurrency, netBookValue,];
+        [$t, formatCurrency, netBookValue,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold mb-2" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.doc_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-2" },
         });
@@ -711,6 +746,9 @@ if (__VLS_ctx.showDemo) {
                 } },
             ...{ class: "w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.doc_letter'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (...[$event]) => {
                     if (!(__VLS_ctx.showDemo))
@@ -723,6 +761,9 @@ if (__VLS_ctx.showDemo) {
                 } },
             ...{ class: "w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.doc_report'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (...[$event]) => {
                     if (!(__VLS_ctx.showDemo))
@@ -735,6 +776,9 @@ if (__VLS_ctx.showDemo) {
                 } },
             ...{ class: "w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.doc_invoice'));
+        // @ts-ignore
+        [$t,];
         if (__VLS_ctx.docMessage) {
             // @ts-ignore
             [docMessage,];
@@ -754,12 +798,24 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
         });
+        (__VLS_ctx.$t('demo.fid_connect.alerts_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.ul, __VLS_elements.ul)({
             ...{ class: "text-xs mt-1 space-y-1" },
         });
         __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+        (__VLS_ctx.$t('demo.fid_connect.alert_1'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+        (__VLS_ctx.$t('demo.fid_connect.alert_2'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+        (__VLS_ctx.$t('demo.fid_connect.alert_3'));
+        // @ts-ignore
+        [$t,];
     }
     else if (__VLS_ctx.demoType === 'qcp') {
         // @ts-ignore
@@ -776,10 +832,16 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-gray-800" },
         });
+        (__VLS_ctx.$t('demo.qcp.title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({});
         __VLS_asFunctionalElement(__VLS_elements.label, __VLS_elements.label)({
             ...{ class: "text-sm text-gray-600" },
         });
+        (__VLS_ctx.$t('demo.qcp.amount'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.input)({
             type: "range",
             min: "5000",
@@ -800,6 +862,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.label, __VLS_elements.label)({
             ...{ class: "text-sm text-gray-600" },
         });
+        (__VLS_ctx.$t('demo.qcp.rate'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.input)({
             type: "range",
             min: "1",
@@ -820,6 +885,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.label, __VLS_elements.label)({
             ...{ class: "text-sm text-gray-600" },
         });
+        (__VLS_ctx.$t('demo.qcp.years'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.input)({
             type: "range",
             min: "1",
@@ -833,14 +901,18 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "text-right font-semibold" },
         });
         (__VLS_ctx.loan.years);
+        (__VLS_ctx.$t('demo.qcp.years_unit'));
         // @ts-ignore
-        [loan,];
+        [$t, loan,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white p-4 rounded-lg shadow" },
         });
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold mb-3" },
         });
+        (__VLS_ctx.$t('demo.qcp.results'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-2" },
         });
@@ -848,6 +920,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.qcp.monthly'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-bold text-violet-600" },
         });
@@ -858,6 +933,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.qcp.total'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
         (__VLS_ctx.formatCurrency(__VLS_ctx.totalPayment));
         // @ts-ignore
@@ -866,6 +944,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.qcp.interest'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-orange-600" },
         });
@@ -878,6 +959,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-sm text-gray-600" },
         });
+        (__VLS_ctx.$t('demo.qcp.amortization'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "w-full bg-gray-200 rounded-full h-2 mt-1" },
         });
@@ -920,7 +1004,7 @@ if (__VLS_ctx.showDemo) {
         });
         __VLS_asFunctionalElement(__VLS_elements.textarea, __VLS_elements.textarea)({
             value: (__VLS_ctx.newPost.content),
-            placeholder: "Partagez quelque chose avec la communauté africaine...",
+            placeholder: "",
             rows: "2",
             ...{ class: "w-full p-2 border rounded-lg resize-none text-sm" },
         });
@@ -1072,9 +1156,11 @@ if (__VLS_ctx.showDemo) {
                         } },
                     type: "text",
                     value: (post.newComment),
-                    placeholder: "Écrire un commentaire...",
+                    placeholder: (__VLS_ctx.$t('demo.afr_fan.write_comment')),
                     ...{ class: "flex-1 p-1 border rounded text-sm" },
                 });
+                // @ts-ignore
+                [$t,];
                 __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
                     ...{ onClick: (...[$event]) => {
                             if (!(__VLS_ctx.showDemo))
@@ -1124,12 +1210,18 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold text-gray-800" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.groups_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.createGroup) },
             ...{ class: "btn-violet inline-block text-center btn-effect-5" },
         });
         // @ts-ignore
         [createGroup,];
+        (__VLS_ctx.$t('demo.afr_fan.btn_create'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-2 max-h-48 overflow-y-auto" },
         });
@@ -1166,7 +1258,9 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-xs font-medium transition btn-effect-20" },
                 ...{ class: (group.joined ? 'text-green-600' : 'text-violet-500') },
             });
-            (group.joined ? '✓ Membre' : '+ Rejoindre');
+            (group.joined ? __VLS_ctx.$t('demo.afr_fan.member') : __VLS_ctx.$t('demo.afr_fan.join'));
+            // @ts-ignore
+            [$t, $t,];
         }
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg shadow p-4 border border-amber-200" },
@@ -1180,19 +1274,40 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-bold text-gray-800" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.premium_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-xs bg-amber-200 text-amber-800 px-2 py-0.5 rounded" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.popular'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
             ...{ class: "text-sm text-gray-600 mb-3" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.premium_desc'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.ul, __VLS_elements.ul)({
             ...{ class: "text-xs text-gray-600 space-y-1 mb-3" },
         });
         __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+        (__VLS_ctx.$t('demo.afr_fan.premium_1'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+        (__VLS_ctx.$t('demo.afr_fan.premium_2'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+        (__VLS_ctx.$t('demo.afr_fan.premium_3'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+        (__VLS_ctx.$t('demo.afr_fan.premium_4'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-3" },
         });
@@ -1218,7 +1333,10 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [selectedPlan,];
+        (__VLS_ctx.$t('demo.afr_fan.monthly'));
         __VLS_asFunctionalElement(__VLS_elements.br)({});
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-bold" },
         });
@@ -1241,7 +1359,10 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [selectedPlan,];
+        (__VLS_ctx.$t('demo.afr_fan.yearly'));
         __VLS_asFunctionalElement(__VLS_elements.br)({});
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-bold" },
         });
@@ -1296,9 +1417,9 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [processPayment, isProcessing,];
-        (__VLS_ctx.isProcessing ? 'Traitement...' : 'Soutenir maintenant');
+        (__VLS_ctx.isProcessing ? __VLS_ctx.$t('demo.afr_fan.processing') : __VLS_ctx.$t('demo.afr_fan.support_now'));
         // @ts-ignore
-        [isProcessing,];
+        [$t, $t, isProcessing,];
         if (__VLS_ctx.paymentMessage) {
             // @ts-ignore
             [paymentMessage,];
@@ -1318,6 +1439,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold text-gray-800 mb-2" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.stats_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "grid grid-cols-2 gap-3 text-center" },
         });
@@ -1331,6 +1455,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-500" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.stats_members'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({});
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-2xl font-bold text-violet-600" },
@@ -1341,6 +1468,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-500" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.stats_posts'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({});
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-2xl font-bold text-violet-600" },
@@ -1351,6 +1481,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-500" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.stats_groups'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({});
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-2xl font-bold text-violet-600" },
@@ -1361,6 +1494,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-500" },
         });
+        (__VLS_ctx.$t('demo.afr_fan.stats_countries'));
+        // @ts-ignore
+        [$t,];
     }
     else if (__VLS_ctx.demoType === 'nurses') {
         // @ts-ignore
@@ -1380,6 +1516,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-2xl" },
         });
+        (__VLS_ctx.$t('demo.nurses.title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
@@ -1390,6 +1529,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.label, __VLS_elements.label)({
             ...{ class: "text-sm text-gray-600 font-medium" },
         });
+        (__VLS_ctx.$t('demo.nurses.guests'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "flex items-center gap-2 mt-1" },
         });
@@ -1442,6 +1584,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.label, __VLS_elements.label)({
             ...{ class: "text-sm text-gray-600 font-medium" },
         });
+        (__VLS_ctx.$t('demo.nurses.date'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.input)({
             type: "date",
             min: (__VLS_ctx.minDate),
@@ -1454,6 +1599,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.label, __VLS_elements.label)({
             ...{ class: "text-sm text-gray-600 font-medium" },
         });
+        (__VLS_ctx.$t('demo.nurses.service'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.select, __VLS_elements.select)({
             value: (__VLS_ctx.booking.service),
             ...{ class: "w-full p-2 border rounded mt-1" },
@@ -1463,12 +1611,21 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.option, __VLS_elements.option)({
             value: "midi",
         });
+        (__VLS_ctx.$t('demo.nurses.serv_lunch'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.option, __VLS_elements.option)({
             value: "soir",
         });
+        (__VLS_ctx.$t('demo.nurses.serv_dinner'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.option, __VLS_elements.option)({
             value: "vip",
         });
+        (__VLS_ctx.$t('demo.nurses.serv_vip'));
+        // @ts-ignore
+        [$t,];
         if (__VLS_ctx.booking.service === 'vip') {
             // @ts-ignore
             [booking,];
@@ -1478,12 +1635,24 @@ if (__VLS_ctx.showDemo) {
             __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
                 ...{ class: "text-sm text-amber-800" },
             });
+            (__VLS_ctx.$t('demo.nurses.vip_inc'));
+            // @ts-ignore
+            [$t,];
             __VLS_asFunctionalElement(__VLS_elements.ul, __VLS_elements.ul)({
                 ...{ class: "text-xs text-amber-700 mt-1 space-y-1" },
             });
             __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+            (__VLS_ctx.$t('demo.nurses.vip_1'));
+            // @ts-ignore
+            [$t,];
             __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+            (__VLS_ctx.$t('demo.nurses.vip_2'));
+            // @ts-ignore
+            [$t,];
             __VLS_asFunctionalElement(__VLS_elements.li, __VLS_elements.li)({});
+            (__VLS_ctx.$t('demo.nurses.vip_3'));
+            // @ts-ignore
+            [$t,];
         }
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.makeReservation) },
@@ -1491,6 +1660,9 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [makeReservation,];
+        (__VLS_ctx.$t('demo.nurses.btn_reserve'));
+        // @ts-ignore
+        [$t,];
         if (__VLS_ctx.reservationMessage) {
             // @ts-ignore
             [reservationMessage,];
@@ -1512,6 +1684,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-2xl" },
         });
+        (__VLS_ctx.$t('demo.nurses.events_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
@@ -1559,6 +1734,9 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-xs text-gray-500" },
             });
             (event.participants);
+            (__VLS_ctx.$t('demo.nurses.participants'));
+            // @ts-ignore
+            [$t,];
             __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
                 ...{ class: "text-right" },
             });
@@ -1571,6 +1749,9 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: (event.spots > 10 ? 'text-green-600' : 'text-orange-600') },
             });
             (event.spots);
+            (__VLS_ctx.$t('demo.nurses.remaining'));
+            // @ts-ignore
+            [$t,];
             __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
                 ...{ class: "mt-2 flex gap-2" },
             });
@@ -1578,7 +1759,9 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-xs px-2 py-1 rounded-full" },
                 ...{ class: (event.type === 'gala' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700') },
             });
-            (event.type === 'gala' ? '🎭 Gala' : '🍷 Dégustation');
+            (event.type === 'gala' ? __VLS_ctx.$t('demo.nurses.event_gala') : __VLS_ctx.$t('demo.nurses.event_degust'));
+            // @ts-ignore
+            [$t, $t,];
             __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
                 ...{ class: "text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600" },
             });
@@ -1591,6 +1774,9 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [selectedEvent, reserveEvent,];
+        (__VLS_ctx.$t('demo.nurses.btn_reserve_event'));
+        // @ts-ignore
+        [$t,];
         if (__VLS_ctx.eventReservationMessage) {
             // @ts-ignore
             [eventReservationMessage,];
@@ -1619,6 +1805,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-xl" },
         });
+        (__VLS_ctx.$t('demo.nurses.admin_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-3" },
         });
@@ -1637,6 +1826,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-300" },
         });
+        (__VLS_ctx.$t('demo.nurses.admin_res'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white/10 rounded p-2 text-center" },
         });
@@ -1649,6 +1841,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-300" },
         });
+        (__VLS_ctx.$t('demo.nurses.admin_vip'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white/10 rounded p-2 text-center" },
         });
@@ -1661,6 +1856,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-300" },
         });
+        (__VLS_ctx.$t('demo.nurses.admin_guests'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white/10 rounded p-2 text-center" },
         });
@@ -1673,6 +1871,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-xs text-gray-300" },
         });
+        (__VLS_ctx.$t('demo.nurses.admin_events'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "flex gap-2" },
         });
@@ -1682,12 +1883,18 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [addDemoEvent,];
+        (__VLS_ctx.$t('demo.nurses.btn_add_event'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.resetDemoData) },
             ...{ class: "flex-1 bg-orange-600 text-white py-1 rounded text-sm hover:bg-orange-700 transition" },
         });
         // @ts-ignore
         [resetDemoData,];
+        (__VLS_ctx.$t('demo.nurses.btn_reset'));
+        // @ts-ignore
+        [$t,];
     }
     else if (__VLS_ctx.demoType === 'echo-webLine') {
         // @ts-ignore
@@ -1707,6 +1914,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-2xl" },
         });
+        (__VLS_ctx.$t('demo.echo.title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
@@ -1716,12 +1926,18 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold text-gray-700" },
         });
+        (__VLS_ctx.$t('demo.nurses.events_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.addEvent) },
             ...{ class: "btn-violet inline-block text-center btn-effect-5" },
         });
         // @ts-ignore
         [addEvent,];
+        (__VLS_ctx.$t('demo.echo.btn_new'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-2 max-h-64 overflow-y-auto" },
         });
@@ -1768,6 +1984,9 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-xs text-gray-500" },
             });
             (event.participants);
+            (__VLS_ctx.$t('demo.nurses.participants'));
+            // @ts-ignore
+            [$t,];
             __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
                 ...{ class: "flex gap-1 items-center space-x-6" },
             });
@@ -1775,7 +1994,9 @@ if (__VLS_ctx.showDemo) {
                 ...{ class: "text-xs px-2 py-1 rounded" },
                 ...{ class: (event.status === 'ouvert' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700') },
             });
-            (event.status === 'ouvert' ? 'Ouvert' : 'Complet');
+            (event.status === 'ouvert' ? __VLS_ctx.$t('demo.echo.status_open') : __VLS_ctx.$t('demo.echo.status_full'));
+            // @ts-ignore
+            [$t, $t,];
             __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
                 ...{ onClick: (...[$event]) => {
                         if (!(__VLS_ctx.showDemo))
@@ -1796,6 +2017,9 @@ if (__VLS_ctx.showDemo) {
                     } },
                 ...{ class: "btn-effect-5-delete" },
             });
+            (__VLS_ctx.$t('demo.echo.btn_delete'));
+            // @ts-ignore
+            [$t,];
         }
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
@@ -1803,25 +2027,28 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold text-gray-700 mb-3" },
         });
+        (__VLS_ctx.$t('demo.echo.form_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-3" },
         });
         __VLS_asFunctionalElement(__VLS_elements.input)({
             type: "text",
             value: (__VLS_ctx.registration.name),
-            placeholder: "Nom complet",
+            placeholder: (__VLS_ctx.$t('demo.echo.form_name')),
             ...{ class: "w-full p-2 border rounded text-sm" },
         });
         // @ts-ignore
-        [registration,];
+        [$t, registration,];
         __VLS_asFunctionalElement(__VLS_elements.input)({
             type: "email",
-            placeholder: "Email",
+            placeholder: (__VLS_ctx.$t('demo.echo.form_email')),
             ...{ class: "w-full p-2 border rounded text-sm" },
         });
         (__VLS_ctx.registration.email);
         // @ts-ignore
-        [registration,];
+        [$t, registration,];
         __VLS_asFunctionalElement(__VLS_elements.select, __VLS_elements.select)({
             value: (__VLS_ctx.registration.eventId),
             ...{ class: "w-full p-2 border rounded text-sm" },
@@ -1831,6 +2058,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.option, __VLS_elements.option)({
             value: "",
         });
+        (__VLS_ctx.$t('demo.echo.select_event'));
+        // @ts-ignore
+        [$t,];
         for (const [event, idx] of __VLS_getVForSourceType((__VLS_ctx.events))) {
             // @ts-ignore
             [events,];
@@ -1849,6 +2079,9 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [registerToEvent,];
+        (__VLS_ctx.$t('demo.echo.btn_register'));
+        // @ts-ignore
+        [$t,];
         if (__VLS_ctx.registrationMessage) {
             // @ts-ignore
             [registrationMessage,];
@@ -1873,6 +2106,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-2xl" },
         });
+        (__VLS_ctx.$t('demo.echo.cardio_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
@@ -1882,6 +2118,9 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold text-gray-700" },
         });
+        (__VLS_ctx.$t('demo.echo.params'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-3" },
         });
@@ -1890,6 +2129,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between text-sm" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.echo.heart_rate'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
             ...{ class: (__VLS_ctx.heartData.heartRate > 100 ? 'text-red-600' : 'text-green-600') },
@@ -1914,6 +2156,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between text-sm" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.echo.blood_press'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
         });
@@ -1949,6 +2194,9 @@ if (__VLS_ctx.showDemo) {
             ...{ class: "flex justify-between text-sm" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({});
+        (__VLS_ctx.$t('demo.echo.oxygen'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "font-semibold" },
             ...{ class: (__VLS_ctx.heartData.oxygen < 94 ? 'text-orange-600' : 'text-green-600') },
@@ -1974,12 +2222,18 @@ if (__VLS_ctx.showDemo) {
         });
         // @ts-ignore
         [simulateHeartData,];
+        (__VLS_ctx.$t('demo.echo.btn_simData'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold text-gray-700 mb-2" },
         });
+        (__VLS_ctx.$t('demo.echo.hist_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "relative h-32" },
         });
@@ -2006,12 +2260,18 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "text-center text-xs text-gray-500 mt-4" },
         });
+        (__VLS_ctx.$t('demo.echo.last_8'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "bg-white rounded-lg shadow p-4" },
         });
         __VLS_asFunctionalElement(__VLS_elements.h5, __VLS_elements.h5)({
             ...{ class: "font-semibold text-gray-700 mb-2" },
         });
+        (__VLS_ctx.$t('demo.echo.resources_title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "space-y-2" },
         });
@@ -2021,24 +2281,36 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-sm" },
         });
+        (__VLS_ctx.$t('demo.echo.guide'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.downloadResource) },
             ...{ class: "btn-violet inline-block text-center btn-effect-5" },
         });
         // @ts-ignore
         [downloadResource,];
+        (__VLS_ctx.$t('demo.echo.btn_download'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
             ...{ class: "flex justify-between items-center p-2 bg-gray-50 rounded" },
         });
         __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
             ...{ class: "text-sm" },
         });
+        (__VLS_ctx.$t('demo.echo.webinar'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.downloadResource) },
             ...{ class: "btn-violet inline-block text-center btn-effect-5" },
         });
         // @ts-ignore
         [downloadResource,];
+        (__VLS_ctx.$t('demo.echo.btn_view'));
+        // @ts-ignore
+        [$t,];
         if (__VLS_ctx.downloadMessage) {
             // @ts-ignore
             [downloadMessage,];
@@ -2063,15 +2335,24 @@ if (__VLS_ctx.showDemo) {
         __VLS_asFunctionalElement(__VLS_elements.h4, __VLS_elements.h4)({
             ...{ class: "font-bold text-gray-800 mb-2" },
         });
+        (__VLS_ctx.$t('demo.in_dev.title'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
             ...{ class: "text-gray-600" },
         });
+        (__VLS_ctx.$t('demo.in_dev.desc'));
+        // @ts-ignore
+        [$t,];
         __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
             ...{ onClick: (__VLS_ctx.notifyDemo) },
             ...{ class: "mt-4 bg-violet-2000 text-white px-4 py-2 rounded hover:bg-violet-600 transition" },
         });
         // @ts-ignore
         [notifyDemo,];
+        (__VLS_ctx.$t('demo.in_dev.btn_notify'));
+        // @ts-ignore
+        [$t,];
     }
 }
 var __VLS_13;
@@ -2096,22 +2377,28 @@ if (__VLS_ctx.showGroupModal) {
     __VLS_asFunctionalElement(__VLS_elements.h3, __VLS_elements.h3)({
         ...{ class: "text-lg font-bold text-gray-800" },
     });
+    (__VLS_ctx.$t('demo.group_modal.title'));
+    // @ts-ignore
+    [$t,];
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
         ...{ class: "mb-4" },
     });
     __VLS_asFunctionalElement(__VLS_elements.label, __VLS_elements.label)({
         ...{ class: "block text-sm font-medium text-gray-700 mb-2" },
     });
+    (__VLS_ctx.$t('demo.group_modal.label'));
+    // @ts-ignore
+    [$t,];
     __VLS_asFunctionalElement(__VLS_elements.input)({
         ...{ onKeyup: (__VLS_ctx.confirmCreateGroup) },
         type: "text",
         value: (__VLS_ctx.newGroupName),
-        placeholder: "Ex: Musique Africaine, Tech Hub, Cuisine...",
+        placeholder: (__VLS_ctx.$t('demo.group_modal.placeholder')),
         ...{ class: "w-full p-2 border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition" },
         autofocus: true,
     });
     // @ts-ignore
-    [confirmCreateGroup, newGroupName,];
+    [$t, confirmCreateGroup, newGroupName,];
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
         ...{ class: "flex gap-2 space-x-4 justify-center" },
     });
@@ -2121,6 +2408,9 @@ if (__VLS_ctx.showGroupModal) {
     });
     // @ts-ignore
     [cancelCreateGroup,];
+    (__VLS_ctx.$t('demo.group_modal.btn_cancel'));
+    // @ts-ignore
+    [$t,];
     __VLS_asFunctionalElement(__VLS_elements.button, __VLS_elements.button)({
         ...{ onClick: (__VLS_ctx.confirmCreateGroup) },
         disabled: (__VLS_ctx.isCreatingGroup),
@@ -2128,9 +2418,9 @@ if (__VLS_ctx.showGroupModal) {
     });
     // @ts-ignore
     [confirmCreateGroup, isCreatingGroup,];
-    (__VLS_ctx.isCreatingGroup ? 'Création...' : 'Valider');
+    (__VLS_ctx.isCreatingGroup ? __VLS_ctx.$t('demo.group_modal.creating') : __VLS_ctx.$t('demo.group_modal.btn_create'));
     // @ts-ignore
-    [isCreatingGroup,];
+    [$t, $t, isCreatingGroup,];
 }
 /** @type {__VLS_StyleScopedClasses['project-container']} */ ;
 /** @type {__VLS_StyleScopedClasses['mb-16']} */ ;

@@ -28,21 +28,19 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-import { ref, onMounted, watchEffect } from 'vue'
+import { computed, ref, onMounted, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-watchEffect(() => {
-  useHead({
-    title: t('testimonials.meta_title'),
-    meta: [
-      {
-        name: 'Satisfacation',
-        content: t('testimonials.meta_desc')
-      }
-    ]
-  })
+useHead({
+  title: computed(() => t('testimonials.meta_title')),
+  meta: [
+    {
+      name: 'Satisfacation',
+      content: computed(() => t('testimonials.meta_desc'))
+    }
+  ]
 })
 
 

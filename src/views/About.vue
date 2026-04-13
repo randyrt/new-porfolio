@@ -225,16 +225,14 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-watchEffect(() => {
-  useHead({
-    title: t('about.meta_title'),
-    meta: [
-      {
-        name: 'Conclusion',
-        content: t('about.meta_desc')
-      }
-    ]
-  })
+useHead({
+  title: computed(() => t('about.meta_title')),
+  meta: [
+    {
+      name: 'Conclusion',
+      content: computed(() => t('about.meta_desc'))
+    }
+  ]
 })
 
 

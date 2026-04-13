@@ -27,6 +27,9 @@ __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
 __VLS_asFunctionalElement(__VLS_elements.h2, __VLS_elements.h2)({
     ...{ class: "text-lg font-semibold mb-4" },
 });
+(__VLS_ctx.$t('contact.whatsapp.title'));
+// @ts-ignore
+[$t,];
 __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
     ...{ class: "text-green-500" },
 });
@@ -35,15 +38,18 @@ if (__VLS_ctx.qrDataUrl) {
     [qrDataUrl,];
     __VLS_asFunctionalElement(__VLS_elements.img)({
         src: (__VLS_ctx.qrDataUrl),
-        alt: "QR Code WhatsApp",
+        alt: (__VLS_ctx.$t('contact.whatsapp.qr_alt')),
         ...{ class: "w-64 h-64 border rounded-xl shadow-md" },
     });
     // @ts-ignore
-    [qrDataUrl,];
+    [$t, qrDataUrl,];
 }
 __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
     ...{ class: "mt-4 text-gray-700" },
 });
+(__VLS_ctx.$t('contact.whatsapp.scan_message'));
+// @ts-ignore
+[$t,];
 __VLS_asFunctionalElement(__VLS_elements.a, __VLS_elements.a)({
     href: (__VLS_ctx.whatsappLink),
     target: "_blank",
@@ -51,24 +57,27 @@ __VLS_asFunctionalElement(__VLS_elements.a, __VLS_elements.a)({
 });
 // @ts-ignore
 [whatsappLink,];
-/** @type {__VLS_StyleScopedClasses['flex']} */;
-/** @type {__VLS_StyleScopedClasses['flex-col']} */;
-/** @type {__VLS_StyleScopedClasses['items-center']} */;
-/** @type {__VLS_StyleScopedClasses['p-6']} */;
-/** @type {__VLS_StyleScopedClasses['text-lg']} */;
-/** @type {__VLS_StyleScopedClasses['font-semibold']} */;
-/** @type {__VLS_StyleScopedClasses['mb-4']} */;
-/** @type {__VLS_StyleScopedClasses['text-green-500']} */;
-/** @type {__VLS_StyleScopedClasses['w-64']} */;
-/** @type {__VLS_StyleScopedClasses['h-64']} */;
-/** @type {__VLS_StyleScopedClasses['border']} */;
-/** @type {__VLS_StyleScopedClasses['rounded-xl']} */;
-/** @type {__VLS_StyleScopedClasses['shadow-md']} */;
-/** @type {__VLS_StyleScopedClasses['mt-4']} */;
-/** @type {__VLS_StyleScopedClasses['text-gray-700']} */;
-/** @type {__VLS_StyleScopedClasses['mt-3']} */;
-/** @type {__VLS_StyleScopedClasses['text-blue-600']} */;
-/** @type {__VLS_StyleScopedClasses['underline']} */;
+(__VLS_ctx.$t('contact.whatsapp.click_link'));
+// @ts-ignore
+[$t,];
+/** @type {__VLS_StyleScopedClasses['flex']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
+/** @type {__VLS_StyleScopedClasses['items-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-6']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-lg']} */ ;
+/** @type {__VLS_StyleScopedClasses['font-semibold']} */ ;
+/** @type {__VLS_StyleScopedClasses['mb-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-green-500']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-64']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-64']} */ ;
+/** @type {__VLS_StyleScopedClasses['border']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['shadow-md']} */ ;
+/** @type {__VLS_StyleScopedClasses['mt-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['mt-3']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-blue-600']} */ ;
+/** @type {__VLS_StyleScopedClasses['underline']} */ ;
 var __VLS_dollars;
 const __VLS_self = (await import('vue')).defineComponent({
     setup: () => ({

@@ -1,18 +1,16 @@
 import { useHead } from '@vueuse/head';
-import { ref, onMounted, watchEffect } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import confetti from "canvas-confetti";
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
-watchEffect(() => {
-    useHead({
-        title: t('webcup.meta_title'),
-        meta: [
-            {
-                name: 'Défis',
-                content: t('webcup.meta_desc')
-            }
-        ]
-    });
+useHead({
+    title: computed(() => t('webcup.meta_title')),
+    meta: [
+        {
+            name: 'Défis',
+            content: computed(() => t('webcup.meta_desc'))
+        }
+    ]
 });
 const loading = ref(true);
 const launchConfetti = () => {

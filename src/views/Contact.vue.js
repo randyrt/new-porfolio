@@ -1,20 +1,18 @@
 import { useHead } from '@vueuse/head';
-import { ref, onMounted, computed, watchEffect } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useToast } from 'vue-toastification';
 import confetti from "canvas-confetti";
 import emailjs from "@emailjs/browser";
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
-watchEffect(() => {
-    useHead({
-        title: t('contact.meta_title'),
-        meta: [
-            {
-                name: 'Communication',
-                content: t('contact.meta_desc')
-            }
-        ]
-    });
+useHead({
+    title: computed(() => t('contact.meta_title')),
+    meta: [
+        {
+            name: 'Communication',
+            content: computed(() => t('contact.meta_desc'))
+        }
+    ]
 });
 const toast = useToast();
 const loading = ref(true);

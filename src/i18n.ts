@@ -6,6 +6,7 @@ const savedLocale = localStorage.getItem('locale') || 'fr'
 
 const i18n = createI18n({
   legacy: false,
+  warnHtmlMessage: false,
   locale: savedLocale,
   fallbackLocale: 'fr',
   messages: {

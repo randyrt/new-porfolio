@@ -1,18 +1,16 @@
 import { useHead } from '@vueuse/head';
-import { ref, onMounted, watchEffect } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
-watchEffect(() => {
-    useHead({
-        title: t('quality.meta_title'),
-        meta: [
-            {
-                name: 'Différence',
-                content: t('quality.meta_desc')
-            }
-        ]
-    });
+useHead({
+    title: computed(() => t('quality.meta_title')),
+    meta: [
+        {
+            name: 'Différence',
+            content: computed(() => t('quality.meta_desc'))
+        }
+    ]
 });
 const loading = ref(true);
 const router = useRouter();

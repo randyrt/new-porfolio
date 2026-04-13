@@ -1,17 +1,15 @@
 import { useHead } from '@vueuse/head';
-import { ref, onMounted, watchEffect } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
-watchEffect(() => {
-    useHead({
-        title: t('skills.meta_title'),
-        meta: [
-            {
-                name: 'Valorisation',
-                content: t('skills.meta_desc')
-            }
-        ]
-    });
+useHead({
+    title: computed(() => t('skills.meta_title')),
+    meta: [
+        {
+            name: 'Valorisation',
+            content: computed(() => t('skills.meta_desc'))
+        }
+    ]
 });
 const loading = ref(true);
 onMounted(() => {

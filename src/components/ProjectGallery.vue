@@ -25,7 +25,7 @@
             <div class="demo-header p-8">
                 <h3 class="text-xl font-semibold text-gray-600"></h3>
                 <button @click.stop="toggleDemo" class="btn-effect-5">
-                    {{ showDemo ? 'Masquer la démo' : 'Voir la démo en action' }}
+                    {{ showDemo ? $t('demo.hide') : $t('demo.show') }}
                     <span class="ml-1">{{ showDemo ? '▲' : '▼' }}</span>
                 </button>
             </div>
@@ -39,39 +39,39 @@
                 <div v-if="showDemo"
                     class="demo-wrapper  border-2 border-violet-500 rounded-xl overflow-hidden shadow-lg ">
                     <div class="bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-2">
-                        <span class="text-white text-sm font-mono">Live Demo • {{ title }}</span>
+                        <span class="text-white text-sm font-mono">{{ $t('demo.live') }} • {{ title }}</span>
                     </div>
 
                     <div v-if="demoType === 'fid-connect'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <!-- Tableau de bord fiscal -->
                             <div class="space-y-4">
-                                <h4 class="font-bold text-gray-800">📊 Simulation fiscale & comptable</h4>
+                                <h4 class="font-bold text-gray-800">{{ $t('demo.fid_connect.title') }}</h4>
 
                                 <!-- Période comptable -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="font-semibold">Exercice fiscal 2024</span>
+                                        <span class="font-semibold">{{ $t('demo.fid_connect.period') }}</span>
                                         <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">En
                                             cours</span>
                                     </div>
                                     <div class="space-y-2">
                                         <div class="flex justify-between text-sm">
-                                            <span>Chiffre d'affaires</span>
+                                            <span>{{ $t('demo.fid_connect.revenue') }}</span>
                                             <span class="font-semibold">{{ formatCurrency(fiscalData.revenue) }}</span>
                                         </div>
                                         <input type="range" v-model="fiscalData.revenue" min="0" max="500000"
                                             step="5000" class="w-full">
 
                                         <div class="flex justify-between text-sm mt-2">
-                                            <span>Charges déductibles</span>
+                                            <span>{{ $t('demo.fid_connect.expenses') }}</span>
                                             <span class="font-semibold">{{ formatCurrency(fiscalData.expenses) }}</span>
                                         </div>
                                         <input type="range" v-model="fiscalData.expenses" min="0"
                                             :max="fiscalData.revenue" step="1000" class="w-full">
 
                                         <div class="flex justify-between text-sm mt-2">
-                                            <span>Résultat imposable</span>
+                                            <span>{{ $t('demo.fid_connect.tax_result') }}</span>
                                             <span class="font-semibold"
                                                 :class="taxableResult < 0 ? 'text-green-600' : 'text-orange-600'">
                                                 {{ formatCurrency(taxableResult) }}
@@ -82,52 +82,53 @@
 
                                 <!-- Calcul TVA -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold mb-2">💰 TVA due (21%)</h5>
+                                    <h5 class="font-semibold mb-2">{{ $t('demo.fid_connect.vat_title') }}</h5>
                                     <div class="text-2xl font-bold text-violet-600">{{ formatCurrency(vatAmount) }}
                                     </div>
-                                    <div class="text-xs text-gray-500 mt-1">Déclaration à soumettre avant le 20 du mois
+                                    <div class="text-xs text-gray-500 mt-1">{{ $t('demo.fid_connect.vat_desc') }}
                                     </div>
                                     <button @click="generateTaxDeclaration"
                                         class="mt-3 w-full btn-violet btn-effect-5 text-sm py-2">
-                                        📄 Générer la déclaration
+                                        {{ $t('demo.fid_connect.generate_tax') }}
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- Amortissements et lettres -->
+                            <!-- {{ $t('demo.qcp.amortization') }}s et lettres -->
                             <div class="space-y-4">
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold mb-2">📉 Plan d'amortissement</h5>
+                                    <h5 class="font-semibold mb-2">{{ $t('demo.fid_connect.amortization_title') }}</h5>
                                     <div class="space-y-2">
                                         <div v-for="asset in assets" :key="asset.name"
                                             class="flex justify-between text-sm">
                                             <span>{{ asset.name }}</span>
                                             <div class="flex gap-4">
                                                 <span>{{ formatCurrency(asset.value) }}</span>
-                                                <span class="text-gray-500">{{ asset.amortization }}% / an</span>
+                                                <span class="text-gray-500">{{ asset.amortization }}{{
+                                                    $t('demo.fid_connect.per_year') }}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="mt-3 pt-2 border-t text-xs text-gray-500">
-                                        Amortissement linéaire • Valeur nette comptable: {{ formatCurrency(netBookValue)
+                                        {{ $t('demo.fid_connect.amortization_line') }} {{ formatCurrency(netBookValue)
                                         }}
                                     </div>
                                 </div>
 
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold mb-2">📋 Génération de documents</h5>
+                                    <h5 class="font-semibold mb-2">{{ $t('demo.fid_connect.doc_title') }}</h5>
                                     <div class="space-y-2">
                                         <button @click="generateDocument('letter')"
                                             class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
-                                            📝 Lettre d'engagement client
+                                            {{ $t('demo.fid_connect.doc_letter') }}
                                         </button>
                                         <button @click="generateDocument('report')"
                                             class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
-                                            📊 Rapport fiscal annuel
+                                            {{ $t('demo.fid_connect.doc_report') }}
                                         </button>
                                         <button @click="generateDocument('invoice')"
                                             class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
-                                            🧾 Facture pro forma
+                                            {{ $t('demo.fid_connect.doc_invoice') }}
                                         </button>
                                     </div>
                                     <div v-if="docMessage" class="text-center text-sm p-2 mt-2 rounded"
@@ -137,11 +138,11 @@
                                 </div>
 
                                 <div class="bg-blue-50 rounded-lg p-3 text-sm">
-                                    <span class="font-semibold">🔔 Alertes fiscales :</span>
+                                    <span class="font-semibold">{{ $t('demo.fid_connect.alerts_title') }}</span>
                                     <ul class="text-xs mt-1 space-y-1">
-                                        <li>✓ Déclaration TVA due dans 12 jours</li>
-                                        <li>✓ Réforme fiscale 2025 : nouvelles déductions possibles</li>
-                                        <li>✓ Amortissement matériel à réviser</li>
+                                        <li>{{ $t('demo.fid_connect.alert_1') }}</li>
+                                        <li>{{ $t('demo.fid_connect.alert_2') }}</li>
+                                        <li>{{ $t('demo.fid_connect.alert_3') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -151,43 +152,44 @@
                     <div v-else-if="demoType === 'qcp'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-4">
-                                <h4 class="font-bold text-gray-800">Simulateur de crédit</h4>
+                                <h4 class="font-bold text-gray-800">{{ $t('demo.qcp.title') }}</h4>
                                 <div>
-                                    <label class="text-sm text-gray-600">Montant du prêt</label>
+                                    <label class="text-sm text-gray-600">{{ $t('demo.qcp.amount') }}</label>
                                     <input type="range" v-model="loan.amount" min="5000" max="500000" step="5000"
                                         class="w-full">
                                     <div class="text-right font-semibold">{{ formatCurrency(loan.amount) }}</div>
                                 </div>
                                 <div>
-                                    <label class="text-sm text-gray-600">Taux d'intérêt (%)</label>
+                                    <label class="text-sm text-gray-600">{{ $t('demo.qcp.rate') }}</label>
                                     <input type="range" v-model="loan.rate" min="1" max="15" step="0.1" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.rate }}%</div>
                                 </div>
                                 <div>
-                                    <label class="text-sm text-gray-600">Durée (années)</label>
+                                    <label class="text-sm text-gray-600">{{ $t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
-                                    <div class="text-right font-semibold">{{ loan.years }} ans</div>
+                                    <div class="text-right font-semibold">{{ loan.years }} {{ $t('demo.qcp.years_unit')
+                                        }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
-                                <h4 class="font-bold mb-3">Résultats</h4>
+                                <h4 class="font-bold mb-3">{{ $t('demo.qcp.results') }}</h4>
                                 <div class="space-y-2">
                                     <div class="flex justify-between">
-                                        <span>Mensualité</span>
+                                        <span>{{ $t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                     <div class="flex justify-between">
-                                        <span>Total payé</span>
+                                        <span>{{ $t('demo.qcp.total') }}</span>
                                         <span>{{ formatCurrency(totalPayment) }}</span>
                                     </div>
                                     <div class="flex justify-between">
-                                        <span>Intérêts totaux</span>
+                                        <span>{{ $t('demo.qcp.interest') }}</span>
                                         <span class="text-orange-600">{{ formatCurrency(totalInterest) }}</span>
                                     </div>
                                 </div>
                                 <div class="mt-4 pt-3 border-t">
-                                    <div class="text-sm text-gray-600">Amortissement</div>
+                                    <div class="text-sm text-gray-600">{{ $t('demo.qcp.amortization') }}</div>
                                     <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
                                         <div class="bg-green-500 rounded-full h-2"
                                             :style="{ width: amortizationPercent + '%' }"></div>
@@ -213,9 +215,7 @@
                                             👤
                                         </div>
                                         <div class="flex-1">
-                                            <textarea v-model="newPost.content"
-                                                placeholder="Partagez quelque chose avec la communauté africaine..."
-                                                rows="2"
+                                            <textarea v-model="newPost.content" placeholder="" rows="2"
                                                 class="w-full p-2 border rounded-lg resize-none text-sm"></textarea>
                                             <div class="flex justify-between items-center mt-2">
                                                 <div class="flex gap-2">
@@ -247,7 +247,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                        }}</span>
+                                                            }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -273,7 +273,7 @@
                                                 <div v-if="showComments === idx" class="mt-3 pt-3 border-t">
                                                     <div class="flex gap-2 mb-2">
                                                         <input type="text" v-model="post.newComment"
-                                                            placeholder="Écrire un commentaire..."
+                                                            :placeholder="$t('demo.afr_fan.write_comment')"
                                                             class="flex-1 p-1 border rounded text-sm"
                                                             @keyup.enter="addComment(idx)">
                                                         <button @click="addComment(idx)"
@@ -286,7 +286,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                            }}</span>
+                                                                }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -301,9 +301,11 @@
                                 <!-- Groupes d'intérêt -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <h5 class="font-semibold text-gray-800">🤝 Groupes d'intérêt</h5>
+                                        <h5 class="font-semibold text-gray-800">{{ $t('demo.afr_fan.groups_title') }}
+                                        </h5>
                                         <button @click="createGroup"
-                                            class="btn-violet inline-block text-center btn-effect-5">+ Créer</button>
+                                            class="btn-violet inline-block text-center btn-effect-5">{{
+                                                $t('demo.afr_fan.btn_create') }}</button>
                                     </div>
                                     <div class="space-y-2 max-h-48 overflow-y-auto">
                                         <div v-for="(group, idx) in groups" :key="idx"
@@ -315,7 +317,7 @@
                                             </div>
                                             <button class="text-xs font-medium transition btn-effect-20"
                                                 :class="group.joined ? 'text-green-600' : 'text-violet-500'">
-                                                {{ group.joined ? '✓ Membre' : '+ Rejoindre' }}
+                                                {{ group.joined ? $t('demo.afr_fan.member') : $t('demo.afr_fan.join') }}
                                             </button>
                                         </div>
                                     </div>
@@ -326,18 +328,18 @@
                                     class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg shadow p-4 border border-amber-200">
                                     <div class="flex items-center gap-2 mb-3">
                                         <span class="text-2xl">⭐</span>
-                                        <h5 class="font-bold text-gray-800">Accès Premium</h5>
-                                        <span
-                                            class="text-xs bg-amber-200 text-amber-800 px-2 py-0.5 rounded">Populaire</span>
+                                        <h5 class="font-bold text-gray-800">{{ $t('demo.afr_fan.premium_title') }}</h5>
+                                        <span class="text-xs bg-amber-200 text-amber-800 px-2 py-0.5 rounded">{{
+                                            $t('demo.afr_fan.popular') }}</span>
                                     </div>
                                     <p class="text-sm text-gray-600 mb-3">
-                                        Soutenez la communauté et accédez à des fonctionnalités exclusives :
+                                        {{ $t('demo.afr_fan.premium_desc') }}
                                     </p>
                                     <ul class="text-xs text-gray-600 space-y-1 mb-3">
-                                        <li>✓ 📹 Contenu vidéo exclusif</li>
-                                        <li>✓ 🎓 Webinaires et formations</li>
-                                        <li>✓ 🤝 Mise en relation avec des experts</li>
-                                        <li>✓ 🚫 Pas de publicité</li>
+                                        <li>{{ $t('demo.afr_fan.premium_1') }}</li>
+                                        <li>{{ $t('demo.afr_fan.premium_2') }}</li>
+                                        <li>{{ $t('demo.afr_fan.premium_3') }}</li>
+                                        <li>{{ $t('demo.afr_fan.premium_4') }}</li>
                                     </ul>
 
                                     <!-- Simulation de paiement -->
@@ -346,12 +348,12 @@
                                             <button @click="selectedPlan = 'monthly'"
                                                 class="flex-1 py-2 rounded text-sm font-medium transition"
                                                 :class="selectedPlan === 'monthly' ? 'bg-violet-600 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'">
-                                                Mensuel<br><span class="font-bold">9,99€</span>
+                                                {{ $t('demo.afr_fan.monthly') }}<br><span class="font-bold">9,99€</span>
                                             </button>
                                             <button @click="selectedPlan = 'yearly'"
                                                 class="flex-1 py-2 rounded text-sm font-medium transition relative"
                                                 :class="selectedPlan === 'yearly' ? 'bg-violet-600 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'">
-                                                Annuel<br><span class="font-bold">89,99€</span>
+                                                {{ $t('demo.afr_fan.yearly') }}<br><span class="font-bold">89,99€</span>
                                                 <span
                                                     class="absolute top-1 right-1 text-[10px] bg-green-500 text-white px-1 rounded">-25%</span>
                                             </button>
@@ -372,7 +374,8 @@
 
                                         <button @click="processPayment" :disabled="isProcessing"
                                             class="w-full btn-effect-5-submit rounded text-sm font-medium">
-                                            {{ isProcessing ? 'Traitement...' : 'Soutenir maintenant' }}
+                                            {{ isProcessing ? $t('demo.afr_fan.processing') :
+                                                $t('demo.afr_fan.support_now') }}
                                         </button>
 
                                         <div v-if="paymentMessage" class="text-center text-sm p-2 rounded"
@@ -384,23 +387,28 @@
 
                                 <!-- Diaspora en chiffres -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-800 mb-2">📊 Communauté en chiffres</h5>
+                                    <h5 class="font-semibold text-gray-800 mb-2">{{ $t('demo.afr_fan.stats_title') }}
+                                    </h5>
                                     <div class="grid grid-cols-2 gap-3 text-center">
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.members }}</div>
-                                            <div class="text-xs text-gray-500">Membres</div>
+                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_members') }}
+                                            </div>
                                         </div>
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.posts }}</div>
-                                            <div class="text-xs text-gray-500">Publications</div>
+                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_posts') }}
+                                            </div>
                                         </div>
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.groups }}</div>
-                                            <div class="text-xs text-gray-500">Groupes actifs</div>
+                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_groups') }}
+                                            </div>
                                         </div>
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.countries }}</div>
-                                            <div class="text-xs text-gray-500">Pays représentés</div>
+                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_countries') }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -413,13 +421,13 @@
                             <!-- Section Réservation -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    <span class="text-2xl">🍷</span> <!-- Verre de vin -->
-                                    Simulateur de réservation
+                                    {{ $t('demo.nurses.title') }}
                                 </h4>
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="space-y-4">
                                         <div>
-                                            <label class="text-sm text-gray-600 font-medium">Nombre de personnes</label>
+                                            <label class="text-sm text-gray-600 font-medium">{{ $t('demo.nurses.guests')
+                                                }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -435,33 +443,35 @@
                                         </div>
 
                                         <div>
-                                            <label class="text-sm text-gray-600 font-medium">Date</label>
+                                            <label class="text-sm text-gray-600 font-medium">{{ $t('demo.nurses.date')
+                                                }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
 
                                         <div>
-                                            <label class="text-sm text-gray-600 font-medium">Service</label>
+                                            <label class="text-sm text-gray-600 font-medium">{{
+                                                $t('demo.nurses.service') }}</label>
                                             <select v-model="booking.service" class="w-full p-2 border rounded mt-1">
-                                                <option value="midi">🍳 Déjeuner (12h-14h)</option>
-                                                <option value="soir">🌙 Dîner (19h-22h)</option>
-                                                <option value="vip">✨ VIP (service exclusif)</option>
+                                                <option value="midi">{{ $t('demo.nurses.serv_lunch') }}</option>
+                                                <option value="soir">{{ $t('demo.nurses.serv_dinner') }}</option>
+                                                <option value="vip">{{ $t('demo.nurses.serv_vip') }}</option>
                                             </select>
                                         </div>
 
                                         <div v-if="booking.service === 'vip'"
                                             class="p-3 bg-amber-50 rounded border border-amber-200">
-                                            <p class="text-sm text-amber-800">🎁 Service VIP inclus :</p>
+                                            <p class="text-sm text-amber-800">{{ $t('demo.nurses.vip_inc') }}</p>
                                             <ul class="text-xs text-amber-700 mt-1 space-y-1">
-                                                <li>✓ Accès au salon privé</li>
-                                                <li>✓ Menu dégustation personnalisé</li>
-                                                <li>✓ Accueil par le chef cuisinier</li>
+                                                <li>{{ $t('demo.nurses.vip_1') }}</li>
+                                                <li>{{ $t('demo.nurses.vip_2') }}</li>
+                                                <li>{{ $t('demo.nurses.vip_3') }}</li>
                                             </ul>
                                         </div>
 
                                         <button @click="makeReservation"
                                             class="w-full btn-violet inline-block text-center btn-effect-5 py-2 rounded-lg">
-                                            Réserver (démo)
+                                            {{ $t('demo.nurses.btn_reserve') }}
                                         </button>
 
                                         <div v-if="reservationMessage"
@@ -472,11 +482,10 @@
                                 </div>
                             </div>
 
-                            <!-- Section Événements à venir -->
+                            <!-- Section {{ $t('demo.nurses.events_title') }} -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    <span class="text-2xl">🎉</span>
-                                    Événements à venir
+                                    {{ $t('demo.nurses.events_title') }}
                                 </h4>
 
                                 <div class="bg-white rounded-lg shadow p-4">
@@ -488,23 +497,24 @@
                                             <div class="flex justify-between items-start">
                                                 <div>
                                                     <div class="font-semibold text-gray-800">{{ event.title }}</div>
-                                                    <div class="text-sm text-gray-600">📅 {{ event.date }}</div>
+                                                    <div class="text-sm text-gray-600"> {{ event.date }}</div>
                                                     <div class="text-xs text-gray-500">👥 {{ event.participants }}
-                                                        participants</div>
+                                                        {{ $t('demo.nurses.participants') }}</div>
                                                 </div>
                                                 <div class="text-right">
                                                     <div class="text-sm font-semibold text-amber-600">{{ event.price }}
                                                     </div>
                                                     <div class="text-xs"
                                                         :class="event.spots > 10 ? 'text-green-600' : 'text-orange-600'">
-                                                        {{ event.spots }} places restantes
+                                                        {{ event.spots }} {{ $t('demo.nurses.remaining') }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mt-2 flex gap-2">
                                                 <span class="text-xs px-2 py-1 rounded-full"
                                                     :class="event.type === 'gala' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'">
-                                                    {{ event.type === 'gala' ? '🎭 Gala' : '🍷 Dégustation' }}
+                                                    {{ event.type === 'gala' ? $t('demo.nurses.event_gala') :
+                                                        $t('demo.nurses.event_degust') }}
                                                 </span>
                                                 <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">
                                                     ⏰ {{ event.time }}
@@ -515,7 +525,7 @@
 
                                     <button @click="reserveEvent" :disabled="selectedEvent === null"
                                         class="w-full btn-effect-5-submit transition disabled:opacity-50 disabled:cursor-not-allowed mt-4">
-                                        Réserver pour cet événement
+                                        {{ $t('demo.nurses.btn_reserve_event') }}
                                     </button>
                                     <div v-if="eventReservationMessage" class="text-center text-sm p-2 rounded mt-2"
                                         :class="eventReservationMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
@@ -530,8 +540,7 @@
                             <div class="bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg shadow p-4">
                                 <div class="flex justify-between items-center mb-3">
                                     <h4 class="font-bold text-white flex items-center gap-2">
-                                        <span class="text-xl">👑</span>
-                                        Panneau d'administration
+                                        {{ $t('demo.nurses.admin_title') }}
                                     </h4>
                                 </div>
 
@@ -539,33 +548,35 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                                }}</div>
-                                            <div class="text-xs text-gray-300">Réservations</div>
+                                            }}</div>
+                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.vipReservations }}
                                             </div>
-                                            <div class="text-xs text-gray-300">VIP</div>
+                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_vip') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalGuests }}
                                             </div>
-                                            <div class="text-xs text-gray-300">Couverts</div>
+                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_guests') }}
+                                            </div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ nurseEvents.length }}</div>
-                                            <div class="text-xs text-gray-300">Événements</div>
+                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_events') }}
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="flex gap-2">
                                         <button @click="addDemoEvent"
                                             class="flex-1 bg-violet-600 text-white py-1 rounded text-sm hover:bg-violet-700 transition">
-                                            + Ajouter un événement
+                                            {{ $t('demo.nurses.btn_add_event') }}
                                         </button>
                                         <button @click="resetDemoData"
                                             class="flex-1 bg-orange-600 text-white py-1 rounded text-sm hover:bg-orange-700 transition">
-                                            Réinitialiser
+                                            {{ $t('demo.nurses.btn_reset') }}
                                         </button>
                                     </div>
                                 </div>
@@ -575,20 +586,20 @@
 
                     <div v-else-if="demoType === 'echo-webLine'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <!-- Gestion des événements scientifiques -->
+                            <!-- {{ $t('demo.echo.title') }} scientifiques -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    <span class="text-2xl">📅</span>
-                                    Gestion des événements
+                                    {{ $t('demo.echo.title') }}
                                 </h4>
 
                                 <!-- Liste des événements -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="font-semibold text-gray-700">Événements à venir</span>
+                                        <span class="font-semibold text-gray-700">{{ $t('demo.nurses.events_title')
+                                            }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
-                                            + Nouvel événement
+                                            {{ $t('demo.echo.btn_new') }}
                                         </button>
                                     </div>
                                     <div class="space-y-2 max-h-64 overflow-y-auto">
@@ -601,15 +612,17 @@
                                                     <div class="font-semibold text-gray-800">{{ event.title }}</div>
                                                     <div class="text-sm text-gray-600">{{ event.date }}</div>
                                                     <div class="text-xs text-gray-500">{{ event.participants }}
-                                                        participants</div>
+                                                        {{ $t('demo.nurses.participants') }}</div>
                                                 </div>
                                                 <div class="flex gap-1 items-center space-x-6">
                                                     <span class="text-xs px-2 py-1 rounded"
                                                         :class="event.status === 'ouvert' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'">
-                                                        {{ event.status === 'ouvert' ? 'Ouvert' : 'Complet' }}
+                                                        {{ event.status === 'ouvert' ? $t('demo.echo.status_open') :
+                                                            $t('demo.echo.status_full') }}
                                                     </span>
                                                     <button @click.stop="deleteEvent(idx)"
-                                                        class="btn-effect-5-delete">Supprimer</button>
+                                                        class="btn-effect-5-delete">{{ $t('demo.echo.btn_delete')
+                                                        }}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -618,15 +631,17 @@
 
                                 <!-- Formulaire d'inscription -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-700 mb-3">Inscription à un événement</h5>
+                                    <h5 class="font-semibold text-gray-700 mb-3">{{ $t('demo.echo.form_title') }}</h5>
                                     <div class="space-y-3">
-                                        <input type="text" v-model="registration.name" placeholder="Nom complet"
+                                        <input type="text" v-model="registration.name"
+                                            :placeholder="$t('demo.echo.form_name')"
                                             class="w-full p-2 border rounded text-sm">
-                                        <input type="email" v-model="registration.email" placeholder="Email"
+                                        <input type="email" v-model="registration.email"
+                                            :placeholder="$t('demo.echo.form_email')"
                                             class="w-full p-2 border rounded text-sm">
                                         <select v-model="registration.eventId"
                                             class="w-full p-2 border rounded text-sm">
-                                            <option value="">Sélectionner un événement</option>
+                                            <option value="">{{ $t('demo.echo.select_event') }}</option>
                                             <option v-for="(event, idx) in events" :key="idx" :value="idx"
                                                 :disabled="event.status === 'complet'">
                                                 {{ event.title }} ({{ event.status === 'complet' ? 'Complet' :
@@ -635,7 +650,7 @@
                                         </select>
                                         <button @click="registerToEvent"
                                             class="w-full btn-violet inline-block text-center btn-effect-5">
-                                            S'inscrire
+                                            {{ $t('demo.echo.btn_register') }}
                                         </button>
                                         <span v-if="registrationMessage"
                                             class="text-xs text-center italic p-2 w-fit flex justify-center rounded mx-auto"
@@ -648,22 +663,21 @@
                                 </div>
                             </div>
 
-                            <!-- Imagerie cardiovasculaire -->
+                            <!-- {{ $t('demo.echo.cardio_title') }} -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    <span class="text-2xl">❤️</span>
-                                    Imagerie cardiovasculaire
+                                    {{ $t('demo.echo.cardio_title') }}
                                 </h4>
 
                                 <!-- Visualisation des données médicales -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="font-semibold text-gray-700">Paramètres cardiaques</span>
+                                        <span class="font-semibold text-gray-700">{{ $t('demo.echo.params') }}</span>
                                     </div>
                                     <div class="space-y-3">
                                         <div>
                                             <div class="flex justify-between text-sm">
-                                                <span>Fréquence cardiaque</span>
+                                                <span>{{ $t('demo.echo.heart_rate') }}</span>
                                                 <span class="font-semibold"
                                                     :class="heartData.heartRate > 100 ? 'text-red-600' : 'text-green-600'">
                                                     {{ heartData.heartRate }} bpm
@@ -674,7 +688,7 @@
                                         </div>
                                         <div>
                                             <div class="flex justify-between text-sm">
-                                                <span>Tension artérielle</span>
+                                                <span>{{ $t('demo.echo.blood_press') }}</span>
                                                 <span class="font-semibold">{{ heartData.systolic }}/{{
                                                     heartData.diastolic }} mmHg</span>
                                             </div>
@@ -687,7 +701,7 @@
                                         </div>
                                         <div>
                                             <div class="flex justify-between text-sm">
-                                                <span>Niveau d'oxygène</span>
+                                                <span>{{ $t('demo.echo.oxygen') }}</span>
                                                 <span class="font-semibold"
                                                     :class="heartData.oxygen < 94 ? 'text-orange-600' : 'text-green-600'">
                                                     {{ heartData.oxygen }}%
@@ -698,14 +712,14 @@
                                         </div>
                                         <button @click="simulateHeartData"
                                             class="w-1/2 btn-violet inline-block text-center btn-effect-5">
-                                            Simuler nouvelle donnée
+                                            {{ $t('demo.echo.btn_simData') }}
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Graphique simplifié -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-700 mb-2">Historique des mesures</h5>
+                                    <h5 class="font-semibold text-gray-700 mb-2">{{ $t('demo.echo.hist_title') }}</h5>
                                     <div class="relative h-32">
                                         <div
                                             class="absolute bottom-0 left-0 right-0 flex items-end justify-between h-full">
@@ -719,23 +733,26 @@
                                         </div>
                                     </div>
                                     <div class="text-center text-xs text-gray-500 mt-4">
-                                        Dernières 8 mesures (bpm)
+                                        {{ $t('demo.echo.last_8') }}
                                     </div>
                                 </div>
 
                                 <!-- Ressources médicales -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-700 mb-2">Ressources disponibles</h5>
+                                    <h5 class="font-semibold text-gray-700 mb-2">{{ $t('demo.echo.resources_title') }}
+                                    </h5>
                                     <div class="space-y-2">
                                         <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
-                                            <span class="text-sm">📄 Guide pratique cardiologie</span>
+                                            <span class="text-sm">{{ $t('demo.echo.guide') }}</span>
                                             <button @click="downloadResource"
-                                                class="btn-violet inline-block text-center btn-effect-5">Télécharger</button>
+                                                class="btn-violet inline-block text-center btn-effect-5">{{
+                                                    $t('demo.echo.btn_download') }}</button>
                                         </div>
                                         <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
-                                            <span class="text-sm">🎥 Webinaire - Nouvelles technologies</span>
+                                            <span class="text-sm">{{ $t('demo.echo.webinar') }}</span>
                                             <button @click="downloadResource"
-                                                class="btn-violet inline-block text-center btn-effect-5">Voir</button>
+                                                class="btn-violet inline-block text-center btn-effect-5">{{
+                                                    $t('demo.echo.btn_view') }}</button>
                                         </div>
                                     </div>
                                     <p v-if="downloadMessage" class="text-xs text-green-600 mt-2 text-center">{{
@@ -749,11 +766,11 @@
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
-                            <h4 class="font-bold text-gray-800 mb-2">Démo en cours de développement</h4>
-                            <p class="text-gray-600">Une version interactive sera bientôt disponible pour ce projet.</p>
+                            <h4 class="font-bold text-gray-800 mb-2">{{ $t('demo.in_dev.title') }}</h4>
+                            <p class="text-gray-600">{{ $t('demo.in_dev.desc') }}</p>
                             <button @click="notifyDemo"
                                 class="mt-4 bg-violet-2000 text-white px-4 py-2 rounded hover:bg-violet-600 transition">
-                                Être notifié
+                                {{ $t('demo.in_dev.btn_notify') }}
                             </button>
                         </div>
                     </div>
@@ -768,22 +785,22 @@
         <div
             class="relative bg-white rounded-xl shadow-2xl p-6 w-96 max-w-[90%] transform transition-all animate-fade-in">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-bold text-gray-800">📝 Créer un nouveau groupe</h3>
+                <h3 class="text-lg font-bold text-gray-800">{{ $t('demo.group_modal.title') }}</h3>
             </div>
 
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">Nom du groupe</label>
-                <input type="text" v-model="newGroupName" placeholder="Ex: Musique Africaine, Tech Hub, Cuisine..."
+                <label class="block text-sm font-medium text-gray-700 mb-2">{{ $t('demo.group_modal.label') }}</label>
+                <input type="text" v-model="newGroupName" :placeholder="$t('demo.group_modal.placeholder')"
                     class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition"
                     @keyup.enter="confirmCreateGroup" autofocus>
             </div>
 
             <div class="flex gap-2 space-x-4 justify-center">
                 <button @click="cancelCreateGroup" class="btn-violet btn-effect-5">
-                    Annuler
+                    {{ $t('demo.group_modal.btn_cancel') }}
                 </button>
                 <button @click="confirmCreateGroup" :disabled="isCreatingGroup" class="btn-violet btn-effect-5">
-                    {{ isCreatingGroup ? 'Création...' : 'Valider' }}
+                    {{ isCreatingGroup ? $t('demo.group_modal.creating') : $t('demo.group_modal.btn_create') }}
                 </button>
             </div>
         </div>
