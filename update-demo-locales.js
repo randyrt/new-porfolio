@@ -177,7 +177,7 @@ en.demo = {
     amount: "Loan amount",
     rate: "Interest rate (%)",
     years: "Duration (years)",
-    years_unit: "yrs",
+    years_unit: "years",
     results: "Results",
     monthly: "Monthly payment",
     total: "Total paid",

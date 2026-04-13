@@ -237,7 +237,8 @@
                 #2563eb 100%);">
         </div>
       </div>
-      <nav class="flex-1 flex flex-col px-4 space-y-2 mt-2">
+      <CompactClock />
+      <nav class="flex-1 flex flex-col px-4 space-y-2">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
           active-class="bg-purple-200 font-bold">
@@ -257,6 +258,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { toggleTheme, getStoredTheme } from '../services/theme.js';
+import CompactClock from './MultiWorldClock.vue'
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n';

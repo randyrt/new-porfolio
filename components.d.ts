@@ -12,6 +12,7 @@ declare module 'vue' {
     DivSlot: typeof import('./src/components/DivSlot.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     LogoSection: typeof import('./src/components/logoSection.vue')['default']
+    MultiWorldClock: typeof import('./src/components/MultiWorldClock.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     ProjectGallery: typeof import('./src/components/ProjectGallery.vue')['default']
     QRcode: typeof import('./src/components/QRcode.vue')['default']

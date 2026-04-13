@@ -1,6 +1,6 @@
 <template>
   <Loading v-if="loading" :message="$t('home.loading')" />
-  <div v-else class="p-8 flex flex-col">
+  <div v-else class="p-4 flex flex-col">
     <AnimatedTitle :text="$t('home.quote')" aos="fade-down" />
     <div class="flex justify-between space-x-8 items-center flex-col md:flex-row min-h-screen">
       <div class="box p-2 view" data-aos="fade-down">

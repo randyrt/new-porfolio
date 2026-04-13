@@ -45,7 +45,8 @@ import {
   faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
-  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight
+  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight,
+  faLocationDot
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -59,7 +60,7 @@ library.add(
   faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
-  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt,
+  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faLocationDot,
 
   faEnvelope,
 
