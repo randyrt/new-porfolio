@@ -97,25 +97,6 @@
                             <!-- {{ $t('demo.qcp.amortization') }}s et lettres -->
                             <div class="space-y-4">
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold mb-2">{{ $t('demo.fid_connect.amortization_title') }}</h5>
-                                    <div class="space-y-2">
-                                        <div v-for="asset in assets" :key="asset.name"
-                                            class="flex justify-between text-sm">
-                                            <span>{{ asset.name }}</span>
-                                            <div class="flex gap-4">
-                                                <span>{{ formatCurrency(asset.value) }}</span>
-                                                <span class="text-gray-500">{{ asset.amortization }}{{
-                                                    $t('demo.fid_connect.per_year') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="mt-3 pt-2 border-t text-xs text-gray-500">
-                                        {{ $t('demo.fid_connect.amortization_line') }} {{ formatCurrency(netBookValue)
-                                        }}
-                                    </div>
-                                </div>
-
-                                <div class="bg-white rounded-lg shadow p-4">
                                     <h5 class="font-semibold mb-2">{{ $t('demo.fid_connect.doc_title') }}</h5>
                                     <div class="space-y-2">
                                         <button @click="generateDocument('letter')"
@@ -847,13 +828,6 @@ const fiscalData = ref({ revenue: 250000, expenses: 145000 });
 const taxableResult = computed(() => fiscalData.value.revenue - fiscalData.value.expenses);
 const vatAmount = computed(() => fiscalData.value.revenue * 0.21);
 const docMessage = ref('');
-
-const assets = ref([
-    { name: 'Matériel informatique', value: 15000, amortization: 20 },
-    { name: 'Mobilier de bureau', value: 8000, amortization: 10 },
-    { name: 'Logiciels', value: 5000, amortization: 33 }
-]);
-const netBookValue = computed(() => assets.value.reduce((sum, a) => sum + a.value * (1 - a.amortization / 100), 0));
 
 const generateTaxDeclaration = () => {
     toast.success(`Déclaration fiscale générée - TVA due: ${formatCurrency(vatAmount.value)}`);
