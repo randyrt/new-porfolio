@@ -2,14 +2,14 @@
   <Loading v-if="loading" :message="$t('home.loading')" />
   <div v-else class="p-4 flex flex-col">
     <AnimatedTitle :text="$t('home.quote')" aos="fade-down" />
-    <div class="flex justify-between space-x-8 items-center flex-col md:flex-row min-h-screen">
+    <div class="flex justify-between items-center flex-col md:flex-row min-h-screen">
       <div class="box p-2 view" data-aos="fade-down">
         <span class="borderline"></span>
         <img src="/images/me/randy.jpg" alt="Photo de Randy">
       </div>
-      <div class="md:text-sm lg:text-base max-w-3xl pad border p-6 card flex flex-col justify-between min-h-[500px]"
+      <div class="md:text-sm lg:text-base max-w-3xl pad border  card flex flex-col justify-between min-h-[500px]"
         data-aos="fade-up">
-        <div class="p-8">
+        <div class="p-4">
           <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800">{{ $t('home.welcome') }}<span
               class="text-5xl ml-2 emoji"> 😎</span></h1>
           <p class="text-lg text-gray-700 mb-4" v-html="$t('home.p1')"></p>
