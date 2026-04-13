@@ -167,7 +167,7 @@ const terminalLines = [
     { text: '✓ Docker - Containerization', class: 'text-green-400', prompt: true },
     { text: '✓ TypeScript - Type Safety', class: 'text-green-400', prompt: true },
     { text: '✓ Laravel - PHP Framework', class: 'text-green-400', prompt: true },
-    { text: 'System ready!', class: 'text-purple-400', prompt: true }
+    { text: 'System ready! Type "help" for commands', class: 'text-purple-400', prompt: true }
 ]
 
 const visibleLines = ref<typeof terminalLines>([])
@@ -178,6 +178,7 @@ watch(isComplete, (newValue) => {
     if (newValue) {
         setTimeout(() => {
             showTechnologies.value = true
+            toast.info(t('technology.toast_hover'))
         }, 500)
     }
 })
@@ -186,7 +187,7 @@ onMounted(() => {
 
     setTimeout(() => {
         loading.value = false
-        toast.info(t('technology.toast_hover'))
+
     }, 1000)
 
     intervalId = setInterval(() => {
