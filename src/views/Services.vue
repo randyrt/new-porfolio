@@ -1,8 +1,7 @@
 <template>
   <Loading v-if="loading" :message="$t('services.loading')" />
   <div v-else class="flex flex-col space-y-10 ">
-    <AnimatedTitle :text="$t('services.quote')"
-      aos="fade-down" />
+    <AnimatedTitle :text="$t('services.quote')" aos="fade-down" />
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6" data-aos="fade-up">
 
@@ -84,9 +83,12 @@
           {{ $t('services.maintenance_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li1') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li2') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li3') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li1') }}
+          </li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li2') }}
+          </li>
+          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li3') }}
+          </li>
         </ul>
       </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <Loading v-if="loading" :message="$t('webcup.loading')" />
   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
-     <AnimatedTitle :text="$t('webcup.quote')" aos="fade-down"/>
+    <AnimatedTitle :text="$t('webcup.quote')" aos="fade-down" />
   </div>
 
   <div class="flex justify-between p-8">
@@ -25,8 +25,9 @@
       </div>
     </div>
     <div class="min-h-screen p-8 flex items-center">
-      <div class=" w-full max-w-4xl border card justify-center !p-8" >
-        <h1 class="text-2xl font-bold mt-0 mb-2 !text-violet-800">{{ $t('webcup.title') }}<span class="text-5xl emoji">🏆</span></h1>
+      <div class=" w-full max-w-4xl border card justify-center !p-8">
+        <h1 class="text-2xl font-bold mt-0 mb-2 !text-violet-800">{{ $t('webcup.title') }}<span
+            class="text-5xl emoji">🏆</span></h1>
         <p class="text-lg text-gray-700 mb-4">
           {{ $t('webcup.p1') }}
         </p>
@@ -83,7 +84,7 @@ onMounted(() => {
 })
 
 
-function webCup(){
+function webCup() {
   window.open("https://24h.webcup.fr/madagascar", "_blank")
 }
 
@@ -110,10 +111,10 @@ img {
 
   .flex.justify-between {
     flex-direction: column;
-    padding: 1rem; 
+    padding: 1rem;
   }
 
-  .flex.justify-between > div {
+  .flex.justify-between>div {
     min-height: auto;
     width: 100%;
     padding: 1rem;
@@ -132,7 +133,10 @@ img {
     animation: none !important;
   }
 
-  p, h1, button, span {
+  p,
+  h1,
+  button,
+  span {
     font-size: 10px;
   }
 }

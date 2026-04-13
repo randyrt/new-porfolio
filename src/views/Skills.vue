@@ -68,20 +68,21 @@
         description: $t('skills.ionic_s3_desc')
       }
     ]" />
-    <SkillSection :title="$t('skills.python_title')" :bgColor="'bg-pink-100'" :borderColor="'border-yellow-200'" :skills="[
-      {
-        name: $t('skills.python_s1_name'),
-        description: $t('skills.python_s1_desc')
-      },
-      {
-        name: $t('skills.python_s2_name'),
-        description: $t('skills.python_s2_desc')
-      },
-      {
-        name: $t('skills.python_s3_name'),
-        description: $t('skills.python_s3_desc')
-      }
-    ]" />
+    <SkillSection :title="$t('skills.python_title')" :bgColor="'bg-pink-100'" :borderColor="'border-yellow-200'"
+      :skills="[
+        {
+          name: $t('skills.python_s1_name'),
+          description: $t('skills.python_s1_desc')
+        },
+        {
+          name: $t('skills.python_s2_name'),
+          description: $t('skills.python_s2_desc')
+        },
+        {
+          name: $t('skills.python_s3_name'),
+          description: $t('skills.python_s3_desc')
+        }
+      ]" />
   </div>
   <div class="flex items-stretch flex-wrap bg-gray-100 gap-4 p-4 text-lg">
     <SkillSection :title="$t('skills.nuxt_title')" :bgColor="'bg-orange-100'" :borderColor="'border-orange-200'"
