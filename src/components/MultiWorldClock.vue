@@ -11,9 +11,9 @@
                 <div class="city-date">{{ currentDate }}</div>
                 <!-- Météo -->
                 <div class="city-weather p-2 rounded-lg bg-white w-fit mx-auto" v-if="weatherInfo">
-                    <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm" />
+                    <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm " />
                     <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
-                    <span class="weather-desc">{{ $t(weatherInfo.descriptionKey) }}</span>
+                    <span class="weather-desc">{{ weatherInfo.description }}</span>
                 </div>
                 <div class="city-weather loading" v-else>
                     <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
@@ -46,15 +46,6 @@ let rotationInterval: ReturnType<typeof setInterval> | null = null
 let clockInterval: ReturnType<typeof setInterval> | null = null
 
 
-const weatherData: Record<string, any> = {
-    'Indian/Antananarivo': { temp: 22, descriptionKey: 'clock.weather.sunny', icon: 'fa-solid fa-sun' },
-    'Europe/Paris': { temp: 15, descriptionKey: 'clock.weather.cloudy', icon: 'fa-solid fa-cloud' },
-    'America/New_York': { temp: 18, descriptionKey: 'clock.weather.partly_cloudy', icon: 'fa-solid fa-cloud-sun' },
-    'Asia/Tokyo': { temp: 20, descriptionKey: 'clock.weather.light_rain', icon: 'fa-solid fa-cloud-rain' },
-    'Europe/London': { temp: 14, descriptionKey: 'clock.weather.fog', icon: 'fa-solid fa-smog' },
-    'Asia/Dubai': { temp: 32, descriptionKey: 'clock.weather.hot_dry', icon: 'fa-solid fa-temperature-high' }
-}
-
 const cities = [
     { nameKey: 'clock.cities.antananarivo', timezone: 'Indian/Antananarivo', icon: 'fa-solid fa-location-dot', cityName: 'Antananarivo' },
     { nameKey: 'clock.cities.paris', timezone: 'Europe/Paris', icon: 'fa-solid fa-flag', cityName: 'Paris' },
@@ -66,39 +57,13 @@ const cities = [
 
 const currentCity = computed(() => cities[currentIndex.value])
 
-// Fonction pour mettre la première lettre en majuscule
+
 const capitalizeFirstLetter = (str: string) => {
     if (!str) return str
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-// Récupérer la météo pour une ville
-const fetchWeather = async (timezone: string, cityName: string) => {
-    // Version avec données simulées
-    weatherInfo.value = weatherData[timezone] || { temp: '--', descriptionKey: 'clock.weather.unavailable', icon: 'fa-solid fa-question' }
-    
-    // Version réelle avec API (décommentez et mettez votre clé API)
-    /*
-    try {
-        const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=VOTRE_CLE_API&units=metric&lang=fr`
-        )
-        const data = await response.json()
-        if (data.cod === 200) {
-            weatherInfo.value = {
-                temp: Math.round(data.main.temp),
-                description: data.weather[0].description,
-                icon: getWeatherIcon(data.weather[0].icon)
-            }
-        }
-    } catch (error) {
-        console.error('Erreur météo:', error)
-        weatherInfo.value = { temp: '--', descriptionKey: 'clock.weather.error', icon: 'fa-solid fa-exclamation-triangle' }
-    }
-    */
-}
 
-// Obtenir l'icône FontAwesome selon la météo
 const getWeatherIcon = (iconCode: string) => {
     const iconMap: Record<string, string> = {
         '01d': 'fa-solid fa-sun',
@@ -122,6 +87,85 @@ const getWeatherIcon = (iconCode: string) => {
     }
     return iconMap[iconCode] || 'fa-solid fa-cloud'
 }
+
+
+
+const fetchWeather = async (cityName: string) => {
+    try {
+        const geoResponse = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=fr&format=json`
+        );
+        const geoData = await geoResponse.json();
+        
+        if (!geoData.results || geoData.results.length === 0) {
+            throw new Error('Ville non trouvée');
+        }
+        
+        const { latitude, longitude, name } = geoData.results[0];
+        
+        const weatherResponse = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=auto&forecast_days=1`
+        );
+        const weatherData = await weatherResponse.json();
+        
+        if (weatherData.current_weather) {
+            const temp = Math.round(weatherData.current_weather.temperature);
+            const weatherCode = weatherData.current_weather.weathercode;
+            
+            weatherInfo.value = {
+                temp: temp,
+                description: getWeatherDescription(weatherCode, locale.value),
+                icon: getWeatherIconFromCode(weatherCode)
+            };
+        }
+    } catch (error) {
+        console.error('Erreur météo pour', cityName, ':', error);
+        weatherInfo.value = { 
+            temp: '--', 
+            description: locale.value === 'fr' ? 'Météo non disponible' : 'Weather unavailable', 
+            icon: 'fa-solid fa-cloud' 
+        };
+    }
+};
+
+
+const getWeatherDescription = (code: number, lang: string): string => {
+    const descriptions: Record<number, Record<string, string>> = {
+        0: { fr: 'Ciel dégagé', en: 'Clear sky' },
+        1: { fr: 'Principalement dégagé', en: 'Mainly clear' },
+        2: { fr: 'Partiellement nuageux', en: 'Partly cloudy' },
+        3: { fr: 'Nuageux', en: 'Overcast' },
+        45: { fr: 'Brouillard', en: 'Fog' },
+        48: { fr: 'Brouillard givrant', en: 'Depositing rime fog' },
+        51: { fr: 'Bruine légère', en: 'Light drizzle' },
+        53: { fr: 'Bruine modérée', en: 'Moderate drizzle' },
+        55: { fr: 'Bruine forte', en: 'Dense drizzle' },
+        61: { fr: 'Pluie légère', en: 'Light rain' },
+        63: { fr: 'Pluie modérée', en: 'Moderate rain' },
+        65: { fr: 'Pluie forte', en: 'Heavy rain' },
+        71: { fr: 'Neige légère', en: 'Light snow' },
+        73: { fr: 'Neige modérée', en: 'Moderate snow' },
+        75: { fr: 'Neige forte', en: 'Heavy snow' },
+        80: { fr: 'Averses légères', en: 'Light showers' },
+        81: { fr: 'Averses modérées', en: 'Moderate showers' },
+        82: { fr: 'Averses fortes', en: 'Violent showers' },
+        95: { fr: 'Orage', en: 'Thunderstorm' }
+    };
+    return descriptions[code]?.[lang] || (lang === 'fr' ? 'Météo variable' : 'Variable weather');
+};
+
+const getWeatherIconFromCode = (code: number): string => {
+    if (code === 0) return 'fa-solid fa-sun';
+    if (code === 1 || code === 2) return 'fa-solid fa-cloud-sun';
+    if (code === 3) return 'fa-solid fa-cloud';
+    if (code >= 45 && code <= 48) return 'fa-solid fa-smog';
+    if (code >= 51 && code <= 55) return 'fa-solid fa-cloud-rain';
+    if (code >= 61 && code <= 65) return 'fa-solid fa-cloud-showers-heavy';
+    if (code >= 71 && code <= 75) return 'fa-solid fa-snowflake';
+    if (code >= 80 && code <= 82) return 'fa-solid fa-cloud-rain';
+    if (code === 95) return 'fa-solid fa-bolt';
+    return 'fa-solid fa-cloud-sun';
+};
 
 const updateCurrentClock = () => {
     const city = currentCity.value
@@ -157,27 +201,26 @@ const updateCurrentClock = () => {
 const rotateCity = () => {
     currentIndex.value = (currentIndex.value + 1) % cities.length
     updateCurrentClock()
-    fetchWeather(cities[currentIndex.value].timezone, cities[currentIndex.value].cityName)
+    fetchWeather(cities[currentIndex.value].cityName)
 }
 
 const setActiveCity = (index: number) => {
     currentIndex.value = index
     updateCurrentClock()
-    fetchWeather(cities[currentIndex.value].timezone, cities[currentIndex.value].cityName)
+    fetchWeather(cities[currentIndex.value].cityName)
     if (rotationInterval) {
         clearInterval(rotationInterval)
         rotationInterval = setInterval(rotateCity, 20000)
     }
 }
 
-// Surveiller les changements de langue pour mettre à jour la météo
 watch(locale, () => {
-    fetchWeather(currentCity.value.timezone, currentCity.value.cityName)
+    fetchWeather(currentCity.value.cityName)
 })
 
 onMounted(() => {
     updateCurrentClock()
-    fetchWeather(currentCity.value.timezone, currentCity.value.cityName)
+    fetchWeather(currentCity.value.cityName)
     rotationInterval = setInterval(rotateCity, 20000)
     clockInterval = setInterval(updateCurrentClock, 1000)
 })
@@ -201,7 +244,8 @@ onBeforeUnmount(() => {
 .clock-item {
     text-align: center;
     padding: 2rem 2.5rem;
-    background: rgba(120, 40, 151, 0.2);
+    background: rgba(126, 27, 165, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.3);
     border-radius: 0.75rem;
     transition: all 0.3s ease;
     width: 200px;
@@ -235,13 +279,12 @@ onBeforeUnmount(() => {
 .city-weather {
     margin-top: 0.75rem;
     padding-top: 0.75rem;
-    border-top: 1px solid rgba(139, 92, 246, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     font-size: 0.8rem;
-    color: #e5e7eb;
+    color: #ffff;
 }
 
 .city-weather.loading {
