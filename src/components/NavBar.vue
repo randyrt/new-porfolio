@@ -269,6 +269,7 @@
             #2563eb 100%);">
         </div>
       </div>
+      <CurrentActivity />
       <Transition name="menu-slide">
         <nav class="flex-1 flex flex-col px-2 space-y-2 rounded-lg pt-6 text-sm">
           <router-link v-for="route in routes" :key="route.path" :to="route.path"
@@ -280,7 +281,6 @@
         </nav>
       </Transition>
       <MultiWorldClock />
-      <CurrentActivity />
     </aside>
     </Transition>
 
