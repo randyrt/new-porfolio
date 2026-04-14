@@ -114,16 +114,18 @@
         </div>
       </div>
     </header>
-    <nav v-if="isOpen" class="md:hidden flex flex-col bg-gray-50 shadow px-4 py-2 space-y-2">
-      <router-link v-for="route in routes" :key="route.path" :to="route.path"
-        class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100 flex items-center gap-2"
-        active-class="bg-violet-200 font-bold">
-        <font-awesome-icon :icon="route.icon" class="text-gray-500" />
-        <span>{{ route.name }}</span>
-      </router-link>
-    </nav>
-    <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50 transition-all duration-300 p-2"
-      v-show="sidebarVisible">
+    <Transition name="menu-slide">
+      <nav v-if="isOpen" class="md:hidden flex flex-col bg-gray-50 shadow px-4 py-2 space-y-2">
+        <router-link v-for="route in routes" :key="route.path" :to="route.path"
+          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100 flex items-center gap-2"
+          active-class="bg-violet-200 font-bold">
+          <font-awesome-icon :icon="route.icon" class="text-gray-500" />
+          <span>{{ route.name }}</span>
+        </router-link>
+      </nav>
+    </Transition>
+    <Transition name="sidebar-slide">
+      <aside v-if="sidebarVisible" class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50 transition-all duration-300 p-2">
       <div class="p-4 text-xl font-bold flex items-center justify-between">
         <span class="animated-gradient-text cursor-pointer text-3xl" @click="goHome">{{ brand }}</span>
       </div>
@@ -267,17 +269,20 @@
             #2563eb 100%);">
         </div>
       </div>
-      <nav class="flex-1 flex flex-col px-2 space-y-1 border-1 border-purple-200 rounded-lg pt-6 text-sm mt-4">
-        <router-link v-for="route in routes" :key="route.path" :to="route.path"
-          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
-          active-class="bg-purple-200 font-bold">
-          <font-awesome-icon :icon="route.icon" class="text-gray-500" />
-          <span>{{ route.name }}</span>
-        </router-link>
-      </nav>
+      <Transition name="menu-slide">
+        <nav class="flex-1 flex flex-col px-2 space-y-1 border-1 border-purple-200 rounded-lg pt-6 text-sm mt-4">
+          <router-link v-for="route in routes" :key="route.path" :to="route.path"
+            class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
+            active-class="bg-purple-200 font-bold">
+            <font-awesome-icon :icon="route.icon" class="text-gray-500" />
+            <span>{{ route.name }}</span>
+          </router-link>
+        </nav>
+      </Transition>
       <MultiWorldClock />
       <CurrentActivity />
     </aside>
+    </Transition>
 
     <button v-if="!sidebarVisible" @click="sidebarVisible = true"
       class="fixed top-4 left-4 z-50 p-3 w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:scale-110 transition-all duration-300 focus:outline-none flex justify-center items-center animate-pulse-slow">
@@ -392,5 +397,39 @@ onMounted(() => {
     box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
     opacity: 0.9;
   }
+}
+
+.menu-slide-enter-active,
+.menu-slide-leave-active {
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.menu-slide-enter-from,
+.menu-slide-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.menu-slide-enter-to,
+.menu-slide-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Sidebar slide transition */
+.sidebar-slide-enter-active,
+.sidebar-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.sidebar-slide-enter-from {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.sidebar-slide-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
 }
 </style>

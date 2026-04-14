@@ -1,37 +1,36 @@
 <template>
   <div class="github-stats p-6 bg-white card">
     <div class="flex items-center gap-3 mb-6">
-      <font-awesome-icon :icon="['fab', 'github']" class="text-black text-2xl" />
-      <h2 class="text-2xl font-bold text-black">{{ $t('github.title') }}</h2>
+      <h2 class="text-2xl font-bold text-purple-800">{{ $t('github.title') }}</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" v-if="!loading && !error">
       <div class="stat-card p-4 bg-gradient-to-br from-blue-400 to-blue-400 rounded-lg text-white">
         <div class="flex items-center justify-between">
-          <div>
-            <p class="text-blue-100 text-sm">{{ $t('github.repos') }}</p>
-            <p class="text-2xl font-bold">{{ stats.public_repos }}</p>
+          <div class="!text-white">
+            <p class="text-sm !text-white">{{ $t('github.repos') }}</p>
+            <p class="text-2xl font-bold !text-white">{{ stats.public_repos }}</p>
           </div>
-          <font-awesome-icon icon="fa-solid fa-code-branch" class="text-blue-200 text-2xl" />
+          <font-awesome-icon icon="fa-solid fa-code-branch" class="!text-white text-2xl" />
         </div>
       </div>
 
       <div class="stat-card p-4 bg-gradient-to-br from-green-400 to-green-400 rounded-lg text-white">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-green-100 text-sm">{{ $t('github.followers') }}</p>
-            <p class="text-2xl font-bold">{{ stats.followers }}</p>
+            <p class="!text-white text-sm">{{ $t('github.followers') }}</p>
+            <p class="text-2xl font-bold !text-white">{{ stats.followers }}</p>
           </div>
-          <font-awesome-icon icon="fa-solid fa-users" class="text-green-200 text-2xl" />
+          <font-awesome-icon icon="fa-solid fa-users" class="!text-white text-2xl" />
         </div>
       </div>
 
       <div class="stat-card p-4 bg-gradient-to-br from-purple-400 to-purple-400 rounded-lg text-white">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-purple-100 text-sm">{{ $t('github.following') }}</p>
-            <p class="text-2xl font-bold">{{ stats.following }}</p>
+            <p class="!text-white text-sm">{{ $t('github.following') }}</p>
+            <p class="text-2xl font-bold !text-white">{{ stats.following }}</p>
           </div>
-          <font-awesome-icon icon="fa-solid fa-user-plus" class="text-purple-200 text-2xl" />
+          <font-awesome-icon icon="fa-solid fa-user-plus" class="!text-white text-2xl" />
         </div>
       </div>
     </div>

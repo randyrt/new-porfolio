@@ -15,13 +15,13 @@
 
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="200">
         <div class="card p-8 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold  mb-4">
+          <h3 class="text-xl font-semibold  mb-4 text-purple-800">
             {{ $t('github.about_title') }}
           </h3>
           <p class="text-gray-600 dark:text-gray-300 mb-4">
             {{ $t('github.about_description') }}
           </p>
-          <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-4 ">
             <a href="https://github.com/randyrt" target="_blank"
                class="btn-violet btn-effect-5 !no-underline">
               <font-awesome-icon :icon="['fab', 'github']" class="mr-2" />
@@ -31,7 +31,7 @@
         </div>
 
         <div class="card p-8 rounded-lg shadow-lg">
-          <h3 class="text-xl font-semibold  mb-4">
+          <h3 class="text-xl font-semibold  mb-4 text-purple-800">
             {{ $t('github.stats_info_title') }}
           </h3>
           <ul class="space-y-2">
