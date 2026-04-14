@@ -198,8 +198,7 @@
              hover:scale-110 hover:from-violet-400 hover:to-purple-500
              active:scale-95
              transition-all duration-300 ease-out cursor-pointer
-             border border-white/30
-             animate-pulse-slow">
+             border border-white/30">
             <font-awesome-icon :icon="themeIcon" class="text-white text-lg filter drop-shadow-md
                     group-hover:rotate-12 transition-transform duration-300" />
           </span>
@@ -268,9 +267,9 @@
             #2563eb 100%);">
         </div>
       </div>
-      <CompactClock />
+      <MultiWorldClock />
       <CurrentActivity />
-      <nav class="flex-1 flex flex-col px-4 space-y-2 border-1 border-purple-200 rounded-lg pt-4">
+      <nav class="flex-1 flex flex-col px-4 space-y-2 border-1 border-purple-200 rounded-lg pt-4 text-sm">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
           active-class="bg-purple-200 font-bold">
@@ -295,7 +294,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 import { toggleTheme, getStoredTheme } from '../services/theme.js';
-import CompactClock from './MultiWorldClock.vue'
+import MultiWorldClock from './MultiWorldClock.vue'
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n';

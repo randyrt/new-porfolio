@@ -1,7 +1,6 @@
-<!-- components/MultiWorldClock.vue -->
 <template>
-    <div class="multi-clock mt-2 mb-2">
-        <div class="clocks-grid">
+    <div class="multi-clock mt-2 mb-2 border-purple-200 rounded-lg">
+        <div class="clocks-grid border-1 border-purple-200 rounded-lg mt-1 mb-2">
             <div class="clock-item">
                 <div class="city-name">
                     <font-awesome-icon :icon="currentCity.icon" class="text-violet-400 text-sm" />
@@ -11,20 +10,22 @@
                 <div class="city-date">{{ currentDate }}</div>
             </div>
         </div>
-        <div class="city-weather p-2 rounded-lg mt-2 w-full" v-if="weatherInfo">
-            <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm " />
-            <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
-            <span class="weather-desc">{{ weatherInfo.description }}</span>
-        </div>
-        <div class="city-weather mt-2 mb-2 loading" v-else>
-            <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
-            <span>{{ $t('clock.weather.loading') }}</span>
-        </div>
-        <div class="dots-container">
-            <div class="dots">
-                <span v-for="(city, index) in cities" :key="city.nameKey" class="dot"
-                    :class="{ active: index === currentIndex }" @click="setActiveCity(index)">
-                </span>
+        <div class="border-1 border-purple-200 rounded-lg mt-1 mb-2">
+            <div class="city-weather p-2 rounded-lg mt-2 w-full" v-if="weatherInfo">
+                <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm " />
+                <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
+                <span class="weather-desc">{{ weatherInfo.description }}</span>
+            </div>
+            <div class="city-weather mt-2 mb-2 loading" v-else>
+                <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
+                <span>{{ $t('clock.weather.loading') }}</span>
+            </div>
+            <div class="dots-container mb-2">
+                <div class="dots">
+                    <span v-for="(city, index) in cities" :key="city.nameKey" class="dot"
+                        :class="{ active: index === currentIndex }" @click="setActiveCity(index)">
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -242,10 +243,6 @@ onBeforeUnmount(() => {
 .clock-item {
     text-align: center;
     padding: 2rem 2.5rem;
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    border-radius: 0.75rem;
-    transition: all 0.3s ease;
-    width: 100%;
 }
 
 .city-name {
