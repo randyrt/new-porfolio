@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 

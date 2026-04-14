@@ -117,7 +117,7 @@
     <Transition name="menu-slide">
       <nav v-if="isOpen" class="md:hidden flex flex-col bg-gray-50 shadow px-4 py-2 space-y-2">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
-          class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-violet-100 flex items-center gap-2"
+          class="decoration rounded-md !text-gray-500 hover:bg-violet-100 flex items-center"
           active-class="bg-violet-200 font-bold">
           <font-awesome-icon :icon="route.icon" class="text-gray-500" />
           <span>{{ route.name }}</span>
@@ -125,7 +125,7 @@
       </nav>
     </Transition>
     <Transition name="sidebar-slide">
-      <aside v-if="sidebarVisible" class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50 transition-all duration-300 p-2">
+      <aside v-if="sidebarVisible" class="hidden md:flex w-64 shadow-lg flex-col bg-gray-50 transition-all duration-300 p-2">
       <div class="p-4 text-xl font-bold flex items-center justify-between">
         <span class="animated-gradient-text cursor-pointer text-3xl" @click="goHome">{{ brand }}</span>
       </div>
@@ -270,9 +270,9 @@
         </div>
       </div>
       <Transition name="menu-slide">
-        <nav class="flex-1 flex flex-col px-2 space-y-1 border-1 border-purple-200 rounded-lg pt-6 text-sm mt-4">
+        <nav class="flex-1 flex flex-col px-2 space-y-2 rounded-lg pt-6 text-sm">
           <router-link v-for="route in routes" :key="route.path" :to="route.path"
-            class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
+            class="decoration border-1 border-purple-200  px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
             active-class="bg-purple-200 font-bold">
             <font-awesome-icon :icon="route.icon" class="text-gray-500" />
             <span>{{ route.name }}</span>

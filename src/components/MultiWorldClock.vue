@@ -1,6 +1,6 @@
 <template>
-    <div class="multi-clock mt-2 border-purple-200 rounded-lg">
-        <div class="clocks-grid border-1 border-purple-200 rounded-lg mt-1 mb-2">
+    <div class="multi-clock border-purple-200 rounded-lg">
+        <div class="clocks-grid border-1 border-purple-200 rounded-lg">
             <div class="clock-item">
                 <div class="city-name">
                     <font-awesome-icon :icon="currentCity.icon" class="text-violet-400 text-sm" />
