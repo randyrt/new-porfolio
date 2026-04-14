@@ -50,7 +50,10 @@ import {
   faFlag,
   faLandmark,
   faBuilding,
-  faCity
+  faCity,
+  faBars,
+  faChevronLeft,
+  faChevronRight
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -70,9 +73,10 @@ library.add(
   faBuilding,
   faCity,
   faBuildingRegular,
-
+  faBars,
+  faChevronLeft,
   faEnvelope,
-
+  faChevronRight,
   faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
 
   faLaravel,
