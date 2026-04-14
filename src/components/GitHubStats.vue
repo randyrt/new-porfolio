@@ -35,15 +35,15 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" v-if="!loading && !error">
-      <div class="chart-container p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+    <div class="grid grid-cols-1 gap-6 w-full" v-if="!loading && !error">
+      <div class="chart-container p-4 bg-gray-50 dark:bg-gray-700 rounded-lg w-full">
         <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">{{ $t('github.languages') }}</h3>
         <div class="h-64">
           <Doughnut :data="languageChartData" :options="chartOptions" />
         </div>
       </div>
 
-      <div class="chart-container p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+      <div class="chart-container p-4 bg-gray-50 dark:bg-gray-700 rounded-lg w-full">
         <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">{{ $t('github.contributions') }}</h3>
         <div class="h-64">
           <Bar :data="contributionChartData" :options="contributionChartOptions" />
