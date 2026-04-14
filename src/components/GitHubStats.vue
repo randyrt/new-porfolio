@@ -46,7 +46,7 @@
       <div class="chart-container p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
         <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">{{ $t('github.contributions') }}</h3>
         <div class="h-64">
-          <Bar :data="contributionChartData" :options="chartOptions" />
+          <Bar :data="contributionChartData" :options="contributionChartOptions" />
         </div>
       </div>
     </div>
@@ -99,10 +99,19 @@ ChartJS.register(
 const { t } = useI18n()
 
 const stats = ref({})
-const languages = ref({})
 const loading = ref(true)
 const error = ref(false)
 
+// Récupérer le token depuis les variables d'environnement
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN
+
+// Configurer les headers si le token existe
+const getHeaders = () => {
+  return GITHUB_TOKEN ? {
+    Authorization: `token ${GITHUB_TOKEN}`,
+    Accept: 'application/vnd.github.v3+json'
+  } : {}
+}
 
 const chartOptions = {
   responsive: true,
@@ -135,6 +144,49 @@ const chartOptions = {
   }
 }
 
+const contributionChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      position: 'bottom',
+      labels: {
+        color: 'rgb(156, 163, 175)'
+      }
+    }
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        color: 'rgb(156, 163, 175)',
+        stepSize: 1
+      },
+      grid: {
+        color: 'rgb(75, 85, 99)'
+      },
+      title: {
+        display: true,
+        text: 'Nombre de commits',
+        color: 'rgb(156, 163, 175)'
+      }
+    },
+    x: {
+      ticks: {
+        color: 'rgb(156, 163, 175)'
+      },
+      grid: {
+        color: 'rgb(75, 85, 99)'
+      },
+      title: {
+        display: true,
+        text: 'Mois',
+        color: 'rgb(156, 163, 175)'
+      }
+    }
+  }
+}
+
 const languageChartData = ref({
   labels: [],
   datasets: [{
@@ -160,29 +212,84 @@ const languageChartData = ref({
   }]
 })
 
-
 const contributionChartData = ref({
-  labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun'],
+  labels: [],
   datasets: [{
-    label: 'Contributions',
-    data: [12, 19, 3, 5, 2, 3],
+    label: 'Contributions (commits)',
+    data: [],
     backgroundColor: 'rgba(139, 92, 246, 0.8)',
     borderColor: 'rgba(139, 92, 246, 1)',
-    borderWidth: 1
+    borderWidth: 1,
+    borderRadius: 5
   }]
 })
 
+const fetchContributions = async () => {
+  try {
+    const reposResponse = await axios.get('https://api.github.com/users/randyrt/repos?per_page=100', {
+      headers: getHeaders()
+    })
+    const repos = reposResponse.data
+
+    const monthlyCommits = {}
+    const today = new Date()
+
+    for (let i = 0; i < 12; i++) {
+      const date = new Date(today.getFullYear(), today.getMonth() - i, 1)
+      const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
+      monthlyCommits[monthKey] = 0
+    }
+
+    const commitPromises = repos.map(async (repo) => {
+      try {
+        const commitsResponse = await axios.get(
+          `https://api.github.com/repos/randyrt/${repo.name}/commits?per_page=100&author=randyrt`,
+          { headers: getHeaders() }
+        )
+
+        commitsResponse.data.forEach(commit => {
+          const commitDate = new Date(commit.commit.author.date)
+          const commitMonth = `${commitDate.getFullYear()}-${String(commitDate.getMonth() + 1).padStart(2, '0')}`
+
+          if (monthlyCommits[commitMonth] !== undefined) {
+            monthlyCommits[commitMonth]++
+          }
+        })
+      } catch (err) {
+        console.error(`Erreur pour le repo ${repo.name}:`, err)
+      }
+    })
+
+    await Promise.all(commitPromises)
+
+    const sortedMonths = Object.keys(monthlyCommits).sort()
+    const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
+    const labels = sortedMonths.map(month => {
+      const [year, monthNum] = month.split('-')
+      return `${monthNames[parseInt(monthNum) - 1]} ${year}`
+    })
+
+    contributionChartData.value.labels = labels
+    contributionChartData.value.datasets[0].data = sortedMonths.map(month => monthlyCommits[month])
+
+  } catch (err) {
+    console.error('Erreur lors de la récupération des contributions:', err)
+  }
+}
 
 const fetchStats = async () => {
   try {
     loading.value = true
     error.value = false
 
-
-    const profileResponse = await axios.get('https://api.github.com/users/randyrt')
+    const profileResponse = await axios.get('https://api.github.com/users/randyrt', {
+      headers: getHeaders()
+    })
     stats.value = profileResponse.data
 
-    const reposResponse = await axios.get('https://api.github.com/users/randyrt/repos?per_page=100')
+    const reposResponse = await axios.get('https://api.github.com/users/randyrt/repos?per_page=100', {
+      headers: getHeaders()
+    })
     const repos = reposResponse.data
 
     const languageCount = {}
@@ -192,13 +299,14 @@ const fetchStats = async () => {
       }
     }
 
-    // Trier et prendre les 6 plus utilisés
     const sortedLanguages = Object.entries(languageCount)
       .sort(([, a], [, b]) => b - a)
       .slice(0, 6)
 
     languageChartData.value.labels = sortedLanguages.map(([lang]) => lang)
     languageChartData.value.datasets[0].data = sortedLanguages.map(([, count]) => count)
+
+    await fetchContributions()
 
   } catch (err) {
     console.error('Erreur lors de la récupération des stats GitHub:', err)
