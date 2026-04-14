@@ -51,15 +51,17 @@
       </div>
     </div>
 
-    <div v-if="loading" class="flex items-center justify-center py-12">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
-      <span class="ml-3 text-gray-400 dark:text-gray-400">{{ $t('github.loading') }}</span>
+    <div class="city-weather mt-2 mb-2 loading" v-else>
+      <div class="flex justify-center items-center min-h-[200px]">
+        <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-6xl" />
+      </div>
     </div>
 
     <div v-if="error" class="text-center py-12">
       <font-awesome-icon icon="fa-solid fa-exclamation-triangle" class="text-red-400 text-4xl mb-4" />
       <p class="text-red-400 dark:text-red-400">{{ $t('github.error') }}</p>
-      <button @click="fetchStats" class="mt-4 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-400 transition-colors">
+      <button @click="fetchStats"
+        class="mt-4 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-400 transition-colors">
         {{ $t('github.retry') }}
       </button>
     </div>
@@ -109,7 +111,7 @@ const chartOptions = {
     legend: {
       position: 'bottom',
       labels: {
-        color: 'rgb(156, 163, 175)' 
+        color: 'rgb(156, 163, 175)'
       }
     }
   },
@@ -192,11 +194,11 @@ const fetchStats = async () => {
 
     // Trier et prendre les 6 plus utilisés
     const sortedLanguages = Object.entries(languageCount)
-      .sort(([,a], [,b]) => b - a)
+      .sort(([, a], [, b]) => b - a)
       .slice(0, 6)
 
     languageChartData.value.labels = sortedLanguages.map(([lang]) => lang)
-    languageChartData.value.datasets[0].data = sortedLanguages.map(([,count]) => count)
+    languageChartData.value.datasets[0].data = sortedLanguages.map(([, count]) => count)
 
   } catch (err) {
     console.error('Erreur lors de la récupération des stats GitHub:', err)
