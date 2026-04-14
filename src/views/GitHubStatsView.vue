@@ -3,11 +3,12 @@
   <div v-else class="min-h-screen py-8 px-4">
     <div>
       <AnimatedTitle :text="$t('github.page_quote')" />
-      <div class="text-center mb-12" data-aos="fade-down">
-        <p class="italic">
-         <span class="text-purple-800">«</span> {{ $t('github.page_description') }} <span class="text-purple-800">»</span>
-        </p>
-      </div>
+      <div class="text-center max-w-2xl mx-auto px-4 mt-4 mb-10" data-aos="fade-up">
+            <p class="text-lg italic text-gray-700 dark:text-gray-300">
+                <span class="text-violet-800 text-lg">«</span> {{ $t('github.page_description') }} <span
+                    class="text-violet-800 text-lg">»</span>
+            </p>
+        </div>
 
       <div data-aos="fade-up">
         <GitHubStats />
