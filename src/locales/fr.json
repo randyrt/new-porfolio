@@ -11,6 +11,7 @@
     "projects": "Projets",
     "services": "Services",
     "testimonials": "Témoignages",
+    "github_stats": "GitHub Stats",
     "contact": "Contact",
     "about": "À propos"
   },
@@ -443,18 +444,47 @@
       "loading": "Chargement...",
       "unavailable": "Indisponible",
       "error": "Erreur"
-    }  },
-    "currentActivity": {
-      "now": "En ce moment",
-      "activities": [
-        "Rédige un article sur Vue.js",
-        "Présentation pour un meetup tech",
-        "Nouvelle librairie de design system",
-        "Tester, application en production",
-        "Travaille sur un nouveau projet",
-        "Apprend Flutter, Golang et C++",
-        "Membre actif sur Laracasts",
-        "Prêt pour de nouvelles opportunités"
-      ]
+    }
+  },
+  "currentActivity": {
+    "now": "En ce moment",
+    "activities": [
+      "Rédige un article sur Vue.js",
+      "Prépare une présentation pour un meetup tech",
+      "Teste une nouvelle librairie de design system",
+      "Optimise les performances d'une application en production",
+      "Travaille sur un nouveau projet",
+      "Apprend Flutter, Golang et C++",
+      "Membre actif sur Laracasts",
+      "Prêt pour de nouvelles opportunités"
+    ]
+  },
+  "github": {
+    "title": "Statistiques GitHub",
+    "repos": "Dépôts",
+    "followers": "Abonnés",
+    "following": "Abonnements",
+    "languages": "Langages utilisés",
+    "contributions": "Contributions mensuelles",
+    "loading": "Chargement des statistiques...",
+    "error": "Erreur lors du chargement des statistiques",
+    "retry": "Réessayer",
+    "page_title": "Statistiques GitHub",
+    "page_quote": "« Le code est comme une histoire, chaque commit raconte une partie de l'aventure. »",
+    "page_description": "Découvrez mes statistiques GitHub, repositories et langages de programmation utilisés",
+    "welcome_title": "Explorez mes statistiques GitHub",
+    "description_1": "Plongez dans mon univers de développement et découvrez les langages que j'utilise, mes projets open source, et mon activité de contribution.",
+    "description_2": "Chaque graphique représente une facette de mon parcours technique, des repositories que j'ai créés aux technologies que je maîtrise.",
+    "description_3": "Curieux d'en voir plus ? Visitez mon profil ",
+    "description_4": " pour explorer mes projets en détail.",
+    "view_profile": "Voir le profil",
+    "refresh_stats": "Actualiser les stats",
+    "about_title": "À propos de GitHub",
+    "about_description": "GitHub est ma plateforme principale pour partager du code, collaborer sur des projets open source et suivre mon activité de développement.",
+    "stats_info_title": "Informations sur les statistiques",
+    "stats_info_repos": "Nombre total de repositories publics",
+    "stats_info_followers": "Personnes qui me suivent",
+    "stats_info_languages": "Langages de programmation les plus utilisés",
+    "stats_info_contributions": "Activité de contribution mensuelle"
   }
 }

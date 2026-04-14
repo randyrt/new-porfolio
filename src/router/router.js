@@ -9,6 +9,7 @@ import Projects from '../views/Projects.vue';
 import Testimoniales from '../views/Testimoniales.vue';
 import Services from '../views/Services.vue';
 import About from '../views/About.vue';
+import GitHubStatsView from '../views/GitHubStatsView.vue';
 const routes = [
     { path: '/', name: 'home', component: Home },
     { path: '/contact', name: 'contact', component: Contact },
@@ -19,7 +20,8 @@ const routes = [
     { path: '/projects', name: 'projects', component: Projects },
     { path: '/testimoniales', name: 'testimoniales', component: Testimoniales },
     { path: '/services', name: 'services', component: Services },
-    { path: '/about', name: 'about', component: About }
+    { path: '/about', name: 'about', component: About },
+    { path: '/github-stats', name: 'github-stats', component: GitHubStatsView }
 ];
 const router = createRouter({
     history: createWebHistory(),

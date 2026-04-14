@@ -10,8 +10,7 @@
     "webcup": "WebCup2024",
     "projects": "Projects",
     "services": "Services",
-    "testimonials": "Testimonials",
-    "contact": "Contact",
+    "testimonials": "Testimonials",    "github_stats": "GitHub Stats",    "contact": "Contact",
     "about": "About"
   },
   "home": {
@@ -457,5 +456,33 @@
         "Active member on Laracasts",
         "Ready for new opportunities"
       ]
+  },
+  "github": {
+    "title": "GitHub Statistics",
+    "repos": "Repositories",
+    "followers": "Followers",
+    "following": "Following",
+    "languages": "Languages used",
+    "contributions": "Monthly contributions",
+    "loading": "Loading statistics...",
+    "error": "Error loading statistics",
+    "retry": "Retry",
+    "page_title": "GitHub Statistics",
+    "page_quote": "\"Code is like a story, each commit tells part of the adventure.\"",
+    "page_description": "Discover my GitHub statistics, repositories and programming languages used",
+    "welcome_title": "Explore my GitHub statistics",
+    "description_1": "Dive into my development universe and discover the languages I use, my open source projects, and my contribution activity.",
+    "description_2": "Each chart represents a facet of my technical journey, from the repositories I've created to the technologies I master.",
+    "description_3": "Curious to see more? Visit my profile ",
+    "description_4": " to explore my projects in detail.",
+    "view_profile": "View profile",
+    "refresh_stats": "Refresh stats",
+    "about_title": "About GitHub",
+    "about_description": "GitHub is my main platform for sharing code, collaborating on open source projects and tracking my development activity.",
+    "stats_info_title": "Statistics information",
+    "stats_info_repos": "Total number of public repositories",
+    "stats_info_followers": "People following me",
+    "stats_info_languages": "Most used programming languages",
+    "stats_info_contributions": "Monthly contribution activity"
   }
 }

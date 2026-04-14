@@ -267,7 +267,7 @@
             #2563eb 100%);">
         </div>
       </div>
-      <nav class="flex-1 flex flex-col px-4 space-y-3 border-1 border-purple-200 rounded-lg pt-6 text-sm mt-4">
+      <nav class="flex-1 flex flex-col px-2 space-y-1 border-1 border-purple-200 rounded-lg pt-6 text-sm mt-4">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
           active-class="bg-purple-200 font-bold">

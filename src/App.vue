@@ -21,6 +21,7 @@ const navRoutes = computed(() => [
   { path: '/services', name: t('nav.services'), icon: 'briefcase' },
   { path: '/testimoniales', name: t('nav.testimonials'), icon: 'quote-right' },
   { path: '/contact', name: t('nav.contact'), icon: ['far', 'envelope'] },
+  { path: '/github-stats', name: t('nav.github_stats'), icon: ['fab', 'github'] },
   { path: '/about', name: t('nav.about'), icon: ['fas', 'info-circle'] },
 
 ]);

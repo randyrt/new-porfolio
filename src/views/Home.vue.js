@@ -79,7 +79,7 @@ else {
     // @ts-ignore
     [$t,];
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-        ...{ class: "flex justify-between space-x-8 items-center flex-col md:flex-row min-h-screen" },
+        ...{ class: "flex justify-between items-center flex-col md:flex-row min-h-screen" },
     });
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
         ...{ class: "box p-2 view" },
@@ -93,11 +93,11 @@ else {
         alt: "Photo de Randy",
     });
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-        ...{ class: "md:text-sm lg:text-base max-w-3xl pad border p-6 card flex flex-col justify-between min-h-[500px]" },
+        ...{ class: "md:text-sm lg:text-base max-w-3xl pad border  card flex flex-col justify-between min-h-[500px]" },
         'data-aos': "fade-up",
     });
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-        ...{ class: "p-8" },
+        ...{ class: "p-4" },
     });
     __VLS_asFunctionalElement(__VLS_elements.h1, __VLS_elements.h1)({
         ...{ class: "text-2xl font-bold mt-6 mb-2 !text-violet-800" },
@@ -163,7 +163,6 @@ else {
 /** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['justify-between']} */ ;
-/** @type {__VLS_StyleScopedClasses['space-x-8']} */ ;
 /** @type {__VLS_StyleScopedClasses['items-center']} */ ;
 /** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
 /** @type {__VLS_StyleScopedClasses['md:flex-row']} */ ;
@@ -177,13 +176,12 @@ else {
 /** @type {__VLS_StyleScopedClasses['max-w-3xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['pad']} */ ;
 /** @type {__VLS_StyleScopedClasses['border']} */ ;
-/** @type {__VLS_StyleScopedClasses['p-6']} */ ;
 /** @type {__VLS_StyleScopedClasses['card']} */ ;
 /** @type {__VLS_StyleScopedClasses['flex']} */ ;
 /** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
 /** @type {__VLS_StyleScopedClasses['justify-between']} */ ;
 /** @type {__VLS_StyleScopedClasses['min-h-[500px]']} */ ;
-/** @type {__VLS_StyleScopedClasses['p-8']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-4']} */ ;
 /** @type {__VLS_StyleScopedClasses['text-2xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['font-bold']} */ ;
 /** @type {__VLS_StyleScopedClasses['mt-6']} */ ;

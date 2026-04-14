@@ -46,8 +46,12 @@ import {
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
   faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight,
   faLocationDot, faFlag, faLandmark, faBuilding, faCity, faBars, faChevronLeft, faChevronRight,
-  faCloudSun, faCloudRain, faSmog, faTemperatureHigh, faSnowflake, 
-  faBolt, faCloudShowersHeavy, faCloudMoon, faSpinner, faQuestion, faExclamationTriangle
+  faCloudSun, faCloudRain, faSmog, faTemperatureHigh, faSnowflake,
+  faBolt, faCloudShowersHeavy, faCloudMoon, faSpinner, faQuestion, faExclamationTriangle,
+  faCodeBranch,
+  faUsers,
+  faUserPlus,
+  faCalendarAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faEnvelope, faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -62,12 +66,14 @@ library.add(
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
   faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight,
   faLocationDot, faFlag, faLandmark, faBuilding, faCity, faBars, faChevronLeft, faChevronRight,
-  faCloudSun, faCloudRain, faSmog, faTemperatureHigh, faSnowflake, 
+  faCloudSun, faCloudRain, faSmog, faTemperatureHigh, faSnowflake,
   faBolt, faCloudShowersHeavy, faCloudMoon, faSpinner, faQuestion, faExclamationTriangle,
-  
-  
+  faCodeBranch,
+  faUsers,
+  faUserPlus,
+  faCalendarAlt,
   faEnvelope, faBuildingRegular,
-  
+
 
   faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
   faLaravel, faMicrosoft, faDocker, faPhp, faReact, faAngular,
