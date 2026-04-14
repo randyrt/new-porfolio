@@ -4,8 +4,6 @@
       <font-awesome-icon :icon="['fab', 'github']" class="text-black text-2xl" />
       <h2 class="text-2xl font-bold text-black">{{ $t('github.title') }}</h2>
     </div>
-
-   
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" v-if="!loading && !error">
       <div class="stat-card p-4 bg-gradient-to-br from-blue-400 to-blue-400 rounded-lg text-white">
         <div class="flex items-center justify-between">
@@ -193,6 +191,7 @@ const fetchStats = async () => {
       }
     }
 
+    // Trier et prendre les 6 plus utilisés
     const sortedLanguages = Object.entries(languageCount)
       .sort(([,a], [,b]) => b - a)
       .slice(0, 6)

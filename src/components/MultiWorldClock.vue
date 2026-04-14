@@ -1,5 +1,5 @@
 <template>
-    <div class="multi-clock mt-2 mb-2 border-purple-200 rounded-lg">
+    <div class="multi-clock mt-2 border-purple-200 rounded-lg">
         <div class="clocks-grid border-1 border-purple-200 rounded-lg mt-1 mb-2">
             <div class="clock-item">
                 <div class="city-name">
