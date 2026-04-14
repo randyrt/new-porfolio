@@ -9,6 +9,16 @@
                 </div>
                 <div class="city-time">{{ currentTime }}</div>
                 <div class="city-date">{{ currentDate }}</div>
+                <!-- Météo -->
+                <div class="city-weather p-2 rounded-lg bg-white w-fit mx-auto" v-if="weatherInfo">
+                    <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm" />
+                    <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
+                    <span class="weather-desc">{{ $t(weatherInfo.descriptionKey) }}</span>
+                </div>
+                <div class="city-weather loading" v-else>
+                    <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
+                    <span>{{ $t('clock.weather.loading') }}</span>
+                </div>
             </div>
         </div>
 
@@ -23,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t, locale } = useI18n()
@@ -31,16 +41,27 @@ const { t, locale } = useI18n()
 const currentIndex = ref(0)
 const currentTime = ref('--:--:--')
 const currentDate = ref('')
+const weatherInfo = ref<any>(null)
 let rotationInterval: ReturnType<typeof setInterval> | null = null
 let clockInterval: ReturnType<typeof setInterval> | null = null
 
+
+const weatherData: Record<string, any> = {
+    'Indian/Antananarivo': { temp: 22, descriptionKey: 'clock.weather.sunny', icon: 'fa-solid fa-sun' },
+    'Europe/Paris': { temp: 15, descriptionKey: 'clock.weather.cloudy', icon: 'fa-solid fa-cloud' },
+    'America/New_York': { temp: 18, descriptionKey: 'clock.weather.partly_cloudy', icon: 'fa-solid fa-cloud-sun' },
+    'Asia/Tokyo': { temp: 20, descriptionKey: 'clock.weather.light_rain', icon: 'fa-solid fa-cloud-rain' },
+    'Europe/London': { temp: 14, descriptionKey: 'clock.weather.fog', icon: 'fa-solid fa-smog' },
+    'Asia/Dubai': { temp: 32, descriptionKey: 'clock.weather.hot_dry', icon: 'fa-solid fa-temperature-high' }
+}
+
 const cities = [
-    { nameKey: 'clock.cities.antananarivo', timezone: 'Indian/Antananarivo', icon: 'fa-solid fa-location-dot' },
-    { nameKey: 'clock.cities.paris', timezone: 'Europe/Paris', icon: 'fa-solid fa-flag' },
-    { nameKey: 'clock.cities.new_york', timezone: 'America/New_York', icon: 'fa-regular fa-building' },
-    { nameKey: 'clock.cities.tokyo', timezone: 'Asia/Tokyo', icon: 'fa-solid fa-landmark' },
-    { nameKey: 'clock.cities.london', timezone: 'Europe/London', icon: 'fa-solid fa-building' },
-    { nameKey: 'clock.cities.dubai', timezone: 'Asia/Dubai', icon: 'fa-solid fa-city' }
+    { nameKey: 'clock.cities.antananarivo', timezone: 'Indian/Antananarivo', icon: 'fa-solid fa-location-dot', cityName: 'Antananarivo' },
+    { nameKey: 'clock.cities.paris', timezone: 'Europe/Paris', icon: 'fa-solid fa-flag', cityName: 'Paris' },
+    { nameKey: 'clock.cities.new_york', timezone: 'America/New_York', icon: 'fa-regular fa-building', cityName: 'New York' },
+    { nameKey: 'clock.cities.tokyo', timezone: 'Asia/Tokyo', icon: 'fa-solid fa-landmark', cityName: 'Tokyo' },
+    { nameKey: 'clock.cities.london', timezone: 'Europe/London', icon: 'fa-solid fa-building', cityName: 'London' },
+    { nameKey: 'clock.cities.dubai', timezone: 'Asia/Dubai', icon: 'fa-solid fa-city', cityName: 'Dubai' }
 ]
 
 const currentCity = computed(() => cities[currentIndex.value])
@@ -49,6 +70,57 @@ const currentCity = computed(() => cities[currentIndex.value])
 const capitalizeFirstLetter = (str: string) => {
     if (!str) return str
     return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+// Récupérer la météo pour une ville
+const fetchWeather = async (timezone: string, cityName: string) => {
+    // Version avec données simulées
+    weatherInfo.value = weatherData[timezone] || { temp: '--', descriptionKey: 'clock.weather.unavailable', icon: 'fa-solid fa-question' }
+    
+    // Version réelle avec API (décommentez et mettez votre clé API)
+    /*
+    try {
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=VOTRE_CLE_API&units=metric&lang=fr`
+        )
+        const data = await response.json()
+        if (data.cod === 200) {
+            weatherInfo.value = {
+                temp: Math.round(data.main.temp),
+                description: data.weather[0].description,
+                icon: getWeatherIcon(data.weather[0].icon)
+            }
+        }
+    } catch (error) {
+        console.error('Erreur météo:', error)
+        weatherInfo.value = { temp: '--', descriptionKey: 'clock.weather.error', icon: 'fa-solid fa-exclamation-triangle' }
+    }
+    */
+}
+
+// Obtenir l'icône FontAwesome selon la météo
+const getWeatherIcon = (iconCode: string) => {
+    const iconMap: Record<string, string> = {
+        '01d': 'fa-solid fa-sun',
+        '01n': 'fa-solid fa-moon',
+        '02d': 'fa-solid fa-cloud-sun',
+        '02n': 'fa-solid fa-cloud-moon',
+        '03d': 'fa-solid fa-cloud',
+        '03n': 'fa-solid fa-cloud',
+        '04d': 'fa-solid fa-cloud',
+        '04n': 'fa-solid fa-cloud',
+        '09d': 'fa-solid fa-cloud-rain',
+        '09n': 'fa-solid fa-cloud-rain',
+        '10d': 'fa-solid fa-cloud-showers-heavy',
+        '10n': 'fa-solid fa-cloud-showers-heavy',
+        '11d': 'fa-solid fa-bolt',
+        '11n': 'fa-solid fa-bolt',
+        '13d': 'fa-solid fa-snowflake',
+        '13n': 'fa-solid fa-snowflake',
+        '50d': 'fa-solid fa-smog',
+        '50n': 'fa-solid fa-smog'
+    }
+    return iconMap[iconCode] || 'fa-solid fa-cloud'
 }
 
 const updateCurrentClock = () => {
@@ -74,8 +146,6 @@ const updateCurrentClock = () => {
     currentTime.value = new Intl.DateTimeFormat(locale.value, timeOptions).format(now)
     let date = new Intl.DateTimeFormat(locale.value, dateOptions).format(now)
 
-    // Mettre la première lettre du jour en majuscule
-    // Exemple: "lundi 15 janvier 2024" -> "Lundi 15 janvier 2024"
     const parts = date.split(' ')
     if (parts.length > 0) {
         parts[0] = capitalizeFirstLetter(parts[0])
@@ -87,19 +157,27 @@ const updateCurrentClock = () => {
 const rotateCity = () => {
     currentIndex.value = (currentIndex.value + 1) % cities.length
     updateCurrentClock()
+    fetchWeather(cities[currentIndex.value].timezone, cities[currentIndex.value].cityName)
 }
 
 const setActiveCity = (index: number) => {
     currentIndex.value = index
     updateCurrentClock()
+    fetchWeather(cities[currentIndex.value].timezone, cities[currentIndex.value].cityName)
     if (rotationInterval) {
         clearInterval(rotationInterval)
         rotationInterval = setInterval(rotateCity, 20000)
     }
 }
 
+// Surveiller les changements de langue pour mettre à jour la météo
+watch(locale, () => {
+    fetchWeather(currentCity.value.timezone, currentCity.value.cityName)
+})
+
 onMounted(() => {
     updateCurrentClock()
+    fetchWeather(currentCity.value.timezone, currentCity.value.cityName)
     rotationInterval = setInterval(rotateCity, 20000)
     clockInterval = setInterval(updateCurrentClock, 1000)
 })
@@ -122,13 +200,12 @@ onBeforeUnmount(() => {
 
 .clock-item {
     text-align: center;
-    padding: 1rem 1.5rem;
-    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem 2.5rem;
+    background: rgba(120, 40, 151, 0.2);
     border-radius: 0.75rem;
     transition: all 0.3s ease;
-    min-width: 200px;
+    width: 200px;
 }
-
 
 .city-name {
     font-size: 1rem;
@@ -152,6 +229,33 @@ onBeforeUnmount(() => {
     font-size: 0.8rem;
     color: #9ca3af;
     margin-top: 0.5rem;
+}
+
+/* Styles météo */
+.city-weather {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(139, 92, 246, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #e5e7eb;
+}
+
+.city-weather.loading {
+    color: #9ca3af;
+}
+
+.weather-temp {
+    font-weight: bold;
+    color: #fbbf24;
+}
+
+.weather-desc {
+    color: #9ca3af;
+    font-size: 0.7rem;
 }
 
 .dots-container {
@@ -185,6 +289,19 @@ onBeforeUnmount(() => {
     border-radius: 4px;
 }
 
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
 @media (max-width: 640px) {
     .clock-item {
         padding: 0.75rem 1rem;
@@ -198,6 +315,15 @@ onBeforeUnmount(() => {
 
     .city-date {
         font-size: 0.7rem;
+    }
+    
+    .city-weather {
+        font-size: 0.7rem;
+        gap: 0.3rem;
+    }
+    
+    .weather-desc {
+        font-size: 0.6rem;
     }
 }
 </style>

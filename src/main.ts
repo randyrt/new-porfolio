@@ -37,7 +37,6 @@ import {
   faBootstrap
 } from '@fortawesome/free-brands-svg-icons'
 
-
 import {
   faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
   faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
@@ -46,55 +45,35 @@ import {
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
   faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight,
-  faLocationDot,
-  faFlag,
-  faLandmark,
-  faBuilding,
-  faCity,
-  faBars,
-  faChevronLeft,
-  faChevronRight
+  faLocationDot, faFlag, faLandmark, faBuilding, faCity, faBars, faChevronLeft, faChevronRight,
+  faCloudSun, faCloudRain, faSmog, faTemperatureHigh, faSnowflake, 
+  faBolt, faCloudShowersHeavy, faCloudMoon, faSpinner, faQuestion, faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons'
-
 
 import { faEnvelope, faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
 
 
 library.add(
-  faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode,
+  faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
   faQuoteRight, faProjectDiagram, faInfoCircle, faIdBadge, faLightbulb,
   faChartLine, faHeart, faTools, faWrench, faBrain, faMountain, faHandshake,
   faSun, faMoon, faBriefcase, faRocket, faSuitcase, faBusinessTime,
   faCheckCircle, faFlask, faVial, faShieldAlt, faCheckDouble,
   faTachometerAlt, faCloudUploadAlt, faExternalLinkAlt, faEye, faSync,
-  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faLocationDot,
-  faFlag,
-  faLandmark,
-  faBuilding,
-  faCity,
-  faBuildingRegular,
-  faBars,
-  faChevronLeft,
-  faEnvelope,
-  faChevronRight,
-  faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
+  faTimes, faChartPie, faDatabase, faCloud, faTerminal, faMobileAlt, faCog, faTextHeight,
+  faLocationDot, faFlag, faLandmark, faBuilding, faCity, faBars, faChevronLeft, faChevronRight,
+  faCloudSun, faCloudRain, faSmog, faTemperatureHigh, faSnowflake, 
+  faBolt, faCloudShowersHeavy, faCloudMoon, faSpinner, faQuestion, faExclamationTriangle,
+  
+  
+  faEnvelope, faBuildingRegular,
+  
 
-  faLaravel,
-  faMicrosoft,
-  faDocker,
-  faPhp,
-  faReact,
-  faAngular,
-  faSymfony,
-  faPython,
-  faNode,
-  faGitlab,
-  faFigma,
-  faBootstrap,
-  faCogs,
-  faCog,
-  faTextHeight
+  faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
+  faLaravel, faMicrosoft, faDocker, faPhp, faReact, faAngular,
+  faSymfony, faPython, faNode, faGitlab, faFigma, faBootstrap
 )
+
 
 const options = {
   position: "top-right",

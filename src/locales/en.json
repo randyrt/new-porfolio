@@ -432,6 +432,17 @@
       "tokyo": "Tokyo",
       "london": "London",
       "dubai": "Dubai"
+    },
+    "weather": {
+      "sunny": "Sunny",
+      "cloudy": "Cloudy",
+      "partly_cloudy": "Partly cloudy",
+      "light_rain": "Light rain",
+      "fog": "Fog",
+      "hot_dry": "Hot and dry",
+      "loading": "Loading...",
+      "unavailable": "Unavailable",
+      "error": "Error"
     }
   }
 }
