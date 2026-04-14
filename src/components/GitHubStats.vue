@@ -69,7 +69,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed, watch, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 import axios from 'axios'
 import {
@@ -96,11 +96,12 @@ ChartJS.register(
   DoughnutController
 )
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const stats = ref({})
 const loading = ref(true)
 const error = ref(false)
+const monthlyCommits = ref({})
 
 // Récupérer le token depuis les variables d'environnement
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN
@@ -144,7 +145,7 @@ const chartOptions = {
   }
 }
 
-const contributionChartOptions = {
+const contributionChartOptions = computed(() => ({
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -167,7 +168,7 @@ const contributionChartOptions = {
       },
       title: {
         display: true,
-        text: 'Nombre de commits',
+        text: t('github.commits_label'),
         color: 'rgb(156, 163, 175)'
       }
     },
@@ -180,12 +181,12 @@ const contributionChartOptions = {
       },
       title: {
         display: true,
-        text: 'Mois',
+        text: t('github.months_label'),
         color: 'rgb(156, 163, 175)'
       }
     }
   }
-}
+}))
 
 const languageChartData = ref({
   labels: [],
@@ -231,13 +232,13 @@ const fetchContributions = async () => {
     })
     const repos = reposResponse.data
 
-    const monthlyCommits = {}
+    const tempMonthlyCommits = {}
     const today = new Date()
 
     for (let i = 0; i < 12; i++) {
       const date = new Date(today.getFullYear(), today.getMonth() - i, 1)
       const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
-      monthlyCommits[monthKey] = 0
+      tempMonthlyCommits[monthKey] = 0
     }
 
     const commitPromises = repos.map(async (repo) => {
@@ -251,8 +252,8 @@ const fetchContributions = async () => {
           const commitDate = new Date(commit.commit.author.date)
           const commitMonth = `${commitDate.getFullYear()}-${String(commitDate.getMonth() + 1).padStart(2, '0')}`
 
-          if (monthlyCommits[commitMonth] !== undefined) {
-            monthlyCommits[commitMonth]++
+          if (tempMonthlyCommits[commitMonth] !== undefined) {
+            tempMonthlyCommits[commitMonth]++
           }
         })
       } catch (err) {
@@ -262,18 +263,48 @@ const fetchContributions = async () => {
 
     await Promise.all(commitPromises)
 
-    const sortedMonths = Object.keys(monthlyCommits).sort()
-    const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
-    const labels = sortedMonths.map(month => {
-      const [year, monthNum] = month.split('-')
-      return `${monthNames[parseInt(monthNum) - 1]} ${year}`
-    })
-
-    contributionChartData.value.labels = labels
-    contributionChartData.value.datasets[0].data = sortedMonths.map(month => monthlyCommits[month])
+    // Store the monthly commits for later use
+    monthlyCommits.value = tempMonthlyCommits
+    
+    // Update the chart with the current locale
+    updateContributionChart()
 
   } catch (err) {
     console.error('Erreur lors de la récupération des contributions:', err)
+  }
+}
+
+const updateContributionChart = () => {
+  const sortedMonths = Object.keys(monthlyCommits.value).sort()
+  
+  // Get the month names array from i18n - handle both array and non-array returns
+  let monthNames = []
+  const monthNamesData = t('github.months')
+  
+  if (Array.isArray(monthNamesData)) {
+    monthNames = monthNamesData
+  } else if (typeof monthNamesData === 'string') {
+    // Fallback to default months if translation key is not found
+    monthNames = locale.value === 'fr' 
+      ? ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
+      : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  }
+  
+  const labels = sortedMonths.map(month => {
+    const [year, monthNum] = month.split('-')
+    const monthIndex = parseInt(monthNum) - 1
+    const monthName = monthNames[monthIndex] || `Month ${monthNum}`
+    return `${monthName} ${year}`
+  })
+
+  // Create new objects to ensure Vue detects changes
+  contributionChartData.value = {
+    ...contributionChartData.value,
+    labels: labels,
+    datasets: [{
+      ...contributionChartData.value.datasets[0],
+      data: sortedMonths.map(month => monthlyCommits.value[month])
+    }]
   }
 }
 
@@ -318,6 +349,15 @@ const fetchStats = async () => {
 
 onMounted(() => {
   fetchStats()
+})
+
+// Update chart labels when locale changes
+watchEffect(() => {
+  // Access locale.value to make it a dependency
+  locale.value
+  if (Object.keys(monthlyCommits.value).length > 0) {
+    updateContributionChart()
+  }
 })
 </script>
 

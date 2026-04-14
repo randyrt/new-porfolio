@@ -485,6 +485,9 @@
     "stats_info_repos": "Nombre total de repositories publics",
     "stats_info_followers": "Personnes qui me suivent",
     "stats_info_languages": "Langages de programmation les plus utilisés",
-    "stats_info_contributions": "Activité de contribution mensuelle"
+    "stats_info_contributions": "Activité de contribution mensuelle",
+    "months": ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Aoû", "Sep", "Oct", "Nov", "Déc"],
+    "commits_label": "Nombre de commits",
+    "months_label": "Mois"
   }
 }
