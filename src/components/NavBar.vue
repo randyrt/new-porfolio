@@ -128,7 +128,7 @@
         <span class="animated-gradient-text cursor-pointer text-3xl" @click="goHome">{{ brand }}</span>
       </div>
 
-      <div class="flex items-center gap-2 mb-4 border-1 border-violet-300 rounded-lg p-0.5 py-2">
+      <div class="flex items-center gap-2 mb-2">
         <!-- Toggle Sidebar Button  -->
         <div class="relative group" @click="sidebarVisible = !sidebarVisible">
           <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
@@ -252,23 +252,23 @@
            group-hover:rotate-12 transition-transform duration-300" />
           </span>
         </div>
+        
       </div>
-
-      <div class="px-4">
+      <div class="px-1">
         <div class="h-0.5" style="background: linear-gradient(to right, 
-            #10b981 0%, 
-            #10b981 25%, 
-            #8b5cf6 25%, 
-            #8b5cf6 50%, 
-            #374151 50%, 
-            #374151 75%, 
-            #2563eb 75%, 
+            #858182 0%,
+            #858182 20%,
+            #10b981 20%,
+            #10b981 40%,
+            #8b5cf6 40%,
+            #8b5cf6 60%,
+            #374151 60%,
+            #374151 80%,
+            #2563eb 80%,
             #2563eb 100%);">
         </div>
       </div>
-
       <CompactClock />
-
       <nav class="flex-1 flex flex-col px-4 space-y-2 border-1 border-violet-300 rounded-lg pt-4">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
