@@ -444,5 +444,18 @@
       "unavailable": "Unavailable",
       "error": "Error"
     }
+  },
+  "currentActivity": {
+      "now": "Right now",
+      "activities": [
+        "Writing an article about Vue.js",
+        "Presenting at a tech meetup",
+        "Testing a new design system library",
+        "Performance, production application",
+        "Working on a new project",
+        "Learning Flutter, Golang and C++",
+        "Active member on Laracasts",
+        "Ready for new opportunities"
+      ]
   }
 }

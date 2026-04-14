@@ -269,7 +269,8 @@
         </div>
       </div>
       <CompactClock />
-      <nav class="flex-1 flex flex-col px-4 space-y-2 border-1 border-violet-300 rounded-lg pt-4">
+      <CurrentActivity />
+      <nav class="flex-1 flex flex-col px-4 space-y-2 border-1 border-purple-200 rounded-lg pt-4">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
           active-class="bg-purple-200 font-bold">
@@ -298,6 +299,7 @@ import CompactClock from './MultiWorldClock.vue'
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n';
+import CurrentActivity from './CurrentActivity.vue';
 
 
 interface RouteItem {

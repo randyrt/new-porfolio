@@ -443,6 +443,18 @@
       "loading": "Chargement...",
       "unavailable": "Indisponible",
       "error": "Erreur"
-    }
+    }  },
+    "currentActivity": {
+      "now": "En ce moment",
+      "activities": [
+        "Rédige un article sur Vue.js",
+        "Présentation pour un meetup tech",
+        "Nouvelle librairie de design system",
+        "Tester, application en production",
+        "Travaille sur un nouveau projet",
+        "Apprend Flutter, Golang et C++",
+        "Membre actif sur Laracasts",
+        "Prêt pour de nouvelles opportunités"
+      ]
   }
 }

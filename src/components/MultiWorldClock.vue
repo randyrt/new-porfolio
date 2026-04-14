@@ -1,6 +1,6 @@
 <!-- components/MultiWorldClock.vue -->
 <template>
-    <div class="multi-clock mt-4 mb-4">
+    <div class="multi-clock mt-2 mb-2">
         <div class="clocks-grid">
             <div class="clock-item">
                 <div class="city-name">
@@ -16,7 +16,7 @@
             <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
             <span class="weather-desc">{{ weatherInfo.description }}</span>
         </div>
-        <div class="city-weather mt-2 loading" v-else>
+        <div class="city-weather mt-2 mb-2 loading" v-else>
             <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
             <span>{{ $t('clock.weather.loading') }}</span>
         </div>
@@ -245,7 +245,7 @@ onBeforeUnmount(() => {
     border: 1px solid rgba(139, 92, 246, 0.3);
     border-radius: 0.75rem;
     transition: all 0.3s ease;
-    width: 200px;
+    width: 100%;
 }
 
 .city-name {
@@ -299,7 +299,7 @@ onBeforeUnmount(() => {
 .dots-container {
     display: flex;
     justify-content: center;
-    margin-top: 1rem;
+    margin-top: 2px;
 }
 
 .dots {
