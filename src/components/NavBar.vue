@@ -251,7 +251,7 @@
            group-hover:rotate-12 transition-transform duration-300" />
           </span>
         </div>
-        
+
       </div>
       <div class="px-1">
         <div class="h-0.5" style="background: linear-gradient(to right, 
@@ -267,9 +267,7 @@
             #2563eb 100%);">
         </div>
       </div>
-      <MultiWorldClock />
-      <CurrentActivity />
-      <nav class="flex-1 flex flex-col px-4 space-y-3 border-1 border-purple-200 rounded-lg pt-6 text-sm">
+      <nav class="flex-1 flex flex-col px-4 space-y-3 border-1 border-purple-200 rounded-lg pt-6 text-sm mt-4">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
           active-class="bg-purple-200 font-bold">
@@ -277,6 +275,8 @@
           <span>{{ route.name }}</span>
         </router-link>
       </nav>
+      <MultiWorldClock />
+      <CurrentActivity />
     </aside>
 
     <button v-if="!sidebarVisible" @click="sidebarVisible = true"
