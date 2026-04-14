@@ -122,13 +122,13 @@
         <span>{{ route.name }}</span>
       </router-link>
     </nav>
-    <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50 transition-all duration-300"
+    <aside class="hidden md:flex w-64 h-screen shadow-lg flex-col bg-gray-50 transition-all duration-300 p-2"
       v-show="sidebarVisible">
       <div class="p-4 text-xl font-bold flex items-center justify-between">
         <span class="animated-gradient-text cursor-pointer text-3xl" @click="goHome">{{ brand }}</span>
       </div>
 
-      <div class="flex items-center gap-2 mb-4 ml-2">
+      <div class="flex items-center gap-2 mb-4 border-1 border-violet-300 rounded-lg p-0.5 py-2">
         <!-- Toggle Sidebar Button  -->
         <div class="relative group" @click="sidebarVisible = !sidebarVisible">
           <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
@@ -269,7 +269,7 @@
 
       <CompactClock />
 
-      <nav class="flex-1 flex flex-col px-4 space-y-2">
+      <nav class="flex-1 flex flex-col px-4 space-y-2 border-1 border-violet-300 rounded-lg pt-4">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
           active-class="bg-purple-200 font-bold">
