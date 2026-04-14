@@ -9,19 +9,17 @@
                 </div>
                 <div class="city-time">{{ currentTime }}</div>
                 <div class="city-date">{{ currentDate }}</div>
-                <!-- Météo -->
-                <div class="city-weather p-2 rounded-lg bg-white w-fit mx-auto" v-if="weatherInfo">
-                    <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm " />
-                    <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
-                    <span class="weather-desc">{{ weatherInfo.description }}</span>
-                </div>
-                <div class="city-weather loading" v-else>
-                    <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
-                    <span>{{ $t('clock.weather.loading') }}</span>
-                </div>
             </div>
         </div>
-
+        <div class="city-weather p-2 rounded-lg w-full" v-if="weatherInfo">
+            <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm " />
+            <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
+            <span class="weather-desc">{{ weatherInfo.description }}</span>
+        </div>
+        <div class="city-weather loading" v-else>
+            <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
+            <span>{{ $t('clock.weather.loading') }}</span>
+        </div>
         <div class="dots-container">
             <div class="dots">
                 <span v-for="(city, index) in cities" :key="city.nameKey" class="dot"
@@ -96,22 +94,22 @@ const fetchWeather = async (cityName: string) => {
             `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=fr&format=json`
         );
         const geoData = await geoResponse.json();
-        
+
         if (!geoData.results || geoData.results.length === 0) {
             throw new Error('Ville non trouvée');
         }
-        
+
         const { latitude, longitude, name } = geoData.results[0];
-        
+
         const weatherResponse = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=auto&forecast_days=1`
         );
         const weatherData = await weatherResponse.json();
-        
+
         if (weatherData.current_weather) {
             const temp = Math.round(weatherData.current_weather.temperature);
             const weatherCode = weatherData.current_weather.weathercode;
-            
+
             weatherInfo.value = {
                 temp: temp,
                 description: getWeatherDescription(weatherCode, locale.value),
@@ -120,10 +118,10 @@ const fetchWeather = async (cityName: string) => {
         }
     } catch (error) {
         console.error('Erreur météo pour', cityName, ':', error);
-        weatherInfo.value = { 
-            temp: '--', 
-            description: locale.value === 'fr' ? 'Météo non disponible' : 'Weather unavailable', 
-            icon: 'fa-solid fa-cloud' 
+        weatherInfo.value = {
+            temp: '--',
+            description: locale.value === 'fr' ? 'Météo non disponible' : 'Weather unavailable',
+            icon: 'fa-solid fa-cloud'
         };
     }
 };
@@ -132,8 +130,8 @@ const fetchWeather = async (cityName: string) => {
 const getWeatherDescription = (code: number, lang: string): string => {
     const descriptions: Record<number, Record<string, string>> = {
         0: { fr: 'Ciel dégagé', en: 'Clear sky' },
-        1: { fr: 'Principalement dégagé', en: 'Mainly clear' },
-        2: { fr: 'Partiellement nuageux', en: 'Partly cloudy' },
+        1: { fr: 'Dégagé', en: 'Mainly clear' },
+        2: { fr: 'Lèger nuage', en: 'Partly cloudy' },
         3: { fr: 'Nuageux', en: 'Overcast' },
         45: { fr: 'Brouillard', en: 'Fog' },
         48: { fr: 'Brouillard givrant', en: 'Depositing rime fog' },
@@ -244,7 +242,6 @@ onBeforeUnmount(() => {
 .clock-item {
     text-align: center;
     padding: 2rem 2.5rem;
-    background: rgba(126, 27, 165, 0.2);
     border: 1px solid rgba(139, 92, 246, 0.3);
     border-radius: 0.75rem;
     transition: all 0.3s ease;
@@ -266,7 +263,7 @@ onBeforeUnmount(() => {
     font-size: 1.5rem;
     font-weight: bold;
     font-family: 'Courier New', monospace;
-    color: #e5e7eb;
+    color: #9d17be8f;
 }
 
 .city-date {
@@ -277,8 +274,6 @@ onBeforeUnmount(() => {
 
 /* Styles météo */
 .city-weather {
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -336,6 +331,7 @@ onBeforeUnmount(() => {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -359,12 +355,12 @@ onBeforeUnmount(() => {
     .city-date {
         font-size: 0.7rem;
     }
-    
+
     .city-weather {
         font-size: 0.7rem;
         gap: 0.3rem;
     }
-    
+
     .weather-desc {
         font-size: 0.6rem;
     }
