@@ -11,12 +11,12 @@
                 <div class="city-date">{{ currentDate }}</div>
             </div>
         </div>
-        <div class="city-weather p-2 rounded-lg w-full" v-if="weatherInfo">
+        <div class="city-weather p-2 rounded-lg mt-2 w-full" v-if="weatherInfo">
             <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm " />
             <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
             <span class="weather-desc">{{ weatherInfo.description }}</span>
         </div>
-        <div class="city-weather loading" v-else>
+        <div class="city-weather mt-2 loading" v-else>
             <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
             <span>{{ $t('clock.weather.loading') }}</span>
         </div>
