@@ -242,7 +242,7 @@ onBeforeUnmount(() => {
 
 .clock-item {
     text-align: center;
-    padding: 2rem 2.5rem;
+    padding: 1rem 1.5rem;
 }
 
 .city-name {
