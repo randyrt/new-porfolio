@@ -159,6 +159,7 @@ const contributionChartOptions = computed(() => ({
   scales: {
     y: {
       beginAtZero: true,
+      max: 200,
       ticks: {
         color: 'rgb(156, 163, 175)',
         stepSize: 1
