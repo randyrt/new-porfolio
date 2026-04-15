@@ -87,30 +87,6 @@
                group-hover:rotate-12 transition-transform duration-300" />
             </span>
           </div>
-
-          <!-- LinkedIn Button -->
-          <div class="relative group" @click="openLinkedin">
-            <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
-                bg-gray-900 text-white text-xs py-1 px-2 rounded
-                opacity-0 group-hover:opacity-100 transition-opacity duration-200
-                pointer-events-none">
-              LinkedIn
-              <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
-                  border-4 border-transparent border-t-gray-900"></div>
-            </div>
-
-            <span class="group relative flex h-10 w-10 items-center justify-center
-                 bg-gradient-to-br from-blue-600 to-blue-800
-                 rounded-xl shadow-lg shadow-blue-600/30
-                 hover:shadow-[0_0_25px_rgba(37,99,235,0.7)]
-                 hover:scale-110 hover:from-blue-500 hover:to-blue-700
-                 active:scale-95
-                 transition-all duration-300 ease-out cursor-pointer
-                 border border-white/30">
-              <font-awesome-icon :icon="['fab', 'linkedin']" class="text-white text-lg filter drop-shadow-md
-               group-hover:rotate-12 transition-transform duration-300" />
-            </span>
-          </div>
         </div>
       </div>
     </header>

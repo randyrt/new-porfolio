@@ -112,7 +112,6 @@ interface Message {
 
 const { tm, t, locale } = useI18n()
 
-// Met à jour le message de bienvenue en temps réel lors d'un changement de langue
 watch(locale, () => {
     if (messages.value.length > 0 && messages.value[0].role === 'assistant') {
         messages.value[0].content = t('chat.welcome_message')
