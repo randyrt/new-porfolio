@@ -51,7 +51,12 @@ import {
   faCodeBranch,
   faUsers,
   faUserPlus,
-  faCalendarAlt
+  faCalendarAlt, 
+  faRobot,        
+  faComments,    
+  faPaperPlane,         
+  faCommentDots,  
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faEnvelope, faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -73,11 +78,12 @@ library.add(
   faUserPlus,
   faCalendarAlt,
   faEnvelope, faBuildingRegular,
-
-
+  faRobot,faComments, faPaperPlane, faCommentDots,
+  faTrashAlt,
   faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
   faLaravel, faMicrosoft, faDocker, faPhp, faReact, faAngular,
-  faSymfony, faPython, faNode, faGitlab, faFigma, faBootstrap
+  faSymfony, faPython, faNode, faGitlab, faFigma, faBootstrap,
+  faCommentDots
 )
 
 

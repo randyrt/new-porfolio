@@ -10,7 +10,10 @@
     "webcup": "WebCup2024",
     "projects": "Projects",
     "services": "Services",
-    "testimonials": "Testimonials",    "github_stats": "GitHub Stats",    "contact": "Contact",
+    "testimonials": "Testimonials",
+    "github_stats": "GitHub Stats",
+    "chatbot": "ChatBot",
+    "contact": "Contact",
     "about": "About"
   },
   "home": {
@@ -487,5 +490,14 @@
     "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     "commits_label": "Number of commits",
     "months_label": "Month"
+  },
+  "chat": {
+    "title": "AI Assistant",
+    "subtitle": "Ask questions about my skills and experiences",
+    "placeholder": "Ask your question...",
+    "send": "Send",
+    "start_conversation": "Start a conversation with the AI assistant! 💬",
+    "quote": "Artificial intelligence doesn't replace human intelligence, it complements it. This assistant is here to answer your questions about my journey, skills and projects, 24/7.",
+    "clear_conversation": "Clear conversation"
   }
 }

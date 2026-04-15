@@ -96,17 +96,17 @@ ChartJS.register(
   DoughnutController
 )
 
-const { t, locale } = useI18n()
+const { t, locale, getLocaleMessage } = useI18n()
 
 const stats = ref({})
 const loading = ref(true)
 const error = ref(false)
 const monthlyCommits = ref({})
 
-// Récupérer le token depuis les variables d'environnement
+
 const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN
 
-// Configurer les headers si le token existe
+
 const getHeaders = () => {
   return GITHUB_TOKEN ? {
     Authorization: `token ${GITHUB_TOKEN}`,
@@ -264,10 +264,8 @@ const fetchContributions = async () => {
 
     await Promise.all(commitPromises)
 
-    // Store the monthly commits for later use
     monthlyCommits.value = tempMonthlyCommits
     
-    // Update the chart with the current locale
     updateContributionChart()
 
   } catch (err) {
@@ -278,15 +276,14 @@ const fetchContributions = async () => {
 const updateContributionChart = () => {
   const sortedMonths = Object.keys(monthlyCommits.value).sort()
   
-  // Get the month names array from i18n - handle both array and non-array returns
   let monthNames = []
-  const monthNamesData = t('github.months')
+  const currentLocaleMessages = getLocaleMessage(locale.value)
+  const monthNamesData = currentLocaleMessages?.github?.months
   
   if (Array.isArray(monthNamesData)) {
     monthNames = monthNamesData
-  } else if (typeof monthNamesData === 'string') {
-    // Fallback to default months if translation key is not found
-    monthNames = locale.value === 'fr' 
+  } else {
+    monthNames = locale.value === 'fr'
       ? ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
       : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   }
@@ -298,7 +295,6 @@ const updateContributionChart = () => {
     return `${monthName} ${year}`
   })
 
-  // Create new objects to ensure Vue detects changes
   contributionChartData.value = {
     ...contributionChartData.value,
     labels: labels,
@@ -352,9 +348,7 @@ onMounted(() => {
   fetchStats()
 })
 
-// Update chart labels when locale changes
 watchEffect(() => {
-  // Access locale.value to make it a dependency
   locale.value
   if (Object.keys(monthlyCommits.value).length > 0) {
     updateContributionChart()

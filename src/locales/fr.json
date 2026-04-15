@@ -12,6 +12,7 @@
     "services": "Services",
     "testimonials": "Témoignages",
     "github_stats": "GitHub Stats",
+    "chatbot": "ChatBot",
     "contact": "Contact",
     "about": "À propos"
   },
@@ -489,5 +490,15 @@
     "months": ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Aoû", "Sep", "Oct", "Nov", "Déc"],
     "commits_label": "Nombre de commits",
     "months_label": "Mois"
+  },
+  "chat": {
+    "title": "Assistant IA",
+    "subtitle": "Posez vos questions sur mes compétences et expériences",
+    "placeholder": "Posez votre question...",
+    "send": "Envoyer",
+    "start_conversation": "Commencez une conversation avec l'assistant IA ! 💬",
+    "quote": "L'intelligence artificielle ne remplace pas l'intelligence humaine, elle la complète. Cet assistant est là pour répondre à vos questions sur mon parcours, mes compétences et mes projets, 24h/24 et 7j/7.",
+    "clear_conversation": "Effacer la conversation"
   }
 }
+
