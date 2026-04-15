@@ -100,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, onMounted, computed } from 'vue'
+import { ref, nextTick, onMounted, computed, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 
@@ -111,6 +111,14 @@ interface Message {
 }
 
 const { tm, t, locale } = useI18n()
+
+// Met à jour le message de bienvenue en temps réel lors d'un changement de langue
+watch(locale, () => {
+    if (messages.value.length > 0 && messages.value[0].role === 'assistant') {
+        messages.value[0].content = t('chat.welcome_message')
+        saveHistory()
+    }
+})
 
 const loading = ref<boolean>(true)
 const isTyping = ref<boolean>(false)
