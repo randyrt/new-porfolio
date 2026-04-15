@@ -149,35 +149,93 @@ if (GEMINI_API_KEY && GEMINI_API_KEY !== 'votre_api_key_ici') {
     console.warn('⚠️ Clé API Gemini non configurée')
 }
 
-// Contexte du portfolio
 const portfolioContext: string = `
-Tu es un assistant IA pour un portfolio de développeur. Voici les informations sur le propriétaire du portfolio :
+Tu es un assistant IA pour le portfolio de Randy Andriantsiory. Voici les informations importantes :
 
 NOM: Randy Andriantsiory
-PROFESSION: Développeur Full Stack
-COMPÉTENCES: Vue.js, React, Node.js, Python, Laravel, TypeScript, TailwindCSS
-PROJETS: 
-- Portfolio personnel (site actuel avec animations et thème personnalisable)
-- Application de gestion de tâches (Vue.js + Node.js)
-- Dashboard analytics (React + D3.js)
-- API E-commerce (Laravel + MySQL)
-EXPÉRIENCE: 3 ans de développement web
+PROFESSION: Développeur Full Stack passionné par la création d'applications web et mobile modernes et performantes.
+
+PRÉSENTATION PERSONNELLE:
+Je suis Randy, un développeur Full Stack passionné par la création d'applications web et mobile, modernes et performantes. J'adore explorer les nouvelles technologies et relever des défis techniques. Cela signifie que je suis capable de mener un projet de A à Z, du design de l'interface utilisateur jusqu'à la gestion du serveur et de la base de données.
+
+COMPÉTENCES TECHNIQUES:
+- Frontend: Vue.js, TypeScript, TailwindCSS
+- Backend: Node.js, Laravel, Symfony, Python
+- DevOps: Docker Engine, Docker Compose
+- Mobile: IONIC (applications cross-platform)
+- Base de données: MySQL, PostgreSQL
+- Autres: UX/UI Design, automatisations Python
+
+PROJETS RÉALISÉS:
+
+🎯 **Fid-Connect**
+Plateforme de gestion comptable et administrative. Application complète permettant la gestion des finances, des factures et des documents administratifs. Technologies: Laravel, MySQL, TailwindCSS, Docker.
+
+📊 **QCP (Gestion de Crédits)**
+Application de gestion de crédits et amortissements. Outil professionnel pour le suivi des prêts, calculs d'amortissements et gestion des échéances. Technologies: Vue.js, Node.js, PostgreSQL.
+
+🏥 **echo-webLine**
+Plateforme médicale pour l'imagerie cardiovasculaire. Solution innovante pour la gestion et l'analyse d'images médicales. Technologies: Symfony, MySQL, TailwindCSS, Docker.
+
+👩‍⚕️ **Nurse**
+Application de gestion pour professionnels de santé. Outil de suivi des patients, planning et gestion administrative. Technologies: IONIC, Laravel, MySQL.
+
+⚽ **AFR-Fan**
+Application communautaire pour les fans de football. Plateforme de partage et d'actualités sportives. Technologies: Vue.js, Node.js, TailwindCSS.
+
+📁 **Portfolio personnel**
+Site actuel avec animations, thème personnalisable et assistant IA. Technologies: Vue.js, TypeScript, TailwindCSS.
+
+✅ **Application de gestion de tâches**
+Outil de productivité pour la gestion de projets et tâches. Technologies: Vue.js, Node.js.
+
+📈 **Dashboard analytics**
+Visualisation de données interactive avec graphiques dynamiques. Technologies: D3.js.
+
+🛍️ **API E-commerce**
+Backend robuste pour plateforme de vente en ligne. Technologies: Laravel, MySQL.
+
+EXPÉRIENCE: 5 ans de développement web
 LOCALISATION: Madagascar
 LANGUES: Français (natif), Anglais (courant), Malgache (natif)
 
-Réponds de manière naturelle, professionnelle mais amicale. Reste concis (max 150 mots par réponse).
-Utilise des émojis pour rendre les réponses plus vivantes.
-Si on te pose une question hors sujet, redirige poliment vers le portfolio.
+MESSAGE PERSONNALISÉ:
+Dans mes projets, j'utilise régulièrement Vue.js et TypeScript pour construire des interfaces réactives, TailwindCSS pour des designs modernes en plus d'avoir une solide expérience en UX et UI design, et Laravel/Symfony pour le backend. Avec Docker Engine et Docker Compose pour containeriser et orchestrer mes applications. Côté mobile, je développe avec IONIC pour des applications cross-platform. J'ai également de l'expérience avec Python pour des scripts et automatisations.
+
+RÈGLES DE RÉPONSE:
+- Réponds de manière naturelle, professionnelle mais amicale
+- Reste concis (max 150 mots par réponse)
+- Utilise des émojis pour rendre les réponses plus vivantes 🚀
+- Mentionne les projets spécifiques quand on te pose des questions sur les réalisations
+- Si on te pose une question hors sujet, redirige poliment vers le portfolio
+- Mets en avant la capacité à mener un projet de A à Z (du design UI à la gestion serveur/DB)
+- Insiste sur la passion pour les nouvelles technologies et les défis techniques
 `
 
 const localKnowledgeBase: Record<string, string> = {
-    'présente-toi|presentation|qui es-tu|who are you': '👋 Je suis l\'assistant IA du portfolio de Randy Andriantsiory, un développeur Full Stack passionné. Je suis ici pour répondre à vos questions sur ses compétences, projets et expériences. Comment puis-je vous aider ?',
-    'projets|projects|what projects': '💻 Randy a travaillé sur plusieurs projets intéressants:\n- Fid-Connect: Plateforme de gestion comptable et administrative\n- QCP: Application de gestion de crédits et amortissements\n- echo-webLine: Plateforme médicale pour imagerie cardiovasculaire\n- Portfolio personnel (le site actuel avec animations et thème personnalisable)\n- Dashboard analytics et API E-commerce',
-    'compétences|skills|technologies|what can you do': '⚡ Compétences principales:\n- Frontend: Vue.js, React, TypeScript, TailwindCSS\n- Backend: Node.js, Laravel, Python\n- DevOps: Docker, Docker Compose\n- Mobile: IONIC\n- Autres: UX/UI Design, MySQL\nRandy possède 3 ans d\'expérience en développement web fullstack.',
-    'expérience|experience|how many years': '📈 Randy a 5 ans d\'expérience en développement web. Il a travaillé sur des projets variés allant de plateformes de gestion administrative à des applications médicales, en passant par des dashboards analytics.',
-    'contact|comment te contacter|how to contact': '📧 Vous pouvez contacter Randy via:\n- WhatsApp (une section Contact disponible sur le portfolio)\n- Email (via le formulaire de contact)\n- GitHub et LinkedIn (retrouvez les liens sur le portfolio)\nN\'hésitez pas à le contacter pour collaborer!',
-    'localisation|location|où|(madagascar|mada)': '🌍 Randy est basé à Madagascar. Il est capable de travailler avec des équipes internationales et maîtrise le français, l\'anglais et le malgache.',
-    'langues|languages|speaks': '🗣️ Randy parle:\n- Français (natif)\n- Anglais (courant)\n- Malgache (natif)\nCela lui permet de collaborer efficacement avec des équipes internationales.'
+    'présente-toi|presentation|qui es-tu|who are you': '👋 Je suis l\'assistant IA du portfolio de Randy Andriantsiory, un développeur Full Stack passionné avec plus de 5 ans d\'expérience. Je suis ici pour répondre à vos questions sur ses compétences, projets et expériences. Comment puis-je vous aider ?',
+    
+    'projets|projects|what projects|réalisations': '💻 Randy a travaillé sur plusieurs projets professionnels et personnels:\n\n• **Fid-Connect** - Plateforme de gestion comptable et administrative (Laravel, MySQL)\n• **QCP** - Application de gestion de crédits et amortissements (Vue.js, Node.js)\n• **echo-webLine** - Plateforme médicale pour imagerie cardiovasculaire (Symfony)\n• **Nurse** - Application de gestion pour professionnels de santé (IONIC, Laravel)\n• **AFR-Fan** - Application communautaire pour fans de football (Vue.js, Node.js)\n• **Portfolio personnel** - Site actuel avec animations et thème personnalisable\n\nChaque projet a été mené de A à Z, du design UI à la gestion serveur ! 🚀',
+    
+    'fid-connect|fidconnect': '📊 **Fid-Connect** est une plateforme de gestion comptable et administrative. Développée avec Laravel, MySQL, TailwindCSS et Docker. Elle permet la gestion des finances, des factures et des documents administratifs de manière centralisée.',
+    
+    'qcp': '📈 **QCP** est une application de gestion de crédits et amortissements. Développée avec Vue.js, Node.js et PostgreSQL. Elle permet le suivi professionnel des prêts, les calculs d\'amortissements et la gestion des échéances.',
+    
+    'echo-webline|echowebline': '🏥 **echo-webLine** est une plateforme médicale pour l\'imagerie cardiovasculaire. Développée avec Symfony, MySQL, TailwindCSS et Docker. Une solution innovante pour la gestion et l\'analyse d\'images médicales.',
+    
+    'nurse': '👩‍⚕️ **Nurse** est une application de gestion pour professionnels de santé. Développée avec IONIC, Laravel et MySQL. Elle permet le suivi des patients, la planification et la gestion administrative.',
+    
+    'afr-fan|afrfan': '⚽ **AFR-Fan** est une application communautaire pour les fans de football. Développée avec Vue.js, Node.js et TailwindCSS. Une plateforme de partage et d\'actualités sportives.',
+    
+    'compétences|skills|technologies|what can you do': '⚡ **Compétences principales:**\n\n• Frontend: Vue.js, React, TypeScript, TailwindCSS\n• Backend: Node.js, Laravel, Symfony, Python\n• DevOps: Docker, Docker Compose\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL\n• Design: UX/UI Design\n\nRandy possède **plus de 5 ans d\'expérience** en développement web fullstack, capable de mener un projet de A à Z ! 💪',
+    
+    'expérience|experience|how many years': '📈 Randy a **plus de 5 ans d\'expérience** en développement web. Il a travaillé sur des projets variés : plateformes de gestion administrative (Fid-Connect), applications médicales (echo-webLine), gestion de crédits (QCP), applications mobiles (Nurse) et communautaires (AFR-Fan). Son expertise lui permet de livrer des solutions robustes et performantes.',
+    
+    'contact|comment te contacter|how to contact': '📧 Vous pouvez contacter Randy via:\n\n• **WhatsApp** - disponible dans la section Contact\n• **Email** - via le formulaire de contact\n• **GitHub** et **LinkedIn** - liens disponibles sur le portfolio\n\nN\'hésitez pas à le contacter pour collaborer !',
+    
+    'localisation|location|où|madagascar|mada': '🌍 Randy est basé à **Madagascar**. Il est capable de travailler avec des équipes internationales et maîtrise le français, l\'anglais et le malgache.',
+    
+    'langues|languages|speaks': '🗣️ Randy parle:\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)\n\nCela lui permet de collaborer efficacement avec des équipes internationales.'
 }
 
 const findLocalResponse = (userQuestion: string): string | null => {
@@ -293,9 +351,8 @@ const sendMessage = async (): Promise<void> => {
     } catch (error: any) {
         console.error('Erreur Gemini:', error)
 
-        let errorMessage = '😔 Désolé, une erreur technique est survenue. Veuillez réessayer dans quelques instants ou vérifier votre connexion.'
+        let errorMessage = '😔 Désolé, une erreur technique est survenue, parce que cet api IA est un plan gratuit. Veuillez réessayer dans quelques instants ou vérifier votre connexion.'
 
-        // Gérer les erreurs de quota - utiliser la base de connaissances locale
         const errorString = String(error?.message || error?.toString() || '')
         const isQuotaError = errorString.includes('429') ||
             errorString.includes('quota') ||
@@ -305,7 +362,6 @@ const sendMessage = async (): Promise<void> => {
         if (isQuotaError) {
             console.log('📚 Basculement vers la base de connaissances locale...')
 
-            // Essayer de trouver une réponse locale
             const localResponse = findLocalResponse(userMessage.content)
 
             if (localResponse) {
