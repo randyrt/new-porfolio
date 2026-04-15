@@ -492,9 +492,10 @@
     "months_label": "Mois"
   },
   "chat": {
+    "loading": "Assistant IA...",
+    "title": "Discuter un peu avec mon assistant IA",
     "card_big_title": "Assistant IA",
     "card_small_title": "Posez vos questions sur mes compétences et expériences",
-    "title": "Discuter un peu avec l'assistant IA",
     "subtitle": "Posez vos questions sur mes compétences et expériences",
     "placeholder": "Posez votre question...",
     "send": "Envoyer",

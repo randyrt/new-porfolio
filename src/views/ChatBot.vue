@@ -1,7 +1,7 @@
 <template>
-    <Loading v-if="loading" :message="$t('contact.loading')" />
+    <Loading v-if="loading" :message="$t('chat.loading')" />
     <div v-else>
-        <AnimatedTitle :text="$t('chat.quote')" aos="fade-down" />
+        <AnimatedTitle :text="$t('chat.title')" aos="fade-down" />
         <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
                 <span class="text-violet-800 text-lg">«</span>
