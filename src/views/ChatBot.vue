@@ -54,12 +54,11 @@
 
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
-                                <span class="text-xs font-semibold text-violet-500">Assistant IA</span>
+                                <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title') }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
                             <div class="text-xs opacity-70 mt-2"
                                 :class="message.role === 'user' ? 'text-white/70' : 'text-gray-400'">
-                                {{ formatTime(message.timestamp) }}
                             </div>
                         </div>
                     </div>
@@ -153,36 +152,37 @@ if (GEMINI_API_KEY && GEMINI_API_KEY !== 'votre_api_key_ici') {
 const portfolioContext: string = `
 Tu es un assistant IA pour le portfolio de Randy Andriantsiory. Voici les informations importantes :
 
-NOM: Randy Andriantsiory
+NOM: RAZAFIMANDIMBY Randy Andriantsiory
 PROFESSION: Développeur Full Stack passionné par la création d'applications web et mobile modernes et performantes.
 
 PRÉSENTATION PERSONNELLE:
 Je suis Randy, un développeur Full Stack passionné par la création d'applications web et mobile, modernes et performantes. J'adore explorer les nouvelles technologies et relever des défis techniques. Cela signifie que je suis capable de mener un projet de A à Z, du design de l'interface utilisateur jusqu'à la gestion du serveur et de la base de données.
 
 COMPÉTENCES TECHNIQUES:
-- Frontend: Vue.js, TypeScript, TailwindCSS
-- Backend: Node.js, Laravel, Symfony, Python
+- Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS
+- Backend:  Laravel, Symfony, Node.js, Express.js, Python
 - DevOps: Docker Engine, Docker Compose
-- Mobile: IONIC (applications cross-platform)
-- Base de données: MySQL, PostgreSQL
+- GitOps: GitHub, GitLab, CI/CD
+- Mobile: IONIC (applications cross-platform), FLUTTER (En cours d'apprentissage)
+- Base de données: MySQL, PostgreSQL, MariaDB
 - Autres: UX/UI Design, automatisations Python
 
 PROJETS RÉALISÉS:
 
 🎯 **Fid-Connect**
-Plateforme de gestion comptable et administrative. Application complète permettant la gestion des finances, des factures et des documents administratifs. Technologies: Laravel, MySQL, TailwindCSS, Docker.
+Plateforme de gestion comptable et administrative. Application complète permettant la gestion des finances, des factures et des documents administratifs. Elle va au-delà du simple suivi des tâches en intégrant la gestion des réformes fiscales, le suivi des parts, la génération de lettres d’engagement, l’automatisation de processus clés, ammortissement, TVA, gestion de rendez-vous, payment en ligne,.Technologies: Vue.js, Laravel, MariaDB, TailwindCSS, Docker.
 
 📊 **QCP (Gestion de Crédits)**
-Application de gestion de crédits et amortissements. Outil professionnel pour le suivi des prêts, calculs d'amortissements et gestion des échéances. Technologies: Vue.js, Node.js, PostgreSQL.
+Application de gestion de crédits et amortissements. Outil professionnel pour le suivi des prêts, calculs d'amortissements et gestion des échéances. Technologies: Vue.js, Symfony, MariaDB.
 
 🏥 **echo-webLine**
-Plateforme médicale pour l'imagerie cardiovasculaire. Solution innovante pour la gestion et l'analyse d'images médicales. Technologies: Symfony, MySQL, TailwindCSS, Docker.
+Plateforme médicale pour l'imagerie cardiovasculaire. Solution innovante pour la gestion et l'analyse d'images médicales. Technologies: Vue.js, Laravel, MySQL, TailwindCSS, Docker.
 
 👩‍⚕️ **Nurse**
-Application de gestion pour professionnels de santé. Outil de suivi des patients, planning et gestion administrative. Technologies: IONIC, Laravel, MySQL.
+Application de gestion pour professionnels de santé. Outil de suivi des patients, planning et gestion administrative. Technologies: Vue.js, Symfony, MySQL.
 
 ⚽ **AFR-Fan**
-Application communautaire pour les fans de football. Plateforme de partage et d'actualités sportives. Technologies: Vue.js, Node.js, TailwindCSS.
+Application communautaire pour les fans de football. Plateforme de partage et d'actualités sportives. Technologies: Vue.js, Laravel, TailwindCSS.
 
 📁 **Portfolio personnel**
 Site actuel avec animations, thème personnalisable et assistant IA. Technologies: Vue.js, TypeScript, TailwindCSS.
@@ -197,8 +197,11 @@ Visualisation de données interactive avec graphiques dynamiques. Technologies: 
 Backend robuste pour plateforme de vente en ligne. Technologies: Laravel, MySQL.
 
 EXPÉRIENCE: 5 ans de développement web
-LOCALISATION: Madagascar
+LOCALISATION: Antananarivo, Madagascar
+LIEUX DE TRAVAIL: MG Consulting Amboibao, mais disponible pour des collaborations ou des nouvelles opportunités à distance ou sur site.
 LANGUES: Français (natif), Anglais (courant), Malgache (natif)
+
+PASSION: Je suis passionné par les nouvelles technologies et les défis techniques. J'aime apprendre constamment et appliquer mes connaissances pour créer des solutions innovantes et performantes. Mon objectif est de livrer des projets de haute qualité qui répondent aux besoins des utilisateurs tout en explorant les dernières tendances du développement web et mobile.
 
 MESSAGE PERSONNALISÉ:
 Dans mes projets, j'utilise régulièrement Vue.js et TypeScript pour construire des interfaces réactives, TailwindCSS pour des designs modernes en plus d'avoir une solide expérience en UX et UI design, et Laravel/Symfony pour le backend. Avec Docker Engine et Docker Compose pour containeriser et orchestrer mes applications. Côté mobile, je développe avec IONIC pour des applications cross-platform. J'ai également de l'expérience avec Python pour des scripts et automatisations.
@@ -220,21 +223,21 @@ const localKnowledgeBase: Record<string, string> = {
     
     'fid-connect|fidconnect': '📊 **Fid-Connect** est une plateforme de gestion comptable et administrative. Développée avec Laravel, MySQL, TailwindCSS et Docker. Elle permet la gestion des finances, des factures et des documents administratifs de manière centralisée.',
     
-    'qcp': '📈 **QCP** est une application de gestion de crédits et amortissements. Développée avec Vue.js, Node.js et PostgreSQL. Elle permet le suivi professionnel des prêts, les calculs d\'amortissements et la gestion des échéances.',
+    'qcp': '📈 **QCP** est une application de gestion de crédits et amortissements. Développée avec Vue.js, Symfony et MariaDB. Elle permet le suivi professionnel des prêts, les calculs d\'amortissements et la gestion des échéances.',
     
     'echo-webline|echowebline': '🏥 **echo-webLine** est une plateforme médicale pour l\'imagerie cardiovasculaire. Développée avec Symfony, MySQL, TailwindCSS et Docker. Une solution innovante pour la gestion et l\'analyse d\'images médicales.',
     
-    'nurse': '👩‍⚕️ **Nurse** est une application de gestion pour professionnels de santé. Développée avec IONIC, Laravel et MySQL. Elle permet le suivi des patients, la planification et la gestion administrative.',
+    'nurse': '👩‍⚕️ **Nurse** est une application de gestion pour professionnels de santé. Développée avec Vue.js, Laravel et MySQL. Elle permet le suivi des patients, la planification et la gestion administrative.',
     
-    'afr-fan|afrfan': '⚽ **AFR-Fan** est une application communautaire pour les fans de football. Développée avec Vue.js, Node.js et TailwindCSS. Une plateforme de partage et d\'actualités sportives.',
+    'afr-fan|afrfan': '⚽ **AFR-Fan** est une application communautaire pour les fans de football. Développée avec Vue.js, Laravel et TailwindCSS. Une plateforme de partage et d\'actualités sportives.',
     
-    'compétences|skills|technologies|what can you do': '⚡ **Compétences principales:**\n\n• Frontend: Vue.js, React, TypeScript, TailwindCSS\n• Backend: Node.js, Laravel, Symfony, Python\n• DevOps: Docker, Docker Compose\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL\n• Design: UX/UI Design\n\nRandy possède **plus de 5 ans d\'expérience** en développement web fullstack, capable de mener un projet de A à Z ! 💪',
+    'compétences|skills|technologies|what can you do': '⚡ **Compétences principales:**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Node.js, Laravel, Symfony, Python\n• DevOps: Docker, Docker Compose\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL\n• Design: UX/UI Design\n\nRandy possède **plus de 5 ans d\'expérience** en développement web fullstack, capable de mener un projet de A à Z ! 💪',
     
     'expérience|experience|how many years': '📈 Randy a **plus de 5 ans d\'expérience** en développement web. Il a travaillé sur des projets variés : plateformes de gestion administrative (Fid-Connect), applications médicales (echo-webLine), gestion de crédits (QCP), applications mobiles (Nurse) et communautaires (AFR-Fan). Son expertise lui permet de livrer des solutions robustes et performantes.',
     
     'contact|comment te contacter|how to contact': '📧 Vous pouvez contacter Randy via:\n\n• **WhatsApp** - disponible dans la section Contact\n• **Email** - via le formulaire de contact\n• **GitHub** et **LinkedIn** - liens disponibles sur le portfolio\n\nN\'hésitez pas à le contacter pour collaborer !',
     
-    'localisation|location|où|madagascar|mada': '🌍 Randy est basé à **Madagascar**. Il est capable de travailler avec des équipes internationales et maîtrise le français, l\'anglais et le malgache.',
+    'localisation|location|où|madagascar|mada': '🌍 Randy est basé à **Antananarive, Madagascar**. Il est capable de travailler avec des équipes internationales et maîtrise le français, l\'anglais et le malgache.',
     
     'langues|languages|speaks': '🗣️ Randy parle:\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)\n\nCela lui permet de collaborer efficacement avec des équipes internationales.'
 }
@@ -252,7 +255,6 @@ const findLocalResponse = (userQuestion: string): string | null => {
     return null
 }
 
-// Simuler le chargement
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
@@ -261,12 +263,10 @@ onMounted(() => {
     loadChatHistory()
 })
 
-// Charger l'historique
 const loadChatHistory = (): void => {
     const savedHistory = localStorage.getItem('chat_history')
     if (savedHistory) {
         const parsedHistory = JSON.parse(savedHistory)
-        // Convertir les timestamps string en Date
         messages.value = parsedHistory.map((msg: any) => ({
             ...msg,
             timestamp: new Date(msg.timestamp)
@@ -281,17 +281,12 @@ const loadChatHistory = (): void => {
     scrollToBottom()
 }
 
-// Sauvegarder l'historique
+
 const saveHistory = (): void => {
     localStorage.setItem('chat_history', JSON.stringify(messages.value))
 }
 
-// Formater l'heure
-const formatTime = (timestamp: Date): string => {
-    return new Date(timestamp).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
-}
 
-// Scroller vers le dernier message
 const scrollToBottom = async (): Promise<void> => {
     await nextTick()
     if (messagesContainer.value) {
@@ -299,11 +294,10 @@ const scrollToBottom = async (): Promise<void> => {
     }
 }
 
-// Envoyer un message
+
 const sendMessage = async (): Promise<void> => {
     if (!userInput.value.trim() || isTyping.value) return
 
-    // Vérifier le cooldown
     const now = Date.now()
     if (now - lastRequestTime.value < REQUEST_COOLDOWN_MS) {
         const waitTime = Math.ceil((REQUEST_COOLDOWN_MS - (now - lastRequestTime.value)) / 1000)
