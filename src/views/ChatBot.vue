@@ -20,7 +20,7 @@
                     <div>
                         <h2
                             class="text-2xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
-                           {{ $t('chat.card_big_title') }}
+                            {{ $t('chat.card_big_title') }}
                         </h2>
                         <p class="text-sm !text-gray-600 !dark:text-gray-500">
                             {{ $t('chat.card_small_title') }}
@@ -28,10 +28,8 @@
                     </div>
                 </div>
 
-                <button @click="clearConversation"
-                    class="btn-violet btn-effect-5">
-                    <font-awesome-icon icon="fa-solid fa-trash-alt"
-                        class="" />
+                <button @click="clearConversation" class="btn-violet btn-effect-5">
+                    <font-awesome-icon icon="fa-solid fa-trash-alt" class="" />
                     {{ $t('chat.clear_conversation') }}
                 </button>
             </div>
@@ -54,7 +52,8 @@
 
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
-                                <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title') }}</span>
+                                <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
                             <div class="text-xs opacity-70 mt-2"
@@ -63,7 +62,6 @@
                         </div>
                     </div>
 
-                    <!-- Indicateur de frappe -->
                     <div v-if="isTyping" class="flex justify-start mb-4">
                         <div
                             class="assistant-message bg-white dark:bg-gray-800 rounded-2xl rounded-tl-sm p-4 shadow-md">
@@ -76,7 +74,6 @@
                     </div>
                 </div>
 
-                <!-- Zone de saisie -->
                 <div class="input-area mt-4">
                     <div class="flex gap-3">
                         <input v-model="userInput" @keypress.enter="sendMessage" type="text"
@@ -89,7 +86,6 @@
                         </button>
                     </div>
 
-                    <!-- Suggestions -->
                     <div class="suggestions flex flex-wrap gap-2 mt-4">
                         <button v-for="suggestion in suggestions" :key="suggestion" @click="sendSuggestion(suggestion)"
                             class="suggestion-chip px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-violet-100 dark:hover:bg-violet-900 hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-200">
@@ -107,14 +103,11 @@
 import { ref, nextTick, onMounted } from 'vue'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 
-
-
 interface Message {
     role: 'user' | 'assistant'
     content: string
     timestamp: Date
 }
-
 
 const loading = ref<boolean>(true)
 const isTyping = ref<boolean>(false)
@@ -124,31 +117,53 @@ const messages = ref<Message[]>([])
 const lastRequestTime = ref<number>(0)
 const REQUEST_COOLDOWN_MS = 3000
 
-
 const suggestions: string[] = [
     '🤖 Présente-toi',
     '💻 Quels sont tes projets ?',
     '⚡ Compétences techniques',
-    '📈 Expérience professionnelle',
+    '📈 Mon parcours professionnel',
     '📧 Comment te contacter ?'
 ]
 
+// ==================== GESTION MULTI-CLÉS API GEMINI ====================
+const GEMINI_API_KEYS = [
+    import.meta.env.VITE_GEMINI_API_KEY_1,
+    import.meta.env.VITE_GEMINI_API_KEY_2
+].filter(key => key && key !== 'votre_api_key_ici') as string[]
 
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY as string
+let currentKeyIndex = 0
 let model: GenerativeModel | null = null
 
-if (GEMINI_API_KEY && GEMINI_API_KEY !== 'votre_api_key_ici') {
+const initModelWithKey = (apiKey: string, keyIndex: number): GenerativeModel | null => {
     try {
-        const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
-        model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
-        console.log('✅ Gemini initialisé avec succès')
+        const genAI = new GoogleGenerativeAI(apiKey)
+        console.log(`✅ Gemini initialisé avec la clé ${keyIndex + 1}`)
+        return genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
     } catch (error) {
-        console.error('❌ Erreur initialisation Gemini:', error)
+        console.error(`❌ Erreur initialisation avec la clé ${keyIndex + 1}:`, error)
+        return null
     }
-} else {
-    console.warn('⚠️ Clé API Gemini non configurée')
 }
 
+const switchToNextApiKey = (): boolean => {
+    currentKeyIndex++
+    if (currentKeyIndex < GEMINI_API_KEYS.length) {
+        console.log(`🔄 Basculement vers la clé API ${currentKeyIndex + 1}...`)
+        model = initModelWithKey(GEMINI_API_KEYS[currentKeyIndex], currentKeyIndex)
+        return model !== null
+    }
+    console.warn('⚠️ Plus aucune clé API disponible')
+    return false
+}
+
+// Initialisation avec la première clé disponible
+if (GEMINI_API_KEYS.length > 0) {
+    model = initModelWithKey(GEMINI_API_KEYS[0], 0)
+} else {
+    console.warn('⚠️ Aucune clé API Gemini configurée')
+}
+
+// ==================== CONTEXTE DU PORTFOLIO ====================
 const portfolioContext: string = `
 Tu es un assistant IA pour le portfolio de Randy Andriantsiory. Voici les informations importantes :
 
@@ -170,7 +185,7 @@ COMPÉTENCES TECHNIQUES:
 PROJETS RÉALISÉS:
 
 🎯 **Fid-Connect**
-Plateforme de gestion comptable et administrative. Application complète permettant la gestion des finances, des factures et des documents administratifs. Elle va au-delà du simple suivi des tâches en intégrant la gestion des réformes fiscales, le suivi des parts, la génération de lettres d’engagement, l’automatisation de processus clés, ammortissement, TVA, gestion de rendez-vous, payment en ligne,.Technologies: Vue.js, Laravel, MariaDB, TailwindCSS, Docker.
+Plateforme de gestion comptable et administrative. Application complète permettant la gestion des finances, des factures et des documents administratifs. Technologies: Vue.js, Laravel, MariaDB, TailwindCSS, Docker.
 
 📊 **QCP (Gestion de Crédits)**
 Application de gestion de crédits et amortissements. Outil professionnel pour le suivi des prêts, calculs d'amortissements et gestion des échéances. Technologies: Vue.js, Symfony, MariaDB.
@@ -187,24 +202,9 @@ Application communautaire pour les fans de football. Plateforme de partage et d'
 📁 **Portfolio personnel**
 Site actuel avec animations, thème personnalisable et assistant IA. Technologies: Vue.js, TypeScript, TailwindCSS.
 
-✅ **Application de gestion de tâches**
-Outil de productivité pour la gestion de projets et tâches. Technologies: Vue.js, Node.js.
-
-📈 **Dashboard analytics**
-Visualisation de données interactive avec graphiques dynamiques. Technologies: D3.js.
-
-🛍️ **API E-commerce**
-Backend robuste pour plateforme de vente en ligne. Technologies: Laravel, MySQL.
-
 EXPÉRIENCE: 5 ans de développement web
 LOCALISATION: Antananarivo, Madagascar
-LIEUX DE TRAVAIL: MG Consulting Amboibao, mais disponible pour des collaborations ou des nouvelles opportunités à distance ou sur site.
 LANGUES: Français (natif), Anglais (courant), Malgache (natif)
-
-PASSION: Je suis passionné par les nouvelles technologies et les défis techniques. J'aime apprendre constamment et appliquer mes connaissances pour créer des solutions innovantes et performantes. Mon objectif est de livrer des projets de haute qualité qui répondent aux besoins des utilisateurs tout en explorant les dernières tendances du développement web et mobile.
-
-MESSAGE PERSONNALISÉ:
-Dans mes projets, j'utilise régulièrement Vue.js et TypeScript pour construire des interfaces réactives, TailwindCSS pour des designs modernes en plus d'avoir une solide expérience en UX et UI design, et Laravel/Symfony pour le backend. Avec Docker Engine et Docker Compose pour containeriser et orchestrer mes applications. Côté mobile, je développe avec IONIC pour des applications cross-platform. J'ai également de l'expérience avec Python pour des scripts et automatisations.
 
 RÈGLES DE RÉPONSE:
 - Réponds de manière naturelle, professionnelle mais amicale
@@ -212,38 +212,44 @@ RÈGLES DE RÉPONSE:
 - Utilise des émojis pour rendre les réponses plus vivantes 🚀
 - Mentionne les projets spécifiques quand on te pose des questions sur les réalisations
 - Si on te pose une question hors sujet, redirige poliment vers le portfolio
-- Mets en avant la capacité à mener un projet de A à Z (du design UI à la gestion serveur/DB)
-- Insiste sur la passion pour les nouvelles technologies et les défis techniques
+- Mets en avant la capacité à mener un projet de A à Z
 `
 
 const localKnowledgeBase: Record<string, string> = {
     'présente-toi|presentation|qui es-tu|who are you': '👋 Je suis l\'assistant IA du portfolio de Randy Andriantsiory, un développeur Full Stack passionné avec plus de 5 ans d\'expérience. Je suis ici pour répondre à vos questions sur ses compétences, projets et expériences. Comment puis-je vous aider ?',
-    
-    'projets|projects|what projects|réalisations': '💻 Randy a travaillé sur plusieurs projets professionnels et personnels:\n\n• **Fid-Connect** - Plateforme de gestion comptable et administrative (Laravel, MySQL)\n• **QCP** - Application de gestion de crédits et amortissements (Vue.js, Node.js)\n• **echo-webLine** - Plateforme médicale pour imagerie cardiovasculaire (Symfony)\n• **Nurse** - Application de gestion pour professionnels de santé (IONIC, Laravel)\n• **AFR-Fan** - Application communautaire pour fans de football (Vue.js, Node.js)\n• **Portfolio personnel** - Site actuel avec animations et thème personnalisable\n\nChaque projet a été mené de A à Z, du design UI à la gestion serveur ! 🚀',
-    
-    'fid-connect|fidconnect': '📊 **Fid-Connect** est une plateforme de gestion comptable et administrative. Développée avec Laravel, MySQL, TailwindCSS et Docker. Elle permet la gestion des finances, des factures et des documents administratifs de manière centralisée.',
-    
-    'qcp': '📈 **QCP** est une application de gestion de crédits et amortissements. Développée avec Vue.js, Symfony et MariaDB. Elle permet le suivi professionnel des prêts, les calculs d\'amortissements et la gestion des échéances.',
-    
-    'echo-webline|echowebline': '🏥 **echo-webLine** est une plateforme médicale pour l\'imagerie cardiovasculaire. Développée avec Symfony, MySQL, TailwindCSS et Docker. Une solution innovante pour la gestion et l\'analyse d\'images médicales.',
-    
-    'nurse': '👩‍⚕️ **Nurse** est une application de gestion pour professionnels de santé. Développée avec Vue.js, Laravel et MySQL. Elle permet le suivi des patients, la planification et la gestion administrative.',
-    
-    'afr-fan|afrfan': '⚽ **AFR-Fan** est une application communautaire pour les fans de football. Développée avec Vue.js, Laravel et TailwindCSS. Une plateforme de partage et d\'actualités sportives.',
-    
-    'compétences|skills|technologies|what can you do': '⚡ **Compétences principales:**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Node.js, Laravel, Symfony, Python\n• DevOps: Docker, Docker Compose\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL\n• Design: UX/UI Design\n\nRandy possède **plus de 5 ans d\'expérience** en développement web fullstack, capable de mener un projet de A à Z ! 💪',
-    
-    'expérience|experience|how many years': '📈 Randy a **plus de 5 ans d\'expérience** en développement web. Il a travaillé sur des projets variés : plateformes de gestion administrative (Fid-Connect), applications médicales (echo-webLine), gestion de crédits (QCP), applications mobiles (Nurse) et communautaires (AFR-Fan). Son expertise lui permet de livrer des solutions robustes et performantes.',
-    
-    'contact|comment te contacter|how to contact': '📧 Vous pouvez contacter Randy via:\n\n• **WhatsApp** - disponible dans la section Contact\n• **Email** - via le formulaire de contact\n• **GitHub** et **LinkedIn** - liens disponibles sur le portfolio\n\nN\'hésitez pas à le contacter pour collaborer !',
-    
-    'localisation|location|où|madagascar|mada': '🌍 Randy est basé à **Antananarive, Madagascar**. Il est capable de travailler avec des équipes internationales et maîtrise le français, l\'anglais et le malgache.',
-    
-    'langues|languages|speaks': '🗣️ Randy parle:\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)\n\nCela lui permet de collaborer efficacement avec des équipes internationales.'
+
+    'projets|projects|what projects|réalisations': '💻 Randy a travaillé sur plusieurs projets professionnels et personnels:\n\n• **Fid-Connect** - Plateforme de gestion comptable et administrative\n• **QCP** - Application de gestion de crédits et amortissements\n• **echo-webLine** - Plateforme médicale pour imagerie cardiovasculaire\n• **Nurse** - Application de gestion pour professionnels de santé\n• **AFR-Fan** - Application communautaire pour fans de football\n• **Portfolio personnel** - Site actuel\n\nChaque projet a été mené de A à Z ! 🚀',
+
+    'compétences|skills|technologies|what can you do': '⚡ **Compétences principales:**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Laravel, Symfony, Node.js, Python\n• DevOps: Docker, Docker Compose, CI/CD\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL, MariaDB\n\n**Plus de 5 ans d\'expérience !** 💪',
+
+    'parcours professionnel|mon parcours|expérience pro|career|parcours': '📈 **Voici mon parcours professionnel détaillé :**\n\n' +
+        '🏢 **Développeur Senior** - MG CONSULTING ACT & IT (Avril 2024 – Présent)\n' +
+        '• Architecture Laravel 11 & Vue.js 3\n' +
+        '• Optimisation backend → +35% performances\n' +
+        '• CI/CD avec GitHub Actions, Docker\n' +
+        '• Mentorat de 3 développeurs juniors\n\n' +
+        '💼 **Développeur Fullstack Freelance** - Indépendant (Janv 2023 – Mars 2024)\n' +
+        '• Applications sur mesure Laravel 10 & Vue.js 3\n' +
+        '• Applications mobiles IONIC 6\n\n' +
+        '💻 **Développeur Web Back-end** - PixelZ (Fév 2022 – Nov 2022)\n' +
+        '• Laravel 9, APIs REST\n\n' +
+        '🏆 **2ème place WebCup Madagascar 2024**\n\n' +
+        '**Plus de 5 ans d\'expérience cumulée !** 🚀',
+
+    'contact|comment te contacter|how to contact': '📧 Vous pouvez contacter Randy via:\n\n• **WhatsApp** - section Contact\n• **Email** - formulaire de contact\n• **GitHub** et **LinkedIn** - liens sur le portfolio',
+
+    'localisation|location|madagascar': '🌍 Randy est basé à **Antananarivo, Madagascar**.',
+
+    'langues|languages|speaks': '🗣️ Randy parle:\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)'
 }
 
 const findLocalResponse = (userQuestion: string): string | null => {
     const question = userQuestion.toLowerCase().trim()
+    
+    const parcoursKeywords = ['parcours', 'professionnel', 'expérience', 'carrière', 'mon parcours', 'expérience pro']
+    if (parcoursKeywords.some(keyword => question.includes(keyword))) {
+        return localKnowledgeBase['parcours professionnel|mon parcours|expérience pro|career|parcours']
+    }
 
     for (const [keywords, response] of Object.entries(localKnowledgeBase)) {
         const keywordList = keywords.split('|')
@@ -251,15 +257,14 @@ const findLocalResponse = (userQuestion: string): string | null => {
             return response
         }
     }
-
     return null
 }
 
+// ==================== FONCTIONS UTILITAIRES ====================
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
     }, 1000)
-
     loadChatHistory()
 })
 
@@ -281,11 +286,9 @@ const loadChatHistory = (): void => {
     scrollToBottom()
 }
 
-
 const saveHistory = (): void => {
     localStorage.setItem('chat_history', JSON.stringify(messages.value))
 }
-
 
 const scrollToBottom = async (): Promise<void> => {
     await nextTick()
@@ -294,14 +297,14 @@ const scrollToBottom = async (): Promise<void> => {
     }
 }
 
-
+// ==================== ENVOI DE MESSAGE AVEC FALLBACK ====================
 const sendMessage = async (): Promise<void> => {
     if (!userInput.value.trim() || isTyping.value) return
 
     const now = Date.now()
     if (now - lastRequestTime.value < REQUEST_COOLDOWN_MS) {
         const waitTime = Math.ceil((REQUEST_COOLDOWN_MS - (now - lastRequestTime.value)) / 1000)
-        console.warn(`⏳ Veuillez attendre ${waitTime}s avant d'envoyer un autre message`)
+        console.warn(`⏳ Veuillez attendre ${waitTime}s`)
         return
     }
 
@@ -319,52 +322,70 @@ const sendMessage = async (): Promise<void> => {
     isTyping.value = true
     lastRequestTime.value = Date.now()
 
-    try {
-        if (!model) {
-            throw new Error('API Key non configurée')
-        }
-
+    // Fonction pour appeler l'API avec une clé spécifique
+    const callGeminiAPI = async (apiKey: string, keyIndex: number): Promise<string> => {
+        const tempGenAI = new GoogleGenerativeAI(apiKey)
+        const tempModel = tempGenAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+        
         const conversationHistory: string = messages.value
             .slice(-5)
             .map(m => `${m.role === 'user' ? 'Utilisateur' : 'Assistant'}: ${m.content}`)
             .join('\n')
 
         const prompt = `${portfolioContext}\n\nHistorique de conversation:\n${conversationHistory}\n\nUtilisateur: ${userMessage.content}\nAssistant:`
-
-        const result = await model.generateContent(prompt)
+        
+        const result = await tempModel.generateContent(prompt)
         const response = await result.response
-        const aiResponse = response.text()
+        return response.text()
+    }
 
-        const assistantMessage: Message = {
-            role: 'assistant',
-            content: aiResponse,
-            timestamp: new Date()
+    try {
+        let aiResponse = ''
+        let lastError: any = null
+
+        // Essayer chaque clé API une par une
+        for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
+            try {
+                console.log(`🔄 Tentative avec la clé API ${i + 1}...`)
+                aiResponse = await callGeminiAPI(GEMINI_API_KEYS[i], i)
+                console.log(`✅ Succès avec la clé ${i + 1}`)
+                // Mettre à jour le modèle courant pour les prochains messages
+                if (i !== currentKeyIndex) {
+                    currentKeyIndex = i
+                    model = initModelWithKey(GEMINI_API_KEYS[i], i)
+                }
+                break // Succès, on sort de la boucle
+            } catch (err) {
+                lastError = err
+                console.warn(`❌ Échec avec la clé ${i + 1}:`, err)
+                // Continuer avec la clé suivante
+            }
         }
 
-        messages.value.push(assistantMessage)
-        saveHistory()
-    } catch (error: any) {
-        console.error('Erreur Gemini:', error)
-
-        let errorMessage = '😔 Désolé, une erreur technique est survenue, parce que cet api IA est un plan gratuit. Veuillez réessayer dans quelques instants ou vérifier votre connexion.'
-
-        const errorString = String(error?.message || error?.toString() || '')
-        const isQuotaError = errorString.includes('429') ||
-            errorString.includes('quota') ||
-            errorString.includes('Too Many Requests') ||
-            errorString.includes('exceeded')
-
-        if (isQuotaError) {
-            console.log('📚 Basculement vers la base de connaissances locale...')
-
-            const localResponse = findLocalResponse(userMessage.content)
-
-            if (localResponse) {
-                errorMessage = localResponse
-                console.log('✅ Réponse locale trouvée')
-            } else {
-                errorMessage = '⏳ Le service API a atteint sa limite gratuite.\n\nJ\'utilise maintenant mes connaissances locales pour répondre. Je peux vous parler de:\n- Ma présentation\n- Mes projets\n- Mes compétences\n- Mon expérience\n- Comment me contacter\n\nQue souhaitez-vous savoir ?'
+        if (aiResponse) {
+            const assistantMessage: Message = {
+                role: 'assistant',
+                content: aiResponse,
+                timestamp: new Date()
             }
+            messages.value.push(assistantMessage)
+            saveHistory()
+        } else {
+            throw lastError || new Error('Toutes les clés API ont échoué')
+        }
+
+    } catch (error: any) {
+        console.error('Erreur avec toutes les clés Gemini:', error)
+
+        let errorMessage = '😔 Désolé, toutes les clés API ont atteint leurs limites gratuites.'
+
+        const localResponse = findLocalResponse(userMessage.content)
+
+        if (localResponse) {
+            errorMessage = localResponse
+            console.log('✅ Réponse locale trouvée')
+        } else {
+            errorMessage = '⏳ Toutes les API ont atteint leurs limites gratuites.\n\nJ\'utilise maintenant mes connaissances locales pour répondre. Je peux vous parler de:\n- Ma présentation\n- Mes projets\n- Mes compétences\n- Mon expérience\n- Comment me contacter\n\nQue souhaitez-vous savoir ?'
         }
 
         messages.value.push({
@@ -378,7 +399,6 @@ const sendMessage = async (): Promise<void> => {
         await scrollToBottom()
     }
 }
-
 
 const sendSuggestion = (suggestion: string): void => {
     userInput.value = suggestion
@@ -394,8 +414,6 @@ const clearConversation = (): void => {
     saveHistory()
     scrollToBottom()
 }
-
-
 </script>
 
 <style scoped>
@@ -412,7 +430,6 @@ const clearConversation = (): void => {
     scroll-behavior: smooth;
 }
 
-/* Animation des messages */
 .user-message,
 .assistant-message {
     animation: slideInMessage 0.3s ease-out;
@@ -423,14 +440,12 @@ const clearConversation = (): void => {
         opacity: 0;
         transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Animation des dots de frappe */
 .typing-dot {
     width: 8px;
     height: 8px;
@@ -440,19 +455,14 @@ const clearConversation = (): void => {
 }
 
 @keyframes typingBounce {
-
-    0%,
-    60%,
-    100% {
+    0%, 60%, 100% {
         transform: translateY(0);
     }
-
     30% {
         transform: translateY(-10px);
     }
 }
 
-/* Scrollbar personnalisée */
 .messages-container::-webkit-scrollbar {
     width: 6px;
 }
@@ -467,16 +477,10 @@ const clearConversation = (): void => {
     border-radius: 10px;
 }
 
-.messages-container::-webkit-scrollbar-thumb:hover {
-    background: #7c3aed;
-}
-
-/* Mode sombre */
 .dark .messages-container::-webkit-scrollbar-track {
     background: #374151;
 }
 
-/* Suggestion chips */
 .suggestion-chip {
     transition: all 0.2s ease;
 }
@@ -485,7 +489,6 @@ const clearConversation = (): void => {
     transform: translateY(-2px);
 }
 
-/* Bouton send */
 .send-button {
     position: relative;
     overflow: hidden;
@@ -509,24 +512,6 @@ const clearConversation = (): void => {
     height: 300px;
 }
 
-/* Loading state pour les messages */
-.loading-message {
-    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-}
-
-@keyframes loading {
-    0% {
-        background-position: 200% 0;
-    }
-
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-/* Texte avec retour à la ligne */
 .whitespace-pre-wrap {
     white-space: pre-wrap;
 }
