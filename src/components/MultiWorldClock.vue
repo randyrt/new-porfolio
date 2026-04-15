@@ -1,5 +1,5 @@
 <template>
-    <div class="multi-clock border-purple-200 rounded-lg">
+    <div class="multi-clock border-purple-200 rounded-lg mt-2">
         <div class="clocks-grid border-1 border-purple-200 rounded-lg">
             <div class="clock-item">
                 <div class="city-name">
@@ -8,23 +8,23 @@
                 </div>
                 <div class="city-time">{{ currentTime }}</div>
                 <div class="city-date">{{ currentDate }}</div>
-            </div>
-        </div>
-        <div class="border-1 border-purple-200 rounded-lg mt-1 mb-2">
-            <div class="city-weather p-2 rounded-lg mt-2 w-full" v-if="weatherInfo">
-                <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm " />
-                <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
-                <span class="weather-desc">{{ weatherInfo.description }}</span>
-            </div>
-            <div class="city-weather mt-2 mb-2 loading" v-else>
-                <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
-                <span>{{ $t('clock.weather.loading') }}</span>
-            </div>
-            <div class="dots-container mb-2">
-                <div class="dots">
-                    <span v-for="(city, index) in cities" :key="city.nameKey" class="dot"
-                        :class="{ active: index === currentIndex }" @click="setActiveCity(index)">
-                    </span>
+
+                <div class="city-weather mt-2 p-1" v-if="weatherInfo">
+                    <font-awesome-icon :icon="weatherInfo.icon" class="text-yellow-400 text-sm" />
+                    <span class="weather-temp">{{ weatherInfo.temp }}°C</span>
+                    <span class="weather-desc">{{ weatherInfo.description }}</span>
+                </div>
+                <div class="city-weather mt-2 loading" v-else>
+                    <font-awesome-icon icon="fa-solid fa-spinner" class="animate-spin text-violet-400 text-sm" />
+                    <span>{{ $t('clock.weather.loading') }}</span>
+                </div>
+
+                <div class="dots-container mt-2 mb-2">
+                    <div class="dots">
+                        <span v-for="(city, index) in cities" :key="city.nameKey" class="dot"
+                            :class="{ active: index === currentIndex }" @click="setActiveCity(index)">
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,7 +44,6 @@ const weatherInfo = ref<any>(null)
 let rotationInterval: ReturnType<typeof setInterval> | null = null
 let clockInterval: ReturnType<typeof setInterval> | null = null
 
-
 const cities = [
     { nameKey: 'clock.cities.antananarivo', timezone: 'Indian/Antananarivo', icon: 'fa-solid fa-location-dot', cityName: 'Antananarivo' },
     { nameKey: 'clock.cities.paris', timezone: 'Europe/Paris', icon: 'fa-solid fa-flag', cityName: 'Paris' },
@@ -56,83 +55,54 @@ const cities = [
 
 const currentCity = computed(() => cities[currentIndex.value])
 
-
 const capitalizeFirstLetter = (str: string) => {
     if (!str) return str
     return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-
-const getWeatherIcon = (iconCode: string) => {
-    const iconMap: Record<string, string> = {
-        '01d': 'fa-solid fa-sun',
-        '01n': 'fa-solid fa-moon',
-        '02d': 'fa-solid fa-cloud-sun',
-        '02n': 'fa-solid fa-cloud-moon',
-        '03d': 'fa-solid fa-cloud',
-        '03n': 'fa-solid fa-cloud',
-        '04d': 'fa-solid fa-cloud',
-        '04n': 'fa-solid fa-cloud',
-        '09d': 'fa-solid fa-cloud-rain',
-        '09n': 'fa-solid fa-cloud-rain',
-        '10d': 'fa-solid fa-cloud-showers-heavy',
-        '10n': 'fa-solid fa-cloud-showers-heavy',
-        '11d': 'fa-solid fa-bolt',
-        '11n': 'fa-solid fa-bolt',
-        '13d': 'fa-solid fa-snowflake',
-        '13n': 'fa-solid fa-snowflake',
-        '50d': 'fa-solid fa-smog',
-        '50n': 'fa-solid fa-smog'
-    }
-    return iconMap[iconCode] || 'fa-solid fa-cloud'
-}
-
-
-
 const fetchWeather = async (cityName: string) => {
     try {
         const geoResponse = await fetch(
             `https://geocoding-api.open-meteo.com/v1/search?name=${cityName}&count=1&language=fr&format=json`
-        );
-        const geoData = await geoResponse.json();
+        )
+        const geoData = await geoResponse.json()
 
         if (!geoData.results || geoData.results.length === 0) {
-            throw new Error('Ville non trouvée');
+            throw new Error('Ville non trouvée')
         }
 
-        const { latitude, longitude, name } = geoData.results[0];
+        const { latitude, longitude } = geoData.results[0]
 
         const weatherResponse = await fetch(
             `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=auto&forecast_days=1`
-        );
-        const weatherData = await weatherResponse.json();
+        )
+        const weatherData = await weatherResponse.json()
 
         if (weatherData.current_weather) {
-            const temp = Math.round(weatherData.current_weather.temperature);
-            const weatherCode = weatherData.current_weather.weathercode;
+            const temp = Math.round(weatherData.current_weather.temperature)
+            const weatherCode = weatherData.current_weather.weathercode
 
             weatherInfo.value = {
                 temp: temp,
                 description: getWeatherDescription(weatherCode, locale.value),
                 icon: getWeatherIconFromCode(weatherCode)
-            };
+            }
         }
     } catch (error) {
-        console.error('Erreur météo pour', cityName, ':', error);
+        console.error('Erreur météo pour', cityName, ':', error)
         weatherInfo.value = {
             temp: '--',
             description: locale.value === 'fr' ? 'Météo non disponible' : 'Weather unavailable',
             icon: 'fa-solid fa-cloud'
-        };
+        }
     }
-};
-
+}
 
 const getWeatherDescription = (code: number, lang: string): string => {
     const descriptions: Record<number, Record<string, string>> = {
         0: { fr: 'Ciel dégagé', en: 'Clear sky' },
         1: { fr: 'Dégagé', en: 'Mainly clear' },
-        2: { fr: 'Lèger nuage', en: 'Partly cloudy' },
+        2: { fr: 'Léger nuage', en: 'Partly cloudy' },
         3: { fr: 'Nuageux', en: 'Overcast' },
         45: { fr: 'Brouillard', en: 'Fog' },
         48: { fr: 'Brouillard givrant', en: 'Depositing rime fog' },
@@ -149,22 +119,22 @@ const getWeatherDescription = (code: number, lang: string): string => {
         81: { fr: 'Averses modérées', en: 'Moderate showers' },
         82: { fr: 'Averses fortes', en: 'Violent showers' },
         95: { fr: 'Orage', en: 'Thunderstorm' }
-    };
-    return descriptions[code]?.[lang] || (lang === 'fr' ? 'Météo variable' : 'Variable weather');
-};
+    }
+    return descriptions[code]?.[lang] || (lang === 'fr' ? 'Météo variable' : 'Variable weather')
+}
 
 const getWeatherIconFromCode = (code: number): string => {
-    if (code === 0) return 'fa-solid fa-sun';
-    if (code === 1 || code === 2) return 'fa-solid fa-cloud-sun';
-    if (code === 3) return 'fa-solid fa-cloud';
-    if (code >= 45 && code <= 48) return 'fa-solid fa-smog';
-    if (code >= 51 && code <= 55) return 'fa-solid fa-cloud-rain';
-    if (code >= 61 && code <= 65) return 'fa-solid fa-cloud-showers-heavy';
-    if (code >= 71 && code <= 75) return 'fa-solid fa-snowflake';
-    if (code >= 80 && code <= 82) return 'fa-solid fa-cloud-rain';
-    if (code === 95) return 'fa-solid fa-bolt';
-    return 'fa-solid fa-cloud-sun';
-};
+    if (code === 0) return 'fa-solid fa-sun'
+    if (code === 1 || code === 2) return 'fa-solid fa-cloud-sun'
+    if (code === 3) return 'fa-solid fa-cloud'
+    if (code >= 45 && code <= 48) return 'fa-solid fa-smog'
+    if (code >= 51 && code <= 55) return 'fa-solid fa-cloud-rain'
+    if (code >= 61 && code <= 65) return 'fa-solid fa-cloud-showers-heavy'
+    if (code >= 71 && code <= 75) return 'fa-solid fa-snowflake'
+    if (code >= 80 && code <= 82) return 'fa-solid fa-cloud-rain'
+    if (code === 95) return 'fa-solid fa-bolt'
+    return 'fa-solid fa-cloud-sun'
+}
 
 const updateCurrentClock = () => {
     const city = currentCity.value
@@ -242,7 +212,7 @@ onBeforeUnmount(() => {
 
 .clock-item {
     text-align: center;
-    padding: 1rem 1.5rem;
+    padding: 3px 3px;
 }
 
 .city-name {
@@ -269,7 +239,7 @@ onBeforeUnmount(() => {
     margin-top: 0.5rem;
 }
 
-/* Styles météo */
+/* Styles météo intégrés */
 .city-weather {
     display: flex;
     align-items: center;
@@ -296,7 +266,6 @@ onBeforeUnmount(() => {
 .dots-container {
     display: flex;
     justify-content: center;
-    margin-top: 2px;
 }
 
 .dots {

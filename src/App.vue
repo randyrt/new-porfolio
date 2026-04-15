@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
-  </div>
+  <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
 </template>
 
 <script setup lang="ts">
