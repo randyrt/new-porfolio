@@ -53,7 +53,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                }}</span>
+                                    }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
                             <div class="text-xs opacity-70 mt-2"
@@ -125,10 +125,11 @@ const suggestions: string[] = [
     '📧 Comment te contacter ?'
 ]
 
-// ==================== GESTION MULTI-CLÉS API GEMINI ====================
+
 const GEMINI_API_KEYS = [
     import.meta.env.VITE_GEMINI_API_KEY_1,
-    import.meta.env.VITE_GEMINI_API_KEY_2
+    import.meta.env.VITE_GEMINI_API_KEY_2,
+    import.meta.env.VITE_GEMINI_API_KEY_3
 ].filter(key => key && key !== 'votre_api_key_ici') as string[]
 
 let currentKeyIndex = 0
@@ -245,7 +246,7 @@ const localKnowledgeBase: Record<string, string> = {
 
 const findLocalResponse = (userQuestion: string): string | null => {
     const question = userQuestion.toLowerCase().trim()
-    
+
     const parcoursKeywords = ['parcours', 'professionnel', 'expérience', 'carrière', 'mon parcours', 'expérience pro']
     if (parcoursKeywords.some(keyword => question.includes(keyword))) {
         return localKnowledgeBase['parcours professionnel|mon parcours|expérience pro|career|parcours']
@@ -265,7 +266,7 @@ onMounted(() => {
         loading.value = false
     }, 1000)
     loadChatHistory()
-    clearConversation() 
+    clearConversation()
 })
 
 const loadChatHistory = (): void => {
@@ -297,7 +298,6 @@ const scrollToBottom = async (): Promise<void> => {
     }
 }
 
-// ==================== ENVOI DE MESSAGE AVEC FALLBACK ====================
 const sendMessage = async (): Promise<void> => {
     if (!userInput.value.trim() || isTyping.value) return
 
@@ -322,18 +322,17 @@ const sendMessage = async (): Promise<void> => {
     isTyping.value = true
     lastRequestTime.value = Date.now()
 
-    // Fonction pour appeler l'API avec une clé spécifique
     const callGeminiAPI = async (apiKey: string, keyIndex: number): Promise<string> => {
         const tempGenAI = new GoogleGenerativeAI(apiKey)
         const tempModel = tempGenAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
-        
+
         const conversationHistory: string = messages.value
             .slice(-5)
             .map(m => `${m.role === 'user' ? 'Utilisateur' : 'Assistant'}: ${m.content}`)
             .join('\n')
 
         const prompt = `${portfolioContext}\n\nHistorique de conversation:\n${conversationHistory}\n\nUtilisateur: ${userMessage.content}\nAssistant:`
-        
+
         const result = await tempModel.generateContent(prompt)
         const response = await result.response
         return response.text()
@@ -343,22 +342,19 @@ const sendMessage = async (): Promise<void> => {
         let aiResponse = ''
         let lastError: any = null
 
-        // Essayer chaque clé API une par une
         for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
             try {
                 console.log(`🔄 Tentative avec la clé API ${i + 1}...`)
                 aiResponse = await callGeminiAPI(GEMINI_API_KEYS[i], i)
                 console.log(`✅ Succès avec la clé ${i + 1}`)
-                // Mettre à jour le modèle courant pour les prochains messages
                 if (i !== currentKeyIndex) {
                     currentKeyIndex = i
                     model = initModelWithKey(GEMINI_API_KEYS[i], i)
                 }
-                break // Succès, on sort de la boucle
+                break
             } catch (err) {
                 lastError = err
                 console.warn(`❌ Échec avec la clé ${i + 1}:`, err)
-                // Continuer avec la clé suivante
             }
         }
 
@@ -440,6 +436,7 @@ const clearConversation = (): void => {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -455,9 +452,13 @@ const clearConversation = (): void => {
 }
 
 @keyframes typingBounce {
-    0%, 60%, 100% {
+
+    0%,
+    60%,
+    100% {
         transform: translateY(0);
     }
+
     30% {
         transform: translateY(-10px);
     }
