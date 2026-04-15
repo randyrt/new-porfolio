@@ -1,7 +1,7 @@
 <template>
     <Loading v-if="loading" :message="$t('contact.loading')" />
     <div v-else>
-        <AnimatedTitle :text="$t('contact.quote')" aos="fade-down" />
+        <AnimatedTitle :text="$t('chat.quote')" aos="fade-down" />
         <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
                 <span class="text-violet-800 text-lg">«</span>
@@ -20,10 +20,11 @@
                     <div>
                         <h2
                             class="text-2xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
-                            Assistant IA
+                           {{ $t('chat.card_big_title') }}
                         </h2>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">Posez vos questions sur mes compétences et
-                            expériences</p>
+                        <p class="text-sm !text-gray-600 !dark:text-gray-500">
+                            {{ $t('chat.card_small_title') }}
+                        </p>
                     </div>
                 </div>
 
