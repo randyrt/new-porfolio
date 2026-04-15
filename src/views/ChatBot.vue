@@ -100,7 +100,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, onMounted, computed, watch } from 'vue'
+import { ref, nextTick, onMounted, computed, watch, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 
@@ -146,15 +146,6 @@ const initModelWithKey = (apiKey: string, keyIndex: number): GenerativeModel | n
     } catch (error) {
         return null
     }
-}
-
-const switchToNextApiKey = (): boolean => {
-    currentKeyIndex++
-    if (currentKeyIndex < GEMINI_API_KEYS.length) {
-        model = initModelWithKey(GEMINI_API_KEYS[currentKeyIndex], currentKeyIndex)
-        return model !== null
-    }
-    return false
 }
 
 
@@ -274,13 +265,23 @@ const findLocalResponse = (userQuestion: string): string | null => {
     }
     return null
 }
-
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
     }, 1000)
+    
     loadChatHistory()
-    clearConversation()
+    
+    window.addEventListener('beforeunload', handleBeforeUnload)
+})
+
+
+const handleBeforeUnload = (): void => {
+    localStorage.removeItem('chat_history')
+}
+
+onUnmounted(() => {
+    window.removeEventListener('beforeunload', handleBeforeUnload)
 })
 
 const loadChatHistory = (): void => {
