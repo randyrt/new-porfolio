@@ -86,7 +86,7 @@
                         </button>
                     </div>
 
-                    <div class="suggestions flex flex-wrap gap-2 mt-4">
+                    <div class="suggestions flex flex-wrap gap-2 justify-center mt-4">
                         <button v-for="suggestion in suggestions" :key="suggestion" @click="sendSuggestion(suggestion)"
                             class="suggestion-chip px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-violet-100 dark:hover:bg-violet-900 hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-200">
                             <font-awesome-icon icon="fa-solid fa-bolt" class="text-xs mr-1" />
