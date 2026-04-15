@@ -130,7 +130,7 @@ const GEMINI_API_KEYS = [
     import.meta.env.VITE_GEMINI_API_KEY_1,
     import.meta.env.VITE_GEMINI_API_KEY_2,
     import.meta.env.VITE_GEMINI_API_KEY_3
-].filter(key => key && key !== 'votre_api_key_ici') as string[]
+].filter(key => key && key.startsWith('AIza')) as string[]
 
 let currentKeyIndex = 0
 let model: GenerativeModel | null = null
