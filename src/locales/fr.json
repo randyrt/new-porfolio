@@ -500,7 +500,7 @@
     "placeholder": "Posez votre question...",
     "send": "Envoyer",
     "start_conversation": "Commencez une conversation avec l'assistant IA ! 💬",
-    "quote": "L'intelligence artificielle ne remplace pas l'intelligence humaine, elle la complète. Cet assistant est là pour répondre à vos questions sur mon parcours, mes compétences et mes projets, 24h/24 et 7j/7.",
+    "quote": "L'intelligence artificielle ne remplace pas l'intelligence humaine, elle la complète. Cet assistant est là pour répondre à vos questions sur mon parcours, mes compétences et mes projets.",
     "clear_conversation": "Effacer la conversation",
     "welcome_message": "👋 Bonjour ! Je suis l'assistant IA de ce portfolio. Je peux vous parler des projets, des compétences ou de l'expérience du développeur. Que souhaitez-vous savoir ?",
     "error_local_fallback": "⏳ Toutes les API ont atteint leurs limites gratuites.\n\nJ'utilise maintenant mes connaissances locales pour répondre. Je peux vous parler de :\n- Ma présentation\n- Mes projets\n- Mes compétences\n- Mon expérience\n- Comment me contacter\n\nQue souhaitez-vous savoir ?",
