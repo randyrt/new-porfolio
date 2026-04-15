@@ -1,5 +1,5 @@
 <template>
-  <div class="current-activity h-16 p-2 mb-2 mt-2 rounded-lg border-1 border-purple-200">
+  <div class="current-activity min-h-16 p-2 mb-2 mt-2 rounded-lg border-1 border-purple-200">
     <div class="flex items-center gap-2">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
