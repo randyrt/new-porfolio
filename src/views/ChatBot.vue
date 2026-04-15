@@ -260,12 +260,12 @@ const findLocalResponse = (userQuestion: string): string | null => {
     return null
 }
 
-// ==================== FONCTIONS UTILITAIRES ====================
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
     }, 1000)
     loadChatHistory()
+    clearConversation() 
 })
 
 const loadChatHistory = (): void => {
