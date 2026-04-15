@@ -461,7 +461,7 @@
       ]
   },
   "github": {
-    "title": "GitHub Statistics",
+    "title": "Stats github of Randy",
     "repos": "Repositories",
     "followers": "Followers",
     "following": "Following",
@@ -492,6 +492,8 @@
     "months_label": "Month"
   },
   "chat": {
+    "page_title": "AI of randy",
+    "page_description": "Chat with my AI assistant to learn more about my skills, projects and experiences",
     "title": "Chat a little with my AI assistant",
     "loading": "AI assistant...",
     "card_big_title": "AI Assistant",

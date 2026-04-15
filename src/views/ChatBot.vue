@@ -100,9 +100,22 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '@vueuse/head'
 import { ref, nextTick, onMounted, computed, watch, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
+
+const { t } = useI18n()
+
+useHead({
+  title: computed(() => t('chat.page_title')),
+  meta: [
+    {
+      name: 'description',
+      content: computed(() => t('chat.page_description'))
+    }
+  ]
+})
 
 interface Message {
     role: 'user' | 'assistant'
@@ -110,7 +123,7 @@ interface Message {
     timestamp: Date
 }
 
-const { tm, t, locale } = useI18n()
+const { tm,  locale } = useI18n()
 
 watch(locale, () => {
     if (messages.value.length > 0 && messages.value[0].role === 'assistant') {

@@ -4,11 +4,11 @@
     <div>
       <AnimatedTitle :text="$t('github.page_quote')" />
       <div class="text-center max-w-2xl mx-auto px-4 mt-4 mb-10" data-aos="fade-up">
-            <p class="text-lg italic text-gray-700 dark:text-gray-300">
-                <span class="text-violet-800 text-lg">«</span> {{ $t('github.page_description') }} <span
-                    class="text-violet-800 text-lg">»</span>
-            </p>
-        </div>
+        <p class="text-lg italic text-gray-700 dark:text-gray-300">
+          <span class="text-violet-800 text-lg">«</span> {{ $t('github.page_description') }} <span
+            class="text-violet-800 text-lg">»</span>
+        </p>
+      </div>
 
       <div data-aos="fade-up">
         <GitHubStats />
@@ -23,8 +23,7 @@
             {{ $t('github.about_description') }}
           </p>
           <div class="flex items-center space-x-4 ">
-            <a href="https://github.com/randyrt" target="_blank"
-               class="btn-violet btn-effect-5 !no-underline">
+            <a href="https://github.com/randyrt" target="_blank" class="btn-violet btn-effect-5 !no-underline">
               <font-awesome-icon :icon="['fab', 'github']" class="mr-2" />
               {{ $t('github.view_profile') }}
             </a>
