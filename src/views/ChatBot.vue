@@ -110,7 +110,7 @@ interface Message {
     timestamp: Date
 }
 
-const { tm, t } = useI18n()
+const { tm, t, locale } = useI18n()
 
 const loading = ref<boolean>(true)
 const isTyping = ref<boolean>(false)
@@ -156,95 +156,89 @@ if (GEMINI_API_KEYS.length > 0) {
 }
 
 
-const portfolioContext: string = `
-Tu es un assistant IA pour le portfolio de Randy Andriantsiory. Voici les informations importantes :
+const portfolioContext = computed<string>(() => {
+    const langInstruction = locale.value === 'fr'
+        ? 'LANGUE DE RÉPONSE: Tu dois TOUJOURS répondre en français, quelle que soit la langue de la question.'
+        : 'RESPONSE LANGUAGE: You MUST ALWAYS reply in English, regardless of the language of the question.'
 
-NOM: RAZAFIMANDIMBY Randy Andriantsiory
-PROFESSION: Développeur Full Stack passionné par la création d'applications web et mobile modernes et performantes.
+    return `
+${langInstruction}
 
-PRÉSENTATION PERSONNELLE:
-Je suis Randy, un développeur Full Stack passionné par la création d'applications web et mobile, modernes et performantes. J'adore explorer les nouvelles technologies et relever des défis techniques. Cela signifie que je suis capable de mener un projet de A à Z, du design de l'interface utilisateur jusqu'à la gestion du serveur et de la base de données.
+You are an AI assistant for Randy Andriantsiory's portfolio. Here is the key information:
 
-COMPÉTENCES TECHNIQUES:
+NAME: RAZAFIMANDIMBY Randy Andriantsiory
+PROFESSION: Passionate Full Stack Developer specializing in modern and performant web and mobile applications.
+
+PERSONAL PRESENTATION:
+Randy is a Full Stack Developer passionate about creating modern web and mobile applications end-to-end: from UI design to server and database management. He loves exploring new technologies and tackling technical challenges.
+
+TECHNICAL SKILLS:
 - Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS
 - Backend: Laravel, Symfony, Node.js, Express.js, Python
 - DevOps: Docker Engine, Docker Compose
 - GitOps: GitHub, GitLab, CI/CD
-- Mobile: IONIC (applications cross-platform), FLUTTER (En cours d'apprentissage)
-- Base de données: MySQL, PostgreSQL, MariaDB
-- Autres: UX/UI Design, automatisations Python
+- Mobile: IONIC (cross-platform), FLUTTER (learning)
+- Databases: MySQL, PostgreSQL, MariaDB
+- Other: UX/UI Design, Python automations
 
-PARCOURS PROFESSIONNEL:
+CAREER PATH:
 
-🏢 **Développeur Senior** - MG CONSULTING ACT & IT (Avril 2024 – Présent)
-- Architecture Laravel 11 & Vue.js 3
-- Optimisation backend (SQL, Redis, Laravel Horizon) → +35% performances
-- CI/CD avec GitHub Actions, Docker
-- Collaboration équipes Maroc/Belgique
-- Mentorat de 3 développeurs juniors
-- WebSockets temps réel, Vue 3 Composition API, Laravel Octane
+🏢 **Senior Developer** - MG CONSULTING ACT & IT (April 2024 – Present)
+- Laravel 11 & Vue.js 3 architecture
+- Backend optimisation (SQL, Redis, Laravel Horizon) → +35% performance
+- CI/CD with GitHub Actions, Docker
+- Collaboration with teams in Morocco/Belgium
+- Mentoring 3 junior developers
+- Real-time WebSockets, Vue 3 Composition API, Laravel Octane
 
-💼 **Développeur Fullstack Freelance** - Indépendant (Janv 2023 – Mars 2024)
-- Applications sur mesure Laravel 10 & Vue.js 3
-- Applications mobiles hybrides IONIC 6 + Capacitor
-- Intégration paiements et APIs tierces
-- Gestion complète du cycle projet
+💼 **Fullstack Freelance Developer** - Independent (Jan 2023 – Mar 2024)
+- Custom Laravel 10 & Vue.js 3 applications
+- Hybrid mobile apps IONIC 6 + Capacitor
+- Payment & third-party API integration
+- Full project cycle management
 
-💻 **Développeur Web Back-end** - PixelZ (Fév 2022 – Nov 2022)
-- Laravel 9, APIs REST, Eloquent ORM
-- Conception bases de données relationnelles
-- Authentification Laravel Sanctum/JWT
-- Collaboration Git/GitLab
+💻 **Back-end Web Developer** - PixelZ (Feb 2022 – Nov 2022)
+- Laravel 9, REST APIs, Eloquent ORM
+- Relational database design
+- Laravel Sanctum/JWT authentication
 
-🎨 **Stagiaire Développeur Frontend** - Fihary Soft (Mai 2021 – Déc 2021)
-- HTML5, CSS3, JavaScript vanilla
-- Intégration maquettes Figma
-- Premiers pas Laravel et architecture MVC
+🎨 **Frontend Developer Intern** - Fihary Soft (May 2021 – Dec 2021)
+- HTML5, CSS3, vanilla JavaScript
+- Figma mockup integration
 
-🏠 **Stagiaire Développeur Web** - IMMO Fianarantsoa (Avril 2020 – Sept 2020)
-- Plateforme immobilière Laravel 8
-- Modélisation base de données
-- Déploiement sur serveur Linux
+🏠 **Web Developer Intern** - IMMO Fianarantsoa (April 2020 – Sep 2020)
+- Laravel 8 real estate platform
+- Database modelling, Linux server deployment
 
-PROJETS RÉALISÉS:
+PROJECTS:
 
-🎯 **Fid-Connect**
-Plateforme de gestion comptable et administrative. Technologies: Vue.js, Laravel, MariaDB, TailwindCSS, Docker.
+🎯 **Fid-Connect** - Accounting & administrative management platform. Vue.js, Laravel, MariaDB, TailwindCSS, Docker.
+📊 **QCP** - Credit & amortization management app. Vue.js, Symfony, MariaDB.
+🏥 **echo-webLine** - Medical platform for cardiovascular imaging. Vue.js, Laravel, MySQL, TailwindCSS, Docker.
+👩‍⚕️ **Nurse** - Healthcare professionals management app. Vue.js, Symfony, MySQL.
+⚽ **AFR-Fan** - Football fan community app. Vue.js, Laravel, TailwindCSS.
+📁 **Personal portfolio** - Current site with animations, AI assistant. Vue.js, TypeScript, TailwindCSS.
 
-📊 **QCP (Gestion de Crédits)**
-Application de gestion de crédits et amortissements. Technologies: Vue.js, Symfony, MariaDB.
+KEY ACHIEVEMENTS:
+🏆 2nd place WebCup Madagascar 2024
+📈 +35% application performance
+👥 +10% user engagement
+⏱️ -25% delivery time
 
-🏥 **echo-webLine**
-Plateforme médicale pour l'imagerie cardiovasculaire. Technologies: Vue.js, Laravel, MySQL, TailwindCSS, Docker.
+EXPERIENCE: 5+ years of web development
+LOCATION: Antananarivo, Madagascar
+LANGUAGES: French (native), English (fluent), Malagasy (native)
 
-👩‍⚕️ **Nurse**
-Application de gestion pour professionnels de santé. Technologies: Vue.js, Symfony, MySQL.
-
-⚽ **AFR-Fan**
-Application communautaire pour les fans de football. Technologies: Vue.js, Laravel, TailwindCSS.
-
-📁 **Portfolio personnel**
-Site actuel avec animations, thème personnalisable et assistant IA. Technologies: Vue.js, TypeScript, TailwindCSS.
-
-RÉALISATIONS CLÉS:
-🏆 2ème place WebCup Madagascar 2024
-📈 +35% de performances applicatives
-👥 +10% d'engagement utilisateur
-⏱️ -25% de délais de livraison
-
-EXPÉRIENCE: Plus de 5 ans de développement web
-LOCALISATION: Antananarivo, Madagascar
-LANGUES: Français (natif), Anglais (courant), Malgache (natif)
-
-RÈGLES DE RÉPONSE:
-- Réponds de manière naturelle, professionnelle mais amicale
-- Reste concis (max 150 mots par réponse)
-- Utilise des émojis pour rendre les réponses plus vivantes 🚀
-- Mentionne les projets spécifiques quand on te pose des questions sur les réalisations
-- Quand on te demande le parcours, donne les détails des expériences (MG Consulting, Freelance, PixelZ, etc.)
-- Si on te pose une question hors sujet, redirige poliment vers le portfolio
-- Mets en avant la capacité à mener un projet de A à Z
+RESPONSE RULES:
+- Respond naturally, professionally but in a friendly tone
+- Keep it concise (max 150 words per response)
+- Use emojis to make responses lively 🚀
+- Mention specific projects when asked about achievements
+- When asked about career, provide full experience details (MG Consulting, Freelance, PixelZ, etc.)
+- If asked an off-topic question, politely redirect to the portfolio
+- Highlight the ability to lead a project from A to Z
 `
+})
 
 const getLocalKnowledgeBase = (): Record<string, string> => ({
     'présente-toi|presentation|qui es-tu|who are you|introduce yourself': t('chat.local.introduce'),
@@ -340,10 +334,10 @@ const sendMessage = async (): Promise<void> => {
 
         const conversationHistory: string = messages.value
             .slice(-5)
-            .map(m => `${m.role === 'user' ? 'Utilisateur' : 'Assistant'}: ${m.content}`)
+            .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
             .join('\n')
 
-        const prompt = `${portfolioContext}\n\nHistorique de conversation:\n${conversationHistory}\n\nUtilisateur: ${userMessage.content}\nAssistant:`
+        const prompt = `${portfolioContext.value}\n\nConversation history:\n${conversationHistory}\n\nUser: ${userMessage.content}\nAssistant:`
 
         const result = await tempModel.generateContent(prompt)
         const response = await result.response
