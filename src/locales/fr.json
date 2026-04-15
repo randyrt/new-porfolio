@@ -501,7 +501,25 @@
     "send": "Envoyer",
     "start_conversation": "Commencez une conversation avec l'assistant IA ! 💬",
     "quote": "L'intelligence artificielle ne remplace pas l'intelligence humaine, elle la complète. Cet assistant est là pour répondre à vos questions sur mon parcours, mes compétences et mes projets, 24h/24 et 7j/7.",
-    "clear_conversation": "Effacer la conversation"
+    "clear_conversation": "Effacer la conversation",
+    "welcome_message": "👋 Bonjour ! Je suis l'assistant IA de ce portfolio. Je peux vous parler des projets, des compétences ou de l'expérience du développeur. Que souhaitez-vous savoir ?",
+    "error_local_fallback": "⏳ Toutes les API ont atteint leurs limites gratuites.\n\nJ'utilise maintenant mes connaissances locales pour répondre. Je peux vous parler de :\n- Ma présentation\n- Mes projets\n- Mes compétences\n- Mon expérience\n- Comment me contacter\n\nQue souhaitez-vous savoir ?",
+    "local": {
+      "introduce": "👋 Je suis l'assistant IA du portfolio de Randy Andriantsiory, un développeur Full Stack passionné avec plus de 5 ans d'expérience. Je suis ici pour répondre à vos questions sur ses compétences, projets et expériences. Comment puis-je vous aider ?",
+      "projects": "💻 Randy a travaillé sur plusieurs projets professionnels et personnels :\n\n• **Fid-Connect** - Plateforme de gestion comptable et administrative\n• **QCP** - Application de gestion de crédits et amortissements\n• **echo-webLine** - Plateforme médicale pour imagerie cardiovasculaire\n• **Nurse** - Application de gestion pour professionnels de santé\n• **AFR-Fan** - Application communautaire pour fans de football\n• **Portfolio personnel** - Site actuel\n\nChaque projet a été mené de A à Z ! 🚀",
+      "skills": "⚡ **Compétences principales :**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Laravel, Symfony, Node.js, Python\n• DevOps: Docker, Docker Compose, CI/CD\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL, MariaDB\n\n**Plus de 5 ans d'expérience !** 💪",
+      "career": "📈 **Voici mon parcours professionnel détaillé :**\n\n🏢 **Développeur Senior** - MG CONSULTING ACT & IT (Avril 2024 – Présent)\n• Architecture Laravel 11 & Vue.js 3\n• Optimisation backend → +35% performances\n• CI/CD avec GitHub Actions, Docker\n• Mentorat de 3 développeurs juniors\n\n💼 **Développeur Fullstack Freelance** - Indépendant (Janv 2023 – Mars 2024)\n• Applications sur mesure Laravel 10 & Vue.js 3\n• Applications mobiles IONIC 6\n\n💻 **Développeur Web Back-end** - PixelZ (Fév 2022 – Nov 2022)\n• Laravel 9, APIs REST\n\n🏆 **2ème place WebCup Madagascar 2024**\n\n**Plus de 5 ans d'expérience cumulée !** 🚀",
+      "contact": "📧 Vous pouvez contacter Randy via :\n\n• **WhatsApp** - section Contact\n• **Email** - formulaire de contact\n• **GitHub** et **LinkedIn** - liens sur le portfolio",
+      "location": "🌍 Randy est basé à **Antananarivo, Madagascar**.",
+      "languages": "🗣️ Randy parle :\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)"
+    },
+    "suggestions": [
+      "🤖 Présente-toi",
+      "💻 Quels sont ses projets ?",
+      "⚡ Compétences techniques",
+      "📈 Son parcours professionnel",
+      "📧 Comment le contacter ?"
+    ]
   }
 }
 

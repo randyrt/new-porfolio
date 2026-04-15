@@ -494,13 +494,31 @@
   "chat": {
     "title": "Chat a little with my AI assistant",
     "loading": "AI assistant...",
-    "card_big_title": "IA Assistant",
+    "card_big_title": "AI Assistant",
     "card_small_title": "Ask me anything about my skills and experiences",
     "subtitle": "Ask questions about my skills and experiences",
     "placeholder": "Ask your question...",
     "send": "Send",
     "start_conversation": "Start a conversation with the AI assistant! 💬",
     "quote": "Artificial intelligence doesn't replace human intelligence, it complements it. This assistant is here to answer your questions about my journey, skills and projects, 24/7.",
-    "clear_conversation": "Clear conversation"
+    "clear_conversation": "Clear conversation",
+    "welcome_message": "👋 Hello! I'm the AI assistant for this portfolio. I can tell you about the developer's projects, skills and experience. What would you like to know?",
+    "error_local_fallback": "⏳ All APIs have reached their free limits.\n\nI'm now using my local knowledge to answer. I can tell you about:\n- My introduction\n- My projects\n- My skills\n- My experience\n- How to contact me\n\nWhat would you like to know?",
+    "local": {
+      "introduce": "👋 I'm the AI assistant for Randy Andriantsiory's portfolio, a passionate Full Stack developer with over 5 years of experience. I'm here to answer your questions about his skills, projects and experiences. How can I help?",
+      "projects": "💻 Randy has worked on several professional and personal projects:\n\n• **Fid-Connect** - Accounting and administrative management platform\n• **QCP** - Credit and amortization management application\n• **echo-webLine** - Medical platform for cardiovascular imaging\n• **Nurse** - Management application for healthcare professionals\n• **AFR-Fan** - Community app for football fans\n• **Personal portfolio** - Current site\n\nEvery project led from A to Z! 🚀",
+      "skills": "⚡ **Main skills:**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Laravel, Symfony, Node.js, Python\n• DevOps: Docker, Docker Compose, CI/CD\n• Mobile: IONIC\n• Databases: MySQL, PostgreSQL, MariaDB\n\n**Over 5 years of experience!** 💪",
+      "career": "📈 **Detailed career path:**\n\n🏢 **Senior Developer** - MG CONSULTING ACT & IT (April 2024 – Present)\n• Laravel 11 & Vue.js 3 architecture\n• Backend optimisation → +35% performance\n• CI/CD with GitHub Actions, Docker\n• Mentoring 3 junior developers\n\n💼 **Fullstack Freelance Developer** - Independent (Jan 2023 – Mar 2024)\n• Custom Laravel 10 & Vue.js 3 apps\n• IONIC 6 mobile applications\n\n💻 **Back-end Web Developer** - PixelZ (Feb 2022 – Nov 2022)\n• Laravel 9, REST APIs\n\n🏆 **2nd place WebCup Madagascar 2024**\n\n**Over 5 cumulated years of experience!** 🚀",
+      "contact": "📧 You can contact Randy via:\n\n• **WhatsApp** - Contact section\n• **Email** - Contact form\n• **GitHub** and **LinkedIn** - Links on the portfolio",
+      "location": "🌍 Randy is based in **Antananarivo, Madagascar**.",
+      "languages": "🗣️ Randy speaks:\n\n• **French** (native)\n• **English** (fluent)\n• **Malagasy** (native)"
+    },
+    "suggestions": [
+      "🤖 Introduce yourself",
+      "💻 What are his projects?",
+      "⚡ Technical skills",
+      "📈 His career path",
+      "📧 How to contact him ?"
+    ]
   }
 }

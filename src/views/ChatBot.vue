@@ -53,7 +53,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
                             <div class="text-xs opacity-70 mt-2"
@@ -100,7 +100,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, onMounted } from 'vue'
+import { ref, nextTick, onMounted, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 
 interface Message {
@@ -108,6 +109,8 @@ interface Message {
     content: string
     timestamp: Date
 }
+
+const { tm, t } = useI18n()
 
 const loading = ref<boolean>(true)
 const isTyping = ref<boolean>(false)
@@ -117,13 +120,7 @@ const messages = ref<Message[]>([])
 const lastRequestTime = ref<number>(0)
 const REQUEST_COOLDOWN_MS = 3000
 
-const suggestions: string[] = [
-    '🤖 Présente-toi',
-    '💻 Quels sont tes projets ?',
-    '⚡ Compétences techniques',
-    '📈 Mon parcours professionnel',
-    '📧 Comment te contacter ?'
-]
+const suggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
 
 
 const GEMINI_API_KEYS = [
@@ -138,10 +135,8 @@ let model: GenerativeModel | null = null
 const initModelWithKey = (apiKey: string, keyIndex: number): GenerativeModel | null => {
     try {
         const genAI = new GoogleGenerativeAI(apiKey)
-        console.log(`✅ Gemini initialisé avec la clé ${keyIndex + 1}`)
         return genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
     } catch (error) {
-        console.error(`❌ Erreur initialisation avec la clé ${keyIndex + 1}:`, error)
         return null
     }
 }
@@ -149,22 +144,18 @@ const initModelWithKey = (apiKey: string, keyIndex: number): GenerativeModel | n
 const switchToNextApiKey = (): boolean => {
     currentKeyIndex++
     if (currentKeyIndex < GEMINI_API_KEYS.length) {
-        console.log(`🔄 Basculement vers la clé API ${currentKeyIndex + 1}...`)
         model = initModelWithKey(GEMINI_API_KEYS[currentKeyIndex], currentKeyIndex)
         return model !== null
     }
-    console.warn('⚠️ Plus aucune clé API disponible')
     return false
 }
 
-// Initialisation avec la première clé disponible
+
 if (GEMINI_API_KEYS.length > 0) {
     model = initModelWithKey(GEMINI_API_KEYS[0], 0)
-} else {
-    console.warn('⚠️ Aucune clé API Gemini configurée')
 }
 
-// ==================== CONTEXTE DU PORTFOLIO ====================
+
 const portfolioContext: string = `
 Tu es un assistant IA pour le portfolio de Randy Andriantsiory. Voici les informations importantes :
 
@@ -176,34 +167,72 @@ Je suis Randy, un développeur Full Stack passionné par la création d'applicat
 
 COMPÉTENCES TECHNIQUES:
 - Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS
-- Backend:  Laravel, Symfony, Node.js, Express.js, Python
+- Backend: Laravel, Symfony, Node.js, Express.js, Python
 - DevOps: Docker Engine, Docker Compose
 - GitOps: GitHub, GitLab, CI/CD
 - Mobile: IONIC (applications cross-platform), FLUTTER (En cours d'apprentissage)
 - Base de données: MySQL, PostgreSQL, MariaDB
 - Autres: UX/UI Design, automatisations Python
 
+PARCOURS PROFESSIONNEL:
+
+🏢 **Développeur Senior** - MG CONSULTING ACT & IT (Avril 2024 – Présent)
+- Architecture Laravel 11 & Vue.js 3
+- Optimisation backend (SQL, Redis, Laravel Horizon) → +35% performances
+- CI/CD avec GitHub Actions, Docker
+- Collaboration équipes Maroc/Belgique
+- Mentorat de 3 développeurs juniors
+- WebSockets temps réel, Vue 3 Composition API, Laravel Octane
+
+💼 **Développeur Fullstack Freelance** - Indépendant (Janv 2023 – Mars 2024)
+- Applications sur mesure Laravel 10 & Vue.js 3
+- Applications mobiles hybrides IONIC 6 + Capacitor
+- Intégration paiements et APIs tierces
+- Gestion complète du cycle projet
+
+💻 **Développeur Web Back-end** - PixelZ (Fév 2022 – Nov 2022)
+- Laravel 9, APIs REST, Eloquent ORM
+- Conception bases de données relationnelles
+- Authentification Laravel Sanctum/JWT
+- Collaboration Git/GitLab
+
+🎨 **Stagiaire Développeur Frontend** - Fihary Soft (Mai 2021 – Déc 2021)
+- HTML5, CSS3, JavaScript vanilla
+- Intégration maquettes Figma
+- Premiers pas Laravel et architecture MVC
+
+🏠 **Stagiaire Développeur Web** - IMMO Fianarantsoa (Avril 2020 – Sept 2020)
+- Plateforme immobilière Laravel 8
+- Modélisation base de données
+- Déploiement sur serveur Linux
+
 PROJETS RÉALISÉS:
 
 🎯 **Fid-Connect**
-Plateforme de gestion comptable et administrative. Application complète permettant la gestion des finances, des factures et des documents administratifs. Technologies: Vue.js, Laravel, MariaDB, TailwindCSS, Docker.
+Plateforme de gestion comptable et administrative. Technologies: Vue.js, Laravel, MariaDB, TailwindCSS, Docker.
 
 📊 **QCP (Gestion de Crédits)**
-Application de gestion de crédits et amortissements. Outil professionnel pour le suivi des prêts, calculs d'amortissements et gestion des échéances. Technologies: Vue.js, Symfony, MariaDB.
+Application de gestion de crédits et amortissements. Technologies: Vue.js, Symfony, MariaDB.
 
 🏥 **echo-webLine**
-Plateforme médicale pour l'imagerie cardiovasculaire. Solution innovante pour la gestion et l'analyse d'images médicales. Technologies: Vue.js, Laravel, MySQL, TailwindCSS, Docker.
+Plateforme médicale pour l'imagerie cardiovasculaire. Technologies: Vue.js, Laravel, MySQL, TailwindCSS, Docker.
 
 👩‍⚕️ **Nurse**
-Application de gestion pour professionnels de santé. Outil de suivi des patients, planning et gestion administrative. Technologies: Vue.js, Symfony, MySQL.
+Application de gestion pour professionnels de santé. Technologies: Vue.js, Symfony, MySQL.
 
 ⚽ **AFR-Fan**
-Application communautaire pour les fans de football. Plateforme de partage et d'actualités sportives. Technologies: Vue.js, Laravel, TailwindCSS.
+Application communautaire pour les fans de football. Technologies: Vue.js, Laravel, TailwindCSS.
 
 📁 **Portfolio personnel**
 Site actuel avec animations, thème personnalisable et assistant IA. Technologies: Vue.js, TypeScript, TailwindCSS.
 
-EXPÉRIENCE: 5 ans de développement web
+RÉALISATIONS CLÉS:
+🏆 2ème place WebCup Madagascar 2024
+📈 +35% de performances applicatives
+👥 +10% d'engagement utilisateur
+⏱️ -25% de délais de livraison
+
+EXPÉRIENCE: Plus de 5 ans de développement web
 LOCALISATION: Antananarivo, Madagascar
 LANGUES: Français (natif), Anglais (courant), Malgache (natif)
 
@@ -212,47 +241,31 @@ RÈGLES DE RÉPONSE:
 - Reste concis (max 150 mots par réponse)
 - Utilise des émojis pour rendre les réponses plus vivantes 🚀
 - Mentionne les projets spécifiques quand on te pose des questions sur les réalisations
+- Quand on te demande le parcours, donne les détails des expériences (MG Consulting, Freelance, PixelZ, etc.)
 - Si on te pose une question hors sujet, redirige poliment vers le portfolio
 - Mets en avant la capacité à mener un projet de A à Z
 `
 
-const localKnowledgeBase: Record<string, string> = {
-    'présente-toi|presentation|qui es-tu|who are you': '👋 Je suis l\'assistant IA du portfolio de Randy Andriantsiory, un développeur Full Stack passionné avec plus de 5 ans d\'expérience. Je suis ici pour répondre à vos questions sur ses compétences, projets et expériences. Comment puis-je vous aider ?',
-
-    'projets|projects|what projects|réalisations': '💻 Randy a travaillé sur plusieurs projets professionnels et personnels:\n\n• **Fid-Connect** - Plateforme de gestion comptable et administrative\n• **QCP** - Application de gestion de crédits et amortissements\n• **echo-webLine** - Plateforme médicale pour imagerie cardiovasculaire\n• **Nurse** - Application de gestion pour professionnels de santé\n• **AFR-Fan** - Application communautaire pour fans de football\n• **Portfolio personnel** - Site actuel\n\nChaque projet a été mené de A à Z ! 🚀',
-
-    'compétences|skills|technologies|what can you do': '⚡ **Compétences principales:**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Laravel, Symfony, Node.js, Python\n• DevOps: Docker, Docker Compose, CI/CD\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL, MariaDB\n\n**Plus de 5 ans d\'expérience !** 💪',
-
-    'parcours professionnel|mon parcours|expérience pro|career|parcours': '📈 **Voici mon parcours professionnel détaillé :**\n\n' +
-        '🏢 **Développeur Senior** - MG CONSULTING ACT & IT (Avril 2024 – Présent)\n' +
-        '• Architecture Laravel 11 & Vue.js 3\n' +
-        '• Optimisation backend → +35% performances\n' +
-        '• CI/CD avec GitHub Actions, Docker\n' +
-        '• Mentorat de 3 développeurs juniors\n\n' +
-        '💼 **Développeur Fullstack Freelance** - Indépendant (Janv 2023 – Mars 2024)\n' +
-        '• Applications sur mesure Laravel 10 & Vue.js 3\n' +
-        '• Applications mobiles IONIC 6\n\n' +
-        '💻 **Développeur Web Back-end** - PixelZ (Fév 2022 – Nov 2022)\n' +
-        '• Laravel 9, APIs REST\n\n' +
-        '🏆 **2ème place WebCup Madagascar 2024**\n\n' +
-        '**Plus de 5 ans d\'expérience cumulée !** 🚀',
-
-    'contact|comment te contacter|how to contact': '📧 Vous pouvez contacter Randy via:\n\n• **WhatsApp** - section Contact\n• **Email** - formulaire de contact\n• **GitHub** et **LinkedIn** - liens sur le portfolio',
-
-    'localisation|location|madagascar': '🌍 Randy est basé à **Antananarivo, Madagascar**.',
-
-    'langues|languages|speaks': '🗣️ Randy parle:\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)'
-}
+const getLocalKnowledgeBase = (): Record<string, string> => ({
+    'présente-toi|presentation|qui es-tu|who are you|introduce yourself': t('chat.local.introduce'),
+    'projets|projects|what projects|réalisations|what are your projects': t('chat.local.projects'),
+    'compétences|skills|technologies|what can you do|technical skills': t('chat.local.skills'),
+    'parcours professionnel|mon parcours|expérience pro|career|parcours|career path|my career': t('chat.local.career'),
+    'contact|comment te contacter|how to contact|contacter': t('chat.local.contact'),
+    'localisation|location|madagascar': t('chat.local.location'),
+    'langues|languages|speaks': t('chat.local.languages')
+})
 
 const findLocalResponse = (userQuestion: string): string | null => {
     const question = userQuestion.toLowerCase().trim()
+    const kb = getLocalKnowledgeBase()
 
-    const parcoursKeywords = ['parcours', 'professionnel', 'expérience', 'carrière', 'mon parcours', 'expérience pro']
-    if (parcoursKeywords.some(keyword => question.includes(keyword))) {
-        return localKnowledgeBase['parcours professionnel|mon parcours|expérience pro|career|parcours']
+    const careerKeywords = ['parcours', 'professionnel', 'expérience', 'carrière', 'mon parcours', 'expérience pro', 'career', 'career path', 'my career']
+    if (careerKeywords.some(keyword => question.includes(keyword))) {
+        return kb['parcours professionnel|mon parcours|expérience pro|career|parcours|career path|my career']
     }
 
-    for (const [keywords, response] of Object.entries(localKnowledgeBase)) {
+    for (const [keywords, response] of Object.entries(kb)) {
         const keywordList = keywords.split('|')
         if (keywordList.some(keyword => question.includes(keyword))) {
             return response
@@ -280,7 +293,7 @@ const loadChatHistory = (): void => {
     } else {
         messages.value = [{
             role: 'assistant',
-            content: '👋 Bonjour ! Je suis l\'assistant IA de ce portfolio. Je peux vous parler des projets, des compétences ou de l\'expérience du développeur. Que souhaitez-vous savoir ?',
+            content: t('chat.welcome_message'),
             timestamp: new Date()
         }]
     }
@@ -304,7 +317,6 @@ const sendMessage = async (): Promise<void> => {
     const now = Date.now()
     if (now - lastRequestTime.value < REQUEST_COOLDOWN_MS) {
         const waitTime = Math.ceil((REQUEST_COOLDOWN_MS - (now - lastRequestTime.value)) / 1000)
-        console.warn(`⏳ Veuillez attendre ${waitTime}s`)
         return
     }
 
@@ -344,9 +356,7 @@ const sendMessage = async (): Promise<void> => {
 
         for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
             try {
-                console.log(`🔄 Tentative avec la clé API ${i + 1}...`)
                 aiResponse = await callGeminiAPI(GEMINI_API_KEYS[i], i)
-                console.log(`✅ Succès avec la clé ${i + 1}`)
                 if (i !== currentKeyIndex) {
                     currentKeyIndex = i
                     model = initModelWithKey(GEMINI_API_KEYS[i], i)
@@ -354,7 +364,6 @@ const sendMessage = async (): Promise<void> => {
                 break
             } catch (err) {
                 lastError = err
-                console.warn(`❌ Échec avec la clé ${i + 1}:`, err)
             }
         }
 
@@ -371,18 +380,9 @@ const sendMessage = async (): Promise<void> => {
         }
 
     } catch (error: any) {
-        console.error('Erreur avec toutes les clés Gemini:', error)
-
-        let errorMessage = '😔 Désolé, toutes les clés API ont atteint leurs limites gratuites.'
 
         const localResponse = findLocalResponse(userMessage.content)
-
-        if (localResponse) {
-            errorMessage = localResponse
-            console.log('✅ Réponse locale trouvée')
-        } else {
-            errorMessage = '⏳ Toutes les API ont atteint leurs limites gratuites.\n\nJ\'utilise maintenant mes connaissances locales pour répondre. Je peux vous parler de:\n- Ma présentation\n- Mes projets\n- Mes compétences\n- Mon expérience\n- Comment me contacter\n\nQue souhaitez-vous savoir ?'
-        }
+        const errorMessage = localResponse ?? t('chat.error_local_fallback')
 
         messages.value.push({
             role: 'assistant',
@@ -404,7 +404,7 @@ const sendSuggestion = (suggestion: string): void => {
 const clearConversation = (): void => {
     messages.value = [{
         role: 'assistant',
-        content: '👋 Bonjour ! Je suis l\'assistant IA de ce portfolio. Je peux vous parler des projets, des compétences ou de l\'expérience du développeur. Que souhaitez-vous savoir ?',
+        content: t('chat.welcome_message'),
         timestamp: new Date()
     }]
     saveHistory()
