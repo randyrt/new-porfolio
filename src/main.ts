@@ -56,7 +56,10 @@ import {
   faComments,    
   faPaperPlane,         
   faCommentDots,  
-  faTrashAlt
+  faTrashAlt,
+  faMicrochip,
+  faNetworkWired, 
+  faCircleNodes
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faEnvelope, faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -83,7 +86,7 @@ library.add(
   faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
   faLaravel, faMicrosoft, faDocker, faPhp, faReact, faAngular,
   faSymfony, faPython, faNode, faGitlab, faFigma, faBootstrap,
-  faCommentDots
+  faCommentDots, faMicrochip, faNetworkWired, faCircleNodes
 )
 
 
