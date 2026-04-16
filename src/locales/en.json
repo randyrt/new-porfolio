@@ -507,6 +507,10 @@
     "welcome_message": "👋 Hello ! I'm the AI assistant for this portfolio. I can tell you about the developer's projects, skills and experience. What would you like to know ?",
     "error_local_fallback": "⏳ All APIs have reached their free limits.\n\nI'm now using my local knowledge to answer. I can tell you about:\n- My introduction\n- My projects\n- My skills\n- My experience\n- How to contact me\n\nWhat would you like to know?",
     "local": {
+      "greeting": "Hello! 😊 It's a pleasure to have you here. How can I help you explore Randy's portfolio?",
+      "thanks": "You're welcome! 🚀 Feel free to ask if you have any other questions about his skills or projects.",
+      "farewell": "Goodbye! Thank you for visiting. Hope to see you soon! 👋",
+      "mood": "I'm doing great, thank you for asking! 🤖 I'm always ready to talk about Randy's background. How about you?",
       "introduce": "👋 I'm the AI assistant for Randy Andriantsiory's portfolio, a passionate Full Stack developer with over 5 years of experience. I'm here to answer your questions about his skills, projects and experiences. How can I help?",
       "projects": "💻 Randy has worked on several professional and personal projects:\n\n• **Fid-Connect** - Accounting and administrative management platform\n• **QCP** - Credit and amortization management application\n• **echo-webLine** - Medical platform for cardiovascular imaging\n• **Nurse** - Management application for healthcare professionals\n• **AFR-Fan** - Community app for football fans\n• **Personal portfolio** - Current site\n\nEvery project led from A to Z! 🚀",
       "skills": "⚡ **Main skills:**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Laravel, Symfony, Node.js, Python\n• DevOps: Docker, Docker Compose, CI/CD\n• Mobile: IONIC\n• Databases: MySQL, PostgreSQL, MariaDB\n\n**Over 5 years of experience!** 💪",
@@ -521,6 +525,32 @@
       "⚡ Technical skills",
       "📈 His career path",
       "📧 How to contact him ?"
-    ]
+    ],
+    "dynamic_suggestions": {
+      "projects": [
+        "🔍 Details on Fid-Connect",
+        "📊 What is QCP?",
+        "📱 Have you done mobile?",
+        "🏠 Back to start"
+      ],
+      "skills": [
+        "🛠️ What is your stack?",
+        "🐘 Experience with Laravel?",
+        "🐳 Do you master Docker?",
+        "🏠 Back to start"
+      ],
+      "career": [
+        "🏢 Work at MG Consulting",
+        "💼 Freelance Experience",
+        "🏆 Your WebCup award",
+        "🏠 Back to start"
+      ],
+      "contact": [
+        "📧 Send an email",
+        "💬 Message on WhatsApp",
+        "🔗 LinkedIn link",
+        "🏠 Back to start"
+      ]
+    }
   }
 }

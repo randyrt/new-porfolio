@@ -53,7 +53,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                }}</span>
+                                    }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
                             <div class="text-xs opacity-70 mt-2"
@@ -144,7 +144,7 @@ const REQUEST_COOLDOWN_MS = 3000
 const quotaExhausted = ref<boolean>(false)
 const onTopicAttempts = ref<number>(0)
 const apiCallCount = ref<number>(0)
-const MAX_API_CALLS = 30 // Ajuste selon ton quota gratuit Gemini
+const MAX_API_CALLS = 100 // Augmenté pour éviter les bascules locales trop fréquentes
 
 // ========== OFF-TOPIC RESPONSES (3 variations) ==========
 const offTopicResponses = {
@@ -162,7 +162,32 @@ const offTopicResponses = {
 
 let offTopicCounter = 0
 
-const suggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
+const defaultSuggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
+const suggestions = ref<string[]>([])
+
+// Mettre à jour les suggestions quand la langue change
+watch(locale, () => {
+    suggestions.value = defaultSuggestions.value
+})
+
+const updateDynamicSuggestions = (text: string) => {
+    const lowerText = text.toLowerCase()
+    const dyn = tm('chat.dynamic_suggestions') as any
+
+    if (!dyn) return
+
+    if (lowerText.includes('projet') || lowerText.includes('project') || lowerText.includes('fid-connect') || lowerText.includes('qcp') || lowerText.includes('réalisations')) {
+        suggestions.value = dyn.projects
+    } else if (lowerText.includes('compétence') || lowerText.includes('skill') || lowerText.includes('techno') || lowerText.includes('stack')) {
+        suggestions.value = dyn.skills
+    } else if (lowerText.includes('parcours') || lowerText.includes('career') || lowerText.includes('expérience') || lowerText.includes('mg consulting') || lowerText.includes('freelance')) {
+        suggestions.value = dyn.career
+    } else if (lowerText.includes('contact') || lowerText.includes('joindre') || lowerText.includes('email')) {
+        suggestions.value = dyn.contact
+    } else if (lowerText.includes('retour au début') || lowerText.includes('back to start') || lowerText.includes('merci') || lowerText.includes('revoir')) {
+        suggestions.value = defaultSuggestions.value
+    }
+}
 
 const GEMINI_API_KEYS = [
     import.meta.env.VITE_GEMINI_API_KEY_1,
@@ -200,9 +225,13 @@ const isOnTopic = (question: string): boolean => {
         'expérience pro', 'career path', 'technique', 'technical', 'code',
         'programming', 'programmation', 'api', 'docker', 'git', 'github',
         'ci/cd', 'mysql', 'postgresql', 'mongodb', 'symfony', 'express.js',
-        'node.js', 'typescript', 'tailwindcss', 'ionic', 'flutter', 'devops'
+        'node.js', 'typescript', 'tailwindcss', 'ionic', 'flutter', 'devops',
+        // Formalités et salutations
+        'bonjour', 'hello', 'salut', 'merci', 'thanks', 'thank you', 'au revoir',
+        'goodbye', 'bye', 'ça va', 'how are you', 'ça roule', 'hey', 'coucou',
+        'vas-tu', 'allez-vous', 'tu vas', 'vous allez', 'comment va', 'comment vas', 'cv', 'bien ou quoi'
     ]
-    
+
     const lowerQuestion = question.toLowerCase()
     return topicKeywords.some(keyword => lowerQuestion.includes(keyword))
 }
@@ -224,7 +253,7 @@ const initQuotaReset = (): void => {
         resetQuota()
         localStorage.setItem('last_quota_reset', now.toString())
     }
-    
+
     // Vérifier toutes les heures
     setInterval(() => {
         const lastResetCheck = localStorage.getItem('last_quota_reset')
@@ -314,7 +343,7 @@ LANGUAGES: French (native), English (fluent), Malagasy (native)
 =================================================================
 
 1. **OFF-TOPIC QUESTIONS** (weather, news, sports, politics, health advice, jokes, etc.):
-   → NEVER send the request to Google or any external API.
+   → NEVER send the request to Google or any external API for these subjects.
    → Reply with ONE of the following 3 messages (choose randomly or rotate):
 
    **Option A (Polite redirect):**
@@ -331,7 +360,13 @@ LANGUAGES: French (native), English (fluent), Malagasy (native)
    - Option B: "I'm specialized only in Randy's background. Ask me about his projects or technical skills 🚀"
    - Option C: "Off topic! I only talk about Randy's portfolio. Ask me about his skills or experience 👨‍💻"
 
-2. **ON-TOPIC QUESTIONS** (portfolio, skills, career, projects):
+2. **FORMALITIES & GREETINGS** (hello, thank you, goodbye, how are you):
+   → ALWAYS respond naturally and warmly.
+   → Do NOT use the off-topic messages for these.
+   → Keep it brief and then pivot back to Randy's portfolio if appropriate.
+   → Example: "Bonjour ! Je vais très bien, merci. Comment puis-je vous aider à découvrir le parcours de Randy aujourd'hui ?"
+
+3. **ON-TOPIC QUESTIONS** (portfolio, skills, career, projects):
    - Check if external API quota (Google/search) is exhausted.
    - If quota AVAILABLE → Answer normally using local portfolio data.
    - If quota EXHAUSTED → Allow up to 3 consecutive on-topic attempts before showing default message.
@@ -365,6 +400,10 @@ LANGUAGES: French (native), English (fluent), Malagasy (native)
 })
 
 const getLocalKnowledgeBase = (): Record<string, string> => ({
+    'bonjour|hello|salut|hey|hi|coucou': t('chat.local.greeting'),
+    'merci|thanks|thank you': t('chat.local.thanks'),
+    'au revoir|goodbye|bye': t('chat.local.farewell'),
+    'ça va|how are you|how is it going|comment ça va|comment vas|comment va|tu vas|allez-vous': t('chat.local.mood'),
     'présente-toi|presentation|qui es-tu|who are you|introduce yourself': t('chat.local.introduce'),
     'projets|projects|what projects|réalisations|what are your projects': t('chat.local.projects'),
     'compétences|skills|technologies|what can you do|technical skills': t('chat.local.skills'),
@@ -397,6 +436,7 @@ onMounted(() => {
         loading.value = false
     }, 1000)
 
+    suggestions.value = defaultSuggestions.value
     loadChatHistory()
     initQuotaReset() // Initialiser la réinitialisation du quota
 
@@ -440,6 +480,44 @@ const scrollToBottom = async (): Promise<void> => {
     }
 }
 
+// ========== TYPEWRITER EFFECT FUNCTION ==========
+const typeResponse = async (text: string): Promise<void> => {
+    isTyping.value = false
+    messages.value.push({
+        role: 'assistant',
+        content: '',
+        timestamp: new Date()
+    })
+
+    const lastIndex = messages.value.length - 1
+    const characters = text.split('')
+    let displayedText = ''
+
+    // Vitesse légèrement plus rapide pour une sensation plus fluide
+    const speed = text.length > 200 ? 5 : 15
+
+    for (let i = 0; i < characters.length; i++) {
+        displayedText += characters[i]
+        // Mise à jour directe dans l'array pour garantir la réactivité
+        messages.value[lastIndex].content = displayedText
+
+        // Auto-scroll moins fréquent pour économiser les ressources
+        if (i % 8 === 0 || i === characters.length - 1) {
+            await nextTick()
+            if (messagesContainer.value) {
+                messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight
+            }
+        }
+
+        await new Promise(resolve => setTimeout(resolve, speed))
+    }
+
+    // Mise à jour des suggestions après la réponse
+    updateDynamicSuggestions(text)
+
+    saveHistory()
+}
+
 // ========== MODIFIED SEND MESSAGE FUNCTION ==========
 const sendMessage = async (): Promise<void> => {
     if (!userInput.value.trim() || isTyping.value) return
@@ -469,52 +547,31 @@ const sendMessage = async (): Promise<void> => {
         const lang = locale.value === 'fr' ? 'fr' : 'en'
         const responseIndex = offTopicCounter % 3
         offTopicCounter++
-        
-        const assistantMessage: Message = {
-            role: 'assistant',
-            content: offTopicResponses[lang][responseIndex],
-            timestamp: new Date()
-        }
-        messages.value.push(assistantMessage)
-        saveHistory()
-        await scrollToBottom()
+
+        await typeResponse(offTopicResponses[lang][responseIndex])
         return
     }
 
     // ✅ Dans le sujet → vérifier le quota
     if (quotaExhausted.value) {
         onTopicAttempts.value++
-        
+
         // 3 tentatives autorisées
         if (onTopicAttempts.value <= 3) {
             const localResponse = findLocalResponse(currentQuestion)
-            const attemptMessage = localResponse 
-                ? localResponse 
+            const attemptMessage = localResponse
+                ? localResponse
                 : `⚠️ ${locale.value === 'fr' ? 'Je n\'ai pas assez d\'infos localement. Tentative ' + onTopicAttempts.value + '/3 avant limitation...' : 'I don\'t have enough local info. Attempt ' + onTopicAttempts.value + '/3 before limit...'}`
-            
-            const assistantMessage: Message = {
-                role: 'assistant',
-                content: attemptMessage,
-                timestamp: new Date()
-            }
-            messages.value.push(assistantMessage)
-            saveHistory()
-            await scrollToBottom()
+
+            await typeResponse(attemptMessage)
             return
         } else {
             // Après 3 tentatives → message de quota épuisé
             const quotaMessage = locale.value === 'fr'
                 ? "❌ Le nombre de requêtes vers les services externes est épuisé pour le moment. Je ne peux pas récupérer de nouvelles informations, mais je peux encore répondre avec les données locales de mon portfolio. Posez-moi une question précise sur mes compétences ou projets."
                 : "❌ The number of requests to external services is exhausted for now. I can't retrieve new information, but I can still answer with local portfolio data. Ask me a specific question about my skills or projects."
-            
-            const assistantMessage: Message = {
-                role: 'assistant',
-                content: quotaMessage,
-                timestamp: new Date()
-            }
-            messages.value.push(assistantMessage)
-            saveHistory()
-            await scrollToBottom()
+
+            await typeResponse(quotaMessage)
             return
         }
     }
@@ -547,13 +604,13 @@ const sendMessage = async (): Promise<void> => {
             try {
                 aiResponse = await callGeminiAPI(GEMINI_API_KEYS[i], i)
                 apiCallCount.value++
-                
+
                 // Vérifier si on approche du quota
                 if (apiCallCount.value >= MAX_API_CALLS) {
                     quotaExhausted.value = true
                     console.warn(`⚠️ Quota atteint (${apiCallCount.value}/${MAX_API_CALLS})`)
                 }
-                
+
                 if (i !== currentKeyIndex) {
                     currentKeyIndex = i
                     model = initModelWithKey(GEMINI_API_KEYS[i], i)
@@ -566,13 +623,7 @@ const sendMessage = async (): Promise<void> => {
         }
 
         if (aiResponse) {
-            const assistantMessage: Message = {
-                role: 'assistant',
-                content: aiResponse,
-                timestamp: new Date()
-            }
-            messages.value.push(assistantMessage)
-            saveHistory()
+            await typeResponse(aiResponse)
         } else {
             throw lastError || new Error('Toutes les clés API ont échoué')
         }
@@ -581,13 +632,8 @@ const sendMessage = async (): Promise<void> => {
         console.error('Erreur API:', error)
         const localResponse = findLocalResponse(currentQuestion)
         const errorMessage = localResponse ?? t('chat.error_local_fallback')
-        
-        messages.value.push({
-            role: 'assistant',
-            content: errorMessage,
-            timestamp: new Date()
-        })
-        saveHistory()
+
+        await typeResponse(errorMessage)
     } finally {
         isTyping.value = false
         await scrollToBottom()
@@ -605,6 +651,7 @@ const clearConversation = (): void => {
         content: t('chat.welcome_message'),
         timestamp: new Date()
     }]
+    suggestions.value = defaultSuggestions.value
     saveHistory()
     scrollToBottom()
 }

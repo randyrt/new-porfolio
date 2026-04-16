@@ -507,6 +507,10 @@
     "welcome_message": "👋 Bonjour ! Je suis l'assistant IA de ce portfolio. Je peux vous parler des projets, des compétences ou de l'expérience du développeur. Que souhaitez-vous savoir ?",
     "error_local_fallback": "⏳ Toutes les API ont atteint leurs limites gratuites.\n\nJ'utilise maintenant mes connaissances locales pour répondre. Je peux vous parler de :\n- Ma présentation\n- Mes projets\n- Mes compétences\n- Mon expérience\n- Comment me contacter\n\nQue souhaitez-vous savoir ?",
     "local": {
+      "greeting": "Bonjour ! 😊 C'est un plaisir de vous voir par ici. Comment puis-je vous aider à explorer le portfolio de Randy ?",
+      "thanks": "Avec plaisir ! 🚀 N'hésitez pas si vous avez d'autres questions sur ses compétences ou mes projets.",
+      "farewell": "Au revoir ! Merci de votre visite. À bientôt j'espère ! 👋",
+      "mood": "Je vais très bien, merci de demander ! 🤖 Je suis toujours prêt à discuter du parcours de Randy. Et vous ?",
       "introduce": "👋 Je suis l'assistant IA du portfolio de Randy Andriantsiory, un développeur Full Stack passionné avec plus de 5 ans d'expérience. Je suis ici pour répondre à vos questions sur ses compétences, projets et expériences. Comment puis-je vous aider ?",
       "projects": "💻 Randy a travaillé sur plusieurs projets professionnels et personnels :\n\n• **Fid-Connect** - Plateforme de gestion comptable et administrative\n• **QCP** - Application de gestion de crédits et amortissements\n• **echo-webLine** - Plateforme médicale pour imagerie cardiovasculaire\n• **Nurse** - Application de gestion pour professionnels de santé\n• **AFR-Fan** - Application communautaire pour fans de football\n• **Portfolio personnel** - Site actuel\n\nChaque projet a été mené de A à Z ! 🚀",
       "skills": "⚡ **Compétences principales :**\n\n• Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS\n• Backend: Laravel, Symfony, Node.js, Python\n• DevOps: Docker, Docker Compose, CI/CD\n• Mobile: IONIC\n• Base de données: MySQL, PostgreSQL, MariaDB\n\n**Plus de 5 ans d'expérience !** 💪",
@@ -521,7 +525,33 @@
       "⚡ Compétences techniques",
       "📈 Son parcours professionnel",
       "📧 Comment le contacter ?"
-    ]
+    ],
+    "dynamic_suggestions": {
+      "projects": [
+        "🔍 Détails sur Fid-Connect",
+        "📊 C'est quoi QCP ?",
+        "📱 As-tu fait du mobile ?",
+        "🏠 Retour au début"
+      ],
+      "skills": [
+        "🛠️ Quelle est ta stack ?",
+        "🐘 Expérience avec Laravel ?",
+        "🐳 Maîtrises-tu Docker ?",
+        "🏠 Retour au début"
+      ],
+      "career": [
+        "🏢 Travail chez MG Consulting",
+        "💼 Expérience en Freelance",
+        "🏆 Ton prix à la WebCup",
+        "🏠 Retour au début"
+      ],
+      "contact": [
+        "📧 Envoyer un email",
+        "💬 Message sur WhatsApp",
+        "🔗 Lien LinkedIn",
+        "🏠 Retour au début"
+      ]
+    }
   }
 }
 
