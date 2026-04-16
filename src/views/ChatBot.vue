@@ -108,13 +108,13 @@ import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 const { t } = useI18n()
 
 useHead({
-  title: computed(() => t('chat.page_title')),
-  meta: [
-    {
-      name: 'description',
-      content: computed(() => t('chat.page_description'))
-    }
-  ]
+    title: computed(() => t('chat.page_title')),
+    meta: [
+        {
+            name: 'description',
+            content: computed(() => t('chat.page_description'))
+        }
+    ]
 })
 
 interface Message {
@@ -123,7 +123,7 @@ interface Message {
     timestamp: Date
 }
 
-const { tm,  locale } = useI18n()
+const { tm, locale } = useI18n()
 
 watch(locale, () => {
     if (messages.value.length > 0 && messages.value[0].role === 'assistant') {
@@ -140,8 +140,29 @@ const messages = ref<Message[]>([])
 const lastRequestTime = ref<number>(0)
 const REQUEST_COOLDOWN_MS = 3000
 
-const suggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
+// ========== QUOTA MANAGEMENT VARIABLES ==========
+const quotaExhausted = ref<boolean>(false)
+const onTopicAttempts = ref<number>(0)
+const apiCallCount = ref<number>(0)
+const MAX_API_CALLS = 30 // Ajuste selon ton quota gratuit Gemini
 
+// ========== OFF-TOPIC RESPONSES (3 variations) ==========
+const offTopicResponses = {
+    fr: [
+        "Désolé, je ne peux répondre qu'aux questions sur le portfolio, les compétences ou le parcours de Randy. Sur ordre de Randy et c'est sa consigne ! 😊",
+        "Je suis spécialisé dans le parcours de Randy uniquement. Pose-moi des questions sur ses projets ou ses compétences techniques 🚀",
+        "Hors sujet ! Je ne parle que du portfolio de Randy. Parle-moi de ses compétences ou de son expérience 👨‍💻"
+    ],
+    en: [
+        "Sorry, I can only answer questions about Randy's portfolio, skills, or career. That's his instruction! 😊",
+        "I'm specialized only in Randy's background. Ask me about his projects or technical skills 🚀",
+        "Off topic! I only talk about Randy's portfolio. Ask me about his skills or experience 👨‍💻"
+    ]
+}
+
+let offTopicCounter = 0
+
+const suggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
 
 const GEMINI_API_KEYS = [
     import.meta.env.VITE_GEMINI_API_KEY_1,
@@ -161,16 +182,64 @@ const initModelWithKey = (apiKey: string, keyIndex: number): GenerativeModel | n
     }
 }
 
-
 if (GEMINI_API_KEYS.length > 0) {
     model = initModelWithKey(GEMINI_API_KEYS[0], 0)
 }
 
+// ========== FUNCTION TO CHECK IF QUESTION IS ON TOPIC ==========
+const isOnTopic = (question: string): boolean => {
+    const topicKeywords = [
+        'compétence', 'skill', 'projet', 'project', 'parcours', 'career',
+        'expérience', 'experience', 'portfolio', 'randy', 'développeur',
+        'developer', 'full stack', 'laravel', 'vue', 'react', 'node',
+        'présente', 'introduce', 'qui es-tu', 'who are you', 'technologie',
+        'tech', 'backend', 'frontend', 'base de donnée', 'database',
+        'formation', 'education', 'diplôme', 'degree', 'travail', 'work',
+        'job', 'mission', 'client', 'freelance', 'mg consulting', 'pixelz',
+        'compétences', 'skills', 'projets', 'projects', 'parcours professionnel',
+        'expérience pro', 'career path', 'technique', 'technical', 'code',
+        'programming', 'programmation', 'api', 'docker', 'git', 'github',
+        'ci/cd', 'mysql', 'postgresql', 'mongodb', 'symfony', 'express.js',
+        'node.js', 'typescript', 'tailwindcss', 'ionic', 'flutter', 'devops'
+    ]
+    
+    const lowerQuestion = question.toLowerCase()
+    return topicKeywords.some(keyword => lowerQuestion.includes(keyword))
+}
+
+// ========== RESET QUOTA FUNCTION ==========
+const resetQuota = (): void => {
+    quotaExhausted.value = false
+    onTopicAttempts.value = 0
+    apiCallCount.value = 0
+    offTopicCounter = 0
+    console.log('✅ Quota réinitialisé')
+}
+
+// ========== AUTO-RESET QUOTA EVERY 24 HOURS ==========
+const initQuotaReset = (): void => {
+    const lastReset = localStorage.getItem('last_quota_reset')
+    const now = Date.now()
+    if (!lastReset || now - parseInt(lastReset) > 24 * 60 * 60 * 1000) {
+        resetQuota()
+        localStorage.setItem('last_quota_reset', now.toString())
+    }
+    
+    // Vérifier toutes les heures
+    setInterval(() => {
+        const lastResetCheck = localStorage.getItem('last_quota_reset')
+        const nowCheck = Date.now()
+        if (!lastResetCheck || nowCheck - parseInt(lastResetCheck) > 24 * 60 * 60 * 1000) {
+            resetQuota()
+            localStorage.setItem('last_quota_reset', nowCheck.toString())
+        }
+    }, 60 * 60 * 1000)
+}
 
 const portfolioContext = computed<string>(() => {
     const langInstruction = locale.value === 'fr'
-        ? 'LANGUE DE RÉPONSE: Tu dois TOUJOURS répondre en français, quelle que soit la langue de la question.'
-        : 'RESPONSE LANGUAGE: You MUST ALWAYS reply in English, regardless of the language of the question.'
+        ? 'LANGUE DE RÉPONSE : Réponds de préférence en français. Toutefois, si l\'utilisateur s\'exprime en anglais, réponds-lui en anglais. Adapte-toi systématiquement à la langue utilisée par l\'utilisateur (Français ou Anglais).'
+        : 'RESPONSE LANGUAGE: Preferably respond in English. However, if the user speaks in French, respond in French. Always adapt to the language used by the user (French or English).'
 
     return `
 ${langInstruction}
@@ -240,14 +309,58 @@ EXPERIENCE: 5+ years of web development
 LOCATION: Antananarivo, Madagascar
 LANGUAGES: French (native), English (fluent), Malagasy (native)
 
-RESPONSE RULES:
-- Respond naturally, professionally but in a friendly tone
+=================================================================
+🚨 **CRITICAL RULES FOR QUOTA MANAGEMENT** 🚨
+=================================================================
+
+1. **OFF-TOPIC QUESTIONS** (weather, news, sports, politics, health advice, jokes, etc.):
+   → NEVER send the request to Google or any external API.
+   → Reply with ONE of the following 3 messages (choose randomly or rotate):
+
+   **Option A (Polite redirect):**
+   "Désolé, je ne peux répondre qu'aux questions sur le portfolio, les compétences ou le parcours de Randy. Sur ordre de Randy et c'est sa consigne ! 😊"
+   
+   **Option B (Friendly with emoji):**
+   "Je suis spécialisé dans le parcours de Randy uniquement. Pose-moi des questions sur ses projets ou ses compétences technique 🚀"
+   
+   **Option C (Short & direct):**
+   "Hors sujet ! Je ne parle que du portfolio de Randy. Parle-moi de ses compétences ou de son expérience 👨‍💻"
+
+   **English versions (if user speaks English):**
+   - Option A: "Sorry, I can only answer questions about Randy's portfolio, skills, or career. That's his instruction! 😊"
+   - Option B: "I'm specialized only in Randy's background. Ask me about his projects or technical skills 🚀"
+   - Option C: "Off topic! I only talk about Randy's portfolio. Ask me about his skills or experience 👨‍💻"
+
+2. **ON-TOPIC QUESTIONS** (portfolio, skills, career, projects):
+   - Check if external API quota (Google/search) is exhausted.
+   - If quota AVAILABLE → Answer normally using local portfolio data.
+   - If quota EXHAUSTED → Allow up to 3 consecutive on-topic attempts before showing default message.
+
+3. **QUOTA EXHAUSTED BEHAVIOR**:
+   - 1st on-topic question → Try to answer with local data, if incomplete say: "Je n'ai pas assez d'infos localement. Je réessaie..." 
+   - 2nd on-topic question → Same as above
+   - 3rd on-topic question → Same as above
+   - 4th on-topic question (after 3 attempts) → Show DEFAULT QUOTA MESSAGE.
+
+4. **DEFAULT QUOTA MESSAGE** (exact wording):
+   "Le nombre de requêtes vers les services externes est épuisé pour le moment. Je ne peux pas récupérer de nouvelles informations, mais je peux encore répondre avec les données locales de mon portfolio. Posez-moi une question précise sur mes compétences ou projets."
+
+5. **LOCAL-ONLY MODE**:
+   You already have ALL portfolio data above. Answer from this data whenever possible without external calls.
+
+6. **ABSOLUTE PROHIBITIONS**:
+   ❌ Never call external APIs for off-topic questions.
+   ❌ Never waste quota on unrelated topics.
+   ❌ Never show quota message before 3 on-topic attempts.
+
+=================================================================
+**RESPONSE STYLE**:
+- Respond naturally, professionally but friendly tone
 - Keep it concise (max 150 words per response)
 - Use emojis to make responses lively 🚀
 - Mention specific projects when asked about achievements
-- When asked about career, provide full experience details (MG Consulting, Freelance, PixelZ, etc.)
-- If asked an off-topic question, politely redirect to the portfolio
-- Highlight the ability to lead a project from A to Z
+- When asked about career, provide full experience details
+- Highlight ability to lead a project from A to Z
 `
 })
 
@@ -278,16 +391,17 @@ const findLocalResponse = (userQuestion: string): string | null => {
     }
     return null
 }
+
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
     }, 1000)
-    
+
     loadChatHistory()
-    
+    initQuotaReset() // Initialiser la réinitialisation du quota
+
     window.addEventListener('beforeunload', handleBeforeUnload)
 })
-
 
 const handleBeforeUnload = (): void => {
     localStorage.removeItem('chat_history')
@@ -326,12 +440,12 @@ const scrollToBottom = async (): Promise<void> => {
     }
 }
 
+// ========== MODIFIED SEND MESSAGE FUNCTION ==========
 const sendMessage = async (): Promise<void> => {
     if (!userInput.value.trim() || isTyping.value) return
 
     const now = Date.now()
     if (now - lastRequestTime.value < REQUEST_COOLDOWN_MS) {
-        const waitTime = Math.ceil((REQUEST_COOLDOWN_MS - (now - lastRequestTime.value)) / 1000)
         return
     }
 
@@ -343,9 +457,69 @@ const sendMessage = async (): Promise<void> => {
 
     messages.value.push(userMessage)
     saveHistory()
+    const currentQuestion = userInput.value
     userInput.value = ''
     await scrollToBottom()
 
+    // 🔍 Vérifier si la question est dans le sujet
+    const onTopic = isOnTopic(currentQuestion)
+
+    // 🚫 Hors-sujet → réponse directe sans API (3 variations)
+    if (!onTopic) {
+        const lang = locale.value === 'fr' ? 'fr' : 'en'
+        const responseIndex = offTopicCounter % 3
+        offTopicCounter++
+        
+        const assistantMessage: Message = {
+            role: 'assistant',
+            content: offTopicResponses[lang][responseIndex],
+            timestamp: new Date()
+        }
+        messages.value.push(assistantMessage)
+        saveHistory()
+        await scrollToBottom()
+        return
+    }
+
+    // ✅ Dans le sujet → vérifier le quota
+    if (quotaExhausted.value) {
+        onTopicAttempts.value++
+        
+        // 3 tentatives autorisées
+        if (onTopicAttempts.value <= 3) {
+            const localResponse = findLocalResponse(currentQuestion)
+            const attemptMessage = localResponse 
+                ? localResponse 
+                : `⚠️ ${locale.value === 'fr' ? 'Je n\'ai pas assez d\'infos localement. Tentative ' + onTopicAttempts.value + '/3 avant limitation...' : 'I don\'t have enough local info. Attempt ' + onTopicAttempts.value + '/3 before limit...'}`
+            
+            const assistantMessage: Message = {
+                role: 'assistant',
+                content: attemptMessage,
+                timestamp: new Date()
+            }
+            messages.value.push(assistantMessage)
+            saveHistory()
+            await scrollToBottom()
+            return
+        } else {
+            // Après 3 tentatives → message de quota épuisé
+            const quotaMessage = locale.value === 'fr'
+                ? "❌ Le nombre de requêtes vers les services externes est épuisé pour le moment. Je ne peux pas récupérer de nouvelles informations, mais je peux encore répondre avec les données locales de mon portfolio. Posez-moi une question précise sur mes compétences ou projets."
+                : "❌ The number of requests to external services is exhausted for now. I can't retrieve new information, but I can still answer with local portfolio data. Ask me a specific question about my skills or projects."
+            
+            const assistantMessage: Message = {
+                role: 'assistant',
+                content: quotaMessage,
+                timestamp: new Date()
+            }
+            messages.value.push(assistantMessage)
+            saveHistory()
+            await scrollToBottom()
+            return
+        }
+    }
+
+    // ✅ Quota disponible → appeler l'API
     isTyping.value = true
     lastRequestTime.value = Date.now()
 
@@ -358,7 +532,7 @@ const sendMessage = async (): Promise<void> => {
             .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
             .join('\n')
 
-        const prompt = `${portfolioContext.value}\n\nConversation history:\n${conversationHistory}\n\nUser: ${userMessage.content}\nAssistant:`
+        const prompt = `${portfolioContext.value}\n\nConversation history:\n${conversationHistory}\n\nUser: ${currentQuestion}\nAssistant:`
 
         const result = await tempModel.generateContent(prompt)
         const response = await result.response
@@ -372,6 +546,14 @@ const sendMessage = async (): Promise<void> => {
         for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
             try {
                 aiResponse = await callGeminiAPI(GEMINI_API_KEYS[i], i)
+                apiCallCount.value++
+                
+                // Vérifier si on approche du quota
+                if (apiCallCount.value >= MAX_API_CALLS) {
+                    quotaExhausted.value = true
+                    console.warn(`⚠️ Quota atteint (${apiCallCount.value}/${MAX_API_CALLS})`)
+                }
+                
                 if (i !== currentKeyIndex) {
                     currentKeyIndex = i
                     model = initModelWithKey(GEMINI_API_KEYS[i], i)
@@ -379,6 +561,7 @@ const sendMessage = async (): Promise<void> => {
                 break
             } catch (err) {
                 lastError = err
+                console.warn(`❌ API key ${i + 1} a échoué:`, err)
             }
         }
 
@@ -395,10 +578,10 @@ const sendMessage = async (): Promise<void> => {
         }
 
     } catch (error: any) {
-
-        const localResponse = findLocalResponse(userMessage.content)
+        console.error('Erreur API:', error)
+        const localResponse = findLocalResponse(currentQuestion)
         const errorMessage = localResponse ?? t('chat.error_local_fallback')
-
+        
         messages.value.push({
             role: 'assistant',
             content: errorMessage,
