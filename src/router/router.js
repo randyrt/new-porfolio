@@ -12,7 +12,7 @@ import About from '../views/About.vue';
 import GitHubStatsView from '../views/GitHubStatsView.vue';
 import ChatBot from '../views/ChatBot.vue';
 const routes = [
-    { path: '/', name: 'home', component: Home },
+    { path: '/home', name: 'home', component: Home },
     { path: '/contact', name: 'contact', component: Contact },
     { path: '/webcup24', name: 'webcup24', component: WebCup24 },
     { path: '/quality', name: 'quality', component: Quality },
@@ -23,7 +23,7 @@ const routes = [
     { path: '/services', name: 'services', component: Services },
     { path: '/about', name: 'about', component: About },
     { path: '/github-stats', name: 'github-stats', component: GitHubStatsView },
-    { path: '/chatbot', name: 'chatbot', component: ChatBot }
+    { path: '/', name: 'chatbot', component: ChatBot }
 ];
 const router = createRouter({
     history: createWebHistory(),

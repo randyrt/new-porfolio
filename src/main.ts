@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router/router.js'
+import router from './router/router'
 import './assets/tailwind.css'
 import { initTheme } from './services/theme.js'
 import Toast from "vue-toastification/dist/index.mjs"

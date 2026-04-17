@@ -10,8 +10,8 @@ import Navbar from './components/NavBar.vue';
 const { t } = useI18n();
 
 const navRoutes = computed(() => [
-  { path: '/chatbot', name: t('nav.chatbot'), icon: 'robot' },
-  { path: '/', name: t('nav.home'), icon: 'home' },
+  { path: '/', name: t('nav.chatbot'), icon: 'robot' },
+  { path: '/home', name: t('nav.home'), icon: 'home' },
   { path: '/quality', name: t('nav.quality'), icon: 'star' },
   { path: '/skills', name: t('nav.skills'), icon: 'code' },
   { path: '/technology', name: t('nav.technology'), icon: 'cogs' },
