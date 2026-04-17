@@ -70,7 +70,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
