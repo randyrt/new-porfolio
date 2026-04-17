@@ -2,19 +2,19 @@
     <Loading v-if="loading" :message="$t('projects.loading')" />
     <div v-else>
         <AnimatedTitle :text="$t('projects.quote')" aos="fade-down" />
-        <ProjectGallery :images="images1" title="FID-CONNECT"
+        <ProjectGallery id="fid-connect" :images="images1" title="FID-CONNECT"
             :description="$t('projects.fid_connect')"
             @open-image="openImage" />
-        <ProjectGallery :images="images2" title="QCP"
+        <ProjectGallery id="qcp" :images="images2" title="QCP"
             :description="$t('projects.qcp')"
             @open-image="openImage" />
-        <ProjectGallery :images="images4" title="ECHO WEBLINE"
+        <ProjectGallery id="echo-webline" :images="images4" title="ECHO WEBLINE"
             :description="$t('projects.echo_webline')"
             @open-image="openImage" />
-        <ProjectGallery :images="images5" title="AFR FAN"
+        <ProjectGallery id="afr-fan" :images="images5" title="AFR FAN"
             :description="$t('projects.afr_fan')"
             @open-image="openImage" />
-        <ProjectGallery :images="images3" title="NURSES"
+        <ProjectGallery id="nurses" :images="images3" title="NURSES"
             :description="$t('projects.nurses')"
             @open-image="openImage" />
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="project-container mb-16 card p-4">
+    <div :id="id" class="project-container mb-16 card p-4">
         <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 gap-4 md:gap-0">
             <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]"
                 class="mySwiper w-full md:w-2/3 rounded-lg border-1 border-violet-300" :loop="true"
@@ -797,6 +797,7 @@ import 'swiper/css/pagination';
 import { useToast } from 'vue-toastification';
 
 const props = defineProps<{
+    id?: string,
     images: string[],
     title: string,
     description: string

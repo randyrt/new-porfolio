@@ -499,12 +499,17 @@
     "card_big_title": "AI Assistant",
     "card_small_title": "Ask me anything about my skills and experiences",
     "subtitle": "Ask questions about my skills and experiences",
+    "disclaimer": "This AI assistant is currently in training and is not yet as optimized as mainstream models. It may sometimes provide inaccurate or unreliable responses. Thank you for your patience during its learning process! 🚀",
     "placeholder": "Ask your question...",
     "send": "Send",
+    "actions": {
+      "view": "View",
+      "details": "Details"
+    },
     "start_conversation": "Start a conversation with the AI assistant! 💬",
     "quote": "Artificial intelligence doesn't replace human intelligence, it complements it. This assistant is here to answer your questions about my journey, skills and projects.",
     "clear_conversation": "Clear conversation",
-    "welcome_message": "👋 Hello ! I'm the AI assistant for this portfolio. I can tell you about the developer's projects, skills and experience. What would you like to know ?",
+    "welcome_message": "👋 Hello ! I'm Randy's AI assistant. I can tell you about his career path, projects, technical skills or even share his CV and WhatsApp contact details. What would you like to know ?",
     "error_local_fallback": "⏳ All APIs have reached their free limits.\n\nI'm now using my local knowledge to answer. I can tell you about:\n- My introduction\n- My projects\n- My skills\n- My experience\n- How to contact me\n\nWhat would you like to know?",
     "local": {
       "greeting": "Hello! 😊 It's a pleasure to have you here. How can I help you explore Randy's portfolio?",
@@ -517,7 +522,20 @@
       "career": "📈 **Detailed career path:**\n\n🏢 **Senior Developer** - MG CONSULTING ACT & IT (April 2024 – Present)\n• Laravel 11 & Vue.js 3 architecture\n• Backend optimisation → +35% performance\n• CI/CD with GitHub Actions, Docker\n• Mentoring 3 junior developers\n\n💼 **Fullstack Freelance Developer** - Independent (Jan 2023 – Mar 2024)\n• Custom Laravel 10 & Vue.js 3 apps\n• IONIC 6 mobile applications\n\n💻 **Back-end Web Developer** - PixelZ (Feb 2022 – Nov 2022)\n• Laravel 9, REST APIs\n\n🏆 **2nd place WebCup Madagascar 2024**\n\n**Over 5 cumulated years of experience!** 🚀",
       "contact": "📧 You can contact Randy via:\n\n• **WhatsApp** - Contact section\n• **Email** - Contact form\n• **GitHub** and **LinkedIn** - Links on the portfolio",
       "location": "🌍 Randy is based in **Antananarivo, Madagascar**.",
-      "languages": "🗣️ Randy speaks:\n\n• **French** (native)\n• **English** (fluent)\n• **Malagasy** (native)"
+      "languages": "🗣️ Randy speaks:\n\n• **French** (native)\n• **English** (fluent)\n• **Malagasy** (native)",
+      "project_fid": "🎯 **Fid-Connect**: An all-in-one accounting and administrative platform (Laravel/Vue.js). It automates Belgian tax processes, amortization, and invoicing. One of his most complex projects!",
+      "project_qcp": "📊 **QCP**: A credit and amortization management app. Intelligent and intuitive, this project optimizes financial planning through complex automated calculations.",
+      "project_echo": "🏥 **echo-webLine**: A medical platform specialized in cardiovascular imaging (Nuxt.js/Laravel). Developed for a Paris-based client for scientific congresses.",
+      "project_afrfan": "⚽ **AFR-Fan**: A social network for the African community (Nuxt/Laravel). Includes an online payment system (VISA/PayPal) and interest groups.",
+      "project_nurse": "👩‍⚕️ **Nurse**: A management solution for healthcare professionals and event booking (Symfony/Vue.js) for a Belgian establishment.",
+      "tech_laravel": "🐘 **Laravel**: Randy is a Laravel expert (v8 to v11). He masters Eloquent ORM, REST APIs, security (Sanctum), and performance optimization (Octane/Redis).",
+      "tech_vue": "💚 **Vue.js / Nuxt.js**: His preferred frontend framework. He uses Composition API, TypeScript, Pinia, and Nuxt for SSR/SEO.",
+      "tech_docker": "🐳 **Docker**: Daily use of Docker and Docker Compose to containerize applications and ensure stable deployments (CI/CD).",
+      "tech_mobile": "📱 **Mobile**: Development of hybrid applications with **IONIC** and currently learning **Flutter** for high-performance cross-platform solutions.",
+      "award_webcup": "🏆 **WebCup 2024**: Randy won **2nd place** in this prestigious web development competition in Madagascar. Proof of his speed and code quality!",
+      "services": "🛠️ **My services & expertise:**\n\n• **DevOps & Infra**: Git, CI/CD, Linux deployment, Docker.\n• **Custom Development**: Web & Mobile (Laravel, Vue, Nuxt, IONIC).\n• **Consulting & Strategy**: Functional documentation, client pedagogy, and digital strategy.\n\nI can lead a project from A to Z! 🚀",
+      "testimonials": "💬 **What my clients say:**\n\n• **Olivier (Manager, FID-CONNECT)**: Praises my dynamism and professionalism.\n• **Pascal (Director, MCP)**: Highlights my quick adaptability and constant drive to evolve.\n\nTrust is the foundation of my relationships! 🤝",
+      "qualities": "🌟 **My strengths:**\n\n• **Continuous Learning**: Quick adaptation to new tech.\n• **Minimalism**: Clean and efficient interfaces.\n• **Team Player**: Collaboration and mutual support.\n• **Problem Solver**: Strategic and durable approach.\n\nA results-oriented mindset! 💪"
     },
     "suggestions": [
       "🤖 Introduce yourself",

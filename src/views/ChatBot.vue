@@ -2,14 +2,14 @@
     <Loading v-if="loading" :message="$t('chat.loading')" />
     <div v-else>
         <AnimatedTitle :text="$t('chat.title')" aos="fade-down" />
-        <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
+        <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-2" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
                 <span class="text-violet-800 text-lg">«</span>
                 {{ $t('chat.quote') }}
                 <span class="text-violet-800 text-lg">»</span>
             </p>
         </div>
-        <div class="chatbot-card p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg mt-16">
+        <div class="chatbot-card p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
 
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center gap-3">
@@ -28,10 +28,27 @@
                     </div>
                 </div>
 
-                <button @click="clearConversation" class="btn-violet btn-effect-5">
-                    <font-awesome-icon icon="fa-solid fa-trash-alt" class="" />
-                    {{ $t('chat.clear_conversation') }}
-                </button>
+                <div class="hidden md:flex flex-col items-end gap-1">
+                    <button @click="clearConversation" class="btn-violet btn-effect-5">
+                        <font-awesome-icon icon="fa-solid fa-trash-alt" class="" />
+                        {{ $t('chat.clear_conversation') }}
+                    </button>
+                </div>
+            </div>
+
+            <div
+                class="mb-6 p-4 bg-red-600 dark:bg-red-700 border border-red-500 rounded-xl flex items-start gap-4 shadow-lg animate-pulse-slow">
+                <div class="p-2 bg-white/20 rounded-lg text-white">
+                    <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="text-xl" />
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold !text-white mb-1">
+                        {{ $t('chat.card_big_title') }} (Experimental)
+                    </h4>
+                    <p class="text-xs !text-white leading-relaxed opacity-95">
+                        {{ $t('chat.disclaimer') }}
+                    </p>
+                </div>
             </div>
             <div class="chat-main">
                 <div class="messages-container h-96 overflow-y-auto p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
@@ -53,9 +70,21 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
+
+                            <!-- 🔘 BOUTONS D'ACTION RAPIDES -->
+                            <div v-if="message.actions && message.actions.length > 0"
+                                class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
+                                <button v-for="(action, aIndex) in message.actions" :key="aIndex"
+                                    @click="handleAction(action)"
+                                    class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-violet-50 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 rounded-lg hover:bg-violet-100 dark:hover:bg-violet-900/50 border border-violet-100 dark:border-violet-800 transition-all duration-200">
+                                    <font-awesome-icon :icon="action.icon" />
+                                    {{ action.label }}
+                                </button>
+                            </div>
+
                             <div class="text-xs opacity-70 mt-2"
                                 :class="message.role === 'user' ? 'text-white/70' : 'text-gray-400'">
                             </div>
@@ -104,6 +133,7 @@ import { useHead } from '@vueuse/head'
 import { ref, nextTick, onMounted, computed, watch, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
+import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
 
@@ -117,17 +147,30 @@ useHead({
     ]
 })
 
+interface Action {
+    label: string
+    type: 'route' | 'link' | 'download'
+    target: string
+    icon: string
+}
+
 interface Message {
     role: 'user' | 'assistant'
     content: string
     timestamp: Date
+    actions?: Action[]
 }
 
 const { tm, locale } = useI18n()
 
 watch(locale, () => {
     if (messages.value.length > 0 && messages.value[0].role === 'assistant') {
-        messages.value[0].content = t('chat.welcome_message')
+        const welcomeContent = t('chat.welcome_message')
+        messages.value[0] = {
+            ...messages.value[0],
+            content: welcomeContent,
+            actions: detectActions(welcomeContent)
+        }
         saveHistory()
     }
 })
@@ -140,13 +183,17 @@ const messages = ref<Message[]>([])
 const lastRequestTime = ref<number>(0)
 const REQUEST_COOLDOWN_MS = 3000
 
-// ========== QUOTA MANAGEMENT VARIABLES ==========
+const router = useRouter()
+
+
 const quotaExhausted = ref<boolean>(false)
 const onTopicAttempts = ref<number>(0)
+const isComponentMounted = ref<boolean>(false)
+let quotaIntervalId: any = null
+let navTimeoutId: any = null
 const apiCallCount = ref<number>(0)
-const MAX_API_CALLS = 100 // Augmenté pour éviter les bascules locales trop fréquentes
+const MAX_API_CALLS = 100
 
-// ========== OFF-TOPIC RESPONSES (3 variations) ==========
 const offTopicResponses = {
     fr: [
         "Désolé, je ne peux répondre qu'aux questions sur le portfolio, les compétences ou le parcours de Randy. Sur ordre de Randy et c'est sa consigne ! 😊",
@@ -192,7 +239,7 @@ const updateDynamicSuggestions = (text: string) => {
 const GEMINI_API_KEYS = [
     import.meta.env.VITE_GEMINI_API_KEY_1,
     import.meta.env.VITE_GEMINI_API_KEY_2,
-    import.meta.env.VITE_GEMINI_API_KEY_3
+    import.meta.env.VITE_GEMINI_API_KEY_3,
 ].filter(key => key && key.startsWith('AIza')) as string[]
 
 let currentKeyIndex = 0
@@ -211,7 +258,6 @@ if (GEMINI_API_KEYS.length > 0) {
     model = initModelWithKey(GEMINI_API_KEYS[0], 0)
 }
 
-// ========== FUNCTION TO CHECK IF QUESTION IS ON TOPIC ==========
 const isOnTopic = (question: string): boolean => {
     const topicKeywords = [
         'compétence', 'skill', 'projet', 'project', 'parcours', 'career',
@@ -226,17 +272,78 @@ const isOnTopic = (question: string): boolean => {
         'programming', 'programmation', 'api', 'docker', 'git', 'github',
         'ci/cd', 'mysql', 'postgresql', 'mongodb', 'symfony', 'express.js',
         'node.js', 'typescript', 'tailwindcss', 'ionic', 'flutter', 'devops',
-        // Formalités et salutations
-        'bonjour', 'hello', 'salut', 'merci', 'thanks', 'thank you', 'au revoir',
-        'goodbye', 'bye', 'ça va', 'how are you', 'ça roule', 'hey', 'coucou',
-        'vas-tu', 'allez-vous', 'tu vas', 'vous allez', 'comment va', 'comment vas', 'cv', 'bien ou quoi'
+        'fid-connect', 'qcp', 'echo-webline', 'afr-fan', 'nurses', 'webcup',
+        'stack', 'mobile', 'whatsapp', 'linkedin', 'email', 'début', 'recommencer',
+        'histoire', 'background', 'techno', 'quitter', 'menu', 'cv',
+
+        // 🎯 Emplacement / Location
+        'localisation', 'location', 'emplacement', 'ville', 'pays', 'situé', 'localisé',
+        'city', 'country', 'madagascar', 'antananarivo', 'lieu',
+
+        // 🎯 Services, Témoignages & Qualités
+        'service', 'offres', 'témoignage', 'avis', 'qualité', 'force', 'atout', 'client',
+        'testimonial', 'recommandation', 'recommandé', 'expert', 'conseil', 'accompagnement',
+
+        // 🎯 Recrutement / Hiring
+        'recruteur', 'recruter', 'hiring', 'honnêtement', 'honnête', 'honestly', 'honest',
+        'interview', 'hire', 'engager', 'embaucher', 'recommander', 'recommend', 'recruiter',
+
+        // 🎯 Réactions & Politesse (Autorisés pour éviter le blocage)
+        'merci', 'thanks', 'thank you', 'thx', 'bravo', 'félicitations', 'congrats', 'félicitation',
+        'super', 'cool', 'génial', 'top', 'wow', 'magnifique', 'parfait', 'perfect', 'nice', 'awesome',
+        'incroyable', 'bien', 'good', 'excellent', 'intéressant', 'interesting', 'extraordinaire',
+        'ok', 'd\'accord', 'entendu', 'compris', 'd\'acc', 'okey', 'vrai', 'true', 'vraiment', 'really',
+        'oui', 'non', 'yes', 'no', 'ouais', 'yah', 'bien sûr', 'of course', 'sure', 'certainement',
+        'de rien', 'prière', 'svp', 'please', 's\'il vous plaît', 's\'il te plaît', 'tkt', 'pas de souci',
+        'pas de soucis', 'bonne continuation', 'bon courage', 'bonne chance',
+        'bonjour', 'hello', 'salut', 'hey', 'coucou', 'hi', 'bonsoir', 'salutations',
+        'ça va', 'how are you', 'how is it going', 'ça roule', 'vas-tu', 'allez-vous', 'tu vas', 'vous allez',
+        'comment va', 'comment vas', 'cv', 'bien ou quoi', 'ah', 'oh', 'hum', 'intéressant', 'tell me more',
+        'dis-moi en plus', 'continue', 'reprends', 'vas-y', 'go on', 'je vois', 'i see',
+        
+        // 🎯 Langues & Discussion
+        'anglais', 'english', 'français', 'french', 'langue', 'language', 'parler', 'speak', 
+        'traduis', 'translate', 'discuter', 'discuss', 'conversation', 'chat', 'parle', 'parlez'
     ]
 
-    const lowerQuestion = question.toLowerCase()
-    return topicKeywords.some(keyword => lowerQuestion.includes(keyword))
+    const lowerQuestion = question.toLowerCase().trim()
+
+    return topicKeywords.some(keyword => {
+        try {
+            const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            const regex = new RegExp(`\\b${escaped}\\b`, 'i')
+            return regex.test(lowerQuestion)
+        } catch (e) {
+            return lowerQuestion.includes(keyword)
+        }
+    })
 }
 
-// ========== RESET QUOTA FUNCTION ==========
+const isPersonalInfoRequest = (question: string): boolean => {
+    const personalKeywords = [
+        'âge', 'age', 'téléphone', 'phone', 'numéro', 'number', 'naissance', 'birth',
+        'adresse', 'address', 'habite', 'live', 'salaire', 'salary', 'privé', 'private',
+        'situation', 'marié', 'married', 'enfant', 'children'
+    ]
+    const lowerQuestion = question.toLowerCase().trim()
+
+    return personalKeywords.some(keyword => {
+        try {
+            const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+            const regex = new RegExp(`\\b${escaped}\\b`, 'i')
+            return regex.test(lowerQuestion)
+        } catch (e) {
+            return lowerQuestion.includes(keyword)
+        }
+    })
+}
+
+const personalInfoResponses = {
+    fr: "Randy ne m'a pas donné d'informations à ce sujet 😊",
+    en: "Randy didn't give me any information about that 😊"
+}
+
+
 const resetQuota = (): void => {
     quotaExhausted.value = false
     onTopicAttempts.value = 0
@@ -245,7 +352,7 @@ const resetQuota = (): void => {
     console.log('✅ Quota réinitialisé')
 }
 
-// ========== AUTO-RESET QUOTA EVERY 24 HOURS ==========
+
 const initQuotaReset = (): void => {
     const lastReset = localStorage.getItem('last_quota_reset')
     const now = Date.now()
@@ -254,8 +361,9 @@ const initQuotaReset = (): void => {
         localStorage.setItem('last_quota_reset', now.toString())
     }
 
-    // Vérifier toutes les heures
-    setInterval(() => {
+
+    if (quotaIntervalId) clearInterval(quotaIntervalId)
+    quotaIntervalId = setInterval(() => {
         const lastResetCheck = localStorage.getItem('last_quota_reset')
         const nowCheck = Date.now()
         if (!lastResetCheck || nowCheck - parseInt(lastResetCheck) > 24 * 60 * 60 * 1000) {
@@ -334,9 +442,27 @@ KEY ACHIEVEMENTS:
 👥 +10% user engagement
 ⏱️ -25% delivery time
 
-EXPERIENCE: 5+ years of web development
 LOCATION: Antananarivo, Madagascar
 LANGUAGES: French (native), English (fluent), Malagasy (native)
+
+SERVICES & OFFERING:
+- **DevOps & Infrastructure**: Git management, team workflows, server deployment (Linux, SSH), CI/CD implementation.
+- **Custom Development**: Tailored web/mobile solutions, long-term collaboration, maintenance and code reviews.
+- **Strategic Consulting**: Functional documentation, technical popularization for clients, business strategy alignment.
+
+CORE QUALITIES (THE "RANDY" MINDSET):
+- **Continuous Learning**: Quick adaptation to new tech (Flutter, Golang, C++ currently).
+- **Problem Solver**: Strategic and durable solutions to complex challenges.
+- **Responsive & Design-focused**: Expertise in UX/UI, minimalist and clear designs.
+- **Team Player**: Strong belief in collaboration and supportive work environments.
+- **Perseverance**: Highly motivated to go beyond talent through hard work.
+
+TESTIMONIALS:
+- **Olivier Le Grand (Manager, FID-CONNECT)**: "Randy is dynamic, meticulous, and professional. A developer I love collaborating with."
+- **Pascal (Director, MCP Belgium)**: "Impressive adaptability and a constant drive to evolve. A profile that will go far."
+
+WEBCUP 2024:
+- 2nd Place in Madagascar (Prestige competition). Awarded by Sylvain (Director of FullDigits). Demonstrated extreme speed and code quality under 24h pressure.
 
 =================================================================
 🚨 **CRITICAL RULES FOR QUOTA MANAGEMENT** 🚨
@@ -360,11 +486,11 @@ LANGUAGES: French (native), English (fluent), Malagasy (native)
    - Option B: "I'm specialized only in Randy's background. Ask me about his projects or technical skills 🚀"
    - Option C: "Off topic! I only talk about Randy's portfolio. Ask me about his skills or experience 👨‍💻"
 
-2. **FORMALITIES & GREETINGS** (hello, thank you, goodbye, how are you):
-   → ALWAYS respond naturally and warmly.
-   → Do NOT use the off-topic messages for these.
-   → Keep it brief and then pivot back to Randy's portfolio if appropriate.
-   → Example: "Bonjour ! Je vais très bien, merci. Comment puis-je vous aider à découvrir le parcours de Randy aujourd'hui ?"
+2. **FORMALITIES, PRAISE & REACTIONS** (hello, thank you, bravo, super, cool, ok, etc.):
+   → ALWAYS respond naturally, warmly and positively.
+   → NEVER use the off-topic messages for these.
+   → If the user praises you or Randy (e.g., "Bravo !", "Cool !"), thank them politely and ask if they have more questions.
+   → Example: "Merci beaucoup ! 😊 C'est très gentil. Avez-vous d'autres questions sur le parcours de Randy ?"
 
 3. **ON-TOPIC QUESTIONS** (portfolio, skills, career, projects):
    - Check if external API quota (Google/search) is exhausted.
@@ -400,6 +526,19 @@ LANGUAGES: French (native), English (fluent), Malagasy (native)
 })
 
 const getLocalKnowledgeBase = (): Record<string, string> => ({
+    // PRIORITÉ 1 : SUJETS TRÈS SPÉCIFIQUES
+    'fid-connect|fidconnect|fid connect': t('chat.local.project_fid'),
+    'qcp|crédit|credit|amortissement': t('chat.local.project_qcp'),
+    'echo-webline|echo webline|médical|cardio': t('chat.local.project_echo'),
+    'afr-fan|afrfan|réseau social|social network': t('chat.local.project_afrfan'),
+    'nurse|souper of nurses|restaurant|réservation': t('chat.local.project_nurse'),
+    'webcup|compétition|award|prix|2ème': t('chat.local.award_webcup'),
+    'laravel|php|backend|api|sanctum': t('chat.local.tech_laravel'),
+    'vue|vuejs|nuxt|frontend|typescript|ts': t('chat.local.tech_vue'),
+    'docker|container|conteneur|devops': t('chat.local.tech_docker'),
+    'mobile|ionic|flutter|hybride': t('chat.local.tech_mobile'),
+
+    // PRIORITÉ 2 : CATÉGORIES GÉNÉRALES
     'bonjour|hello|salut|hey|hi|coucou': t('chat.local.greeting'),
     'merci|thanks|thank you': t('chat.local.thanks'),
     'au revoir|goodbye|bye': t('chat.local.farewell'),
@@ -409,7 +548,10 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
     'compétences|skills|technologies|what can you do|technical skills': t('chat.local.skills'),
     'parcours professionnel|mon parcours|expérience pro|career|parcours|career path|my career': t('chat.local.career'),
     'contact|comment te contacter|how to contact|contacter': t('chat.local.contact'),
-    'localisation|location|madagascar': t('chat.local.location'),
+    'localisation|location|madagascar|emplacement|ville|pays|situé|localisé|city|country|lieu|habite|où vivez|où est': t('chat.local.location'),
+    'services|offre|expertise|que proposes-tu|tarif|prix|devis': t('chat.local.services'),
+    'témoignages|avis|recommandation|feedback|clients|testimonials': t('chat.local.testimonials'),
+    'qualités|forces|atouts|points forts|pourquoi toi|why you|qualities': t('chat.local.qualities'),
     'langues|languages|speaks': t('chat.local.languages')
 })
 
@@ -417,14 +559,23 @@ const findLocalResponse = (userQuestion: string): string | null => {
     const question = userQuestion.toLowerCase().trim()
     const kb = getLocalKnowledgeBase()
 
-    const careerKeywords = ['parcours', 'professionnel', 'expérience', 'carrière', 'mon parcours', 'expérience pro', 'career', 'career path', 'my career']
-    if (careerKeywords.some(keyword => question.includes(keyword))) {
-        return kb['parcours professionnel|mon parcours|expérience pro|career|parcours|career path|my career']
-    }
-
+    // On cherche d'abord dans les clés spécifiques (les premières du dictionnaire)
     for (const [keywords, response] of Object.entries(kb)) {
         const keywordList = keywords.split('|')
-        if (keywordList.some(keyword => question.includes(keyword))) {
+
+        if (keywordList.some(keyword => {
+            // On utilise une Regex avec Word Boundaries (\b) pour éviter les correspondances partielles
+            // (ex: ne pas faire correspondre "hi" dans "him")
+            try {
+                // Échapper les caractères spéciaux
+                const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+                const regex = new RegExp(`\\b${escapedKeyword}\\b`, 'i')
+                return regex.test(question)
+            } catch (e) {
+                // Fallback au cas où le mot-clé contient des caractères invalides pour une regex
+                return question.includes(keyword.toLowerCase())
+            }
+        })) {
             return response
         }
     }
@@ -432,13 +583,14 @@ const findLocalResponse = (userQuestion: string): string | null => {
 }
 
 onMounted(() => {
+    isComponentMounted.value = true
     setTimeout(() => {
-        loading.value = false
+        if (isComponentMounted.value) loading.value = false
     }, 1000)
 
     suggestions.value = defaultSuggestions.value
     loadChatHistory()
-    initQuotaReset() // Initialiser la réinitialisation du quota
+    initQuotaReset()
 
     window.addEventListener('beforeunload', handleBeforeUnload)
 })
@@ -448,6 +600,9 @@ const handleBeforeUnload = (): void => {
 }
 
 onUnmounted(() => {
+    isComponentMounted.value = false
+    if (quotaIntervalId) clearInterval(quotaIntervalId)
+    if (navTimeoutId) clearTimeout(navTimeoutId)
     window.removeEventListener('beforeunload', handleBeforeUnload)
 })
 
@@ -460,10 +615,12 @@ const loadChatHistory = (): void => {
             timestamp: new Date(msg.timestamp)
         }))
     } else {
+        const welcomeContent = t('chat.welcome_message')
         messages.value = [{
             role: 'assistant',
-            content: t('chat.welcome_message'),
-            timestamp: new Date()
+            content: welcomeContent,
+            timestamp: new Date(),
+            actions: detectActions(welcomeContent)
         }]
     }
     scrollToBottom()
@@ -471,6 +628,153 @@ const loadChatHistory = (): void => {
 
 const saveHistory = (): void => {
     localStorage.setItem('chat_history', JSON.stringify(messages.value))
+}
+
+const detectActions = (text: string): Action[] => {
+    const actions: Action[] = []
+    const lowerText = text.toLowerCase()
+
+    if (lowerText.includes('cv') || lowerText.includes('curriculum') || lowerText.includes('parcours')) {
+        actions.push({
+            label: t('nav.home'),
+            type: 'route',
+            target: '/',
+            icon: 'fa-solid fa-home'
+        })
+        actions.push({
+            label: t('nav.webcup'),
+            type: 'route',
+            target: '/webcup24',
+            icon: 'fa-solid fa-trophy'
+        })
+        actions.push({
+            label: t('home.download_cv'),
+            type: 'download',
+            target: '/images/cv/Randy_real_cv.pdf',
+            icon: 'fa-solid fa-download'
+        })
+    }
+
+    // 💬 Détection Contact / WhatsApp
+    if (lowerText.includes('contact') || lowerText.includes('whatsapp') || lowerText.includes('joindre') || lowerText.includes('écrire') || lowerText.includes('message')) {
+        actions.push({
+            label: 'WhatsApp',
+            type: 'link',
+            target: 'https://wa.me/261333026839',
+            icon: 'fa-brands fa-whatsapp'
+        })
+        actions.push({
+            label: t('nav.contact'),
+            type: 'route',
+            target: '/contact',
+            icon: 'fa-solid fa-envelope'
+        })
+    }
+
+    // 🎯 Détection Projets Spécifiques
+    const projectMap: Record<string, string> = {
+        'fid-connect|fidconnect': 'fid-connect',
+        'qcp': 'qcp',
+        'echo-webline|echo webline': 'echo-webline',
+        'afr-fan|afrfan': 'afr-fan',
+        'nurse': 'nurses'
+    }
+
+    for (const [pattern, id] of Object.entries(projectMap)) {
+        // Version sécurisée avec frontières de mots
+        const regex = new RegExp(`\\b(?:${pattern})\\b`, 'i')
+        if (regex.test(lowerText)) {
+            actions.push({
+                label: `${t('chat.actions.view')} ${id.replace('-', ' ').toUpperCase()}`,
+                type: 'route',
+                target: `/projects#${id}`,
+                icon: 'fa-solid fa-arrow-right'
+            })
+        }
+    }
+
+    // 🐘 Détection Technos Spécifiques
+    const techMap: Record<string, string> = {
+        'laravel': 'laravel',
+        'vue|nuxt': 'vue',
+        'docker': 'docker',
+        'mobile|ionic|flutter': 'mobile',
+        'symfony': 'symfony',
+        'python': 'python',
+        'cicd|ci/cd': 'cicd'
+    }
+
+    for (const [pattern, id] of Object.entries(techMap)) {
+        // Version sécurisée avec frontières de mots
+        const regex = new RegExp(`\\b(?:${pattern})\\b`, 'i')
+        if (regex.test(lowerText)) {
+            actions.push({
+                label: `${t('chat.actions.details')} ${id.toUpperCase()}`,
+                type: 'route',
+                target: `/skills#${id}`,
+                icon: 'fa-solid fa-microchip'
+            })
+        }
+    }
+
+    // 🏆 WebCup
+    if (lowerText.includes('webcup')) {
+        actions.push({
+            label: `${t('chat.actions.details')} WEBCUP`,
+            type: 'route',
+            target: '/webcup24',
+            icon: 'fa-solid fa-trophy'
+        })
+    }
+
+    // 🚀 Détection Projets (Général) - si pas déjà un projet spécifique
+    if ((lowerText.includes('projet') || lowerText.includes('project')) && !actions.some(a => a.target.includes('/projects#'))) {
+        actions.push({
+            label: t('nav.projects'),
+            type: 'route',
+            target: '/projects',
+            icon: 'fa-solid fa-layer-group'
+        })
+    }
+
+    // ⚡ Détection Compétences (Général)
+    if ((lowerText.includes('compétence') || lowerText.includes('skill') || lowerText.includes('techno')) && !actions.some(a => a.target.includes('/skills#'))) {
+        actions.push({
+            label: t('nav.skills'),
+            type: 'route',
+            target: '/skills',
+            icon: 'fa-solid fa-code'
+        })
+    }
+
+    // 📅 Détection Expérience / Parcours
+    if (lowerText.includes('expérience') || lowerText.includes('career') || lowerText.includes('parcours')) {
+        actions.push({
+            label: t('nav.about'),
+            type: 'route',
+            target: '/about',
+            icon: 'fa-solid fa-briefcase'
+        })
+    }
+
+    return actions
+}
+
+const handleAction = (action: Action) => {
+    if (action.type === 'route') {
+        router.push(action.target)
+    } else if (action.type === 'link' || action.type === 'download') {
+        const link = document.createElement('a')
+        link.href = action.target
+        if (action.type === 'download') {
+            link.download = action.target.split('/').pop() || 'download'
+        } else {
+            link.target = '_blank'
+        }
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
 }
 
 const scrollToBottom = async (): Promise<void> => {
@@ -497,6 +801,8 @@ const typeResponse = async (text: string): Promise<void> => {
     const speed = text.length > 200 ? 5 : 15
 
     for (let i = 0; i < characters.length; i++) {
+        if (!isComponentMounted.value) return // Sécurité unmount
+
         displayedText += characters[i]
         // Mise à jour directe dans l'array pour garantir la réactivité
         messages.value[lastIndex].content = displayedText
@@ -515,7 +821,28 @@ const typeResponse = async (text: string): Promise<void> => {
     // Mise à jour des suggestions après la réponse
     updateDynamicSuggestions(text)
 
+    // Détection des actions contextuelles
+    const actions = detectActions(text)
+    if (actions.length > 0) {
+        messages.value[lastIndex] = {
+            ...messages.value[lastIndex],
+            actions: actions
+        }
+    }
+
     saveHistory()
+
+    // 🚀 Navigation automatique si l'intention est forte (ex: "Je vous emmène vers...")
+    const lowerText = text.toLowerCase()
+    if (lowerText.includes('redirige') || lowerText.includes('direction') || lowerText.includes('emmène')) {
+        const navAction = actions.find(a => a.type === 'route')
+        if (navAction && isComponentMounted.value) {
+            if (navTimeoutId) clearTimeout(navTimeoutId)
+            navTimeoutId = setTimeout(() => {
+                if (isComponentMounted.value) handleAction(navAction)
+            }, 2000)
+        }
+    }
 }
 
 // ========== MODIFIED SEND MESSAGE FUNCTION ==========
@@ -539,10 +866,27 @@ const sendMessage = async (): Promise<void> => {
     userInput.value = ''
     await scrollToBottom()
 
-    // 🔍 Vérifier si la question est dans le sujet
-    const onTopic = isOnTopic(currentQuestion)
+    if (isPersonalInfoRequest(currentQuestion)) {
+        const lang = locale.value === 'fr' ? 'fr' : 'en'
+        await typeResponse(personalInfoResponses[lang])
+        return
+    }
 
-    // 🚫 Hors-sujet → réponse directe sans API (3 variations)
+    // 🔍 Vérifier si la question est dans le sujet
+    let onTopic = isOnTopic(currentQuestion)
+
+    const allPredefinedSuggestions = [
+        ...(defaultSuggestions.value || []),
+        ...Object.values(tm('chat.dynamic_suggestions') || {}).flat() as string[]
+    ]
+
+    if (!onTopic) {
+        onTopic = allPredefinedSuggestions.some(s =>
+            currentQuestion.toLowerCase().trim() === s.toLowerCase().trim() ||
+            currentQuestion.toLowerCase().includes(s.toLowerCase().trim().replace(/[^\w\sàâäéèêëïîôöùûüç]/gi, '').trim())
+        )
+    }
+
     if (!onTopic) {
         const lang = locale.value === 'fr' ? 'fr' : 'en'
         const responseIndex = offTopicCounter % 3
@@ -694,6 +1038,24 @@ const clearConversation = (): void => {
     background-color: #8b5cf6;
     border-radius: 50%;
     animation: typingBounce 1.4s infinite ease-in-out;
+}
+
+@keyframes pulse-slow {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.95;
+        transform: scale(0.995);
+    }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes typingBounce {

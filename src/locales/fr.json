@@ -499,12 +499,17 @@
     "card_big_title": "Assistant IA",
     "card_small_title": "Posez vos questions sur mes compétences et expériences",
     "subtitle": "Posez vos questions sur mes compétences et expériences",
+    "disclaimer": "Cet assistant IA est actuellement en phase d'entraînement et n'est pas encore aussi optimisé que les modèles grand public. Il peut parfois fournir des réponses imprécises ou peu fiables. Merci de votre patience et de votre compréhension pendant son apprentissage ! 🚀",
     "placeholder": "Posez votre question...",
     "send": "Envoyer",
+    "actions": {
+      "view": "Voir",
+      "details": "Détails"
+    },
     "start_conversation": "Commencez une conversation avec l'assistant IA ! 💬",
     "quote": "L'intelligence artificielle ne remplace pas l'intelligence humaine, elle la complète. Cet assistant est là pour répondre à vos questions sur mon parcours, mes compétences et mes projets.",
     "clear_conversation": "Effacer la conversation",
-    "welcome_message": "👋 Bonjour ! Je suis l'assistant IA de ce portfolio. Je peux vous parler des projets, des compétences ou de l'expérience du développeur. Que souhaitez-vous savoir ?",
+    "welcome_message": "👋 Bonjour ! Je suis l'assistant IA de Randy. Je peux vous parler de son parcours, de ses projets, de ses compétences techniques ou même vous partager son CV et ses coordonnées WhatsApp. Que souhaitez-vous savoir ?",
     "error_local_fallback": "⏳ Toutes les API ont atteint leurs limites gratuites.\n\nJ'utilise maintenant mes connaissances locales pour répondre. Je peux vous parler de :\n- Ma présentation\n- Mes projets\n- Mes compétences\n- Mon expérience\n- Comment me contacter\n\nQue souhaitez-vous savoir ?",
     "local": {
       "greeting": "Bonjour ! 😊 C'est un plaisir de vous voir par ici. Comment puis-je vous aider à explorer le portfolio de Randy ?",
@@ -517,7 +522,20 @@
       "career": "📈 **Voici mon parcours professionnel détaillé :**\n\n🏢 **Développeur Senior** - MG CONSULTING ACT & IT (Avril 2024 – Présent)\n• Architecture Laravel 11 & Vue.js 3\n• Optimisation backend → +35% performances\n• CI/CD avec GitHub Actions, Docker\n• Mentorat de 3 développeurs juniors\n\n💼 **Développeur Fullstack Freelance** - Indépendant (Janv 2023 – Mars 2024)\n• Applications sur mesure Laravel 10 & Vue.js 3\n• Applications mobiles IONIC 6\n\n💻 **Développeur Web Back-end** - PixelZ (Fév 2022 – Nov 2022)\n• Laravel 9, APIs REST\n\n🏆 **2ème place WebCup Madagascar 2024**\n\n**Plus de 5 ans d'expérience cumulée !** 🚀",
       "contact": "📧 Vous pouvez contacter Randy via :\n\n• **WhatsApp** - section Contact\n• **Email** - formulaire de contact\n• **GitHub** et **LinkedIn** - liens sur le portfolio",
       "location": "🌍 Randy est basé à **Antananarivo, Madagascar**.",
-      "languages": "🗣️ Randy parle :\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)"
+      "languages": "🗣️ Randy parle :\n\n• **Français** (natif)\n• **Anglais** (courant)\n• **Malgache** (natif)",
+      "project_fid": "🎯 **Fid-Connect** : Une plateforme complète de gestion comptable et administrative (Laravel/Vue.js). Elle automatise la fiscalité belge, les ammortissements et la facturation. C'est l'un de ses projets les plus complexes !",
+      "project_qcp": "📊 **QCP** : Application de gestion de crédits et d'amortissements. Intelligent et intuitif, ce projet optimise la planification financière via des calculs automatisés complexes.",
+      "project_echo": "🏥 **echo-webLine** : Plateforme médicale spécialisée en imagerie cardiovasculaire (Nuxt.js/Laravel). Développée pour un client à Paris pour gérer des congrès scientifiques.",
+      "project_afrfan": "⚽ **AFR-Fan** : Un réseau social pour la communauté africaine (Nuxt/Laravel). Inclut un système de paiement (VISA/PayPal) et une gestion de groupes d'intérêt.",
+      "project_nurse": "👩‍⚕️ **Nurse** : Solution de gestion pour les professionnels de santé et les réservations d'événements (Symfony/Vue.js) pour un établissement en Belgique.",
+      "tech_laravel": "🐘 **Laravel** : Randy est expert Laravel (v8 à v11). Il maîtrise l'ORM Eloquent, les API REST, la sécurité (Sanctum) et l'optimisation de performance (Octane/Redis).",
+      "tech_vue": "💚 **Vue.js / Nuxt.js** : Son framework frontend de prédilection. Il utilise la Composition API, TypeScript, Pinia et Nuxt pour le SSR/SEO.",
+      "tech_docker": "🐳 **Docker** : Utilisation quotidienne de Docker et Docker Compose pour conteneuriser les applications et garantir un déploiement stable (CI/CD).",
+      "tech_mobile": "📱 **Mobile** : Développement d'applications hybrides avec **IONIC** et apprentissage de **Flutter** pour des solutions multi-plateformes performantes.",
+      "award_webcup": "🏆 **WebCup 2024** : Randy a décroché la **2ème place** à cette compétition prestigieuse de développement web à Madagascar. Une preuve de sa rapidité et de sa qualité de code !",
+      "services": "🛠️ **Mes services & expertise :**\n\n• **DevOps & Infra** : Git, CI/CD, déploiement Linux, Docker.\n• **Développement sur-mesure** : Web & Mobile (Laravel, Vue, Nuxt, IONIC).\n• **Conseil & Stratégie** : Documentation fonctionnelle, pédagogie client et stratégie digitale.\n\nJe peux mener un projet de A à Z ! 🚀",
+      "testimonials": "💬 **Ce que disent mes clients :**\n\n• **Olivier (Manager, FID-CONNECT)** : Loue mon dynamisme et mon professionnalisme.\n• **Pascal (Directeur, MCP)** : Souligne ma capacité d'adaptation et ma volonté d'évoluer.\n\nLa confiance est la base de mes relations ! 🤝",
+      "qualities": "🌟 **Mes points forts :**\n\n• **Apprentissage continu** : Adaptation rapide aux technos.\n• **Minimalisme** : Interfaces épurées et efficaces.\n• **Esprit d'équipe** : Collaboration et soutien mutuel.\n• **Résolution de problèmes** : Approche stratégique et durable.\n\nUn mindset orienté résultats ! 💪"
     },
     "suggestions": [
       "🤖 Présente-toi",

@@ -34,7 +34,8 @@ import {
   faNode,
   faGitlab,
   faFigma,
-  faBootstrap
+  faBootstrap,
+  faWhatsapp
 } from '@fortawesome/free-brands-svg-icons'
 
 import {
@@ -51,18 +52,22 @@ import {
   faCodeBranch,
   faUsers,
   faUserPlus,
-  faCalendarAlt, 
-  faRobot,        
-  faComments,    
-  faPaperPlane,         
-  faCommentDots,  
+  faCalendarAlt,
+  faRobot,
+  faComments,
+  faPaperPlane,
+  faCommentDots,
   faTrashAlt,
   faMicrochip,
-  faNetworkWired, 
-  faCircleNodes
+  faNetworkWired,
+  faCircleNodes,
+  faLayerGroup,
+  faDownload,
+  faEnvelope,
+  faArrowRight
 } from '@fortawesome/free-solid-svg-icons'
 
-import { faEnvelope, faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
+import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
 
 
 library.add(
@@ -81,12 +86,14 @@ library.add(
   faUserPlus,
   faCalendarAlt,
   faEnvelope, faBuildingRegular,
-  faRobot,faComments, faPaperPlane, faCommentDots,
+  faRobot, faComments, faPaperPlane, faCommentDots,
   faTrashAlt,
   faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
   faLaravel, faMicrosoft, faDocker, faPhp, faReact, faAngular,
   faSymfony, faPython, faNode, faGitlab, faFigma, faBootstrap,
-  faCommentDots, faMicrochip, faNetworkWired, faCircleNodes
+  faWhatsapp,
+  faCommentDots, faMicrochip, faNetworkWired, faCircleNodes,
+  faLayerGroup, faDownload, faArrowRight
 )
 
 

@@ -10,6 +10,7 @@ import Navbar from './components/NavBar.vue';
 const { t } = useI18n();
 
 const navRoutes = computed(() => [
+  { path: '/chatbot', name: t('nav.chatbot'), icon: 'robot' },
   { path: '/', name: t('nav.home'), icon: 'home' },
   { path: '/quality', name: t('nav.quality'), icon: 'star' },
   { path: '/skills', name: t('nav.skills'), icon: 'code' },
@@ -18,9 +19,8 @@ const navRoutes = computed(() => [
   { path: '/projects', name: t('nav.projects'), icon: 'project-diagram' },
   { path: '/services', name: t('nav.services'), icon: 'briefcase' },
   { path: '/testimoniales', name: t('nav.testimonials'), icon: 'quote-right' },
-  { path: '/contact', name: t('nav.contact'), icon: ['far', 'envelope'] },
+  { path: '/contact', name: t('nav.contact'), icon: ['fas', 'envelope'] },
   { path: '/github-stats', name: t('nav.github_stats'), icon: ['fab', 'github'] },
-  { path: '/chatbot', name: t('nav.chatbot'), icon: 'robot' },
   { path: '/about', name: t('nav.about'), icon: ['fas', 'info-circle'] },
 
 ]);
