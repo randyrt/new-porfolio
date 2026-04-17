@@ -14,7 +14,6 @@ declare module 'vue' {
     GitHubStats: typeof import('./src/components/GitHubStats.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     LogoSection: typeof import('./src/components/logoSection.vue')['default']
-    MobileHeader: typeof import('./src/components/MobileHeader.vue')['default']
     MultiWorldClock: typeof import('./src/components/MultiWorldClock.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     ProjectGallery: typeof import('./src/components/ProjectGallery.vue')['default']
@@ -23,6 +22,5 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SkillSection: typeof import('./src/components/SkillSection.vue')['default']
     TechLogo: typeof import('./src/components/TechLogo.vue')['default']
-    UserControls: typeof import('./src/components/UserControls.vue')['default']
   }
 }
