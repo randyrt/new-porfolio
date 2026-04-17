@@ -70,7 +70,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
@@ -194,7 +194,6 @@ let offTopicCounter = 0
 const defaultSuggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
 const suggestions = ref<string[]>([])
 
-// Mettre à jour les suggestions quand la langue change
 watch(locale, () => {
     suggestions.value = defaultSuggestions.value
 })
@@ -224,13 +223,21 @@ const GEMINI_API_KEYS = [
     import.meta.env.VITE_GEMINI_API_KEY_3,
 ].filter(key => key && key.startsWith('AIza')) as string[]
 
+
+const model_flash = 'gemini-2.5-flash'
+const model_flash_tts = 'gemini-3.1-flash-tts-preview'
+const model_pro = 'gemini-3-pro-preview'
+
+
 let currentKeyIndex = 0
 let model: GenerativeModel | null = null
+
+
 
 const initModelWithKey = (apiKey: string, keyIndex: number): GenerativeModel | null => {
     try {
         const genAI = new GoogleGenerativeAI(apiKey)
-        return genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+        return genAI.getGenerativeModel({ model: model_flash })
     } catch (error) {
         return null
     }
@@ -297,7 +304,8 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
     'témoignages|avis|recommandation|feedback|clients|testimonials': t('chat.local.testimonials'),
     'qualités|forces|atouts|points forts|pourquoi toi|why you|qualities': t('chat.local.qualities'),
     'langues|languages|speaks': t('chat.local.languages'),
-    'vrai ia|véritable ia|es-tu une ia|are you an ai|real ai': t('chat.local.ai_nature')
+    'vrai ia|véritable ia|es-tu une ia|are you an ai|real ai|bot|robot|intelligence artificielle|intelligence artificiel|ia|machine': t('chat.local.ai_nature'),
+    'nom complet|full name|prénom|nom': t('chat.local.full_name')
 })
 
 onMounted(() => {
@@ -372,7 +380,6 @@ const scrollToBottom = async (): Promise<void> => {
     }
 }
 
-// ========== TYPEWRITER EFFECT FUNCTION ==========
 const typeResponse = async (text: string): Promise<void> => {
     isTyping.value = false
     messages.value.push({
@@ -385,17 +392,14 @@ const typeResponse = async (text: string): Promise<void> => {
     const characters = text.split('')
     let displayedText = ''
 
-    // Vitesse légèrement plus rapide pour une sensation plus fluide
     const speed = text.length > 200 ? 5 : 15
 
     for (let i = 0; i < characters.length; i++) {
-        if (!isComponentMounted.value) return // Sécurité unmount
+        if (!isComponentMounted.value) return
 
         displayedText += characters[i]
-        // Mise à jour directe dans l'array pour garantir la réactivité
         messages.value[lastIndex].content = displayedText
 
-        // Auto-scroll moins fréquent pour économiser les ressources
         if (i % 8 === 0 || i === characters.length - 1) {
             await nextTick()
             if (messagesContainer.value) {
@@ -406,10 +410,8 @@ const typeResponse = async (text: string): Promise<void> => {
         await new Promise(resolve => setTimeout(resolve, speed))
     }
 
-    // Mise à jour des suggestions après la réponse
     updateDynamicSuggestions(text)
 
-    // Détection des actions contextuelles
     const actions = detectActions(text, t)
     if (actions.length > 0) {
         messages.value[lastIndex] = {
@@ -420,7 +422,6 @@ const typeResponse = async (text: string): Promise<void> => {
 
     saveHistory()
 
-    // 🚀 Navigation automatique si l'intention est forte (ex: "Je vous emmène vers...")
     const lowerText = text.toLowerCase()
     if (lowerText.includes('redirige') || lowerText.includes('direction') || lowerText.includes('emmène')) {
         const navAction = actions.find(a => a.type === 'route')
@@ -433,7 +434,6 @@ const typeResponse = async (text: string): Promise<void> => {
     }
 }
 
-// ========== MODIFIED SEND MESSAGE FUNCTION ==========
 const sendMessage = async (): Promise<void> => {
     if (!userInput.value.trim() || isTyping.value) return
 
@@ -460,7 +460,6 @@ const sendMessage = async (): Promise<void> => {
         return
     }
 
-    // 🔍 Vérifier si la question est dans le sujet
     let onTopic = isOnTopic(currentQuestion)
 
     const allPredefinedSuggestions = [
@@ -484,11 +483,9 @@ const sendMessage = async (): Promise<void> => {
         return
     }
 
-    // ✅ Dans le sujet → vérifier le quota
     if (quotaExhausted.value) {
         onTopicAttempts.value++
 
-        // 3 tentatives autorisées
         if (onTopicAttempts.value <= 3) {
             const localResponse = findLocalResponse(currentQuestion, getLocalKnowledgeBase())
             const attemptMessage = localResponse
@@ -498,21 +495,19 @@ const sendMessage = async (): Promise<void> => {
             await typeResponse(attemptMessage)
             return
         } else {
-            // Après 3 tentatives → message de quota épuisé
             const quotaMessage = locale.value === 'fr'
-                ? "❌ Le nombre de requêtes vers les services externes est épuisé pour le moment (Randy utilise un plan gratuit). Je ne peux pas récupérer de nouvelles informations via Gemini, je réponds donc désormais avec mes données locales d'entraînement de mon portfolio. Posez-moi une question précise sur mes compétences ou projets.\n\n" + 
-                  "🌟 **Mes points forts :**\n\n• **Apprentissage continu** : Adaptation rapide aux technos.\n• **Minimalisme** : Interfaces épurées et efficaces.\n• **Esprit d'équipe** : Collaboration et soutien mutuel.\n• **Résolution de problèmes** : Approche stratégique et durable.\n\nUn mindset orienté résultats ! 💪\n\n" +
-                  "🤖 **Ma nature** : Je suis un ia en cours d'entrainement, j'intéragisse avec l'api gemini, et gémini intéressagisse avec les régles que Randy a implementer pour répondre. Comme le plan est gratuit, je bascule sur mes données locales si besoin. Je suis un vrai IA, mais en cours d'apprétissage,"
+                ? "❌ Le nombre de requêtes vers les services externes est épuisé pour le moment (Randy utilise un plan gratuit). Je ne peux pas récupérer de nouvelles informations via Gemini, je réponds donc désormais avec mes données locales d'entraînement de mon portfolio. Posez-moi une question précise sur mes compétences ou projets.\n\n" +
+                "🌟 **Mes points forts :**\n\n• **Apprentissage continu** : Adaptation rapide aux technos.\n• **Minimalisme** : Interfaces épurées et efficaces.\n• **Esprit d'équipe** : Collaboration et soutien mutuel.\n• **Résolution de problèmes** : Approche stratégique et durable.\n\nUn mindset orienté résultats ! 💪\n\n" +
+                "🤖 **Ma nature** : Je suis un ia en cours d'entrainement, j'intéragisse avec l'api gemini, et gémini intéressagisse avec les régles que Randy a implementer pour répondre. Comme le plan est gratuit, je bascule sur mes données locales si besoin. Je suis un vrai IA, mais en cours d'apprétissage,"
                 : "❌ The number of requests to external services is exhausted for now (Randy uses a free plan). I can't retrieve new information via Gemini, so I am now responding with my local portfolio training data. Ask me a specific question about my skills or projects.\n\n" +
-                  "🌟 **My strengths:**\n\n• **Continuous learning**: Rapid adaptation to new technologies.\n• **Minimalism**: Clean and efficient interfaces.\n• **Team spirit**: Collaboration and mutual support.\n• **Problem solving**: Strategic and sustainable approach.\n\nA results-oriented mindset! 💪\n\n" +
-                  "🤖 **My nature**: I am an AI in training, interacting with the Gemini API, and Gemini interacts with the rules Randy has implemented. Since the plan is free, I switch to my local data if needed. I am a real AI, but still learning!"
+                "🌟 **My strengths:**\n\n• **Continuous learning**: Rapid adaptation to new technologies.\n• **Minimalism**: Clean and efficient interfaces.\n• **Team spirit**: Collaboration and mutual support.\n• **Problem solving**: Strategic and sustainable approach.\n\nA results-oriented mindset! 💪\n\n" +
+                "🤖 **My nature**: I am an AI in training, interacting with the Gemini API, and Gemini interacts with the rules Randy has implemented. Since the plan is free, I switch to my local data if needed. I am a real AI, but still learning!"
 
             await typeResponse(quotaMessage)
             return
         }
     }
 
-    // ✅ Quota disponible → appeler l'API
     isTyping.value = true
     lastRequestTime.value = Date.now()
 
@@ -541,7 +536,6 @@ const sendMessage = async (): Promise<void> => {
                 aiResponse = await callGeminiAPI(GEMINI_API_KEYS[i], i)
                 apiCallCount.value++
 
-                // Vérifier si on approche du quota
                 if (apiCallCount.value >= MAX_API_CALLS) {
                     quotaExhausted.value = true
                     console.warn(`⚠️ Quota atteint (${apiCallCount.value}/${MAX_API_CALLS})`)

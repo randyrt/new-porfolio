@@ -2,7 +2,7 @@ export const TOPIC_KEYWORDS = [
     'compétence', 'skill', 'projet', 'project', 'parcours', 'career',
     'expérience', 'experience', 'portfolio', 'randy', 'développeur',
     'developer', 'full stack', 'laravel', 'vue', 'react', 'node',
-    'présente', 'introduce', 'qui es-tu', 'who are you', 'vrai ia', 'real ai', 'intelligence artificielle', 'technologie',
+    'présente', 'introduce', 'qui es-tu', 'who are you', 'vrai ia', 'real ai', 'intelligence artificielle', 'intelligence artificiel', 'bot', 'ia', 'robot', 'machine', 'technologie',
     'tech', 'backend', 'frontend', 'base de donnée', 'database',
     'formation', 'education', 'diplôme', 'degree', 'travail', 'work',
     'job', 'mission', 'client', 'freelance', 'mg consulting', 'pixelz',
@@ -13,21 +13,21 @@ export const TOPIC_KEYWORDS = [
     'node.js', 'typescript', 'tailwindcss', 'ionic', 'flutter', 'devops',
     'fid-connect', 'qcp', 'echo-webline', 'afr-fan', 'nurses', 'webcup',
     'stack', 'mobile', 'whatsapp', 'linkedin', 'email', 'début', 'recommencer',
-    'histoire', 'background', 'techno', 'quitter', 'menu', 'cv',
+    'histoire', 'background', 'techno', 'quitter', 'menu', 'cv', 'nom complet', 'full name', 'prénom', 'nom',
 
-    // 🎯 Emplacement / Location
+    //  Emplacement / Location
     'localisation', 'location', 'emplacement', 'ville', 'pays', 'situé', 'localisé',
     'city', 'country', 'madagascar', 'antananarivo', 'lieu',
 
-    // 🎯 Services, Témoignages & Qualités
+    //  Services, Témoignages & Qualités
     'service', 'offres', 'témoignage', 'avis', 'qualité', 'force', 'atout', 'client',
     'testimonial', 'recommandation', 'recommandé', 'expert', 'conseil', 'accompagnement',
 
-    // 🎯 Recrutement / Hiring
+    //  Recrutement / Hiring
     'recruteur', 'recruter', 'hiring', 'honnêtement', 'honnête', 'honestly', 'honest',
     'interview', 'hire', 'engager', 'embaucher', 'recommander', 'recommend', 'recruiter',
 
-    // 🎯 Réactions & Politesse (Autorisés pour éviter le blocage)
+    //  Réactions & Politesse (Autorisés pour éviter le blocage)
     'merci', 'thanks', 'thank you', 'thx', 'bravo', 'félicitations', 'congrats', 'félicitation',
     'super', 'cool', 'génial', 'top', 'wow', 'magnifique', 'parfait', 'perfect', 'nice', 'awesome',
     'incroyable', 'bien', 'good', 'excellent', 'intéressant', 'interesting', 'extraordinaire',
@@ -40,7 +40,7 @@ export const TOPIC_KEYWORDS = [
     'comment va', 'comment vas', 'cv', 'bien ou quoi', 'ah', 'oh', 'hum', 'intéressant', 'tell me more',
     'dis-moi en plus', 'continue', 'reprends', 'vas-y', 'go on', 'je vois', 'i see',
 
-    // 🎯 Langues & Discussion
+    // Langues & Discussion
     'anglais', 'english', 'français', 'french', 'langue', 'language', 'parler', 'speak',
     'traduis', 'translate', 'discuter', 'discuss', 'conversation', 'chat', 'parle', 'parlez'
 ]
