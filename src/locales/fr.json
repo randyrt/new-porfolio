@@ -494,7 +494,7 @@
   "chat": {
     "page_title": "IA de Randy",
     "page_description": "Discutez avec mon assistant IA pour en savoir plus sur mes compétences, projets et expériences",
-    "chat_tooltip": "Besoin d'assistance !",
+    "chat_tooltip": "Clique-moi !",
     "loading": "Assistant IA...",
     "title": "Discuter un peu avec mon assistant IA",
     "card_big_title": "Assistant IA",

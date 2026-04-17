@@ -7,15 +7,21 @@
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
       </div>
 
-
       <router-link to="/chatbot"
         class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30">
         <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg text-white" />
 
-        <span class="absolute -top-1 -right-1 flex h-5 w-5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-800 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg">
+         {{t('chat.chat_tooltip')}}
           <span
-            class="relative inline-flex rounded-full h-5 w-5 bg-emerald-500 border-3 border-white dark:border-gray-800 shadow-lg"></span>
+            class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-800 rotate-45"></span>
+        </span>
+
+        <span class="absolute -top-1 -right-1 flex h-5 w-5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+          <span
+            class="relative inline-flex rounded-full h-5 w-5 bg-amber-500 border-3 border-yello-500 dark:border-yellow-200 shadow-lg"></span>
         </span>
 
         <span class="absolute inset-0 rounded-2xl animate-pulse-purple -z-10"></span>
@@ -43,7 +49,6 @@ const navRoutes = computed(() => [
   { path: '/contact', name: t('nav.contact'), icon: ['fas', 'envelope'] },
   { path: '/github-stats', name: t('nav.github_stats'), icon: ['fab', 'github'] },
   { path: '/about', name: t('nav.about'), icon: ['fas', 'info-circle'] },
-
 ]);
 </script>
 
