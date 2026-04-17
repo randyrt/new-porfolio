@@ -37,15 +37,15 @@
             </div>
 
             <div
-                class="mb-2 p-2 bg-red-600 dark:bg-red-700 border border-red-500 rounded-xl flex items-start gap-2 shadow-lg animate-pulse-slow">
-                <div class="p-2 bg-white/20 rounded-lg text-white">
+                class="mb-2 p-2 bg-amber-100 dark:bg-amber-700 border border-amber-400 dark:border-amber-500 rounded-xl flex items-start gap-2 shadow-lg animate-pulse-slow">
+                <div class="p-2 bg-amber-500/30 dark:bg-amber-600/50 rounded-lg text-amber-700 dark:text-amber-200">
                     <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="text-xl" />
                 </div>
                 <div class="w-full">
-                    <h4 class="text-sm font-bold !text-white mb-1">
+                    <h4 class="text-sm font-bold text-amber-800 dark:text-amber-100 mb-1">
                         {{ $t('chat.card_big_title') }} (Experimental)
                     </h4>
-                    <p class="text-xs !text-white leading-relaxed opacity-95">
+                    <p class="text-xs text-amber-700 dark:!text-amber-100 leading-relaxed">
                         {{ $t('chat.disclaimer') }}
                     </p>
                 </div>
@@ -70,7 +70,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                }}</span>
+                                    }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 

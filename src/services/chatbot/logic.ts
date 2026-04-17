@@ -77,12 +77,6 @@ export const detectActions = (text: string, t: any): Action[] => {
 
     if (lowerText.includes('contact') || lowerText.includes('whatsapp') || lowerText.includes('joindre') || lowerText.includes('écrire') || lowerText.includes('message')) {
         actions.push({
-            label: 'WhatsApp',
-            type: 'link',
-            target: 'https://wa.me/261333026839',
-            icon: 'fa-brands fa-whatsapp'
-        })
-        actions.push({
             label: t('nav.contact'),
             type: 'route',
             target: '/contact',

@@ -9,13 +9,12 @@
 
       <router-link to="/chatbot"
         class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30">
-        <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg text-white" />
+        <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg text-sky-300" />
 
         <span
           class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-800 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg">
-         {{t('chat.chat_tooltip')}}
-          <span
-            class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-800 rotate-45"></span>
+          {{ t('chat.chat_tooltip') }}
+          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-800 rotate-45"></span>
         </span>
 
         <span class="absolute -top-1 -right-1 flex h-5 w-5">
