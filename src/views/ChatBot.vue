@@ -37,7 +37,7 @@
             </div>
 
             <div
-                class="mb-6 p-4 bg-red-600 dark:bg-red-700 border border-red-500 rounded-xl flex items-start gap-4 shadow-lg animate-pulse-slow">
+                class="mb-2 p-2 bg-red-600 dark:bg-red-700 border border-red-500 rounded-xl flex items-start gap-2 shadow-lg animate-pulse-slow">
                 <div class="p-2 bg-white/20 rounded-lg text-white">
                     <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="text-xl" />
                 </div>
@@ -70,7 +70,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                }}</span>
+                                    }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
