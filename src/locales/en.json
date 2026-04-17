@@ -500,7 +500,7 @@
     "card_big_title": "AI Assistant",
     "card_small_title": "Ask me anything about my skills and experiences",
     "subtitle": "Ask questions about my skills and experiences",
-    "disclaimer": "This AI assistant is currently in training and is not yet as optimized as mainstream models. It may sometimes provide inaccurate or unreliable responses. Thank you for your patience during its learning process! 🚀",
+    "disclaimer": "This AI assistant is currently in training and is not yet as optimized as mainstream models. It may sometimes provide inaccurate or unreliable responses. Thank you for your patience during its learning process!",
     "placeholder": "Ask your question...",
     "send": "Send",
     "actions": {
@@ -538,7 +538,7 @@
       "testimonials": "💬 **What my clients say:**\n\n• **Olivier (Manager, FID-CONNECT)**: Praises my dynamism and professionalism.\n• **Pascal (Director, MCP)**: Highlights my quick adaptability and constant drive to evolve.\n\nTrust is the foundation of my relationships! 🤝",
       "qualities": "🌟 **My strengths:**\n\n• **Continuous Learning**: Quick adaptation to new tech.\n• **Minimalism**: Clean and efficient interfaces.\n• **Team Player**: Collaboration and mutual support.\n• **Problem Solver**: Strategic and durable approach.\n\nA results-oriented mindset! 💪",
       "ai_nature": "I am an AI currently in training. I interact with the Gemini API, and Gemini interacts with the rules Randy has implemented to respond. Please note that Randy uses a free plan for the API, which can sometimes limit my responses; in such cases, I respond using my local training data. I am a real AI, but still learning! 🤖🧠",
-      "full_name": "My full name is RAZAFIMANDIMBY Randy Andriantsiory 😊"
+      "full_name": "His full name is RAZAFIMANDIMBY Randy Andriantsiory 😊"
     },
     "suggestions": [
       "🤖 Introduce yourself",

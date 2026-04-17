@@ -500,7 +500,7 @@
     "card_big_title": "Assistant IA",
     "card_small_title": "Posez vos questions sur mes compétences et expériences",
     "subtitle": "Posez vos questions sur mes compétences et expériences",
-    "disclaimer": "Cet assistant IA est actuellement en phase d'entraînement et n'est pas encore aussi optimisé que les modèles grand public. Il peut parfois fournir des réponses imprécises ou peu fiables. Merci de votre patience et de votre compréhension pendant son apprentissage ! 🚀",
+    "disclaimer": "Cet assistant IA est actuellement en phase d'entraînement et n'est pas encore aussi optimisé que les modèles grand public. Il peut parfois fournir des réponses imprécises ou peu fiables. Merci de votre patience et de votre compréhension pendant son apprentissage !",
     "placeholder": "Posez votre question...",
     "send": "Envoyer",
     "actions": {
@@ -538,7 +538,7 @@
       "testimonials": "💬 **Ce que disent mes clients :**\n\n• **Olivier (Manager, FID-CONNECT)** : Loue mon dynamisme et mon professionnalisme.\n• **Pascal (Directeur, MCP)** : Souligne ma capacité d'adaptation et ma volonté d'évoluer.\n\nLa confiance est la base de mes relations ! 🤝",
       "qualities": "🌟 **Mes points forts :**\n\n• **Apprentissage continu** : Adaptation rapide aux technos.\n• **Minimalisme** : Interfaces épurées et efficaces.\n• **Esprit d'équipe** : Collaboration et soutien mutuel.\n• **Résolution de problèmes** : Approche stratégique et durable.\n\nUn mindset orienté résultats ! 💪",
       "ai_nature": "Je suis un ia en cours d'entrainement, j'intéragisse avec l'api gemini, et gémini intéressagisse avec les régles que Randy a implementer pour répondre. Notez que Randy utilise un plan gratuit pour l'API, ce qui peut parfois limiter mes réponses ; dans ce cas, je réponds avec mes données locales d'entrainement. Je suis un vrai IA, mais en cours d'apprétissage,",
-      "full_name": "Mon nom complet est RAZAFIMANDIMBY Randy Andriantsiory 😊"
+      "full_name": "son nom complet est RAZAFIMANDIMBY Randy Andriantsiory 😊"
     },
     "suggestions": [
       "🤖 Présente-toi",

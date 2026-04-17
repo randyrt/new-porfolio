@@ -41,7 +41,7 @@
                 <div class="p-2 bg-white/20 rounded-lg text-white">
                     <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="text-xl" />
                 </div>
-                <div>
+                <div class="w-full">
                     <h4 class="text-sm font-bold !text-white mb-1">
                         {{ $t('chat.card_big_title') }} (Experimental)
                     </h4>
@@ -548,7 +548,7 @@ const sendMessage = async (): Promise<void> => {
                 break
             } catch (err) {
                 lastError = err
-                console.warn(`❌ API key ${i + 1} a échoué:`, err)
+                console.error(`Échec de la clé API ${i}`)
             }
         }
 
@@ -559,7 +559,6 @@ const sendMessage = async (): Promise<void> => {
         }
 
     } catch (error: any) {
-        console.error('Erreur API:', error)
         const localResponse = findLocalResponse(currentQuestion, getLocalKnowledgeBase())
         const errorMessage = localResponse ?? t('chat.error_local_fallback')
 
