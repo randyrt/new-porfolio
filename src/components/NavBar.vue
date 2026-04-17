@@ -320,7 +320,7 @@ function cycleTheme() {
 }
 
 function goHome() {
-  router.push('/home')
+  router.push('/')
 }
 
 function openGithub() {

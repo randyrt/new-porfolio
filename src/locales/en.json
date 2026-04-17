@@ -494,6 +494,7 @@
   "chat": {
     "page_title": "AI of randy",
     "page_description": "Chat with my AI assistant to learn more about my skills, projects and experiences",
+    "chat_tooltip": "Need assistant!",
     "title": "Chat a little with my AI assistant",
     "loading": "AI assistant...",
     "card_big_title": "AI Assistant",
