@@ -500,12 +500,12 @@ const sendMessage = async (): Promise<void> => {
         } else {
             // Après 3 tentatives → message de quota épuisé
             const quotaMessage = locale.value === 'fr'
-                ? "❌ Le nombre de requêtes vers les services externes est épuisé pour le moment. Je ne peux pas récupérer de nouvelles informations, mais je peux encore répondre avec les données locales de mon portfolio. Posez-moi une question précise sur mes compétences ou projets.\n\n" + 
+                ? "❌ Le nombre de requêtes vers les services externes est épuisé pour le moment (Randy utilise un plan gratuit). Je ne peux pas récupérer de nouvelles informations via Gemini, je réponds donc désormais avec mes données locales d'entraînement de mon portfolio. Posez-moi une question précise sur mes compétences ou projets.\n\n" + 
                   "🌟 **Mes points forts :**\n\n• **Apprentissage continu** : Adaptation rapide aux technos.\n• **Minimalisme** : Interfaces épurées et efficaces.\n• **Esprit d'équipe** : Collaboration et soutien mutuel.\n• **Résolution de problèmes** : Approche stratégique et durable.\n\nUn mindset orienté résultats ! 💪\n\n" +
-                  "🤖 **Ma nature** : Je suis une IA en cours d'entraînement. J'interagis avec l'API Gemini, et Gemini interagit avec les règles que Randy a implémentées pour répondre. Je suis une vraie IA, mais en cours d'apprentissage ! 🤖🧠"
-                : "❌ The number of requests to external services is exhausted for now. I can't retrieve new information, but I can still answer with local portfolio data. Ask me a specific question about my skills or projects.\n\n" +
+                  "🤖 **Ma nature** : Je suis un ia en cours d'entrainement, j'intéragisse avec l'api gemini, et gémini intéressagisse avec les régles que Randy a implementer pour répondre. Comme le plan est gratuit, je bascule sur mes données locales si besoin. Je suis un vrai IA, mais en cours d'apprétissage,"
+                : "❌ The number of requests to external services is exhausted for now (Randy uses a free plan). I can't retrieve new information via Gemini, so I am now responding with my local portfolio training data. Ask me a specific question about my skills or projects.\n\n" +
                   "🌟 **My strengths:**\n\n• **Continuous learning**: Rapid adaptation to new technologies.\n• **Minimalism**: Clean and efficient interfaces.\n• **Team spirit**: Collaboration and mutual support.\n• **Problem solving**: Strategic and sustainable approach.\n\nA results-oriented mindset! 💪\n\n" +
-                  "🤖 **My nature**: I am an AI currently in training. I interact with the Gemini API, and Gemini interacts with the rules Randy has implemented to respond. I am a real AI, but still learning! 🤖🧠"
+                  "🤖 **My nature**: I am an AI in training, interacting with the Gemini API, and Gemini interacts with the rules Randy has implemented. Since the plan is free, I switch to my local data if needed. I am a real AI, but still learning!"
 
             await typeResponse(quotaMessage)
             return

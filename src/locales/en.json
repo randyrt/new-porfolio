@@ -536,7 +536,7 @@
       "services": "🛠️ **My services & expertise:**\n\n• **DevOps & Infra**: Git, CI/CD, Linux deployment, Docker.\n• **Custom Development**: Web & Mobile (Laravel, Vue, Nuxt, IONIC).\n• **Consulting & Strategy**: Functional documentation, client pedagogy, and digital strategy.\n\nI can lead a project from A to Z! 🚀",
       "testimonials": "💬 **What my clients say:**\n\n• **Olivier (Manager, FID-CONNECT)**: Praises my dynamism and professionalism.\n• **Pascal (Director, MCP)**: Highlights my quick adaptability and constant drive to evolve.\n\nTrust is the foundation of my relationships! 🤝",
       "qualities": "🌟 **My strengths:**\n\n• **Continuous Learning**: Quick adaptation to new tech.\n• **Minimalism**: Clean and efficient interfaces.\n• **Team Player**: Collaboration and mutual support.\n• **Problem Solver**: Strategic and durable approach.\n\nA results-oriented mindset! 💪",
-      "ai_nature": "I am an AI currently in training. I interact with the Gemini API, and Gemini interacts with the rules Randy has implemented to respond. I am a real AI, but still learning! 🤖🧠"
+      "ai_nature": "I am an AI currently in training. I interact with the Gemini API, and Gemini interacts with the rules Randy has implemented to respond. Please note that Randy uses a free plan for the API, which can sometimes limit my responses; in such cases, I respond using my local training data. I am a real AI, but still learning! 🤖🧠"
     },
     "suggestions": [
       "🤖 Introduce yourself",
