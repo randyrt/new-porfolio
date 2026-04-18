@@ -10,4 +10,15 @@ export interface Message {
     content: string
     timestamp: Date
     actions?: Action[]
+    messageId?: string
+    category?: string
+    confidence?: number
+    allowFeedback?: boolean
+    isAutoCorrection?: boolean
+}
+
+export interface IntentionDetection {
+    category: string
+    confidence: number
+    matchedKeywords: string[]
 }

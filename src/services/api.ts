@@ -48,4 +48,42 @@ export const sendMessageToIA = async (message: string): Promise<ChatResponse> =>
   return response.data.data; 
 };
 
+export const sendToGemini = async (userQuestion: string, context: string): Promise<string> => {
+  try {
+    const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    if (!geminiApiKey) {
+      throw new Error('Clé API Gemini non configurée');
+    }
+
+    const response = await axios.post(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`,
+      {
+        contents: [
+          {
+            parts: [
+              {
+                text: `Tu es un assistant IA pour un portfolio professionnel. Le contexte est: ${context}\n\nQuestion de l'utilisateur: ${userQuestion}\n\nFournis une réponse complète, professionnelle et pertinente en français.`
+              }
+            ]
+          }
+        ],
+        generationConfig: {
+          temperature: 0.7,
+          topP: 0.95,
+          topK: 64,
+          maxOutputTokens: 1024,
+        }
+      }
+    );
+
+    if (response.data.candidates && response.data.candidates[0]?.content?.parts[0]?.text) {
+      return response.data.candidates[0].content.parts[0].text;
+    }
+    throw new Error('Pas de réponse valide de Gemini');
+  } catch (error) {
+    console.error('Erreur Gemini:', error);
+    throw error;
+  }
+};
+
 export default api;

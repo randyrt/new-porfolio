@@ -572,7 +572,13 @@
         "🔗 Lien LinkedIn",
         "🏠 Retour au début"
       ]
-    }
+    },
+    "helpful": "Cette réponse est-elle utile ?",
+    "feedback_thanks_positive": "✨ Merci pour votre retour positif ! Cela m'aide à m'améliorer.",
+    "feedback_thanks_negative": "Merci pour votre commentaire. Je vais m'améliorer ! 💪",
+    "correction_running": "🔧 Correction en cours...",
+    "correction_success": "✨ Réponse corrigée (Stratégie: {{strategy}})",
+    "correction_failed": "Désolé pour la réponse précédente ! 😅 Je n'ai pas pu la corriger automatiquement.\n\n**Raison**: {{reason}}\n\n**Options**:\n1. 🔄 Reformule ta question différemment\n2. 📧 Ou contacte Randy directement pour une réponse manuelle\n3. 💡 Essaie une question connexe (ses projets, sa stack, etc.)"
   }
 }
 

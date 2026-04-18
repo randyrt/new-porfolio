@@ -64,7 +64,9 @@ import {
   faLayerGroup,
   faDownload,
   faEnvelope,
-  faArrowRight
+  faArrowRight,
+  faThumbsDown,  
+  faThumbsUp     
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -93,7 +95,8 @@ library.add(
   faSymfony, faPython, faNode, faGitlab, faFigma, faBootstrap,
   faWhatsapp,
   faCommentDots, faMicrochip, faNetworkWired, faCircleNodes,
-  faLayerGroup, faDownload, faArrowRight
+  faLayerGroup, faDownload, faArrowRight,faThumbsDown,  
+  faThumbsUp    
 )
 
 

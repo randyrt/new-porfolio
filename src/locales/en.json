@@ -572,6 +572,12 @@
         "🔗 LinkedIn link",
         "🏠 Back to start"
       ]
-    }
+    },
+    "helpful": "Was this response helpful?",
+    "feedback_thanks_positive": "✨ Thank you for your positive feedback! It helps me improve.",
+    "feedback_thanks_negative": "Thank you for your feedback. I will improve! 💪",
+    "correction_running": "🔧 Correction in progress...",
+    "correction_success": "✨ Response corrected (Strategy: {{strategy}})",
+    "correction_failed": "Sorry for the previous answer! 😅 I couldn't auto-correct it.\n\n**Reason**: {{reason}}\n\n**Options**:\n1. 🔄 Rephrase your question differently\n2. 📧 Or contact Randy directly for a manual answer\n3. 💡 Try a related question (his projects, tech stack, etc.)"
   }
 }

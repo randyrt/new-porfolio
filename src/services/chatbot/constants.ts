@@ -15,6 +15,10 @@ export const TOPIC_KEYWORDS = [
     'stack', 'mobile', 'whatsapp', 'linkedin', 'email', 'début', 'recommencer',
     'histoire', 'background', 'techno', 'quitter', 'menu', 'cv', 'nom complet', 'full name', 'prénom', 'nom',
 
+    //  Contact & Communication
+    'contact', 'contacter', 'comment contacter', 'comment le contacter', 'comment te contacter', 'comment vous contacter',
+    'joindre', 'reach', 'écrire', 'write', 'message', 'mail', 'formulaire', 'form', 'how to contact', 'comment t\'écrire',
+
     //  Emplacement / Location
     'localisation', 'location', 'emplacement', 'ville', 'pays', 'situé', 'localisé',
     'city', 'country', 'madagascar', 'antananarivo', 'lieu',
@@ -56,14 +60,14 @@ export const MAX_API_CALLS = 100
 
 export const OFF_TOPIC_RESPONSES = {
     fr: [
-        "Désolé, je ne peux répondre qu'aux questions sur le portfolio, les compétences ou le parcours de Randy. Sur ordre de Randy et c'est sa consigne ! 😊",
-        "Je suis spécialisé dans le parcours de Randy uniquement. Pose-moi des questions sur ses projets ou ses compétences techniques 🚀",
-        "Hors sujet ! Je ne parle que du portfolio de Randy. Parle-moi de ses compétences ou de son expérience 👨‍💻"
+        "Ha, tu essaies de m'amener ailleurs ! 😄 C'est cool, mais honnêtement, mes superpowers c'est de parler de Randy. Ses compétences ? Ses projets ? Incroyables. Ses skills ? Très variés ! Parle-moi de ça ? 🚀",
+        "Tu me poses une colle là 😅 Je suis trop spécialisé dans l'univers tech de Randy pour briller ailleurs. Mais si tu veux discuter dev, IA, ou career ? Je suis ton gars ! 💪",
+        "Haha j'aime ta curiosité ! 👀 Mais entre toi et moi, ce que je domine vraiment ? C'est Randy et tout ce qu'il crée. Ses projets, sa stack, son parcours - ça c'est mon domaine ! On parle de ça ? 🎯"
     ],
     en: [
-        "Sorry, I can only answer questions about Randy's portfolio, skills, or career. That's his instruction! 😊",
-        "I'm specialized only in Randy's background. Ask me about his projects or technical skills 🚀",
-        "Off topic! I only talk about Randy's portfolio. Ask me about his skills or experience 👨‍💻"
+        "Ha, trying to take me off track! 😄 I like your style, but honestly, my superpower is talking about Randy. His skills? Amazing. His projects? Incredible. His experience? Very diverse! Tell me about those? 🚀",
+        "You're giving me a tough one 😅 I'm too specialized in Randy's tech world to shine elsewhere. But if you want to chat dev, AI, or career topics? I'm your guy! 💪",
+        "Haha I love your curiosity! 👀 But between you and me, what I really dominate? It's Randy and everything cool he creates. His projects, his stack, his journey - that's my territory! Should we talk about that? 🎯"
     ]
 }
 
@@ -71,3 +75,31 @@ export const PERSONAL_INFO_RESPONSES = {
     fr: "Randy ne m'a pas donné d'informations à ce sujet 😊",
     en: "Randy didn't give me any information about that 😊"
 }
+
+export const WELCOME_BACK_RESPONSES = {
+    fr: [
+        "Bienvenue de retour ! 👋 Content de te revoir ! T'as trouvé quelque chose d'intéressant en explorant ? On en parle ? 💬",
+        "De retour ! 🎉 J'espère que tu as découvert des choses sympas sur le portfolio. Des questions ou besoin de précisions ? 🚀",
+        "Salut toi ! 😊 T'as fini de fouiner ? J'suis là pour répondre à tes questions sur Randy ! À quoi penses-tu ? 🤔",
+        "Re, ça y est ? 👀 T'as terminé la visite ? Dis-moi si y a quelque chose qui t'intrigue ou si tu veux en savoir plus ! 💡",
+        "Yo ! ✨ Content que tu sois revenu ! Des trucs te posent question ? Je suis là pour ça 😉"
+    ],
+    en: [
+        "Welcome back! 👋 Great to see you again! Did you find anything interesting while exploring? Let's talk about it! 💬",
+        "Back again! 🎉 Hope you discovered some cool stuff on the portfolio. Any questions or need clarification? 🚀",
+        "Hey there! 😊 Done exploring? I'm here to answer your questions about Randy! What's on your mind? 🤔",
+        "Welcome back! 👀 Finished the tour? Let me know if anything intrigues you or if you want to learn more! 💡",
+        "Yo! ✨ Glad you came back! Got any questions for me? I'm here to help 😉"
+    ]
+}
+
+// 🤖 Mots-clés pour détecter les questions sur la nature IA
+export const AI_NATURE_KEYWORDS = [
+    'vrai ia', 'real ai', 'véritable ia', 'true ai', 'es-tu une ia', 'are you an ai',
+    'es-tu ai', 'are you ai', 'tu es ia', 'you are ai', 'vrai bot', 'real bot',
+    'vrai robot', 'real robot', 'créé par', 'created by', 'qui t\'a créé', 'who created you',
+    'qui a créé', 'vrai gpt', 'real gpt', 'es-tu gemini', 'are you gemini',
+    'tu es gemini', 'you are gemini', 'alimenté par', 'powered by', 'est-ce une ia', 'is this an ai',
+    'c\'est une ia', 'it is an ai', 'machine learning', 'ml model', 'tu es un modèle', 'you are a model'
+]
+
