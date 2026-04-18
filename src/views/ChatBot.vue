@@ -353,7 +353,7 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
     'ça va|how are you|how is it going|comment ça va|comment vas|comment va|tu vas|allez-vous': t('chat.local.mood'),
     'présente-toi|presentation|qui es-tu|who are you|introduce yourself': t('chat.local.introduce'),
     'projets|projects|what projects|réalisations|what are your projects': t('chat.local.projects'),
-    'compétences|skills|technologies|what can you do|technical skills': t('chat.local.skills'),
+    'compétences|skills|what can you do|technical skills': t('chat.local.skills'),
     'parcours professionnel|mon parcours|expérience pro|career|parcours|career path|my career': t('chat.local.career'),
     'contact|comment te contacter|how to contact|contacter': t('chat.local.contact'),
     'localisation|location|madagascar|emplacement|ville|pays|situé|localisé|city|country|lieu|habite|où vivez|où est': t('chat.local.location'),
@@ -365,33 +365,12 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
     'nom complet|full name|prénom|nom': t('chat.local.full_name')
 })
 
-onMounted(() => {
-    isComponentMounted.value = true
-    setTimeout(() => {
-        if (isComponentMounted.value) loading.value = false
-    }, 1000)
-
-    suggestions.value = defaultSuggestions.value
-    loadChatHistory()
-    initQuotaReset()
-
-    window.addEventListener('beforeunload', handleBeforeUnload)
-})
-
-const handleBeforeUnload = (): void => {
-    // Garder l'historique du chat pour détecter le retour
-    // On ne supprime plus l'historique ici
-}
-
-onUnmounted(() => {
-    isComponentMounted.value = false
-    if (quotaIntervalId) clearInterval(quotaIntervalId)
-    if (navTimeoutId) clearTimeout(navTimeoutId)
-    window.removeEventListener('beforeunload', handleBeforeUnload)
-})
+// ==================== MODIFICATIONS PRINCIPALES ====================
+// Changement de localStorage vers sessionStorage pour une suppression automatique à la fermeture de l'onglet
 
 const loadChatHistory = (): void => {
-    const savedHistory = localStorage.getItem('chat_history')
+    // Utiliser sessionStorage au lieu de localStorage
+    const savedHistory = sessionStorage.getItem('chat_history')
     const isFirstSessionVisit = sessionStorage.getItem('chat_session_visit') === null
     
     if (savedHistory) {
@@ -403,7 +382,7 @@ const loadChatHistory = (): void => {
             }))
         } catch (error) {
             console.error('Erreur chargement historique:', error)
-            localStorage.removeItem('chat_history')
+            sessionStorage.removeItem('chat_history')
             const welcomeContent = t('chat.welcome_message')
             messages.value = [{
                 role: 'assistant',
@@ -422,17 +401,14 @@ const loadChatHistory = (): void => {
         }]
     }
     
-    // ✅ Marquer cette visite de session
+    // Marquer cette visite de session
     sessionStorage.setItem('chat_session_visit', 'true')
     
-    // 🎉 Scroll d'abord, PUIS ajouter le message de retour
     nextTick(async () => {
         await scrollToBottom()
         
-        // Attendre un peu plus pour être sûr que le scroll est complet
         await new Promise(resolve => setTimeout(resolve, 300))
         
-        // Si ce n'est pas la première visite DE CETTE SESSION, ajouter un message de bienvenue au retour
         if (!isFirstSessionVisit && messages.value.length > 0) {
             const lang = locale.value === 'fr' ? 'fr' : 'en'
             const welcomeBackMessages = WELCOME_BACK_RESPONSES[lang as keyof typeof WELCOME_BACK_RESPONSES]
@@ -446,7 +422,6 @@ const loadChatHistory = (): void => {
             })
             saveHistory()
             
-            // Re-scroller après l'ajout du message
             nextTick(async () => {
                 await scrollToBottom()
             })
@@ -455,25 +430,65 @@ const loadChatHistory = (): void => {
 }
 
 const saveHistory = (): void => {
-    localStorage.setItem('chat_history', JSON.stringify(messages.value))
+    // Sauvegarder dans sessionStorage au lieu de localStorage
+    sessionStorage.setItem('chat_history', JSON.stringify(messages.value))
 }
 
-const handleAction = (action: Action) => {
-    if (action.type === 'route') {
-        router.push(action.target)
-    } else if (action.type === 'link' || action.type === 'download') {
-        const link = document.createElement('a')
-        link.href = action.target
-        if (action.type === 'download') {
-            link.download = action.target.split('/').pop() || 'download'
-        } else {
-            link.target = '_blank'
-        }
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-    }
+const clearConversation = (): void => {
+    messages.value = [{
+        role: 'assistant',
+        content: t('chat.welcome_message'),
+        timestamp: new Date()
+    }]
+    suggestions.value = defaultSuggestions.value
+    saveHistory()
+    scrollToBottom()
 }
+
+// Nettoyer la session à la fermeture de l'onglet
+const handleBeforeUnload = (): void => {
+    // Supprimer complètement l'historique de la session
+    sessionStorage.removeItem('chat_history')
+    sessionStorage.removeItem('chat_session_visit')
+}
+
+// Nettoyer également lors du rechargement de la page (optionnel)
+const handlePageHide = (): void => {
+    sessionStorage.removeItem('chat_history')
+    sessionStorage.removeItem('chat_session_visit')
+}
+
+// ==================== FIN DES MODIFICATIONS ====================
+
+onMounted(() => {
+    isComponentMounted.value = true
+    
+    // Nettoyer les anciennes données localStorage (migration)
+    const oldHistory = localStorage.getItem('chat_history')
+    if (oldHistory) {
+        localStorage.removeItem('chat_history')
+    }
+    
+    setTimeout(() => {
+        if (isComponentMounted.value) loading.value = false
+    }, 1000)
+
+    suggestions.value = defaultSuggestions.value
+    loadChatHistory()
+    initQuotaReset()
+
+    // Écouter la fermeture de l'onglet
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    window.addEventListener('pagehide', handlePageHide)
+})
+
+onUnmounted(() => {
+    isComponentMounted.value = false
+    if (quotaIntervalId) clearInterval(quotaIntervalId)
+    if (navTimeoutId) clearTimeout(navTimeoutId)
+    window.removeEventListener('beforeunload', handleBeforeUnload)
+    window.removeEventListener('pagehide', handlePageHide)
+})
 
 const scrollToBottom = async (): Promise<void> => {
     await nextTick()
@@ -533,6 +548,23 @@ const typeResponse = async (text: string): Promise<void> => {
                 if (isComponentMounted.value) handleAction(navAction)
             }, 2000)
         }
+    }
+}
+
+const handleAction = (action: Action) => {
+    if (action.type === 'route') {
+        router.push(action.target)
+    } else if (action.type === 'link' || action.type === 'download') {
+        const link = document.createElement('a')
+        link.href = action.target
+        if (action.type === 'download') {
+            link.download = action.target.split('/').pop() || 'download'
+        } else {
+            link.target = '_blank'
+        }
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
     }
 }
 
@@ -892,17 +924,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
             : t('chat.feedback_thanks_negative')
         showToast(toastMessage, rating === 'positive' ? 'positive' : 'negative', 2500)
     }
-}
-
-const clearConversation = (): void => {
-    messages.value = [{
-        role: 'assistant',
-        content: t('chat.welcome_message'),
-        timestamp: new Date()
-    }]
-    suggestions.value = defaultSuggestions.value
-    saveHistory()
-    scrollToBottom()
 }
 </script>
 

@@ -81,7 +81,7 @@ export const WELCOME_BACK_RESPONSES = {
         "Bienvenue de retour ! 👋 Content de te revoir ! T'as trouvé quelque chose d'intéressant en explorant ? On en parle ? 💬",
         "De retour ! 🎉 J'espère que tu as découvert des choses sympas sur le portfolio. Des questions ou besoin de précisions ? 🚀",
         "Salut toi ! 😊 T'as fini de fouiner ? J'suis là pour répondre à tes questions sur Randy ! À quoi penses-tu ? 🤔",
-        "Re, ça y est ? 👀 T'as terminé la visite ? Dis-moi si y a quelque chose qui t'intrigue ou si tu veux en savoir plus ! 💡",
+        "Hmmm ! 👀 T'as terminé la visite ? Dis-moi si y a quelque chose qui t'intrigue ou si tu veux en savoir plus ! 💡",
         "Yo ! ✨ Content que tu sois revenu ! Des trucs te posent question ? Je suis là pour ça 😉"
     ],
     en: [
