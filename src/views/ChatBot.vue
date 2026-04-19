@@ -278,6 +278,7 @@ const GEMINI_API_KEYS = [
     import.meta.env.VITE_GEMINI_API_KEY_1,
     import.meta.env.VITE_GEMINI_API_KEY_2,
     import.meta.env.VITE_GEMINI_API_KEY_3,
+    import.meta.env.VITE_GEMINI_API_KEY_4
 ].filter(key => key && key.startsWith('AIza')) as string[]
 
 
@@ -587,6 +588,91 @@ const sendMessage = async (): Promise<void> => {
     const currentQuestion = userInput.value
     userInput.value = ''
     await scrollToBottom()
+
+    // 🔍 Détection de questions multiples (plusieurs '?', '!', '.')
+    const questionParts = currentQuestion.split(/[\?!.]+/).map(q => q.trim()).filter(q => q.length > 0)
+    const isMultiQuestion = questionParts.length > 1
+
+    if (isMultiQuestion) {
+        const localAnswers: string[] = []
+        const unanswered: string[] = []
+        const kb = getLocalKnowledgeBase()
+        for (const q of questionParts) {
+            if (isAINatureQuestion(q)) {
+                const cachedAIResponse = localStorage.getItem('ai_nature_response')
+                if (cachedAIResponse) {
+                    localAnswers.push(cachedAIResponse)
+                } else {
+                    unanswered.push(q)
+                }
+                continue
+            }
+            if (isPersonalInfoRequest(q)) {
+                const lang = locale.value === 'fr' ? 'fr' : 'en'
+                localAnswers.push(PERSONAL_INFO_RESPONSES[lang])
+                continue
+            }
+            const local = findLocalResponse(q, kb)
+            if (local) {
+                localAnswers.push(local)
+            } else {
+                unanswered.push(q)
+            }
+        }
+        if (unanswered.length === 0) {
+            // Toutes les questions ont une réponse locale
+            for (const ans of localAnswers) {
+                await typeResponse(ans)
+            }
+            return
+        } else {
+            // Au moins une question n'a pas de réponse locale, envoyer à Gemini
+            isTyping.value = true
+            lastRequestTime.value = Date.now()
+            try {
+                let aiResponse = ''
+                let lastError: any = null
+                for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
+                    try {
+                        const tempGenAI = new GoogleGenerativeAI(GEMINI_API_KEYS[i])
+                        const tempModel = tempGenAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+                        const conversationHistory: string = messages.value
+                            .slice(-5)
+                            .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
+                            .join('\n')
+                        const prompt = `${portfolioContext.value}\n\nConversation history:\n${conversationHistory}\n\nUser: ${currentQuestion}\nAssistant:`
+                        const result = await tempModel.generateContent(prompt)
+                        const response = await result.response
+                        aiResponse = response.text()
+                        apiCallCount.value++
+                        if (apiCallCount.value >= MAX_API_CALLS) {
+                            quotaExhausted.value = true
+                            console.warn(`⚠️ Quota atteint (${apiCallCount.value}/${MAX_API_CALLS})`)
+                        }
+                        if (i !== currentKeyIndex) {
+                            currentKeyIndex = i
+                            model = initModelWithKey(GEMINI_API_KEYS[i], i)
+                        }
+                        break
+                    } catch (err) {
+                        lastError = err
+                        console.error(`Échec de la clé API ${i}`)
+                    }
+                }
+                if (aiResponse) {
+                    await typeResponse(aiResponse)
+                } else {
+                    throw lastError || new Error('Toutes les clés API ont échoué')
+                }
+            } catch (error: any) {
+                await typeResponse(t('chat.error_local_fallback'))
+            } finally {
+                isTyping.value = false
+                await scrollToBottom()
+            }
+            return
+        }
+    }
 
     // 🤖 Gestion spéciale: Questions sur la nature IA (une seule fois + Gemini)
     if (isAINatureQuestion(currentQuestion)) {

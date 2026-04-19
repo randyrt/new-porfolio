@@ -39,12 +39,14 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-import { computed, ref, onMounted, watchEffect } from 'vue'
+import { computed, ref, onMounted, watchEffect, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import ProjectGallery from '../components/ProjectGallery.vue';
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
+const route = useRoute()
 
 useHead({
   title: computed(() => t('projects.meta_title')),
@@ -121,10 +123,40 @@ function closeImage() {
     selectedImage.value = null
 }
 
+// 🔍 Fonction pour scroller vers un projet spécifique
+const scrollToProject = (projectId: string) => {
+    // Attendre que le DOM soit rendu avant de scroller
+    setTimeout(() => {
+        const element = document.getElementById(projectId)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+    }, 100)
+}
+
+// 🔔 Écouter les changements de hash pour scroller automatiquement
+watch(
+    () => route.hash,
+    (newHash) => {
+        if (newHash) {
+            // Enlever le '#' du hash
+            const projectId = newHash.substring(1)
+            scrollToProject(projectId)
+        }
+    },
+    { immediate: true }
+)
+
 onMounted(() => {
     setTimeout(() => {
         loading.value = false
         toast.info(t('projects.toast_click'))
+        
+        // Scroller si un hash est présent au chargement
+        if (route.hash) {
+            const projectId = route.hash.substring(1)
+            scrollToProject(projectId)
+        }
     }, 1000);
 });
 </script>

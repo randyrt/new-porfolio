@@ -37,9 +37,6 @@ export class AutoCorrector {
   ): Promise<CorrectionResult> {
     this.attempts = 0
 
-    console.log('🔧 AutoCorrector: Tentative de correction...')
-    console.log(`   Question: ${userQuestion}`)
-    console.log(`   Catégorie: ${category}`)
 
     // Stratégie 1: Chercher une réponse alternative plus spécifique
     const altResult = await this.strategy_searchAlternative(userQuestion)
@@ -112,7 +109,6 @@ export class AutoCorrector {
       }
     }
 
-    console.log(`   ❌ Aucune alternative trouvée`)
     return null
   }
 
@@ -124,15 +120,10 @@ export class AutoCorrector {
     console.log(`   [Stratégie ${this.attempts}] Reformulation en cours...`)
 
     const reformulations = [
-      // Ajouter contexte Randy
       `Randy peut-il m'aider avec: ${userQuestion}`,
-      // Chercher le mot principal
       this.extractMainKeyword(userQuestion),
-      // Version plus générale
       `À propos de ${this.extractMainKeyword(userQuestion)}`,
-      // Ajouter "compétences"
       `Tes compétences en ${this.extractMainKeyword(userQuestion)}`,
-      // Ajouter "projets"
       `Tes projets avec ${this.extractMainKeyword(userQuestion)}`
     ]
 
@@ -187,7 +178,6 @@ export class AutoCorrector {
       }
     }
 
-    console.log(`   ❌ Aucune variante utile`)
     return null
   }
 
@@ -222,8 +212,6 @@ export class AutoCorrector {
         }
       }
     }
-
-    console.log(`   ❌ Pas de sujet parent applicable`)
     return null
   }
 
