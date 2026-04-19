@@ -2,10 +2,10 @@ export interface FeedbackRecord {
   id: string
   userQuestion: string
   botResponse: string
-  rating: 'positive' | 'negative' // 👍 / 👎
+  rating: 'positive' | 'negative'
   timestamp: number
   category?: string
-  userCorrection?: string // Si l'utilisateur a corrigé la réponse
+  userCorrection?: string 
 }
 
 export interface FeedbackStats {

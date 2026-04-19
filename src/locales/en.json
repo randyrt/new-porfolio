@@ -545,7 +545,7 @@
     "quote": "Artificial intelligence doesn't replace human intelligence, it complements it. This assistant is here to answer your questions about my journey, skills and projects.",
     "clear_conversation": "Clear conversation",
     "welcome_message": "👋 Hello ! I'm Randy's AI assistant. I can tell you about his career path, projects, technical skills or even share his CV. What would you like to know ?",
-    "error_local_fallback": "⏳ All APIs have reached their free limits.\n\nI'm now using my local knowledge to answer. I can tell you about:\n- My introduction\n- My projects\n- My skills\n- My experience\n- How to contact me\n\nWhat would you like to know?",
+    "error_local_fallback": "⏳ All APIs have reached their free limits.\n\nSee the suggestions to continue.",
     "local": {
       "greeting": "Hello! 😊 It's a pleasure to have you here. How can I help you explore Randy's portfolio?",
       "thanks": "You're welcome! 🚀 Feel free to ask if you have any other questions about his skills or projects.",

@@ -83,9 +83,6 @@ export class FeedbackAnalyzer {
   async shouldRetrainModel(): Promise<boolean> {
     const stats = await feedbackStorage.getStats()
 
-    // Trigger retraining if:
-    // 1. Accuracy drops below 70%
-    // 2. We have enough negative feedback to learn from (> 20 samples)
     const accuracy = stats.totalFeedback > 0 ? stats.positiveCount / stats.totalFeedback : 1
     return accuracy < 0.7 && stats.negativeCount > 20
   }
