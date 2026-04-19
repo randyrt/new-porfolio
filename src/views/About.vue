@@ -49,7 +49,7 @@
                   </span>
                 </h3>
                 <button @click="showTechDetails = false"
-                  class="text-white bg-violet-500 px-3 py-1 rounded hover:bg-violet-400 transition-colors">
+                  class="text-white bg-purple-500 px-3 py-1 rounded hover:bg-purple-400 transition-colors">
                   {{ $t('about.close') }}
                 </button>
               </div>
