@@ -11,7 +11,6 @@
         </div>
         <div class="chatbot-card p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
 
-            <!-- 🔔 Toast Notifications -->
             <div class="fixed top-1/2 right-6 -translate-y-1/2 z-50 space-y-2 pointer-events-none">
                 <transition-group name="toast" tag="div">
                     <div v-for="toast in toasts" :key="toast.id"
@@ -95,7 +94,6 @@
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
-                            <!-- 🔘 BOUTONS D'ACTION RAPIDES -->
                             <div v-if="message.actions && message.actions.length > 0"
                                 class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
                                 <button v-for="(action, aIndex) in message.actions" :key="aIndex"
@@ -106,7 +104,6 @@
                                 </button>
                             </div>
 
-                            <!-- 👍 / 👎 FEEDBACK BUTTONS -->
                             <div v-if="message.role === 'assistant' && message.allowFeedback !== false"
                                 class="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100 dark:border-gray-600">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">{{ $t('chat.helpful') }}</span>
@@ -197,7 +194,7 @@ import {
 } from '../services/chatbot/constants'
 import { generatePortfolioContext } from '../services/chatbot/context'
 
-// 🔔 Toast Notification Interface
+
 interface Toast {
     id: string
     message: string
@@ -366,11 +363,8 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
     'nom complet|full name|prénom|nom': t('chat.local.full_name')
 })
 
-// ==================== MODIFICATIONS PRINCIPALES ====================
-// Changement de localStorage vers sessionStorage pour une suppression automatique à la fermeture de l'onglet
 
 const loadChatHistory = (): void => {
-    // Utiliser sessionStorage au lieu de localStorage
     const savedHistory = sessionStorage.getItem('chat_history')
     const isFirstSessionVisit = sessionStorage.getItem('chat_session_visit') === null
     
@@ -402,10 +396,8 @@ const loadChatHistory = (): void => {
         }]
     }
     
-    // Marquer cette visite de session
     sessionStorage.setItem('chat_session_visit', 'true')
     
-    // 🔍 Si c'est une visite de retour, préparer le message de bienvenue
     if (!isFirstSessionVisit && messages.value.length > 0) {
         const lang = locale.value === 'fr' ? 'fr' : 'en'
         const welcomeBackMessages = WELCOME_BACK_RESPONSES[lang as keyof typeof WELCOME_BACK_RESPONSES]
@@ -422,7 +414,6 @@ const loadChatHistory = (): void => {
 }
 
 const saveHistory = (): void => {
-    // Sauvegarder dans sessionStorage au lieu de localStorage
     sessionStorage.setItem('chat_history', JSON.stringify(messages.value))
 }
 
@@ -437,14 +428,12 @@ const clearConversation = (): void => {
     scrollToBottom()
 }
 
-// Nettoyer la session à la fermeture de l'onglet
 const handleBeforeUnload = (): void => {
-    // Supprimer complètement l'historique de la session
     sessionStorage.removeItem('chat_history')
     sessionStorage.removeItem('chat_session_visit')
 }
 
-// Nettoyer également lors du rechargement de la page (optionnel)
+
 const handlePageHide = (): void => {
     sessionStorage.removeItem('chat_history')
     sessionStorage.removeItem('chat_session_visit')
@@ -453,7 +442,6 @@ const handlePageHide = (): void => {
 onMounted(() => {
     isComponentMounted.value = true
     
-    // Nettoyer les anciennes données localStorage (migration)
     const oldHistory = localStorage.getItem('chat_history')
     if (oldHistory) {
         localStorage.removeItem('chat_history')
@@ -462,18 +450,14 @@ onMounted(() => {
     suggestions.value = defaultSuggestions.value
     initQuotaReset()
 
-    // Écouter la fermeture de l'onglet
     window.addEventListener('beforeunload', handleBeforeUnload)
     window.addEventListener('pagehide', handlePageHide)
     
-    // 🔥 Charger l'historique ET faire le setup AVANT de désactiver le loading
     loadChatHistory()
     
-    // ⏱️ Désactiver le loading APRÈS le chargement pour que le scroll soit visible
     setTimeout(() => {
         if (isComponentMounted.value) {
             loading.value = false
-            // ✅ Scroller une dernière fois après que le loading est parti
             nextTick(async () => {
                 await new Promise(resolve => setTimeout(resolve, 50))
                 await scrollToBottom()
@@ -588,7 +572,6 @@ const sendMessage = async (): Promise<void> => {
     userInput.value = ''
     await scrollToBottom()
 
-    // 🔍 Détection de questions multiples (plusieurs '?', '!', '.')
     const questionParts = currentQuestion.split(/[\?!.]+/).map(q => q.trim()).filter(q => q.length > 0)
     const isMultiQuestion = questionParts.length > 1
 
@@ -619,13 +602,11 @@ const sendMessage = async (): Promise<void> => {
             }
         }
         if (unanswered.length === 0) {
-            // Toutes les questions ont une réponse locale
             for (const ans of localAnswers) {
                 await typeResponse(ans)
             }
             return
         } else {
-            // Au moins une question n'a pas de réponse locale, envoyer à Gemini
             isTyping.value = true
             lastRequestTime.value = Date.now()
             try {
@@ -673,15 +654,12 @@ const sendMessage = async (): Promise<void> => {
         }
     }
 
-    // 🤖 Gestion spéciale: Questions sur la nature IA (une seule fois + Gemini)
     if (isAINatureQuestion(currentQuestion)) {
         const cachedAIResponse = localStorage.getItem('ai_nature_response')
         
         if (cachedAIResponse) {
-            // Réponse déjà en cache - la retourner
             await typeResponse(cachedAIResponse)
         } else {
-            // Première fois - Envoyer à Gemini et cacher la réponse
             isTyping.value = true
             try {
                 const { sendToGemini } = await import('../services/api')
@@ -690,7 +668,6 @@ const sendMessage = async (): Promise<void> => {
                     'Je suis un chatbot IA créé par Randy pour son portfolio. Je suis intégré à l\'API Gemini pour répondre avec expertise.'
                 )
                 
-                // 💾 Cacher la réponse pour les questions suivantes
                 localStorage.setItem('ai_nature_response', geminiResponse)
                 await typeResponse(geminiResponse)
             } catch (error) {
@@ -827,7 +804,6 @@ const sendSuggestion = (suggestion: string): void => {
     sendMessage()
 }
 
-// 🔔 Toast Notification System
 const showToast = (message: string, type: 'positive' | 'negative' | 'info' = 'info', duration: number = 2500): void => {
     const id = `toast-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
     const toast: Toast = {
@@ -839,7 +815,6 @@ const showToast = (message: string, type: 'positive' | 'negative' | 'info' = 'in
 
     toasts.value.push(toast)
 
-    // Auto-remove toast after duration
     setTimeout(() => {
         toasts.value = toasts.value.filter(t => t.id !== id)
     }, duration)
@@ -849,7 +824,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
     const message = messages.value[messageIndex]
     if (message.role !== 'assistant') return
 
-    // Toggle feedback if same rating clicked again
     if (feedbackState.value[messageIndex] === rating) {
         delete feedbackState.value[messageIndex]
         return
@@ -857,7 +831,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 
     feedbackState.value[messageIndex] = rating
 
-    // Find the corresponding user question (previous message)
     let userQuestion = ''
     for (let i = messageIndex - 1; i >= 0; i--) {
         if (messages.value[i].role === 'user') {
@@ -866,7 +839,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
         }
     }
 
-    // Record feedback to IndexedDB
     const intention = detectIntention(userQuestion)
     await recordFeedback(
         rating,
@@ -902,7 +874,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
             )
 
             if (correctionResult.success && correctionResult.newResponse) {
-                // ✅ Correction réussie - Remplacer la réponse
                 showToast('✨ Réponse corrigée !', 'positive', 3000)
                 
                 const correctedMessage = {
@@ -915,7 +886,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                 saveHistory()
                 await scrollToBottom()
 
-                // Feedback positif sur la correction
                 await recordFeedback(
                     'positive',
                     userQuestion,
@@ -924,12 +894,10 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                     `Auto-corrected: ${correctionResult.strategy}`
                 )
             } else {
-                // ❌ Pas de correction trouvée - Essayer Gemini si c'est lié au portfolio
                 const portfolioCategories = ['skills', 'projects', 'career', 'contact', 'quality', 'technology', 'services']
                 const isPortfolioRelated = portfolioCategories.includes(intention?.category || '')
 
                 if (isPortfolioRelated) {
-                    // 🌟 Essayer Gemini pour générer une meilleure réponse
                     showToast('🌟 Consultation de Gemini...', 'info', 3000)
                     
                     try {
@@ -948,7 +916,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                         messages.value[messageIndex] = geminiMessage
                         showToast('✨ Réponse complétée par Gemini !', 'positive', 3000)
                         
-                        // Enregistrer comme réussi
                         await recordFeedback(
                             'positive',
                             userQuestion,
@@ -958,7 +925,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                         )
                     } catch (geminiError) {
                         console.error('Erreur Gemini:', geminiError)
-                        // Fallback si Gemini échoue aussi
                         const fallbackResponse = 
                             `Désolé pour la réponse précédente ! 😅 Je n'ai pas pu la corriger automatiquement ni avec Gemini.\n\n` +
                             `**Options**:\n` +
@@ -976,7 +942,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                         showToast('⚠️ Impossible de corriger', 'negative', 3000)
                     }
                 } else {
-                    // Question non-portfolio - Fallback standard
                     showToast('💭 Impossible de corriger, tente une reformulation...', 'info', 3000)
                     
                     const fallbackResponse = 
@@ -1003,7 +968,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
             isTyping.value = false
         }
     } else {
-        // Positive feedback - Show toast notification
         const toastMessage = rating === 'positive'
             ? t('chat.feedback_thanks_positive')
             : t('chat.feedback_thanks_negative')
@@ -1135,7 +1099,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
     white-space: pre-wrap;
 }
 
-/* 🔔 Toast Notifications */
 .toast-notification {
     animation: toast-slide-in 0.3s ease-out, toast-slide-out 0.3s ease-in forwards;
     max-width: 400px;
@@ -1167,7 +1130,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
     animation: toast-slide-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Transition group for toasts */
 .toast-enter-active,
 .toast-leave-active {
     transition: all 0.3s ease;
