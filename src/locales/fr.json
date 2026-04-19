@@ -130,6 +130,7 @@
   "services": {
     "loading": "Mes services...",
     "quote": "Découvrons ensemble les services que je propose pour donner vie à vos projets numériques",
+    "p": "Votre succès numérique est ma priorité. Je crois en des partenariats transparents, une exécution minutieuse et la livraison de solutions qui dépassent les attentes. Ensemble, construisons quelque chose de remarquable.",
     "git_title": "Git & version control",
     "git_desc": "Gestion efficace du code source avec Git, incluant le travail en équipe, la résolution de conflits et la structuration propre des branches.",
     "team_title": "Team workflow & merges",

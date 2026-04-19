@@ -2,6 +2,13 @@
   <Loading v-if="loading" :message="$t('services.loading')" />
   <div v-else class="flex flex-col space-y-10 ">
     <AnimatedTitle :text="$t('services.quote')" aos="fade-down" />
+    <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
+      <p class="text-lg italic text-gray-700 dark:text-gray-300">
+        <span class="text-violet-800 text-lg">«</span>
+        {{ $t('services.p') }}
+        <span class="text-violet-800 text-lg">»</span>
+      </p>
+    </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6" data-aos="fade-up">
 
