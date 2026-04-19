@@ -8,12 +8,15 @@
       </div>
 
       <router-link to="/chatbot"
-        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30">
-        <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg text-sky-300" />
+        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30 group"
+        @mouseenter="isHoveringBot = true"
+        @mouseleave="isHoveringBot = false"
+        @click="cycleTooltipMessage">
+        <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg transition-all duration-200" :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
 
         <span
           class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-800 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg chat-tooltip-text overflow-hidden">
-          {{ t('chat.chat_tooltip') }}
+          {{ currentTooltipMessage }} 
           <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-800 rotate-45"></span>
         </span>
 
@@ -30,11 +33,43 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 
-const { t } = useI18n();
+const { t, tm } = useI18n();
+const isHoveringBot = ref(false);
+const tooltipMessageIndex = ref(0);
+
+// Get the tooltip messages array
+const tooltipMessages = computed(() => {
+  return tm('chat.chat_tooltips') as string[];
+});
+
+// Get the current tooltip message
+const currentTooltipMessage = computed(() => {
+  const messages = tooltipMessages.value;
+  if (messages && messages.length > 0) {
+    return messages[tooltipMessageIndex.value];
+  }
+  return t('chat.chat_tooltip');
+});
+
+// Get random message from the rest (excluding the first one which is default)
+const getRandomMessage = () => {
+  const messages = tooltipMessages.value;
+  if (messages && messages.length > 1) {
+    // Get a random index from 1 to messages.length-1 (exclude the first "Click me")
+    const randomIndex = 1 + Math.floor(Math.random() * (messages.length - 1));
+    return randomIndex;
+  }
+  return 0; // Fallback to first message
+};
+
+// Display random tooltip message on click (always reset to index 0 first, then pick random)
+const cycleTooltipMessage = () => {
+  tooltipMessageIndex.value = getRandomMessage();
+};
 
 const navRoutes = computed(() => [
   { path: '/', name: t('nav.home'), icon: 'home' },
@@ -113,6 +148,24 @@ const navRoutes = computed(() => [
 
 .group:hover .chat-tooltip-text {
   animation: typing-text 0.8s ease-out forwards;
+}
+
+/* Robot smile animation */
+@keyframes robot-smile {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.1);
+  }
+  100% {
+    transform: scaleY(1.05);
+  }
+}
+
+.robot-smile {
+  animation: robot-smile 0.5s ease-in-out forwards;
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 0, 0.5));
 }
 
 /* Scrollbar styling */
