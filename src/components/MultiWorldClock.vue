@@ -259,7 +259,7 @@ onBeforeUnmount(() => {
 }
 
 .weather-desc {
-    color: #9ca3af;
+    color: #055CF3;
     font-size: 0.7rem;
 }
 
