@@ -1,8 +1,8 @@
 <template>
   <div class="app-container relative min-h-screen overflow-x-hidden">
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
-
-    <div v-if="$route.path !== '/chatbot'" class="fixed bottom-8 left-10 z-[999] group">
+    
+    <div v-if="$route.path !== '/chatbot'" class="hidden md:flex fixed bottom-8 left-10 z-[999] group">
       <div class="bg-violet-500 rounded-lg">
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
       </div>
