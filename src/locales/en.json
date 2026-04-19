@@ -19,7 +19,7 @@
   "home": {
     "loading": "Home page...",
     "quote": "\"Code never sleeps, and neither do I until I reach my goals.\"",
-    "welcome": "Welcome to my portfolio!",
+    "welcome": "Welcome to my portfolio !",
     "p1": "I am Randy, a passionate <span class=\"font-semibold\">fullStack</span> developer specialized in creating modern and high-performance web and mobile applications. I love exploring new technologies and taking on technical challenges. This means I am capable of leading a project from A to Z, from user interface design to server and database management.",
     "p2": "In my projects, I regularly use <span class=\"font-semibold\">Vue.js</span> and <span class=\"font-semibold\">TypeScript</span> to build reactive interfaces, <span class=\"font-semibold\">TailwindCSS</span> for modern designs in addition to having a solid background in <span class=\"font-semibold\"> UX and UI design</span>, and <span class=\"font-semibold\">Laravel</span> for the backend. As well as <span class=\"font-semibold\">Docker Engine and Docker Compose</span> to containerize and orchestrate my applications. On the mobile side, I am getting familiar with <span class=\"font-semibold\">IONIC</span> to develop cross-platform applications. And I also have experience with <span class=\"font-semibold\">Python</span> for scripts and automation,",
     "p3_1": "Feel free to browse my portfolio to discover my projects, skills, and experiences. If you have any questions or would like to collaborate, do not hesitate to ",
