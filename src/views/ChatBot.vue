@@ -405,29 +405,20 @@ const loadChatHistory = (): void => {
     // Marquer cette visite de session
     sessionStorage.setItem('chat_session_visit', 'true')
     
-    nextTick(async () => {
-        await scrollToBottom()
+    // 🔍 Si c'est une visite de retour, préparer le message de bienvenue
+    if (!isFirstSessionVisit && messages.value.length > 0) {
+        const lang = locale.value === 'fr' ? 'fr' : 'en'
+        const welcomeBackMessages = WELCOME_BACK_RESPONSES[lang as keyof typeof WELCOME_BACK_RESPONSES]
+        const randomWelcomeBack = welcomeBackMessages[Math.floor(Math.random() * welcomeBackMessages.length)]
         
-        await new Promise(resolve => setTimeout(resolve, 300))
-        
-        if (!isFirstSessionVisit && messages.value.length > 0) {
-            const lang = locale.value === 'fr' ? 'fr' : 'en'
-            const welcomeBackMessages = WELCOME_BACK_RESPONSES[lang as keyof typeof WELCOME_BACK_RESPONSES]
-            const randomWelcomeBack = welcomeBackMessages[Math.floor(Math.random() * welcomeBackMessages.length)]
-            
-            messages.value.push({
-                role: 'assistant',
-                content: randomWelcomeBack,
-                timestamp: new Date(),
-                actions: detectActions(randomWelcomeBack, t)
-            })
-            saveHistory()
-            
-            nextTick(async () => {
-                await scrollToBottom()
-            })
-        }
-    })
+        messages.value.push({
+            role: 'assistant',
+            content: randomWelcomeBack,
+            timestamp: new Date(),
+            actions: detectActions(randomWelcomeBack, t)
+        })
+        saveHistory()
+    }
 }
 
 const saveHistory = (): void => {
@@ -459,8 +450,6 @@ const handlePageHide = (): void => {
     sessionStorage.removeItem('chat_session_visit')
 }
 
-// ==================== FIN DES MODIFICATIONS ====================
-
 onMounted(() => {
     isComponentMounted.value = true
     
@@ -470,17 +459,27 @@ onMounted(() => {
         localStorage.removeItem('chat_history')
     }
     
-    setTimeout(() => {
-        if (isComponentMounted.value) loading.value = false
-    }, 1000)
-
     suggestions.value = defaultSuggestions.value
-    loadChatHistory()
     initQuotaReset()
 
     // Écouter la fermeture de l'onglet
     window.addEventListener('beforeunload', handleBeforeUnload)
     window.addEventListener('pagehide', handlePageHide)
+    
+    // 🔥 Charger l'historique ET faire le setup AVANT de désactiver le loading
+    loadChatHistory()
+    
+    // ⏱️ Désactiver le loading APRÈS le chargement pour que le scroll soit visible
+    setTimeout(() => {
+        if (isComponentMounted.value) {
+            loading.value = false
+            // ✅ Scroller une dernière fois après que le loading est parti
+            nextTick(async () => {
+                await new Promise(resolve => setTimeout(resolve, 50))
+                await scrollToBottom()
+            })
+        }
+    }, 100)
 })
 
 onUnmounted(() => {
