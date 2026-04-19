@@ -13,16 +13,15 @@
 
             <div class="fixed top-1/2 right-6 -translate-y-1/2 z-50 space-y-2 pointer-events-none">
                 <transition-group name="toast" tag="div">
-                    <div v-for="toast in toasts" :key="toast.id"
-                        :class="`toast-notification px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 pointer-events-auto animate-slide-in-right
+                    <div v-for="toast in toasts" :key="toast.id" :class="`toast-notification px-4 py-3 rounded-lg shadow-lg flex items-center gap-2 pointer-events-auto animate-slide-in-right
                             ${toast.type === 'positive'
                             ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-300 dark:border-green-700'
                             : toast.type === 'negative'
-                            ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-300 dark:border-red-700'
-                            : 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-700'
+                                ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-300 dark:border-red-700'
+                                : 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 border border-blue-300 dark:border-blue-700'
                         }`">
-                        <font-awesome-icon 
-                            :icon="`fa-solid ${toast.type === 'positive' ? 'fa-check-circle' : toast.type === 'negative' ? 'fa-times-circle' : 'fa-info-circle'}`" 
+                        <font-awesome-icon
+                            :icon="`fa-solid ${toast.type === 'positive' ? 'fa-check-circle' : toast.type === 'negative' ? 'fa-times-circle' : 'fa-info-circle'}`"
                             class="text-lg" />
                         <span class="font-medium">{{ toast.message }}</span>
                     </div>
@@ -30,6 +29,7 @@
             </div>
 
             <div class="flex items-center justify-between mb-6">
+                <!-- Section gauche : Titre -->
                 <div class="flex items-center gap-3">
                     <div
                         class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
@@ -46,11 +46,122 @@
                     </div>
                 </div>
 
-                <div class="hidden md:flex flex-col items-end gap-1">
-                    <button @click="clearConversation" class="btn-violet btn-effect-5">
-                        <font-awesome-icon icon="fa-solid fa-trash-alt" class="" />
-                        {{ $t('chat.clear_conversation') }}
-                    </button>
+                <!-- Section centrale : Boutons (Language, Theme, GitHub, LinkedIn) -->
+                <div class="hidden md:flex items-center gap-2">
+                    <!-- Language Switcher -->
+                    <div class="relative group" @click="toggleLanguage">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                bg-gray-900 text-white text-xs py-1 px-2 rounded
+                opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                pointer-events-none">
+                            {{ $t('nav.change_language') }}
+                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
+                    border-4 border-transparent border-t-gray-900"></div>
+                        </div>
+                        <span class="group relative flex h-10 w-10 items-center justify-center
+                bg-gradient-to-br from-emerald-500 to-teal-600
+                rounded-xl shadow-lg shadow-emerald-500/30
+                hover:shadow-[0_0_25px_rgba(16,185,129,0.7)]
+                hover:scale-110 hover:from-emerald-400 hover:to-teal-500
+                active:scale-95
+                transition-all duration-300 ease-out cursor-pointer
+                border border-white/30">
+                            <span class="text-white text-sm font-bold uppercase tracking-wide filter drop-shadow-md
+                    group-hover:rotate-12 transition-transform duration-300">
+                                {{ currentLocale }}
+                            </span>
+                        </span>
+                    </div>
+
+                    <!-- Theme Switcher -->
+                    <div class="relative group" @click="cycleTheme">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                bg-gray-900 text-white text-xs py-1 px-2 rounded
+                opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                pointer-events-none">
+                            {{ $t('nav.change_theme') }}
+                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
+                    border-4 border-transparent border-t-gray-900"></div>
+                        </div>
+                        <span class="group relative flex h-10 w-10 items-center justify-center
+                bg-gradient-to-br from-violet-500 to-purple-600
+                rounded-xl shadow-lg shadow-violet-500/30
+                hover:shadow-[0_0_25px_rgba(139,92,246,0.7)]
+                hover:scale-110 hover:from-violet-400 hover:to-purple-500
+                active:scale-95
+                transition-all duration-300 ease-out cursor-pointer
+                border border-white/30">
+                            <font-awesome-icon :icon="themeIcon" class="text-white text-lg filter drop-shadow-md
+                    group-hover:rotate-12 transition-transform duration-300" />
+                        </span>
+                    </div>
+                <span class="text-violet-700"> | </span>    
+                    <!-- GitHub Button -->
+                    <div class="relative group" @click="openGithub">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                bg-gray-900 text-white text-xs py-1 px-2 rounded
+                opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                pointer-events-none">
+                            GitHub
+                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
+                    border-4 border-transparent border-t-gray-900"></div>
+                        </div>
+                        <span class="group relative flex h-10 w-10 items-center justify-center
+                bg-gradient-to-br from-gray-700 to-gray-900
+                rounded-xl shadow-lg shadow-gray-700/30
+                hover:shadow-[0_0_25px_rgba(51,65,85,0.7)]
+                hover:scale-110 hover:from-gray-600 hover:to-gray-800
+                active:scale-95
+                transition-all duration-300 ease-out cursor-pointer
+                border border-white/30">
+                            <font-awesome-icon :icon="['fab', 'github']" class="text-white text-lg filter drop-shadow-md
+                    group-hover:rotate-12 transition-transform duration-300" />
+                        </span>
+                    </div>
+
+                    <!-- LinkedIn Button -->
+                    <div class="relative group" @click="openLinkedin">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                bg-gray-900 text-white text-xs py-1 px-2 rounded
+                opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                pointer-events-none">
+                            LinkedIn
+                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
+                    border-4 border-transparent border-t-gray-900"></div>
+                        </div>
+                        <span class="group relative flex h-10 w-10 items-center justify-center
+                bg-gradient-to-br from-blue-600 to-blue-800
+                rounded-xl shadow-lg shadow-blue-600/30
+                hover:shadow-[0_0_25px_rgba(37,99,235,0.7)]
+                hover:scale-110 hover:from-blue-500 hover:to-blue-700
+                active:scale-95
+                transition-all duration-300 ease-out cursor-pointer
+                border border-white/30">
+                            <font-awesome-icon :icon="['fab', 'linkedin']" class="text-white text-lg filter drop-shadow-md
+                    group-hover:rotate-12 transition-transform duration-300" />
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Section droite : Clear Conversation -->
+                <button @click="clearConversation" class="btn-violet btn-effect-5">
+                    <font-awesome-icon icon="fa-solid fa-trash-alt" class="" />
+                    {{ $t('chat.clear_conversation') }}
+                </button>
+            </div>
+
+            <div class="w-full px-1 mb-6">
+                <div class="h-0.5" style="background: linear-gradient(to right, 
+                    #858182 0%,
+                    #858182 20%,
+                    #10b981 20%,
+                    #10b981 40%,
+                    #8b5cf6 40%,
+                    #8b5cf6 60%,
+                    #374151 60%,
+                    #374151 80%,
+                    #2563eb 80%,
+                    #2563eb 100%);">
                 </div>
             </div>
 
@@ -84,13 +195,13 @@
                             :class="message.role === 'user'
                                 ? 'user-message bg-gradient-to-r from-violet-500 to-purple-600 text-white rounded-2xl rounded-tr-sm max-w-[80%] p-3 shadow-md'
                                 : message.isAutoCorrection
-                                ? 'assistant-message bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 text-gray-800 dark:text-white rounded-2xl rounded-tl-sm max-w-[80%] p-3 shadow-md border-2 border-amber-300 dark:border-amber-600'
-                                : 'assistant-message bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-2xl rounded-tl-sm max-w-[80%] p-3 shadow-md border border-gray-200 dark:border-gray-700'">
+                                    ? 'assistant-message bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 text-gray-800 dark:text-white rounded-2xl rounded-tl-sm max-w-[80%] p-3 shadow-md border-2 border-amber-300 dark:border-amber-600'
+                                    : 'assistant-message bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-2xl rounded-tl-sm max-w-[80%] p-3 shadow-md border border-gray-200 dark:border-gray-700'">
 
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
@@ -172,6 +283,7 @@ import { ref, nextTick, onMounted, computed, watch, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 import { useRouter } from 'vue-router'
+import { toggleTheme, getStoredTheme } from '../services/theme.js'
 
 import { type Action, type Message } from '../services/chatbot/types'
 import {
@@ -204,6 +316,10 @@ interface Toast {
 
 const { tm, locale, t } = useI18n()
 
+// Theme and locale management (from NavBar)
+const currentTheme = ref<string>(getStoredTheme())
+const currentLocale = ref<string>(localStorage.getItem('locale') || 'fr')
+
 useHead({
     title: computed(() => t('chat.page_title')),
     meta: [
@@ -235,6 +351,32 @@ const lastRequestTime = ref<number>(0)
 const router = useRouter()
 const feedbackState = ref<Record<number, 'positive' | 'negative'>>({})
 const toasts = ref<Toast[]>([])
+
+// Computed for theme icon (from NavBar)
+const themeIcon = computed(() => {
+    return currentTheme.value === 'light' ? ['fas', 'moon'] : ['fas', 'sun']
+})
+
+// Functions from NavBar
+function toggleLanguage() {
+    const newLocale = currentLocale.value === 'fr' ? 'en' : 'fr'
+    currentLocale.value = newLocale
+    locale.value = newLocale
+    localStorage.setItem('locale', newLocale)
+}
+
+function cycleTheme() {
+    const next = toggleTheme()
+    currentTheme.value = next
+}
+
+function openGithub() {
+    window.open("https://github.com/randyrt", "_blank")
+}
+
+function openLinkedin() {
+    window.open("https://www.linkedin.com/in/randy-andriantsiory-3a935828a", "_blank")
+}
 
 const quotaExhausted = ref<boolean>(false)
 const onTopicAttempts = ref<number>(0)
@@ -367,7 +509,7 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
 const loadChatHistory = (): void => {
     const savedHistory = sessionStorage.getItem('chat_history')
     const isFirstSessionVisit = sessionStorage.getItem('chat_session_visit') === null
-    
+
     if (savedHistory) {
         try {
             const parsedHistory = JSON.parse(savedHistory)
@@ -395,14 +537,14 @@ const loadChatHistory = (): void => {
             actions: detectActions(welcomeContent, t)
         }]
     }
-    
+
     sessionStorage.setItem('chat_session_visit', 'true')
-    
+
     if (!isFirstSessionVisit && messages.value.length > 0) {
         const lang = locale.value === 'fr' ? 'fr' : 'en'
         const welcomeBackMessages = WELCOME_BACK_RESPONSES[lang as keyof typeof WELCOME_BACK_RESPONSES]
         const randomWelcomeBack = welcomeBackMessages[Math.floor(Math.random() * welcomeBackMessages.length)]
-        
+
         messages.value.push({
             role: 'assistant',
             content: randomWelcomeBack,
@@ -441,20 +583,20 @@ const handlePageHide = (): void => {
 
 onMounted(() => {
     isComponentMounted.value = true
-    
+
     const oldHistory = localStorage.getItem('chat_history')
     if (oldHistory) {
         localStorage.removeItem('chat_history')
     }
-    
+
     suggestions.value = defaultSuggestions.value
     initQuotaReset()
 
     window.addEventListener('beforeunload', handleBeforeUnload)
     window.addEventListener('pagehide', handlePageHide)
-    
+
     loadChatHistory()
-    
+
     setTimeout(() => {
         if (isComponentMounted.value) {
             loading.value = false
@@ -656,7 +798,7 @@ const sendMessage = async (): Promise<void> => {
 
     if (isAINatureQuestion(currentQuestion)) {
         const cachedAIResponse = localStorage.getItem('ai_nature_response')
-        
+
         if (cachedAIResponse) {
             await typeResponse(cachedAIResponse)
         } else {
@@ -667,7 +809,7 @@ const sendMessage = async (): Promise<void> => {
                     currentQuestion,
                     'Je suis un chatbot IA créé par Randy pour son portfolio. Je suis intégré à l\'API Gemini pour répondre avec expertise.'
                 )
-                
+
                 localStorage.setItem('ai_nature_response', geminiResponse)
                 await typeResponse(geminiResponse)
             } catch (error) {
@@ -850,7 +992,7 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 
     if (rating === 'negative') {
         console.log('👎 Feedback négatif détecté - Lancement de la correction automatique...')
-        
+
         const diagnosticMessage = {
             role: 'assistant' as const,
             content: `Désolé ! 😔 Je comprends que ma réponse n'était pas satisfaisante...\n\nJe cherche une meilleure réponse pour toi. Si tu veux m'aider, tu peux reformuler ta question ou me donner plus de détails ! 💡`,
@@ -863,9 +1005,9 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
         }
         messages.value.push(diagnosticMessage)
         await scrollToBottom()
-        
+
         isTyping.value = true
-        
+
         try {
             const correctionResult = await autoCorrector.attemptCorrection(
                 userQuestion,
@@ -875,13 +1017,13 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 
             if (correctionResult.success && correctionResult.newResponse) {
                 showToast('✨ Réponse corrigée !', 'positive', 3000)
-                
+
                 const correctedMessage = {
                     ...message,
                     content: `${correctionResult.newResponse}`,
                     actions: detectActions(correctionResult.newResponse, t)
                 }
-                
+
                 messages.value[messageIndex] = correctedMessage
                 saveHistory()
                 await scrollToBottom()
@@ -899,7 +1041,7 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 
                 if (isPortfolioRelated) {
                     showToast('🌟 Consultation de Gemini...', 'info', 3000)
-                    
+
                     try {
                         const { sendToGemini } = await import('../services/api')
                         const geminiResponse = await sendToGemini(
@@ -912,10 +1054,10 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                             content: `${geminiResponse}\n\n*Réponse générée avec assistance IA (Gemini)*`,
                             actions: detectActions(geminiResponse, t)
                         }
-                        
+
                         messages.value[messageIndex] = geminiMessage
                         showToast('✨ Réponse complétée par Gemini !', 'positive', 3000)
-                        
+
                         await recordFeedback(
                             'positive',
                             userQuestion,
@@ -925,7 +1067,7 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                         )
                     } catch (geminiError) {
                         console.error('Erreur Gemini:', geminiError)
-                        const fallbackResponse = 
+                        const fallbackResponse =
                             `Désolé pour la réponse précédente ! 😅 Je n'ai pas pu la corriger automatiquement ni avec Gemini.\n\n` +
                             `**Options**:\n` +
                             `1. 🔄 Reformule ta question différemment\n` +
@@ -937,14 +1079,14 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                             content: fallbackResponse,
                             actions: detectActions(fallbackResponse, t)
                         }
-                        
+
                         messages.value[messageIndex] = fallbackMessage
                         showToast('⚠️ Impossible de corriger', 'negative', 3000)
                     }
                 } else {
                     showToast('💭 Impossible de corriger, tente une reformulation...', 'info', 3000)
-                    
-                    const fallbackResponse = 
+
+                    const fallbackResponse =
                         `Désolé pour la réponse précédente ! 😅 Je n'ai pas pu la corriger automatiquement.\n\n` +
                         `**Raison**: ${correctionResult.reason}\n\n` +
                         `**Options**:\n` +
@@ -957,10 +1099,10 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
                         content: fallbackResponse,
                         actions: detectActions(fallbackResponse, t)
                     }
-                    
+
                     messages.value[messageIndex] = fallbackMessage
                 }
-                
+
                 saveHistory()
                 await scrollToBottom()
             }
@@ -1109,6 +1251,7 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
         opacity: 0;
         transform: translateX(400px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -1120,6 +1263,7 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
         opacity: 1;
         transform: translateX(0);
     }
+
     to {
         opacity: 0;
         transform: translateX(400px);

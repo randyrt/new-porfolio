@@ -35,7 +35,7 @@ import {
   faGitlab,
   faFigma,
   faBootstrap,
-  faWhatsapp
+  faWhatsapp,
 } from '@fortawesome/free-brands-svg-icons'
 
 import {
@@ -66,7 +66,8 @@ import {
   faEnvelope,
   faArrowRight,
   faThumbsDown,  
-  faThumbsUp     
+  faThumbsUp,
+   faBookOpen     
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -96,7 +97,7 @@ library.add(
   faWhatsapp,
   faCommentDots, faMicrochip, faNetworkWired, faCircleNodes,
   faLayerGroup, faDownload, faArrowRight,faThumbsDown,  
-  faThumbsUp    
+  faThumbsUp, faBookOpen    
 )
 
 

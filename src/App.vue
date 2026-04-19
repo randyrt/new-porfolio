@@ -12,7 +12,7 @@
         <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg text-sky-300" />
 
         <span
-          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-800 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg">
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-800 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg chat-tooltip-text overflow-hidden">
           {{ t('chat.chat_tooltip') }}
           <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-800 rotate-45"></span>
         </span>
@@ -99,6 +99,20 @@ const navRoutes = computed(() => [
 
 .animate-pulse-purple {
   animation: pulse-purple 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Typing text animation for tooltip */
+@keyframes typing-text {
+  0% {
+    max-width: 0;
+  }
+  100% {
+    max-width: 200px;
+  }
+}
+
+.group:hover .chat-tooltip-text {
+  animation: typing-text 0.8s ease-out forwards;
 }
 
 /* Scrollbar styling */
