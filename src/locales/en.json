@@ -308,13 +308,19 @@
       "amortization_line": "Linear amortization • Net book value:",
       "per_year": "% / yr",
       "doc_title": "📋 Document Generation",
+      "doc_title_notif": "📋 Generated documents :",
       "doc_letter": "📝 Client engagement letter",
+      "doc_letter_notif": "✓ Client engagement letter generated",
       "doc_report": "📊 Annual tax report",
+      "doc_report_notif": "✓ Annual tax report generated",
       "doc_invoice": "🧾 Pro forma invoice",
+      "doc_invoice_notif": "✓ Pro forma invoice generated",
       "alerts_title": "🔔 Tax Alerts :",
       "alert_1": "✓ VAT declaration due in 12 days",
       "alert_2": "✓ 2025 Tax Reform: new deductions available",
-      "alert_3": "✓ Equipment amortization to review"
+      "alert_3": "✓ Equipment amortization to review",
+
+      "toast": "Tax declaration generated - VAT due: "
     },
     "qcp": {
       "title": "Credit Simulator",
@@ -355,34 +361,52 @@
       "stats_members": "Members",
       "stats_posts": "Posts",
       "stats_groups": "Active groups",
-      "stats_countries": "Countries represented"
+      "stats_countries": "Countries represented",
+      "toast_check_form": "The content of the publication cannot be empty 👮‍♂️",
+      "toast_delete_post": "Post deleted successfully 🗑️",
+      "already_member": "You are already a member",
+      "joined_success": "You joined {name}",
+      "processings": "Processing payment...",
+      "success_monthly": "✓ Payment of €9.99 processed via {method}! Thank you for supporting the African community.",
+      "success_yearly": "✓ Payment of €89.99 processed via {method}! Thank you for supporting the African community.",
+      "methods": {
+        "visa": "VISA",
+        "paypal": "PayPal"
+      }
     },
     "nurses": {
-      "title": "🍷 Reservation Simulator",
-      "guests": "Number of people",
+      "title": "🍷 Booking Simulator",
+      "guests": "Number of guests",
       "date": "Date",
       "service": "Service",
       "serv_lunch": "🍳 Lunch (12pm-2pm)",
       "serv_dinner": "🌙 Dinner (7pm-10pm)",
-      "serv_vip": "✨ VIP (Exclusive service)",
-      "vip_inc": "🎁 VIP service included :",
+      "serv_vip": "✨ VIP (exclusive service)",
+      "vip_inc": "🎁 VIP Service includes:",
       "vip_1": "✓ Private lounge access",
-      "vip_2": "✓ Custom tasting menu",
+      "vip_2": "✓ Personalized tasting menu",
       "vip_3": "✓ Welcome by the head chef",
-      "btn_reserve": "Reserve (demo)",
+      "btn_reserve": "Book (demo)",
       "events_title": "🎉 Upcoming Events",
       "participants": "participants",
       "remaining": "spots left",
-      "btn_reserve_event": "Reserve for this event",
-      "admin_title": "👑 Admin Dashboard",
-      "admin_res": "Reservations",
+      "btn_reserve_event": "Book this event",
+      "admin_title": "👑 Admin Panel",
+      "admin_res": "Bookings",
       "admin_vip": "VIP",
-      "admin_guests": "Guests",
+      "admin_guests": "Covers",
       "admin_events": "Events",
       "btn_add_event": "+ Add event",
       "btn_reset": "Reset",
       "event_gala": "🎭 Gala",
-      "event_degust": "🍷 Tasting"
+      "event_degust": "🍷 Tasting",
+      "event_gala_annual": "Annual Gala Evening",
+      "event_dinner_candles": "Candlelight Dinner",
+      "event_wine_tasting": "Belgian Wine Tasting",
+      "reset_success": "Demo data reset successfully!",
+      "addNewEvent": "New Event",
+      "toast_event_added": "New event added successfully !",
+      "name_event": "Event Name"
     },
     "echo": {
       "title": "📅 Event Management",
@@ -411,7 +435,13 @@
       "guide": "📄 Cardiology Guide",
       "webinar": "🎥 Webinar - New tech",
       "btn_download": "Download",
-      "btn_view": "View"
+      "btn_view": "View",
+      "validation_check": "❌ Please fill out all fields correctly before registering.",
+      "congress": "European Congress of Cardiology",
+      "symposium": "Cardiac Imaging Symposium",
+      "workshop": "Echocardiography Workshop",
+      "download_success": "Resource downloaded successfully!",
+      "toast_success": "New measurement simulated"
     },
     "in_dev": {
       "title": "Demo under development",
@@ -449,17 +479,17 @@
     }
   },
   "currentActivity": {
-      "now": "Right now",
-      "activities": [
-        "Writing an article about Vue.js",
-        "Presenting at a tech meetup",
-        "Testing a new design system library",
-        "Performance, production application",
-        "Working on a new project",
-        "Learning Flutter, Golang and C++",
-        "Active member on Laracasts",
-        "Ready for new opportunities"
-      ]
+    "now": "Right now",
+    "activities": [
+      "Writing an article about Vue.js",
+      "Presenting at a tech meetup",
+      "Testing a new design system library",
+      "Performance, production application",
+      "Working on a new project",
+      "Learning Flutter, Golang and C++",
+      "Active member on Laracasts",
+      "Ready for new opportunities"
+    ]
   },
   "github": {
     "title": "Stats github of Randy",
@@ -488,7 +518,20 @@
     "stats_info_followers": "People following me",
     "stats_info_languages": "Most used programming languages",
     "stats_info_contributions": "Monthly contribution activity",
-    "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
     "commits_label": "Number of commits",
     "months_label": "Month"
   },

@@ -25,7 +25,7 @@
             <div class="demo-header p-8">
                 <h3 class="text-xl font-semibold text-gray-600"></h3>
                 <button @click.stop="toggleDemo" class="btn-effect-5">
-                    {{ showDemo ? $t('demo.hide') : $t('demo.show') }}
+                    {{ showDemo ? t('demo.hide') : t('demo.show') }}
                     <span class="ml-1">{{ showDemo ? '▲' : '▼' }}</span>
                 </button>
             </div>
@@ -39,39 +39,39 @@
                 <div v-if="showDemo"
                     class="demo-wrapper  border-2 border-violet-500 rounded-xl overflow-hidden shadow-lg ">
                     <div class="bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-2">
-                        <span class="text-white text-sm font-mono">{{ $t('demo.live') }} • {{ title }}</span>
+                        <span class="text-white text-sm font-mono">{{ t('demo.live') }} • {{ title }}</span>
                     </div>
 
                     <div v-if="demoType === 'fid-connect'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             <!-- Tableau de bord fiscal -->
                             <div class="space-y-4">
-                                <h4 class="font-bold text-gray-800">{{ $t('demo.fid_connect.title') }}</h4>
+                                <h4 class="font-bold text-gray-800">{{ t('demo.fid_connect.title') }}</h4>
 
                                 <!-- Période comptable -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="font-semibold">{{ $t('demo.fid_connect.period') }}</span>
+                                        <span class="font-semibold">{{ t('demo.fid_connect.period') }}</span>
                                         <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">En
                                             cours</span>
                                     </div>
                                     <div class="space-y-2">
                                         <div class="flex justify-between text-sm">
-                                            <span>{{ $t('demo.fid_connect.revenue') }}</span>
+                                            <span>{{ t('demo.fid_connect.revenue') }}</span>
                                             <span class="font-semibold">{{ formatCurrency(fiscalData.revenue) }}</span>
                                         </div>
                                         <input type="range" v-model="fiscalData.revenue" min="0" max="500000"
                                             step="5000" class="w-full">
 
                                         <div class="flex justify-between text-sm mt-2">
-                                            <span>{{ $t('demo.fid_connect.expenses') }}</span>
+                                            <span>{{ t('demo.fid_connect.expenses') }}</span>
                                             <span class="font-semibold">{{ formatCurrency(fiscalData.expenses) }}</span>
                                         </div>
                                         <input type="range" v-model="fiscalData.expenses" min="0"
                                             :max="fiscalData.revenue" step="1000" class="w-full">
 
                                         <div class="flex justify-between text-sm mt-2">
-                                            <span>{{ $t('demo.fid_connect.tax_result') }}</span>
+                                            <span>{{ t('demo.fid_connect.tax_result') }}</span>
                                             <span class="font-semibold"
                                                 :class="taxableResult < 0 ? 'text-green-600' : 'text-orange-600'">
                                                 {{ formatCurrency(taxableResult) }}
@@ -82,34 +82,33 @@
 
                                 <!-- Calcul TVA -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold mb-2">{{ $t('demo.fid_connect.vat_title') }}</h5>
+                                    <h5 class="font-semibold mb-2">{{ t('demo.fid_connect.vat_title') }}</h5>
                                     <div class="text-2xl font-bold text-violet-600">{{ formatCurrency(vatAmount) }}
                                     </div>
-                                    <div class="text-xs text-gray-500 mt-1">{{ $t('demo.fid_connect.vat_desc') }}
+                                    <div class="text-xs text-gray-500 mt-1">{{ t('demo.fid_connect.vat_desc') }}
                                     </div>
                                     <button @click="generateTaxDeclaration"
                                         class="mt-3 w-full btn-violet btn-effect-5 text-sm py-2">
-                                        {{ $t('demo.fid_connect.generate_tax') }}
+                                        {{ t('demo.fid_connect.generate_tax') }}
                                     </button>
                                 </div>
                             </div>
 
-                            <!-- {{ $t('demo.qcp.amortization') }}s et lettres -->
                             <div class="space-y-4">
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold mb-2">{{ $t('demo.fid_connect.doc_title') }}</h5>
+                                    <h5 class="font-semibold mb-2">{{ t('demo.fid_connect.doc_title') }}</h5>
                                     <div class="space-y-2">
                                         <button @click="generateDocument('letter')"
                                             class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
-                                            {{ $t('demo.fid_connect.doc_letter') }}
+                                            {{ t('demo.fid_connect.doc_letter') }}
                                         </button>
                                         <button @click="generateDocument('report')"
                                             class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
-                                            {{ $t('demo.fid_connect.doc_report') }}
+                                            {{ t('demo.fid_connect.doc_report') }}
                                         </button>
                                         <button @click="generateDocument('invoice')"
                                             class="w-full text-left px-3 py-2 bg-gray-500 rounded hover:bg-gray-400 text-sm">
-                                            {{ $t('demo.fid_connect.doc_invoice') }}
+                                            {{ t('demo.fid_connect.doc_invoice') }}
                                         </button>
                                     </div>
                                     <div v-if="docMessage" class="text-center text-sm p-2 mt-2 rounded"
@@ -119,11 +118,11 @@
                                 </div>
 
                                 <div class="bg-blue-50 rounded-lg p-3 text-sm">
-                                    <span class="font-semibold">{{ $t('demo.fid_connect.alerts_title') }}</span>
+                                    <span class="font-semibold">{{ t('demo.fid_connect.alerts_title') }}</span>
                                     <ul class="text-xs mt-1 space-y-1">
-                                        <li>{{ $t('demo.fid_connect.alert_1') }}</li>
-                                        <li>{{ $t('demo.fid_connect.alert_2') }}</li>
-                                        <li>{{ $t('demo.fid_connect.alert_3') }}</li>
+                                        <li>{{ t('demo.fid_connect.alert_1') }}</li>
+                                        <li>{{ t('demo.fid_connect.alert_2') }}</li>
+                                        <li>{{ t('demo.fid_connect.alert_3') }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -133,44 +132,44 @@
                     <div v-else-if="demoType === 'qcp'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div class="space-y-4">
-                                <h4 class="font-bold text-gray-800">{{ $t('demo.qcp.title') }}</h4>
+                                <h4 class="font-bold text-gray-800">{{ t('demo.qcp.title') }}</h4>
                                 <div>
-                                    <label class="text-sm text-gray-600">{{ $t('demo.qcp.amount') }}</label>
+                                    <label class="text-sm text-gray-600">{{ t('demo.qcp.amount') }}</label>
                                     <input type="range" v-model="loan.amount" min="5000" max="500000" step="5000"
                                         class="w-full">
                                     <div class="text-right font-semibold">{{ formatCurrency(loan.amount) }}</div>
                                 </div>
                                 <div>
-                                    <label class="text-sm text-gray-600">{{ $t('demo.qcp.rate') }}</label>
+                                    <label class="text-sm text-gray-600">{{ t('demo.qcp.rate') }}</label>
                                     <input type="range" v-model="loan.rate" min="1" max="15" step="0.1" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.rate }}%</div>
                                 </div>
                                 <div>
-                                    <label class="text-sm text-gray-600">{{ $t('demo.qcp.years') }}</label>
+                                    <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
-                                    <div class="text-right font-semibold">{{ loan.years }} {{ $t('demo.qcp.years_unit')
+                                    <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
                                         }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
-                                <h4 class="font-bold mb-3">{{ $t('demo.qcp.results') }}</h4>
+                                <h4 class="font-bold mb-3">{{ t('demo.qcp.results') }}</h4>
                                 <div class="space-y-2">
                                     <div class="flex justify-between">
-                                        <span>{{ $t('demo.qcp.monthly') }}</span>
+                                        <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
                                         }}</span>
                                     </div>
                                     <div class="flex justify-between">
-                                        <span>{{ $t('demo.qcp.total') }}</span>
+                                        <span>{{ t('demo.qcp.total') }}</span>
                                         <span>{{ formatCurrency(totalPayment) }}</span>
                                     </div>
                                     <div class="flex justify-between">
-                                        <span>{{ $t('demo.qcp.interest') }}</span>
+                                        <span>{{ t('demo.qcp.interest') }}</span>
                                         <span class="text-orange-600">{{ formatCurrency(totalInterest) }}</span>
                                     </div>
                                 </div>
                                 <div class="mt-4 pt-3 border-t">
-                                    <div class="text-sm text-gray-600">{{ $t('demo.qcp.amortization') }}</div>
+                                    <div class="text-sm text-gray-600">{{ t('demo.qcp.amortization') }}</div>
                                     <div class="w-full bg-gray-200 rounded-full h-2 mt-1">
                                         <div class="bg-green-500 rounded-full h-2"
                                             :style="{ width: amortizationPercent + '%' }"></div>
@@ -254,7 +253,7 @@
                                                 <div v-if="showComments === idx" class="mt-3 pt-3 border-t">
                                                     <div class="flex gap-2 mb-2">
                                                         <input type="text" v-model="post.newComment"
-                                                            :placeholder="$t('demo.afr_fan.write_comment')"
+                                                            :placeholder="t('demo.afr_fan.write_comment')"
                                                             class="flex-1 p-1 border rounded text-sm"
                                                             @keyup.enter="addComment(idx)">
                                                         <button @click="addComment(idx)"
@@ -282,11 +281,11 @@
                                 <!-- Groupes d'intérêt -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <h5 class="font-semibold text-gray-800">{{ $t('demo.afr_fan.groups_title') }}
+                                        <h5 class="font-semibold text-gray-800">{{ t('demo.afr_fan.groups_title') }}
                                         </h5>
                                         <button @click="createGroup"
                                             class="btn-violet inline-block text-center btn-effect-5">{{
-                                                $t('demo.afr_fan.btn_create') }}</button>
+                                                t('demo.afr_fan.btn_create') }}</button>
                                     </div>
                                     <div class="space-y-2 max-h-48 overflow-y-auto">
                                         <div v-for="(group, idx) in groups" :key="idx"
@@ -298,7 +297,7 @@
                                             </div>
                                             <button class="text-xs font-medium transition btn-effect-20"
                                                 :class="group.joined ? 'text-green-600' : 'text-violet-500'">
-                                                {{ group.joined ? $t('demo.afr_fan.member') : $t('demo.afr_fan.join') }}
+                                                {{ group.joined ? t('demo.afr_fan.member') : t('demo.afr_fan.join') }}
                                             </button>
                                         </div>
                                     </div>
@@ -309,18 +308,18 @@
                                     class="bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg shadow p-4 border border-amber-200">
                                     <div class="flex items-center gap-2 mb-3">
                                         <span class="text-2xl">⭐</span>
-                                        <h5 class="font-bold text-gray-800">{{ $t('demo.afr_fan.premium_title') }}</h5>
+                                        <h5 class="font-bold text-gray-800">{{ t('demo.afr_fan.premium_title') }}</h5>
                                         <span class="text-xs bg-amber-200 text-amber-800 px-2 py-0.5 rounded">{{
-                                            $t('demo.afr_fan.popular') }}</span>
+                                            t('demo.afr_fan.popular') }}</span>
                                     </div>
                                     <p class="text-sm text-gray-600 mb-3">
-                                        {{ $t('demo.afr_fan.premium_desc') }}
+                                        {{ t('demo.afr_fan.premium_desc') }}
                                     </p>
                                     <ul class="text-xs text-gray-600 space-y-1 mb-3">
-                                        <li>{{ $t('demo.afr_fan.premium_1') }}</li>
-                                        <li>{{ $t('demo.afr_fan.premium_2') }}</li>
-                                        <li>{{ $t('demo.afr_fan.premium_3') }}</li>
-                                        <li>{{ $t('demo.afr_fan.premium_4') }}</li>
+                                        <li>{{ t('demo.afr_fan.premium_1') }}</li>
+                                        <li>{{ t('demo.afr_fan.premium_2') }}</li>
+                                        <li>{{ t('demo.afr_fan.premium_3') }}</li>
+                                        <li>{{ t('demo.afr_fan.premium_4') }}</li>
                                     </ul>
 
                                     <!-- Simulation de paiement -->
@@ -329,12 +328,12 @@
                                             <button @click="selectedPlan = 'monthly'"
                                                 class="flex-1 py-2 rounded text-sm font-medium transition"
                                                 :class="selectedPlan === 'monthly' ? 'bg-violet-600 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'">
-                                                {{ $t('demo.afr_fan.monthly') }}<br><span class="font-bold">9,99€</span>
+                                                {{ t('demo.afr_fan.monthly') }}<br><span class="font-bold">9,99€</span>
                                             </button>
                                             <button @click="selectedPlan = 'yearly'"
                                                 class="flex-1 py-2 rounded text-sm font-medium transition relative"
                                                 :class="selectedPlan === 'yearly' ? 'bg-violet-600 text-white' : 'bg-gray-300 text-gray-700 hover:bg-gray-400'">
-                                                {{ $t('demo.afr_fan.yearly') }}<br><span class="font-bold">89,99€</span>
+                                                {{ t('demo.afr_fan.yearly') }}<br><span class="font-bold">89,99€</span>
                                                 <span
                                                     class="absolute top-1 right-1 text-[10px] bg-green-500 text-white px-1 rounded">-25%</span>
                                             </button>
@@ -355,8 +354,8 @@
 
                                         <button @click="processPayment" :disabled="isProcessing"
                                             class="w-full btn-effect-5-submit rounded text-sm font-medium">
-                                            {{ isProcessing ? $t('demo.afr_fan.processing') :
-                                                $t('demo.afr_fan.support_now') }}
+                                            {{ isProcessing ? t('demo.afr_fan.processing') :
+                                                t('demo.afr_fan.support_now') }}
                                         </button>
 
                                         <div v-if="paymentMessage" class="text-center text-sm p-2 rounded"
@@ -368,27 +367,27 @@
 
                                 <!-- Diaspora en chiffres -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-800 mb-2">{{ $t('demo.afr_fan.stats_title') }}
+                                    <h5 class="font-semibold text-gray-800 mb-2">{{ t('demo.afr_fan.stats_title') }}
                                     </h5>
                                     <div class="grid grid-cols-2 gap-3 text-center">
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.members }}</div>
-                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_members') }}
+                                            <div class="text-xs text-gray-500">{{ t('demo.afr_fan.stats_members') }}
                                             </div>
                                         </div>
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.posts }}</div>
-                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_posts') }}
+                                            <div class="text-xs text-gray-500">{{ t('demo.afr_fan.stats_posts') }}
                                             </div>
                                         </div>
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.groups }}</div>
-                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_groups') }}
+                                            <div class="text-xs text-gray-500">{{ t('demo.afr_fan.stats_groups') }}
                                             </div>
                                         </div>
                                         <div>
                                             <div class="text-2xl font-bold text-violet-600">{{ stats.countries }}</div>
-                                            <div class="text-xs text-gray-500">{{ $t('demo.afr_fan.stats_countries') }}
+                                            <div class="text-xs text-gray-500">{{ t('demo.afr_fan.stats_countries') }}
                                             </div>
                                         </div>
                                     </div>
@@ -402,12 +401,12 @@
                             <!-- Section Réservation -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    {{ $t('demo.nurses.title') }}
+                                    {{ t('demo.nurses.title') }}
                                 </h4>
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="space-y-4">
                                         <div>
-                                            <label class="text-sm text-gray-600 font-medium">{{ $t('demo.nurses.guests')
+                                            <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
                                                 }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
@@ -424,7 +423,7 @@
                                         </div>
 
                                         <div>
-                                            <label class="text-sm text-gray-600 font-medium">{{ $t('demo.nurses.date')
+                                            <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
                                                 }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
@@ -432,27 +431,27 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{
-                                                $t('demo.nurses.service') }}</label>
+                                                t('demo.nurses.service') }}</label>
                                             <select v-model="booking.service" class="w-full p-2 border rounded mt-1">
-                                                <option value="midi">{{ $t('demo.nurses.serv_lunch') }}</option>
-                                                <option value="soir">{{ $t('demo.nurses.serv_dinner') }}</option>
-                                                <option value="vip">{{ $t('demo.nurses.serv_vip') }}</option>
+                                                <option value="midi">{{ t('demo.nurses.serv_lunch') }}</option>
+                                                <option value="soir">{{ t('demo.nurses.serv_dinner') }}</option>
+                                                <option value="vip">{{ t('demo.nurses.serv_vip') }}</option>
                                             </select>
                                         </div>
 
                                         <div v-if="booking.service === 'vip'"
                                             class="p-3 bg-amber-50 rounded border border-amber-200">
-                                            <p class="text-sm text-amber-800">{{ $t('demo.nurses.vip_inc') }}</p>
+                                            <p class="text-sm text-amber-800">{{ t('demo.nurses.vip_inc') }}</p>
                                             <ul class="text-xs text-amber-700 mt-1 space-y-1">
-                                                <li>{{ $t('demo.nurses.vip_1') }}</li>
-                                                <li>{{ $t('demo.nurses.vip_2') }}</li>
-                                                <li>{{ $t('demo.nurses.vip_3') }}</li>
+                                                <li>{{ t('demo.nurses.vip_1') }}</li>
+                                                <li>{{ t('demo.nurses.vip_2') }}</li>
+                                                <li>{{ t('demo.nurses.vip_3') }}</li>
                                             </ul>
                                         </div>
 
                                         <button @click="makeReservation"
                                             class="w-full btn-violet inline-block text-center btn-effect-5 py-2 rounded-lg">
-                                            {{ $t('demo.nurses.btn_reserve') }}
+                                            {{ t('demo.nurses.btn_reserve') }}
                                         </button>
 
                                         <div v-if="reservationMessage"
@@ -463,10 +462,10 @@
                                 </div>
                             </div>
 
-                            <!-- Section {{ $t('demo.nurses.events_title') }} -->
+                            <!-- Section {{ t('demo.nurses.events_title') }} -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    {{ $t('demo.nurses.events_title') }}
+                                    {{ t('demo.nurses.events_title') }}
                                 </h4>
 
                                 <div class="bg-white rounded-lg shadow p-4">
@@ -477,25 +476,25 @@
                                             @click="selectNurseEvent(idx)">
                                             <div class="flex justify-between items-start">
                                                 <div>
-                                                    <div class="font-semibold text-gray-800">{{ event.title }}</div>
-                                                    <div class="text-sm text-gray-600"> {{ event.date }}</div>
-                                                    <div class="text-xs text-gray-500">👥 {{ event.participants }}
-                                                        {{ $t('demo.nurses.participants') }}</div>
+                                                    <div class="font-semibold text-gray-800">{{ t(event.title) }}</div>
+                                                    <div class="text-sm text-gray-600">{{ event.date }}</div>
+                                                    <div class="text-xs text-gray-500">👥 {{ event.participants }} {{
+                                                        t('demo.nurses.participants') }}</div>
                                                 </div>
                                                 <div class="text-right">
                                                     <div class="text-sm font-semibold text-amber-600">{{ event.price }}
                                                     </div>
                                                     <div class="text-xs"
                                                         :class="event.spots > 10 ? 'text-green-600' : 'text-orange-600'">
-                                                        {{ event.spots }} {{ $t('demo.nurses.remaining') }}
+                                                        {{ event.spots }} {{ t('demo.nurses.remaining') }}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mt-2 flex gap-2">
                                                 <span class="text-xs px-2 py-1 rounded-full"
                                                     :class="event.type === 'gala' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'">
-                                                    {{ event.type === 'gala' ? $t('demo.nurses.event_gala') :
-                                                        $t('demo.nurses.event_degust') }}
+                                                    {{ event.type === 'gala' ? t('demo.nurses.event_gala') :
+                                                    t('demo.nurses.event_degust') }}
                                                 </span>
                                                 <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">
                                                     ⏰ {{ event.time }}
@@ -506,7 +505,7 @@
 
                                     <button @click="reserveEvent" :disabled="selectedEvent === null"
                                         class="w-full btn-effect-5-submit transition disabled:opacity-50 disabled:cursor-not-allowed mt-4">
-                                        {{ $t('demo.nurses.btn_reserve_event') }}
+                                        {{ t('demo.nurses.btn_reserve_event') }}
                                     </button>
                                     <div v-if="eventReservationMessage" class="text-center text-sm p-2 rounded mt-2"
                                         :class="eventReservationMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
@@ -521,7 +520,7 @@
                             <div class="bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg shadow p-4">
                                 <div class="flex justify-between items-center mb-3">
                                     <h4 class="font-bold text-white flex items-center gap-2">
-                                        {{ $t('demo.nurses.admin_title') }}
+                                        {{ t('demo.nurses.admin_title') }}
                                     </h4>
                                 </div>
 
@@ -530,22 +529,22 @@
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
                                             }}</div>
-                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_res') }}</div>
+                                            <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.vipReservations }}
                                             </div>
-                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_vip') }}</div>
+                                            <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_vip') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalGuests }}
                                             </div>
-                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_guests') }}
+                                            <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_guests') }}
                                             </div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ nurseEvents.length }}</div>
-                                            <div class="text-xs text-gray-300">{{ $t('demo.nurses.admin_events') }}
+                                            <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_events') }}
                                             </div>
                                         </div>
                                     </div>
@@ -553,11 +552,11 @@
                                     <div class="flex gap-2">
                                         <button @click="addDemoEvent"
                                             class="flex-1 bg-violet-600 text-white py-1 rounded text-sm hover:bg-violet-700 transition">
-                                            {{ $t('demo.nurses.btn_add_event') }}
+                                            {{ t('demo.nurses.btn_add_event') }}
                                         </button>
                                         <button @click="resetDemoData"
                                             class="flex-1 bg-orange-600 text-white py-1 rounded text-sm hover:bg-orange-700 transition">
-                                            {{ $t('demo.nurses.btn_reset') }}
+                                            {{ t('demo.nurses.btn_reset') }}
                                         </button>
                                     </div>
                                 </div>
@@ -567,20 +566,20 @@
 
                     <div v-else-if="demoType === 'echo-webLine'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <!-- {{ $t('demo.echo.title') }} scientifiques -->
+                            <!-- {{ t('demo.echo.title') }} scientifiques -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    {{ $t('demo.echo.title') }}
+                                    {{ t('demo.echo.title') }}
                                 </h4>
 
                                 <!-- Liste des événements -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="font-semibold text-gray-700">{{ $t('demo.nurses.events_title')
+                                        <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
                                             }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
-                                            {{ $t('demo.echo.btn_new') }}
+                                            {{ t('demo.echo.btn_new') }}
                                         </button>
                                     </div>
                                     <div class="space-y-2 max-h-64 overflow-y-auto">
@@ -590,19 +589,19 @@
                                             @click="selectEvent(idx)">
                                             <div class="flex justify-between items-start">
                                                 <div>
-                                                    <div class="font-semibold text-gray-800">{{ event.title }}</div>
+                                                    <div class="font-semibold text-gray-800">{{t(event.title)}}</div>
                                                     <div class="text-sm text-gray-600">{{ event.date }}</div>
                                                     <div class="text-xs text-gray-500">{{ event.participants }}
-                                                        {{ $t('demo.nurses.participants') }}</div>
+                                                        {{ t('demo.nurses.participants') }}</div>
                                                 </div>
                                                 <div class="flex gap-1 items-center space-x-6">
                                                     <span class="text-xs px-2 py-1 rounded"
                                                         :class="event.status === 'ouvert' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'">
-                                                        {{ event.status === 'ouvert' ? $t('demo.echo.status_open') :
-                                                            $t('demo.echo.status_full') }}
+                                                        {{ event.status === 'ouvert' ? t('demo.echo.status_open') :
+                                                            t('demo.echo.status_full') }}
                                                     </span>
                                                     <button @click.stop="deleteEvent(idx)"
-                                                        class="btn-effect-5-delete">{{ $t('demo.echo.btn_delete')
+                                                        class="btn-effect-5-delete">{{ t('demo.echo.btn_delete')
                                                         }}</button>
                                                 </div>
                                             </div>
@@ -612,26 +611,26 @@
 
                                 <!-- Formulaire d'inscription -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-700 mb-3">{{ $t('demo.echo.form_title') }}</h5>
+                                    <h5 class="font-semibold text-gray-700 mb-3">{{ t('demo.echo.form_title') }}</h5>
                                     <div class="space-y-3">
                                         <input type="text" v-model="registration.name"
-                                            :placeholder="$t('demo.echo.form_name')"
+                                            :placeholder="t('demo.echo.form_name')"
                                             class="w-full p-2 border rounded text-sm">
                                         <input type="email" v-model="registration.email"
-                                            :placeholder="$t('demo.echo.form_email')"
+                                            :placeholder="t('demo.echo.form_email')"
                                             class="w-full p-2 border rounded text-sm">
                                         <select v-model="registration.eventId"
                                             class="w-full p-2 border rounded text-sm">
-                                            <option value="">{{ $t('demo.echo.select_event') }}</option>
+                                            <option value="">{{ t('demo.echo.select_event') }}</option>
                                             <option v-for="(event, idx) in events" :key="idx" :value="idx"
                                                 :disabled="event.status === 'complet'">
-                                                {{ event.title }} ({{ event.status === 'complet' ? 'Complet' :
+                                                {{ t(event.title) }} ({{ event.status === 'complet' ? 'Complet' :
                                                     'Disponible' }})
                                             </option>
                                         </select>
                                         <button @click="registerToEvent"
                                             class="w-full btn-violet inline-block text-center btn-effect-5">
-                                            {{ $t('demo.echo.btn_register') }}
+                                            {{ t('demo.echo.btn_register') }}
                                         </button>
                                         <span v-if="registrationMessage"
                                             class="text-xs text-center italic p-2 w-fit flex justify-center rounded mx-auto"
@@ -644,21 +643,21 @@
                                 </div>
                             </div>
 
-                            <!-- {{ $t('demo.echo.cardio_title') }} -->
+                            <!-- {{ t('demo.echo.cardio_title') }} -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    {{ $t('demo.echo.cardio_title') }}
+                                    {{ t('demo.echo.cardio_title') }}
                                 </h4>
 
                                 <!-- Visualisation des données médicales -->
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
-                                        <span class="font-semibold text-gray-700">{{ $t('demo.echo.params') }}</span>
+                                        <span class="font-semibold text-gray-700">{{ t('demo.echo.params') }}</span>
                                     </div>
                                     <div class="space-y-3">
                                         <div>
                                             <div class="flex justify-between text-sm">
-                                                <span>{{ $t('demo.echo.heart_rate') }}</span>
+                                                <span>{{ t('demo.echo.heart_rate') }}</span>
                                                 <span class="font-semibold"
                                                     :class="heartData.heartRate > 100 ? 'text-red-600' : 'text-green-600'">
                                                     {{ heartData.heartRate }} bpm
@@ -669,7 +668,7 @@
                                         </div>
                                         <div>
                                             <div class="flex justify-between text-sm">
-                                                <span>{{ $t('demo.echo.blood_press') }}</span>
+                                                <span>{{ t('demo.echo.blood_press') }}</span>
                                                 <span class="font-semibold">{{ heartData.systolic }}/{{
                                                     heartData.diastolic }} mmHg</span>
                                             </div>
@@ -682,7 +681,7 @@
                                         </div>
                                         <div>
                                             <div class="flex justify-between text-sm">
-                                                <span>{{ $t('demo.echo.oxygen') }}</span>
+                                                <span>{{ t('demo.echo.oxygen') }}</span>
                                                 <span class="font-semibold"
                                                     :class="heartData.oxygen < 94 ? 'text-orange-600' : 'text-green-600'">
                                                     {{ heartData.oxygen }}%
@@ -693,14 +692,14 @@
                                         </div>
                                         <button @click="simulateHeartData"
                                             class="w-1/2 btn-violet inline-block text-center btn-effect-5">
-                                            {{ $t('demo.echo.btn_simData') }}
+                                            {{ t('demo.echo.btn_simData') }}
                                         </button>
                                     </div>
                                 </div>
 
                                 <!-- Graphique simplifié -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-700 mb-2">{{ $t('demo.echo.hist_title') }}</h5>
+                                    <h5 class="font-semibold text-gray-700 mb-2">{{ t('demo.echo.hist_title') }}</h5>
                                     <div class="relative h-32">
                                         <div
                                             class="absolute bottom-0 left-0 right-0 flex items-end justify-between h-full">
@@ -714,26 +713,26 @@
                                         </div>
                                     </div>
                                     <div class="text-center text-xs text-gray-500 mt-4">
-                                        {{ $t('demo.echo.last_8') }}
+                                        {{ t('demo.echo.last_8') }}
                                     </div>
                                 </div>
 
                                 <!-- Ressources médicales -->
                                 <div class="bg-white rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-gray-700 mb-2">{{ $t('demo.echo.resources_title') }}
+                                    <h5 class="font-semibold text-gray-700 mb-2">{{ t('demo.echo.resources_title') }}
                                     </h5>
                                     <div class="space-y-2">
                                         <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
-                                            <span class="text-sm">{{ $t('demo.echo.guide') }}</span>
+                                            <span class="text-sm">{{ t('demo.echo.guide') }}</span>
                                             <button @click="downloadResource"
                                                 class="btn-violet inline-block text-center btn-effect-5">{{
-                                                    $t('demo.echo.btn_download') }}</button>
+                                                    t('demo.echo.btn_download') }}</button>
                                         </div>
                                         <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
-                                            <span class="text-sm">{{ $t('demo.echo.webinar') }}</span>
+                                            <span class="text-sm">{{ t('demo.echo.webinar') }}</span>
                                             <button @click="downloadResource"
                                                 class="btn-violet inline-block text-center btn-effect-5">{{
-                                                    $t('demo.echo.btn_view') }}</button>
+                                                    t('demo.echo.btn_view') }}</button>
                                         </div>
                                     </div>
                                     <p v-if="downloadMessage" class="text-xs text-green-600 mt-2 text-center">{{
@@ -747,11 +746,11 @@
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
-                            <h4 class="font-bold text-gray-800 mb-2">{{ $t('demo.in_dev.title') }}</h4>
-                            <p class="text-gray-600">{{ $t('demo.in_dev.desc') }}</p>
+                            <h4 class="font-bold text-gray-800 mb-2">{{ t('demo.in_dev.title') }}</h4>
+                            <p class="text-gray-600">{{ t('demo.in_dev.desc') }}</p>
                             <button @click="notifyDemo"
                                 class="mt-4 bg-violet-2000 text-white px-4 py-2 rounded hover:bg-violet-600 transition">
-                                {{ $t('demo.in_dev.btn_notify') }}
+                                {{ t('demo.in_dev.btn_notify') }}
                             </button>
                         </div>
                     </div>
@@ -766,22 +765,22 @@
         <div
             class="relative bg-white rounded-xl shadow-2xl p-6 w-96 max-w-[90%] transform transition-all animate-fade-in">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-bold text-gray-800">{{ $t('demo.group_modal.title') }}</h3>
+                <h3 class="text-lg font-bold text-gray-800">{{ t('demo.group_modal.title') }}</h3>
             </div>
 
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">{{ $t('demo.group_modal.label') }}</label>
-                <input type="text" v-model="newGroupName" :placeholder="$t('demo.group_modal.placeholder')"
+                <label class="block text-sm font-medium text-gray-700 mb-2">{{ t('demo.group_modal.label') }}</label>
+                <input type="text" v-model="newGroupName" :placeholder="t('demo.group_modal.placeholder')"
                     class="w-full p-2 border rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 outline-none transition"
                     @keyup.enter="confirmCreateGroup" autofocus>
             </div>
 
             <div class="flex gap-2 space-x-4 justify-center">
                 <button @click="cancelCreateGroup" class="btn-violet btn-effect-5">
-                    {{ $t('demo.group_modal.btn_cancel') }}
+                    {{ t('demo.group_modal.btn_cancel') }}
                 </button>
                 <button @click="confirmCreateGroup" :disabled="isCreatingGroup" class="btn-violet btn-effect-5">
-                    {{ isCreatingGroup ? $t('demo.group_modal.creating') : $t('demo.group_modal.btn_create') }}
+                    {{ isCreatingGroup ? t('demo.group_modal.creating') : t('demo.group_modal.btn_create') }}
                 </button>
             </div>
         </div>
@@ -795,6 +794,7 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { useToast } from 'vue-toastification';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
     id?: string,
@@ -809,6 +809,7 @@ const emit = defineEmits<{
 
 const toast = useToast();
 const showDemo = ref(false);
+const { t, locale } = useI18n()
 
 const toggleDemo = () => {
     showDemo.value = !showDemo.value;
@@ -831,13 +832,22 @@ const vatAmount = computed(() => fiscalData.value.revenue * 0.21);
 const docMessage = ref('');
 
 const generateTaxDeclaration = () => {
-    toast.success(`Déclaration fiscale générée - TVA due: ${formatCurrency(vatAmount.value)}`);
+    toast.success(` ${t('demo.fid_connect.toast')} ${formatCurrency(vatAmount.value)}`);
 };
 
 const generateDocument = (type: string) => {
-    const names = { letter: 'lettre d\'engagement', report: 'rapport fiscal', invoice: 'facture' };
-    docMessage.value = `✓ ${names[type as keyof typeof names]} généré (démo)`;
-    setTimeout(() => { docMessage.value = ''; }, 2000);
+    const notificationKeys = {
+        letter: 'demo.fid_connect.doc_letter_notif',
+        report: 'demo.fid_connect.doc_report_notif',
+        invoice: 'demo.fid_connect.doc_invoice_notif'
+    };
+
+    const key = notificationKeys[type as keyof typeof notificationKeys];
+    docMessage.value = `${t(key)}`;
+
+    setTimeout(() => {
+        docMessage.value = '';
+    }, 2000);
 };
 
 // QCP demo data
@@ -853,35 +863,44 @@ const totalPayment = computed(() => monthlyPayment.value * loan.value.years * 12
 const totalInterest = computed(() => totalPayment.value - loan.value.amount);
 const amortizationPercent = computed(() => (monthlyPayment.value > 0 ? (loan.value.amount / totalPayment.value) * 100 : 0));
 
-// NURSES demo data enrichi
+
 const booking = ref({ guests: 2, date: new Date().toISOString().split('T')[0], service: 'soir' });
 const reservationMessage = ref('');
 const minDate = new Date().toISOString().split('T')[0];
 
-// Événements du restaurant
-const nurseEvents = ref([
+interface NurseEvent {
+    title: string;
+    date: string;
+    time: string;
+    participants: number;
+    price: string;
+    spots: number;
+    type: 'gala' | 'degustation';
+}
+
+const nurseEvents = ref<NurseEvent[]>([
     {
-        title: 'Soirée de Gala Annuel',
+        title: 'demo.nurses.event_gala_annual',
         date: '2024-12-15',
-        time: '19h30',
+        time: '19:30',
         participants: 89,
         price: '150€',
         spots: 11,
         type: 'gala'
     },
     {
-        title: 'Dîner aux Chandelles',
+        title: 'demo.nurses.event_dinner_candles',
         date: '2024-11-20',
-        time: '20h00',
+        time: '20:00',
         participants: 45,
         price: '85€',
         spots: 5,
         type: 'gala'
     },
     {
-        title: 'Dégustation de Vins Belges',
+        title: 'demo.nurses.event_wine_tasting',
         date: '2024-10-25',
-        time: '18h30',
+        time: '18:30',
         participants: 32,
         price: '65€',
         spots: 18,
@@ -939,7 +958,7 @@ const reserveEvent = () => {
 
 const addDemoEvent = () => {
     nurseEvents.value.push({
-        title: `Nouvel événement ${nurseEvents.value.length + 1}`,
+        title: ` ${t('demo.nurses.addNewEvent')} ${nurseEvents.value.length + 1}`,
         date: new Date(Date.now() + 30 * 86400000).toISOString().split('T')[0],
         time: '20h00',
         participants: 0,
@@ -947,18 +966,18 @@ const addDemoEvent = () => {
         spots: 30,
         type: Math.random() > 0.5 ? 'gala' : 'degustation'
     });
-    toast.success('Événement ajouté !');
+    toast.success(`${t('demo.nurses.name_event')} : ${t('demo.nurses.addNewEvent')} ${nurseEvents.value.length}`);
 };
 
 const resetDemoData = () => {
     nurseEvents.value = [
-        { title: 'Soirée de Gala Annuel', date: '2024-12-15', time: '19h30', participants: 89, price: '150€', spots: 11, type: 'gala' },
-        { title: 'Dîner aux Chandelles', date: '2024-11-20', time: '20h00', participants: 45, price: '85€', spots: 5, type: 'gala' },
-        { title: 'Dégustation de Vins Belges', date: '2024-10-25', time: '18h30', participants: 32, price: '65€', spots: 18, type: 'degustation' }
+        { title: 'demo.nurses.event_gala_annual', date: '2024-12-15', time: '19:30', participants: 89, price: '150€', spots: 11, type: 'gala' },
+        { title: 'demo.nurses.event_dinner_candles', date: '2024-11-20', time: '20:00', participants: 45, price: '85€', spots: 5, type: 'gala' },
+        { title: 'demo.nurses.event_wine_tasting', date: '2024-10-25', time: '18:30', participants: 32, price: '65€', spots: 18, type: 'degustation' }
     ];
     adminStats.value = { totalReservations: 127, vipReservations: 34, totalGuests: 486 };
     selectedEvent.value = null;
-    toast.info('Données réinitialisées');
+    toast.info(t('demo.nurses.reset_success'));
 };
 
 // ECHO-WEBLINE demo data
@@ -971,9 +990,9 @@ interface Event {
 }
 
 const events = ref<Event[]>([
-    { title: 'Congrès Européen de Cardiologie', date: '2024-06-15', participants: 145, status: 'ouvert', maxParticipants: 200 },
-    { title: 'Symposium sur l\'Imagerie Cardiaque', date: '2024-07-20', participants: 89, status: 'ouvert', maxParticipants: 150 },
-    { title: 'Atelier Échocardiographie', date: '2024-08-10', participants: 50, status: 'complet', maxParticipants: 50 }
+    { title: 'demo.echo.congress', date: '2024-06-15', participants: 145, status: 'ouvert', maxParticipants: 200 },
+    { title: 'demo.echo.symposium', date: '2024-07-20', participants: 89, status: 'ouvert', maxParticipants: 150 },
+    { title: 'demo.echo.workshop', date: '2024-08-10', participants: 50, status: 'complet', maxParticipants: 50 }
 ]);
 
 const selectedEvent = ref<number | null>(null);
@@ -1036,7 +1055,7 @@ const registerToEvent = () => {
     const event = events.value[eventId];
 
     if (!canRegister.value) {
-        showMessage('❌ Veuillez remplir tous les champs ');
+        showMessage(t('demo.echo.validation_check'), true);
         return;
     }
 
@@ -1081,11 +1100,11 @@ const simulateHeartData = () => {
         time: `${new Date().getHours()}h`
     });
 
-    toast.info('Nouvelle mesure simulée');
+    toast.info(t ('demo.echo.toast_success') + ` (${heartData.value.heartRate} bpm)`);
 };
 
 const downloadResource = () => {
-    downloadMessage.value = '✓ Démonstration : ressource téléchargée';
+    downloadMessage.value = '✓ ' + t('demo.echo.download_success');
     setTimeout(() => {
         downloadMessage.value = '';
     }, 2000);
@@ -1158,7 +1177,7 @@ const paymentMessage = ref('');
 
 const createPost = () => {
     if (!newPost.value.content.trim()) {
-        toast.warning('Le contenu de la publication ne peut pas être vide 👮‍♂️');
+        toast.warning(t('demo.afr_fan.toast_check_form'));
         return;
     }
 
@@ -1173,7 +1192,7 @@ const createPost = () => {
 
     stats.value.posts++;
     newPost.value.content = '';
-    toast.success('Publication partagée !');
+    toast.success(t('demo.afr_fan.toast_post_success') );
 };
 
 const addMediaPost = () => {
@@ -1186,7 +1205,7 @@ const addEventPost = () => {
 
 const deletePost = (idx: number) => {
     posts.value.splice(idx, 1);
-    toast.info('Publication supprimée');
+    toast.info(t('demo.afr_fan.toast_delete_post'));
 };
 
 const likePost = (idx: number) => {
@@ -1250,22 +1269,26 @@ const cancelCreateGroup = () => {
 
 const joinGroup = (idx: number) => {
     if (groups.value[idx].joined) {
-        toast.info('Vous êtes déjà membre');
+        toast.info(t('demo.afr_fan.already_member'));
     } else {
         groups.value[idx].joined = true;
         groups.value[idx].members++;
-        toast.success(`Vous avez rejoint ${groups.value[idx].name}`);
+        toast.success(t('demo.afr_fan.joined_success', { name: groups.value[idx].name }));
     }
 };
 
 const processPayment = async () => {
     isProcessing.value = true;
-    paymentMessage.value = '';
+    paymentMessage.value = t('demo.afr_fan.processings');
 
-    // Simulation de paiement
     setTimeout(() => {
         isProcessing.value = false;
-        paymentMessage.value = `✓ Paiement de ${selectedPlan.value === 'monthly' ? '9,99€' : '89,99€'} effectué via ${paymentMethod.value === 'visa' ? 'VISA' : 'PayPal'} ! Merci pour votre soutien à la communauté africaine.`;
+        
+        const isMonthly = selectedPlan.value === 'monthly';
+        const amountKey = isMonthly ? 'demo.afr_fan.success_monthly' : 'demo.afr_fan.success_yearly';
+        const methodName = t(`demo.afr_fan.methods.${paymentMethod.value}`);
+        
+        paymentMessage.value = t(amountKey, { method: methodName });
 
         setTimeout(() => {
             paymentMessage.value = '';

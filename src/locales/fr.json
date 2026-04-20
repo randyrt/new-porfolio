@@ -308,13 +308,19 @@
       "amortization_line": "Amortissement linéaire • Valeur nette comptable:",
       "per_year": "% / an",
       "doc_title": "📋 Génération de documents",
+      "doc_title_notif": "📋 Documents générés :",
       "doc_letter": "📝 Lettre d'engagement client",
+      "doc_letter_notif": "✓ Lettre d'engagement client générée",
       "doc_report": "📊 Rapport fiscal annuel",
+      "doc_report_notif": "✓ Rapport fiscal annuel généré",
       "doc_invoice": "🧾 Facture pro forma",
+      "doc_invoice_notif": "✓ Facture pro forma générée",
       "alerts_title": "🔔 Alertes fiscales :",
       "alert_1": "✓ Déclaration TVA due dans 12 jours",
       "alert_2": "✓ Réforme fiscale 2025 : nouvelles déductions possibles",
-      "alert_3": "✓ Amortissement matériel à réviser"
+      "alert_3": "✓ Amortissement matériel à réviser",
+
+      "toast": "Déclaration fiscale générée - TVA due: "
     },
     "qcp": {
       "title": "Simulateur de crédit",
@@ -355,7 +361,18 @@
       "stats_members": "Membres",
       "stats_posts": "Publications",
       "stats_groups": "Groupes actifs",
-      "stats_countries": "Pays représentés"
+      "stats_countries": "Pays représentés",
+      "toast_check_form": "Le contenu de la publication ne peut pas être vide 👮‍♂️",
+      "toast_delete_post": "Publication supprimée",
+      "already_member": "Vous êtes déjà membre",
+      "joined_success": "Vous avez rejoint {name}",
+      "processings": "Traitement du paiement en cours...",
+      "success_monthly": "✓ Paiement de 9,99€ effectué via {method} ! Merci pour votre soutien à la communauté africaine.",
+      "success_yearly": "✓ Paiement de 89,99€ effectué via {method} ! Merci pour votre soutien à la communauté africaine.",
+      "methods": {
+        "visa": "VISA",
+        "paypal": "PayPal"
+      }
     },
     "nurses": {
       "title": "🍷 Simulateur de réservation",
@@ -382,7 +399,14 @@
       "btn_add_event": "+ Ajouter un événement",
       "btn_reset": "Réinitialiser",
       "event_gala": "🎭 Gala",
-      "event_degust": "🍷 Dégustation"
+      "event_degust": "🍷 Dégustation",
+      "event_gala_annual": "Soirée de Gala Annuel",
+      "event_dinner_candles": "Dîner aux Chandelles",
+      "event_wine_tasting": "Dégustation de Vins Belges",
+      "reset_success": "Données réinitialisées avec succès !",
+      "addNewEvent": "`Nouvel événement",
+      "toast_event_added": "Nouvel événement ajouté : ",
+      "name_event": "Nom de l'événement"
     },
     "echo": {
       "title": "📅 Gestion des événements",
@@ -411,7 +435,13 @@
       "guide": "📄 Guide pratique cardiologie",
       "webinar": "🎥 Webinaire - Nouvelles technologies",
       "btn_download": "Télécharger",
-      "btn_view": "Voir"
+      "btn_view": "Voir",
+      "validation_check": "❌ Veuillez remplir tous les champs correctement.",
+      "congress": "Congrès Européen de Cardiologie",
+      "symposium": "Symposium sur l'Imagerie Cardiaque",
+      "workshop": "Atelier Échocardiographie",
+      "download_success": "Ressource téléchargée avec succès !",
+      "toast_success": "Nouvelle mesure simulée"
     },
     "in_dev": {
       "title": "Démo en cours de développement",
