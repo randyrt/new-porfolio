@@ -9,17 +9,18 @@
 
       <router-link to="/chatbot"
         class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30 group"
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave"
+        @mouseenter="handleMouseEnter" 
+        @mouseleave="handleMouseLeave" 
         @click="cycleTooltipMessage">
+        
         <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg transition-all duration-200"
           :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
 
-        <!-- Tooltip - caché au hover -->
-        <span
-          v-if="showTooltip"
+        <!-- Tooltip contextuel -->
+        <span 
+          v-if="showTooltip && $route.path !== '/chatbot'" 
           :key="animationKey"
-          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-700 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text">
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-700 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
           {{ currentTooltipMessage }}
           <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-700 rotate-45"></span>
         </span>
@@ -37,77 +38,144 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 
 const { t, tm } = useI18n();
+const route = useRoute();
 const isHoveringBot = ref(false);
 const tooltipMessageIndex = ref(0);
 const animationKey = ref(0);
 const showTooltip = ref(true);
 let hideTimeout: ReturnType<typeof setTimeout>;
 
-// Get the tooltip messages array
-const tooltipMessages = computed(() => {
-  return tm('chat.chat_tooltips') as string[];
-});
 
-// Get the current tooltip message
+const getTooltipKeyFromPath = (path: string): string => {
+  const routeMap: Record<string, string> = {
+    '/': 'home',
+    '/quality': 'quality',
+    '/skills': 'skills',
+    '/technology': 'technology',
+    '/webcup24': 'webcup24',
+    '/projects': 'projects',
+    '/services': 'services',
+    '/testimoniales': 'testimoniales',
+    '/contact': 'contact',
+    '/github-stats': 'github-stats',
+    '/about': 'about'
+  };
+  return routeMap[path] || 'default';
+};
+
+
+const getContextualMessages = (): string[] => {
+  const currentPath = route.path;
+  const tooltipKey = getTooltipKeyFromPath(currentPath);
+  
+
+  const contextualMessages = tm(`chat.chat_tooltips.${tooltipKey}`) as string[];
+  
+  if (contextualMessages && contextualMessages.length > 0) {
+    return contextualMessages;
+  }
+  
+
+  const defaultMessages = tm('chat.chat_tooltips.default') as string[];
+  return defaultMessages || [t('chat.chat_tooltip')];
+};
+
+
+const currentMessages = ref<string[]>([]);
+
+
+watch(() => route.path, () => {
+  currentMessages.value = getContextualMessages();
+}, { immediate: true });
+
+
+const tooltipMessages = computed(() => currentMessages.value);
+
 const currentTooltipMessage = computed(() => {
   const messages = tooltipMessages.value;
   if (messages && messages.length > 0) {
-    return messages[tooltipMessageIndex.value];
+    const index = tooltipMessageIndex.value % messages.length;
+    return messages[index];
   }
   return t('chat.chat_tooltip');
 });
 
-// Get random message
 const getRandomMessage = () => {
   const messages = tooltipMessages.value;
   if (messages && messages.length > 1) {
-    const randomIndex = 1 + Math.floor(Math.random() * (messages.length - 1));
-    return randomIndex;
+    return Math.floor(Math.random() * messages.length);
   }
   return 0;
 };
 
-// Handle mouse enter - hide tooltip
 const handleMouseEnter = () => {
   isHoveringBot.value = true;
   showTooltip.value = false;
 };
 
-// Handle mouse leave - show tooltip after delay
 const handleMouseLeave = () => {
   isHoveringBot.value = false;
-  // Petit délai avant de réafficher pour éviter les clignotements
+
+  if (hideTimeout) {
+    clearTimeout(hideTimeout);
+  }
+
   hideTimeout = setTimeout(() => {
-    showTooltip.value = true;
-    animationKey.value++; // Force re-animation
+    if (route.path !== '/chatbot') {
+      showTooltip.value = true;
+      animationKey.value++;
+    }
   }, 100);
 };
 
-// Cycle tooltip message on click
 const cycleTooltipMessage = () => {
   tooltipMessageIndex.value = getRandomMessage();
   animationKey.value++;
 };
 
-// Auto-rotation toutes les 15 secondes
 let rotationInterval: ReturnType<typeof setInterval>;
 
 const startAutoRotation = () => {
   rotationInterval = setInterval(() => {
-    if (document.visibilityState === 'visible' && !isHoveringBot.value) {
+    if (document.visibilityState === 'visible' && !isHoveringBot.value && route.path !== '/chatbot') {
       tooltipMessageIndex.value = getRandomMessage();
       animationKey.value++;
     }
   }, 15000);
 };
 
+
+watch(() => route.path, (newPath, oldPath) => {
+  if (newPath === '/chatbot') {
+    showTooltip.value = false;
+    return;
+  }
+  
+
+  if (oldPath === '/chatbot' || oldPath !== newPath) {
+    showTooltip.value = true;
+    tooltipMessageIndex.value = getRandomMessage();
+    animationKey.value++;
+  }
+});
+
 onMounted(() => {
-  tooltipMessageIndex.value = 0;
+  currentMessages.value = getContextualMessages();
+  
+  if (route.path !== '/chatbot') {
+    showTooltip.value = true;
+    tooltipMessageIndex.value = getRandomMessage();
+    animationKey.value++;
+  } else {
+    showTooltip.value = false;
+  }
+  
   startAutoRotation();
 });
 
@@ -136,6 +204,7 @@ const navRoutes = computed(() => [
 </script>
 
 <style>
+/* Tes styles existants restent identiques */
 .dark {
   background-color: #1a1a1a;
   color: #ffffff;
@@ -184,20 +253,19 @@ const navRoutes = computed(() => [
   animation: pulse-purple 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-
 @keyframes typing-text {
   0% {
     max-width: 0;
     opacity: 0;
     transform: translateX(-5px);
   }
+
   100% {
     max-width: 300px;
     opacity: 1;
     transform: translateX(0);
   }
 }
-
 
 .chat-tooltip-text {
   display: inline-block;
@@ -214,9 +282,11 @@ const navRoutes = computed(() => [
     max-width: 0;
     opacity: 0;
   }
+
   10% {
     opacity: 1;
   }
+
   100% {
     max-width: 600px;
     opacity: 1;
@@ -227,9 +297,11 @@ const navRoutes = computed(() => [
   0% {
     transform: scaleY(1);
   }
+
   50% {
     transform: scaleY(1.1);
   }
+
   100% {
     transform: scaleY(1.05);
   }

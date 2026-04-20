@@ -549,39 +549,94 @@
     "page_title": "AI of Randy",
     "page_description": "Chat with my AI assistant to learn more about my skills, projects and experiences",
     "chat_tooltip": "Click me 😄 !",
-    "chat_tooltips": [
-      "Click me, Randy is friendly 💬",
-      "Enjoying Randy's portfolio? 🤔",
-      "Want to know more about Randy's skills? 🥺",
-      "Randy can tell you about his expertise... ⏳",
-      "One click and we explore Randy's projects 👆",
-      "Randy is always here for you 💙",
-      "Questions about Randy's tech stack? I've got answers 💬",
-      "Curious about Randy's competencies? 🤓",
-      "Come discover Randy's career path 🗣️",
-      "Randy is nice (and skilled) 😊",
-      "Explore Randy's full portfolio 🚀",
-      "Need help understanding Randy's skills? 🫡",
-      "I'll explain Randy's projects to you 👂",
-      "Over virtual coffee to talk about Randy's code ☕",
-      "Test Randy's Laravel / Vue.js skills 🎯",
-      "Discover Randy's fullstack universe ✨",
-      "I see you hesitating to ask a question about Randy 🔍",
-      "Randy has projects to show you 🤫",
-      "Randy doesn't bite (except bugs) 😇",
-      "Dare to click, Randy's portfolio is worth it 💪",
-      "You'll love Randy's achievements 🔥",
-      "Hey you, come discover Randy's resume 👋",
-      "Let's talk about Randy's dev journey 💬",
-      "I'll tell you Randy's secret: he's fullstack 🤫",
-      "Still here? I can tell you about Randy's experience 🧐",
-      "Go on, a click to see Randy's projects 😌",
-      "Getting bored here, tell me about your needs so Randy can help 🥱",
-      "Need a tech hand for your project? Randy can help 🦾",
-      "Randy masters Vue.js, Laravel, Symfony... ask me 📚",
-      "Randy answers about his skills in real time ✅",
-      "Trust Randy's assistant 🫶"
-    ],
+    "chat_tooltips": {
+      "default": [
+        "Want to change language? 🌍",
+        "Enjoying Randy's portfolio? 🤔",
+        "Want to know more? 🥺",
+        "Tired of clicking page after page? Ask me! 🫡",
+        "One click to explore Randy's projects 👆",
+        "Randy is here for you 💙",
+        "Questions about tech? I've got answers 💬",
+        "Curious about skills? 🤓",
+        "Discover Randy's career 🗣️",
+        "Randy is nice (and skilled) 😊",
+        "Explore full portfolio 🚀",
+        "Need help with skills? 🫡",
+        "Let me explain Randy's projects 👂",
+        "Virtual coffee & code ☕",
+        "Test Laravel / Vue.js skills 🎯",
+        "Discover fullstack universe ✨",
+        "Hesitating to ask? 🔍",
+        "Randy has projects to show 🤫",
+        "Randy doesn't bite (except bugs) 😇",
+        "Click, it's worth it 💪",
+        "You'll love the work 🔥",
+        "Hey, check the resume 👋",
+        "Let's talk dev journey 💬",
+        "Secret: Randy is fullstack 🤫",
+        "Still here? Let's talk experience 🧐",
+        "One click to see projects 😌",
+        "Trust Randy's assistant 🫶"
+      ],
+      "home": [
+        "Click me, you'll see 😄",
+        "Want to explore Randy's work? 🚀",
+        "Looking for something specific? 🔍",
+        "Need help navigating? I can help 🫡",
+        "I can show you around! ✨"
+      ],
+      "quality": [
+        "Curious about Randy's quality standards? 📊",
+        "Quality matters to Randy, what about you? ⭐",
+        "Want to see Randy's best practices? 🎯"
+      ],
+      "skills": [
+        "Discover Randy's tech stack! 💻",
+        "Want to know what Randy can do? 🤔",
+        "Randy's skills speak for themselves 🗣️"
+      ],
+      "technology": [
+        "Do you love tech as much as Randy does? ⚙️",
+        "Let's talk about Randy's tools! 🔧",
+        "Tech enthusiast? Discover Randy! 🚀"
+      ],
+      "webcup24": [
+        "Want to see Randy's competition project? 🏆",
+        "Randy's WebCup 2024 was epic! 🎉",
+        "Discover Randy's award-winning project 🌟"
+      ],
+      "projects": [
+        "Come see Randy's achievements! 📁",
+        "Highlights of Randy's portfolio 👆",
+        "Randy's best work awaits you 🔥"
+      ],
+      "services": [
+        "What can Randy do for you? 💼",
+        "Looking for a developer? Meet Randy 👨‍💻",
+        "Tailored services by Randy 🎯"
+      ],
+      "testimoniales": [
+        "What people say about Randy 💬",
+        "Don't take Randy's word for it! ⭐",
+        "Real feedback about Randy from real people 👥"
+      ],
+      "contact": [
+        "Work with Randy! 📧",
+        "Have a project in mind? Randy is here 💡",
+        "Reach out to Randy anytime! 💌"
+      ],
+      "github-stats": [
+        "See Randy's open source contributions 📈",
+        "Randy's code never lies! 🔍",
+        "Randy's GitHub activity revealed 🐙"
+      ],
+      "about": [
+        "Get to know Randy! 🙋‍♂️",
+        "Randy's story in a nutshell 📖",
+        "Behind the code, it's Randy 🎭"
+      ]
+    },
     "title": "Chat a little with my AI assistant",
     "loading": "AI assistant...",
     "card_big_title": "AI Assistant",
