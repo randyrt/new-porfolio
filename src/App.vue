@@ -9,14 +9,17 @@
 
       <router-link to="/chatbot"
         class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30 group"
-        @mouseenter="isHoveringBot = true" @mouseleave="isHoveringBot = false" @click="cycleTooltipMessage">
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave"
+        @click="cycleTooltipMessage">
         <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg transition-all duration-200"
           :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
 
+        <!-- Tooltip - caché au hover -->
         <span
+          v-if="showTooltip"
           :key="animationKey"
-          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-700 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text"
-          :class="tooltipVisible ? 'opacity-100' : 'opacity-0'">
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-700 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text">
           {{ currentTooltipMessage }}
           <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-700 rotate-45"></span>
         </span>
@@ -41,15 +44,16 @@ import Navbar from './components/NavBar.vue';
 const { t, tm } = useI18n();
 const isHoveringBot = ref(false);
 const tooltipMessageIndex = ref(0);
-const tooltipVisible = ref(true);
 const animationKey = ref(0);
+const showTooltip = ref(true);
+let hideTimeout: ReturnType<typeof setTimeout>;
 
-
+// Get the tooltip messages array
 const tooltipMessages = computed(() => {
   return tm('chat.chat_tooltips') as string[];
 });
 
-
+// Get the current tooltip message
 const currentTooltipMessage = computed(() => {
   const messages = tooltipMessages.value;
   if (messages && messages.length > 0) {
@@ -58,7 +62,7 @@ const currentTooltipMessage = computed(() => {
   return t('chat.chat_tooltip');
 });
 
-
+// Get random message
 const getRandomMessage = () => {
   const messages = tooltipMessages.value;
   if (messages && messages.length > 1) {
@@ -68,20 +72,36 @@ const getRandomMessage = () => {
   return 0;
 };
 
-
-const cycleTooltipMessage = () => {
-  tooltipMessageIndex.value = getRandomMessage();
-  animationKey.value++; 
+// Handle mouse enter - hide tooltip
+const handleMouseEnter = () => {
+  isHoveringBot.value = true;
+  showTooltip.value = false;
 };
 
+// Handle mouse leave - show tooltip after delay
+const handleMouseLeave = () => {
+  isHoveringBot.value = false;
+  // Petit délai avant de réafficher pour éviter les clignotements
+  hideTimeout = setTimeout(() => {
+    showTooltip.value = true;
+    animationKey.value++; // Force re-animation
+  }, 100);
+};
 
+// Cycle tooltip message on click
+const cycleTooltipMessage = () => {
+  tooltipMessageIndex.value = getRandomMessage();
+  animationKey.value++;
+};
+
+// Auto-rotation toutes les 15 secondes
 let rotationInterval: ReturnType<typeof setInterval>;
 
 const startAutoRotation = () => {
   rotationInterval = setInterval(() => {
-    if (document.visibilityState === 'visible') {
+    if (document.visibilityState === 'visible' && !isHoveringBot.value) {
       tooltipMessageIndex.value = getRandomMessage();
-      animationKey.value++; 
+      animationKey.value++;
     }
   }, 15000);
 };
@@ -94,6 +114,9 @@ onMounted(() => {
 onUnmounted(() => {
   if (rotationInterval) {
     clearInterval(rotationInterval);
+  }
+  if (hideTimeout) {
+    clearTimeout(hideTimeout);
   }
 });
 
