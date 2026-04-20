@@ -186,7 +186,7 @@ export const detectActions = (text: string, t: any): Action[] => {
       icon: 'fa-solid fa-trophy'
     })
     actions.push({
-      label: t('home.download_cv'),
+      label: t('home.download_his_cv'),
       type: 'download',
       target: '/images/cv/Randy_real_cv.pdf',
       icon: 'fa-solid fa-download'
