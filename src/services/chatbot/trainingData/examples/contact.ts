@@ -17,19 +17,19 @@ export const contactExamples = [
   },
   {
     keywords: 'collaboration|travailler|work together|freelance|mission|project',
-    response: 'il est intéressé par les collaborations et les projets stimulants ! Que ce soit du freelance, du consulting, ou une mission à temps plein, je suis ouvert à en discuter. N\'hésite pas à me contacter avec les détails de ton projet.',
+    response: 'il est intéressé par les collaborations et les projets stimulants ! Que ce soit du freelance, du consulting, ou une mission à temps plein, je suis ouvert à en discuter.',
     category: 'contact',
     confidence: 0.90
   },
   {
     keywords: 'linkedin|github|social|réseau|network|portfolio|site',
-    response: 'Tu peux me trouver sur les réseaux professionnels. Mon portfolio montre une bonne partie de mon travail et de mes projets. il est aussi actif sur GitHub où tu peux voir mon code et mes contributions. N\'hésite pas à me suivre !',
+    response: 'Tu peux le trouver sur les réseaux professionnels. Son portfolio montre une bonne partie de son travail et de mes projets. il est aussi actif sur GitHub où tu peux voir son code et ses contributions. N\'hésite pas à me suivre !',
     category: 'contact',
     confidence: 0.85
   },
   {
     keywords: 'whatsapp|appel|call|phone|téléphone|discuter|chat',
-    response: 'WhatsApp est un super moyen pour me contacter rapidement. il est généralement disponible pour des discussions directes. Ou tu peux utiliser le formulaire de contact pour une première approche plus formelle. À toi de choisir !',
+    response: 'WhatsApp est un super moyen pour le contacter rapidement. il est généralement disponible pour des discussions directes. Ou tu peux utiliser le formulaire de contact pour une première approche plus formelle. À toi de choisir !',
     category: 'contact',
     confidence: 0.85
   },
