@@ -1,7 +1,7 @@
 <template>
   <div class="app-container relative min-h-screen overflow-x-hidden">
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
-    
+
     <div v-if="$route.path !== '/chatbot'" class="hidden md:flex fixed top-30 left-70 z-[999] group">
       <div class="bg-violet-500 rounded-lg">
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
@@ -9,15 +9,16 @@
 
       <router-link to="/chatbot"
         class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30 group"
-        @mouseenter="isHoveringBot = true"
-        @mouseleave="isHoveringBot = false"
-        @click="cycleTooltipMessage">
-        <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg transition-all duration-200" :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
+        @mouseenter="isHoveringBot = true" @mouseleave="isHoveringBot = false" @click="cycleTooltipMessage">
+        <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg transition-all duration-200"
+          :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
 
         <span
-          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-800 text-white text-sm font-medium rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg chat-tooltip-text overflow-hidden">
-          {{ currentTooltipMessage }} 
-          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-800 rotate-45"></span>
+          :key="animationKey"
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-700 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text"
+          :class="tooltipVisible ? 'opacity-100' : 'opacity-0'">
+          {{ currentTooltipMessage }}
+          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-700 rotate-45"></span>
         </span>
 
         <span class="absolute -top-1 -right-1 flex h-5 w-5">
@@ -33,20 +34,22 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 
 const { t, tm } = useI18n();
 const isHoveringBot = ref(false);
 const tooltipMessageIndex = ref(0);
+const tooltipVisible = ref(true);
+const animationKey = ref(0);
 
-// Get the tooltip messages array
+
 const tooltipMessages = computed(() => {
   return tm('chat.chat_tooltips') as string[];
 });
 
-// Get the current tooltip message
+
 const currentTooltipMessage = computed(() => {
   const messages = tooltipMessages.value;
   if (messages && messages.length > 0) {
@@ -55,21 +58,44 @@ const currentTooltipMessage = computed(() => {
   return t('chat.chat_tooltip');
 });
 
-// Get random message from the rest (excluding the first one which is default)
+
 const getRandomMessage = () => {
   const messages = tooltipMessages.value;
   if (messages && messages.length > 1) {
-    // Get a random index from 1 to messages.length-1 (exclude the first "Click me")
     const randomIndex = 1 + Math.floor(Math.random() * (messages.length - 1));
     return randomIndex;
   }
-  return 0; // Fallback to first message
+  return 0;
 };
 
-// Display random tooltip message on click (always reset to index 0 first, then pick random)
+
 const cycleTooltipMessage = () => {
   tooltipMessageIndex.value = getRandomMessage();
+  animationKey.value++; 
 };
+
+
+let rotationInterval: ReturnType<typeof setInterval>;
+
+const startAutoRotation = () => {
+  rotationInterval = setInterval(() => {
+    if (document.visibilityState === 'visible') {
+      tooltipMessageIndex.value = getRandomMessage();
+      animationKey.value++; 
+    }
+  }, 15000);
+};
+
+onMounted(() => {
+  tooltipMessageIndex.value = 0;
+  startAutoRotation();
+});
+
+onUnmounted(() => {
+  if (rotationInterval) {
+    clearInterval(rotationInterval);
+  }
+});
 
 const navRoutes = computed(() => [
   { path: '/', name: t('nav.home'), icon: 'home' },
@@ -98,7 +124,6 @@ const navRoutes = computed(() => [
   transition-duration: 0.01ms !important;
 }
 
-/* 🤖 Bot Floating Animations */
 @keyframes float-bot {
 
   0%,
@@ -136,21 +161,45 @@ const navRoutes = computed(() => [
   animation: pulse-purple 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Typing text animation for tooltip */
+
 @keyframes typing-text {
   0% {
     max-width: 0;
+    opacity: 0;
+    transform: translateX(-5px);
   }
   100% {
-    max-width: 200px;
+    max-width: 300px;
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-.group:hover .chat-tooltip-text {
-  animation: typing-text 0.8s ease-out forwards;
+
+.chat-tooltip-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  max-width: 300px;
+  width: auto;
+  animation: typing-text 1.5s steps(40, end) forwards;
 }
 
-/* Robot smile animation */
+@keyframes typing-text {
+  0% {
+    max-width: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    max-width: 600px;
+    opacity: 1;
+  }
+}
+
 @keyframes robot-smile {
   0% {
     transform: scaleY(1);
@@ -168,7 +217,6 @@ const navRoutes = computed(() => [
   filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 0, 0.5));
 }
 
-/* Scrollbar styling */
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
 }

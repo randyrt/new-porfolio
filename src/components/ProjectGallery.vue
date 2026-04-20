@@ -917,10 +917,16 @@ const adminStats = ref({
 });
 
 const makeReservation = () => {
-    const serviceNames = { midi: 'déjeuner', soir: 'dîner', vip: 'service VIP' };
-    const vipBonus = booking.value.service === 'vip' ? ' (avec accès VIP)' : '';
-
-    reservationMessage.value = `✓ Réservation confirmée pour ${booking.value.guests} personne(s) le ${booking.value.date} (${serviceNames[booking.value.service as keyof typeof serviceNames]})${vipBonus}`;
+    const serviceKey = booking.value.service as 'midi' | 'soir' | 'vip';
+    const serviceName = t(`demo.nurses.reservation.service_names.${serviceKey}`);
+    const vipBonus = booking.value.service === 'vip' ? t('demo.nurses.reservation.vip_bonus') : '';
+    
+    reservationMessage.value = t('demo.nurses.reservation.confirmed', {
+        guests: booking.value.guests,
+        date: booking.value.date,
+        service: serviceName,
+        vipBonus: vipBonus
+    });
 
     adminStats.value.totalReservations++;
     adminStats.value.totalGuests += booking.value.guests;
@@ -928,7 +934,9 @@ const makeReservation = () => {
         adminStats.value.vipReservations++;
     }
 
-    setTimeout(() => { reservationMessage.value = ''; }, 3000);
+    setTimeout(() => { 
+        reservationMessage.value = ''; 
+    }, 3000);
 };
 
 const selectNurseEvent = (idx: number) => {
@@ -937,13 +945,13 @@ const selectNurseEvent = (idx: number) => {
 
 const reserveEvent = () => {
     if (selectedEvent.value === null) {
-        eventReservationMessage.value = '❌ Veuillez sélectionner un événement';
+        eventReservationMessage.value = '';
         return;
     }
 
     const event = nurseEvents.value[selectedEvent.value];
     if (event.spots <= 0) {
-        eventReservationMessage.value = '❌ Désolé, cet événement est complet';
+        eventReservationMessage.value = '';
         return;
     }
 
@@ -951,7 +959,7 @@ const reserveEvent = () => {
     event.participants++;
     adminStats.value.totalReservations++;
 
-    eventReservationMessage.value = `✓ Réservation confirmée pour "${event.title}" !`;
+    eventReservationMessage.value = `${t('demo.nurses.reservation_success')} "${t(event.title)}" !`;
 
     setTimeout(() => { eventReservationMessage.value = ''; }, 3000);
 };

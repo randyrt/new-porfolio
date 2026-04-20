@@ -108,7 +108,7 @@
           <span class="animated-gradient-text cursor-pointer text-3xl" @click="goHome">{{ brand }}</span>
         </div>
 
-        <div class="flex items-center justify-center gap-2 mb-2">
+        <div class="flex items-center justify-center gap-2 mb-2 mt-12">
           <div class="relative group" @click="sidebarVisible = !sidebarVisible">
             <span class="group relative flex h-10 items-center justify-center gap-2 px-4
             bg-gradient-to-br from-purple-500 to-purple-600
@@ -219,7 +219,7 @@ onMounted(() => {
 
 }
 
-/* Animation personnalisée pour le thème uniquement */
+
 @keyframes pulse-slow {
 
   0%,
@@ -268,7 +268,7 @@ onMounted(() => {
   opacity: 1;
 }
 
-/* Sidebar slide transition */
+
 .sidebar-slide-enter-active,
 .sidebar-slide-leave-active {
   transition: all 0.3s ease;
