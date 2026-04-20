@@ -7,7 +7,7 @@ import { contactExamples } from './trainingData/examples/contact'
 import { generalExamples } from './trainingData/examples/general'
 import { feedbackStorage } from './trainingData/feedback/storage'
 
-// Combine all training examples
+
 const allExamples = [
   ...skillsExamples,
   ...projectsExamples,

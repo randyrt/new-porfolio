@@ -352,12 +352,12 @@ const router = useRouter()
 const feedbackState = ref<Record<number, 'positive' | 'negative'>>({})
 const toasts = ref<Toast[]>([])
 
-// Computed for theme icon (from NavBar)
+
 const themeIcon = computed(() => {
     return currentTheme.value === 'light' ? ['fas', 'moon'] : ['fas', 'sun']
 })
 
-// Functions from NavBar
+
 function toggleLanguage() {
     const newLocale = currentLocale.value === 'fr' ? 'en' : 'fr'
     currentLocale.value = newLocale
