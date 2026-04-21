@@ -3,12 +3,12 @@
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
 
     <div v-if="$route.path !== '/chatbot'" class="hidden md:flex fixed top-30 left-70 z-[999] group">
-      <div class="bg-violet-500 rounded-lg">
+      <div class="bg-sky-500 rounded-lg">
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
       </div>
 
       <router-link to="/chatbot"
-        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-purple-500/30 group"
+        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-sky-500/30 group"
         @mouseenter="handleMouseEnter" 
         @mouseleave="handleMouseLeave" 
         @click="cycleTooltipMessage">
@@ -16,13 +16,12 @@
         <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg transition-all duration-200"
           :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
 
-        <!-- Tooltip contextuel -->
         <span 
           v-if="showTooltip && $route.path !== '/chatbot'" 
           :key="animationKey"
-          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-purple-700 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-sky-500 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
           {{ currentTooltipMessage }}
-          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-700 rotate-45"></span>
+          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-sky-500 rotate-45"></span>
         </span>
 
         <span class="absolute -top-1 -right-1 flex h-5 w-5">
@@ -204,9 +203,8 @@ const navRoutes = computed(() => [
 </script>
 
 <style>
-/* Tes styles existants restent identiques */
 .dark {
-  background-color: #1a1a1a;
+  background-color: #1A1A1A;
   color: #ffffff;
 }
 
@@ -234,17 +232,17 @@ const navRoutes = computed(() => [
 
 @keyframes pulse-purple {
   0% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 0 0 rgba(19, 131, 175, 0.4);
     transform: scale(1);
   }
 
   70% {
-    box-shadow: 0 0 0 20px rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 20px rgba(25, 131, 180, 0);
     transform: scale(1.1);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 0 rgba(11, 94, 161, 0);
     transform: scale(1);
   }
 }
@@ -309,7 +307,7 @@ const navRoutes = computed(() => [
 
 .robot-smile {
   animation: robot-smile 0.5s ease-in-out forwards;
-  filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 0, 0.5));
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -321,11 +319,11 @@ const navRoutes = computed(() => [
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #a78bfa;
+  background: #F59E0B;
   border-radius: 10px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
+  background: #F59E0B;
 }
 </style>

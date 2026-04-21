@@ -290,7 +290,7 @@ onMounted(() => {
 }
 
 .brick-wall-bg {
-  background-color: #1a1a1a;
+  background-color: #fff;
   padding: 20px;
 }
 

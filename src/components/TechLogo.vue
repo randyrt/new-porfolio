@@ -61,7 +61,7 @@ defineProps<{
   bottom: -40px;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #66EAEA 0%, #246677 100%);
   color: white;
   font-size: 0.75rem;
   font-weight: bold;
