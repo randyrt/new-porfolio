@@ -32,11 +32,11 @@
                 <!-- Section gauche : Titre -->
                 <div class="flex items-center gap-3">
                     <div
-                        class="icon-delay w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+                        class="w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
                         <font-awesome-icon icon="fa-solid fa-robot"
-                            class="robot-smile text-sky-300 text-4xl relative" />
+                            class="icon-delay  text-sky-300 text-4xl relative" />
                         <font-awesome-icon icon="fa-solid fa-bolt"
-                            class="absolute text-yellow-300 text-sm top-3 right-3" />
+                            class="absolute text-yellow-300 text-sm top-3 right-3 icon-delay" />
                     </div>
                     <div>
                         <h2

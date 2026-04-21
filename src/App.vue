@@ -8,7 +8,7 @@
       </div>
 
       <router-link to="/chatbot"
-        class="icon-delay flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-sky-500/30 group"
+        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-sky-500/30 group"
         @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="cycleTooltipMessage">
 
         <div
