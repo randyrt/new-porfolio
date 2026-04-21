@@ -1302,22 +1302,29 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 }
 
 .icon-delay {
-    animation: arcFall 1.2s cubic-bezier(0.4, 1.2, 0.3, 0.9) 0.3s forwards;
+    animation: arcFall 1.3s cubic-bezier(0.5, 1.3, 0.4, 0.9) 0.3s forwards;
     opacity: 0;
 }
 
 @keyframes arcFall {
     0% {
         opacity: 0;
-        transform: translate(-50px, -100px) rotate(-50deg) scale(0.5);
+        transform: translate(-70px, -100px) rotate(-15deg) scale(0.5);
     }
-    50% {
-        opacity: 0.8;
-        transform: translate(-15px, -20px) rotate(-15deg) scale(0.9);
+    30% {
+        opacity: 0.6;
+        transform: translate(-45px, -70px) rotate(-5deg) scale(0.65);
+    }
+    55% {
+        opacity: 0.85;
+        transform: translate(-10px, -35px) rotate(10deg) scale(0.85);
     }
     75% {
         opacity: 0.95;
-        transform: translate(5px, 8px) rotate(6deg) scale(1.06);
+        transform: translate(15px, -5px) rotate(18deg) scale(1.0);
+    }
+    90% {
+        transform: translate(5px, 3px) rotate(3deg) scale(1.03);
     }
     100% {
         opacity: 1;
