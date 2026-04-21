@@ -13,7 +13,7 @@
         @mouseleave="handleMouseLeave" 
         @click="cycleTooltipMessage">
         
-        <font-awesome-icon icon="fa-solid fa-robot" class="text-3xl filter drop-shadow-lg transition-all duration-200"
+        <font-awesome-icon icon="fa-solid fa-robot" class="text-4xl filter drop-shadow-lg transition-all duration-200"
           :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
 
         <span 
@@ -306,7 +306,7 @@ const navRoutes = computed(() => [
 }
 
 .robot-smile {
-  animation: robot-smile 0.5s ease-in-out forwards;
+  animation: robot-smile 3s ease-in-out infinite;
   filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
 }
 

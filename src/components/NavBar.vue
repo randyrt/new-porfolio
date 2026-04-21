@@ -282,26 +282,26 @@ onMounted(() => {
 }
 
 .brick-wall-bg {
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 20px;
 }
 
 
 .spray-text {
-  font-family: 'Permanent Marker', 'Bangers', cursive;
-  font-size: 1.4rem;
-  font-weight: 900;
+  font-family: 'Rajdhani', 'Permanent Marker', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   
   position: relative;
   display: inline-block;
 
   background: linear-gradient(90deg,
-      #ff0080 0%,
-      #ff4da6 25%,
-      #8a2be2 60%,
-      #4b00ff 100%);
+      #4b00ff 0%,
+      #8a2be2 25%,
+      #ff4da6 60%,
+      #ff0080 100%);
 
   -webkit-background-clip: text;
   background-clip: text;
@@ -310,20 +310,19 @@ onMounted(() => {
   -webkit-text-stroke: 2.5px #fff;
 
   text-shadow:
-    3px 3px 0 #00374D,
-    6px 6px 0 #1a0033,
-    0 0 6px #ff1493,
-    0 0 15px rgba(255, 20, 147, 0.8),
-    0 0 25px rgba(138, 43, 226, 0.6);
+    3px 3px 0 #ff1493,
+    6px 6px 0 #ff4da6,
+    0 0 6px #00374D,
+    0 0 15px rgba(0, 55, 77, 0.8),
+    0 0 25px rgba(255, 20, 147, 0.6);
 
   filter:
-    drop-shadow(0 0 6px #ff1493) drop-shadow(0 0 12px #8a2be2) blur(0.2px);
+    drop-shadow(0 0 6px #4b00ff) drop-shadow(0 0 12px #8a2be2) blur(0.2px);
 
-  /* Suppression des transformations inclinées */
   transform: rotate(0deg) skewX(0deg);
 }
 
 .spray-text:hover {
-  transform: scale(1.03);  /* Garde seulement l'effet d'agrandissement */
+  transform: scale(1.03);  
 }
 </style>

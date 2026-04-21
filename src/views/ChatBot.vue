@@ -32,8 +32,8 @@
                 <!-- Section gauche : Titre -->
                 <div class="flex items-center gap-3">
                     <div
-                        class="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                        <font-awesome-icon icon="fa-solid fa-robot" class="text-white text-2xl" />
+                        class="icon-delay w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg">
+                        <font-awesome-icon icon="fa-solid fa-robot" class="robot-smile text-sky-300 text-4xl" />
                     </div>
                     <div>
                         <h2
@@ -95,7 +95,7 @@
                     group-hover:rotate-12 transition-transform duration-300" />
                         </span>
                     </div>
-                <span class="text-violet-700"> | </span>    
+                    <span class="text-violet-700"> | </span>
                     <!-- GitHub Button -->
                     <div class="relative group" @click="openGithub">
                         <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
@@ -201,7 +201,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                }}</span>
+                                    }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
@@ -1287,5 +1287,73 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 .toast-leave-to {
     opacity: 0;
     transform: translateX(400px);
+}
+
+@keyframes slideUpScale {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.icon-delay {
+    animation: arcFall 1.2s cubic-bezier(0.4, 1.2, 0.3, 0.9) 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes arcFall {
+    0% {
+        opacity: 0;
+        transform: translate(-50px, -100px) rotate(-50deg) scale(0.5);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-15px, -20px) rotate(-15deg) scale(0.9);
+    }
+    75% {
+        opacity: 0.95;
+        transform: translate(5px, 8px) rotate(6deg) scale(1.06);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
+.container-delay {
+    animation: containerStable 0.8s ease-out 0s forwards;
+    opacity: 0;
+}
+
+@keyframes containerStable {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes robot-smile {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.08);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+
+.robot-smile {
+  animation: robot-smile 3s ease-in-out infinite;
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
 }
 </style>
