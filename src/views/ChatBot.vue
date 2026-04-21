@@ -39,7 +39,7 @@
                         <font-awesome-icon icon="fa-solid fa-bolt"
                             class="absolute text-yellow-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
 
-                        <div class="absolute top-4 right-4">
+                        <div class="absolute top-4 right-4.5">
                             <font-awesome-icon icon="fa-solid fa-xmark" class="text-red-500 text-xs icon-delay" />
                         </div>
                     </div>
