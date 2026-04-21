@@ -3,12 +3,12 @@
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
 
     <div v-if="$route.path !== '/chatbot'" class="hidden md:flex fixed top-30 left-70 z-[999] group">
-      <div class="bg-sky-500 rounded-lg">
+      <div class="bg-green-500 rounded-lg">
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
       </div>
 
       <router-link to="/chatbot"
-        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-sky-500/30 group"
+        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 text-white rounded-2xl shadow-xl shadow-green-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-green-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-green-500/30 group"
         @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="cycleTooltipMessage">
 
         <div
@@ -27,9 +27,8 @@
         </div>
 
         <span v-if="showTooltip && $route.path !== '/chatbot'" :key="animationKey"
-          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-emerald-500 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-emerald-600 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
           {{ currentTooltipMessage }}
-          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-emerald-500 rotate-45"></span>
         </span>
 
         <span class="absolute -top-1 -right-1 flex h-5 w-5">

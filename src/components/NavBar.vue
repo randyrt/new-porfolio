@@ -113,7 +113,6 @@
 
         <div
           class="flex flex-col items-center justify-center gap-2 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
-          <!-- <p class="text-sm text-gray-500">- {{ $t('nav.bouton_hidden_menu') }} -</p> -->
           <div class="relative group py-3" @click="sidebarVisible = !sidebarVisible">
             <span class="btn-violet btn-effect-5">
               <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
@@ -288,41 +287,41 @@ onMounted(() => {
 
 
 .spray-text {
-  font-family: 'Rajdhani', 'Permanent Marker', cursive;
+  font-family: 'Graffiti One', 'Rajdhani', monospace;
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  
-  position: relative;
-  display: inline-block;
+  letter-spacing: 1px;
 
-  background: linear-gradient(90deg,
-      #4b00ff 0%,
-      #8a2be2 25%,
-      #ff4da6 60%,
-      #ff0080 100%);
-
+  background: linear-gradient(135deg,
+      #2dd4bf 0%,
+      #a855f7 25%,
+      #fbbf24 50%,
+      #8b5cf6 75%,
+      #14b8a6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 
-  -webkit-text-stroke: 2.5px #fff;
+  -webkit-text-stroke: 2px #1a262ecb;
 
   text-shadow:
-    3px 3px 0 #ff1493,
-    6px 6px 0 #ff4da6,
-    0 0 6px #00374D,
-    0 0 15px rgba(0, 55, 77, 0.8),
-    0 0 25px rgba(255, 20, 147, 0.6);
+    3px 3px 0 #14b8a6,
+    6px 6px 0 rgba(168, 85, 247, 0.6),
+    0 0 0px #fbbf24,
+    -2px -2px 0 rgba(45, 212, 191, 0.4);
 
-  filter:
-    drop-shadow(0 0 6px #4b00ff) drop-shadow(0 0 12px #8a2be2) blur(0.2px);
+  filter: 
+    drop-shadow(8px 8px 4px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 8px rgba(168, 85, 247, 0.5));
 
-  transform: rotate(0deg) skewX(0deg);
+  transform: rotate(-2deg) skewX(-3deg);
+  
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .spray-text:hover {
-  transform: scale(1.03);  
+  letter-spacing: 1.3px;
+  transition: letter-spacing 0.3s ease;
 }
 </style>
