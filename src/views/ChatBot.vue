@@ -226,10 +226,10 @@
 
                             <div v-if="message.role === 'assistant' && message.allowFeedback !== false"
                                 class="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100 dark:border-gray-600">
-                                <span class="text-xs text-gray-500 dark:text-gray-400">{{ $t('chat.helpful') }}</span>
+                                <span class="text-xs text-gray-500 dark:text-emerald-400">{{ $t('chat.helpful') }}</span>
                                 <button @click="handleFeedback(index, 'positive')"
                                     :class="feedbackState[index] === 'positive'
-                                        ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-700'
+                                        ? 'bg-green-100 dark:bg-green-900/30 text-emerald-600 dark:text-emerald-400 border-green-200 dark:border-green-700'
                                         : 'bg-gray-100 dark:bg-gray-600 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-500 hover:bg-green-50 dark:hover:bg-green-900/20'"
                                     class="flex items-center gap-1 px-2 py-1 text-xs font-medium rounded border transition-all duration-200">
                                     <font-awesome-icon icon="fa-solid fa-thumbs-up" />
@@ -275,7 +275,7 @@
 
                     <div class="suggestions flex flex-wrap gap-2 justify-center mt-4">
                         <button v-for="suggestion in suggestions" :key="suggestion" @click="sendSuggestion(suggestion)"
-                            class="suggestion-chip px-4 py-2 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-violet-100 dark:hover:bg-violet-900 hover:text-violet-600 dark:hover:text-violet-400 transition-all duration-200">
+                            class="suggestion-chip px-4 py-2 text-sm bg-emerald-100 dark:bg-emerald-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-violet-100 dark:hover:bg-emerald-900 hover:text-emerald-600 dark:emerald:text-violet-400 transition-all duration-200">
                             <font-awesome-icon icon="fa-solid fa-bolt" class="text-xs mr-1" />
                             {{ suggestion }}
                         </button>
