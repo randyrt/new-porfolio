@@ -37,7 +37,7 @@
       <Teleport to="body">
         <Transition name="modal">
           <div v-if="showTechDetails"
-            class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            class="fixed inset-0 backgroud-blur backdrop-blur-sm flex items-center justify-center z-50 p-4"
             @click.self="showTechDetails = false">
             <div
               class="bg-white max-w-4xl w-full max-h-[80vh] rounded-overflow overflow-y-auto transition-all duration-300">
@@ -49,7 +49,7 @@
                   </span>
                 </h3>
                 <button @click="showTechDetails = false"
-                  class="text-white bg-purple-500 px-3 py-1 rounded hover:bg-purple-400 transition-colors">
+                  class="btn-violet btn-effect-5">
                   {{ $t('about.close') }}
                 </button>
               </div>
@@ -339,5 +339,11 @@ const perfomanceTest = () => {
       #8b5cf6 75%,
       #000000 75%,
       #000000 100%);
+}
+
+.backgroud-blur {
+  background-color: rgba(59, 61, 63, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(6px);
 }
 </style>

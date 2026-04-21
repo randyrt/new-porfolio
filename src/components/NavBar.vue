@@ -113,7 +113,7 @@
 
         <div
           class="flex flex-col items-center justify-center gap-2 mt-8 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
-          <p>{{ $t('nav.bouton_hidden_menu') }}</p>
+          <p class="text-sm text-gray-500">{{ $t('nav.bouton_hidden_menu') }}</p>
           <div class="relative group" @click="sidebarVisible = !sidebarVisible">
             <span class="group relative flex h-10 items-center justify-center gap-2 px-4
             bg-gradient-to-br from-purple-500 to-purple-600
@@ -138,7 +138,7 @@
             <router-link v-for="route in routes" :key="route.path" :to="route.path"
               class="decoration border-1 border-purple-200  px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
               active-class="bg-purple-200 font-bold">
-              <font-awesome-icon :icon="route.icon" class="text-purple-300" />
+              <font-awesome-icon :icon="route.icon" class="text-sky-300" />
               <span>{{ route.name }}</span>
             </router-link>
           </nav>
@@ -320,7 +320,7 @@ onMounted(() => {
 
 
   text-shadow:
-    3px 3px 0 #2a004d,
+    3px 3px 0 #00374D,
     6px 6px 0 #1a0033,
     0 0 6px #ff1493,
     0 0 15px rgba(255, 20, 147, 0.8),

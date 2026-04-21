@@ -137,8 +137,12 @@ button {
   @apply px-6 py-2.5 bg-yellow-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-yellow-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
 
-.btn-violet {
+/* .btn-violet {
   @apply px-6 py-2.5 bg-violet-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-violet-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
+} */
+
+.btn-violet {
+  @apply px-6 py-2.5 bg-amber-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-amber-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
 
 .btn-sky {
@@ -162,10 +166,12 @@ button {
   box-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
 }
 
+
+
 .btn-effect-5 {
-  border: 2px solid #8B5CF6;
+  border: 2px solid #F59E0B;
   background: transparent;
-  color: #8B5CF6;
+  color: #F59E0B;
 }
 
 .btn-effect-5::before {
@@ -175,27 +181,17 @@ button {
   left: 0;
   width: 0;
   height: 100%;
-  background: #8B5CF6 !important;
+  background: #F59E0B !important;
   z-index: -1;
   transition: 0.5s;
 }
 
-.btn-effect-5-delete {
-  border: 2px solid #8B5CF6;
-  background: transparent;
-  color: #8B5CF6;
+.btn-effect-5:hover {
+  color: #ffffff;
 }
 
-.btn-effect-5::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: #8B5CF6 !important;
-  z-index: -1;
-  transition: 0.5s;
+.btn-effect-5:hover::before {
+  width: 100%;
 }
 
 .btn-effect-5:hover {
@@ -445,14 +441,15 @@ a {
 }
 
 .animated-gradient-text {
-  background: linear-gradient(90deg, #e066ff, #bf00ff, #b366ff, #9b30ff, #7a5fff, #4b0082, #e066ff, #da70d6, #e066ff);
+  background: linear-gradient(90deg, #00ffff, #e066ff, #bf00ff, #00ced1, #9b30ff, #20b2aa, #da70d6, #00ffff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-move 5s ease infinite;
-  filter: drop-shadow(0 0 8px rgba(191, 0, 255, 0.4));
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.4));
 }
+
 
 @keyframes gradient-move {
   0% {

@@ -17,11 +17,11 @@
             enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-200 ease-in"
             leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
 
-            <div v-if="selectedImage" class="fixed inset-0 flex items-center justify-center z-50 card modal-backdrop"
+            <div v-if="selectedImage" class="fixed inset-0 flex items-center justify-center z-50 card modal-backdrop bg-black/50 backdrop-blur-sm "
                 @click.self="closeImage">
                 <div class="relative">
                     <button @click="closeImage"
-                        class="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-purple-500 hover:bg-violet-600 text-white rounded-full cursor-pointer">
+                        class="absolute -top-2 left-1/2 btn-violet btn-effect-5">
                         Fermer
                     </button>
                     <img :src="selectedImage" alt="Image sélectionnée"
@@ -159,7 +159,7 @@ onMounted(() => {
 <style scoped>
 .modal-backdrop {
     background-color: rgba(59, 61, 63, 0);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(6px);
 }
 </style>
