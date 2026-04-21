@@ -11,7 +11,7 @@
         data-aos="fade-up">
         <div class="p-4">
           <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800">{{ $t('home.welcome') }}<span
-              class="text-5xl ml-2 emoji"> 😎</span></h1>
+              class="text-5xl ml-2 text-sky-500 emoji"> 😎</span></h1>
           <p class="text-lg text-gray-700 mb-4" v-html="$t('home.p1')"></p>
           <p class="text-lg text-gray-700" v-html="$t('home.p2')"></p>
           <p class="text-lg text-gray-700 mt-4">

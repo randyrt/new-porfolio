@@ -641,10 +641,10 @@
     },
     "loading": "Assistant IA...",
     "title": "Discuter un peu avec mon assistant IA",
-    "card_big_title": "Assistant IA",
+    "card_big_title": "FrankAIstein",
     "card_small_title": "Posez vos questions sur mes compétences et expériences",
     "subtitle": "Posez vos questions sur mes compétences et expériences",
-    "disclaimer": "Cet assistant IA est actuellement en phase d'entraînement et n'est pas encore aussi optimisé que les modèles grand public. Il peut parfois fournir des réponses imprécises ou peu fiables. Merci de votre patience et de votre compréhension pendant son apprentissage !",
+    "disclaimer": "FrankAIstein  n'est pas aussi optimisé que les modèles grand public. Il peut parfois fournir des réponses imprécises ou peu fiables. Merci de votre compréhension en discutant avec lui !",
     "placeholder": "Posez votre question...",
     "send": "Envoyer",
     "actions": {
@@ -654,7 +654,7 @@
     "start_conversation": "Commencez une conversation avec l'assistant IA ! 💬",
     "quote": "L'intelligence artificielle ne remplace pas l'intelligence humaine, elle la complète. Cet assistant est là pour répondre à vos questions sur mon parcours, mes compétences et mes projets.",
     "clear_conversation": "Effacer la conversation",
-    "welcome_message": "👋 Bonjour ! Je suis l'assistant IA de Randy. Je peux vous parler de son parcours, de ses projets, de ses compétences techniques ou même vous partager son CV. Que souhaitez-vous savoir ?",
+    "welcome_message": "👋 Bonjour ! Je suis FrankAIstein, l'assistant IA de Randy. Je peux vous parler de son parcours, de ses projets, de ses compétences techniques ou même vous partager son CV. Que souhaitez-vous savoir ?",
     "error_local_fallback": "⚡ Le serveur a consommé trop d'énergie 😢 Nous allons lui parler ! Découvrez le portfolio manuellement en attendant 🚀",
     "local": {
       "greeting": "Bonjour ! 😊 C'est un plaisir de vous voir par ici. Comment puis-je vous aider à explorer le portfolio de Randy ?",

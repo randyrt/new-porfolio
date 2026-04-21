@@ -641,10 +641,10 @@
     },
     "title": "Chat a little with my AI assistant",
     "loading": "AI assistant...",
-    "card_big_title": "AI Assistant",
+    "card_big_title": "FrankAIstein",
     "card_small_title": "Ask me anything about my skills and experiences",
     "subtitle": "Ask questions about my skills and experiences",
-    "disclaimer": "This AI assistant is currently in training and is not yet as optimized as mainstream models. It may sometimes provide inaccurate or unreliable responses. Thank you for your patience during its learning process!",
+    "disclaimer": "FrankAIstein is not as optimized as mainstream models. It may sometimes provide inaccurate or unreliable responses. Thank you for your understanding when chatting with him!",
     "placeholder": "Ask your question...",
     "send": "Send",
     "actions": {
@@ -654,7 +654,7 @@
     "start_conversation": "Start a conversation with the AI assistant! 💬",
     "quote": "Artificial intelligence doesn't replace human intelligence, it complements it. This assistant is here to answer your questions about my journey, skills and projects.",
     "clear_conversation": "Clear conversation",
-    "welcome_message": "👋 Hello ! I'm Randy's AI assistant. I can tell you about his career path, projects, technical skills or even share his CV. What would you like to know ?",
+    "welcome_message": "👋 Hello ! I'm FrankAIstein, Randy's AI assistant. I can tell you about his career path, projects, technical skills or even share his CV. What would you like to know ?",
     "error_local_fallback": "⚡ The server ate too much energy 😢 We'll talk to it ! In the meantime, discover the portfolio manually  🚀",
     "local": {
       "greeting": "Hello! 😊 It's a pleasure to have you here. How can I help you explore Randy's portfolio?",

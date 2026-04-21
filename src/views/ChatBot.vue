@@ -40,9 +40,6 @@
                             class="text-2xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">
                             {{ $t('chat.card_big_title') }}
                         </h2>
-                        <p class="text-sm !text-gray-600 !dark:text-gray-500">
-                            {{ $t('chat.card_small_title') }}
-                        </p>
                     </div>
                 </div>
 
@@ -166,15 +163,15 @@
             </div>
 
             <div
-                class="mb-2 p-2 bg-amber-100 dark:bg-amber-700 border border-amber-400 dark:border-amber-500 rounded-xl flex items-start gap-2 shadow-lg animate-pulse-slow">
+                class="mb-2 p-2 bg-amber-100 dark:bg-amber-700 border border-amber-400 w-1/2 dark:border-amber-500 rounded-xl flex justify-center mx-auto  gap-2 shadow-lg animate-pulse-slow">
                 <div class="p-2 bg-amber-500/30 dark:bg-amber-600/50 rounded-lg text-amber-700 dark:text-amber-200">
-                    <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="text-xl" />
+                    <font-awesome-icon icon="fa-solid fa-triangle-exclamation" class="text-2xl mt-2" />
                 </div>
-                <div class="w-full">
+                <div class="flex items-start flex-col justify-between">
                     <h4 class="text-sm font-bold text-amber-800 dark:text-amber-100 mb-1">
                         {{ $t('chat.card_big_title') }} (Experimental)
                     </h4>
-                    <p class="text-xs text-amber-700 dark:!text-amber-100 leading-relaxed">
+                    <p class="text-xs text-amber-700 dark:!text-amber-100">
                         {{ $t('chat.disclaimer') }}
                     </p>
                 </div>
@@ -1311,21 +1308,26 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
         opacity: 0;
         transform: translate(-70px, -100px) rotate(-15deg) scale(0.5);
     }
+
     30% {
         opacity: 0.6;
         transform: translate(-45px, -70px) rotate(-5deg) scale(0.65);
     }
+
     55% {
         opacity: 0.85;
         transform: translate(-10px, -35px) rotate(10deg) scale(0.85);
     }
+
     75% {
         opacity: 0.95;
         transform: translate(15px, -5px) rotate(18deg) scale(1.0);
     }
+
     90% {
         transform: translate(5px, 3px) rotate(3deg) scale(1.03);
     }
+
     100% {
         opacity: 1;
         transform: translate(0, 0) rotate(0deg) scale(1);
@@ -1341,26 +1343,29 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
 }
 
 @keyframes robot-smile {
-  0% {
-    transform: scaleY(1);
-  }
-  50% {
-    transform: scaleY(1.08);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+    0% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(1.08);
+    }
+
+    100% {
+        transform: scaleY(1);
+    }
 }
 
 
 .robot-smile {
-  animation: robot-smile 3s ease-in-out infinite;
-  filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
+    animation: robot-smile 3s ease-in-out infinite;
+    filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
 }
 </style>
