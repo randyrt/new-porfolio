@@ -9,16 +9,15 @@
 
       <router-link to="/chatbot"
         class="icon-delay flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-sky-500/30 group"
-        @mouseenter="handleMouseEnter" 
-        @mouseleave="handleMouseLeave" 
-        @click="cycleTooltipMessage">
-        
-        <font-awesome-icon icon="fa-solid fa-robot" class="text-4xl filter drop-shadow-lg transition-all duration-200"
-          :class="[isHoveringBot ? 'robot-smile' : '', 'text-sky-300']" />
+        @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="cycleTooltipMessage">
 
-        <span 
-          v-if="showTooltip && $route.path !== '/chatbot'" 
-          :key="animationKey"
+        <div
+          class="icon-delay w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+          <font-awesome-icon icon="fa-solid fa-robot" class="robot-smile text-sky-300 text-4xl relative" />
+          <font-awesome-icon icon="fa-solid fa-bolt" class="absolute text-yellow-300 text-sm top-3 right-3" />
+        </div>
+
+        <span v-if="showTooltip && $route.path !== '/chatbot'" :key="animationKey"
           class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-sky-500 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
           {{ currentTooltipMessage }}
           <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-sky-500 rotate-45"></span>
@@ -72,14 +71,14 @@ const getTooltipKeyFromPath = (path: string): string => {
 const getContextualMessages = (): string[] => {
   const currentPath = route.path;
   const tooltipKey = getTooltipKeyFromPath(currentPath);
-  
+
 
   const contextualMessages = tm(`chat.chat_tooltips.${tooltipKey}`) as string[];
-  
+
   if (contextualMessages && contextualMessages.length > 0) {
     return contextualMessages;
   }
-  
+
 
   const defaultMessages = tm('chat.chat_tooltips.default') as string[];
   return defaultMessages || [t('chat.chat_tooltip')];
@@ -155,7 +154,7 @@ watch(() => route.path, (newPath, oldPath) => {
     showTooltip.value = false;
     return;
   }
-  
+
 
   if (oldPath === '/chatbot' || oldPath !== newPath) {
     showTooltip.value = true;
@@ -166,7 +165,7 @@ watch(() => route.path, (newPath, oldPath) => {
 
 onMounted(() => {
   currentMessages.value = getContextualMessages();
-  
+
   if (route.path !== '/chatbot') {
     showTooltip.value = true;
     tooltipMessageIndex.value = getRandomMessage();
@@ -174,7 +173,7 @@ onMounted(() => {
   } else {
     showTooltip.value = false;
   }
-  
+
   startAutoRotation();
 });
 
@@ -328,52 +327,58 @@ const navRoutes = computed(() => [
 }
 
 .icon-delay {
-    animation: arcCircle 1.3s cubic-bezier(0.45, 1.1, 0.3, 0.95) 0.3s forwards;
-    opacity: 0;
+  animation: arcCircle 1.3s cubic-bezier(0.45, 1.1, 0.3, 0.95) 0.3s forwards;
+  opacity: 0;
 }
 
 .icon-delay {
-    animation: slingEffect 1.3s cubic-bezier(0.5, 1.3, 0.4, 0.9) 0.3s forwards;
-    opacity: 0;
+  animation: slingEffect 1.3s cubic-bezier(0.5, 1.3, 0.4, 0.9) 0.3s forwards;
+  opacity: 0;
 }
 
 @keyframes slingEffect {
-    0% {
-        opacity: 0;
-        transform: translate(70px, 100px) rotate(-15deg) scale(0.5);
-    }
-    30% {
-        opacity: 0.6;
-        transform: translate(45px, 70px) rotate(-5deg) scale(0.65);
-    }
-    55% {
-        opacity: 0.85;
-        transform: translate(10px, 35px) rotate(10deg) scale(0.85);
-    }
-    75% {
-        opacity: 0.95;
-        transform: translate(-15px, 5px) rotate(18deg) scale(1.0);
-    }
-    90% {
-        transform: translate(-5px, -3px) rotate(3deg) scale(1.03);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(0deg) scale(1);
-    }
+  0% {
+    opacity: 0;
+    transform: translate(70px, 100px) rotate(-15deg) scale(0.5);
+  }
+
+  30% {
+    opacity: 0.6;
+    transform: translate(45px, 70px) rotate(-5deg) scale(0.65);
+  }
+
+  55% {
+    opacity: 0.85;
+    transform: translate(10px, 35px) rotate(10deg) scale(0.85);
+  }
+
+  75% {
+    opacity: 0.95;
+    transform: translate(-15px, 5px) rotate(18deg) scale(1.0);
+  }
+
+  90% {
+    transform: translate(-5px, -3px) rotate(3deg) scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
 }
 
 .container-delay {
-    animation: containerStable 0.8s ease-out 0s forwards;
-    opacity: 0;
+  animation: containerStable 0.8s ease-out 0s forwards;
+  opacity: 0;
 }
 
 @keyframes containerStable {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 </style>

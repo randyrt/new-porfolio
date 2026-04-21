@@ -32,8 +32,11 @@
                 <!-- Section gauche : Titre -->
                 <div class="flex items-center gap-3">
                     <div
-                        class="icon-delay w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg">
-                        <font-awesome-icon icon="fa-solid fa-robot" class="robot-smile text-sky-300 text-4xl" />
+                        class="icon-delay w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+                        <font-awesome-icon icon="fa-solid fa-robot"
+                            class="robot-smile text-sky-300 text-4xl relative" />
+                        <font-awesome-icon icon="fa-solid fa-bolt"
+                            class="absolute text-yellow-300 text-sm top-3 right-3" />
                     </div>
                     <div>
                         <h2
@@ -1367,5 +1370,25 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 .robot-smile {
     animation: robot-smile 3s ease-in-out infinite;
     filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
+}
+
+/* Animation d'étincelle pour l'éclair */
+@keyframes spark {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        text-shadow: 0 0 8px #fbbf24;
+    }
+}
+
+.bolt-spark {
+    animation: spark 0.8s ease-in-out infinite;
 }
 </style>
