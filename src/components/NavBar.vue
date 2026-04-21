@@ -113,7 +113,7 @@
 
         <div
           class="flex flex-col items-center justify-center gap-2 mt-8 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
-          <p>Masquer le sidebar</p>
+          <p>{{ $t('nav.bouton_hidden_menu') }}</p>
           <div class="relative group" @click="sidebarVisible = !sidebarVisible">
             <span class="group relative flex h-10 items-center justify-center gap-2 px-4
             bg-gradient-to-br from-purple-500 to-purple-600

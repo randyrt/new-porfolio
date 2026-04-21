@@ -14,7 +14,8 @@
     "github_stats": "GitHub Stats",
     "chatbot": "RandBot",
     "contact": "Contact",
-    "about": "À propos"
+    "about": "À propos",
+    "bouton_hidden_menu": "Cacher le menu"
   },
   "home": {
     "loading": "Page d'accueil...",
