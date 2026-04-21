@@ -296,12 +296,12 @@ onMounted(() => {
 
 
 .spray-text {
-  font-family: 'Bangers', 'Permanent Marker', cursive;
+ font-family: 'Permanent Marker', 'Bangers', cursive;
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 3px;
-
+  
   position: relative;
   display: inline-block;
 
@@ -334,6 +334,6 @@ onMounted(() => {
 }
 
 .spray-text:hover {
-  animation: spray-hover 0.5s ease-in-out infinite;
+  transform: rotate(-2deg) scale(1.03);
 }
 </style>

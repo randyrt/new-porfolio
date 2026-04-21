@@ -442,15 +442,14 @@ a {
   }
 }
 
-/* GOBAL ANIMATION */
-/* ----------------------------------------------------------------------------------------------------- */
 .animated-gradient-text {
-  background: linear-gradient(90deg, #facc15, #f87171, #3b82f6, #10b981, #facc15);
+  background: linear-gradient(90deg, #e066ff, #bf00ff, #b366ff, #9b30ff, #7a5fff, #4b0082, #e066ff, #da70d6, #e066ff);
   background-size: 300% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-move 5s ease infinite;
+  filter: drop-shadow(0 0 8px rgba(191, 0, 255, 0.4));
 }
 
 @keyframes gradient-move {
