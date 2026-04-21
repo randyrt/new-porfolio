@@ -68,7 +68,7 @@ import {
   faArrowRight,
   faThumbsDown,  
   faThumbsUp,
-   faBookOpen     
+   faBookOpen,     
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'

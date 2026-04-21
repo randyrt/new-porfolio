@@ -112,8 +112,8 @@
 
 
         <div
-          class="flex flex-col items-center justify-center gap-2 mt-8 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
-          <p class="text-sm text-gray-500">- {{ $t('nav.bouton_hidden_menu') }} -</p>
+          class="flex flex-col items-center justify-center gap-2 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
+          <!-- <p class="text-sm text-gray-500">- {{ $t('nav.bouton_hidden_menu') }} -</p> -->
           <div class="relative group py-3" @click="sidebarVisible = !sidebarVisible">
             <span class="btn-violet btn-effect-5">
               <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />

@@ -32,15 +32,19 @@
                 <!-- Section gauche : Titre -->
                 <div class="flex items-center gap-3">
                     <div
-                        class="robot-smile w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+                        class="robot-smile w-16 h-16 bg-gradient-to-br from-green-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
                         <font-awesome-icon icon="fa-solid fa-robot"
-                            class=" text-sky-300 text-4xl relative icon-delay" />
+                            class=" text-green-300 text-4xl relative icon-delay" />
 
                         <font-awesome-icon icon="fa-solid fa-bolt"
-                            class="absolute text-yellow-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
+                            class="absolute text-green-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
 
-                        <div class="absolute top-4 right-4.5">
-                            <font-awesome-icon icon="fa-solid fa-xmark" class="text-red-500 text-xs icon-delay" />
+
+                        <div
+                            class="absolute top-6 right-4.5 w-3 h-3 bg-green-800 rounded-full flex items-center justify-center icon-delay">
+                            <div class="w-2.5 h-0.5 bg-green-400 rotate-45 absolute"></div>
+                            <div class="w-2.5 h-0.5 bg-green-400 -rotate-45 absolute"></div>
+                            <div class="absolute w-0.5 h-1 bg-green-300 -top-0.5"></div>
                         </div>
                     </div>
                     <div>
@@ -206,7 +210,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
                                 <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 

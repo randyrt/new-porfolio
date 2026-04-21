@@ -12,21 +12,24 @@
         @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="cycleTooltipMessage">
 
         <div
-          class="robot-smile w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
-          <font-awesome-icon icon="fa-solid fa-robot" class=" text-sky-300 text-4xl relative icon-delay" />
+          class="robot-smile w-16 h-16 bg-gradient-to-br from-green-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+          <font-awesome-icon icon="fa-solid fa-robot" class=" text-green-300 text-4xl relative icon-delay" />
 
           <font-awesome-icon icon="fa-solid fa-bolt"
-            class="absolute text-yellow-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
+            class="absolute text-green-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
 
-          <div class="absolute top-4 right-4.5">
-            <font-awesome-icon icon="fa-solid fa-xmark" class="text-red-500 text-xs icon-delay" />
+
+          <div class="absolute top-6 right-4.5 w-3 h-3 bg-green-800 rounded-full flex items-center justify-center icon-delay">
+            <div class="w-2.5 h-0.5 bg-green-400 rotate-45 absolute"></div>
+            <div class="w-2.5 h-0.5 bg-green-400 -rotate-45 absolute"></div>
+            <div class="absolute w-0.5 h-1 bg-green-300 -top-0.5"></div>
           </div>
         </div>
 
         <span v-if="showTooltip && $route.path !== '/chatbot'" :key="animationKey"
-          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-sky-500 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
+          class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-emerald-500 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
           {{ currentTooltipMessage }}
-          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-sky-500 rotate-45"></span>
+          <span class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-emerald-500 rotate-45"></span>
         </span>
 
         <span class="absolute -top-1 -right-1 flex h-5 w-5">
