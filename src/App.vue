@@ -12,9 +12,15 @@
         @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="cycleTooltipMessage">
 
         <div
-          class="icon-delay w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
-          <font-awesome-icon icon="fa-solid fa-robot" class="robot-smile text-sky-300 text-4xl relative" />
-          <font-awesome-icon icon="fa-solid fa-bolt" class="absolute text-yellow-300 text-sm top-3 right-3" />
+          class="robot-smile w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+          <font-awesome-icon icon="fa-solid fa-robot" class=" text-sky-300 text-4xl relative icon-delay" />
+
+          <font-awesome-icon icon="fa-solid fa-bolt"
+            class="absolute text-yellow-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
+
+          <div class="absolute top-4 right-4">
+            <font-awesome-icon icon="fa-solid fa-xmark" class="text-red-500 text-xs icon-delay" />
+          </div>
         </div>
 
         <span v-if="showTooltip && $route.path !== '/chatbot'" :key="animationKey"
