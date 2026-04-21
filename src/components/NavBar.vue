@@ -138,7 +138,7 @@
             <router-link v-for="route in routes" :key="route.path" :to="route.path"
               class="decoration border-1 border-purple-200  px-4 py-2 rounded-md !text-gray-500 hover:bg-purple-100 flex items-center gap-2"
               active-class="bg-purple-200 font-bold">
-              <font-awesome-icon :icon="route.icon" class="text-gray-500" />
+              <font-awesome-icon :icon="route.icon" class="text-purple-300" />
               <span>{{ route.name }}</span>
             </router-link>
           </nav>
