@@ -296,7 +296,7 @@ onMounted(() => {
 
 
 .spray-text {
- font-family: 'Permanent Marker', 'Bangers', cursive;
+  font-family: 'Permanent Marker', 'Bangers', cursive;
   font-size: 1.4rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -304,7 +304,6 @@ onMounted(() => {
   
   position: relative;
   display: inline-block;
-
 
   background: linear-gradient(90deg,
       #ff0080 0%,
@@ -318,7 +317,6 @@ onMounted(() => {
 
   -webkit-text-stroke: 2.5px #fff;
 
-
   text-shadow:
     3px 3px 0 #00374D,
     6px 6px 0 #1a0033,
@@ -326,14 +324,14 @@ onMounted(() => {
     0 0 15px rgba(255, 20, 147, 0.8),
     0 0 25px rgba(138, 43, 226, 0.6);
 
-
   filter:
     drop-shadow(0 0 6px #ff1493) drop-shadow(0 0 12px #8a2be2) blur(0.2px);
 
-  transform: rotate(-2deg) skewX(-4deg);
+  /* Suppression des transformations inclinées */
+  transform: rotate(0deg) skewX(0deg);
 }
 
 .spray-text:hover {
-  transform: rotate(-2deg) scale(1.03);
+  transform: scale(1.03);  /* Garde seulement l'effet d'agrandissement */
 }
 </style>
