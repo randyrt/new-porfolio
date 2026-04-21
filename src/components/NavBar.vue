@@ -15,7 +15,7 @@
         </button>
         <div class="flex items-center">
           <!-- Language Switcher -->
-          <div class="relative group" @click="toggleLanguage">
+          <div class="relative group " @click="toggleLanguage">
             <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
                 bg-gray-900 text-white text-xs py-1 px-2 rounded
                 opacity-0 group-hover:opacity-100 transition-opacity duration-200
@@ -103,12 +103,17 @@
     </Transition>
     <Transition name="sidebar-slide">
       <aside v-if="sidebarVisible"
-        class="hidden md:flex w-64 shadow-lg flex-col bg-gray-50 transition-all duration-300 px-1 mt-0 h-full border-r border-gray-200">
-        <div class="p-4 text-xl font-bold flex items-center justify-between">
-          <span class="animated-gradient-text cursor-pointer text-3xl" @click="goHome">{{ brand }}</span>
+        class="hidden md:flex w-68 shadow-lg flex-col bg-gray-50 transition-all duration-300 px-1 mt-0 h-full border-r border-gray-200">
+        <div class="p-4 text-xl font-bold flex items-center justify-between brick-wall-bg rounded-lg mt-1">
+          <span class="spray-wrapper cursor-pointer" @click="goHome" :data-text="brand">
+            <span class="spray-text">{{ brand }}</span>
+          </span>
         </div>
 
-        <div class="flex items-center justify-center gap-2 mb-2 mt-12">
+
+        <div
+          class="flex flex-col items-center justify-center gap-2 mt-8 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
+          <p>Masquer le sidebar</p>
           <div class="relative group" @click="sidebarVisible = !sidebarVisible">
             <span class="group relative flex h-10 items-center justify-center gap-2 px-4
             bg-gradient-to-br from-purple-500 to-purple-600
@@ -282,5 +287,53 @@ onMounted(() => {
 .sidebar-slide-leave-to {
   transform: translateX(-100%);
   opacity: 0;
+}
+
+.brick-wall-bg {
+  background-color: #1a1a1a;
+  padding: 20px;
+}
+
+
+.spray-text {
+  font-family: 'Bangers', 'Permanent Marker', cursive;
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+
+  position: relative;
+  display: inline-block;
+
+
+  background: linear-gradient(90deg,
+      #ff0080 0%,
+      #ff4da6 25%,
+      #8a2be2 60%,
+      #4b00ff 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  -webkit-text-stroke: 2.5px #fff;
+
+
+  text-shadow:
+    3px 3px 0 #2a004d,
+    6px 6px 0 #1a0033,
+    0 0 6px #ff1493,
+    0 0 15px rgba(255, 20, 147, 0.8),
+    0 0 25px rgba(138, 43, 226, 0.6);
+
+
+  filter:
+    drop-shadow(0 0 6px #ff1493) drop-shadow(0 0 12px #8a2be2) blur(0.2px);
+
+  transform: rotate(-2deg) skewX(-4deg);
+}
+
+.spray-text:hover {
+  animation: spray-hover 0.5s ease-in-out infinite;
 }
 </style>
