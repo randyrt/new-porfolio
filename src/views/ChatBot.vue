@@ -32,7 +32,7 @@
                 <!-- Section gauche : Titre -->
                 <div class="flex items-center gap-3">
                     <div
-                        class="w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+                        class="robot-smile w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
                         <font-awesome-icon icon="fa-solid fa-robot"
                             class="icon-delay  text-sky-300 text-4xl relative" />
                         <font-awesome-icon icon="fa-solid fa-bolt"
@@ -1353,23 +1353,22 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 }
 
 @keyframes robot-smile {
-    0% {
-        transform: scaleY(1);
-    }
+  0% {
+    transform: scaleY(1);
+  }
 
-    50% {
-        transform: scaleY(1.08);
-    }
+  50% {
+    transform: scaleY(1.1);
+  }
 
-    100% {
-        transform: scaleY(1);
-    }
+  100% {
+    transform: scaleY(1.05);
+  }
 }
 
-
 .robot-smile {
-    animation: robot-smile 3s ease-in-out infinite;
-    filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
+  animation: robot-smile 3s ease-in-out infinite;
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(218, 218, 9, 0.5));
 }
 
 /* Animation d'étincelle pour l'éclair */
