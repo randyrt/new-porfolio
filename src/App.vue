@@ -8,7 +8,7 @@
       </div>
 
       <router-link to="/chatbot"
-        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-sky-500/30 group"
+        class="icon-delay flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sky-600 to-sky-700 text-white rounded-2xl shadow-xl shadow-purple-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-purple-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-sky-500/30 group"
         @mouseenter="handleMouseEnter" 
         @mouseleave="handleMouseLeave" 
         @click="cycleTooltipMessage">
@@ -325,5 +325,55 @@ const navRoutes = computed(() => [
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: #F59E0B;
+}
+
+.icon-delay {
+    animation: arcCircle 1.3s cubic-bezier(0.45, 1.1, 0.3, 0.95) 0.3s forwards;
+    opacity: 0;
+}
+
+.icon-delay {
+    animation: slingEffect 1.3s cubic-bezier(0.5, 1.3, 0.4, 0.9) 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes slingEffect {
+    0% {
+        opacity: 0;
+        transform: translate(70px, 100px) rotate(-15deg) scale(0.5);
+    }
+    30% {
+        opacity: 0.6;
+        transform: translate(45px, 70px) rotate(-5deg) scale(0.65);
+    }
+    55% {
+        opacity: 0.85;
+        transform: translate(10px, 35px) rotate(10deg) scale(0.85);
+    }
+    75% {
+        opacity: 0.95;
+        transform: translate(-15px, 5px) rotate(18deg) scale(1.0);
+    }
+    90% {
+        transform: translate(-5px, -3px) rotate(3deg) scale(1.03);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+}
+
+.container-delay {
+    animation: containerStable 0.8s ease-out 0s forwards;
+    opacity: 0;
+}
+
+@keyframes containerStable {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 </style>
