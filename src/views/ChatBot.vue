@@ -218,7 +218,7 @@
                                 class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
                                 <button v-for="(action, aIndex) in message.actions" :key="aIndex"
                                     @click="handleAction(action)"
-                                    class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-violet-50 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 rounded-lg hover:bg-violet-100 dark:hover:bg-violet-900/50 border border-violet-100 dark:border-violet-800 transition-all duration-200">
+                                    class="flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-lg hover:bg-emerald-100 dark:hover:bg-emerald-900/50 border border-emerald-100 dark:border-emerald-800 transition-all duration-200">
                                     <font-awesome-icon :icon="action.icon" />
                                     {{ action.label }}
                                 </button>
