@@ -113,19 +113,11 @@
 
         <div
           class="flex flex-col items-center justify-center gap-2 mt-8 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
-          <p class="text-sm text-gray-500">{{ $t('nav.bouton_hidden_menu') }}</p>
-          <div class="relative group" @click="sidebarVisible = !sidebarVisible">
-            <span class="group relative flex h-10 items-center justify-center gap-2 px-4
-            bg-gradient-to-br from-purple-500 to-purple-600
-            rounded-lg shadow-lg shadow-gray-500/30
-            hover:shadow-[0_0_25px_rgba(107,114,128,0.7)]
-            hover:scale-110 hover:from-purple-400 hover:to-purple-500
-            active:scale-95
-            transition-all duration-300 ease-out cursor-pointer
-            border border-white/30">
-              <font-awesome-icon :icon="['fas', 'book-open']" class="text-white text-lg filter drop-shadow-md
-                group-hover:rotate-12 transition-transform duration-300" />
-              <span class="text-white text-sm font-medium">
+          <p class="text-sm text-gray-500">- {{ $t('nav.bouton_hidden_menu') }} -</p>
+          <div class="relative group py-3" @click="sidebarVisible = !sidebarVisible">
+            <span class="btn-violet btn-effect-5">
+              <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
+              <span class="text-sm font-medium">
                 {{ $t('nav.reading_mode') }}
               </span>
             </span>
@@ -147,7 +139,7 @@
     </Transition>
 
     <button v-if="!sidebarVisible" @click="sidebarVisible = true"
-      class="fixed top-4 left-4 z-50 p-3 w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-[0_0_25px_rgba(139,92,246,0.7)] hover:scale-110 transition-all duration-300 focus:outline-none flex justify-center items-center animate-pulse-slow">
+      class="fixed top-4 left-4 z-50 p-3 w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-[0_0_25px_rgba(9, 162, 201, 0.7)] hover:scale-110 transition-all duration-300 focus:outline-none flex justify-center items-center animate-pulse-slow">
       <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg" />
     </button>
 
@@ -245,12 +237,12 @@ onMounted(() => {
 
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+    box-shadow: 0 0 0 0 rgba(11, 121, 165, 0.7);
     opacity: 1;
   }
 
   50% {
-    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 10px rgba(3, 192, 240, 0);
     opacity: 0.9;
   }
 }
