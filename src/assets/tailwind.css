@@ -722,3 +722,16 @@ a {
   }
 
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@900&display=swap');
+
+.gothic-title {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 900;
+    background: linear-gradient(to bottom, #064e3b, #10b981, #1261c9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 3px 3px 0px rgba(66, 117, 129, 0.8), 0px 0px 6px #4eec26;
+    letter-spacing: 2px;
+}

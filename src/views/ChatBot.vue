@@ -49,7 +49,7 @@
                     </div>
                     <div>
                         <h2
-                            class="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-600 bg-clip-text text-transparent">
+                            class="gothic-title text-3xl font-bold text-gray-800 dark:text-gray-100">
                             {{ $t('chat.card_big_title') }}
                         </h2>
                     </div>
