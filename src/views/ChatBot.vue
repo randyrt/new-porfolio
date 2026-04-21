@@ -208,8 +208,8 @@
                                     : 'assistant-message bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-2xl rounded-tl-sm max-w-[80%] p-3 shadow-md border border-gray-200 dark:border-gray-700'">
 
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
-                                <font-awesome-icon icon="fa-solid fa-robot" class="text-violet-500 text-xs" />
-                                <span class="text-xs font-semibold text-violet-500"> {{ $t('chat.card_big_title')
+                                <font-awesome-icon icon="fa-solid fa-robot" class="text-emerald-500 text-xs" />
+                                <span class="text-xs font-semibold text-emerald-500"> {{ $t('chat.card_big_title')
                                 }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
