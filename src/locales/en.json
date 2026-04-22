@@ -108,7 +108,7 @@
     "toast_click": "Click on an image to enlarge it 🙂!",
     "meta_title": "Randy's Projects",
     "meta_desc": "Some projects I am particularly proud of",
-    "close_image" : "Close"
+    "close_image": "Close"
   },
   "quality": {
     "loading": "My qualities...",
@@ -610,7 +610,7 @@
         "Discover Randy's award-winning project 🌟"
       ],
       "projects": [
-        "Come see Randy's achievements! 📁",
+        "Randy's achievements! 📁",
         "Highlights of Randy's portfolio 👆",
         "Randy's best work awaits you 🔥"
       ],
@@ -656,7 +656,7 @@
     "quote": "Artificial intelligence doesn't replace human intelligence, it complements it. This assistant is here to answer your questions about my journey, skills and projects.",
     "clear_conversation": "Clear conversation",
     "welcome_message": "👋 Hello ! I'm FrankAIstein, Randy's AI assistant. I can tell you about his career path, projects, technical skills or even share his CV. What would you like to know ?",
-    "error_local_fallback": "⚡ The server ate too much energy 😢 We'll talk to it ! In the meantime, discover the portfolio manually  🚀",
+    "error_local_fallback": "⚡ The server has consumed too much energy 😢 I'll notify Randy! In the meantime, explore the portfolio manually and try again later 🚀",
     "local": {
       "greeting": "Hello! 😊 It's a pleasure to have you here. How can I help you explore Randy's portfolio?",
       "thanks": "You're welcome! 🚀 Feel free to ask if you have any other questions about his skills or projects.",

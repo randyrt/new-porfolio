@@ -610,7 +610,7 @@
         "Découvre le projet primé de Randy 🌟"
       ],
       "projects": [
-        "Viens voir les réalisations de Randy ! 📁",
+        "Les réalisations de Randy ! 📁",
         "Les points forts du portfolio de Randy 👆",
         "Le meilleur travail de Randy t'attend 🔥"
       ],
@@ -656,7 +656,7 @@
     "quote": "L'intelligence artificielle ne remplace pas l'intelligence humaine, elle la complète. Cet assistant est là pour répondre à vos questions sur mon parcours, mes compétences et mes projets.",
     "clear_conversation": "Effacer la conversation",
     "welcome_message": "👋 Bonjour ! Je suis FrankAIstein, l'assistant IA de Randy. Je peux vous parler de son parcours, de ses projets, de ses compétences techniques ou même vous partager son CV. Que souhaitez-vous savoir ?",
-    "error_local_fallback": "⚡ Le serveur a consommé trop d'énergie 😢 Nous allons lui parler ! Découvrez le portfolio manuellement en attendant 🚀",
+    "error_local_fallback": "⚡ Le serveur a consommé trop d'énergie 😢 Je vais prévenir Randy ! En attendant, explorez le portfolio manuellement et réessayez plus tard 🚀",
     "local": {
       "greeting": "Bonjour ! 😊 C'est un plaisir de vous voir par ici. Comment puis-je vous aider à explorer le portfolio de Randy ?",
       "thanks": "Avec plaisir ! 🚀 N'hésitez pas si vous avez d'autres questions sur ses compétences ou ses projets.",
@@ -726,4 +726,3 @@
     "correction_failed": "Désolé pour la réponse précédente ! 😅 Je n'ai pas pu la corriger automatiquement.\n\n**Raison**: {{reason}}\n\n**Options**:\n1. 🔄 Reformule ta question différemment\n2. 📧 Ou contacte Randy directement pour une réponse manuelle\n3. 💡 Essaie une question connexe (ses projets, sa stack, etc.)"
   }
 }
-
