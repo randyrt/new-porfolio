@@ -87,7 +87,7 @@ export class AutoCorrector {
       success: false,
       newResponse: null,
       strategy: 'none',
-      reason: 'Impossible de corriger avec les données locales. Une question pour Gemini pourrait aider.'
+      reason: '🤖 Correction impossible pour le moment — je suis encore en version expérimentale. Randy travaille dessus !'
     }
   }
 
