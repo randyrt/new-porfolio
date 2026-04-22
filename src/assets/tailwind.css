@@ -68,7 +68,7 @@ small,
 .inverted video,
 .inverted svg,
 .inverted .chatbot-card,
-.inverted .github-stats {
+.inverted .chart-container {
   filter: invert(1) hue-rotate(180deg) !important;
 }
 

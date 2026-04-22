@@ -600,10 +600,12 @@ const saveHistory = (): void => {
 }
 
 const clearConversation = (): void => {
+    const welcomeContent = t('chat.welcome_message')
     messages.value = [{
         role: 'assistant',
-        content: t('chat.welcome_message'),
-        timestamp: new Date()
+        content: welcomeContent,
+        timestamp: new Date(),
+        actions: detectActions(welcomeContent, t)
     }]
     suggestions.value = defaultSuggestions.value
     saveHistory()
