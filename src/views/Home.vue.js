@@ -104,7 +104,7 @@ else {
     });
     (__VLS_ctx.$t('home.welcome'));
     __VLS_asFunctionalElement(__VLS_elements.span, __VLS_elements.span)({
-        ...{ class: "text-5xl ml-2 emoji" },
+        ...{ class: "text-5xl ml-2 text-sky-500 emoji" },
     });
     // @ts-ignore
     [$t,];
@@ -189,6 +189,7 @@ else {
 /** @type {__VLS_StyleScopedClasses['!text-violet-800']} */ ;
 /** @type {__VLS_StyleScopedClasses['text-5xl']} */ ;
 /** @type {__VLS_StyleScopedClasses['ml-2']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-sky-500']} */ ;
 /** @type {__VLS_StyleScopedClasses['emoji']} */ ;
 /** @type {__VLS_StyleScopedClasses['text-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
