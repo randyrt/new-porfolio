@@ -3,7 +3,7 @@
     <header class="md:hidden flex justify-between items-center p-4 shadow bg-gray-50">
       <div class="flex items-center">
         <span class="animated-gradient-text font-bold text-xl">{{ brand }}</span>
-        <button @click="isOpen = !isOpen" class="p-2 !mr-4 focus:outline-none">
+        <button @click="isOpen = !isOpen" class="focus:outline-none">
           <svg v-if="!isOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none"
             viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -94,7 +94,7 @@
       <nav v-if="isOpen"
         class="md:hidden flex flex-col bg-gray-50 shadow px-4 py-2 space-y-2 max-h-[60vh] overflow-y-auto scrollbar-thin">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
-          class="decoration rounded-md !text-gray-500 hover:bg-violet-100 flex items-center"
+          class="decoration rounded-md !text-gray-500 hover:bg-violet-100 flex items-center p-1"
           active-class="bg-violet-200 font-bold">
           <font-awesome-icon :icon="route.icon" class="text-gray-500" />
           <span>{{ route.name }}</span>
