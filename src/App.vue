@@ -48,6 +48,7 @@ import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
+import { initColor } from './services/theme.js';
 
 const { t, tm } = useI18n();
 const route = useRoute();
@@ -172,6 +173,7 @@ watch(() => route.path, (newPath, oldPath) => {
 });
 
 onMounted(() => {
+  initColor();
   currentMessages.value = getContextualMessages();
 
   if (route.path !== '/chatbot') {

@@ -104,6 +104,31 @@
                     group-hover:rotate-12 transition-transform duration-300" />
                         </span>
                     </div>
+
+                    <!-- Color Picker Switcher -->
+                    <div class="relative group">
+                        <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                bg-gray-900 text-white text-xs py-1 px-2 rounded
+                opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                pointer-events-none z-50">
+                            Color
+                            <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
+                    border-4 border-transparent border-t-gray-900"></div>
+                        </div>
+
+                        <label class="group relative flex h-10 w-10 items-center justify-center
+                 bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500
+                 rounded-xl shadow-lg shadow-pink-500/30
+                 hover:shadow-[0_0_25px_rgba(236,72,153,0.7)]
+                 hover:scale-110 hover:from-pink-400 hover:to-yellow-400
+                 active:scale-95
+                 transition-all duration-300 ease-out cursor-pointer
+                 border border-white/30 overflow-hidden">
+                            <input type="color" v-model="customPrimaryColor" @input="updateCustomColor" class="absolute inset-0 w-20 h-20 opacity-0 cursor-pointer pointer-events-auto" />
+                            <font-awesome-icon :icon="['fas', 'palette']" class="text-white text-lg filter drop-shadow-md group-hover:rotate-12 transition-transform duration-300 pointer-events-none" />
+                        </label>
+                    </div>
+
                     <span class="text-violet-700"> | </span>
                     <!-- GitHub Button -->
                     <div class="relative group" @click="openGithub">
@@ -292,7 +317,7 @@ import { ref, nextTick, onMounted, computed, watch, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 import { useRouter } from 'vue-router'
-import { toggleTheme, getStoredTheme } from '../services/theme.js'
+import { toggleTheme, getStoredTheme, getStoredColor, setPrimaryColor } from '../services/theme.js'
 
 import { type Action, type Message } from '../services/chatbot/types'
 import {
@@ -377,6 +402,12 @@ function toggleLanguage() {
 function cycleTheme() {
     const next = toggleTheme()
     currentTheme.value = next
+}
+
+const customPrimaryColor = ref(getStoredColor());
+
+function updateCustomColor() {
+    setPrimaryColor(customPrimaryColor.value);
 }
 
 function openGithub() {

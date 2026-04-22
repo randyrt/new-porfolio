@@ -14,56 +14,6 @@
           </svg>
         </button>
         <div class="flex items-center">
-          <!-- Language Switcher -->
-          <div class="relative group " @click="toggleLanguage">
-            <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
-                bg-gray-900 text-white text-xs py-1 px-2 rounded
-                opacity-0 group-hover:opacity-100 transition-opacity duration-200
-                pointer-events-none">
-              {{ $t('nav.change_language') }}
-              <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
-                  border-4 border-transparent border-t-gray-900"></div>
-            </div>
-
-            <span class="group relative flex h-10 w-10 items-center justify-center
-                 bg-gradient-to-br from-emerald-500 to-teal-600
-                 rounded-xl shadow-lg shadow-emerald-500/30
-                 hover:shadow-[0_0_25px_rgba(16,185,129,0.7)]
-                 hover:scale-110 hover:from-emerald-400 hover:to-teal-500
-                 active:scale-95
-                 transition-all duration-300 ease-out cursor-pointer
-                 border border-white/30">
-              <span class="text-white text-sm font-bold uppercase tracking-wide filter drop-shadow-md
-                   group-hover:rotate-12 transition-transform duration-300">
-                {{ currentLocale }}
-              </span>
-            </span>
-          </div>
-
-          <!-- Theme Switcher -->
-          <div class="relative group" @click="cycleTheme">
-            <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
-                bg-gray-900 text-white text-xs py-1 px-2 rounded
-                opacity-0 group-hover:opacity-100 transition-opacity duration-200
-                pointer-events-none">
-              {{ $t('nav.change_theme') }}
-              <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 
-                  border-4 border-transparent border-t-gray-900"></div>
-            </div>
-
-            <span class="group relative flex h-10 w-10 items-center justify-center
-                 bg-gradient-to-br from-violet-500 to-purple-600
-                 rounded-xl shadow-lg shadow-violet-500/30
-                 hover:shadow-[0_0_25px_rgba(139,92,246,0.7)]
-                 hover:scale-110 hover:from-violet-400 hover:to-purple-500
-                 active:scale-95
-                 transition-all duration-300 ease-out cursor-pointer
-                 border border-white/30
-                 animate-pulse-slow">
-              <font-awesome-icon :icon="themeIcon" class="text-white text-lg filter drop-shadow-md
-                        group-hover:rotate-12 transition-transform duration-300" />
-            </span>
-          </div>
           <!-- GitHub Button -->
           <div class="relative group" @click="openGithub">
             <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
@@ -111,14 +61,12 @@
         </div>
 
 
-        <div
-          class="flex flex-col items-center justify-center gap-2 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
-          <div class="relative group py-3" @click="sidebarVisible = !sidebarVisible">
-            <span class="btn-violet btn-effect-5">
+        <div class="flex flex-col items-center justify-center gap-2 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
+
+          <div class="relative group py-3 w-full" @click="sidebarVisible = !sidebarVisible">
+            <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
               <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
-              <span class="text-sm font-medium">
-                {{ $t('nav.reading_mode') }}
-              </span>
+              <span class="text-sm font-medium">{{ $t('nav.reading_mode') }}</span>
             </span>
           </div>
         </div>
@@ -149,14 +97,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
-import { toggleTheme, getStoredTheme } from '../services/theme.js';
+import { ref } from 'vue';
 import MultiWorldClock from './MultiWorldClock.vue'
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n';
 import CurrentActivity from './CurrentActivity.vue';
-
 
 interface RouteItem {
   icon: any;
@@ -170,28 +115,8 @@ const props = defineProps<{
 }>();
 
 const isOpen = ref(false);
-const currentTheme = ref<string>(getStoredTheme());
 const router = useRouter();
 const sidebarVisible = ref(true);
-
-const { locale } = useI18n();
-const currentLocale = ref<string>(localStorage.getItem('locale') || 'fr');
-
-function toggleLanguage() {
-  const newLocale = currentLocale.value === 'fr' ? 'en' : 'fr';
-  currentLocale.value = newLocale;
-  locale.value = newLocale;
-  localStorage.setItem('locale', newLocale);
-}
-
-const themeIcon = computed(() => {
-  return currentTheme.value === 'light' ? ['fas', 'moon'] : ['fas', 'sun'];
-});
-
-function cycleTheme() {
-  const next = toggleTheme();
-  currentTheme.value = next;
-}
 
 function goHome() {
   router.push('/')
@@ -200,10 +125,6 @@ function goHome() {
 function openGithub() {
   window.open("https://github.com/randyrt", "_blank")
 }
-
-onMounted(() => {
-  currentTheme.value = getStoredTheme()
-})
 </script>
 
 <style scoped>

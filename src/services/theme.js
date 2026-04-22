@@ -1,4 +1,7 @@
 const STORAGE_KEY = 'theme-preference';
+const COLOR_STORAGE_KEY = 'primary-color-preference';
+const DEFAULT_COLOR = '#0ea5e9'; // sky-500
+
 export function applyTheme(theme) {
     const html = document.documentElement;
     html.classList.remove('inverted');
@@ -36,9 +39,60 @@ export function toggleTheme() {
     setTheme(next);
     return next;
 }
+
+// Color Management
+function adjustColorBrightness(hex, percent) {
+    hex = hex.replace(/^#/, '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+
+    r = Math.max(0, Math.min(255, Math.floor(r * (1 + percent / 100))));
+    g = Math.max(0, Math.min(255, Math.floor(g * (1 + percent / 100))));
+    b = Math.max(0, Math.min(255, Math.floor(b * (1 + percent / 100))));
+
+    return `#${(1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1)}`;
+}
+
+export function applyPrimaryColor(color) {
+    const html = document.documentElement;
+    html.style.setProperty('--app-primary', color);
+    
+    // Generate hover color by darkening 15%
+    const hoverColor = adjustColorBrightness(color, -15);
+    html.style.setProperty('--app-primary-hover', hoverColor);
+}
+
+export function setPrimaryColor(color) {
+    try {
+        applyPrimaryColor(color);
+        localStorage.setItem(COLOR_STORAGE_KEY, color);
+    } catch (e) {
+        console.error('Failed to set primary color:', e);
+    }
+}
+
+export function getStoredColor() {
+    try {
+        return localStorage.getItem(COLOR_STORAGE_KEY) || DEFAULT_COLOR;
+    } catch (e) {
+        return DEFAULT_COLOR;
+    }
+}
+
+export function initColor() {
+    const color = getStoredColor();
+    applyPrimaryColor(color);
+}
+
 export default {
     initTheme,
     setTheme,
     getStoredTheme,
     toggleTheme,
+    initColor,
+    setPrimaryColor,
+    getStoredColor
 };
