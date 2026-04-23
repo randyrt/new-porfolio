@@ -46,7 +46,7 @@
             enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-200 ease-in"
             leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
             <div v-if="selectedImage"
-                class="fixed inset-0 flex items-center justify-center z-50 card modal-backdrop bg-black/50 backdrop-blur-sm"
+                class="fixed  flex items-center justify-center z-50 inset-0 bg-black/50 backdrop-blur-sm"
                 @click.self="closeImage">
                 <div class="relative">
                     <button @click="closeImage"
@@ -54,7 +54,7 @@
                         {{ t('projects.close_image') }}
                     </button>
                     <img :src="selectedImage" alt="Image sélectionnée"
-                        class="max-h-[80vh] max-w-[60vw] rounded-lg shadow-lg ring-2 ring-sky-200" />
+                        class="max-h-[80vh] max-w-[60vw] rounded-lg shadow-lg ring-2 ring-sky-100" />
                 </div>
             </div>
         </transition>
