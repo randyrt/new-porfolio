@@ -235,7 +235,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-emerald-500 text-xs" />
                                 <span class="text-xs font-semibold text-emerald-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
@@ -252,7 +252,7 @@
                             <div v-if="message.role === 'assistant' && message.allowFeedback !== false"
                                 class="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100 dark:border-gray-600">
                                 <span class="text-xs text-gray-500 dark:text-emerald-400">{{ $t('chat.helpful')
-                                    }}</span>
+                                }}</span>
                                 <button @click="handleFeedback(index, 'positive')"
                                     :class="feedbackState[index] === 'positive'
                                         ? 'bg-green-100 dark:bg-green-900/30 text-emerald-600 dark:text-emerald-400 border-green-200 dark:border-green-700'
@@ -1413,5 +1413,146 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 
 .bolt-spark {
     animation: spark 0.8s ease-in-out infinite;
+}
+
+@media screen and (max-width: 768px) {
+
+    /* Conteneur principal flex */
+    .flex.items-center.justify-between.mb-6 {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Section gauche : Titre + robot */
+    .flex.items-center.justify-between.mb-6>div:first-child {
+        order: 1;
+        flex: 0 0 auto;
+    }
+
+    /* CurrentActivity */
+    .flex.items-center.justify-between.mb-6>.current-activity {
+        order: 2;
+        flex: 1;
+        min-width: 140px;
+    }
+
+    /* Bouton Clear Conversation */
+    .flex.items-center.justify-between.mb-6>button:last-child {
+        order: 3;
+        margin-left: auto;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    /* Section des boutons (Language, Theme, Color, GitHub, LinkedIn) */
+    .flex.items-center.justify-between.mb-6 .hidden.md\:flex {
+        order: 4;
+        display: flex !important;
+        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+        flex-wrap: wrap;
+    }
+
+    /* Chaque bouton dans la section centrale */
+    .hidden.md\:flex .relative.group {
+        flex-shrink: 0;
+    }
+
+    /* Séparateur | */
+    .hidden.md\:flex .text-violet-700 {
+        display: none;
+    }
+}
+
+/* Écrans moyens (tablettes) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .flex.items-center.justify-between.mb-6 {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .flex.items-center.justify-between.mb-6>div:first-child {
+        order: 1;
+    }
+
+    .flex.items-center.justify-between.mb-6>.current-activity {
+        order: 2;
+    }
+
+    .flex.items-center.justify-between.mb-6>button:last-child {
+        order: 3;
+    }
+
+    .flex.items-center.justify-between.mb-6 .hidden.md\:flex {
+        order: 4;
+        width: 100%;
+        justify-content: flex-end;
+        gap: 0.75rem;
+    }
+}
+
+/* Très petits mobiles (moins de 480px) */
+@media screen and (max-width: 480px) {
+    .flex.items-center.justify-between.mb-6 {
+        gap: 0.5rem;
+    }
+
+    /* Titre en plus petit */
+    .gothic-title {
+        font-size: 1.25rem !important;
+    }
+
+    /* Robot icon plus petit */
+    .robot-smile {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    .robot-smile .fa-robot {
+        font-size: 1.75rem !important;
+    }
+
+    /* Boutons centraux en grille responsive */
+    .flex.items-center.justify-between.mb-6 .hidden.md\:flex {
+        gap: 0.4rem;
+    }
+
+    .hidden.md\:flex .relative.group span,
+    .hidden.md\:flex .relative.group label {
+        width: 2.25rem !important;
+        height: 2.25rem !important;
+    }
+
+    .hidden.md\:flex .relative.group .text-lg {
+        font-size: 0.875rem !important;
+    }
+
+    .flex.items-center.justify-between.mb-6>button:last-child span {
+        display: none;
+    }
+
+    .flex.items-center.justify-between.mb-6>button:last-child .fa-trash-alt {
+        margin-right: 0;
+    }
+
+    .flex.items-center.justify-between.mb-6>button:last-child {
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+  .input-area .flex.gap-3 button span,
+  .input-area .flex.gap-3 button .mr-2 + span {
+    display: none;
+  }
+  
+  .input-area .flex.gap-3 button .fa-paper-plane {
+    margin-right: 0;
+  }
 }
 </style>
