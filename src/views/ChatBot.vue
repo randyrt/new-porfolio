@@ -237,7 +237,7 @@
                                 <span class="text-xs font-semibold text-emerald-500"> {{ $t('chat.card_big_title')
                                 }}</span>
                             </div>
-                            <div class="text-sm leading-relaxed text-emerald-100  whitespace-pre-wrap">{{ message.content }}</div>
+                            <div class="text-sm leading-relaxed text-emerald-50  whitespace-pre-wrap">{{ message.content }}</div>
 
                             <div v-if="message.actions && message.actions.length > 0"
                                 class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
