@@ -14,11 +14,15 @@
                 </div>
             </div>
             <div class="custom-nav-buttons" v-if="projects.length > 1">
-                <button class="custom-nav-prev !btn-violet !btn-effect-5" @click="slidePrev">
-                    <font-awesome-icon icon="fa-solid fa-chevron-left" />
+                <button class="custom-nav-btn custom-nav-prev" @click="slidePrev">
+                    <span class="btn-glow"></span>
+                    <font-awesome-icon icon="fa-solid fa-chevron-left" class="btn-icon" />
+                    <span class="btn-label">Prev</span>
                 </button>
-                <button class="custom-nav-next btn-violet !btn-effect-5" @click="slideNext">
-                    <font-awesome-icon icon="fa-solid fa-chevron-right" />
+                <button class="custom-nav-btn custom-nav-next" @click="slideNext">
+                    <span class="btn-glow"></span>
+                    <span class="btn-label">Next</span>
+                    <font-awesome-icon icon="fa-solid fa-chevron-right" class="btn-icon" />
                 </button>
             </div>
         </div>
@@ -310,36 +314,105 @@ onMounted(() => {
 
 .custom-nav-buttons {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.75rem;
     flex-shrink: 0;
 }
 
-.custom-nav-prev,
-.custom-nav-next {
+/* ── Base button ── */
+.custom-nav-btn {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 100%;
-    background: #8b5cf6;
-    border: 1px solid #03E790;
-    color: #ffff;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #7c3aed 0%, #059669 100%);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    box-shadow:
+        0 0 10px rgba(139, 92, 246, 0.55),
+        0 4px 14px rgba(0, 0, 0, 0.25);
+    /* pulse animation active par défaut */
+    animation: navBtnPulse 1.8s ease-in-out infinite;
 }
 
-.custom-nav-prev:hover,
-.custom-nav-next:hover {
-    background: #74EC92AB;
-    color: white;
-    border-color: #8b5cf6;
+/* ── Arrêter le clignotement au hover ── */
+.custom-nav-btn:hover {
+    animation: none;
+    transform: scale(1.07);
+    box-shadow:
+        0 0 24px rgba(5, 150, 105, 0.7),
+        0 0 48px rgba(139, 92, 246, 0.35),
+        0 6px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.15);
 }
 
-.custom-nav-prev:active,
-.custom-nav-next:active {
+.custom-nav-btn:active {
     transform: scale(0.95);
+    filter: brightness(0.95);
+}
+
+/* ── Icône ── */
+.btn-icon {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+.custom-nav-btn:hover .btn-icon {
+    transform: translateX(2px);
+}
+.custom-nav-prev:hover .btn-icon {
+    transform: translateX(-2px);
+}
+
+/* ── Label ── */
+.btn-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    opacity: 0.92;
+}
+
+/* ── Glow overlay (clignotement de l'aura) ── */
+.btn-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, transparent 70%);
+    pointer-events: none;
+    animation: glowPulse 1.8s ease-in-out infinite;
+}
+.custom-nav-btn:hover .btn-glow {
+    animation: none;
+    opacity: 0;
+}
+
+/* ── Keyframes ── */
+@keyframes navBtnPulse {
+    0%, 100% {
+        box-shadow:
+            0 0 8px rgba(139, 92, 246, 0.5),
+            0 4px 12px rgba(0, 0, 0, 0.2);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow:
+            0 0 22px rgba(139, 92, 246, 0.95),
+            0 0 40px rgba(5, 150, 105, 0.6),
+            0 4px 16px rgba(0, 0, 0, 0.3);
+        filter: brightness(1.18);
+    }
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
 
 .projects-swiper-container {
@@ -398,16 +471,17 @@ onMounted(() => {
         padding: 0 0 2rem !important;
     }
 
-    .custom-nav-prev,
-    .custom-nav-next {
-        width: 32px;
-        height: 32px;
+    .custom-nav-btn {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.7rem;
     }
 
-    .custom-nav-prev svg,
-    .custom-nav-next svg {
-        width: 16px;
-        height: 16px;
+    .btn-label {
+        display: none;
+    }
+
+    .btn-icon {
+        font-size: 0.9rem;
     }
 }
 </style>
