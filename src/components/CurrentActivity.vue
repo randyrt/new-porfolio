@@ -1,5 +1,5 @@
 <template>
-  <div class="current-activity min-h-16 w-xs py-1 px-4 rounded-lg border-1 border-emerald-200 mt-2 bg-transparent">
+  <div class="current-activity min-h-16 w-2xs min-w-2xs py-1 px-4 rounded-lg border-1 border-emerald-200 mt-2 bg-transparent">
     <div class="flex items-center gap-2">
       <span class="relative flex h-2 w-2">
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
