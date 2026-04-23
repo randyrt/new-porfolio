@@ -30,13 +30,6 @@
           class="absolute -top-12 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-emerald-600 text-white text-sm font-medium rounded-lg shadow-lg chat-tooltip-text whitespace-nowrap">
           {{ currentTooltipMessage }}
         </span>
-
-        <span class="absolute -top-1 -right-1 flex h-5 w-5">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-          <span
-            class="relative inline-flex rounded-full h-5 w-5 bg-amber-500 border-3 border-yello-500 dark:border-yellow-200 shadow-lg"></span>
-        </span>
-
         <span class="absolute inset-0 rounded-2xl animate-pulse-purple -z-10"></span>
       </router-link>
     </div>

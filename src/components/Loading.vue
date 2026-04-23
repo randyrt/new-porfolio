@@ -170,5 +170,4 @@ export default defineComponent({
     transform: scale(1.1);
   }
 }
-/* Responsive adjustments */
 </style>
