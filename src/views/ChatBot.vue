@@ -547,8 +547,8 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
 
 
 const loadChatHistory = (): void => {
-    const savedHistory = sessionStorage.getItem('chat_history')
-    const isFirstSessionVisit = sessionStorage.getItem('chat_session_visit') === null
+    const savedHistory = localStorage.getItem('chat_history')
+    const isFirstVisitEver = localStorage.getItem('chat_visited') === null
 
     if (savedHistory) {
         try {
@@ -559,7 +559,7 @@ const loadChatHistory = (): void => {
             }))
         } catch (error) {
             console.error('Erreur chargement historique:', error)
-            sessionStorage.removeItem('chat_history')
+            localStorage.removeItem('chat_history')
             const welcomeContent = t('chat.welcome_message')
             messages.value = [{
                 role: 'assistant',
@@ -578,9 +578,7 @@ const loadChatHistory = (): void => {
         }]
     }
 
-    sessionStorage.setItem('chat_session_visit', 'true')
-
-    if (!isFirstSessionVisit && messages.value.length > 0) {
+    if (!isFirstVisitEver && messages.value.length > 0) {
         const lang = locale.value === 'fr' ? 'fr' : 'en'
         const welcomeBackMessages = WELCOME_BACK_RESPONSES[lang as keyof typeof WELCOME_BACK_RESPONSES]
         const randomWelcomeBack = welcomeBackMessages[Math.floor(Math.random() * welcomeBackMessages.length)]
@@ -593,10 +591,12 @@ const loadChatHistory = (): void => {
         })
         saveHistory()
     }
+
+    localStorage.setItem('chat_visited', 'true')
 }
 
 const saveHistory = (): void => {
-    sessionStorage.setItem('chat_history', JSON.stringify(messages.value))
+    localStorage.setItem('chat_history', JSON.stringify(messages.value))
 }
 
 const clearConversation = (): void => {
@@ -612,30 +612,13 @@ const clearConversation = (): void => {
     scrollToBottom()
 }
 
-const handleBeforeUnload = (): void => {
-    sessionStorage.removeItem('chat_history')
-    sessionStorage.removeItem('chat_session_visit')
-}
 
-
-const handlePageHide = (): void => {
-    sessionStorage.removeItem('chat_history')
-    sessionStorage.removeItem('chat_session_visit')
-}
 
 onMounted(() => {
     isComponentMounted.value = true
 
-    const oldHistory = localStorage.getItem('chat_history')
-    if (oldHistory) {
-        localStorage.removeItem('chat_history')
-    }
-
     suggestions.value = defaultSuggestions.value
     initQuotaReset()
-
-    window.addEventListener('beforeunload', handleBeforeUnload)
-    window.addEventListener('pagehide', handlePageHide)
 
     loadChatHistory()
 
@@ -654,8 +637,6 @@ onUnmounted(() => {
     isComponentMounted.value = false
     if (quotaIntervalId) clearInterval(quotaIntervalId)
     if (navTimeoutId) clearTimeout(navTimeoutId)
-    window.removeEventListener('beforeunload', handleBeforeUnload)
-    window.removeEventListener('pagehide', handlePageHide)
 })
 
 const scrollToBottom = async (): Promise<void> => {
