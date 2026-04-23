@@ -48,13 +48,12 @@
                         </div>
                     </div>
                     <div>
-                        <h2
-                            class="gothic-title text-3xl font-bold text-gray-800 dark:text-gray-100">
+                        <h2 class="gothic-title text-3xl font-bold text-gray-800 dark:text-gray-100">
                             {{ $t('chat.card_big_title') }}
                         </h2>
                     </div>
                 </div>
-
+                <CurrentActivity />
                 <!-- Section centrale : Boutons (Language, Theme, GitHub, LinkedIn) -->
                 <div class="hidden md:flex items-center gap-2">
                     <!-- Language Switcher -->
@@ -124,8 +123,10 @@
                  active:scale-95
                  transition-all duration-300 ease-out cursor-pointer
                  border border-white/30 overflow-hidden">
-                            <input type="color" v-model="customPrimaryColor" @input="updateCustomColor" class="absolute inset-0 w-20 h-20 opacity-0 cursor-pointer pointer-events-auto" />
-                            <font-awesome-icon :icon="['fas', 'palette']" class="text-white text-lg filter drop-shadow-md group-hover:rotate-12 transition-transform duration-300 pointer-events-none" />
+                            <input type="color" v-model="customPrimaryColor" @input="updateCustomColor"
+                                class="absolute inset-0 w-20 h-20 opacity-0 cursor-pointer pointer-events-auto" />
+                            <font-awesome-icon :icon="['fas', 'palette']"
+                                class="text-white text-lg filter drop-shadow-md group-hover:rotate-12 transition-transform duration-300 pointer-events-none" />
                         </label>
                     </div>
 
@@ -176,7 +177,6 @@
                         </span>
                     </div>
                 </div>
-
                 <!-- Section droite : Clear Conversation -->
                 <button @click="clearConversation" class="btn-violet btn-effect-5">
                     <font-awesome-icon icon="fa-solid fa-trash-alt" class="" />
@@ -235,7 +235,7 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-emerald-500 text-xs" />
                                 <span class="text-xs font-semibold text-emerald-500"> {{ $t('chat.card_big_title')
-                                }}</span>
+                                    }}</span>
                             </div>
                             <div class="text-sm leading-relaxed whitespace-pre-wrap">{{ message.content }}</div>
 
@@ -251,7 +251,8 @@
 
                             <div v-if="message.role === 'assistant' && message.allowFeedback !== false"
                                 class="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100 dark:border-gray-600">
-                                <span class="text-xs text-gray-500 dark:text-emerald-400">{{ $t('chat.helpful') }}</span>
+                                <span class="text-xs text-gray-500 dark:text-emerald-400">{{ $t('chat.helpful')
+                                    }}</span>
                                 <button @click="handleFeedback(index, 'positive')"
                                     :class="feedbackState[index] === 'positive'
                                         ? 'bg-green-100 dark:bg-green-900/30 text-emerald-600 dark:text-emerald-400 border-green-200 dark:border-green-700'

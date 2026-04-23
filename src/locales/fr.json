@@ -491,17 +491,17 @@
       "error": "Erreur"
     }
   },
-  "currentActivity": {
+"currentActivity": {
     "now": "En ce moment",
     "activities": [
-      "Rédige un article sur Vue.js",
-      "Prépare une présentation pour un meetup tech",
-      "Teste une nouvelle librairie de design system",
-      "Optimise les performances d'une application en production",
-      "Travaille sur un nouveau projet",
-      "Apprend Flutter, Golang et C++",
-      "Membre actif sur Laracasts",
-      "Prêt pour de nouvelles opportunités"
+      "Randy, rédige un article sur Vue.js",
+      "Randy, prépare une présentation pour un meetup tech",
+      "Randy, teste une nouvelle librairie de design system",
+      "Randy, optimise les performances d'une application en production",
+      "Randy, travaille sur un nouveau projet",
+      "Randy, apprend Flutter, Golang et C++",
+      "Randy, membre actif sur Laracasts",
+      "Randy, prêt pour de nouvelles opportunités"
     ]
   },
   "github": {

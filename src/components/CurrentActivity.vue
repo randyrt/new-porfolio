@@ -1,13 +1,13 @@
 <template>
-  <div class="current-activity min-h-16 p-1 rounded-lg border-1 border-purple-200 mt-2">
+  <div class="current-activity min-h-16 w-xs py-1 px-4 rounded-lg border-1 border-emerald-200 mt-2 bg-transparent">
     <div class="flex items-center gap-2">
       <span class="relative flex h-2 w-2">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
       </span>
-      <span class="text-xs font-medium text-purple-600 dark:text-purple-400">{{ $t('currentActivity.now') }}</span>
+      <span class="text-xs font-medium text-emerald-600 dark:text-emerald-400">{{ $t('currentActivity.now') }}</span>
     </div>
-    <p class="mt-1 text-xs !text-gray-400 dark:text-gray-400">{{ currentActivity }}</p>
+    <p class="mt-1 text-xs !text-emerald-100 dark:text-gray-400">{{ currentActivity }}</p>
   </div>
 </template>
 
