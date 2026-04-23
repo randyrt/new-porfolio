@@ -53,14 +53,14 @@
     </Transition>
     <Transition name="sidebar-slide">
       <aside v-if="sidebarVisible"
-        class="hidden md:flex w-68 shadow-lg flex-col bg-gray-50 transition-all duration-300 px-1 mt-0 h-full border-r border-gray-200">
+        class="hidden md:flex w-68 shadow-lg flex-col bg-emerald-50 transition-all duration-300 px-1 mt-0 h-full border-r border-gray-200">
         <div class="p-4 text-xl font-bold flex items-center justify-between brick-wall-bg rounded-lg mt-1">
-          <span class="spray-wrapper cursor-pointer" @click="goHome" :data-text="brand">
+          <span class="cursor-pointer bg-emerald-50" @click="goHome" :data-text="brand">
             <span class="spray-text">{{ brand }}</span>
           </span>
         </div>
         <div
-          class="flex flex-col items-center justify-center gap-2 mb-4 bg-purple-100 border-1 border-violet-200 p-2 rounded-lg ml-1">
+          class="flex flex-col items-center justify-center gap-2 mb-4 p-2 rounded-lg ml-1">
 
           <div class="relative group py-3 w-full" @click="sidebarVisible = !sidebarVisible">
             <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
@@ -96,10 +96,8 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import MultiWorldClock from './MultiWorldClock.vue'
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
-import CurrentActivity from './CurrentActivity.vue';
 
 interface RouteItem {
   icon: any;
@@ -200,7 +198,6 @@ function openGithub() {
 }
 
 .brick-wall-bg {
-  background-color: #ffffff;
   padding: 20px;
 }
 

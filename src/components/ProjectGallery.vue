@@ -1,6 +1,7 @@
 <template>
+
     <div :id="id" class="project-container mb-16 card p-4">
-        <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 gap-4 md:gap-0">
+        <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 md:gap-0">
             <Swiper :pagination="{ clickable: true, dynamicBullets: true }" :modules="[Pagination, Autoplay]"
                 class="mySwiper w-full md:w-2/3 rounded-lg border-1 border-violet-300" :loop="true"
                 :autoplay="{ delay: 2500 }" navigation>
@@ -13,23 +14,23 @@
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div class="flex justify-center card h-auto w-full md:w-1/3 mt-4 md:mt-0">
-                <p class="flex flex-col items-center p-4 text-gray-600">
-                    <span class="text-lg font-bold text-violet-800">- {{ title }} -</span>
-                    <span>{{ description }}</span>
-                </p>
+            <div class="flex flex-col justify-center card h-auto w-full md:w-1/3 mt-8 mr-4">
+                <div class="text-center text-gray-600">
+                    <span class="text-lg font-bold text-violet-800 block mb-2">{{ title }}</span>
+                    <div class="w-12 h-0.5 bg-violet-300 mx-auto my-2"></div>
+                    <span class="text-sm font-bold">{{ description }}</span>
+                </div>
+                <div class="demo-header mx-auto px-4 py-2 mt-2">
+                    <h3 class="text-xl font-semibold text-gray-600"></h3>
+                    <button @click.stop="toggleDemo" class="btn-effect-5">
+                        {{ showDemo ? t('demo.hide') : t('demo.show') }}
+                        <span class="ml-1">{{ showDemo ? '▲' : '▼' }}</span>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <div class="demo-section mt-8  p-8">
-            <div class="demo-header p-8">
-                <h3 class="text-xl font-semibold text-gray-600"></h3>
-                <button @click.stop="toggleDemo" class="btn-effect-5">
-                    {{ showDemo ? t('demo.hide') : t('demo.show') }}
-                    <span class="ml-1">{{ showDemo ? '▲' : '▼' }}</span>
-                </button>
-            </div>
-
+        <div class="demo-section mt-16">
             <transition enter-active-class="transition-all duration-300 ease-out"
                 enter-from-class="opacity-0 transform -translate-y-4"
                 enter-to-class="opacity-100 transform translate-y-0"
@@ -148,7 +149,7 @@
                                     <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
-                                    }}</div>
+                                        }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -157,7 +158,7 @@
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.total') }}</span>
@@ -227,7 +228,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                        }}</span>
+                                                            }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -266,7 +267,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                            }}</span>
+                                                                }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -407,7 +408,7 @@
                                     <div class="space-y-4">
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
-                                            }}</label>
+                                                }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -424,7 +425,7 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
-                                            }}</label>
+                                                }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
@@ -528,7 +529,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                                }}</div>
+                                            }}</div>
                                             <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -576,7 +577,7 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
-                                        }}</span>
+                                            }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
                                             {{ t('demo.echo.btn_new') }}
@@ -741,8 +742,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
@@ -1364,7 +1363,7 @@ img {
     border-radius: 8px;
     z-index: 1;
     box-shadow: 0 4px 8px rgba(129, 8, 177, 0.384);
-    padding-bottom: 2rem !important; 
+    padding-bottom: 2rem !important;
 }
 
 .project-container {
@@ -1422,5 +1421,9 @@ img {
         order: 2;
         margin-top: 1rem;
     }
+}
+
+span {
+     font-size: 16px;
 }
 </style>
