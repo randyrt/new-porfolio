@@ -3,7 +3,7 @@
     <div :id="id" class="project-container mb-16 card p-4">
         <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 md:gap-0">
             <Swiper :pagination="{ clickable: true, dynamicBullets: true }" :modules="[Pagination, Autoplay]"
-                class="mySwiper w-full md:w-2/3 rounded-lg border-1 border-emerald-300" :loop="true"
+                class="mySwiper w-full md:w-2/3 rounded-lg border-1 border-sky-300" :loop="true"
                 :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
                     <div class="relative group overflow-hidden rounded-lg shadow-md">
@@ -16,8 +16,8 @@
             </Swiper>
             <div class="flex flex-col justify-center card h-auto w-full md:w-1/3 mt-8 mr-4">
                 <div class="text-center text-gray-600">
-                    <span class="text-lg font-bold text-violet-800 block mb-2">{{ title }}</span>
-                    <div class="w-12 h-0.5 bg-violet-300 mx-auto my-2"></div>
+                    <span class="text-lg font-bold text-violet-800 block">{{ title }}</span>
+                    <div class="w-20 h-0.5 bg-violet-300 mx-auto"></div>
                     <span class="text-sm font-bold">{{ description }}</span>
                 </div>
                 <div class="demo-header mx-auto px-4 py-2 mt-2">
@@ -38,8 +38,8 @@
                 leave-from-class="opacity-100 transform translate-y-0"
                 leave-to-class="opacity-0 transform -translate-y-4">
                 <div v-if="showDemo"
-                    class="demo-wrapper  border-2 border-violet-500 rounded-xl overflow-hidden shadow-lg ">
-                    <div class="bg-gradient-to-r from-violet-500 to-purple-600 px-4 py-2">
+                    class="demo-wrapper  border-2 border-sky-500 rounded-xl overflow-hidden shadow-lg ">
+                    <div class="bg-gradient-to-r from-sky-700 to-sky-800 px-4 py-2">
                         <span class="text-white text-sm font-mono">{{ t('demo.live') }} • {{ title }}</span>
                     </div>
 

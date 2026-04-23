@@ -53,7 +53,7 @@
     </Transition>
     <Transition name="sidebar-slide">
       <aside v-if="sidebarVisible"
-        class="hidden md:flex w-68 shadow-lg flex-col bg-emerald-50 transition-all duration-300 px-1 mt-0 h-full border-r border-gray-200">
+        class="hidden md:flex w-68 shadow-lg flex-col bg-gradient-to-r from-emerald-50 to-sky-100 transition-all duration-300 px-1 mt-0 h-full border-r border-gray-200">
         <div class="p-4 text-xl font-bold flex items-center justify-between brick-wall-bg rounded-lg mt-1">
           <span class="cursor-pointer bg-emerald-50" @click="goHome" :data-text="brand">
             <span class="spray-text">{{ brand }}</span>

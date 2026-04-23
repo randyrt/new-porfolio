@@ -54,7 +54,7 @@
                         {{ t('projects.close_image') }}
                     </button>
                     <img :src="selectedImage" alt="Image sélectionnée"
-                        class="max-h-[80vh] max-w-[60vw] rounded-lg shadow-lg ring-2 ring-emerald-500" />
+                        class="max-h-[80vh] max-w-[60vw] rounded-lg shadow-lg ring-2 ring-sky-200" />
                 </div>
             </div>
         </transition>
