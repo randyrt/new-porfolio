@@ -72,8 +72,8 @@ export default defineComponent({
   position: absolute;
   width: 70px;
   height: 70px;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(217, 70, 239, 0.2));
-  border: 1.5px solid rgba(168, 85, 247, 0.5);
+  background: linear-gradient(135deg, rgba(49, 135, 161, 0.2), rgba(52, 119, 139, 0.2));
+  border: 1.5px solid rgba(18, 184, 206, 0.5);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
