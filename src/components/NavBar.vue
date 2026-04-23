@@ -73,7 +73,7 @@
         <Transition name="menu-slide">
           <nav class="flex-1 flex flex-col px-2 space-y-1 rounded-lg text-sm mt-2 overflow-y-auto scrollbar-thin">
             <router-link v-for="route in routes" :key="route.path" :to="route.path"
-              class="decoration border-1 border-purple-200  px-4 py-2 rounded-md !text-gray-500 hover:bg-sky-100 flex items-center gap-2"
+              class="decoration border-1 border-sky-200  px-4 py-2 rounded-md !text-gray-500 hover:bg-sky-100 flex items-center gap-2"
               active-class="bg-sky-200 font-bold">
               <font-awesome-icon :icon="route.icon" class="text-sky-300" />
               <span>{{ route.name }}</span>
