@@ -50,11 +50,11 @@
                 @click.self="closeImage">
                 <div class="relative">
                     <button @click="closeImage"
-                        class="absolute -top-12 left-1/2 -translate-x-1/2 btn-violet btn-effect-5 z-10">
+                        class="absolute -top-2 left-1/2 -translate-x-1/2 btn-violet btn-effect-5 z-10">
                         {{ t('projects.close_image') }}
                     </button>
                     <img :src="selectedImage" alt="Image sélectionnée"
-                        class="max-h-[80vh] max-w-[90vw] rounded-lg shadow-lg ring-4 ring-purple-500" />
+                        class="max-h-[80vh] max-w-[60vw] rounded-lg shadow-lg ring-4 ring-purple-500" />
                 </div>
             </div>
         </transition>

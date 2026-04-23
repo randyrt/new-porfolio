@@ -1,7 +1,7 @@
 <template>
     <div :id="id" class="project-container mb-16 card p-4">
         <div class="flex flex-col md:flex-row justify-between items-center h-auto md:h-[400px] mt-4 gap-4 md:gap-0">
-            <Swiper :pagination="{ clickable: true }" :modules="[Pagination, Autoplay]"
+            <Swiper :pagination="{ clickable: true, dynamicBullets: true }" :modules="[Pagination, Autoplay]"
                 class="mySwiper w-full md:w-2/3 rounded-lg border-1 border-violet-300" :loop="true"
                 :autoplay="{ delay: 2500 }" navigation>
                 <SwiperSlide v-for="(img, index) in images" :key="index">
@@ -14,7 +14,7 @@
                 </SwiperSlide>
             </Swiper>
             <div class="flex justify-center card h-auto w-full md:w-1/3 mt-4 md:mt-0">
-                <p class="flex flex-col items-center p-6 text-gray-600">
+                <p class="flex flex-col items-center p-4 text-gray-600">
                     <span class="text-lg font-bold text-violet-800">- {{ title }} -</span>
                     <span>{{ description }}</span>
                 </p>
@@ -148,7 +148,7 @@
                                     <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
-                                        }}</div>
+                                    }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -157,7 +157,7 @@
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.total') }}</span>
@@ -227,7 +227,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -266,7 +266,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -407,7 +407,7 @@
                                     <div class="space-y-4">
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
-                                                }}</label>
+                                            }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -424,7 +424,7 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
-                                                }}</label>
+                                            }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
@@ -494,7 +494,7 @@
                                                 <span class="text-xs px-2 py-1 rounded-full"
                                                     :class="event.type === 'gala' ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700'">
                                                     {{ event.type === 'gala' ? t('demo.nurses.event_gala') :
-                                                    t('demo.nurses.event_degust') }}
+                                                        t('demo.nurses.event_degust') }}
                                                 </span>
                                                 <span class="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">
                                                     ⏰ {{ event.time }}
@@ -528,7 +528,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -576,7 +576,7 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
-                                            }}</span>
+                                        }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
                                             {{ t('demo.echo.btn_new') }}
@@ -589,7 +589,7 @@
                                             @click="selectEvent(idx)">
                                             <div class="flex justify-between items-start">
                                                 <div>
-                                                    <div class="font-semibold text-gray-800">{{t(event.title)}}</div>
+                                                    <div class="font-semibold text-gray-800">{{ t(event.title) }}</div>
                                                     <div class="text-sm text-gray-600">{{ event.date }}</div>
                                                     <div class="text-xs text-gray-500">{{ event.participants }}
                                                         {{ t('demo.nurses.participants') }}</div>
@@ -920,7 +920,7 @@ const makeReservation = () => {
     const serviceKey = booking.value.service as 'midi' | 'soir' | 'vip';
     const serviceName = t(`demo.nurses.reservation.service_names.${serviceKey}`);
     const vipBonus = booking.value.service === 'vip' ? t('demo.nurses.reservation.vip_bonus') : '';
-    
+
     reservationMessage.value = t('demo.nurses.reservation.confirmed', {
         guests: booking.value.guests,
         date: booking.value.date,
@@ -934,8 +934,8 @@ const makeReservation = () => {
         adminStats.value.vipReservations++;
     }
 
-    setTimeout(() => { 
-        reservationMessage.value = ''; 
+    setTimeout(() => {
+        reservationMessage.value = '';
     }, 3000);
 };
 
@@ -1108,7 +1108,7 @@ const simulateHeartData = () => {
         time: `${new Date().getHours()}h`
     });
 
-    toast.info(t ('demo.echo.toast_success') + ` (${heartData.value.heartRate} bpm)`);
+    toast.info(t('demo.echo.toast_success') + ` (${heartData.value.heartRate} bpm)`);
 };
 
 const downloadResource = () => {
@@ -1200,7 +1200,7 @@ const createPost = () => {
 
     stats.value.posts++;
     newPost.value.content = '';
-    toast.success(t('demo.afr_fan.toast_post_success') );
+    toast.success(t('demo.afr_fan.toast_post_success'));
 };
 
 const addMediaPost = () => {
@@ -1291,11 +1291,11 @@ const processPayment = async () => {
 
     setTimeout(() => {
         isProcessing.value = false;
-        
+
         const isMonthly = selectedPlan.value === 'monthly';
         const amountKey = isMonthly ? 'demo.afr_fan.success_monthly' : 'demo.afr_fan.success_yearly';
         const methodName = t(`demo.afr_fan.methods.${paymentMethod.value}`);
-        
+
         paymentMessage.value = t(amountKey, { method: methodName });
 
         setTimeout(() => {
@@ -1359,11 +1359,12 @@ img {
 .mySwiper {
     position: relative;
     width: 800px;
-    height: 100%;
+    height: 91%;
     object-fit: cover;
     border-radius: 8px;
     z-index: 1;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(129, 8, 177, 0.384);
+    padding-bottom: 2rem !important; 
 }
 
 .project-container {
