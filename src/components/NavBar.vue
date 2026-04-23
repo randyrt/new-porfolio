@@ -211,9 +211,9 @@ function openGithub() {
 
   background: linear-gradient(135deg,
       #2dd4bf 0%,
-      #a855f7 25%,
+      #55b6f7 25%,
       #fbbf24 50%,
-      #8b5cf6 75%,
+      #13649b 75%,
       #14b8a6 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -223,7 +223,7 @@ function openGithub() {
 
   text-shadow:
     3px 3px 0 #14b8a6,
-    6px 6px 0 rgba(168, 85, 247, 0.6),
+    6px 6px 0 rgba(6, 168, 243, 0.6),
     0 0 0px #fbbf24,
     -2px -2px 0 rgba(45, 212, 191, 0.4);
 
