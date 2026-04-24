@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-2 right-25 z-50 group">
+  <div class="fixed bottom-2 right-22 z-50 group">
     <div
       class="relative backdrop-blur-md bg-sky-500 border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
       @click="showWidget = !showWidget">

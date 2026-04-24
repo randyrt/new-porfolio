@@ -1,7 +1,7 @@
 <template>
     <div class="fixed bottom-2 right-4 z-50">
         <button @click="showDashboard = !showDashboard"
-            class="relative backdrop-blur-md bg-sky-500 border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110">
+            class="relative backdrop-blur-md bg-sky-500 border border-white/30 !rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110">
             <font-awesome-icon icon="chart-line" class="text-xl text-white drop-shadow-md" />
         </button>
 
