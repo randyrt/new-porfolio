@@ -9,7 +9,9 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { createHead } from '@vueuse/head'
 import Particles from "vue3-particles"
+import { createPinia } from 'pinia'
 
+const pinia = createPinia()
 import i18n from './i18n.js'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -130,6 +132,7 @@ app.use(Toast, options)
 app.use(router as any)
 app.use(Particles)
 app.use(i18n)
+app.use(pinia)
 
 
 app.mount('#app')

@@ -59,8 +59,7 @@
             <span class="spray-text">{{ brand }}</span>
           </span>
         </div>
-        <div
-          class="flex flex-col items-center justify-center gap-2 mb-4 p-2 rounded-lg ml-1">
+        <div class="flex flex-col items-center justify-center gap-2 mb-4 p-2 rounded-lg ml-1">
 
           <div class="relative group py-3 w-full" @click="sidebarVisible = !sidebarVisible">
             <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
@@ -69,7 +68,7 @@
             </span>
           </div>
         </div>
-         <MultiWorldClock />
+        <MultiWorldClock />
         <Transition name="menu-slide">
           <nav class="flex-1 flex flex-col px-2 space-y-1 rounded-lg text-sm mt-2 overflow-y-auto scrollbar-thin">
             <router-link v-for="route in routes" :key="route.path" :to="route.path"
@@ -82,7 +81,7 @@
         </Transition>
       </aside>
     </Transition>
-   
+
     <button v-if="!sidebarVisible" @click="sidebarVisible = true"
       class="fixed top-4 left-4 z-50 p-3 w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-[0_0_25px_rgba(9, 162, 201, 0.7)] hover:scale-110 transition-all duration-300 focus:outline-none flex justify-center items-center animate-pulse-slow">
       <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg" />
@@ -95,9 +94,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
+
 
 interface RouteItem {
   icon: any;

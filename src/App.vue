@@ -1,5 +1,7 @@
 <template>
   <div class="app-container relative min-h-screen overflow-x-hidden">
+     <GamificationToast />
+    <GamificationWidget />
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
 
     <div v-if="$route.path !== '/chatbot'" class="hidden md:flex fixed top-30 left-70 z-[999] group">
@@ -34,6 +36,7 @@
       </router-link>
     </div>
      <AnalyticsDashboard />
+     
   </div>
 </template>
 
@@ -44,6 +47,13 @@ import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 import { initColor } from './services/theme.js';
 import { analytics } from './composables/analytics';
+import { useGamification } from './composables/useGamification';
+
+const { initSession } = useGamification()
+
+onMounted(() => {
+  initSession()
+})
 
 const { t, tm } = useI18n();
 const route = useRoute();

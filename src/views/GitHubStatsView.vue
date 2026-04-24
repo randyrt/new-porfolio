@@ -1,6 +1,6 @@
 <template>
   <Loading v-if="loading" :message="$t('github.loading')" />
-  <div v-else class="min-h-screen py-8 px-4">
+  <div v-else class="min-h-screen">
     <div>
       <AnimatedTitle :text="$t('github.page_quote')" />
       <div class="text-center max-w-2xl mx-auto px-4 mt-4 mb-10" data-aos="fade-up">

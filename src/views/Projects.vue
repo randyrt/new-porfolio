@@ -2,6 +2,13 @@
     <Loading v-if="loading" :message="$t('projects.loading')" />
     <div v-else>
         <AnimatedTitle :text="$t('projects.quote')" aos="fade-down" />
+        <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
+      <p class="text-lg italic text-gray-700 dark:text-gray-300">
+        <span class="text-violet-800 text-lg">«</span>
+        {{ $t('contact.p') }}
+        <span class="text-violet-800 text-lg">»</span>
+      </p>
+    </div>
         <div class="swiper-header">
             <div class="swiper-progress" v-if="projects.length > 1">
                 <div class="progress-bar">
@@ -72,6 +79,7 @@ import { Pagination, Navigation } from 'swiper/modules'
 import ProjectGallery from '../components/ProjectGallery.vue'
 import Loading from '../components/Loading.vue'
 import AnimatedTitle from '../components/AnimatedTitle.vue'
+import { useGamification } from '../composables/useGamification' 
 
 // Import Swiper styles
 import 'swiper/css'
@@ -81,6 +89,9 @@ import 'swiper/css/navigation'
 const { t } = useI18n()
 const route = useRoute()
 const toast = useToast()
+
+// 👈 INITIALISATION DE LA GAMIFICATION
+const { trackProjectView } = useGamification()
 
 useHead({
     title: computed(() => t('projects.meta_title')),
@@ -98,6 +109,9 @@ const swiperInstance = ref<any>(null)
 const currentIndex = ref(0)
 const progressPercent = ref(0)
 const pendingProjectId = ref<string | null>(null)
+
+// Set pour suivre les projets déjà trackés (évite les doublons)
+const trackedProjects = ref<Set<string>>(new Set())
 
 // Définition des projets
 const projects = ref([
@@ -186,6 +200,14 @@ function closeImage() {
 const onSwiper = (swiper: any) => {
     swiperInstance.value = swiper
     updateProgress()
+    
+    // Track le projet initial si non tracké
+    const initialProject = projects.value[swiper.realIndex]
+    if (initialProject && !trackedProjects.value.has(initialProject.id)) {
+        trackProjectView(initialProject.id)
+        trackedProjects.value.add(initialProject.id)
+    }
+    
     // Appliquer le hash en attente si présent (navigation depuis chatbot)
     if (pendingProjectId.value) {
         const id = pendingProjectId.value
@@ -196,6 +218,15 @@ const onSwiper = (swiper: any) => {
 
 const onSlideChange = () => {
     updateProgress()
+    
+    // 👈 TRACK LE PROJET LORS DU CHANGEMENT DE SLIDE
+    if (swiperInstance.value) {
+        const currentProject = projects.value[swiperInstance.value.realIndex]
+        if (currentProject && !trackedProjects.value.has(currentProject.id)) {
+            trackProjectView(currentProject.id)
+            trackedProjects.value.add(currentProject.id)
+        }
+    }
 }
 
 const slidePrev = () => {
@@ -215,6 +246,13 @@ const scrollToProject = (projectId: string) => {
     const index = projects.value.findIndex(p => p.id === projectId)
     if (index !== -1 && swiperInstance.value) {
         swiperInstance.value.slideTo(index)
+        
+        // 👈 TRACK LE PROJET NAVIGUÉ PAR HASH
+        const project = projects.value[index]
+        if (project && !trackedProjects.value.has(project.id)) {
+            trackProjectView(project.id)
+            trackedProjects.value.add(project.id)
+        }
     }
 }
 

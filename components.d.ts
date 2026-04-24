@@ -12,6 +12,8 @@ declare module 'vue' {
     AnimatedTitle: typeof import('./src/components/AnimatedTitle.vue')['default']
     CurrentActivity: typeof import('./src/components/CurrentActivity.vue')['default']
     DivSlot: typeof import('./src/components/DivSlot.vue')['default']
+    GamificationToast: typeof import('./src/components/GamificationToast.vue')['default']
+    GamificationWidget: typeof import('./src/components/GamificationWidget.vue')['default']
     GitHubStats: typeof import('./src/components/GitHubStats.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     LogoSection: typeof import('./src/components/logoSection.vue')['default']

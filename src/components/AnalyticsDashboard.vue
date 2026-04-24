@@ -1,17 +1,8 @@
 <template>
     <div class="fixed bottom-2 right-4 z-50">
-        <button @click="showDashboard = !showDashboard" class="relative group">
-            <div
-                class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/30 shadow-xl transition-all duration-300 group-hover:from-blue-500/30 group-hover:to-cyan-500/30 group-hover:border-white/50">
-            </div>
-            <div class="relative w-14 h-14 flex items-center justify-center">
-                <font-awesome-icon icon="chart-line"
-                    class="text-xl text-white drop-shadow-md transition-colors duration-300 group-hover:text-cyan-200" />
-                <span v-if="analyticsSummary.totalPageViews > 0"
-                    class="absolute -top-1 -right-1 bg-gradient-to-br from-purple-400 to-purple-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-lg ring-2 ring-white/80">
-                    {{ analyticsSummary.totalPageViews > 99 ? '99+' : analyticsSummary.totalPageViews }}
-                </span>
-            </div>
+        <button @click="showDashboard = !showDashboard"
+            class="relative backdrop-blur-md bg-sky-500 border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110">
+            <font-awesome-icon icon="chart-line" class="text-xl text-white drop-shadow-md" />
         </button>
 
         <div v-if="showDashboard"
@@ -108,7 +99,7 @@
                                 </div>
                                 <div class="text-sm font-bold text-violet-700 ">{{ click.clicks }} {{
                                     t('analytics.clicks')
-                                }}</div>
+                                    }}</div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +131,7 @@
                             <div v-for="page in analyticsSummary.topPages" :key="page.page" class="relative">
                                 <div class="flex justify-between text-sm mb-1">
                                     <span class="text-gray-700 dark:text-gray-500">{{ formatPageName(page.page)
-                                        }}</span>
+                                    }}</span>
                                     <span class="text-purple-600">{{ page.views }} {{ t('analytics.views') }}</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
