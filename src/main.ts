@@ -69,7 +69,8 @@ import {
   faThumbsDown,
   faThumbsUp,
   faBookOpen,
-  faPalette
+  faPalette,
+  faEyeSlash
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -99,7 +100,7 @@ library.add(
   faWhatsapp,
   faCommentDots, faMicrochip, faNetworkWired, faCircleNodes,
   faLayerGroup, faDownload, faArrowRight, faThumbsDown,
-  faThumbsUp, faBookOpen, faPalette
+  faThumbsUp, faBookOpen, faPalette, faEyeSlash
 )
 
 const options = {

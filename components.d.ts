@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AnalyticsDashboard: typeof import('./src/components/AnalyticsDashboard.vue')['default']
     AnimatedTitle: typeof import('./src/components/AnimatedTitle.vue')['default']
     CurrentActivity: typeof import('./src/components/CurrentActivity.vue')['default']
     DivSlot: typeof import('./src/components/DivSlot.vue')['default']

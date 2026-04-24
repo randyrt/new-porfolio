@@ -33,6 +33,7 @@
         <span class="absolute inset-0 rounded-2xl animate-pulse-purple -z-10"></span>
       </router-link>
     </div>
+     <AnalyticsDashboard />
   </div>
 </template>
 
@@ -42,6 +43,7 @@ import { useRoute } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 import { initColor } from './services/theme.js';
+import { analytics } from './composables/analytics';
 
 const { t, tm } = useI18n();
 const route = useRoute();
@@ -187,6 +189,24 @@ onUnmounted(() => {
   if (hideTimeout) {
     clearTimeout(hideTimeout);
   }
+});
+
+watch(() => route.path, (newPath, oldPath) => {
+  analytics.trackPageView(newPath);
+}, { immediate: true });
+
+onMounted(() => {
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    const clickable = target.closest('a, button, [data-track]');
+    if (clickable) {
+      const element = clickable.getAttribute('data-track') || 
+                      clickable.tagName.toLowerCase() + 
+                      (clickable.textContent ? ':' + clickable.textContent.slice(0, 30) : '');
+      const section = route.path;
+      analytics.trackClick(element, section);
+    }
+  });
 });
 
 const navRoutes = computed(() => [
