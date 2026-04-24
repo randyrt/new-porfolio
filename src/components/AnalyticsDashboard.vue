@@ -1,12 +1,17 @@
 <template>
     <div class="fixed bottom-2 right-4 z-50">
-        <button @click="showDashboard = !showDashboard"
-            class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-xl hover:scale-110 transition-all duration-300 w-14 h-14 flex items-center justify-center relative">
-            <font-awesome-icon icon="chart-line" class="text-xl" />
-            <span v-if="analyticsSummary.totalPageViews > 0"
-                class="absolute top-0.5 right-2  text-wihite text-xs rounded-full w-4 h-4 flex items-center justify-center tetx-xs">
-                {{ analyticsSummary.totalPageViews }}
-            </span>
+        <button @click="showDashboard = !showDashboard" class="relative group">
+            <div
+                class="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-white/30 shadow-xl transition-all duration-300 group-hover:from-blue-500/30 group-hover:to-cyan-500/30 group-hover:border-white/50">
+            </div>
+            <div class="relative w-14 h-14 flex items-center justify-center">
+                <font-awesome-icon icon="chart-line"
+                    class="text-xl text-white drop-shadow-md transition-colors duration-300 group-hover:text-cyan-200" />
+                <span v-if="analyticsSummary.totalPageViews > 0"
+                    class="absolute -top-1 -right-1 bg-gradient-to-br from-purple-400 to-purple-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-lg ring-2 ring-white/80">
+                    {{ analyticsSummary.totalPageViews > 99 ? '99+' : analyticsSummary.totalPageViews }}
+                </span>
+            </div>
         </button>
 
         <div v-if="showDashboard"
@@ -18,7 +23,7 @@
                 <div
                     class="sticky top-0  bg-white border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center z-100">
                     <div class="flex justify-between space-x-8">
-                        <div >
+                        <div>
                             <h2 class="text-xl font-bold text-purple-700">
                                 {{ t('analytics.dashboard') }}
                             </h2>
@@ -112,7 +117,7 @@
                         <h3 class="font-semibold mb-3">{{ t('analytics.time_spent_title') }}</h3>
                         <div class="space-y-2">
                             <div v-if="timeSpentEntries.length === 0" class="text-center text-gray-500 py-4">
-                               {{ t('analytics.time_spent_title_v_if') }}
+                                {{ t('analytics.time_spent_title_v_if') }}
                             </div>
                             <div v-for="[section, time] in timeSpentEntries" :key="section" class="relative">
                                 <div class="flex justify-between text-sm mb-1">
@@ -260,5 +265,4 @@ onUnmounted(() => {
 .modal-container {
     isolation: isolate;
 }
-
 </style>
