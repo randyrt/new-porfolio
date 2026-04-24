@@ -14,9 +14,9 @@
             @click.self="showDashboard = false">
 
             <div
-                class=" bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2  z-49">
+                class=" bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2">
                 <div
-                    class="sticky top-0  bg-white border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center">
+                    class="sticky top-0  bg-white border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center z-100">
                     <div class="flex justify-between space-x-8">
                         <div >
                             <h2 class="text-xl font-bold text-purple-700">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
 
-                    <div v-if="analyticsSummary.mostViewedProject" class="card rounded-xl p-4">
+                    <div v-if="analyticsSummary.mostViewedProject" class="rounded-xl p-4">
                         <div class="flex items-center gap-3">
                             <font-awesome-icon icon="trophy" class="text-3xl text-yellow-600" />
                             <div>
@@ -91,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="card rounded-xl p-4">
+                    <div class="rounded-xl p-4">
                         <h3 class="font-semibold mb-3">{{ t('analytics.top_clicks_title') }}</h3>
                         <div class="space-y-3">
                             <div v-for="click in analyticsSummary.topClicks" :key="click.element"
@@ -108,7 +108,7 @@
                         </div>
                     </div>
 
-                    <div class="card  rounded-xl p-4">
+                    <div class="rounded-xl p-4">
                         <h3 class="font-semibold mb-3">{{ t('analytics.time_spent_title') }}</h3>
                         <div class="space-y-2">
                             <div v-if="timeSpentEntries.length === 0" class="text-center text-gray-500 py-4">
@@ -129,7 +129,7 @@
                     </div>
 
 
-                    <div class="card rounded-xl p-4">
+                    <div class=" rounded-xl p-4">
                         <h3 class="font-semibold mb-3">{{ t('analytics.heatmap_title') }}</h3>
                         <div class="space-y-2 ">
                             <div v-for="page in analyticsSummary.topPages" :key="page.page" class="relative">
@@ -257,7 +257,6 @@ onUnmounted(() => {
     height: 5px;
 }
 
-/* Dans votre fichier CSS principal */
 .modal-container {
     isolation: isolate;
 }
