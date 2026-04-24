@@ -293,7 +293,7 @@
                             :placeholder="$t('chat.placeholder')"
                             class="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 dark:bg-gray-700 dark:text-white transition" />
                         <button @click="sendMessage" :disabled="isTyping || !userInput.trim()"
-                            class="send-button bg-gradient-to-r from-violet-500 to-purple-600 text-white px-6 py-3 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100">
+                            class="send-button  btn-violet btn-effect-5">
                             <font-awesome-icon icon="fa-solid fa-paper-plane" class="mr-2" />
                             {{ $t('chat.send') }}
                         </button>
@@ -1236,29 +1236,6 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 
 .suggestion-chip:hover {
     transform: translateY(-2px);
-}
-
-.send-button {
-    position: relative;
-    overflow: hidden;
-}
-
-.send-button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.send-button:active::before {
-    width: 300px;
-    height: 300px;
 }
 
 .whitespace-pre-wrap {
