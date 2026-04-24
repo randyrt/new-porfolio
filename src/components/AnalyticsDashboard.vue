@@ -95,15 +95,15 @@
                         <h3 class="font-semibold mb-3">{{ t('analytics.time_spent_title') }}</h3>
                         <div class="space-y-2">
                             <div v-if="timeSpentEntries.length === 0" class="text-center text-gray-500 py-4">
-                                Aucune donnée de temps disponible pour le moment
+                               {{ t('analytics.time_spent_title_v_if') }}
                             </div>
                             <div v-for="[section, time] in timeSpentEntries" :key="section" class="relative">
                                 <div class="flex justify-between text-sm mb-1">
-                                    <span class="text-gray-700 dark:text-gray-300">{{ formatPageName(section) }}</span>
-                                    <span class="text-gray-500">{{ formatDuration(time) }}</span>
+                                    <span class="text-gray-700 dark:text-gray-500">{{ formatPageName(section) }}</span>
+                                    <span class="text-purple-600">{{ formatDuration(time) }}</span>
                                 </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full transition-all duration-500"
+                                <div class="w-full bg-gray-600 dark:bg-gray-700 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
                                         :style="{ width: `${(time / getMaxTime()) * 100}%` }">
                                     </div>
                                 </div>

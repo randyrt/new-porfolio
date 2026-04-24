@@ -741,6 +741,7 @@
     "star_project": "🏆 Star project",
     "consultations": "consultations",
     "time_spent_title": "⏱️ Time spent by section",
+    "time_spent_title_v_if": "No time data available at the moment",
     "top_clicks_title": "Most clicked elements",
     "section": "Section",
     "clicks": "clicks",

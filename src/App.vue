@@ -209,6 +209,38 @@ onMounted(() => {
   });
 });
 
+
+let pageEnterTime = Date.now();
+let currentPath = route.path;
+
+watch(() => route.path, (newPath, oldPath) => {
+    if (oldPath) {
+        const duration = (Date.now() - pageEnterTime) / 1000;
+        if (duration > 3) { 
+            analytics.trackSectionTime(oldPath, duration);
+            console.log(`Temps passé sur ${oldPath}: ${duration}s`);
+        }
+    }
+    pageEnterTime = Date.now();
+    currentPath = newPath;
+});
+
+
+const saveTimeOnUnload = () => {
+    const duration = (Date.now() - pageEnterTime) / 1000;
+    if (duration > 3) {
+        analytics.trackSectionTime(currentPath, duration);
+    }
+};
+
+onMounted(() => {
+    window.addEventListener('beforeunload', saveTimeOnUnload);
+});
+
+onUnmounted(() => {
+    window.removeEventListener('beforeunload', saveTimeOnUnload);
+});
+
 const navRoutes = computed(() => [
   { path: '/', name: t('nav.home'), icon: 'home' },
   { path: '/quality', name: t('nav.quality'), icon: 'star' },
