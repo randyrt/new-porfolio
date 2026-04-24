@@ -91,6 +91,23 @@
                         </div>
                     </div>
 
+                    <div class="card rounded-xl p-4">
+                        <h3 class="font-semibold mb-3">{{ t('analytics.top_clicks_title') }}</h3>
+                        <div class="space-y-3">
+                            <div v-for="click in analyticsSummary.topClicks" :key="click.element"
+                                class="flex items-center justify-between p-2 bg-white dark:bg-gray-100 rounded-lg">
+                                <div>
+                                    <div class="font-medium">{{ click.element.split(':')[1] || click.element }}</div>
+                                    <div class="text-xs text-gray-500">{{ t('analytics.section') }}: {{
+                                        click.element.split(':')[0] }}</div>
+                                </div>
+                                <div class="text-sm font-bold text-violet-700 ">{{ click.clicks }} {{
+                                    t('analytics.clicks')
+                                }}</div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card  rounded-xl p-4">
                         <h3 class="font-semibold mb-3">{{ t('analytics.time_spent_title') }}</h3>
                         <div class="space-y-2">
@@ -111,23 +128,6 @@
                         </div>
                     </div>
 
-
-                    <div class="card rounded-xl p-4">
-                        <h3 class="font-semibold mb-3">{{ t('analytics.top_clicks_title') }}</h3>
-                        <div class="space-y-3">
-                            <div v-for="click in analyticsSummary.topClicks" :key="click.element"
-                                class="flex items-center justify-between p-2 bg-white dark:bg-gray-100 rounded-lg">
-                                <div>
-                                    <div class="font-medium">{{ click.element.split(':')[1] || click.element }}</div>
-                                    <div class="text-xs text-gray-500">{{ t('analytics.section') }}: {{
-                                        click.element.split(':')[0] }}</div>
-                                </div>
-                                <div class="text-sm font-bold text-violet-700 ">{{ click.clicks }} {{
-                                    t('analytics.clicks')
-                                }}</div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="card rounded-xl p-4">
                         <h3 class="font-semibold mb-3">{{ t('analytics.heatmap_title') }}</h3>
