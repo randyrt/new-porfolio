@@ -102,7 +102,6 @@ library.add(
   faThumbsUp, faBookOpen, faPalette
 )
 
-
 const options = {
   position: "top-right",
   timeout: 5000,
@@ -114,9 +113,10 @@ const options = {
   hideProgressBar: false,
   closeButton: 'button',
   icon: true,
+  toastClassName: 'custom-toast',
+  bodyClassName: 'custom-toast-body'
 }
 
-// initialize theme (reads localStorage and applies)
 initTheme()
 
 const app = createApp(App)
