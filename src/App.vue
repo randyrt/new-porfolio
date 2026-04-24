@@ -218,7 +218,6 @@ watch(() => route.path, (newPath, oldPath) => {
         const duration = (Date.now() - pageEnterTime) / 1000;
         if (duration > 3) { 
             analytics.trackSectionTime(oldPath, duration);
-            console.log(`Temps passé sur ${oldPath}: ${duration}s`);
         }
     }
     pageEnterTime = Date.now();
