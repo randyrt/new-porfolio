@@ -153,12 +153,45 @@ button {
   @apply px-6 py-2.5 bg-yellow-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-yellow-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
 }
 
-/* .btn-violet {
-  @apply px-6 py-2.5 bg-violet-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-violet-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
-} */
 
 .btn-violet {
   @apply px-6 py-2.5 bg-amber-500 text-white font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:bg-amber-600 hover:shadow-lg hover:-translate-y-0.5 hover:scale-105 active:scale-95 cursor-pointer;
+  
+
+  width: auto;
+  min-width: 120px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+
+@media (max-width: 768px) {
+  .btn-violet {
+    @apply px-4 py-2;
+    font-size: 0.875rem !important;
+    min-width: 100px;
+    white-space: normal; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .btn-violet {
+    @apply px-3 py-1.5;
+    width: 100% !important; 
+    font-size: 0.813rem !important;
+    min-width: unset;
+    text-align: center;
+    display: block;
+  }
+}
+
+
+@media (max-width: 380px) {
+  .btn-violet {
+    font-size: 0.75rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
 }
 
 .btn-sky {
@@ -769,3 +802,4 @@ a {
 .custom-toast.Vue-Toastification__toast--error {
   @apply !bg-gradient-to-r !from-emerald-100 !to-sky-100;
 }
+

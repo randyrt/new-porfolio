@@ -1,10 +1,10 @@
 <template>
     <div class="fixed bottom-2 right-4 z-50">
         <button @click="showDashboard = !showDashboard"
-            class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-xl hover:scale-110 transition-all duration-300 w-12 h-12 flex items-center justify-center relative">
+            class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-xl hover:scale-110 transition-all duration-300 w-14 h-14 flex items-center justify-center relative">
             <font-awesome-icon icon="chart-line" class="text-xl" />
             <span v-if="analyticsSummary.totalPageViews > 0"
-                class="absolute top-0.5 right-0.5 bg-yellow-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+                class="absolute top-0.5 right-2  text-purple-800 text-xs rounded-full w-4 h-4 flex items-center justify-center tetx-xs">
                 {{ analyticsSummary.totalPageViews }}
             </span>
         </button>
@@ -13,12 +13,12 @@
             class="fixed inset-0 bg-black/50 backdrop-blur-sm  flex items-center justify-center p-4"
             @click.self="showDashboard = false">
 
-            <div class="bg-white dark:bg-gray-900 rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2  z-49">
+            <div
+                class=" bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2  z-49">
                 <div
-                    class="sticky top-0 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center">
+                    class="sticky top-0  bg-white border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center">
                     <div>
-                        <h2
-                            class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                        <h2 class="text-xl font-bold text-purple-700">
                             {{ t('analytics.dashboard') }}
                         </h2>
                         <p class="text-sm text-gray-500 dark:text-gray-400">
@@ -30,15 +30,15 @@
                             'px-3 py-1 rounded-lg transition-all duration-300',
                             analytics.isIncognito.value
                                 ? 'bg-purple-600 text-white'
-                                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+                                : 'bg-gray-200 dark:bg-emerald-700 text-gray-700 dark:text-emerald-300'
                         ]"
                             :title="analytics.isIncognito.value ? t('analytics.disable_incognito') : t('analytics.activate_incognito')">
                             <font-awesome-icon :icon="analytics.isIncognito.value ? 'eye-slash' : 'eye'" />
                             {{ analytics.isIncognito.value ? t('analytics.incognito') : t('analytics.visible') }}
                         </button>
 
-                        <button @click="showDashboard = false" class="text-gray-500 hover:text-gray-700">
-                            <font-awesome-icon icon="times" />
+                        <button @click="showDashboard = false" class="btn-violet btn-effect-5">
+                            {{ t('projects.close_image') }}
                         </button>
                     </div>
                 </div>
@@ -75,26 +75,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4 z-49">
-                        <h3 class="font-semibold mb-3">{{ t('analytics.heatmap_title') }}</h3>
-                        <div class="space-y-2">
-                            <div v-for="page in analyticsSummary.topPages" :key="page.page" class="relative">
-                                <div class="flex justify-between text-sm mb-1">
-                                    <span class="text-gray-700 dark:text-gray-300">{{ formatPageName(page.page)
-                                    }}</span>
-                                    <span class="text-gray-500">{{ page.views }} {{ t('analytics.views') }}</span>
-                                </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
-                                        :style="{ width: `${(page.views / analyticsSummary.totalPageViews) * 100}%` }">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div v-if="analyticsSummary.mostViewedProject"
-                        class="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-xl p-4">
+                    <div v-if="analyticsSummary.mostViewedProject" class="card rounded-xl p-4">
                         <div class="flex items-center gap-3">
                             <font-awesome-icon icon="trophy" class="text-3xl text-yellow-600" />
                             <div>
@@ -108,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+                    <div class="card  rounded-xl p-4">
                         <h3 class="font-semibold mb-3">{{ t('analytics.time_spent_title') }}</h3>
                         <div class="space-y-2">
                             <div v-if="timeSpentEntries.length === 0" class="text-center text-gray-500 py-4">
@@ -128,35 +109,56 @@
                         </div>
                     </div>
 
-                   
-                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-xl p-4">
+
+                    <div class="card rounded-xl p-4">
                         <h3 class="font-semibold mb-3">{{ t('analytics.top_clicks_title') }}</h3>
                         <div class="space-y-3">
                             <div v-for="click in analyticsSummary.topClicks" :key="click.element"
-                                class="flex items-center justify-between p-2 bg-white dark:bg-gray-900 rounded-lg">
+                                class="flex items-center justify-between p-2 bg-white dark:bg-gray-100 rounded-lg">
                                 <div>
                                     <div class="font-medium">{{ click.element.split(':')[1] || click.element }}</div>
                                     <div class="text-xs text-gray-500">{{ t('analytics.section') }}: {{
                                         click.element.split(':')[0] }}</div>
                                 </div>
-                                <div class="text-lg font-bold text-blue-600">{{ click.clicks }} {{ t('analytics.clicks')
-                                }}</div>
+                                <div class="text-sm font-bold text-violet-700 ">{{ click.clicks }} {{
+                                    t('analytics.clicks')
+                                    }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card rounded-xl p-4">
+                        <h3 class="font-semibold mb-3">{{ t('analytics.heatmap_title') }}</h3>
+                        <div class="space-y-2 ">
+                            <div v-for="page in analyticsSummary.topPages" :key="page.page" class="relative">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="text-gray-700 dark:text-gray-500">{{ formatPageName(page.page)
+                                    }}</span>
+                                    <span class="text-purple-600">{{ page.views }} {{ t('analytics.views') }}</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
+                                        :style="{ width: `${(page.views / analyticsSummary.totalPageViews) * 100}%` }">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                         <button @click="exportData"
-                            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition-colors">
+                            class="flex-1 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            <font-awesome-icon icon="download" class="text-sm" />
                             {{ t('analytics.export_data') }}
                         </button>
                         <button @click="resetData"
-                            class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition-colors">
+                            class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            <font-awesome-icon icon="trash-alt" class="text-sm" />
                             {{ t('analytics.reset_data') }}
                         </button>
                     </div>
 
-                    <div class="text-xs text-center text-gray-500">
+                    <div class="text-xs text-center text-gray-500 flex items-center justify-center gap-1 mt-4">
                         {{ t('analytics.privacy_note') }}
                     </div>
                 </div>
@@ -235,9 +237,7 @@ const exportData = () => {
 };
 
 const resetData = () => {
-    if (confirm(t('analytics.reset_confirm'))) {
-        analytics.resetData();
-    }
+    analytics.resetData();
 };
 
 onMounted(() => {
@@ -251,58 +251,58 @@ onUnmounted(() => {
 
 <style scoped>
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+    width: 5px;
+    height: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #1f2937;
-  border-radius: 10px;
+    background: #1f2937;
+    border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 10px;
-  transition: background 0.3s ease;
+    background: #3b82f6;
+    border-radius: 10px;
+    transition: background 0.3s ease;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #60a5fa;
+    background: #60a5fa;
 }
 
 
 .dark .custom-scrollbar::-webkit-scrollbar-track {
-  background: #374151;
+    background: #374151;
 }
 
 .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #3b82f6;
+    background: #3b82f6;
 }
 
 
 .light .custom-scrollbar::-webkit-scrollbar-track {
-  background: #e5e7eb;
+    background: #e5e7eb;
 }
 
 .light .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #93c5fd;
+    background: #93c5fd;
 }
 
 .light .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #60a5fa;
+    background: #60a5fa;
 }
 
 .custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #3b82f6 #1f2937;
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 #1f2937;
 }
 
 .dark .custom-scrollbar {
-  scrollbar-color: #3b82f6 #374151;
+    scrollbar-color: #3b82f6 #374151;
 }
 
 .light .custom-scrollbar {
-  scrollbar-color: #93c5fd #e5e7eb;
+    scrollbar-color: #93c5fd #e5e7eb;
 }
 
 .detail-container {
@@ -325,11 +325,11 @@ onUnmounted(() => {
 
 /* Dans votre fichier CSS principal */
 .modal-container {
-  isolation: isolate;
+    isolation: isolate;
 }
 
 /* Forcer le z-index sur tous les éléments du modal */
 [data-teleport="body"] {
-  z-index: 9999 !important;
+    z-index: 9999 !important;
 }
 </style>
