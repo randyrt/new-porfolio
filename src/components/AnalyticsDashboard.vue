@@ -4,7 +4,7 @@
             class="bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-4 rounded-full shadow-xl hover:scale-110 transition-all duration-300 w-14 h-14 flex items-center justify-center relative">
             <font-awesome-icon icon="chart-line" class="text-xl" />
             <span v-if="analyticsSummary.totalPageViews > 0"
-                class="absolute top-0.5 right-2  text-purple-800 text-xs rounded-full w-4 h-4 flex items-center justify-center tetx-xs">
+                class="absolute top-0.5 right-2  text-wihite text-xs rounded-full w-4 h-4 flex items-center justify-center tetx-xs">
                 {{ analyticsSummary.totalPageViews }}
             </span>
         </button>
