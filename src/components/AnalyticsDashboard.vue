@@ -17,26 +17,28 @@
                 class=" bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2  z-49">
                 <div
                     class="sticky top-0  bg-white border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center">
-                    <div>
-                        <h2 class="text-xl font-bold text-purple-700">
-                            {{ t('analytics.dashboard') }}
-                        </h2>
-                        <p class="text-sm text-gray-500 dark:text-gray-400">
-                            {{ t('analytics.description') }}
-                        </p>
-                    </div>
-                    <div class="flex gap-2">
+                    <div class="flex justify-between space-x-8">
+                        <div >
+                            <h2 class="text-xl font-bold text-purple-700">
+                                {{ t('analytics.dashboard') }}
+                            </h2>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                                {{ t('analytics.description') }}
+                            </p>
+                        </div>
+
                         <button @click="toggleIncognito" :class="[
                             'px-3 py-1 rounded-lg transition-all duration-300',
                             analytics.isIncognito.value
-                                ? 'bg-purple-600 text-white'
-                                : 'bg-gray-200 dark:bg-emerald-700 text-gray-700 dark:text-emerald-300'
+                                ? 'bg-emerald-600 text-white hover:bg-emerald-700'
+                                : 'bg-gray-200 dark:bg-emerald-700 text-gray-700 dark:text-emerald-300 hover:bg-gray-300 dark:hover:bg-emerald-600'
                         ]"
                             :title="analytics.isIncognito.value ? t('analytics.disable_incognito') : t('analytics.activate_incognito')">
                             <font-awesome-icon :icon="analytics.isIncognito.value ? 'eye-slash' : 'eye'" />
                             {{ analytics.isIncognito.value ? t('analytics.incognito') : t('analytics.visible') }}
                         </button>
-
+                    </div>
+                    <div class="flex gap-2">
                         <button @click="showDashboard = false" class="btn-violet btn-effect-5">
                             {{ t('projects.close_image') }}
                         </button>
@@ -122,7 +124,7 @@
                                 </div>
                                 <div class="text-sm font-bold text-violet-700 ">{{ click.clicks }} {{
                                     t('analytics.clicks')
-                                    }}</div>
+                                }}</div>
                             </div>
                         </div>
                     </div>
@@ -133,7 +135,7 @@
                             <div v-for="page in analyticsSummary.topPages" :key="page.page" class="relative">
                                 <div class="flex justify-between text-sm mb-1">
                                     <span class="text-gray-700 dark:text-gray-500">{{ formatPageName(page.page)
-                                    }}</span>
+                                        }}</span>
                                     <span class="text-purple-600">{{ page.views }} {{ t('analytics.views') }}</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
