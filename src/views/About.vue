@@ -39,8 +39,8 @@
           <div v-if="showTechDetails"
             class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             @click.self="showTechDetails = false">
-            <div
-              class="bg-white max-w-4xl w-full max-h-[80vh] rounded-overflow overflow-y-auto transition-all duration-300">
+             <div
+                class=" bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2  z-49">
               <div class="sticky top-0 bg-white  border-b p-4 flex justify-between items-center">
                 <h3 class="text-xl font-bold flex items-center gap-2">
                   <font-awesome-icon :icon="['fas', 'tools']" class="text-violet-600" />
@@ -296,10 +296,11 @@ const perfomanceTest = () => {
 </script>
 
 <style scoped>
-.rounded-overflow {
+.custom-scrollbar{
   border-radius: 0.5rem;
   overflow-y: auto;
   clip-path: inset(0 round 0.5rem);
+
 }
 
 .modal-enter-active,

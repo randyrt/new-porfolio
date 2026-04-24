@@ -257,81 +257,9 @@ onUnmounted(() => {
     height: 5px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: #1f2937;
-    border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-    border-radius: 10px;
-    transition: background 0.3s ease;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #60a5fa;
-}
-
-
-.dark .custom-scrollbar::-webkit-scrollbar-track {
-    background: #374151;
-}
-
-.dark .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-}
-
-
-.light .custom-scrollbar::-webkit-scrollbar-track {
-    background: #e5e7eb;
-}
-
-.light .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #93c5fd;
-}
-
-.light .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #60a5fa;
-}
-
-.custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #3b82f6 #1f2937;
-}
-
-.dark .custom-scrollbar {
-    scrollbar-color: #3b82f6 #374151;
-}
-
-.light .custom-scrollbar {
-    scrollbar-color: #93c5fd #e5e7eb;
-}
-
-.detail-container {
-    scroll-behavior: smooth;
-}
-
-.detail-container::-webkit-scrollbar {
-    width: 6px;
-}
-
-.detail-container::-webkit-scrollbar-track {
-    background: #e5e7eb;
-    border-radius: 10px;
-}
-
-.detail-container::-webkit-scrollbar-thumb {
-    background: #8b5cf6;
-    border-radius: 10px;
-}
-
 /* Dans votre fichier CSS principal */
 .modal-container {
     isolation: isolate;
 }
 
-/* Forcer le z-index sur tous les éléments du modal */
-[data-teleport="body"] {
-    z-index: 9999 !important;
-}
 </style>
