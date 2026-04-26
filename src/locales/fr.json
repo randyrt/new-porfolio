@@ -106,6 +106,7 @@
     "afr_fan": "Afr-fan est un réseau social dédié à la communauté africaine, développé avec Nuxt.js et Laravel. Il offre une interface moderne facilitant les interactions entre membres, la création de groupes d'intérêt et le partage de contenu. La platforme vise à renforcer les liens de la diaspora tout en célébrant la richesse culturelle africaine, et intègre les paiements en ligne via VISA ou PayPal pour les fonctionnalités premium.",
     "nurses": "Souper of Nurses est un restaurant belge qui accueille de grands événements sur de longues périodes. Ce site web permet aux utilisateurs de faire des réservations de groupe en ligne, de contacter directement le restaurant, et comprend un panneau d’administration pour gérer les inscriptions, les événements et les places VIP. Développé avec Vue.js et Symfony, il offre une expérience utilisateur fluide et une gestion efficace des réservations, tout en mettant en valeur les événements à venir et les services exclusifs du restaurant.",
     "toast_click": "Cliquez sur une image pour l'agrandir 🙂 !",
+    "infi_swap": "InfiSwap connecte directement les établissements de santé (hôpitaux, maisons de retraite, cliniques) avec les infirmiers indépendants ou disponibles. Grâce à un algorithme intelligent et 100% automatisé, la plateforme permet de pourvoir les remplacements et missions temporaires en quelques minutes, sans intermédiaire humain. Elle garantit aux infirmiers une meilleure visibilité sur les missions disponibles, une rémunération transparente et une gestion simplifiée de leur emploi du temps. Pour les établissements, InfiSwap réduit les coûts de recrutement, accélère le processus et sécurise les affectations.",
     "meta_title": "Projets de Randy",
     "meta_desc": "Quelques projets dont je suis particulièrement fier ",
     "close_image": "Fermer"
@@ -322,7 +323,6 @@
       "alert_1": "✓ Déclaration TVA due dans 12 jours",
       "alert_2": "✓ Réforme fiscale 2025 : nouvelles déductions possibles",
       "alert_3": "✓ Amortissement matériel à réviser",
-
       "toast": "Déclaration fiscale générée - TVA due: "
     },
     "qcp": {
@@ -456,6 +456,108 @@
       "download_success": "Ressource téléchargée avec succès !",
       "toast_success": "Nouvelle mesure simulée"
     },
+    "infi_swap": {
+      "title": "InfiSwap - Mise en relation infirmiers",
+      "missions": "Missions disponibles",
+      "available_count": "disponibles",
+      "filter_all": "Toutes",
+      "filter_urgent": "Urgent",
+      "filter_available": "Disponibles",
+      "urgent_badge": "Urgent",
+      "book": "✅ Réserver cette mission",
+      "booking_success": "Mission réservée avec succès",
+      "booking_processing": "Traitement en cours...",
+      "nurses_available": "Infirmiers disponibles",
+      "missions_count": "missions",
+      "distance": "à",
+      "available_status": "Disponible",
+      "unavailable_status": "Indisponible",
+      "real_time_stats": "InfiSwap en temps réel",
+      "missions_filled": "Missions pourvues",
+      "active_nurses": "Infirmiers actifs",
+      "response_time": "Temps de réponse",
+      "satisfaction": "Satisfaction",
+      "automated_badge": "100% automatisé - Mise en relation instantanée",
+      "no_intermediary": "Aucun intermédiaire • Paiement sécurisé • Conforme RGPD",
+      "Mission_booked": "Mission réservée",
+      "nurses_list": [
+        {
+          "name": "Sophie Dubois",
+          "speciality": "Infirmière générale",
+          "rating": 4.9,
+          "missions_count": 47,
+          "distance": "2.3 km",
+          "availability": "Disponible"
+        },
+        {
+          "name": "Thomas Laurent",
+          "speciality": "Infirmier spécialisé - Urgences",
+          "rating": 4.8,
+          "missions_count": 112,
+          "distance": "5.1 km",
+          "availability": "Disponible"
+        },
+        {
+          "name": "Marie Lambert",
+          "speciality": "Infirmière pédiatrique",
+          "rating": 5.0,
+          "missions_count": 89,
+          "distance": "1.8 km",
+          "availability": "Indisponible"
+        },
+        {
+          "name": "David Nkosi",
+          "speciality": "Infirmier en soins intensifs",
+          "rating": 4.7,
+          "missions_count": 63,
+          "distance": "3.5 km",
+          "availability": "Disponible"
+        }
+      ],
+      "missions_list": [
+        {
+          "hospital": "CHU Saint-Pierre",
+          "city": "Bruxelles",
+          "shift": "Nuit",
+          "date": "15/12/2024",
+          "duration": "12h",
+          "rate": "450€",
+          "urgent": true
+        },
+        {
+          "hospital": "Clinique Saint-Luc",
+          "city": "Bouge",
+          "shift": "Jour",
+          "date": "16/12/2024",
+          "duration": "8h",
+          "rate": "280€",
+          "urgent": false
+        },
+        {
+          "hospital": "Hôpital Érasme",
+          "city": "Anderlecht",
+          "shift": "Soir",
+          "date": "17/12/2024",
+          "duration": "10h",
+          "rate": "350€",
+          "urgent": true
+        },
+        {
+          "hospital": "CHR Citadelle",
+          "city": "Liège",
+          "shift": "Nuit",
+          "date": "18/12/2024",
+          "duration": "12h",
+          "rate": "460€",
+          "urgent": false
+        }
+      ],
+      "shifts": {
+        "nuit": "Nuit",
+        "jour": "Jour",
+        "soir": "Soir"
+      }
+    },
     "in_dev": {
       "title": "Démo en cours de développement",
       "desc": "Une version interactive sera bientôt disponible pour ce projet.",
@@ -491,7 +593,7 @@
       "error": "Erreur"
     }
   },
-"currentActivity": {
+  "currentActivity": {
     "now": "En ce moment",
     "activities": [
       "Randy, rédige un article sur Vue.js",
@@ -760,5 +862,12 @@
     "testimonials": "Témoignages",
     "webcup": "WebCup 2024",
     "github_stats": "Stats GitHub"
+  },
+  "mobile": {
+    "emoji": "📱",
+    "title": "Version mobile en développement",
+    "message": "Pour une expérience optimale, veuillez consulter mon portfolio sur un ordinateur.",
+    "recommendation_emoji": "💻",
+    "recommendation": "Desktop recommandé"
   }
 }

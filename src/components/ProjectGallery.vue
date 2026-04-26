@@ -149,7 +149,7 @@
                                     <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
-                                        }}</div>
+                                    }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -158,7 +158,7 @@
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.total') }}</span>
@@ -228,7 +228,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -267,7 +267,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -408,7 +408,7 @@
                                     <div class="space-y-4">
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
-                                                }}</label>
+                                            }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -425,7 +425,7 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
-                                                }}</label>
+                                            }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
@@ -463,7 +463,6 @@
                                 </div>
                             </div>
 
-                            <!-- Section {{ t('demo.nurses.events_title') }} -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
                                     {{ t('demo.nurses.events_title') }}
@@ -529,7 +528,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -577,7 +576,7 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
-                                            }}</span>
+                                        }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
                                             {{ t('demo.echo.btn_new') }}
@@ -742,6 +741,171 @@
                             </div>
                         </div>
                     </div>
+                    <div v-else-if="demoType === 'infi-swap'" class="p-6 bg-gray-50">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Section Missions disponibles -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    🏥 {{ t('demo.infi_swap.missions') }}
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">{{
+                                        filteredMissions.length }} {{ t('demo.infi_swap.available_count') }}</span>
+                                </h4>
+
+                                <!-- Filtres -->
+                                <div class="flex gap-2">
+                                    <button @click="missionFilter = 'all'"
+                                        :class="missionFilter === 'all' ? 'bg-violet-600 text-white' : 'bg-gray-200 text-gray-700'"
+                                        class="px-3 py-1 rounded-full text-sm transition">
+                                        {{ t('demo.infi_swap.filter_all') }}
+                                    </button>
+                                    <button @click="missionFilter = 'urgent'"
+                                        :class="missionFilter === 'urgent' ? 'bg-red-600 text-white' : 'bg-gray-200 text-gray-700'"
+                                        class="px-3 py-1 rounded-full text-sm transition">
+                                        {{ t('demo.infi_swap.filter_urgent') }} ⚡
+                                    </button>
+                                    <button @click="missionFilter = 'available'"
+                                        :class="missionFilter === 'available' ? 'bg-violet-600 text-white' : 'bg-gray-200 text-gray-700'"
+                                        class="px-3 py-1 rounded-full text-sm transition">
+                                        {{ t('demo.infi_swap.filter_available') }}
+                                    </button>
+                                </div>
+
+                                <!-- Liste des missions -->
+                                <div class="space-y-3 max-h-96 overflow-y-auto">
+                                    <div v-for="mission in filteredMissions" :key="mission.id"
+                                        class="bg-white rounded-lg shadow p-4 cursor-pointer transition hover:shadow-md"
+                                        :class="{ 'border-2 border-violet-500 bg-violet-50': selectedMission === mission.id }"
+                                        @click="selectMission(mission.id)">
+                                        <div class="flex justify-between items-start">
+                                            <div class="flex-1">
+                                                <div class="flex items-center gap-2">
+                                                    <span class="font-semibold text-gray-800">{{ mission.hospital
+                                                    }}</span>
+                                                    <span v-if="mission.urgent"
+                                                        class="!text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full animate-pulse">
+                                                        {{ t('demo.infi_swap.urgent_badge') }}
+                                                    </span>
+                                                </div>
+                                                <div class="text-sm text-gray-600">{{ mission.city }}</div>
+                                                <div class="flex flex-wrap gap-3 mt-2 !text-xs">
+                                                    <span class="flex items-center gap-1 !text-xs">📅 {{ mission.date
+                                                        }}</span>
+                                                    <span class="flex items-center gap-1 !text-xs">⏰ {{
+                                                        t(`demo.infi_swap.shifts.${mission.shift}`) }}</span>
+                                                    <span class="flex items-center gap-1 !text-xs">⏱️ {{
+                                                        mission.duration
+                                                        }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="text-right">
+                                                <div class="text-lg font-bold text-violet-600">{{ mission.rate }}</div>
+                                                <div class="text-xs text-gray-500">net</div>
+                                            </div>
+                                        </div>
+
+                                        <button v-if="selectedMission === mission.id"
+                                            @click.stop="bookMission(mission.id)" :disabled="isLoading"
+                                            class="mt-3 w-full btn-violet inline-block text-center btn-effect-5 py-2 rounded-lg text-sm">
+                                            {{ isLoading ? t('demo.infi_swap.booking_processing') :
+                                                t('demo.infi_swap.book') }}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div v-if="bookingMessage" class="p-3 rounded-lg text-center"
+                                    :class="bookingMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'">
+                                    {{ bookingMessage }}
+                                </div>
+                            </div>
+
+                            <!-- Section Infirmiers disponibles -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    👩‍⚕️ {{ t('demo.infi_swap.nurses_available') }}
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">{{
+                                        nurses.filter(n => n.available).length}}/{{ nurses.length }}</span>
+                                </h4>
+
+                                <div class="space-y-3 max-h-96 overflow-y-auto">
+                                    <div v-for="nurse in nurses" :key="nurse.id" class="bg-white rounded-lg shadow p-4">
+                                        <div class="flex items-start gap-3">
+                                            <div
+                                                class="w-12 h-12 bg-gradient-to-r from-violet-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl">
+                                                {{ nurse.avatar }}
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <div class="font-semibold text-gray-800">{{ nurse.name }}</div>
+                                                        <div class="text-xs text-gray-500">{{ nurse.speciality }}</div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <div class="flex items-center gap-1">
+                                                            <span class="text-amber-500">★</span>
+                                                            <span class="text-sm font-semibold">{{ nurse.rating
+                                                            }}</span>
+                                                        </div>
+                                                        <div class="text-xs text-gray-500">{{ nurse.missions }}
+                                                            {{ t('demo.infi_swap.missions_count') }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex justify-between items-center mt-2">
+                                                    <div class="text-xs text-gray-500">
+                                                        📍 {{ t('demo.infi_swap.distance') }} {{ nurse.distance }} km
+                                                    </div>
+                                                    <span
+                                                        :class="nurse.available ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'"
+                                                        class="!text-xs px-2 py-1 rounded-full">
+                                                        {{ nurse.available ? t('demo.infi_swap.available_status') :
+                                                            t('demo.infi_swap.unavailable_status') }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Stats en temps réel -->
+                                <div class="bg-gradient-to-r from-violet-800 to-purple-800 rounded-lg shadow p-4">
+                                    <h5 class="font-semibold text-white mb-2 text-sm">📊 {{
+                                        t('demo.infi_swap.real_time_stats') }}</h5>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ infiStats.totalMissions }}
+                                            </div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.infi_swap.missions_filled')
+                                            }}</div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ infiStats.activeNurses }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.infi_swap.active_nurses') }}
+                                            </div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ infiStats.avgResponseTime }}
+                                            </div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.infi_swap.response_time') }}
+                                            </div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ infiStats.satisfaction }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.infi_swap.satisfaction') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Message automatisation -->
+                                <div class="bg-blue-50 rounded-lg p-3 text-center">
+                                    <div class="flex items-center justify-center gap-2 text-sm">
+                                        <span class="text-blue-600">🤖</span>
+                                        <span class="text-blue-800">{{ t('demo.infi_swap.automated_badge') }}</span>
+                                    </div>
+                                    <p class="text-xs text-blue-600 mt-1">{{ t('demo.infi_swap.no_intermediary') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
@@ -821,6 +985,7 @@ const demoType = computed(() => {
     if (title.includes('nurses') || title.includes('souper')) return 'nurses';
     if (title.includes('echo') || title.includes('webline')) return 'echo-webLine';
     if (title.includes('afr') || title.includes('fan')) return 'afr-fan';
+    if (title.includes('infi') || title.includes('swap')) return 'infi-swap';
     return 'generic';
 });
 
@@ -1302,6 +1467,76 @@ const processPayment = async () => {
         }, 4000);
     }, 1500);
 };
+
+
+// INFISWAP demo data
+const missionFilter = ref('all');
+const selectedMission = ref<number | null>(null);
+const bookingMessage = ref('');
+const isLoading = ref(false);
+
+// Infirmiers disponibles
+const nurses = ref([
+    { id: 1, name: t('demo.infi_swap.nurses_list.0.name'), speciality: t('demo.infi_swap.nurses_list.0.speciality'), rating: 4.9, missions: 47, available: true, distance: 2.3, avatar: '👩‍⚕️' },
+    { id: 2, name: t('demo.infi_swap.nurses_list.1.name'), speciality: t('demo.infi_swap.nurses_list.1.speciality'), rating: 4.8, missions: 112, available: true, distance: 5.1, avatar: '👨‍⚕️' },
+    { id: 3, name: t('demo.infi_swap.nurses_list.2.name'), speciality: t('demo.infi_swap.nurses_list.2.speciality'), rating: 5.0, missions: 89, available: false, distance: 1.8, avatar: '👩‍⚕️' },
+    { id: 4, name: t('demo.infi_swap.nurses_list.3.name'), speciality: t('demo.infi_swap.nurses_list.3.speciality'), rating: 4.7, missions: 63, available: true, distance: 3.5, avatar: '👨‍⚕️' }
+]);
+
+// Missions disponibles
+const missions = ref([
+    { id: 1, hospital: 'CHU Saint-Pierre', city: 'Bruxelles', shift: 'nuit', date: '2024-12-15', duration: '12h', rate: '450€', urgent: true, booked: false },
+    { id: 2, hospital: 'Clinique Saint-Luc', city: 'Bouge', shift: 'jour', date: '2024-12-16', duration: '8h', rate: '280€', urgent: false, booked: false },
+    { id: 3, hospital: 'Hôpital Érasme', city: 'Anderlecht', shift: 'soir', date: '2024-12-17', duration: '10h', rate: '350€', urgent: true, booked: false },
+    { id: 4, hospital: 'CHR Citadelle', city: 'Liège', shift: 'nuit', date: '2024-12-18', duration: '12h', rate: '460€', urgent: false, booked: false }
+]);
+
+
+const getShiftTranslation = (shiftKey: string) => {
+    return t(`infi_swap.shifts.${shiftKey}`);
+};
+
+// Statistiques pour InfiSwap
+const infiStats = ref({
+    totalMissions: 1247,
+    activeNurses: 892,
+    avgResponseTime: '2.4 min',
+    satisfaction: '98%'
+});
+
+const filteredMissions = computed(() => {
+    if (missionFilter.value === 'urgent') {
+        return missions.value.filter(m => m.urgent && !m.booked);
+    }
+    if (missionFilter.value === 'available') {
+        return missions.value.filter(m => !m.booked);
+    }
+    return missions.value.filter(m => !m.booked);
+});
+
+const selectMission = (id: number) => {
+    selectedMission.value = id;
+};
+
+const bookMission = async (missionId: number) => {
+    isLoading.value = true;
+    const mission = missions.value.find(m => m.id === missionId);
+
+    if (!mission) return;
+
+    setTimeout(() => {
+        mission.booked = true;
+        bookingMessage.value = `✓ ${t('demo.infi_swap.Mission_booked')} : ${mission.hospital} - ${mission.shift} du ${mission.date} (${mission.rate})`;
+        selectedMission.value = null;
+
+        infiStats.value.totalMissions++;
+
+        setTimeout(() => {
+            bookingMessage.value = '';
+        }, 3000);
+        isLoading.value = false;
+    }, 1000);
+};
 </script>
 
 <style scoped>
@@ -1424,6 +1659,6 @@ img {
 }
 
 span {
-     font-size: 16px;
+    font-size: 16px;
 }
 </style>

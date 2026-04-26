@@ -105,6 +105,7 @@
     "echo_webline": "echo-webLine is a web platform developed for a Paris-based client, specializing in cardiovascular imaging and scientific event management. Designed with Nuxt.js and Laravel, it offers a modern and dynamic interface allowing the presentation of medical content, congress registration management, and highlighting the activities of a professional community. The application emphasizes a fluid user experience, intuitive navigation, and visual highlighting of key information, while ensuring performance and reliability.",
     "afr_fan": "Afr-fan is a social network dedicated to the African community, built with Nuxt.js and Laravel. It offers a modern interface facilitating member interactions, interest group creation, and content sharing. The platform aims to strengthen diaspora ties while celebrating African cultural richness, and integrates online payments via VISA or PayPal for premium features.",
     "nurses": "Souper of Nurses is a Belgian restaurant that hosts major events over long periods. This website allows users to make online group reservations, contact the restaurant directly, and includes an administration panel to manage registrations, events, and VIP seating. Developed with Vue.js and Symfony, it offers a fluid user experience and efficient reservation management, while highlighting upcoming events and exclusive restaurant services.",
+    "infi_swap": "InfiSwap directly connects healthcare institutions (hospitals, retirement homes, clinics) with independent or available nurses. Thanks to an intelligent and 100% automated algorithm, the platform fills replacements and temporary assignments in minutes, without any human intermediary. It guarantees nurses better visibility on available missions, transparent compensation, and simplified schedule management. For healthcare institutions, InfiSwap reduces recruitment costs, speeds up the process, and secures assignments.",
     "toast_click": "Click on an image to enlarge it 🙂!",
     "meta_title": "Randy's Projects",
     "meta_desc": "Some projects I am particularly proud of",
@@ -322,7 +323,6 @@
       "alert_1": "✓ VAT declaration due in 12 days",
       "alert_2": "✓ 2025 Tax Reform: new deductions available",
       "alert_3": "✓ Equipment amortization to review",
-
       "toast": "Tax declaration generated - VAT due: "
     },
     "qcp": {
@@ -421,6 +421,108 @@
       },
       "reservation_success": "✓ Reservation successful"
     },
+    "infi_swap": {
+      "title": "InfiSwap - Nurse Matching Platform",
+      "missions": "Available Missions",
+      "available_count": "available",
+      "filter_all": "All",
+      "filter_urgent": "Urgent",
+      "filter_available": "Available",
+      "urgent_badge": "Urgent",
+      "book": "✅ Book this mission",
+      "booking_success": "Mission successfully booked",
+      "booking_processing": "Processing...",
+      "nurses_available": "Available Nurses",
+      "missions_count": "missions",
+      "distance": "at",
+      "available_status": "Available",
+      "unavailable_status": "Unavailable",
+      "real_time_stats": "InfiSwap Real-time Stats",
+      "missions_filled": "Missions filled",
+      "active_nurses": "Active nurses",
+      "response_time": "Response time",
+      "satisfaction": "Satisfaction",
+      "automated_badge": "100% automated - Instant matching",
+      "no_intermediary": "No intermediary • Secure payment • GDPR compliant",
+      "Mission_booked": "Mission booked",
+      "nurses_list": [
+        {
+          "name": "Sophie Dubois",
+          "speciality": "General Nurse",
+          "rating": 4.9,
+          "missions_count": 47,
+          "distance": "2.3 km",
+          "availability": "Available"
+        },
+        {
+          "name": "Thomas Laurent",
+          "speciality": "Emergency Nurse Specialist",
+          "rating": 4.8,
+          "missions_count": 112,
+          "distance": "5.1 km",
+          "availability": "Available"
+        },
+        {
+          "name": "Marie Lambert",
+          "speciality": "Pediatric Nurse",
+          "rating": 5.0,
+          "missions_count": 89,
+          "distance": "1.8 km",
+          "availability": "Unavailable"
+        },
+        {
+          "name": "David Nkosi",
+          "speciality": "Intensive Care Nurse",
+          "rating": 4.7,
+          "missions_count": 63,
+          "distance": "3.5 km",
+          "availability": "Available"
+        }
+      ],
+      "missions_list": [
+        {
+          "hospital": "CHU Saint-Pierre",
+          "city": "Brussels",
+          "shift": "Night",
+          "date": "12/15/2024",
+          "duration": "12h",
+          "rate": "450€",
+          "urgent": true
+        },
+        {
+          "hospital": "Clinique Saint-Luc",
+          "city": "Bouge",
+          "shift": "Day",
+          "date": "12/16/2024",
+          "duration": "8h",
+          "rate": "280€",
+          "urgent": false
+        },
+        {
+          "hospital": "Hôpital Érasme",
+          "city": "Anderlecht",
+          "shift": "Evening",
+          "date": "12/17/2024",
+          "duration": "10h",
+          "rate": "350€",
+          "urgent": true
+        },
+        {
+          "hospital": "CHR Citadelle",
+          "city": "Liège",
+          "shift": "Night",
+          "date": "12/18/2024",
+          "duration": "12h",
+          "rate": "460€",
+          "urgent": false
+        }
+      ],
+      "shifts": {
+        "nuit": "Night",
+        "jour": "Day",
+        "soir": "Evening"
+      }
+    },
     "echo": {
       "title": "📅 Event Management",
       "upcoming": "Upcoming Events",
@@ -491,7 +593,7 @@
       "error": "Error"
     }
   },
- "currentActivity": {
+  "currentActivity": {
     "now": "Right now",
     "activities": [
       "Randy, writing an article about Vue.js",
@@ -760,5 +862,12 @@
     "testimonials": "Testimonials",
     "webcup": "WebCup 2024",
     "github_stats": "GitHub Stats"
+  },
+  "mobile": {
+    "emoji": "📱",
+    "title": "Mobile version in development",
+    "message": "For the best experience, please view my portfolio on a computer.",
+    "recommendation_emoji": "💻",
+    "recommendation": "Desktop recommended"
   }
 }

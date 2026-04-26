@@ -1,5 +1,19 @@
 <template>
   <div class="app-container relative min-h-screen overflow-x-hidden">
+    <div v-if="isMobile"
+      class="fixed inset-0 z-[9999] bg-gradient-to-br from-blue-900 to-purple-900 flex flex-col items-center justify-center p-6 text-center">
+      <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-sm">
+        <div class="text-6xl mb-6">{{ t('mobile.emoji') }}</div>
+        <h2 class="text-2xl font-bold text-white mb-3">{{ t('mobile.title') }}</h2>
+        <p class="!text-amber-500 mb-6">
+          {{ t('mobile.message') }}
+        </p>
+        <div class="flex items-center justify-center gap-2 text-white/60 text-sm">
+          <span>{{ t('mobile.recommendation_emoji') }}</span>
+          <span>{{ t('mobile.recommendation') }}</span>
+        </div>
+      </div>
+    </div>
     <GamificationToast />
     <GamificationWidget />
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
@@ -51,6 +65,28 @@ import { analytics } from './composables/analytics';
 import { useGamification } from './composables/useGamification';
 
 const { initSession } = useGamification()
+const isMobile = ref(false);
+
+const checkMobile = () => {
+  isMobile.value = window.innerWidth < 768;
+};
+
+
+const redirectIfMobile = () => {
+  if (isMobile.value && !sessionStorage.getItem('mobile_redirected')) {
+    sessionStorage.setItem('mobile_redirected', 'true');
+  }
+};
+
+onMounted(() => {
+  checkMobile();
+  redirectIfMobile();
+  window.addEventListener('resize', checkMobile);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', checkMobile);
+});
 
 onMounted(() => {
   initSession()

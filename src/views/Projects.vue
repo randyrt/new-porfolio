@@ -3,12 +3,12 @@
     <div v-else>
         <AnimatedTitle :text="$t('projects.quote')" aos="fade-down" />
         <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
-      <p class="text-lg italic text-gray-700 dark:text-gray-300">
-        <span class="text-violet-800 text-lg">«</span>
-        {{ $t('contact.p') }}
-        <span class="text-violet-800 text-lg">»</span>
-      </p>
-    </div>
+            <p class="text-lg italic text-gray-700 dark:text-gray-300">
+                <span class="text-violet-800 text-lg">«</span>
+                {{ $t('contact.p') }}
+                <span class="text-violet-800 text-lg">»</span>
+            </p>
+        </div>
         <div class="swiper-header">
             <div class="swiper-progress" v-if="projects.length > 1">
                 <div class="progress-bar">
@@ -79,9 +79,9 @@ import { Pagination, Navigation } from 'swiper/modules'
 import ProjectGallery from '../components/ProjectGallery.vue'
 import Loading from '../components/Loading.vue'
 import AnimatedTitle from '../components/AnimatedTitle.vue'
-import { useGamification } from '../composables/useGamification' 
+import { useGamification } from '../composables/useGamification'
 
-// Import Swiper styles
+
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
@@ -90,7 +90,7 @@ const { t } = useI18n()
 const route = useRoute()
 const toast = useToast()
 
-// 👈 INITIALISATION DE LA GAMIFICATION
+
 const { trackProjectView } = useGamification()
 
 useHead({
@@ -110,10 +110,10 @@ const currentIndex = ref(0)
 const progressPercent = ref(0)
 const pendingProjectId = ref<string | null>(null)
 
-// Set pour suivre les projets déjà trackés (évite les doublons)
+
 const trackedProjects = ref<Set<string>>(new Set())
 
-// Définition des projets
+
 const projects = ref([
     {
         id: 'fid-connect',
@@ -186,6 +186,19 @@ const projects = ref([
             '/images/projects/afr/afr-3.PNG',
             '/images/projects/afr/afr-4.PNG'
         ]
+    },
+    {
+        id: 'infi-swap',
+        title: 'INFI-SWAP',
+        description: t('projects.infi_swap'),
+        images: [
+            '/images/projects/swap/swap1.png',
+            '/images/projects/swap/swap2.png',
+            '/images/projects/swap/swap3.png',
+            '/images/projects/swap/swap4.png',
+            '/images/projects/swap/swap5.png',
+            '/images/projects/swap/swap6.png',
+        ]
     }
 ])
 
@@ -200,15 +213,14 @@ function closeImage() {
 const onSwiper = (swiper: any) => {
     swiperInstance.value = swiper
     updateProgress()
-    
-    // Track le projet initial si non tracké
+
+
     const initialProject = projects.value[swiper.realIndex]
     if (initialProject && !trackedProjects.value.has(initialProject.id)) {
         trackProjectView(initialProject.id)
         trackedProjects.value.add(initialProject.id)
     }
-    
-    // Appliquer le hash en attente si présent (navigation depuis chatbot)
+
     if (pendingProjectId.value) {
         const id = pendingProjectId.value
         pendingProjectId.value = null
@@ -218,8 +230,7 @@ const onSwiper = (swiper: any) => {
 
 const onSlideChange = () => {
     updateProgress()
-    
-    // 👈 TRACK LE PROJET LORS DU CHANGEMENT DE SLIDE
+
     if (swiperInstance.value) {
         const currentProject = projects.value[swiperInstance.value.realIndex]
         if (currentProject && !trackedProjects.value.has(currentProject.id)) {
@@ -241,13 +252,13 @@ const slideNext = () => {
     }
 }
 
-// Navigation par hash
+
 const scrollToProject = (projectId: string) => {
     const index = projects.value.findIndex(p => p.id === projectId)
     if (index !== -1 && swiperInstance.value) {
         swiperInstance.value.slideTo(index)
-        
-        // 👈 TRACK LE PROJET NAVIGUÉ PAR HASH
+
+
         const project = projects.value[index]
         if (project && !trackedProjects.value.has(project.id)) {
             trackProjectView(project.id)
@@ -256,7 +267,7 @@ const scrollToProject = (projectId: string) => {
     }
 }
 
-// Mise à jour de la progression
+
 const updateProgress = () => {
     if (swiperInstance.value && projects.value.length > 0) {
         const total = projects.value.length
@@ -266,17 +277,16 @@ const updateProgress = () => {
     }
 }
 
-// Écouter les changements de route pour le hash
+
 watch(
     () => route.hash,
     (newHash) => {
         if (newHash) {
             const projectId = newHash.substring(1)
             if (swiperInstance.value) {
-                // Swiper déjà prêt : naviguer directement
+
                 scrollToProject(projectId)
             } else {
-                // Swiper pas encore prêt : stocker pour après initialisation
                 pendingProjectId.value = projectId
             }
         }
@@ -294,7 +304,6 @@ onMounted(() => {
             if (swiperInstance.value) {
                 scrollToProject(projectId)
             } else {
-                // Si Swiper n'est pas encore prêt, stocker l'id
                 pendingProjectId.value = projectId
             }
         }
@@ -403,9 +412,11 @@ onMounted(() => {
     font-size: 0.75rem;
     transition: transform 0.2s ease;
 }
+
 .custom-nav-btn:hover .btn-icon {
     transform: translateX(2px);
 }
+
 .custom-nav-prev:hover .btn-icon {
     transform: translateX(-2px);
 }
@@ -422,10 +433,11 @@ onMounted(() => {
     position: absolute;
     inset: -2px;
     border-radius: inherit;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
     pointer-events: none;
     animation: glowPulse 1.8s ease-in-out infinite;
 }
+
 .custom-nav-btn:hover .btn-glow {
     animation: none;
     opacity: 0;
@@ -433,12 +445,15 @@ onMounted(() => {
 
 /* ── Keyframes ── */
 @keyframes navBtnPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow:
             0 0 8px rgba(139, 92, 246, 0.5),
             0 4px 12px rgba(0, 0, 0, 0.2);
         filter: brightness(1);
     }
+
     50% {
         box-shadow:
             0 0 22px rgba(139, 92, 246, 0.95),
@@ -449,8 +464,15 @@ onMounted(() => {
 }
 
 @keyframes glowPulse {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .projects-swiper-container {
