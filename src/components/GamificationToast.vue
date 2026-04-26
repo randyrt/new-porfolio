@@ -1,19 +1,11 @@
 <template>
   <Teleport to="body">
-    <TransitionGroup 
-      name="toast" 
-      tag="div" 
-      class="fixed bottom-18 right-4 z-50 space-y-2"
-    >
-      <div
-        v-for="toast in toasts"
-        :key="toast.id"
+    <TransitionGroup name="toast" tag="div" class="fixed bottom-18 right-4 z-50 space-y-2">
+      <div v-for="toast in toasts" :key="toast.id"
         class="backdrop-blur-md bg-gradient-to-r from-emerald-600 to-emerald-700 border border-white/30 rounded-xl shadow-xl p-4 min-w-[320px] transform transition-all cursor-pointer hover:scale-105 hover:shadow-2xl"
-        :class="toast.type === 'level' ? 'border-purple-500/50 shadow-purple-500/20' : 
-                toast.type === 'badge' ? 'border-yellow-500/50 shadow-yellow-500/20' : 
-                'border-blue-500/50 shadow-blue-500/20'"
-        @click="removeToast(toast.id)"
-      >
+        :class="toast.type === 'level' ? 'border-purple-500/50 shadow-purple-500/20' :
+          toast.type === 'badge' ? 'border-yellow-500/50 shadow-yellow-500/20' :
+            'border-blue-500/50 shadow-blue-500/20'" @click="removeToast(toast.id)">
         <div class="flex items-center gap-3">
           <div class="text-3xl animate-bounce">
             {{ toast.icon }}
@@ -26,18 +18,17 @@
               {{ toast.message }}
             </p>
           </div>
-          <button class="text-white/60 hover:text-white transition-colors backdrop-blur-sm bg-white/10 rounded-full w-5 h-5 flex items-center justify-center hover:bg-white/20">
+          <button
+            class="text-white/60 hover:text-white transition-colors backdrop-blur-sm bg-white/10 rounded-full w-5 h-5 flex items-center justify-center hover:bg-white/20">
             ✕
           </button>
         </div>
-        
-        <!-- Barre de progression -->
+
+
         <div class="mt-2 h-0.5 bg-white/20 rounded-full overflow-hidden">
-          <div 
-            class="h-full transition-all duration-[3000ms] linear rounded-full"
+          <div class="h-full transition-all duration-[3000ms] linear rounded-full"
             :class="toast.type === 'level' ? 'bg-purple-500' : toast.type === 'badge' ? 'bg-yellow-500' : 'bg-gradient-to-r from-blue-400 to-cyan-400'"
-            :style="{ width: '100%' }"
-          ></div>
+            :style="{ width: '100%' }"></div>
         </div>
       </div>
     </TransitionGroup>
@@ -47,6 +38,9 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useGamification } from '../composables/useGamification'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 interface Toast {
   id: string
@@ -82,13 +76,13 @@ const timeoutIds = ref<number[]>([])
 const addToast = (toast: Omit<Toast, 'id'>) => {
   const id = Math.random().toString(36).substring(7)
   const newToast = { ...toast, id }
-  
+
   toasts.value.push(newToast)
-  
+
   const timeoutId = window.setTimeout(() => {
     removeToast(id)
   }, toast.duration)
-  
+
   timeoutIds.value.push(timeoutId)
 }
 
@@ -99,12 +93,12 @@ const removeToast = (id: string) => {
 // Messages avec typage correct
 const getMessageForSource = (source: XPSource, amount: number): string => {
   const messages: Record<XPSource, string> = {
-    project_view: `+${amount} XP • Nouveau projet découvert`,
-    article_read: `+${amount} XP • Article technique lu`,
-    cv_download: `+${amount} XP • CV téléchargé 🎯`,
-    session_time: `+${amount} XP • 5 minutes sur le portfolio !`
+    project_view: t('gamification.toast.project_view'),
+    article_read: t('gamification.toast.article_read'),
+    cv_download: t('gamification.toast.cv_download'),
+    session_time: t('gamification.toast.session_time')
   }
-  return messages[source]
+  return `+${amount} XP • ${messages[source]}`
 }
 
 // Event listeners typés
@@ -112,12 +106,12 @@ const handleXPGained = (event: Event) => {
   const customEvent = event as CustomEvent<XPGainedDetail>
   const { amount, source, newLevel, leveledUp } = customEvent.detail
   const gamification = useGamification()
-  
+
   if (leveledUp) {
     addToast({
       type: 'level',
-      title: `🎉 Niveau ${newLevel} atteint !`,
-      message: `Tu es maintenant un ${gamification.getLevelTitle(newLevel)}`,
+      title: `🎉 ${t('gamification.level')} ${newLevel} ${t('gamification.completed')}`,
+      message: `${t('gamification.you_are_now')} ${gamification.getLevelTitle(newLevel)}`,
       icon: '🎯',
       duration: 5000
     })
@@ -173,9 +167,12 @@ onUnmounted(() => {
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }

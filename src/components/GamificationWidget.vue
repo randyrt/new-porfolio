@@ -10,18 +10,13 @@
       </span>
     </div>
 
-    <Transition 
-      name="widget" 
-      enter-active-class="transition-all duration-300 ease-out"
-      leave-active-class="transition-all duration-200 ease-in"
-      enter-from-class="opacity-0 scale-95 -translate-y-2"
-      enter-to-class="opacity-100 scale-100 translate-y-0"
-      leave-from-class="opacity-100 scale-100 translate-y-0"
-      leave-to-class="opacity-0 scale-95 -translate-y-2"
-    >
+    <Transition name="widget" enter-active-class="transition-all duration-300 ease-out"
+      leave-active-class="transition-all duration-200 ease-in" enter-from-class="opacity-0 scale-95 -translate-y-2"
+      enter-to-class="opacity-100 scale-100 translate-y-0" leave-from-class="opacity-100 scale-100 translate-y-0"
+      leave-to-class="opacity-0 scale-95 -translate-y-2">
       <div v-if="showWidget"
         class="absolute -top-45 right-20 backdrop-blur-md bg-gradient-to-r from-emerald-600 to-emerald-700 border border-white/30 rounded-xl shadow-xl p-4 min-w-[280px]">
-        
+
         <button @click.stop="showWidget = false"
           class="absolute -top-3 -right-49 w-6 h-6 rounded  backdrop-blur-sm border border-white/50 text-white text-xs flex items-center justify-center  hover:scale-110 transition-all duration-200 shadow-lg z-10">
           ✕
@@ -33,9 +28,9 @@
               <span class="text-xl">🏆</span>
             </div>
             <div>
-              <p class="text-xs !text-white/70">Niveau {{ levelInfo.level }}</p>
+              <p class="text-xs !text-white/70">{{ t('gamification.widget.level') }} {{ levelInfo.level }}</p>
               <p class="text-xs font-bold !text-black">
-                {{ getLevelTitle(levelInfo.level) }}
+                {{ t(`gamification.widget.level_titles.${levelInfo.level}`, getLevelTitle(levelInfo.level)) }}
               </p>
             </div>
           </div>
@@ -46,7 +41,8 @@
         </div>
 
         <div class="relative h-2 bg-white/10 rounded-full overflow-hidden mb-2">
-          <div class="absolute h-full bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full transition-all duration-500"
+          <div
+            class="absolute h-full bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full transition-all duration-500"
             :style="{ width: `${levelInfo.progress}%` }">
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer">
             </div>
@@ -54,18 +50,13 @@
         </div>
 
         <p class="text-xs !text-white/70 mb-3">
-          ⚡ {{ levelInfo.xpToNextLevel }} XP avant niveau {{ levelInfo.level + 1 }}
+          ⚡ {{ levelInfo.xpToNextLevel }} {{ t('gamification.widget.xp_to_next') }} {{ levelInfo.level + 1 }}
         </p>
 
-        <Transition 
-          name="badges" 
-          enter-active-class="transition-all duration-300 ease-out"
-          leave-active-class="transition-all duration-200 ease-in"
-          enter-from-class="opacity-0 -translate-y-2"
-          enter-to-class="opacity-100 translate-y-0"
-          leave-from-class="opacity-100 translate-y-0"
-          leave-to-class="opacity-0 -translate-y-2"
-        >
+        <Transition name="badges" enter-active-class="transition-all duration-300 ease-out"
+          leave-active-class="transition-all duration-200 ease-in" enter-from-class="opacity-0 -translate-y-2"
+          enter-to-class="opacity-100 translate-y-0" leave-from-class="opacity-100 translate-y-0"
+          leave-to-class="opacity-0 -translate-y-2">
           <div v-if="badges.length > 0" class="border-t border-white/20 pt-3">
             <p class="text-xs font-semibold !text-white/80 mb-2">🎖️ Badges ({{ badges.length }})</p>
             <div class="flex flex-wrap gap-1.5">
@@ -75,7 +66,8 @@
                   {{ getBadgeIcon(badge.name) }}
                 </div>
                 <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-50">
-                  <div class="backdrop-blur-md bg-sky-900/90 px-2 py-1 rounded text-[10px] text-white whitespace-nowrap">
+                  <div
+                    class="backdrop-blur-md bg-sky-900/90 px-2 py-1 rounded text-[10px] text-white whitespace-nowrap">
                     {{ badge.name }}
                   </div>
                 </div>
@@ -94,7 +86,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useGamification } from '../composables/useGamification'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const showWidget = ref(false)
 const { levelInfo, badges, getLevelTitle } = useGamification()
 
@@ -114,6 +108,7 @@ const getBadgeIcon = (badgeName: string) => {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }

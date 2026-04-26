@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="text-sm font-bold text-violet-700 ">{{ click.clicks }} {{
                                     t('analytics.clicks')
-                                    }}</div>
+                                }}</div>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                             <div v-for="page in analyticsSummary.topPages" :key="page.page" class="relative">
                                 <div class="flex justify-between text-sm mb-1">
                                     <span class="text-gray-700 dark:text-gray-500">{{ formatPageName(page.page)
-                                    }}</span>
+                                        }}</span>
                                     <span class="text-purple-600">{{ page.views }} {{ t('analytics.views') }}</span>
                                 </div>
                                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">

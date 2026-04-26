@@ -869,5 +869,33 @@
     "message": "Pour une expérience optimale, veuillez consulter mon portfolio sur un ordinateur.",
     "recommendation_emoji": "💻",
     "recommendation": "Desktop recommandé"
+  },
+  "gamification": {
+    "widget": {
+      "level": "Niveau",
+      "xp": "XP",
+      "xp_to_next": "XP avant niveau",
+      "badges": "Badges",
+      "level_titles": {
+        "1": "Apprenti",
+        "2": "Explorateur",
+        "3": "Curieux",
+        "4": "Lecteur",
+        "5": "Développeur Frontend",
+        "6": "Développeur Fullstack",
+        "7": "Architecte",
+        "8": "Ninja du Code",
+        "9": "Légende"
+      }
+    },
+    "toast": {
+      "project_view": "Nouveau projet découvert",
+      "article_read": "Article technique lu",
+      "cv_download": "CV téléchargé 🎯",
+      "session_time": "5 minutes sur le portfolio !"
+    },
+    "level": "Niveau",
+    "completed": "Atteint",
+    "you_are_now": "Tu es maintenant un"
   }
 }
