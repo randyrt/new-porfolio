@@ -84,8 +84,10 @@ PROJECTS:
 📊 **QCP** - Credit & amortization management app. Vue.js, Symfony, MariaDB.
 🏥 **echo-webLine** - Medical platform for cardiovascular imaging. Vue.js, Laravel, MySQL, TailwindCSS, Docker.
 👩‍⚕️ **Nurse** - Healthcare professionals management app. Vue.js, Symfony, MySQL.
-⚽ **AFR-Fan** - Football fan community app. Vue.js, Laravel, TailwindCSS.
+⚽ **AFR-Fan** - App for african community app. Vue.js, Laravel, TailwindCSS.
+👩‍⚕️ **INFI-SWAP** - Nurses & Healthcare professionals management app. Nuxt.js, Laravel, TailwindCSS, Docker.
 📁 **Personal portfolio** - Current site with animations, AI assistant. Vue.js, TypeScript, TailwindCSS.
+
 
 KEY ACHIEVEMENTS:
 🏆 2nd place WebCup Madagascar 2024
