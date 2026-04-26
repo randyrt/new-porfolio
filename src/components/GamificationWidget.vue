@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed bottom-2 right-22 z-50 group">
+  <div class="fixed bottom-1 right-22 z-50 group">
     <div
       class="relative backdrop-blur-md bg-sky-500 border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
       @click="showWidget = !showWidget">
@@ -20,7 +20,7 @@
       leave-to-class="opacity-0 scale-95 -translate-y-2"
     >
       <div v-if="showWidget"
-        class="absolute -top-42 right-20 backdrop-blur-md bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-white/30 rounded-xl shadow-xl p-4 min-w-[280px]">
+        class="absolute -top-45 right-20 backdrop-blur-md bg-gradient-to-r from-emerald-600 to-emerald-700 border border-white/30 rounded-xl shadow-xl p-4 min-w-[280px]">
         
         <button @click.stop="showWidget = false"
           class="absolute -top-3 -right-49 w-6 h-6 rounded  backdrop-blur-sm border border-white/50 text-white text-xs flex items-center justify-center  hover:scale-110 transition-all duration-200 shadow-lg z-10">
@@ -33,15 +33,15 @@
               <span class="text-xl">🏆</span>
             </div>
             <div>
-              <p class="text-xs text-white/70">Niveau {{ levelInfo.level }}</p>
-              <p class="text-sm font-bold text-white">
+              <p class="text-xs !text-white/70">Niveau {{ levelInfo.level }}</p>
+              <p class="text-xs font-bold !text-black">
                 {{ getLevelTitle(levelInfo.level) }}
               </p>
             </div>
           </div>
           <div class="text-right">
-            <p class="text-xs text-white/70">XP</p>
-            <p class="text-sm font-bold text-cyan-300">{{ levelInfo.xp }} / {{ levelInfo.nextLevelXP }}</p>
+            <p class="text-xs !text-white/70">XP</p>
+            <p class="text-xs font-bold !text-cyan-300">{{ levelInfo.xp }} / {{ levelInfo.nextLevelXP }}</p>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
           </div>
         </div>
 
-        <p class="text-xs text-white/60 mb-3">
+        <p class="text-xs !text-white/70 mb-3">
           ⚡ {{ levelInfo.xpToNextLevel }} XP avant niveau {{ levelInfo.level + 1 }}
         </p>
 
@@ -67,7 +67,7 @@
           leave-to-class="opacity-0 -translate-y-2"
         >
           <div v-if="badges.length > 0" class="border-t border-white/20 pt-3">
-            <p class="text-xs font-semibold text-white/80 mb-2">🎖️ Badges ({{ badges.length }})</p>
+            <p class="text-xs font-semibold !text-white/80 mb-2">🎖️ Badges ({{ badges.length }})</p>
             <div class="flex flex-wrap gap-1.5">
               <div v-for="badge in badges.slice(0, 5)" :key="badge.id" class="group relative">
                 <div

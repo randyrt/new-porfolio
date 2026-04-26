@@ -3,12 +3,12 @@
     <TransitionGroup 
       name="toast" 
       tag="div" 
-      class="fixed bottom-4 right-4 z-50 space-y-2"
+      class="fixed bottom-18 right-4 z-50 space-y-2"
     >
       <div
         v-for="toast in toasts"
         :key="toast.id"
-        class="backdrop-blur-md bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-white/30 rounded-xl shadow-xl p-4 min-w-[320px] transform transition-all cursor-pointer hover:scale-105 hover:shadow-2xl"
+        class="backdrop-blur-md bg-gradient-to-r from-emerald-600 to-emerald-700 border border-white/30 rounded-xl shadow-xl p-4 min-w-[320px] transform transition-all cursor-pointer hover:scale-105 hover:shadow-2xl"
         :class="toast.type === 'level' ? 'border-purple-500/50 shadow-purple-500/20' : 
                 toast.type === 'badge' ? 'border-yellow-500/50 shadow-yellow-500/20' : 
                 'border-blue-500/50 shadow-blue-500/20'"

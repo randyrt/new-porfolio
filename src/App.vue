@@ -1,6 +1,6 @@
 <template>
   <div class="app-container relative min-h-screen overflow-x-hidden">
-     <GamificationToast />
+    <GamificationToast />
     <GamificationWidget />
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
 
@@ -21,7 +21,8 @@
             class="absolute text-green-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
 
 
-          <div class="absolute top-6 right-4.5 w-3 h-3 bg-green-800 rounded-full flex items-center justify-center icon-delay">
+          <div
+            class="absolute top-6 right-4.5 w-3 h-3 bg-green-800 rounded-full flex items-center justify-center icon-delay">
             <div class="w-2.5 h-0.5 bg-green-400 rotate-45 absolute"></div>
             <div class="w-2.5 h-0.5 bg-green-400 -rotate-45 absolute"></div>
             <div class="absolute w-0.5 h-1 bg-green-300 -top-0.5"></div>
@@ -35,8 +36,8 @@
         <span class="absolute inset-0 rounded-2xl animate-pulse-purple -z-10"></span>
       </router-link>
     </div>
-     <AnalyticsDashboard />
-     
+    <AnalyticsDashboard />
+
   </div>
 </template>
 
@@ -210,9 +211,9 @@ onMounted(() => {
     const target = e.target as HTMLElement;
     const clickable = target.closest('a, button, [data-track]');
     if (clickable) {
-      const element = clickable.getAttribute('data-track') || 
-                      clickable.tagName.toLowerCase() + 
-                      (clickable.textContent ? ':' + clickable.textContent.slice(0, 30) : '');
+      const element = clickable.getAttribute('data-track') ||
+        clickable.tagName.toLowerCase() +
+        (clickable.textContent ? ':' + clickable.textContent.slice(0, 30) : '');
       const section = route.path;
       analytics.trackClick(element, section);
     }
@@ -224,30 +225,30 @@ let pageEnterTime = Date.now();
 let currentPath = route.path;
 
 watch(() => route.path, (newPath, oldPath) => {
-    if (oldPath) {
-        const duration = (Date.now() - pageEnterTime) / 1000;
-        if (duration > 3) { 
-            analytics.trackSectionTime(oldPath, duration);
-        }
+  if (oldPath) {
+    const duration = (Date.now() - pageEnterTime) / 1000;
+    if (duration > 3) {
+      analytics.trackSectionTime(oldPath, duration);
     }
-    pageEnterTime = Date.now();
-    currentPath = newPath;
+  }
+  pageEnterTime = Date.now();
+  currentPath = newPath;
 });
 
 
 const saveTimeOnUnload = () => {
-    const duration = (Date.now() - pageEnterTime) / 1000;
-    if (duration > 3) {
-        analytics.trackSectionTime(currentPath, duration);
-    }
+  const duration = (Date.now() - pageEnterTime) / 1000;
+  if (duration > 3) {
+    analytics.trackSectionTime(currentPath, duration);
+  }
 };
 
 onMounted(() => {
-    window.addEventListener('beforeunload', saveTimeOnUnload);
+  window.addEventListener('beforeunload', saveTimeOnUnload);
 });
 
 onUnmounted(() => {
-    window.removeEventListener('beforeunload', saveTimeOnUnload);
+  window.removeEventListener('beforeunload', saveTimeOnUnload);
 });
 
 const navRoutes = computed(() => [
