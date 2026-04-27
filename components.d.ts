@@ -21,6 +21,7 @@ declare module 'vue' {
     LogoSection: typeof import('./src/components/logoSection.vue')['default']
     MultiWorldClock: typeof import('./src/components/MultiWorldClock.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
+    ProjectBossQuiz: typeof import('./src/components/ProjectBossQuiz.vue')['default']
     ProjectGallery: typeof import('./src/components/ProjectGallery.vue')['default']
     QRcode: typeof import('./src/components/QRcode.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

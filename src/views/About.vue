@@ -37,177 +37,151 @@
       <Teleport to="body">
         <Transition name="modal">
           <div v-if="showTechDetails"
-            class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            class="fixed inset-0 backdrop-blur-[5px] flex items-center justify-center z-50 p-4 no-invert-modal"
+            :style="{ backgroundColor: 'color-mix(in srgb, var(--app-primary, #0f172a), transparent 90%)' }"
             @click.self="showTechDetails = false">
              <div
-                class=" bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2  z-49">
-              <div class="sticky top-0 bg-white  border-b p-4 flex justify-between items-center">
-                <h3 class="text-xl font-bold flex items-center gap-2">
-                  <font-awesome-icon :icon="['fas', 'tools']" class="text-violet-600" />
-                  <span class="bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+                class="relative bg-slate-900 border border-white/10 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto custom-scrollbar p-1 z-49">
+              <div class="sticky top-0 bg-slate-900/80 backdrop-blur-md border-b border-white/10 p-6 flex justify-between items-center z-50">
+                <h3 class="text-2xl font-black flex items-center gap-3">
+                  <font-awesome-icon :icon="['fas', 'tools']" class="text-violet-500" />
+                  <span class="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent uppercase tracking-tight">
                     {{ $t('about.tech_stack') }}
                   </span>
                 </h3>
                 <button @click="showTechDetails = false"
-                  class="btn-violet btn-effect-5">
-                  {{ $t('about.close') }}
+                  class="p-2 hover:bg-white/5 rounded-full transition-colors">
+                  <font-awesome-icon :icon="['fas', 'times']" class="text-slate-400" />
                 </button>
               </div>
 
-              <div class="p-6 space-y-6">
+              <div class="p-8 space-y-8">
                 <!-- Vue.js 3 -->
-                <div class="border-l-4 border-green-500 pl-4">
-                  <h4 class="font-bold text-lg flex items-center gap-2">
-                    <font-awesome-icon :icon="['fab', 'vuejs']" class="text-green-600" />
+                <div class="bg-white/5 border border-white/5 p-6 rounded-2xl border-l-4 border-l-green-500 transition-all hover:bg-white/[0.07]">
+                  <h4 class="font-black text-xl text-white flex items-center gap-3 mb-4">
+                    <font-awesome-icon :icon="['fab', 'vuejs']" class="text-green-500" />
                     <span>Vue.js 3 - Composition API</span>
                   </h4>
-                  <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2 text-center">
-                    <span class="text-sm font-mono card rounded px-2 py-1">
-                      <font-awesome-icon :icon="['fas', 'code']" class="mr-1 text-xs" /> ref() / reactive()
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                    <span class="text-xs font-mono bg-slate-800 text-slate-300 border border-white/5 rounded-xl px-3 py-2 flex items-center justify-center gap-2">
+                      <font-awesome-icon :icon="['fas', 'code']" class="text-green-500" /> ref()
                     </span>
-                    <span class="text-sm font-mono card rounded px-2 py-1">
-                      <font-awesome-icon :icon="['fas', 'chart-line']" class="mr-1 text-xs" /> computed()
+                    <span class="text-xs font-mono bg-slate-800 text-slate-300 border border-white/5 rounded-xl px-3 py-2 flex items-center justify-center gap-2">
+                      <font-awesome-icon :icon="['fas', 'chart-line']" class="text-green-500" /> computed()
                     </span>
-                    <span class="text-sm font-mono card rounded px-2 py-1">
-                      <font-awesome-icon :icon="['fas', 'eye']" class="mr-1 text-xs" /> watch()
+                    <span class="text-xs font-mono bg-slate-800 text-slate-300 border border-white/5 rounded-xl px-3 py-2 flex items-center justify-center gap-2">
+                      <font-awesome-icon :icon="['fas', 'eye']" class="text-green-500" /> watch()
                     </span>
-                    <span class="text-sm font-mono card rounded px-2 py-1">
-                      <font-awesome-icon :icon="['fas', 'sync']" class="mr-1 text-xs" /> {{ $t('about.vue_lifecycle') }}
+                    <span class="text-xs font-mono bg-slate-800 text-slate-300 border border-white/5 rounded-xl px-3 py-2 flex items-center justify-center gap-2">
+                      <font-awesome-icon :icon="['fas', 'sync']" class="text-green-500" /> Lifecycle
                     </span>
                   </div>
-                  <p class="text-sm text-gray-600 mt-2">{{ $t('about.vue_desc') }}</p>
+                  <p class="text-sm text-slate-400 mt-4 leading-relaxed">{{ $t('about.vue_desc') }}</p>
                 </div>
 
                 <!-- TypeScript -->
-                <div class="border-l-4 border-blue-500 pl-4">
-                  <h4 class="font-bold text-lg flex items-center gap-2">
-                    <span class="text-xs text-blue-700 px-1">TS</span>
+                <div class="bg-white/5 border border-white/5 p-6 rounded-2xl border-l-4 border-l-blue-500 transition-all hover:bg-white/[0.07]">
+                  <h4 class="font-black text-xl text-white flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 rounded bg-blue-600 flex items-center justify-center text-[10px] font-bold">TS</div>
                     <span>{{ $t('about.ts_strict') }}</span>
                   </h4>
-                  <div class="bg-gray-900 text-green-400 p-3 rounded-md text-xs font-mono mt-2">
-                    <pre>type Event = {
-  id: number
+                  <div class="bg-black/40 border border-white/5 text-emerald-400 p-4 rounded-xl text-xs font-mono mt-4 overflow-x-auto shadow-inner">
+                    <pre>type Project = {
+  id: string
   title: string
-  participants: number
-  maxParticipants: number
-  status: 'ouvert' | 'complet'
+  difficulty: 'normal' | 'hard' | 'boss'
+  isConquered: boolean
 }
 
-const registerToEvent = (event: Event): boolean => { ... }</pre>
+const defeatBoss = (id: string): void => { ... }</pre>
                   </div>
-                  <p class="text-sm text-gray-600 mt-2">{{ $t('about.ts_desc') }}</p>
+                  <p class="text-sm text-slate-400 mt-4 leading-relaxed">{{ $t('about.ts_desc') }}</p>
                 </div>
 
                 <!-- Tests & Qualité -->
-                <div class="border-l-4 border-purple-500 pl-4">
-                  <h4 class="font-bold text-lg flex items-center gap-2">
-                    <font-awesome-icon :icon="['fas', 'vial']" class="text-purple-600" />
+                <div class="bg-white/5 border border-white/5 p-6 rounded-2xl border-l-4 border-l-purple-500 transition-all hover:bg-white/[0.07]">
+                  <h4 class="font-black text-xl text-white flex items-center gap-3 mb-4">
+                    <font-awesome-icon :icon="['fas', 'vial']" class="text-purple-500" />
                     <span>{{ $t('about.tests_quality') }}</span>
                   </h4>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
-                    <div class="card p-3 rounded-md flex items-start gap-2">
-                      <font-awesome-icon :icon="['fas', 'check-circle']" class="text-green-500 mt-0.5" />
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div class="bg-slate-800 border border-white/5 p-4 rounded-xl flex items-start gap-4 group hover:border-purple-500/30 transition-colors">
+                      <div class="p-2 bg-purple-500/10 rounded-lg">
+                        <font-awesome-icon :icon="['fas', 'check-circle']" class="text-purple-400" />
+                      </div>
                       <div>
-                        <span class="font-mono text-sm font-medium">Vitest</span>
-                        <p class="text-xs text-gray-600">{{ $t('about.tests_unit') }}</p>
+                        <span class="font-bold text-slate-100 block">Vitest</span>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wider mt-1">{{ $t('about.tests_unit') }}</p>
                       </div>
                     </div>
-                    <div class="card p-3 rounded-md flex items-start gap-2">
-                      <font-awesome-icon :icon="['fas', 'flask']" class="text-purple-500 mt-0.5" />
-                      <div>
-                        <span class="font-mono text-sm font-medium">Vue Test Utils</span>
-                        <p class="text-xs text-gray-600">{{ $t('about.tests_mount') }}</p>
+                    <div class="bg-slate-800 border border-white/5 p-4 rounded-xl flex items-start gap-4 group hover:border-blue-500/30 transition-colors">
+                      <div class="p-2 bg-blue-500/10 rounded-lg">
+                        <font-awesome-icon :icon="['fas', 'flask']" class="text-blue-400" />
                       </div>
-                    </div>
-                    <div class="card p-3 rounded-md flex items-start gap-2">
-                      <font-awesome-icon :icon="['fas', 'chart-pie']" class="text-blue-500 mt-0.5" />
                       <div>
-                        <span class="font-mono text-sm font-medium">Coverage</span>
-                        <p class="text-xs text-gray-600">{{ $t('about.tests_coverage') }}</p>
-                      </div>
-                    </div>
-                    <div class="card p-3 rounded-md flex items-start gap-2">
-                      <font-awesome-icon :icon="['fas', 'shield-alt']" class="text-indigo-500 mt-0.5" />
-                      <div>
-                        <span class="font-mono text-sm font-medium">vue-tsc</span>
-                        <p class="text-xs text-gray-600">{{ $t('about.tests_type') }}</p>
+                        <span class="font-bold text-slate-100 block">Vue Test Utils</span>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-wider mt-1">{{ $t('about.tests_mount') }}</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- CI/CD Pipeline -->
-                <div class="border-l-4 border-black pl-4">
-                  <h4 class="font-bold text-lg flex items-center gap-2">
-                    <font-awesome-icon :icon="['fab', 'github']" class="text-gray-700" />
+                <div class="bg-white/5 border border-white/5 p-6 rounded-2xl border-l-4 border-l-slate-400 transition-all hover:bg-white/[0.07]">
+                  <h4 class="font-black text-xl text-white flex items-center gap-3 mb-4">
+                    <font-awesome-icon :icon="['fab', 'github']" class="text-white" />
                     <span>{{ $t('about.ci_cd') }}</span>
                   </h4>
-                  <div class="bg-gray-900 text-green-400 p-3 rounded-md text-xs font-mono mt-2">
-                    <pre>name: Porfolio App
-on: [push, pull_request]
-
-jobs:
-  build:
-    steps:
-       - type-check  # Vérification TypeScript
-       - test        # Vitest (3 tests ✓)
-       - build       # Build production
-       - deploy      # Netlify auto-déploiement</pre>
+                  <div class="bg-black/40 border border-white/5 text-slate-400 p-4 rounded-xl text-xs font-mono mt-4 shadow-inner">
+                    <pre><span class="text-purple-400">jobs:</span>
+  <span class="text-blue-400">deploy:</span>
+    <span class="text-slate-500">steps:</span>
+      - type-check <span class="text-emerald-500">✓</span>
+      - unit-tests <span class="text-emerald-500">✓</span>
+      - lighthouse <span class="text-emerald-500">✓</span>
+      - netlify-push <span class="text-emerald-500">✓</span></pre>
                   </div>
-                  <div class="flex flex-wrap gap-3 mt-2">
-                    <span class="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                      Type-check ✓
-                    </span>
-                    <span class="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                      Tests ✓
-                    </span>
-                    <span class="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                      Build ✓
-                    </span>
-                    <span class="inline-flex items-center gap-1 text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                      Deploy ✓
-                    </span>
-                  </div>
-                  <p class="text-sm text-gray-600 mt-2">{{ $t('about.ci_desc') }}</p>
+                  <p class="text-sm text-slate-400 mt-4 leading-relaxed">{{ $t('about.ci_desc') }}</p>
                 </div>
 
-                <div class="relative pl-4">
-                  <div class="absolute left-0 top-0 h-full w-1 custom-multi-gradient"></div>
-                  <div class="card p-4 rounded-lg">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                      <div>
-                        <font-awesome-icon :icon="['fas', 'check-double']" class="text-violet-600 text-xl mb-1" />
-                        <div class="text-2xl font-bold text-violet-600">100%</div>
-                        <div class="text-xs text-gray-600">{{ $t('about.ts_strict') }}</div>
-                      </div>
-                      <div>
-                        <font-awesome-icon :icon="['fas', 'tachometer-alt']" class="text-violet-600 text-xl mb-1" />
-                        <div class="text-2xl font-bold text-violet-600">&lt;2s</div>
-                        <div class="text-xs text-gray-600">{{ $t('about.perf_time') }}</div>
-                      </div>
-                      <div>
-                        <font-awesome-icon :icon="['fas', 'check-circle']" class="text-violet-600 text-xl mb-1" />
-                        <div class="text-2xl font-bold text-violet-600">Push</div>
-                        <div class="text-xs text-gray-600">{{ $t('about.pipeline') }}</div>
-                      </div>
-                      <div>
-                        <font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="text-violet-600 text-xl mb-1" />
-                        <div class="text-2xl font-bold text-violet-600">Auto</div>
-                        <div class="text-xs text-gray-600">{{ $t('about.deploy') }}</div>
-                      </div>
+                <!-- Summary Stats -->
+                <div class="relative overflow-hidden p-6 rounded-2xl bg-gradient-to-br from-violet-600/10 via-slate-800 to-slate-900 border border-white/5">
+                  <div class="absolute top-0 right-0 p-8 opacity-5">
+                    <font-awesome-icon :icon="['fas', 'shield-virus']" class="text-8xl text-white" />
+                  </div>
+                  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center relative z-10">
+                    <div>
+                      <div class="text-4xl font-black text-violet-400 mb-1">100%</div>
+                      <div class="text-[10px] text-slate-500 uppercase tracking-widest">{{ $t('about.ts_strict') }}</div>
+                    </div>
+                    <div>
+                      <div class="text-4xl font-black text-blue-400 mb-1">&lt;2s</div>
+                      <div class="text-[10px] text-slate-500 uppercase tracking-widest">{{ $t('about.perf_time') }}</div>
+                    </div>
+                    <div>
+                      <div class="text-4xl font-black text-emerald-400 mb-1">Push</div>
+                      <div class="text-[10px] text-slate-500 uppercase tracking-widest">{{ $t('about.pipeline') }}</div>
+                    </div>
+                    <div>
+                      <div class="text-4xl font-black text-orange-400 mb-1">Auto</div>
+                      <div class="text-[10px] text-slate-500 uppercase tracking-widest">{{ $t('about.deploy') }}</div>
                     </div>
                   </div>
                 </div>
 
-                <div class="text-center text-sm text-gray-500 border-t pt-4">
-                  {{ $t('about.source_code') }}
-                  <a href="https://github.com/randyrt/new-porfolio" target="_blank"
-                    class="text-violet-600 hover:text-violet-400 transition-colors">{{ $t('about.view_github') }}</a>
-                  <span class="text-violet-700"> | </span>
-                  {{ $t('about.web_quality') }} <a
-                    href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/sc142ifq6r?form_factor=desktop"
-                    target="_blank" class="text-violet-600 hover:text-violet-400 transition-colors">{{
-                      $t('about.view_pagespeed') }}</a>
+                <div class="text-center text-xs text-slate-500 border-t border-white/5 pt-8 space-y-2">
+                  <p>{{ $t('about.source_code') }}</p>
+                  <div class="flex items-center justify-center gap-4">
+                    <a href="https://github.com/randyrt/new-porfolio" target="_blank"
+                      class="text-violet-400 hover:text-violet-300 transition-colors flex items-center gap-2">
+                      <font-awesome-icon :icon="['fab', 'github']" /> GitHub
+                    </a>
+                    <span class="text-white/10">|</span>
+                    <a href="https://pagespeed.web.dev/analysis/https-realporfolio-netlify-app/sc142ifq6r?form_factor=desktop"
+                      target="_blank" class="text-orange-400 hover:text-orange-300 transition-colors flex items-center gap-2">
+                      <font-awesome-icon :icon="['fas', 'tachometer-alt']" /> PageSpeed
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

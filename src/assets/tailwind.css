@@ -72,13 +72,14 @@ small,
   filter: invert(1) hue-rotate(180deg) !important;
 }
 
-.inverted img,
-.inverted video,
-.inverted svg,
-.inverted .chatbot-card,
-.inverted .github-stats,
-.inverted .git-time-machine,
-.inverted .custom-scrollbar {
+.inverted img:not(.no-invert-modal *),
+.inverted video:not(.no-invert-modal *),
+.inverted svg:not(.no-invert-modal *),
+.inverted .chatbot-card:not(.no-invert-modal *),
+.inverted .github-stats:not(.no-invert-modal *),
+.inverted .git-time-machine:not(.no-invert-modal *),
+.inverted .custom-scrollbar:not(.no-invert-modal *),
+.inverted .no-invert-modal {
   filter: invert(1) hue-rotate(180deg) !important;
 }
 

@@ -110,7 +110,25 @@
     "toast_click": "Click on an image to enlarge it 🙂!",
     "meta_title": "Randy's Projects",
     "meta_desc": "Some projects I am particularly proud of",
-    "close_image": "Close"
+    "close_image": "Close",
+    "fight_boss": "Fight Boss ⚔️",
+    "boss_defeated": "Boss Defeated 🏆",
+    "click_to_zoom_hint": "ESC or Click outside to close",
+    "mission_progress": "Project Journey"
+  },
+  "quiz": {
+    "danger_level": "Danger Level: High",
+    "tech_trial": "The Developer's Trial",
+    "boss_hp": "BOSS HP",
+    "tech_question": "Technical Question",
+    "correct": "Correct! You weaken the Boss!",
+    "wrong": "Ouch! Wrong answer. The Boss counters!",
+    "boss_slain": "THE BOSS IS DEFEATED!",
+    "victory": "VICTORY!",
+    "boss_defeated_desc": "You have mastered the technologies of {project}. This project is officially conquered!",
+    "reward": "REWARD",
+    "collect_rewards": "Collect Loot & XP",
+    "boss_already_slain": "This Boss has already been defeated."
   },
   "quality": {
     "loading": "My qualities...",

@@ -11,7 +11,8 @@ export function useGamification() {
     badges,
     levelInfo,
     progressToNextLevel,
-    recentTransactions
+    recentTransactions,
+    defeatedBosses
   } = storeToRefs(store)
   
   return {
@@ -22,12 +23,14 @@ export function useGamification() {
     levelInfo,
     progress: progressToNextLevel,
     recentTransactions,
+    defeatedBosses,
     
     trackProjectView: (projectId: string) => store.trackProjectView(projectId),
     trackArticleRead: (articleId: string) => store.trackArticleRead(articleId),
     trackCVDownload: () => store.trackCVDownload(),
     trackChatbotInteraction: () => store.trackChatbotInteraction(),
     trackContactForm: () => store.trackContactForm(),
+    defeatBoss: (projectId: string) => store.defeatBoss(projectId),
     initSession: () => store.initSession(),
     
     getLevelTitle: (level: number) => {

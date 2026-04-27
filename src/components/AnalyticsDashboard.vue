@@ -6,136 +6,140 @@
         </button>
 
         <div v-if="showDashboard"
-            class="fixed inset-0 bg-black/50 backdrop-blur-sm  flex items-center justify-center p-4"
+            class="fixed inset-0 backdrop-blur-[5px] flex items-center justify-center p-4 z-[100] no-invert-modal"
+            :style="{ backgroundColor: 'color-mix(in srgb, var(--app-primary, #0f172a), transparent 90%)' }"
             @click.self="showDashboard = false">
 
             <div
-                class=" bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[80vh] h-80vh overflow-y-auto detail-container px-2">
+                class="relative bg-slate-900 border border-white/10 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto custom-scrollbar p-1">
                 <div
-                    class="sticky top-0  bg-white border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center z-100">
-                    <div class="flex justify-between space-x-8">
+                    class="sticky top-0 bg-slate-900/80 backdrop-blur-md border-b border-white/10 p-6 flex justify-between items-center z-50">
+                    <div class="flex items-center gap-6">
                         <div>
-                            <h2 class="text-xl font-bold text-purple-700">
+                            <h2 class="text-2xl font-black text-white uppercase tracking-tight">
                                 {{ t('analytics.dashboard') }}
                             </h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">
+                            <p class="text-xs text-slate-400 font-mono mt-1">
                                 {{ t('analytics.description') }}
                             </p>
                         </div>
 
                         <button @click="toggleIncognito" :class="[
-                            'px-3 py-1 rounded-lg transition-all duration-300',
+                            'px-4 py-1.5 rounded-xl font-bold text-xs transition-all duration-300 border',
                             analytics.isIncognito.value
-                                ? 'bg-emerald-600 text-white hover:bg-emerald-700'
-                                : 'bg-gray-200 dark:bg-emerald-700 text-gray-700 dark:text-emerald-300 hover:bg-gray-300 dark:hover:bg-emerald-600'
+                                ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20'
+                                : 'bg-slate-800 text-slate-400 border-white/5 hover:bg-slate-700'
                         ]"
                             :title="analytics.isIncognito.value ? t('analytics.disable_incognito') : t('analytics.activate_incognito')">
-                            <font-awesome-icon :icon="analytics.isIncognito.value ? 'eye-slash' : 'eye'" />
+                            <font-awesome-icon :icon="analytics.isIncognito.value ? 'eye-slash' : 'eye'" class="mr-2" />
                             {{ analytics.isIncognito.value ? t('analytics.incognito') : t('analytics.visible') }}
                         </button>
                     </div>
                     <div class="flex gap-2">
-                        <button @click="showDashboard = false" class="btn-violet btn-effect-5">
-                            {{ t('projects.close_image') }}
+                        <button @click="showDashboard = false" class="p-2 hover:bg-white/5 rounded-full transition-colors">
+                            <font-awesome-icon icon="fa-solid fa-times" class="text-slate-400" />
                         </button>
                     </div>
                 </div>
 
-                <div class="p-6 space-y-6 z-49">
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                        <div
-                            class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl p-4">
-                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('analytics.pages_viewed') }}
-                            </div>
-                            <div class="text-2xl font-bold text-blue-600">{{ analyticsSummary.totalPageViews }}</div>
+                <div class="p-8 space-y-8">
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 transition-all hover:border-blue-500/30 group">
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">{{ t('analytics.pages_viewed') }}</div>
+                            <div class="text-3xl font-black text-blue-400 group-hover:scale-110 transition-transform origin-left">{{ analyticsSummary.totalPageViews }}</div>
                         </div>
 
-                        <div
-                            class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-4">
-                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('analytics.total_clicks') }}
-                            </div>
-                            <div class="text-2xl font-bold text-green-600">{{ analyticsSummary.totalClicks }}</div>
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 transition-all hover:border-emerald-500/30 group">
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">{{ t('analytics.total_clicks') }}</div>
+                            <div class="text-3xl font-black text-emerald-400 group-hover:scale-110 transition-transform origin-left">{{ analyticsSummary.totalClicks }}</div>
                         </div>
 
-                        <div
-                            class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-4">
-                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('analytics.avg_session') }}</div>
-                            <div class="text-2xl font-bold text-purple-600">{{
-                                formatDuration(analyticsSummary.averageSessionDuration) }}</div>
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 transition-all hover:border-purple-500/30 group">
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">{{ t('analytics.avg_session') }}</div>
+                            <div class="text-3xl font-black text-purple-400 group-hover:scale-110 transition-transform origin-left">{{ formatDuration(analyticsSummary.averageSessionDuration) }}</div>
                         </div>
 
-                        <div
-                            class="bg-gradient-to-br from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 rounded-xl p-4">
-                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('analytics.engagement_score') }}
-                            </div>
-                            <div class="text-2xl font-bold text-orange-600">{{ analyticsSummary.engagementScore }}<span
-                                    class="text-sm">/100</span></div>
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6 transition-all hover:border-orange-500/30 group">
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-1">{{ t('analytics.engagement_score') }}</div>
+                            <div class="text-3xl font-black text-orange-400 group-hover:scale-110 transition-transform origin-left">{{ analyticsSummary.engagementScore }}<span class="text-sm">/100</span></div>
                         </div>
                     </div>
 
-                    <div v-if="analyticsSummary.mostViewedProject" class="rounded-xl p-4">
-                        <div class="flex items-center gap-3">
-                            <font-awesome-icon icon="trophy" class="text-3xl text-yellow-600" />
+                    <!-- Trophy Section -->
+                    <div v-if="analyticsSummary.mostViewedProject" class="bg-gradient-to-r from-amber-500/10 to-transparent border border-amber-500/20 rounded-2xl p-6">
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-xl bg-amber-500/20 flex items-center justify-center border border-amber-500/30">
+                                <font-awesome-icon icon="trophy" class="text-3xl text-amber-500" />
+                            </div>
                             <div>
-                                <div class="text-sm text-gray-600 dark:text-gray-400">{{ t('analytics.star_project') }}
-                                </div>
-                                <div class="text-xl font-bold">{{
-                                    analyticsSummary.mostViewedProject.name.replace('/projects/', '') }}</div>
-                                <div class="text-sm text-gray-500">{{ analyticsSummary.mostViewedProject.views }}
-                                    {{ t('analytics.consultations') }}</div>
+                                <div class="text-[10px] text-amber-500/60 uppercase tracking-widest mb-1">{{ t('analytics.star_project') }}</div>
+                                <div class="text-2xl font-black text-white leading-tight">{{ analyticsSummary.mostViewedProject.name.replace('/projects/', '').toUpperCase() }}</div>
+                                <div class="text-sm text-slate-400 mt-1">{{ analyticsSummary.mostViewedProject.views }} {{ t('analytics.consultations') }}</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="rounded-xl p-4">
-                        <h3 class="font-semibold mb-3">{{ t('analytics.top_clicks_title') }}</h3>
-                        <div class="space-y-3">
-                            <div v-for="click in analyticsSummary.topClicks" :key="click.element"
-                                class="flex items-center justify-between p-2 bg-white dark:bg-gray-100 rounded-lg">
-                                <div>
-                                    <div class="font-medium">{{ click.element.split(':')[1] || click.element }}</div>
-                                    <div class="text-xs text-gray-500">{{ t('analytics.section') }}: {{
-                                        click.element.split(':')[0] }}</div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Top Clicks -->
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6">
+                            <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
+                                <font-awesome-icon icon="mouse-pointer" class="text-violet-400" />
+                                {{ t('analytics.top_clicks_title') }}
+                            </h3>
+                            <div class="space-y-4">
+                                <div v-for="click in analyticsSummary.topClicks" :key="click.element"
+                                    class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-white/10 transition-colors">
+                                    <div>
+                                        <div class="font-bold text-slate-100">{{ click.element.split(':')[1] || click.element }}</div>
+                                        <div class="text-[10px] text-slate-500 uppercase mt-1">{{ t('analytics.section') }}: {{ click.element.split(':')[0] }}</div>
+                                    </div>
+                                    <div class="px-4 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 font-black text-lg">
+                                        {{ click.clicks }}
+                                    </div>
                                 </div>
-                                <div class="text-sm font-bold text-violet-700 ">{{ click.clicks }} {{
-                                    t('analytics.clicks')
-                                }}</div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="rounded-xl p-4">
-                        <h3 class="font-semibold mb-3">{{ t('analytics.time_spent_title') }}</h3>
-                        <div class="space-y-2">
-                            <div v-if="timeSpentEntries.length === 0" class="text-center text-gray-500 py-4">
-                                {{ t('analytics.time_spent_title_v_if') }}
-                            </div>
-                            <div v-for="[section, time] in timeSpentEntries" :key="section" class="relative">
-                                <div class="flex justify-between text-sm mb-1">
-                                    <span class="text-gray-700 dark:text-gray-500">{{ formatPageName(section) }}</span>
-                                    <span class="text-purple-600">{{ formatDuration(time) }}</span>
+                        <!-- Time Spent -->
+                        <div class="bg-white/5 border border-white/5 rounded-2xl p-6">
+                            <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
+                                <font-awesome-icon icon="clock" class="text-blue-400" />
+                                {{ t('analytics.time_spent_title') }}
+                            </h3>
+                            <div class="space-y-6">
+                                <div v-if="timeSpentEntries.length === 0" class="text-center text-slate-500 py-8 italic">
+                                    {{ t('analytics.time_spent_title_v_if') }}
                                 </div>
-                                <div class="w-full bg-gray-600 dark:bg-gray-700 rounded-full h-2">
-                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
-                                        :style="{ width: `${(time / getMaxTime()) * 100}%` }">
+                                <div v-for="[section, time] in timeSpentEntries" :key="section" class="space-y-2">
+                                    <div class="flex justify-between text-xs font-bold uppercase tracking-tight">
+                                        <span class="text-slate-400">{{ formatPageName(section) }}</span>
+                                        <span class="text-blue-400 font-mono">{{ formatDuration(time) }}</span>
+                                    </div>
+                                    <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-white/5">
+                                        <div class="h-full bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full transition-all duration-1000"
+                                            :style="{ width: `${(time / getMaxTime()) * 100}%` }">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-
-                    <div class=" rounded-xl p-4">
-                        <h3 class="font-semibold mb-3">{{ t('analytics.heatmap_title') }}</h3>
-                        <div class="space-y-2 ">
-                            <div v-for="page in analyticsSummary.topPages" :key="page.page" class="relative">
-                                <div class="flex justify-between text-sm mb-1">
-                                    <span class="text-gray-700 dark:text-gray-500">{{ formatPageName(page.page)
-                                        }}</span>
-                                    <span class="text-purple-600">{{ page.views }} {{ t('analytics.views') }}</span>
+                    <!-- Heatmap / Views -->
+                    <div class="bg-white/5 border border-white/5 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
+                            <font-awesome-icon icon="fire" class="text-orange-400" />
+                            {{ t('analytics.heatmap_title') }}
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div v-for="page in analyticsSummary.topPages" :key="page.page" class="space-y-2">
+                                <div class="flex justify-between text-xs font-bold uppercase tracking-tight">
+                                    <span class="text-slate-400">{{ formatPageName(page.page) }}</span>
+                                    <span class="text-orange-400 font-mono">{{ page.views }} {{ t('analytics.views') }}</span>
                                 </div>
-                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
-                                    <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
+                                <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden p-0.5 border border-white/5">
+                                    <div class="h-full bg-gradient-to-r from-orange-600 to-rose-400 rounded-full transition-all duration-1000"
                                         :style="{ width: `${(page.views / analyticsSummary.totalPageViews) * 100}%` }">
                                     </div>
                                 </div>
@@ -143,20 +147,22 @@
                         </div>
                     </div>
 
-                    <div class="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <!-- Footer Actions -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-8 border-t border-white/10">
                         <button @click="exportData"
-                            class="flex-1 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
-                            <font-awesome-icon icon="download" class="text-sm" />
+                            class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-blue-600/20 flex items-center justify-center gap-3 active:scale-95">
+                            <font-awesome-icon icon="download" />
                             {{ t('analytics.export_data') }}
                         </button>
                         <button @click="resetData"
-                            class="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 rounded-lg transition-colors flex items-center justify-center gap-2">
-                            <font-awesome-icon icon="trash-alt" class="text-sm" />
+                            class="flex-1 bg-red-600/10 hover:bg-red-600/20 text-red-500 border border-red-500/20 font-bold py-4 rounded-xl transition-all flex items-center justify-center gap-3 active:scale-95">
+                            <font-awesome-icon icon="trash-alt" />
                             {{ t('analytics.reset_data') }}
                         </button>
                     </div>
 
-                    <div class="text-xs text-center text-gray-500 flex items-center justify-center gap-1 mt-4">
+                    <div class="text-[10px] text-center text-slate-600 flex items-center justify-center gap-1">
+                        <font-awesome-icon icon="shield-alt" class="text-xs" />
                         {{ t('analytics.privacy_note') }}
                     </div>
                 </div>

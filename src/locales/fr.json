@@ -110,7 +110,25 @@
     "p_italics": "Pour illustrer concrètement cette approche, voici quelques projets parmi ceux que j'ai accompagnés. Ils vous montreront comment le dialogue et l'adaptation au contexte priment sur la simple technologie.",
     "meta_title": "Projets de Randy",
     "meta_desc": "Quelques projets dont je suis particulièrement fier ",
-    "close_image": "Fermer"
+    "close_image": "Fermer",
+    "fight_boss": "Affronter le Boss ⚔️",
+    "boss_defeated": "Boss Vaincu 🏆",
+    "click_to_zoom_hint": "ESC ou cliquez à l'extérieur pour fermer",
+    "mission_progress": "Progression de la Mission"
+  },
+  "quiz": {
+    "danger_level": "Niveau de danger : Élevé",
+    "tech_trial": "L’Épreuve du Développeur",
+    "boss_hp": "BOSS HP",
+    "tech_question": "Question Technique",
+    "correct": "C'est juste ! Vous affaiblissez le Boss !",
+    "wrong": "Ouch ! Mauvaise réponse. Le Boss contre-attaque !",
+    "boss_slain": "LE BOSS EST VAINCU !",
+    "victory": "VICTOIRE !",
+    "boss_defeated_desc": "Vous avez maîtrisé les technologies de {project}. Ce projet est officiellement conquis !",
+    "reward": "RÉCOMPENSE",
+    "collect_rewards": "Récupérer le butin & XP",
+    "boss_already_slain": "Ce Boss a déjà été vaincu."
   },
   "quality": {
     "loading": "Mes qualités...",

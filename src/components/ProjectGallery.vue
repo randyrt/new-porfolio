@@ -20,11 +20,31 @@
                     <div class="w-20 h-0.5 bg-violet-300 mx-auto"></div>
                     <span class="text-sm font-bold">{{ description }}</span>
                 </div>
-                <div class="demo-header mx-auto px-4 py-2 mt-2">
-                    <h3 class="text-xl font-semibold text-gray-600"></h3>
-                    <button @click.stop="toggleDemo" class="btn-effect-5">
-                        {{ showDemo ? t('demo.hide') : t('demo.show') }}
-                        <span class="ml-1">{{ showDemo ? '▲' : '▼' }}</span>
+                <div class="demo-header mx-auto px-4 py-2 mt-2 flex flex-col gap-2 w-full">
+                    <!-- Bouton Combat (Priorité RPG) -->
+                    <button 
+                        @click.stop="$emit('fight-boss')" 
+                        class="group relative overflow-hidden px-6 py-2 rounded-xl font-black text-xs transition-all duration-300 w-full uppercase tracking-widest border border-white/20 flex items-center justify-center gap-2"
+                        :class="isDefeated 
+                            ? 'bg-gradient-to-r from-emerald-900/40 to-teal-900/40 text-emerald-400 border-emerald-500/20 cursor-default shadow-inner' 
+                            : 'bg-gradient-to-r from-rose-600 to-red-600 text-white shadow-lg shadow-red-600/30 hover:shadow-red-500/50 hover:scale-105 active:scale-95'"
+                        :disabled="isDefeated"
+                    >
+                        <span v-if="!isDefeated" class="flex items-center justify-center gap-2">
+                            <font-awesome-icon icon="fa-solid fa-skull" class="group-hover:animate-bounce" />
+                            {{ $t('projects.fight_boss') }}
+                        </span>
+                        <span v-else class="flex items-center justify-center gap-2 italic">
+                            <font-awesome-icon icon="fa-solid fa-trophy" class="text-amber-400" />
+                            {{ $t('projects.boss_defeated') }}
+                        </span>
+                    </button>
+
+                    <!-- Bouton Démo -->
+                    <button @click.stop="toggleDemo" 
+                        class="group relative overflow-hidden px-6 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-black rounded-xl shadow-lg hover:shadow-violet-500/50 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 uppercase text-xs tracking-widest border border-white/20 w-full">
+                        <font-awesome-icon :icon="showDemo ? ['fas', 'eye-slash'] : ['fas', 'rocket']" :class="{'animate-pulse': !showDemo}" />
+                        <span>{{ showDemo ? t('demo.hide') : t('demo.show') }}</span>
                     </button>
                 </div>
             </div>
@@ -960,14 +980,16 @@ import { useToast } from 'vue-toastification';
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
-    id?: string,
+    id: string,
     images: string[],
     title: string,
-    description: string
+    description: string,
+    isDefeated?: boolean
 }>();
 
 const emit = defineEmits<{
-    (e: 'open-image', img: string): void
+    (e: 'open-image', img: string): void,
+    (e: 'fight-boss'): void
 }>();
 
 const toast = useToast();

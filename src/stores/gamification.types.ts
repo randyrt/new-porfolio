@@ -41,6 +41,7 @@ export const useGamificationStore = defineStore('gamification', {
     badges: [],
     viewedProjects: new Set<string>(),
     readArticles: new Set<string>(),
+    defeatedBosses: new Set<string>(),
     cvDownloaded: false,
     chatbotInteractions: 0,
     contactSubmitted: false,
@@ -102,6 +103,7 @@ export const useGamificationStore = defineStore('gamification', {
           this.badges = data.badges ?? []
           this.viewedProjects = new Set(data.viewedProjects ?? [])
           this.readArticles = new Set(data.readArticles ?? [])
+          this.defeatedBosses = new Set(data.defeatedBosses ?? [])
           this.cvDownloaded = data.cvDownloaded ?? false
           this.chatbotInteractions = data.chatbotInteractions ?? 0
           this.contactSubmitted = data.contactSubmitted ?? false
@@ -259,6 +261,32 @@ export const useGamificationStore = defineStore('gamification', {
       }
     },
 
+    defeatBoss(projectId: string): boolean {
+      if (!this.defeatedBosses.has(projectId)) {
+        this.defeatedBosses.add(projectId)
+        this.addXP(200, 'boss_defeated', { projectId })
+        
+        if (this.defeatedBosses.size === 1) {
+          this.addBadge({
+            id: 'first_boss',
+            name: '🗡️ Premier Boss Vaincu',
+            description: 'Premier projet conquis via le quiz technique'
+          })
+        }
+        
+        if (this.defeatedBosses.size === 5) {
+          this.addBadge({
+            id: 'boss_slayer',
+            name: '⚔️ Pourfendeur de Boss',
+            description: '5 boss techniques vaincus'
+          })
+        }
+        
+        return true
+      }
+      return false
+    },
+
     saveToLocalStorage(): void {
       localStorage.setItem('gamification_v2', JSON.stringify({
         currentLevel: this.currentLevel,
@@ -266,6 +294,7 @@ export const useGamificationStore = defineStore('gamification', {
         badges: this.badges,
         viewedProjects: Array.from(this.viewedProjects),
         readArticles: Array.from(this.readArticles),
+        defeatedBosses: Array.from(this.defeatedBosses),
         cvDownloaded: this.cvDownloaded,
         chatbotInteractions: this.chatbotInteractions,
         contactSubmitted: this.contactSubmitted,
@@ -279,6 +308,7 @@ export const useGamificationStore = defineStore('gamification', {
       this.badges = []
       this.viewedProjects.clear()
       this.readArticles.clear()
+      this.defeatedBosses.clear()
       this.cvDownloaded = false
       this.timeBonusGiven = false
       this.xpHistory = []
