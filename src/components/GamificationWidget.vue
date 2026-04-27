@@ -65,12 +65,12 @@
                   class="w-7 h-7 bg-white/10 rounded-full flex items-center justify-center text-xs border border-white/20 hover:border-white/50 transition-all cursor-help">
                   {{ getBadgeIcon(badge.name) }}
                 </div>
-                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-50">
+                <!-- <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-50">
                   <div
                     class="backdrop-blur-md bg-sky-900/90 px-2 py-1 rounded text-[10px] text-white whitespace-nowrap">
-                    {{ badge.name }}
+                    {{ t(`gamification.badges.${badge.id}.name`, badge.name) }}
                   </div>
-                </div>
+                </div> -->
               </div>
               <div v-if="badges.length > 5" class="text-xs text-white/50 flex items-center">
                 +{{ badges.length - 5 }}

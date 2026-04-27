@@ -52,7 +52,7 @@ interface Toast {
 }
 
 // Définir le type des sources XP possibles
-type XPSource = 'project_view' | 'article_read' | 'cv_download' | 'session_time'
+type XPSource = 'project_view' | 'article_read' | 'cv_download' | 'session_time' | 'chatbot_interaction' | 'contact_form'
 
 interface XPGainedDetail {
   amount: number
@@ -96,7 +96,9 @@ const getMessageForSource = (source: XPSource, amount: number): string => {
     project_view: t('gamification.toast.project_view'),
     article_read: t('gamification.toast.article_read'),
     cv_download: t('gamification.toast.cv_download'),
-    session_time: t('gamification.toast.session_time')
+    session_time: t('gamification.toast.session_time'),
+    chatbot_interaction: t('gamification.toast.chatbot_interaction'),
+    contact_form: t('gamification.toast.contact_form')
   }
   return `+${amount} XP • ${messages[source]}`
 }
@@ -129,10 +131,15 @@ const handleXPGained = (event: Event) => {
 const handleBadgeEarned = (event: Event) => {
   const customEvent = event as CustomEvent<BadgeDetail>
   const badge = customEvent.detail
+  
+  // Use translations if available, otherwise fallback to badge object properties
+  const badgeName = t(`gamification.badges.${badge.id}.name`, badge.name)
+  const badgeDesc = t(`gamification.badges.${badge.id}.description`, badge.description)
+
   addToast({
     type: 'badge',
-    title: `🏆 Badge débloqué !`,
-    message: `${badge.name} - ${badge.description}`,
+    title: badgeName,
+    message: badgeDesc,
     icon: badge.icon || '🏅',
     duration: 4000
   })

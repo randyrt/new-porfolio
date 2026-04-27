@@ -890,10 +890,51 @@
       }
     },
     "toast": {
+      "badge_unlocked": "🏆 Badge débloqué !",
       "project_view": "Nouveau projet découvert",
       "article_read": "Article technique lu",
       "cv_download": "CV téléchargé 🎯",
-      "session_time": "5 minutes sur le portfolio !"
+      "session_time": "5 minutes sur le portfolio !",
+      "chatbot_interaction": "Discussion avec l'IA (+20 XP)",
+      "contact_form": "Formulaire de contact envoyé (+100 XP)"
+    },
+    "badges": {
+      "cv_hunter": {
+        "name": "📄 Chasseur de CV",
+        "description": "CV téléchargé"
+      },
+      "social_talker": {
+        "name": "💬 Bavard",
+        "description": "10 messages échangés avec l'IA"
+      },
+      "communicator": {
+        "name": "✉️ Communicateur",
+        "description": "Message envoyé via le formulaire de contact"
+      },
+      "curious_visitor": {
+        "name": "👀 Visiteur Curieux",
+        "description": "Niveau 2 atteint"
+      },
+      "frontend_expert": {
+        "name": "⚛️ Expert Frontend",
+        "description": "Niveau 3 - Expert Frontend"
+      },
+      "fullstack_master": {
+        "name": "🚀 Master Fullstack",
+        "description": "Niveau 5 - Maîtrise complète"
+      },
+      "architecture_guru": {
+        "name": "🏗️ Guru Architecture",
+        "description": "Niveau 10 - Légende du développement"
+      },
+      "project_explorer": {
+        "name": "🗺️ Explorateur de Projets",
+        "description": "5 projets consultés"
+      },
+      "tech_reader": {
+        "name": "📚 Lecteur Assidu",
+        "description": "3 articles techniques lus"
+      }
     },
     "level": "Niveau",
     "completed": "Atteint",
