@@ -14,22 +14,25 @@
                 <div class="flex items-center justify-between mb-2">
                     <div class="flex items-center gap-2">
                         <font-awesome-icon :icon="['fas', 'scroll']" class="text-violet-500 text-xs" />
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{{ $t('projects.mission_progress') || 'Mission Progress' }}</span>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">{{
+                            $t('projects.mission_progress') || 'Mission Progress' }}</span>
                     </div>
-                    <div class="swiper-counter-pill bg-slate-900 border border-white/10 px-3 py-1 rounded-full flex items-center gap-2 shadow-xl">
+                    <div
+                        class="swiper-counter-pill bg-slate-900 border border-white/10 px-3 py-1 rounded-full flex items-center gap-2 shadow-xl">
                         <span class="text-violet-400 font-black text-xs font-mono">{{ currentIndex + 1 }}</span>
                         <span class="text-slate-600 text-[10px] font-bold">/</span>
                         <span class="text-slate-400 font-bold text-xs font-mono">{{ projects.length }}</span>
                     </div>
                 </div>
-                <div class="progress-track bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden relative border border-white/5 shadow-inner">
+                <div
+                    class="progress-track bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden relative border border-white/5 shadow-inner">
                     <div class="progress-fill h-full bg-gradient-to-r from-violet-600 via-fuchsia-500 to-indigo-600 rounded-full transition-all duration-500 ease-out relative"
                         :style="{ width: `${progressPercent}%` }">
                         <div class="absolute top-0 right-0 h-full w-8 bg-white/30 blur-sm animate-pulse"></div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="custom-nav-buttons ml-6" v-if="projects.length > 1">
                 <button class="custom-nav-btn custom-nav-prev" @click="slidePrev" :aria-label="t('nav.prev')">
                     <span class="btn-glow"></span>
@@ -50,47 +53,39 @@
                 }" :autoplay="false" class="projects-swiper" @swiper="onSwiper" @slide-change="onSlideChange">
                 <SwiperSlide v-for="(project, index) in projects" :key="index">
                     <div class="project-slide" :id="project.id">
-                        <ProjectGallery 
-                            :id="project.id" 
-                            :images="project.images" 
-                            :title="project.title"
-                            :description="project.description" 
-                            :is-defeated="defeatedBosses.has(project.id)"
-                            @open-image="openImage"
-                            @fight-boss="startBossFight(project)"
-                        />
+                        <ProjectGallery :id="project.id" :images="project.images" :title="project.title"
+                            :description="project.description" :is-defeated="defeatedBosses.has(project.id)"
+                            @open-image="openImage" @fight-boss="startBossFight(project)" />
                     </div>
                 </SwiperSlide>
             </Swiper>
         </div>
 
-        <transition 
-            enter-active-class="transition duration-300 ease-out" 
-            enter-from-class="opacity-0 scale-95"
-            enter-to-class="opacity-100 scale-100" 
-            leave-active-class="transition duration-200 ease-in"
-            leave-from-class="opacity-100 scale-100" 
-            leave-to-class="opacity-0 scale-95">
+        <transition enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 scale-95"
+            enter-to-class="opacity-100 scale-100" leave-active-class="transition duration-200 ease-in"
+            leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
             <div v-if="selectedImage"
-                class="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-[5px] no-invert-modal"
+                class="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-[2px] no-invert-modal"
                 :style="{ backgroundColor: 'color-mix(in srgb, var(--app-primary, #0f172a), transparent 90%)' }"
                 @click.self="closeImage">
-                <div class="relative max-w-[90vw] max-h-[90vh] group">
+                <div class="relative max-w-[65vw] max-h-[90vh] group">
                     <button @click="closeImage"
                         class="absolute -top-4 left-1/2 -translate-x-1/2 p-2 bg-red-500 text-white rounded-full shadow-lg hover:bg-red-400 transition-all hover:scale-110 z-20 active:scale-95">
                         <font-awesome-icon :icon="['fas', 'times']" class="w-4 h-4" />
                     </button>
-                    
-                    <div class="relative bg-slate-900 p-2 rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
-                      <img :src="selectedImage" alt="Project Preview"
-                          class="max-h-[80vh] w-auto rounded-xl shadow-inner object-contain" />
-                      
-                      <!-- Ambient Glow -->
-                      <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/40 to-transparent"></div>
+
+                    <div class="relative p-2 rounded-xl border border-white/50 shadow-2xl overflow-hidden">
+                        <img :src="selectedImage" alt="Project Preview"
+                            class="max-h-[80vh] w-auto rounded-xl object-contain" />
+
+                        <!-- Ambient Glow -->
+                        <div class="absolute inset-0 pointer-events-none">
+                        </div>
                     </div>
-                    
+
                     <div class="mt-4 text-center">
-                        <span class="text-xs text-slate-400 font-mono bg-slate-900/50 px-4 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
+                        <span
+                            class="text-xs text-slate-400 font-mono bg-slate-900/50 px-4 py-1.5 rounded-full border border-white/5 backdrop-blur-md">
                             {{ t('projects.click_to_zoom_hint') || 'ESC or Click outside to close' }}
                         </span>
                     </div>
@@ -99,15 +94,9 @@
         </transition>
 
         <!-- Boss Quiz Modal -->
-        <ProjectBossQuiz
-            v-if="activeProjectForQuiz"
-            :is-open="isQuizOpen"
-            :project-id="activeProjectForQuiz.id"
-            :project-title="activeProjectForQuiz.title"
-            :questions="activeProjectForQuiz.quiz"
-            @close="isQuizOpen = false"
-            @defeated="onBossDefeated"
-        />
+        <ProjectBossQuiz v-if="activeProjectForQuiz" :is-open="isQuizOpen" :project-id="activeProjectForQuiz.id"
+            :project-title="activeProjectForQuiz.title" :questions="activeProjectForQuiz.quiz"
+            @close="isQuizOpen = false" @defeated="onBossDefeated" />
     </div>
 </template>
 
