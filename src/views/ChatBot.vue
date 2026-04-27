@@ -293,6 +293,7 @@ import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 import { useRouter } from 'vue-router'
 import { toggleTheme, getStoredTheme } from '../services/theme.js'
+import { useGamification } from '../composables/useGamification'
 
 import { type Action, type Message } from '../services/chatbot/types'
 import {
@@ -324,6 +325,7 @@ interface Toast {
 }
 
 const { tm, locale, t } = useI18n()
+const { trackChatbotInteraction } = useGamification()
 
 // Theme and locale management (from NavBar)
 const currentTheme = ref<string>(getStoredTheme())
@@ -703,6 +705,7 @@ const sendMessage = async (): Promise<void> => {
     }
 
     messages.value.push(userMessage)
+    trackChatbotInteraction()
     saveHistory()
     const currentQuestion = userInput.value
     userInput.value = ''

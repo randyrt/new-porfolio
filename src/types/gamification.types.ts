@@ -8,7 +8,7 @@ export interface Badge {
 
 export interface XPTransaction {
   amount: number
-  source: 'project_view' | 'article_read' | 'cv_download' | 'session_time'
+  source: 'project_view' | 'article_read' | 'cv_download' | 'session_time' | 'chatbot_interaction' | 'contact_form'
   timestamp: number
   metadata?: Record<string, any>
 }
@@ -20,6 +20,8 @@ export interface GamificationState {
   viewedProjects: Set<string>
   readArticles: Set<string>
   cvDownloaded: boolean
+  chatbotInteractions: number
+  contactSubmitted: boolean
   timeBonusGiven: boolean
   visitorSessionStart: number | null
   xpHistory: XPTransaction[]

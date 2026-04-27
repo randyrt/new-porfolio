@@ -43,8 +43,10 @@ import { useToast } from 'vue-toastification'
 import confetti from "canvas-confetti"
 import emailjs from "@emailjs/browser"
 import { useI18n } from 'vue-i18n'
+import { useGamification } from '../composables/useGamification'
 
 const { t } = useI18n()
+const { trackContactForm } = useGamification()
 
 useHead({
   title: computed(() => t('contact.meta_title')),
@@ -116,6 +118,7 @@ const sendEmail = async () => {
   } finally {
     sending.value = false
     toast.success(t('contact.toast_success'))
+    trackContactForm()
     launchConfetti()
   }
 };

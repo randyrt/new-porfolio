@@ -42,6 +42,8 @@ export const useGamificationStore = defineStore('gamification', {
     viewedProjects: new Set<string>(),
     readArticles: new Set<string>(),
     cvDownloaded: false,
+    chatbotInteractions: 0,
+    contactSubmitted: false,
     timeBonusGiven: false,
     visitorSessionStart: null,
     xpHistory: []
@@ -101,6 +103,8 @@ export const useGamificationStore = defineStore('gamification', {
           this.viewedProjects = new Set(data.viewedProjects ?? [])
           this.readArticles = new Set(data.readArticles ?? [])
           this.cvDownloaded = data.cvDownloaded ?? false
+          this.chatbotInteractions = data.chatbotInteractions ?? 0
+          this.contactSubmitted = data.contactSubmitted ?? false
           this.xpHistory = data.xpHistory ?? []
         } catch (error) {
           console.error('Failed to load gamification data:', error)
@@ -228,6 +232,33 @@ export const useGamificationStore = defineStore('gamification', {
       return false
     },
 
+    trackChatbotInteraction(): void {
+      this.chatbotInteractions++
+      // Give 20 XP for each interaction, but maybe cap it or reward for milestones
+      this.addXP(20, 'chatbot_interaction', { count: this.chatbotInteractions })
+      
+      if (this.chatbotInteractions === 10) {
+        this.addBadge({
+          id: 'social_talker',
+          name: '💬 Bavard',
+          description: '10 messages échangés avec l\'IA'
+        })
+      }
+    },
+
+    trackContactForm(): void {
+      if (!this.contactSubmitted) {
+        this.contactSubmitted = true
+        this.addXP(100, 'contact_form')
+        
+        this.addBadge({
+          id: 'communicator',
+          name: '✉️ Communicateur',
+          description: 'Message envoyé via le formulaire de contact'
+        })
+      }
+    },
+
     saveToLocalStorage(): void {
       localStorage.setItem('gamification_v2', JSON.stringify({
         currentLevel: this.currentLevel,
@@ -236,6 +267,8 @@ export const useGamificationStore = defineStore('gamification', {
         viewedProjects: Array.from(this.viewedProjects),
         readArticles: Array.from(this.readArticles),
         cvDownloaded: this.cvDownloaded,
+        chatbotInteractions: this.chatbotInteractions,
+        contactSubmitted: this.contactSubmitted,
         xpHistory: this.xpHistory
       }))
     },

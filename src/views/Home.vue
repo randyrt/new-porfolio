@@ -37,8 +37,10 @@ import { useHead } from '@vueuse/head'
 import { ref, onMounted, computed, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useGamification } from '../composables/useGamification'
 
 const { t, locale } = useI18n()
+const { trackCVDownload } = useGamification()
 
 useHead({
   title: computed(() => t('home.meta_title')),
@@ -60,6 +62,7 @@ function downloadCV() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  trackCVDownload();
 }
 
 function viewCV() {

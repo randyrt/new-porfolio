@@ -26,6 +26,8 @@ export function useGamification() {
     trackProjectView: (projectId: string) => store.trackProjectView(projectId),
     trackArticleRead: (articleId: string) => store.trackArticleRead(articleId),
     trackCVDownload: () => store.trackCVDownload(),
+    trackChatbotInteraction: () => store.trackChatbotInteraction(),
+    trackContactForm: () => store.trackContactForm(),
     initSession: () => store.initSession(),
     
     getLevelTitle: (level: number) => {
