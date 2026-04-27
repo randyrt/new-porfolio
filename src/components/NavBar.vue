@@ -64,19 +64,21 @@
           <div class="flex flex-row w-full gap-2">
             <div class="relative group py-3 flex items-center justify-center">
               <label class="group relative flex h-10 w-10 items-center justify-center
-                   bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500
-                   rounded-xl shadow-lg shadow-pink-500/30
-                   hover:shadow-[0_0_25px_rgba(236,72,153,0.7)]
-                   hover:scale-110 hover:from-pink-400 hover:to-yellow-400
-                   active:scale-95
-                   transition-all duration-300 ease-out cursor-pointer
-                   border border-white/30 overflow-hidden" title="Change Color">
+       bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500
+       rounded-xl shadow-lg shadow-pink-500/30
+       hover:shadow-[0_0_25px_rgba(236,72,153,0.7)]
+       hover:scale-110 hover:from-pink-400 hover:to-yellow-400
+       active:scale-95
+       transition-all duration-300 ease-out cursor-pointer
+       border border-white/30 overflow-hidden
+       animate-soft-pulse" title="Change Color">
                 <input type="color" v-model="customPrimaryColor" @input="updateCustomColor"
                   class="absolute inset-0 w-20 h-20 opacity-0 cursor-pointer pointer-events-auto" />
                 <font-awesome-icon :icon="['fas', 'palette']"
                   class="text-white text-lg filter drop-shadow-md group-hover:rotate-12 transition-transform duration-300 pointer-events-none" />
               </label>
             </div>
+            <span class="text-violet-300 flex items-center">|</span>
             <div class="relative group py-3 flex-1" @click="sidebarVisible = !sidebarVisible">
               <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
                 <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
@@ -262,4 +264,18 @@ function openGithub() {
   letter-spacing: 1.3px;
   transition: letter-spacing 0.3s ease;
 }
+
+@keyframes soft-pulse {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.3);
+    }
+    50% {
+      opacity: 0.92;
+      box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
+    }
+  }
+  .animate-soft-pulse {
+    animation: soft-pulse 2s ease-in-out infinite;
+  }
 </style>
