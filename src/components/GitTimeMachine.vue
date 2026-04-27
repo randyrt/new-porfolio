@@ -100,7 +100,7 @@
           <div class="mb-4">
             <div class="flex justify-between mb-1">
               <span class="text-[10px] text-white/40 uppercase tracking-widest">{{ $t('git_time_machine.total_anxiety')
-              }}</span>
+                }}</span>
               <span class="text-xs text-red-400">{{ anxietyPercent }}%</span>
             </div>
             <div class="h-1 bg-white/5 rounded-full overflow-hidden">
@@ -111,7 +111,7 @@
           <div>
             <div class="flex justify-between mb-1">
               <span class="text-[10px] text-white/40 uppercase tracking-widest">{{ $t('git_time_machine.pure_flow')
-              }}</span>
+                }}</span>
               <span class="text-xs text-emerald-400">{{ flowPercent }}%</span>
             </div>
             <div class="h-1 bg-white/5 rounded-full overflow-hidden">
@@ -119,8 +119,7 @@
               </div>
             </div>
           </div>
-          <button @click="triggerReplay"
-            class="mt-6 w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2">
+          <button @click="triggerReplay" class="mt-6 btn-violet btn-effect-5">
             <font-awesome-icon icon="fa-solid fa-play" />
             {{ $t('git_time_machine.replay_btn') }}
           </button>

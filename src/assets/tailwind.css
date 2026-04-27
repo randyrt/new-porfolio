@@ -843,20 +843,15 @@ a {
 
 
 .custom-toast {
-  @apply !bg-gradient-to-r !from-emerald-100 !to-sky-100 !shadow-lg rounded-lg !text-violet-700;
+  @apply !shadow-lg rounded-lg !text-black;
+  background: linear-gradient(to right, var(--app-primary), var(--app-primary-hover)) !important;
   border: 1px solid rgba(14, 193, 224, 0.2) !important;
 }
 
-.custom-toast.Vue-Toastification__toast--success {
-  @apply !bg-gradient-to-r !from-emerald-100 !to-sky-100;
-}
-
-.custom-toast.Vue-Toastification__toast--warning {
-  @apply !bg-gradient-to-r !from-emerald-100 !to-sky-100;
-}
-
+.custom-toast.Vue-Toastification__toast--success,
+.custom-toast.Vue-Toastification__toast--warning,
 .custom-toast.Vue-Toastification__toast--error {
-  @apply !bg-gradient-to-r !from-emerald-100 !to-sky-100;
+  background: linear-gradient(to right, var(--app-primary), var(--app-primary-hover)) !important;
 }
 
 custom-scrollbar::-webkit-scrollbar-track {
