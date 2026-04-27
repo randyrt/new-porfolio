@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col md:flex-row h-screen overflow-hidden">
-    <header class="md:hidden flex justify-between items-center p-4 shadow bg-gray-50">
+    <header class="md:hidden flex justify-between items-center p-4 shadow" :style="{ backgroundColor: 'var(--app-primary)' }">
       <div class="flex items-center">
         <span class="animated-gradient-text font-bold text-xl">{{ brand }}</span>
         <button @click="isOpen = !isOpen" class="focus:outline-none">
@@ -42,7 +42,8 @@
     </header>
     <Transition name="menu-slide">
       <nav v-if="isOpen"
-        class="md:hidden flex flex-col bg-gray-50 shadow px-4 py-2 space-y-2 max-h-[60vh] overflow-y-auto scrollbar-thin">
+        class="md:hidden flex flex-col shadow px-4 py-2 space-y-2 max-h-[60vh] overflow-y-auto scrollbar-thin"
+        :style="{ backgroundColor: 'var(--app-primary)' }">
         <router-link v-for="route in routes" :key="route.path" :to="route.path"
           class="decoration rounded-md !text-gray-500 hover:bg-violet-100 flex items-center p-1"
           active-class="bg-violet-200 font-bold">
@@ -55,7 +56,7 @@
       <aside v-if="sidebarVisible"
         class="hidden md:flex w-68 shadow-lg flex-col bg-gradient-to-r from-emerald-50 to-sky-100 transition-all duration-300 px-1 mt-0 h-full border-r border-gray-200">
         <div class="p-4 text-xl font-bold flex items-center justify-between brick-wall-bg rounded-lg mt-1">
-          <span class="cursor-pointer bg-emerald-50" @click="goHome" :data-text="brand">
+          <span class="cursor-pointer" @click="goHome" :data-text="brand">
             <span class="spray-text">{{ brand }}</span>
           </span>
         </div>
@@ -266,16 +267,20 @@ function openGithub() {
 }
 
 @keyframes soft-pulse {
-    0%, 100% {
-      opacity: 1;
-      box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.3);
-    }
-    50% {
-      opacity: 0.92;
-      box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
-    }
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.3);
   }
-  .animate-soft-pulse {
-    animation: soft-pulse 2s ease-in-out infinite;
+
+  50% {
+    opacity: 0.92;
+    box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
   }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse 2s ease-in-out infinite;
+}
 </style>
