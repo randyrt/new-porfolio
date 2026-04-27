@@ -14,6 +14,8 @@
         <GitHubStats />
       </div>
 
+      <GitTimeMachine />
+
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="200">
         <div class="card p-8 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold  mb-4 text-purple-800">
@@ -65,6 +67,7 @@ import { useI18n } from 'vue-i18n'
 import AnimatedTitle from '../components/AnimatedTitle.vue'
 import Loading from '../components/Loading.vue'
 import GitHubStats from '../components/GitHubStats.vue'
+import GitTimeMachine from '../components/GitTimeMachine.vue'
 
 const { t } = useI18n()
 const loading = ref(true)

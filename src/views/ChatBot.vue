@@ -209,9 +209,10 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-emerald-500 text-xs" />
                                 <span class="text-xs font-semibold text-emerald-500"> {{ $t('chat.card_big_title')
-                                }}</span>
+                                    }}</span>
                             </div>
-                            <div class="text-sm leading-relaxed text-emerald-50  whitespace-pre-wrap">{{ message.content }}</div>
+                            <div class="text-sm leading-relaxed text-emerald-50  whitespace-pre-wrap">{{ message.content
+                                }}</div>
 
                             <div v-if="message.actions && message.actions.length > 0"
                                 class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
@@ -226,7 +227,7 @@
                             <div v-if="message.role === 'assistant' && message.allowFeedback !== false"
                                 class="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100 dark:border-gray-600">
                                 <span class="text-xs text-gray-500 dark:text-emerald-400">{{ $t('chat.helpful')
-                                }}</span>
+                                    }}</span>
                                 <button @click="handleFeedback(index, 'positive')"
                                     :class="feedbackState[index] === 'positive'
                                         ? 'bg-green-100 dark:bg-green-900/30 text-emerald-600 dark:text-emerald-400 border-green-200 dark:border-green-700'
@@ -293,7 +294,6 @@ import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 import { useRouter } from 'vue-router'
 import { toggleTheme, getStoredTheme } from '../services/theme.js'
-import { useGamification } from '../composables/useGamification'
 
 import { type Action, type Message } from '../services/chatbot/types'
 import {
@@ -325,7 +325,6 @@ interface Toast {
 }
 
 const { tm, locale, t } = useI18n()
-const { trackChatbotInteraction } = useGamification()
 
 // Theme and locale management (from NavBar)
 const currentTheme = ref<string>(getStoredTheme())
@@ -705,7 +704,6 @@ const sendMessage = async (): Promise<void> => {
     }
 
     messages.value.push(userMessage)
-    trackChatbotInteraction()
     saveHistory()
     const currentQuestion = userInput.value
     userInput.value = ''
@@ -1500,13 +1498,14 @@ const handleFeedback = async (messageIndex: number, rating: 'positive' | 'negati
 }
 
 @media screen and (max-width: 480px) {
-  .input-area .flex.gap-3 button span,
-  .input-area .flex.gap-3 button .mr-2 + span {
-    display: none;
-  }
-  
-  .input-area .flex.gap-3 button .fa-paper-plane {
-    margin-right: 0;
-  }
+
+    .input-area .flex.gap-3 button span,
+    .input-area .flex.gap-3 button .mr-2+span {
+        display: none;
+    }
+
+    .input-area .flex.gap-3 button .fa-paper-plane {
+        margin-right: 0;
+    }
 }
 </style>

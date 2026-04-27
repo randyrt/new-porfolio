@@ -825,8 +825,8 @@
     "feedback_thanks_positive": "🤖 Thank you for your positive feedback! It helps me improve.",
     "feedback_thanks_negative": "🤖 Thank you for your feedback. I will improve! 💪",
     "correction_running": "🔧 Correction in progress...",
-    "correction_success": "✨ Response corrected (Strategy: {{strategy}})",
-    "correction_failed": "Sorry for the previous answer! 😅 I couldn't auto-correct it.\n\n**Reason**: {{reason}}\n\n**Options**:\n1. 🔄 Rephrase your question differently\n2. 📧 Or contact Randy directly for a manual answer\n3. 💡 Try a related question (his projects, tech stack, etc.)"
+    "correction_success": "✨ Response corrected (Strategy: {strategy})",
+    "correction_failed": "Sorry for the previous answer! 😅 I couldn't auto-correct it.\n\n**Reason**: {reason}\n\n**Options**:\n1. 🔄 Rephrase your question differently\n2. 📧 Or contact Randy directly for a manual answer\n3. 💡 Try a related question (his projects, tech stack, etc.)"
   },
   "analytics": {
     "dashboard": "Analytics Dashboard",
@@ -939,5 +939,20 @@
     "level": "Level",
     "completed": "completed",
     "you_are_now": "You are now a"
+  },
+  "git_time_machine": {
+    "title": "Git Time Machine",
+    "subtitle": "Emotional Code Exploration",
+    "scanning": "Scanning Repository...",
+    "commits_found": "{count} commits found",
+    "the_beginning": "The Beginning",
+    "present": "Present",
+    "ghost_ai": "FrankAIstein",
+    "analyst_engine": "Analyst Engine v2.0",
+    "hover_prompt": "Hover over history to hear my analysis...",
+    "total_anxiety": "Total Anxiety",
+    "pure_flow": "Pure Flow",
+    "replay_btn": "REPLAY JOURNEY",
+    "current_mood": "Current Mood"
   }
 }
