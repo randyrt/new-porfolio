@@ -1,6 +1,6 @@
 <template>
   <Loading v-if="loading" :message="$t('github.loading')" />
-  <div v-else class="min-h-screen">
+  <div v-else class="min-h-screen" data-aos="fade-up">
     <div>
       <AnimatedTitle :text="$t('github.page_quote')" />
       <div class="text-center max-w-2xl mx-auto px-4 mt-4 mb-10" data-aos="fade-up">
@@ -9,14 +9,16 @@
             class="text-violet-800 text-lg">»</span>
         </p>
       </div>
+      
       <GitTimeMachine />
-      <div data-aos="fade-up">
+
+      <div>
         <GitHubStats />
       </div>
 
 
 
-      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="200">
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
         <div class="card p-8 rounded-lg shadow-lg">
           <h3 class="text-xl font-semibold  mb-4 text-purple-800">
             {{ $t('github.about_title') }}

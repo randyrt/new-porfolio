@@ -1,7 +1,6 @@
 <template>
   <div
-    class="git-time-machine mt-12 mb-12 p-8 rounded-2xl bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden relative"
-    data-aos="zoom-in">
+    class="git-time-machine mt-12 mb-12 p-8 rounded-2xl bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden relative">
     <!-- Decorations -->
     <div class="absolute -top-24 -left-24 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
     <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-blue-600/20 rounded-full blur-3xl animate-pulse"></div>
