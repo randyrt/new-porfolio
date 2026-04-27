@@ -42,7 +42,7 @@ export function toggleTheme(): Theme {
 
 // Color Management
 const COLOR_STORAGE_KEY = 'primary-color-preference';
-const DEFAULT_COLOR = '#0ea5e9'; // sky-500
+const DEFAULT_COLOR = '#cff1f2'; // user default
 
 function adjustColorBrightness(hex: string, percent: number): string {
     hex = hex.replace(/^#/, '');

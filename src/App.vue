@@ -419,12 +419,12 @@ const navRoutes = computed(() => [
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #F59E0B;
+  background: var(--app-primary, #F59E0B);
   border-radius: 10px;
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #F59E0B;
+  background: var(--app-primary-hover, #F59E0B);
 }
 
 .icon-delay {

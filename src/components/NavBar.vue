@@ -61,11 +61,28 @@
         </div>
         <div class="flex flex-col items-center justify-center gap-2 mb-4 p-2 rounded-lg ml-1">
 
-          <div class="relative group py-3 w-full" @click="sidebarVisible = !sidebarVisible">
-            <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
-              <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
-              <span class="text-sm font-medium">{{ $t('nav.reading_mode') }}</span>
-            </span>
+          <div class="flex flex-row w-full gap-2">
+            <div class="relative group py-3 flex items-center justify-center">
+              <label class="group relative flex h-10 w-10 items-center justify-center
+                   bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500
+                   rounded-xl shadow-lg shadow-pink-500/30
+                   hover:shadow-[0_0_25px_rgba(236,72,153,0.7)]
+                   hover:scale-110 hover:from-pink-400 hover:to-yellow-400
+                   active:scale-95
+                   transition-all duration-300 ease-out cursor-pointer
+                   border border-white/30 overflow-hidden" title="Change Color">
+                <input type="color" v-model="customPrimaryColor" @input="updateCustomColor"
+                  class="absolute inset-0 w-20 h-20 opacity-0 cursor-pointer pointer-events-auto" />
+                <font-awesome-icon :icon="['fas', 'palette']"
+                  class="text-white text-lg filter drop-shadow-md group-hover:rotate-12 transition-transform duration-300 pointer-events-none" />
+              </label>
+            </div>
+            <div class="relative group py-3 flex-1" @click="sidebarVisible = !sidebarVisible">
+              <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
+                <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
+                <span class="text-sm font-medium">{{ $t('nav.reading_mode') }}</span>
+              </span>
+            </div>
           </div>
         </div>
         <MultiWorldClock />
@@ -97,7 +114,13 @@
 import { ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
+import { getStoredColor, setPrimaryColor } from '../services/theme.js'
 
+const customPrimaryColor = ref(getStoredColor());
+
+function updateCustomColor() {
+  setPrimaryColor(customPrimaryColor.value);
+}
 
 interface RouteItem {
   icon: any;
