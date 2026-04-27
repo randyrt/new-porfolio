@@ -6,14 +6,14 @@
     <div
       class="absolute bottom-4 left-4 right-4 flex items-center gap-4 bg-black/40 backdrop-blur-md p-3 rounded-lg border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
       <button @click="togglePlay"
-        class="w-10 h-10 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white flex items-center justify-center transition-all active:scale-95 shadow-lg shadow-indigo-500/20">
+        class="w-10 h-10 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-center transition-all active:scale-95">
         <font-awesome-icon :icon="isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play'" />
       </button>
 
       <div class="flex-1 relative h-1.5 bg-white/10 rounded-full">
         <input type="range" v-model="playbackIndex" :max="commits.length - 1" min="0"
           class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
-        <div class="h-full bg-indigo-400 rounded-full transition-all"
+        <div class="h-full bg-emerald-500 rounded-full transition-all"
           :style="{ width: `${(playbackIndex / (commits.length - 1)) * 100}%` }"></div>
       </div>
 

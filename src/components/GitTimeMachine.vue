@@ -32,10 +32,16 @@
       <div class="relative bg-slate-950/50 rounded-xl p-6 border border-white/5 mb-8">
         <div class="flex items-end gap-1 h-32 overflow-hidden px-2">
           <div v-for="(dayCommits, day) in timeGroups" :key="day"
-            class="flex-1 min-w-[4px] group relative cursor-pointer" @mouseenter="selectedDay = day">
-            <div class="w-full rounded-t-sm transition-all duration-300 hover:scale-y-110"
-              :class="getEmotionColor(getDominantEmotion(dayCommits))"
-              :style="{ height: `${Math.min(dayCommits.length * 10, 100)}%` }"></div>
+            class="flex-1 min-w-[4px] h-full group relative cursor-pointer flex items-end" 
+            @mouseenter="selectedDay = day">
+            <div class="w-full rounded-t-sm transition-all duration-300 relative z-20"
+              :class="[
+                selectedDay === day 
+                  ? 'bg-emerald-400' 
+                  : getEmotionColor(getDominantEmotion(dayCommits))
+              ]"
+              :style="{ height: `${Math.min(dayCommits.length * 10, 100)}%` }">
+            </div>
             <!-- Tooltip -->
             <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-50">
               <div class="bg-slate-900 border border-white/20 p-2 rounded-lg shadow-xl min-w-[120px]">
@@ -46,9 +52,9 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-between mt-2 text-[10px] text-white/30 font-mono uppercase tracking-widest">
-          <span>{{ firstDate || $t('git_time_machine.the_beginning') }}</span>
-          <span>{{ latestDate || $t('git_time_machine.present') }}</span>
+        <div class="flex justify-between mt-2 text-[10px] text-emerald-500/50 font-mono uppercase tracking-widest">
+          <span>{{ $t('git_time_machine.present') }}</span>
+          <span>{{ $t('git_time_machine.the_beginning') }}</span>
         </div>
       </div>
 
@@ -68,8 +74,8 @@
               <p class="text-indigo-100/90 text-sm leading-relaxed" v-if="selectedDaySummary">
                 "{{ selectedDaySummary }}"
               </p>
-              <p class="text-white/40 text-sm italic" v-else>
-                {{ $t('git_time_machine.hover_prompt') }}
+              <p class="text-indigo-100/50 text-sm italic leading-relaxed" v-else>
+                "{{ $t('git_time_machine.hover_prompt') }}"
               </p>
             </div>
           </div>

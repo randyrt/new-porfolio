@@ -733,14 +733,15 @@
         "Contacte Randy quand tu veux ! 💌"
       ],
       "github-stats": [
-        "Vois les contributions open source de Randy 📈",
+        "La machine tourne, jour après jour 📈",
         "Le code de Randy ne ment jamais ! 🔍",
-        "L'activité GitHub de Randy révélée 🐙"
+        "Code dedans. Résultats dehors. Pas d'excuses. 🐙"
       ],
       "about": [
         "Apprends à connaître Randy ! 🙋‍♂️",
         "L'histoire de Randy en quelques mots 📖",
-        "Derrière le code, c'est Randy 🎭"
+        "Derrière le code, c'est Randy 🎭",
+        "Cette machine est faite pour livrer 🚢"
       ]
     },
     "loading": "Assistant IA...",
@@ -945,7 +946,7 @@
     "subtitle": "Exploration émotionnelle du code",
     "scanning": "Analyse du repository...",
     "commits_found": "{count} commits trouvés",
-    "the_beginning": "Le Début",
+    "the_beginning": "Début",
     "present": "Présent",
     "ghost_ai": "FrankAIstein",
     "analyst_engine": "Moteur d'Analyse v2.0",
