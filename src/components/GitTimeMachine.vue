@@ -69,11 +69,8 @@
                 <span class="text-[10px] text-white/30 uppercase tracking-widest">{{
                   $t('git_time_machine.analyst_engine') }}</span>
               </div>
-              <p class="text-indigo-100/90 text-sm leading-relaxed" v-if="selectedDaySummary">
-                "{{ selectedDaySummary }}"
-              </p>
-              <p class="text-indigo-100/50 text-sm italic leading-relaxed" v-else>
-                "{{ $t('git_time_machine.hover_prompt') }}"
+              <p class="!text-emerald-50 text-sm leading-relaxed font-mono typewriter-cursor">
+                {{ displayedSummary }}
               </p>
             </div>
           </div>
@@ -117,8 +114,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from 'vue'
+import { ref, onMounted, computed, watch, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+const { t, tm, locale } = useI18n()
 import { useGitTimeMachine, EmotionalState, AnalyzedCommit } from '../composables/useGitTimeMachine'
 import GitConstruction3D from './GitConstruction3D.vue'
 
@@ -151,6 +149,23 @@ const getEmotionColor = (emotion: EmotionalState): string => {
   return colors[emotion] || 'bg-white'
 }
 
+const displayedSummary = ref('')
+let typingInterval: any = null
+
+const startTyping = (text: string) => {
+  if (typingInterval) clearInterval(typingInterval)
+  displayedSummary.value = ''
+  let i = 0
+  typingInterval = setInterval(() => {
+    if (i < text.length) {
+      displayedSummary.value += text.charAt(i)
+      i++
+    } else {
+      clearInterval(typingInterval)
+    }
+  }, 20)
+}
+
 const selectedDaySummary = computed(() => {
   if (!selectedDay.value) return null
   const dayCommits = timeGroups.value[selectedDay.value]
@@ -167,6 +182,18 @@ const selectedDaySummary = computed(() => {
   return `${formattedDate} : ${randomMsg} (${t('git_time_machine.commits_count', { count })})`
 })
 
+watch(selectedDaySummary, (newVal) => {
+  if (newVal) {
+    startTyping(`"${newVal}"`)
+  } else {
+    startTyping(`"${t('git_time_machine.hover_prompt')}"`)
+  }
+}, { immediate: true })
+
+onUnmounted(() => {
+  if (typingInterval) clearInterval(typingInterval)
+})
+
 const anxietyPercent = computed(() => {
   if (commits.value.length === 0) return 0
   const count = commits.value.filter(c => c.emotion === 'anxiety').length
@@ -178,8 +205,6 @@ const flowPercent = computed(() => {
   const count = commits.value.filter(c => c.emotion === 'flow').length
   return Math.round((count / commits.value.length) * 100)
 })
-
-const { t, tm, locale } = useI18n()
 
 const firstDate = computed(() => {
   if (commits.value.length === 0) return ''
@@ -201,6 +226,23 @@ onMounted(() => {
 <style scoped>
 .animate-spin-slow {
   animation: spin 3s linear infinite;
+}
+
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+  from,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes spin {
