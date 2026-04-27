@@ -209,10 +209,10 @@
                             <div class="flex items-center gap-2 mb-1" v-if="message.role === 'assistant'">
                                 <font-awesome-icon icon="fa-solid fa-robot" class="text-emerald-500 text-xs" />
                                 <span class="text-xs font-semibold text-emerald-500"> {{ $t('chat.card_big_title')
-                                    }}</span>
+                                }}</span>
                             </div>
                             <div class="text-sm leading-relaxed text-emerald-50  whitespace-pre-wrap">{{ message.content
-                                }}</div>
+                            }}</div>
 
                             <div v-if="message.actions && message.actions.length > 0"
                                 class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-gray-700">
@@ -227,7 +227,7 @@
                             <div v-if="message.role === 'assistant' && message.allowFeedback !== false"
                                 class="flex items-center gap-2 mt-3 pt-2 border-t border-gray-100 dark:border-gray-600">
                                 <span class="text-xs text-gray-500 dark:text-emerald-400">{{ $t('chat.helpful')
-                                    }}</span>
+                                }}</span>
                                 <button @click="handleFeedback(index, 'positive')"
                                     :class="feedbackState[index] === 'positive'
                                         ? 'bg-green-100 dark:bg-green-900/30 text-emerald-600 dark:text-emerald-400 border-green-200 dark:border-green-700'

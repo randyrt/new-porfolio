@@ -59,6 +59,7 @@
             class="bg-gradient-to-br from-emerald-500/10 to-purple-emerald/10 rounded-xl p-6 border border-white/10 flex items-start gap-4 min-h-[160px]">
             <div class="flex-1">
               <div class="flex items-center gap-2 mb-2">
+                <font-awesome-icon icon="fa-solid fa-robot" class="text-emerald-500 text-xl" />
                 <span class="text-[10px] font-mono font-black py-0.5 px-1.5 bg-emerald-500 text-white rounded">{{
                   $t('git_time_machine.ghost_ai') }}</span>
                 <span class="text-[10px] text-white/30 uppercase tracking-widest">{{
