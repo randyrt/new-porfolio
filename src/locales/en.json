@@ -15,7 +15,9 @@
     "chatbot": "RandBot",
     "contact": "Contact",
     "about": "About",
-    "bouton_hidden_menu": "Hide the menu"
+    "bouton_hidden_menu": "Hide the menu",
+    "prev": "Prev",
+    "next": "Next"
   },
   "home": {
     "loading": "Home page...",

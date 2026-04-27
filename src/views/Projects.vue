@@ -37,10 +37,13 @@
                 <button class="custom-nav-btn custom-nav-prev" @click="slidePrev" :aria-label="t('nav.prev')">
                     <span class="btn-glow"></span>
                     <font-awesome-icon icon="fa-solid fa-chevron-left" class="btn-icon" />
+                    <span class="btn-text">{{ t('nav.prev') }}</span>
                 </button>
                 <button class="custom-nav-btn custom-nav-next" @click="slideNext" :aria-label="t('nav.next')">
                     <span class="btn-glow"></span>
+                    <span class="btn-text">{{ t('nav.next') }}</span>
                     <font-awesome-icon icon="fa-solid fa-chevron-right" class="btn-icon" />
+
                 </button>
             </div>
         </div>
