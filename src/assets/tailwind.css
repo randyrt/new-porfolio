@@ -76,7 +76,9 @@ small,
 .inverted video,
 .inverted svg,
 .inverted .chatbot-card,
-.inverted .chart-container .inverted .custom-scrollbar {
+.inverted .github-stats,
+.inverted .git-time-machine,
+.inverted .custom-scrollbar {
   filter: invert(1) hue-rotate(180deg) !important;
 }
 
