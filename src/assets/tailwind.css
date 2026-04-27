@@ -3,7 +3,7 @@
 @theme {
   --color-sky-300: var(--app-primary-hover, #7dd3fc);
   --color-sky-400: var(--app-primary-hover, #38bdf8);
-  --color-sky-500: var(--app-primary, #9ef5e3);
+  --color-sky-500: var(--app-primary, #bdf7f9);
   --color-sky-600: var(--app-primary-hover, #0284c7);
   --color-sky-700: var(--app-primary-hover, #0369a1);
 }
