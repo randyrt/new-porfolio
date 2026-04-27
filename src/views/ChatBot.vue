@@ -401,19 +401,34 @@ let offTopicCounter = 0
 
 const { commits, fetchHistory } = useGitTimeMachine()
 const gitSummary = computed<string>(() => {
-    if (commits.value.length === 0) return ''
-    const total = commits.value.length
-    const flow = commits.value.filter(c => c.emotion === 'flow').length
-    const anxiety = commits.value.filter(c => c.emotion === 'anxiety').length
-    const satisfaction = commits.value.filter(c => c.emotion === 'satisfaction').length
-    const curiosity = commits.value.filter(c => c.emotion === 'curiosity').length
+    let statsData: any = null
     
-    return `Randy has ${total} tracked commits in this project. 
-Analysis breakdown:
-- Flow (High focus): ${Math.round(flow/total*100)}%
-- Anxiety (Persistence/Grind): ${Math.round(anxiety/total*100)}%
-- Satisfaction (Delivery): ${Math.round(satisfaction/total*100)}%
-- Curiosity (Exploration): ${Math.round(curiosity/total*100)}%`
+    // 1. Try real-time commits first
+    if (commits.value.length > 0) {
+        const total = commits.value.length
+        const flow = commits.value.filter(c => c.emotion === 'flow').length
+        const anxiety = commits.value.filter(c => c.emotion === 'anxiety').length
+        statsData = {
+            total,
+            flowPercent: Math.round((flow/total)*100),
+            anxietyPercent: Math.round((anxiety/total)*100)
+        }
+    } 
+    // 2. Fallback to localStorage (saved by GitTimeMachine component)
+    else {
+        const saved = localStorage.getItem('git_mood_stats')
+        if (saved) {
+            try { statsData = JSON.parse(saved) } catch(e) {}
+        }
+    }
+
+    if (!statsData) return ''
+    
+    return `Randy current coding mood (Analyzed from Git history): 
+- Global Activity: ${statsData.total} commits recently.
+- Flow (Deep work/Design): ${statsData.flowPercent}%
+- Anxiety (Night bugfixing/Perseverance): ${statsData.anxietyPercent}%
+- Insight: ${statsData.anxietyPercent > 30 ? 'He is currently in a high-pressure phase, showing great perseverance at night.' : 'He is currently in a productive flow state.'}`
 })
 
 const defaultSuggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
