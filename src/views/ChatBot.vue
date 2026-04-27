@@ -294,6 +294,7 @@ import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 import { useRouter } from 'vue-router'
 import { toggleTheme, getStoredTheme } from '../services/theme.js'
 import { useGitTimeMachine } from '../composables/useGitTimeMachine'
+import { useGamification } from '../composables/useGamification'
 
 import { type Action, type Message } from '../services/chatbot/types'
 import {
@@ -399,15 +400,17 @@ const apiCallCount = ref<number>(0)
 
 let offTopicCounter = 0
 
+const { level, xp, badges, levelInfo, trackChatbotInteraction, getLevelTitle } = useGamification()
 const { commits, fetchHistory } = useGitTimeMachine()
+
 const gitSummary = computed<string>(() => {
     let statsData: any = null
     
     // 1. Try real-time commits first
     if (commits.value.length > 0) {
         const total = commits.value.length
-        const flow = commits.value.filter(c => c.emotion === 'flow').length
-        const anxiety = commits.value.filter(c => c.emotion === 'anxiety').length
+        const flow = commits.value.filter((c: any) => c.emotion === 'flow').length
+        const anxiety = commits.value.filter((c: any) => c.emotion === 'anxiety').length
         statsData = {
             total,
             flowPercent: Math.round((flow/total)*100),
@@ -429,6 +432,18 @@ const gitSummary = computed<string>(() => {
 - Flow (Deep work/Design): ${statsData.flowPercent}%
 - Anxiety (Night bugfixing/Perseverance): ${statsData.anxietyPercent}%
 - Insight: ${statsData.anxietyPercent > 30 ? 'He is currently in a high-pressure phase, showing great perseverance at night.' : 'He is currently in a productive flow state.'}`
+})
+
+const gamificationSummary = computed<string>(() => {
+    const info = levelInfo.value
+    const badgeList = badges.value.map(b => b.name).join(', ')
+    const title = getLevelTitle(info.level)
+    
+    return `Current Visitor Progress:
+- Level: ${info.level} (${title})
+- XP: ${info.xp} / ${info.nextLevelXP}
+- Badges: ${badgeList || 'None yet'}
+- Progress to next level: ${Math.round(info.progress)}%`
 })
 
 const defaultSuggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
@@ -515,7 +530,7 @@ const initQuotaReset = (): void => {
     }, 60 * 60 * 1000)
 }
 
-const portfolioContext = computed<string>(() => generatePortfolioContext(locale.value, gitSummary.value))
+const portfolioContext = computed<string>(() => generatePortfolioContext(locale.value, gitSummary.value, gamificationSummary.value))
 
 const getLocalKnowledgeBase = (): Record<string, string> => ({
     // PRIORITÉ 1 : SUJETS TRÈS SPÉCIFIQUES
@@ -737,6 +752,7 @@ const sendMessage = async (): Promise<void> => {
     }
 
     messages.value.push(userMessage)
+    trackChatbotInteraction()
     saveHistory()
     const currentQuestion = userInput.value
     userInput.value = ''

@@ -1,11 +1,11 @@
 <template>
   <div class="fixed bottom-1 right-22 z-50 group">
     <div
-      class="relative backdrop-blur-md bg-sky-500 border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
-      @click="showWidget = !showWidget">
-      <font-awesome-icon icon="trophy" class="text-xl text-white drop-shadow-md" />
+      class="relative backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
+      :style="{ backgroundColor: 'var(--app-primary)' }" @click="showWidget = !showWidget">
+      <font-awesome-icon icon="trophy" class="text-xl text-amber-500 drop-shadow-md" />
       <span v-if="levelInfo.level > 1"
-        class="absolute -top-1 -right-1 bg-gradient-to-br from-yellow-400 to-orange-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-lg ring-2 ring-white/80">
+        class="absolute -top-1 -right-1 bg-gradient-to-br from-yellow-400 to-orange-500 text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-lg ring-2 ring-white/80">
         {{ levelInfo.level }}
       </span>
     </div>
@@ -15,10 +15,11 @@
       enter-to-class="opacity-100 scale-100 translate-y-0" leave-from-class="opacity-100 scale-100 translate-y-0"
       leave-to-class="opacity-0 scale-95 -translate-y-2">
       <div v-if="showWidget"
-        class="absolute -top-45 right-20 backdrop-blur-md bg-gradient-to-r from-emerald-600 to-emerald-700 border border-white/30 rounded-xl shadow-xl p-4 min-w-[280px]">
+        class="absolute -top-45 right-20 backdrop-blur-md border border-white/30 rounded-xl shadow-xl p-4 min-w-[280px]"
+        :style="{ background: 'linear-gradient(135deg, var(--app-primary), var(--app-primary-hover))' }">
 
         <button @click.stop="showWidget = false"
-          class="absolute -top-3 -right-49 w-6 h-6 rounded  backdrop-blur-sm border border-white/50 text-white text-xs flex items-center justify-center  hover:scale-110 transition-all duration-200 shadow-lg z-10">
+          class="absolute -top-3 -right-49 w-6 h-6 rounded  backdrop-blur-sm border border-white/50 text-black text-xs flex items-center justify-center  hover:scale-110 transition-all duration-200 shadow-lg z-10">
           ✕
         </button>
 
@@ -28,15 +29,15 @@
               <span class="text-xl">🏆</span>
             </div>
             <div>
-              <p class="text-xs !text-white/70">{{ t('gamification.widget.level') }} {{ levelInfo.level }}</p>
+              <p class="text-xs !text-black/70">{{ t('gamification.widget.level') }} {{ levelInfo.level }}</p>
               <p class="text-xs font-bold !text-black">
                 {{ t(`gamification.widget.level_titles.${levelInfo.level}`, getLevelTitle(levelInfo.level)) }}
               </p>
             </div>
           </div>
           <div class="text-right">
-            <p class="text-xs !text-white/70">XP</p>
-            <p class="text-xs font-bold !text-cyan-300">{{ levelInfo.xp }} / {{ levelInfo.nextLevelXP }}</p>
+            <p class="text-xs !text-black/70">XP</p>
+            <p class="text-xs font-bold !text-amber-800">{{ levelInfo.xp }} / {{ levelInfo.nextLevelXP }}</p>
           </div>
         </div>
 
@@ -49,7 +50,7 @@
           </div>
         </div>
 
-        <p class="text-xs !text-white/70 mb-3">
+        <p class="text-xs !text-black/70 mb-3">
           ⚡ {{ levelInfo.xpToNextLevel }} {{ t('gamification.widget.xp_to_next') }} {{ levelInfo.level + 1 }}
         </p>
 
@@ -58,21 +59,15 @@
           enter-to-class="opacity-100 translate-y-0" leave-from-class="opacity-100 translate-y-0"
           leave-to-class="opacity-0 -translate-y-2">
           <div v-if="badges.length > 0" class="border-t border-white/20 pt-3">
-            <p class="text-xs font-semibold !text-white/80 mb-2">🎖️ Badges ({{ badges.length }})</p>
+            <p class="text-xs font-semibold !text-black/80 mb-2">🎖️ Badges ({{ badges.length }})</p>
             <div class="flex flex-wrap gap-1.5">
               <div v-for="badge in badges.slice(0, 5)" :key="badge.id" class="group relative">
                 <div
                   class="w-7 h-7 bg-white/10 rounded-full flex items-center justify-center text-xs border border-white/20 hover:border-white/50 transition-all cursor-help">
                   {{ getBadgeIcon(badge.name) }}
                 </div>
-                <!-- <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-50">
-                  <div
-                    class="backdrop-blur-md bg-sky-900/90 px-2 py-1 rounded text-[10px] text-white whitespace-nowrap">
-                    {{ t(`gamification.badges.${badge.id}.name`, badge.name) }}
-                  </div>
-                </div> -->
               </div>
-              <div v-if="badges.length > 5" class="text-xs text-white/50 flex items-center">
+              <div v-if="badges.length > 5" class="text-xs text-black/50 flex items-center">
                 +{{ badges.length - 5 }}
               </div>
             </div>
