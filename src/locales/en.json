@@ -11,7 +11,7 @@
     "projects": "Projects",
     "services": "Services",
     "testimonials": "Testimonials",
-    "github_stats": "GitHub Stats",
+    "github_stats": "Github API",
     "chatbot": "RandBot",
     "contact": "Contact",
     "about": "About",
@@ -608,7 +608,7 @@
     ]
   },
   "github": {
-    "title": "Stats github of Randy",
+    "title": "Stats github",
     "repos": "Repositories",
     "followers": "Followers",
     "following": "Following",

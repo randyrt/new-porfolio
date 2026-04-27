@@ -14,7 +14,7 @@
             <font-awesome-icon icon="fa-solid fa-hourglass-half" class="text-white text-xl animate-spin-slow" />
           </div>
           <div>
-            <h2 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+            <h2 class="text-2xl font-bold text-purple-500">
               {{ $t('git_time_machine.title') }}
             </h2>
             <p class="text-indigo-300/80 text-sm italic">{{ $t('git_time_machine.subtitle') }}</p>
