@@ -1,7 +1,7 @@
 <template>
   <div class="github-stats p-6 bg-white card">
-    <div class="flex items-center gap-3 mb-6">
-      <h2 class="text-2xl font-bold text-purple-800">{{ $t('github.title') }}</h2>
+    <div class="flex items-center gap-4 mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-white">{{ $t('github.title') }}</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" v-if="!loading && !error">
       <div class="stat-card p-4 bg-gradient-to-br from-blue-400 to-blue-400 rounded-lg text-white">
@@ -265,7 +265,7 @@ const fetchContributions = async () => {
     await Promise.all(commitPromises)
 
     monthlyCommits.value = tempMonthlyCommits
-    
+
     updateContributionChart()
 
   } catch (err) {
@@ -275,11 +275,11 @@ const fetchContributions = async () => {
 
 const updateContributionChart = () => {
   const sortedMonths = Object.keys(monthlyCommits.value).sort()
-  
+
   let monthNames = []
   const currentLocaleMessages = getLocaleMessage(locale.value)
   const monthNamesData = currentLocaleMessages?.github?.months
-  
+
   if (Array.isArray(monthNamesData)) {
     monthNames = monthNamesData
   } else {
@@ -287,7 +287,7 @@ const updateContributionChart = () => {
       ? ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
       : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
   }
-  
+
   const labels = sortedMonths.map(month => {
     const [year, monthNum] = month.split('-')
     const monthIndex = parseInt(monthNum) - 1
@@ -373,5 +373,23 @@ watchEffect(() => {
 .chart-container:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes robot-smile {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1) drop-shadow(0 0 5px rgba(16, 185, 129, 0.4));
+  }
+
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(16, 185, 129, 0.6));
+  }
+}
+
+.robot-smile {
+  animation: robot-smile 3s ease-in-out infinite;
 }
 </style>

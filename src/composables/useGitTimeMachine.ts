@@ -87,8 +87,8 @@ export function useGitTimeMachine() {
 
       // Save mood stats to localStorage for FrankAIstein in ChatBot
       const total = analyzed.length
-      const flowCount = analyzed.filter(c => c.emotion === 'flow').length
-      const anxietyCount = analyzed.filter(c => c.emotion === 'anxiety').length
+      const flowCount = analyzed.filter((c: AnalyzedCommit) => c.emotion === 'flow').length
+      const anxietyCount = analyzed.filter((c: AnalyzedCommit) => c.emotion === 'anxiety').length
 
       const stats = {
         total,

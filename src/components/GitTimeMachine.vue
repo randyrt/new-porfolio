@@ -62,12 +62,29 @@
           <div
             class="bg-gradient-to-br from-emerald-500/10 to-purple-emerald/10 rounded-xl p-6 border border-white/10 flex items-start gap-4 min-h-[160px]">
             <div class="flex-1">
-              <div class="flex items-center gap-2 mb-2">
-                <font-awesome-icon icon="fa-solid fa-robot" class="text-emerald-500 text-xl" />
-                <span class="text-[10px] font-mono font-black py-0.5 px-1.5 bg-emerald-500 text-white rounded">{{
-                  $t('git_time_machine.ghost_ai') }}</span>
-                <span class="text-[10px] text-white/30 uppercase tracking-widest">{{
-                  $t('git_time_machine.analyst_engine') }}</span>
+              <div class="flex items-center gap-3 mb-4">
+                <div @click="$router.push('/chatbot')"
+                  class="robot-smile cursor-pointer w-16 h-16 bg-gradient-to-br from-green-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+                  <font-awesome-icon icon="fa-solid fa-robot" class=" text-green-300 text-4xl relative  icon-delay" />
+
+                  <font-awesome-icon icon="fa-solid fa-bolt"
+                    class="absolute text-green-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
+
+
+                  <div
+                    class="absolute top-6 right-4.5 w-3 h-3 bg-green-800 rounded-full flex items-center justify-center icon-delay">
+                    <div class="w-2.5 h-0.5 bg-green-400 rotate-45 absolute"></div>
+                    <div class="w-2.5 h-0.5 bg-green-400 -rotate-45 absolute"></div>
+                    <div class="absolute w-0.5 h-1 bg-green-300 -top-0.5"></div>
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <span
+                    class="text-[10px] font-mono font-black py-0.5 px-1.5 bg-emerald-500 text-white rounded w-fit mb-1">{{
+                      $t('git_time_machine.ghost_ai') }}</span>
+                  <span class="text-[10px] text-white/30 uppercase tracking-widest">{{
+                    $t('git_time_machine.analyst_engine') }}</span>
+                </div>
               </div>
               <p class="!text-emerald-50 text-sm leading-relaxed font-mono typewriter-cursor">
                 {{ displayedSummary }}
@@ -83,7 +100,7 @@
           <div class="mb-4">
             <div class="flex justify-between mb-1">
               <span class="text-[10px] text-white/40 uppercase tracking-widest">{{ $t('git_time_machine.total_anxiety')
-                }}</span>
+              }}</span>
               <span class="text-xs text-red-400">{{ anxietyPercent }}%</span>
             </div>
             <div class="h-1 bg-white/5 rounded-full overflow-hidden">
@@ -94,7 +111,7 @@
           <div>
             <div class="flex justify-between mb-1">
               <span class="text-[10px] text-white/40 uppercase tracking-widest">{{ $t('git_time_machine.pure_flow')
-                }}</span>
+              }}</span>
               <span class="text-xs text-emerald-400">{{ flowPercent }}%</span>
             </div>
             <div class="h-1 bg-white/5 rounded-full overflow-hidden">
@@ -233,6 +250,24 @@ onMounted(() => {
   animation: blink 1s step-end infinite;
 }
 
+@keyframes robot-smile {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1) drop-shadow(0 0 5px rgba(16, 185, 129, 0.4));
+  }
+
+  50% {
+    transform: scale(1.05);
+    filter: brightness(1.2) drop-shadow(0 0 15px rgba(16, 185, 129, 0.6));
+  }
+}
+
+.robot-smile {
+  animation: robot-smile 3s ease-in-out infinite;
+}
+
 @keyframes blink {
 
   from,
@@ -287,6 +322,42 @@ onMounted(() => {
 
   100% {
     transform: translate(0);
+  }
+}
+
+.icon-delay {
+  animation: arcFall 1.3s cubic-bezier(0.5, 1.3, 0.4, 0.9) 0.3s forwards;
+  opacity: 0;
+}
+
+@keyframes arcFall {
+  0% {
+    opacity: 0;
+    transform: translate(-70px, -100px) rotate(-15deg) scale(0.5);
+  }
+
+  30% {
+    opacity: 0.6;
+    transform: translate(-45px, -70px) rotate(-5deg) scale(0.65);
+  }
+
+  55% {
+    opacity: 0.85;
+    transform: translate(-10px, -35px) rotate(10deg) scale(0.85);
+  }
+
+  75% {
+    opacity: 0.95;
+    transform: translate(15px, -5px) rotate(18deg) scale(1.0);
+  }
+
+  90% {
+    transform: translate(5px, 3px) rotate(3deg) scale(1.03);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
   }
 }
 </style>

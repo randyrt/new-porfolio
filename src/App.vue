@@ -18,7 +18,8 @@
     <GamificationWidget />
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
 
-    <div v-if="$route.path !== '/chatbot'" class="hidden md:flex fixed top-30 left-70 z-[999] group">
+    <div v-if="$route.path !== '/chatbot' && $route.path !== '/github-stats'"
+      class="hidden md:flex fixed top-30 left-70 z-[999] group">
       <div class="bg-green-500 rounded-lg">
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
       </div>

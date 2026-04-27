@@ -9,12 +9,12 @@
             class="text-violet-800 text-lg">»</span>
         </p>
       </div>
-
+      <GitTimeMachine />
       <div data-aos="fade-up">
         <GitHubStats />
       </div>
 
-      <GitTimeMachine />
+
 
       <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="200">
         <div class="card p-8 rounded-lg shadow-lg">
