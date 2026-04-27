@@ -293,6 +293,7 @@ import { useI18n } from 'vue-i18n'
 import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai'
 import { useRouter } from 'vue-router'
 import { toggleTheme, getStoredTheme } from '../services/theme.js'
+import { useGitTimeMachine } from '../composables/useGitTimeMachine'
 
 import { type Action, type Message } from '../services/chatbot/types'
 import {
@@ -398,6 +399,23 @@ const apiCallCount = ref<number>(0)
 
 let offTopicCounter = 0
 
+const { commits, fetchHistory } = useGitTimeMachine()
+const gitSummary = computed<string>(() => {
+    if (commits.value.length === 0) return ''
+    const total = commits.value.length
+    const flow = commits.value.filter(c => c.emotion === 'flow').length
+    const anxiety = commits.value.filter(c => c.emotion === 'anxiety').length
+    const satisfaction = commits.value.filter(c => c.emotion === 'satisfaction').length
+    const curiosity = commits.value.filter(c => c.emotion === 'curiosity').length
+    
+    return `Randy has ${total} tracked commits in this project. 
+Analysis breakdown:
+- Flow (High focus): ${Math.round(flow/total*100)}%
+- Anxiety (Persistence/Grind): ${Math.round(anxiety/total*100)}%
+- Satisfaction (Delivery): ${Math.round(satisfaction/total*100)}%
+- Curiosity (Exploration): ${Math.round(curiosity/total*100)}%`
+})
+
 const defaultSuggestions = computed<string[]>(() => tm('chat.suggestions') as string[])
 const suggestions = ref<string[]>([])
 
@@ -482,7 +500,7 @@ const initQuotaReset = (): void => {
     }, 60 * 60 * 1000)
 }
 
-const portfolioContext = computed<string>(() => generatePortfolioContext(locale.value))
+const portfolioContext = computed<string>(() => generatePortfolioContext(locale.value, gitSummary.value))
 
 const getLocalKnowledgeBase = (): Record<string, string> => ({
     // PRIORITÉ 1 : SUJETS TRÈS SPÉCIFIQUES
@@ -587,6 +605,7 @@ const clearConversation = (): void => {
 
 onMounted(() => {
     isComponentMounted.value = true
+    fetchHistory()
 
     suggestions.value = defaultSuggestions.value
     initQuotaReset()

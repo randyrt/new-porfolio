@@ -1,4 +1,4 @@
-export const generatePortfolioContext = (localeValue: string): string => {
+export const generatePortfolioContext = (localeValue: string, gitAnalysis: string = ''): string => {
    const langInstruction = localeValue === 'fr'
       ? 'LANGUE DE RÉPONSE : Réponds de préférence en français. Toutefois, si l\'utilisateur s\'exprime en anglais, réponds-lui en anglais. Adapte-toi systématiquement à la langue utilisée par l\'utilisateur (Français ou Anglais).'
       : 'RESPONSE LANGUAGE: Preferably respond in English. However, if the user speaks in French, respond in French. Always adapt to the language used by the user (French or English).'
@@ -94,6 +94,8 @@ PROJECTS:
 =================================================================
 
 **GITHUB PROFILE**: [randyrt](https://github.com/randyrt) → Vous pouvez cliquer ici: https://github.com/randyrt
+
+${gitAnalysis ? `**LATEST REAL-TIME ANALYSIS (FROM API)**: \n${gitAnalysis}\n` : ''}
 
 **GITHUB STATS VIEW**: A dedicated page in the portfolio that visualizes Randy's GitHub activity with real-time data from the GitHub API.
 
