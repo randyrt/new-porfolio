@@ -1,4 +1,3 @@
-// composables/useFloatingChatbot.ts
 import { ref, onMounted, onUnmounted, nextTick, type Ref } from 'vue';
 
 type CornerPosition = 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';

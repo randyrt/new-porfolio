@@ -5,7 +5,7 @@
         <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
             <p class="text-lg italic text-gray-700 dark:text-gray-300">
                 <span class="text-violet-800 text-lg">«</span>
-                {{ $t('contact.p') }}
+                {{ $t('projects.p_italics') }}
                 <span class="text-violet-800 text-lg">»</span>
             </p>
         </div>
