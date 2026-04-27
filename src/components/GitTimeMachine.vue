@@ -32,15 +32,13 @@
       <div class="relative bg-slate-950/50 rounded-xl p-6 border border-white/5 mb-8">
         <div class="flex items-end gap-1 h-32 overflow-hidden px-2">
           <div v-for="(dayCommits, day) in timeGroups" :key="day"
-            class="flex-1 min-w-[4px] h-full group relative cursor-pointer flex items-end" 
+            class="flex-1 min-w-[4px] h-full group relative cursor-pointer flex items-end"
             @mouseenter="selectedDay = day">
-            <div class="w-full rounded-t-sm transition-all duration-300 relative z-20"
-              :class="[
-                selectedDay === day 
-                  ? 'bg-emerald-400' 
-                  : getEmotionColor(getDominantEmotion(dayCommits))
-              ]"
-              :style="{ height: `${Math.min(dayCommits.length * 10, 100)}%` }">
+            <div class="w-full rounded-t-sm transition-all duration-300 relative z-20" :class="[
+              selectedDay === day
+                ? 'bg-emerald-400'
+                : getEmotionColor(getDominantEmotion(dayCommits))
+            ]" :style="{ height: `${Math.min(dayCommits.length * 10, 100)}%` }">
             </div>
             <!-- Tooltip -->
             <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-50">
@@ -88,7 +86,7 @@
           <div class="mb-4">
             <div class="flex justify-between mb-1">
               <span class="text-[10px] text-white/40 uppercase tracking-widest">{{ $t('git_time_machine.total_anxiety')
-              }}</span>
+                }}</span>
               <span class="text-xs text-red-400">{{ anxietyPercent }}%</span>
             </div>
             <div class="h-1 bg-white/5 rounded-full overflow-hidden">
@@ -99,7 +97,7 @@
           <div>
             <div class="flex justify-between mb-1">
               <span class="text-[10px] text-white/40 uppercase tracking-widest">{{ $t('git_time_machine.pure_flow')
-              }}</span>
+                }}</span>
               <span class="text-xs text-emerald-400">{{ flowPercent }}%</span>
             </div>
             <div class="h-1 bg-white/5 rounded-full overflow-hidden">
@@ -161,36 +159,12 @@ const selectedDaySummary = computed(() => {
   const emotion = getDominantEmotion(dayCommits)
   const count = dayCommits.length
 
-  const summaries: Record<EmotionalState, string[]> = {
-    flow: [
-      "Le code coulait tout seul ce jour-là. Une productivité impressionnante, presque artistique.",
-      "C'était une journée de génie. Chaque commit était un coup de pinceau parfait.",
-      "L'état de Flow était total. Vous étiez imbattable sur cette session."
-    ],
-    anxiety: [
-      "Une session tardive marquée par une lutte intense. Entre corrections de bugs et fatigue, le combat était rude.",
-      "Beaucoup de petits commits rapides... L'urgence se ressent dans l'historique.",
-      "L'anxiété du bug récalcitrant. Vous n'avez rien lâché, même si l'heure était indue."
-    ],
-    curiosity: [
-      "Exploration de nouvelles contrées. L'innovation était le moteur de cette journée.",
-      "Découverte et implémentation. Un vent de fraîcheur sur le repository.",
-      "Curiosité insatiable. Vous testiez de nouvelles approches avec succès."
-    ],
-    satisfaction: [
-      "Le sentiment du devoir accompli. De gros pans de code enfin stabilisés.",
-      "Victoire ! Les fonctionnalités majeures sont là. Une journée de célébration silencieuse.",
-      "Satisfaction pure. Le projet a franchi une étape cruciale aujourd'hui."
-    ],
-    maintenance: [
-      "Nettoyage et rigueur. Un travail de fond nécessaire pour la survie du projet.",
-      "Petites touches de perfectionnement. Le diable est dans les détails, et vous l'avez dompté.",
-      "Maintenance sereine. On ajuste, on polit, on prépare le terrain."
-    ]
-  }
+  const emotionalSummaries = tm('git_time_machine.summaries') as Record<EmotionalState, string[]>
+  const msgList = emotionalSummaries[emotion] || []
+  const randomMsg = msgList[count % msgList.length] || ''
 
-  const randomMsg = summaries[emotion][count % summaries[emotion].length]
-  return `${selectedDay.value} : ${randomMsg} (${count} commits)`
+  const formattedDate = new Date(selectedDay.value).toLocaleDateString(locale.value, { day: '2-digit', month: 'short' })
+  return `${formattedDate} : ${randomMsg} (${t('git_time_machine.commits_count', { count })})`
 })
 
 const anxietyPercent = computed(() => {
@@ -205,7 +179,7 @@ const flowPercent = computed(() => {
   return Math.round((count / commits.value.length) * 100)
 })
 
-const { t, locale } = useI18n()
+const { t, tm, locale } = useI18n()
 
 const firstDate = computed(() => {
   if (commits.value.length === 0) return ''

@@ -946,6 +946,7 @@
     "subtitle": "Emotional Code Exploration",
     "scanning": "Scanning Repository...",
     "commits_found": "{count} commits found",
+    "commits_count": "{count} commits",
     "the_beginning": "Start",
     "present": "Present",
     "ghost_ai": "FrankAIstein",
@@ -954,6 +955,33 @@
     "total_anxiety": "Total Anxiety",
     "pure_flow": "Pure Flow",
     "replay_btn": "REPLAY JOURNEY",
-    "current_mood": "Current Mood"
+    "current_mood": "Current Mood",
+    "summaries": {
+      "flow": [
+        "The code was flowing naturally that day. Impressive productivity, almost artistic.",
+        "It was a day of genius. Each commit was a perfect brushstroke.",
+        "The state of Flow was absolute. You were unbeatable during this session."
+      ],
+      "anxiety": [
+        "A late session marked by intense struggle. Between bug fixes and fatigue, it was a hard fight.",
+        "Many small, rapid commits... The urgency is felt in the history.",
+        "The anxiety of a persistent bug. You didn't give up, even though it was late."
+      ],
+      "curiosity": [
+        "Exploring new territories. Innovation was the engine of this day.",
+        "Discovery and implementation. A fresh breeze over the repository.",
+        "Insatiable curiosity. You were testing new approaches with success."
+      ],
+      "satisfaction": [
+        "The feeling of duty accomplished. Large parts of code finally stabilized.",
+        "Victory! Major features are there. A day of silent celebration.",
+        "Pure satisfaction. The project reached a crucial milestone today."
+      ],
+      "maintenance": [
+        "Cleaning and rigor. Necessary deep work for the project's survival.",
+        "Small touches of perfection. The devil is in the details, and you tamed it.",
+        "Serene maintenance. Adjusting, polishing, preparing the ground."
+      ]
+    }
   }
 }

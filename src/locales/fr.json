@@ -946,6 +946,7 @@
     "subtitle": "Exploration émotionnelle du code",
     "scanning": "Analyse du repository...",
     "commits_found": "{count} commits trouvés",
+    "commits_count": "{count} commits",
     "the_beginning": "Début",
     "present": "Présent",
     "ghost_ai": "FrankAIstein",
@@ -954,6 +955,33 @@
     "total_anxiety": "Anxiété Totale",
     "pure_flow": "Flow Pur",
     "replay_btn": "REJOUER LE PARCOURS",
-    "current_mood": "Humeur Actuelle"
+    "current_mood": "Humeur Actuelle",
+    "summaries": {
+      "flow": [
+        "Le code coulait tout seul ce jour-là. Une productivité impressionnante, presque artistique.",
+        "C'était une journée de génie. Chaque commit était un coup de pinceau parfait.",
+        "L'état de Flow était total. Vous étiez imbattable sur cette session."
+      ],
+      "anxiety": [
+        "Une session tardive marquée par une lutte intense. Entre corrections de bugs et fatigue, le combat était rude.",
+        "Beaucoup de petits commits rapides... L'urgence se ressent dans l'historique.",
+        "L'anxiété du bug récalcitrant. Vous n'avez rien lâché, même si l'heure était indue."
+      ],
+      "curiosity": [
+        "Exploration de nouvelles contrées. L'innovation était le moteur de cette journée.",
+        "Découverte et implémentation. Un vent de fraîcheur sur le repository.",
+        "Curiosité insatiable. Vous testiez de nouvelles approches avec succès."
+      ],
+      "satisfaction": [
+        "Le sentiment du devoir accompli. De gros pans de code enfin stabilisés.",
+        "Victoire ! Les fonctionnalités majeures sont là. Une journée de célébration silencieuse.",
+        "Satisfaction pure. Le projet a franchi une étape cruciale aujourd'hui."
+      ],
+      "maintenance": [
+        "Nettoyage et rigueur. Un travail de fond nécessaire pour la survie du projet.",
+        "Petites touches de perfectionnement. Le diable est dans les détails, et vous l'avez dompté.",
+        "Maintenance sereine. On ajuste, on polit, on prépare le terrain."
+      ]
+    }
   }
 }
