@@ -31,23 +31,32 @@ export function useGitTimeMachine() {
     const hour = date.getUTCHours()
     const msg = message.toLowerCase()
     
-    // Heuristics for Emotion
+    // Priority 1: Key architectural improvement (FLOW)
+    if (msg.includes('refactor') || msg.includes('clean') || msg.includes('improve') || msg.includes('optimize') || msg.includes('shaking') || msg.includes('polish')) {
+      return { emotion: 'flow', score: 0.9 }
+    }
+
+    // Priority 2: Creative & UI Work (also part of FLOW)
+    if (msg.includes('ui') || msg.includes('style') || msg.includes('css') || msg.includes('design') || msg.includes('layout') || msg.includes('animation') || msg.includes('responsive')) {
+      return { emotion: 'flow', score: 0.8 }
+    }
+
+    // Priority 3: Night logic (ANXIETY or DEEP WORK)
     if (hour >= 22 || hour <= 4) {
-      if (msg.includes('fix') || msg.includes('bug') || msg.includes('correction') || msg.includes('problem')) {
-        return { emotion: 'anxiety', score: 0.8 }
+      if (msg.includes('fix') || msg.includes('bug') || msg.includes('error') || msg.includes('hotfix') || msg.includes('emergency')) {
+        return { emotion: 'anxiety', score: 0.9 }
       }
-      return { emotion: 'anxiety', score: 0.5 } // Night work is often high tension
+      // If it's night but no "fix" keywords, it's a mix of anxiety/dedication
+      return { emotion: 'anxiety', score: 0.4 } 
     }
     
+    // Priority 4: Features (CURIOSITY)
     if (msg.includes('feat') || msg.includes('add') || msg.includes('new') || msg.includes('implement')) {
       return { emotion: 'curiosity', score: 0.7 }
     }
     
-    if (msg.includes('refactor') || msg.includes('clean') || msg.includes('improve') || msg.includes('optimize')) {
-      return { emotion: 'flow', score: 0.9 }
-    }
-    
-    if (msg.includes('merge') || msg.includes('done') || msg.includes('stable') || msg.includes('release')) {
+    // Priority 5: Completion (SATISFACTION)
+    if (msg.includes('merge') || msg.includes('done') || msg.includes('stable') || msg.includes('release') || msg.includes('final')) {
       return { emotion: 'satisfaction', score: 1.0 }
     }
     
