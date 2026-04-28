@@ -924,3 +924,9 @@ custom-scrollbar::-webkit-scrollbar-track {
   background: var(--app-primary, #8b5cf6);
   border-radius: 10px;
 }
+
+::-webkit-scrollbar-button {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
