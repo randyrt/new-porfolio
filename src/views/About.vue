@@ -46,8 +46,7 @@
               <div
                 class="relative border border-white/10 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto custom-scrollbar"
                 :style="{ backgroundColor: 'color-mix(in srgb, #0b1120, #1a2a3a 70%)' }">
-                <div
-                  class="sticky top-0 backdrop-blur-md border-b border-white/10 p-6 flex justify-between items-center z-50"
+                <div class="sticky top-0 backdrop-blur-md p-6 flex justify-between items-center z-50"
                   :style="{ backgroundColor: 'color-mix(in srgb, #0a0f1a, #1e3a5f 100%)' }">
                   <h3 class="text-2xl font-black flex items-center gap-3">
                     <font-awesome-icon :icon="['fas', 'tools']" class="text-sky-500" />
@@ -64,7 +63,7 @@
                 <div class="p-8 space-y-8 !bg-white/85">
                   <!-- Vue.js 3 -->
                   <div
-                    class="bg-white/35 border border-white/10 p-6 rounded-2xl border-l-4 border-l-sky-500 transition-all hover:bg-white/[0.07]">
+                    class="bg-white/35 border border-white/10 p-6 rounded-2xl border-l-4 border-l-emerald-500 transition-all hover:bg-white/[0.07]">
                     <h4 class="font-black text-xl text-white flex items-center gap-3 mb-4">
                       <font-awesome-icon :icon="['fab', 'vuejs']" class="text-emerald-500" />
                       <span>Vue.js 3 - Composition API</span>
@@ -148,9 +147,9 @@ const defeatBoss = (id: string): void => { ... }</pre>
 
                   <!-- CI/CD Pipeline -->
                   <div
-                    class="bg-white/35 border border-white/10 p-6 rounded-2xl border-l-4 border-l-slate-400 transition-all hover:bg-white/[0.07]">
+                    class="bg-white/35 border border-white/10 p-6 rounded-2xl border-l-4 border-l-slate-500 transition-all hover:bg-white/[0.07]">
                     <h4 class="font-black text-xl text-white flex items-center gap-3 mb-4">
-                      <font-awesome-icon :icon="['fab', 'github']" class="text-white" />
+                      <font-awesome-icon :icon="['fab', 'github']" class="text-black" />
                       <span>{{ $t('about.ci_cd') }}</span>
                     </h4>
                     <div
@@ -168,7 +167,7 @@ const defeatBoss = (id: string): void => { ... }</pre>
 
                   <!-- Summary Stats -->
                   <div
-                    class="relative overflow-hidden p-6 rounded-lg bg-gradient-to-br from-sky-600/15 via-slate-800 to-slate-900">
+                    class="relative overflow-hidden p-6 rounded-lg bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
                     <div class="absolute top-0 right-0 p-8 opacity-5">
                       <font-awesome-icon :icon="['fas', 'shield-virus']" class="text-8xl text-white" />
                     </div>
@@ -298,11 +297,16 @@ const perfomanceTest = () => {
 </script>
 
 <style scoped>
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
 .custom-scrollbar {
   border-radius: 0.5rem;
   overflow-y: auto;
   clip-path: inset(0 round 0.5rem);
-
 }
 
 .modal-enter-active,
