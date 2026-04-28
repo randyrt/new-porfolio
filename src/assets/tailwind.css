@@ -23,8 +23,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-
-  @apply bg-gradient-to-b from-sky-50 to-sky-100;
+  @apply bg-gradient-to-tl from-sky-50 to-sky-100;
 }
 
 
