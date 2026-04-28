@@ -52,7 +52,6 @@
       </router-link>
     </div>
     <AnalyticsDashboard />
-
   </div>
 </template>
 

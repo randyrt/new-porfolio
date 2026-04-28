@@ -78,7 +78,10 @@ import {
   faHourglassHalf,
   faPause,
   faScroll,
-  faSkull
+  faSkull,
+  faLeaf,
+  faChevronUp,
+  faChevronDown
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -109,7 +112,7 @@ library.add(
   faCommentDots, faMicrochip, faNetworkWired, faCircleNodes,
   faLayerGroup, faDownload, faArrowRight, faThumbsDown,
   faThumbsUp, faBookOpen, faPalette, faEyeSlash, faLock,
-  faPlay, faHourglassHalf, faPause, faScroll, faSkull
+  faPlay, faHourglassHalf, faPause, faScroll, faSkull, faLeaf, faChevronUp, faChevronDown
 )
 
 const options = {
