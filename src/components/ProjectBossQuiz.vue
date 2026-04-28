@@ -1,20 +1,23 @@
 <template>
-  <div v-if="isOpen" 
-    class="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-[5px] no-invert-modal"
+  <!--no-invert-modal-->
+  <div v-if="isOpen" class="fixed inset-0 z-[100] flex items-center justify-center p-4 backdrop-blur-[5px]"
     :style="{ backgroundColor: 'color-mix(in srgb, var(--app-primary, #0f172a), transparent 90%)' }">
-    <div class="relative w-full max-w-2xl bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden" data-aos="zoom-in">
-      
+    <div class="relative w-full max-w-2xl bg-slate-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+      data-aos="fade-in">
+
       <!-- Boss Header -->
       <div class="relative p-8 bg-gradient-to-br from-purple-900/50 to-slate-900 border-b border-white/5">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-purple-600 flex items-center justify-center shadow-lg shadow-red-500/20">
+            <div
+              class="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-purple-600 flex items-center justify-center shadow-lg shadow-red-500/20">
               <font-awesome-icon icon="fa-solid fa-skull" class="text-white text-3xl animate-pulse" />
             </div>
             <div>
               <h2 class="text-3xl font-black text-white uppercase tracking-tighter">BOSS: {{ projectTitle }}</h2>
               <div class="flex items-center gap-2 mt-1">
-                <span class="text-[10px] bg-red-500 text-white font-bold px-2 py-0.5 rounded uppercase">{{ $t('quiz.danger_level') }}</span>
+                <span class="text-[10px] bg-red-500 text-white font-bold px-2 py-0.5 rounded uppercase">{{
+                  $t('quiz.danger_level') }}</span>
                 <span class="text-xs text-slate-400 font-mono">{{ $t('quiz.tech_trial') }}</span>
               </div>
             </div>
@@ -31,10 +34,9 @@
             <span>{{ hp }} / 100</span>
           </div>
           <div class="h-3 bg-slate-800 rounded-full overflow-hidden border border-white/5 p-0.5">
-            <div 
+            <div
               class="h-full bg-gradient-to-r from-red-600 via-purple-500 to-blue-400 transition-all duration-500 rounded-full"
-              :style="{ width: `${hp}%` }"
-            ></div>
+              :style="{ width: `${hp}%` }"></div>
           </div>
         </div>
       </div>
@@ -44,7 +46,8 @@
         <div v-if="!isCompleted" class="space-y-8">
           <div class="space-y-4">
             <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-purple-400 font-bold border border-white/10">
+              <span
+                class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-purple-400 font-bold border border-white/10">
                 {{ currentQuestionIndex + 1 }}
               </span>
               <p class="text-xl text-slate-100 font-medium leading-tight">
@@ -53,14 +56,13 @@
             </div>
 
             <div class="grid grid-cols-1 gap-3 mt-6">
-              <button 
-                v-for="(option, idx) in currentQuestion.options" 
-                :key="idx"
-                @click="checkAnswer(idx)"
-                class="group relative flex items-center p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/50 transition-all text-left overflow-hidden"
-              >
-                <div class="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/5 transition-all"></div>
-                <span class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center text-[10px] font-bold text-slate-500 mr-4 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-colors">
+              <button v-for="(option, idx) in currentQuestion.options" :key="idx" @click="checkAnswer(idx)"
+                class="group relative flex items-center p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/50 transition-all text-left overflow-hidden">
+                <div
+                  class="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/5 transition-all">
+                </div>
+                <span
+                  class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center text-[10px] font-bold text-slate-500 mr-4 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-colors">
                   {{ String.fromCharCode(65 + idx) }}
                 </span>
                 <span class="text-slate-300 group-hover:text-white transition-colors">{{ option }}</span>
@@ -71,7 +73,8 @@
 
         <!-- Success/Failure Screen -->
         <div v-else class="text-center py-8 space-y-6 animate-in fade-in zoom-in duration-500">
-          <div class="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto border border-emerald-500/30">
+          <div
+            class="w-24 h-24 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto border border-emerald-500/30">
             <font-awesome-icon icon="fa-solid fa-trophy" class="text-emerald-400 text-4xl" />
           </div>
           <div>
@@ -84,10 +87,8 @@
               <p class="text-emerald-400 font-bold">+200 XP</p>
             </div>
           </div>
-          <button 
-            @click="finalize" 
-            class="w-full px-8 py-4 bg-violet-600 text-white font-bold rounded-xl shadow-lg shadow-violet-600/20 hover:bg-violet-500 transition-all active:scale-95"
-          >
+          <button @click="finalize"
+            class="w-full px-8 py-4 bg-violet-600 text-white font-bold rounded-xl shadow-lg shadow-violet-600/20 hover:bg-violet-500 transition-all active:scale-95">
             {{ $t('quiz.collect_rewards') }}
           </button>
         </div>
@@ -130,7 +131,7 @@ function checkAnswer(index: number) {
     // Correct answer
     hp.value -= Math.ceil(100 / props.questions.length)
     if (hp.value <= 1) hp.value = 0
-    
+
     if (currentQuestionIndex.value < props.questions.length - 1) {
       currentQuestionIndex.value++
       toast.success(t('quiz.correct'))
