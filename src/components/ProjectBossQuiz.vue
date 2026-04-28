@@ -50,7 +50,7 @@
                 class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-purple-400 font-bold border border-white/10">
                 {{ currentQuestionIndex + 1 }}
               </span>
-              <p class="text-xl text-slate-100 font-medium leading-tight">
+              <p class="text-xl !text-purple-500 font-medium leading-tight">
                 {{ currentQuestion.question }}
               </p>
             </div>
@@ -62,7 +62,7 @@
                   class="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/5 transition-all">
                 </div>
                 <span
-                  class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center text-[10px] font-bold text-slate-500 mr-4 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-colors">
+                  class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center text-[10px] font-bold !text-emerald-50 mr-4 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-colors">
                   {{ String.fromCharCode(65 + idx) }}
                 </span>
                 <span class="text-slate-300 group-hover:text-white transition-colors">{{ option }}</span>
