@@ -124,7 +124,7 @@
     "boss_hp": "BOSS HP",
     "tech_question": "Question Technique",
     "correct": "C'est juste ! Vous affaiblissez le Boss !",
-    "wrong": "Ouch ! Mauvaise réponse. Le Boss contre-attaque !",
+    "wrong": "Oups ! Mauvaise réponse. Le Boss contre-attaque ! 😬",
     "boss_slain": "LE BOSS EST VAINCU !",
     "victory": "VICTOIRE !",
     "boss_defeated_desc": "Vous avez maîtrisé les technologies de {project}. Ce projet est officiellement conquis !",

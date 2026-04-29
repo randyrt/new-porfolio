@@ -124,7 +124,7 @@
     "boss_hp": "BOSS HP",
     "tech_question": "Technical Question",
     "correct": "Correct! You weaken the Boss!",
-    "wrong": "Ouch! Wrong answer. The Boss counters!",
+    "wrong": "Oups! Wrong answer. The Boss counters! 😬",
     "boss_slain": "THE BOSS IS DEFEATED!",
     "victory": "VICTORY!",
     "boss_defeated_desc": "You have mastered the technologies of {project}. This project is officially conquered!",
