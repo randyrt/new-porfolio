@@ -248,7 +248,7 @@
     "ionic_s3_desc": "Utiliser des plugins natifs pour accéder aux fonctionnalités du téléphone. Cela permet d’ajouter caméra, GPS, notifications et etc.",
     "python_title": "Compétences en Python",
     "python_s1_name": "Machine learning avec PyTorch",
-    "python_s1_desc": "Je développe actuellement mes compétences en PyTorch pour concevoir, entraîner et optimiser des réseaux de neurones. Je suis capable de construire des modèles, d'ajuster les hyperparamètres et d'améliorer progressivement leurs performances à travers différentes expérimentations.",
+    "python_s1_desc": "Je développe actuellement mes compétences en PyTorch pour concevoir, entraîner et optimiser des réseaux de neurones.",
     "python_s2_name": "Automatisation & Scripts",
     "python_s2_desc": "Je peux écrire des scripts pour automatiser des tâches répétitives. Cela améliore l’efficacité et réduit les erreurs humaines.",
     "python_s3_name": "Frameworks Web",
