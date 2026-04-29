@@ -6,4 +6,4 @@ build/
 *.vue.js
 *.js
 
-echo "src/views/Pytorch-ai.vue" >> .gitignoresrc/views/Pytorch-ai.vue
+echo "src/views/Pytorch-ai.vue" >> .gitignore
