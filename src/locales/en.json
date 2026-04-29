@@ -247,7 +247,7 @@
     "ionic_s3_name": "Native plugins",
     "ionic_s3_desc": "Use native plugins to access phone features. This allows adding camera, GPS, notifications, etc.",
     "python_title": "Python Skills",
-    "python_s1_name": "Object-Oriented Programming",
+    "python_s1_name": "Machine learning with PyTorch",
     "python_s1_desc": "I am currently developing my skills in PyTorch to design, train, and optimize neural networks. I can build models, tune hyperparameters, and progressively improve their performance through experimentation.",
     "python_s2_name": "Automation & Scripts",
     "python_s2_desc": "I can write scripts to automate repetitive tasks. This improves efficiency and reduces human errors.",
