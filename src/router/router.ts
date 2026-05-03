@@ -26,7 +26,7 @@ const routes = [
   { path: '/chatbot', name: 'chatbot', component: ChatBot },
   { path: '/github-stats', name: 'github-stats', component: GitHubStatsView },
   { path: '/about', name: 'about', component: About },
-  // { path: '/py-torch-test', name: 'pytorch-test-dont-show', component: () => import('../views/Pytorch-ai.vue') },
+  { path: '/py-torch-test', name: 'pytorch-test-dont-show', component: () => import('../views/Pytorch-ai.vue') },
 ] as RouteRecordRaw[]
 
 
