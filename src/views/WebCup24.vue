@@ -6,9 +6,29 @@
 
   <div class="flex justify-between p-8">
     <div class="min-h-screen p-8 space-y-16">
-      <div class="w-full max-w-4xl card p-4 " data-aos="fade-right">
-        <img src="/images/webcup24/webcup.jpg" alt="WebCup 2024"
-          class="w-full rounded-lg shadow-lg filter grayscale brightness-90" />
+      <div class="w-full max-w-4xl mx-auto" data-aos="fade-right">
+        <div class="card p-3 sm:p-4 relative group overflow-hidden">
+
+          <div
+            class="absolute inset-0 border-2 border-transparent group-hover:border-blue-500 rounded-lg transition-all duration-300 pointer-events-none z-10">
+          </div>
+          <div class="relative overflow-hidden rounded-lg">
+            <img src="/images/webcup24/webcup.jpg" alt="WebCup 2024" class="w-full transition-all duration-700 
+               group-hover:scale-105 
+               group-hover:grayscale-0 
+               grayscale brightness-90" loading="lazy" decoding="async" />
+            <div
+              class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+            </div>
+          </div>
+          <div class="absolute top-3 right-3 sm:top-4 sm:right-4 z-20">
+            <div
+              class="w-28 sm:w-32 md:w-36 lg:w-40 bg-white rounded-lg shadow-lg p-1 transform transition-transform duration-300 hover:scale-105">
+              <img alt="WebCup Logo" class="w-full h-auto" src="/webCup_logo.png" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+        </div>
       </div>
       <div class="w-full card p-4 flex justify-center" data-aos="fade-down">
         <p class="text-lg text-gray-700">
@@ -91,18 +111,6 @@ function webCup() {
 </script>
 
 <style scoped>
-img {
-  position: relative;
-  width: 300px;
-  height: 100%;
-  object-fit: cover;
-  width: 100%;
-  border-radius: 8px;
-  z-index: 1;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  filter: grayscale(100%) brightness(0.9);
-}
-
 @media screen and (max-width: 748px) {
 
   .min-h-screen {
