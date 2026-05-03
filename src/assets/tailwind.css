@@ -3,7 +3,7 @@
 @theme {
   --color-sky-300: var(--app-primary-hover, #7dd3fc);
   --color-sky-400: var(--app-primary-hover, #38bdf8);
-  --color-sky-500: var(--app-primary, #f2fcfd);
+  --color-sky-500: var(--app-primary, #e5feff);
   --color-sky-600: var(--app-primary-hover, #0284c7);
   --color-sky-700: var(--app-primary-hover, #0369a1);
 }
@@ -49,7 +49,7 @@ small,
 
 
 :root {
-  --app-primary: #f2fcfd;
+  --app-primary: #e5feff;
   --app-primary-hover: #b6d9da;
   --bg-color: #f0f4f8;
   --text-color: #2c3e50;
