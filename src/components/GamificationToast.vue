@@ -14,9 +14,9 @@
             <p class="font-bold !text-black text-sm drop-shadow-md">
               {{ toast.title }}
             </p>
-            <p class="text-xs text-black/80 mt-0.5 drop-shadow-sm">
+            <!-- <p class="text-xs text-black/80 mt-0.5 drop-shadow-sm">
               {{ toast.message }}
-            </p>
+            </p> -->
           </div>
           <button
             class="text-black/60 hover:text-black transition-colors backdrop-blur-sm bg-white/10 rounded-full w-5 h-5 flex items-center justify-center hover:bg-white/20">
@@ -51,7 +51,7 @@ interface Toast {
   duration: number
 }
 
-// Définir le type des sources XP possibles
+
 type XPSource = 'project_view' | 'article_read' | 'cv_download' | 'session_time' | 'chatbot_interaction' | 'contact_form'
 
 interface XPGainedDetail {
@@ -90,7 +90,7 @@ const removeToast = (id: string) => {
   toasts.value = toasts.value.filter(t => t.id !== id)
 }
 
-// Messages avec typage correct
+
 const getMessageForSource = (source: XPSource, amount: number): string => {
   const messages: Record<XPSource, string> = {
     project_view: t('gamification.toast.project_view'),
@@ -103,7 +103,7 @@ const getMessageForSource = (source: XPSource, amount: number): string => {
   return `+${amount} XP • ${messages[source]}`
 }
 
-// Event listeners typés
+
 const handleXPGained = (event: Event) => {
   const customEvent = event as CustomEvent<XPGainedDetail>
   const { amount, source, newLevel, leveledUp } = customEvent.detail
@@ -132,7 +132,7 @@ const handleBadgeEarned = (event: Event) => {
   const customEvent = event as CustomEvent<BadgeDetail>
   const badge = customEvent.detail
 
-  // Use translations if available, otherwise fallback to badge object properties
+
   const badgeName = t(`gamification.badges.${badge.id}.name`, badge.name)
   const badgeDesc = t(`gamification.badges.${badge.id}.description`, badge.description)
 
