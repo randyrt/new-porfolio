@@ -14,10 +14,9 @@
             <p class="font-bold !text-black text-sm drop-shadow-md">
               {{ toast.title }}
             </p>
-            <!--A révoir-->
-            <!-- <p class="text-xs text-black/80 mt-0.5 drop-shadow-sm">
+            <p class="text-xs text-black/80 mt-0.5 drop-shadow-sm">
               {{ toast.message }}
-            </p> -->
+            </p>
           </div>
           <button
             class="text-black/60 hover:text-black transition-colors backdrop-blur-sm bg-white/10 rounded-full w-5 h-5 flex items-center justify-center hover:bg-white/20">
