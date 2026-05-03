@@ -14,6 +14,7 @@
             <p class="font-bold !text-black text-sm drop-shadow-md">
               {{ toast.title }}
             </p>
+            <!--A révoir-->
             <!-- <p class="text-xs text-black/80 mt-0.5 drop-shadow-sm">
               {{ toast.message }}
             </p> -->
