@@ -17,13 +17,13 @@ html {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-color, #f0f4f8);
+  /* background-color: var(--bg-color, #f0f4f8); */
   color: var(--text-color, #2c3e50);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  @apply bg-gradient-to-tl from-sky-50 to-sky-100;
+  @apply bg-gradient-to-tl from-[var(--app-primary)] to-sky-100;
 }
 
 
