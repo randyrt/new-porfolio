@@ -38,7 +38,7 @@ export function toggleTheme() {
 }
 // Color Management
 const COLOR_STORAGE_KEY = 'primary-color-preference';
-const DEFAULT_COLOR = '#0ea5e9'; // sky-500
+const DEFAULT_COLOR = '#e8f6fd'; // user default initial color
 function adjustColorBrightness(hex, percent) {
     hex = hex.replace(/^#/, '');
     if (hex.length === 3)

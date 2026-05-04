@@ -19,22 +19,25 @@
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
 
     <div v-if="$route.path !== '/chatbot' && $route.path !== '/github-stats'"
-      class="hidden md:flex fixed top-30 left-70 z-[999] group">
+      class="hidden md:flex fixed z-[999] group"
+      :style="{ top: `${botPosition.y}px`, left: `${botPosition.x}px` }">
       <div class="bg-green-500 rounded-lg">
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
       </div>
 
-      <router-link to="/chatbot"
-        class="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-600 to-green-700 text-white rounded-2xl shadow-xl shadow-green-500/40 hover:scale-110 hover:rotate-3 hover:shadow-2xl hover:shadow-green-500/60 transition-all duration-300 animate-float-bot relative group-active:scale-95 outline-none focus:ring-4 focus:ring-green-500/30 group"
-        @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" @click="cycleTooltipMessage">
-
+      <div role="button" tabindex="0"
+        class="relative flex items-center gap-3"
+        @pointerdown.prevent="startDrag"
+        @click.prevent="handleBotClick"
+        @mouseenter="handleMouseEnter"
+        @mouseleave="handleMouseLeave">
         <div
-          class="robot-smile w-16 h-16 bg-gradient-to-br from-green-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative">
+          class="robot-smile w-16 h-16 bg-gradient-to-br from-green-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative cursor-grab"
+          :class="{ 'cursor-grabbing': isDragging }">
           <font-awesome-icon icon="fa-solid fa-robot" class=" text-green-300 text-4xl relative icon-delay" />
 
           <font-awesome-icon icon="fa-solid fa-bolt"
             class="absolute text-green-300 text-sm top-1 left-1/2 transform -translate-x-1/2 icon-delay" />
-
 
           <div
             class="absolute top-6 right-4.5 w-3 h-3 bg-green-800 rounded-full flex items-center justify-center icon-delay">
@@ -49,7 +52,12 @@
           {{ currentTooltipMessage }}
         </span>
         <span class="absolute inset-0 rounded-2xl animate-pulse-purple -z-10"></span>
-      </router-link>
+      </div>
+      <!-- <span
+        class="hidden md:inline-flex items-center gap-1 px-3 py-1 rounded-full ml-2 border border-white/15 bg-white/10 text-emerald-800 text-xs font-semibold select-none"
+        :aria-label="t('chat.drag_hint')">
+        {{ t('chat.drag_hint') }}
+      </span> -->
     </div>
     <AnalyticsDashboard />
   </div>
@@ -57,7 +65,7 @@
 
 <script setup lang="ts">
 import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 import { initColor } from './services/theme.js';
@@ -94,12 +102,100 @@ onMounted(() => {
 
 const { t, tm } = useI18n();
 const route = useRoute();
+const router = useRouter();
 const isHoveringBot = ref(false);
 const tooltipMessageIndex = ref(0);
 const animationKey = ref(0);
 const showTooltip = ref(true);
 let hideTimeout: ReturnType<typeof setTimeout>;
 
+const BOT_POSITION_STORAGE_KEY = 'randy_portfolio_robot_position';
+const botPosition = ref({ x: 300, y: 100 });
+const dragOffset = ref({ x: 0, y: 0 });
+const isDragging = ref(false);
+const hasDragged = ref(false);
+
+const loadSavedBotPosition = () => {
+  if (typeof window === 'undefined') return;
+  try {
+    const raw = window.localStorage.getItem(BOT_POSITION_STORAGE_KEY);
+    if (!raw) return;
+    const saved = JSON.parse(raw);
+    if (saved && typeof saved.x === 'number' && typeof saved.y === 'number') {
+      botPosition.value = {
+        x: clamp(saved.x, 0, window.innerWidth - 96),
+        y: clamp(saved.y, 0, window.innerHeight - 96),
+      };
+    }
+  } catch (error) {
+    console.warn('Unable to restore robot position:', error);
+  }
+};
+
+const saveBotPosition = () => {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(BOT_POSITION_STORAGE_KEY, JSON.stringify(botPosition.value));
+  } catch (error) {
+    console.warn('Unable to save robot position:', error);
+  }
+};
+
+const getPoint = (e: PointerEvent | MouseEvent | TouchEvent) => {
+  if ('touches' in e && e.touches.length > 0) {
+    return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
+  return { x: (e as MouseEvent | PointerEvent).clientX, y: (e as MouseEvent | PointerEvent).clientY };
+};
+
+const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+
+const startDrag = (e: PointerEvent) => {
+  const point = getPoint(e);
+  dragOffset.value = {
+    x: point.x - botPosition.value.x,
+    y: point.y - botPosition.value.y,
+  };
+  isDragging.value = true;
+  hasDragged.value = false;
+
+  window.addEventListener('pointermove', onDrag);
+  window.addEventListener('pointerup', stopDrag);
+  window.addEventListener('pointercancel', stopDrag);
+};
+
+const onDrag = (e: PointerEvent) => {
+  if (!isDragging.value) return;
+  e.preventDefault();
+  const point = getPoint(e);
+  const nextX = point.x - dragOffset.value.x;
+  const nextY = point.y - dragOffset.value.y;
+  botPosition.value = {
+    x: clamp(nextX, 0, window.innerWidth - 96),
+    y: clamp(nextY, 0, window.innerHeight - 96),
+  };
+  hasDragged.value = true;
+};
+
+const stopDrag = () => {
+  if (!isDragging.value) return;
+  isDragging.value = false;
+  window.removeEventListener('pointermove', onDrag);
+  window.removeEventListener('pointerup', stopDrag);
+  window.removeEventListener('pointercancel', stopDrag);
+  saveBotPosition();
+};
+
+const handleBotClick = (e: MouseEvent | PointerEvent) => {
+  if (hasDragged.value) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    hasDragged.value = false;
+    return;
+  }
+  cycleTooltipMessage();
+  router.push('/chatbot');
+};
 
 const getTooltipKeyFromPath = (path: string): string => {
   const routeMap: Record<string, string> = {
@@ -215,6 +311,7 @@ watch(() => route.path, (newPath, oldPath) => {
 });
 
 onMounted(() => {
+  loadSavedBotPosition();
   initColor();
   currentMessages.value = getContextualMessages();
 

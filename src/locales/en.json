@@ -677,6 +677,7 @@
     "page_title": "FrankAIstein of Randy",
     "page_description": "Chat with my AI assistant to learn more about my skills, projects and experiences",
     "chat_tooltip": "Click me 😄 !",
+    "drag_hint": "Drag me",
     "chat_tooltips": {
       "default": [
         "Want to change language? 🌍",

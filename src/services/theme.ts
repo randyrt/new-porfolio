@@ -42,7 +42,7 @@ export function toggleTheme(): Theme {
 
 // Color Management
 const COLOR_STORAGE_KEY = 'primary-color-preference';
-const DEFAULT_COLOR = '#cff1f2'; // user default
+const DEFAULT_COLOR = '#e8f6fd'; // user default initial color
 
 function adjustColorBrightness(hex: string, percent: number): string {
     hex = hex.replace(/^#/, '');
