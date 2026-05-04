@@ -10,7 +10,7 @@
       </p>
     </div>
     <div class="w-full flex justify-center items-center p-16 gap-16 testimonials-container" data-aos="fade-up">
-      <div class="contact-form card p-8">
+      <div class="contact-form card p-8 h-auto">
         <div class="form-group">
           <input type="text" v-model="form.name" required />
           <label class="text-gray-500 !font-semibold">{{ $t('contact.form_name') }}</label>
@@ -27,9 +27,11 @@
           <div
             class="relative h-12 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden flex items-center border border-slate-300 dark:border-slate-700 select-none"
             ref="sliderTrack">
+            
             <div class="absolute inset-0 flex items-center justify-center font-semibold text-sm transition-colors"
               :class="isVerified ? 'text-emerald-500' : 'text-slate-400'">
               {{ isVerified ? $t('contact.verified') : $t('contact.slide_to_verify') }}
+            <font-awesome-icon icon="fa-solid fa-robot" class="ml-2 text-emerald-500"/>
             </div>
             <div class="absolute left-0 top-0 bottom-0 bg-emerald-400/20" :style="{ width: `${sliderProgress}%` }">
             </div>
@@ -48,7 +50,7 @@
           {{ sending ? $t('contact.sending') : $t('contact.send') }}
         </button>
       </div>
-      <div class="card contact-form card p-8">
+      <div class="card contact-form card">
         <QRcode />
       </div>
     </div>
@@ -210,6 +212,26 @@ const sendEmail = async () => {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
+  min-height: 500px;       
+  height: 100%;             
+}
+
+
+.testimonials-container {
+  align-items: stretch;      
+}
+
+.card {
+  height: auto;             
+  display: flex;             
+  flex-direction: column;   
+}
+
+:deep(.qrcode-container) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .form-group {

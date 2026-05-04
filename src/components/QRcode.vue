@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center p-6">
+  <div class="flex flex-col items-center p-6 my-auto">
     <h2 class="text-lg font-semibold mb-4">{{ $t('contact.whatsapp.title') }} <span class="text-green-500">WhatsApp</span> 📱</h2>
     <img v-if="qrDataUrl" :src="qrDataUrl" :alt="$t('contact.whatsapp.qr_alt')" class="w-64 h-64 border rounded-xl shadow-md" />
     <p class="mt-4 text-gray-700">
