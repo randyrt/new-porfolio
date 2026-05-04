@@ -2,7 +2,7 @@
   <Loading v-if="loading" :message="$t('services.loading')" />
   <div v-else class="flex flex-col space-y-10 ">
     <AnimatedTitle :text="$t('services.quote')" aos="fade-down" />
-    <div class="text-center max-w-2xl mx-auto mb-10 px-4 mt-4" data-aos="fade-up">
+    <div class="text-center max-w-2xl mx-auto px-4" data-aos="fade-up">
       <p class="text-lg italic text-gray-700 dark:text-gray-300">
         <span class="text-violet-800 text-lg">«</span>
         {{ $t('services.p') }}
@@ -10,7 +10,7 @@
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-6" data-aos="fade-up">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10" data-aos="fade-up">
 
       <!-- Version control -->
       <div class="card p-6 service card !bg-pink-100">
@@ -19,11 +19,12 @@
           {{ $t('services.git_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Branching strategies (feature, staging,
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Branching strategies
+            (feature, staging,
             production)</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Conflict resolution</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Clean commits & history</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Code reviews ready workflow</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Conflict resolution</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Clean commits & history</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Code reviews ready workflow</li>
         </ul>
       </div>
 
@@ -34,10 +35,10 @@
           {{ $t('services.team_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Pull requests workflow</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Safe merges</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Release management</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Collaboration GitHub / GitLab</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Pull requests workflow</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Safe merges</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Release management</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Collaboration GitHub / GitLab</li>
         </ul>
       </div>
 
@@ -48,10 +49,10 @@
           {{ $t('services.deploy_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Linux server setup</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Secure SSH & permissions</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Environment configuration</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> Production deployment</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Linux server setup</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Secure SSH & permissions</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Environment configuration</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> Production deployment</li>
         </ul>
       </div>
 
@@ -62,9 +63,9 @@
           {{ $t('services.custom_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.custom_li1') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.custom_li2') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.custom_li3') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.custom_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.custom_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.custom_li3') }}</li>
         </ul>
 
       </div>
@@ -77,9 +78,9 @@
           {{ $t('services.collab_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.collab_li1') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.collab_li2') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.collab_li3') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.collab_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.collab_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.collab_li3') }}</li>
         </ul>
       </div>
 
@@ -90,11 +91,11 @@
           {{ $t('services.maintenance_desc') }}
         </p>
         <ul>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li1') }}
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.maintenance_li1') }}
           </li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li2') }}
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.maintenance_li2') }}
           </li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.maintenance_li3') }}
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.maintenance_li3') }}
           </li>
         </ul>
       </div>
@@ -110,9 +111,9 @@
           {{ $t('services.doc_desc') }}
         </p>
         <ul class="mt-4">
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.doc_li1') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.doc_li2') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.doc_li3') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.doc_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.doc_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.doc_li3') }}</li>
         </ul>
       </div>
 
@@ -123,9 +124,9 @@
           {{ $t('services.pedagogy_desc') }}
         </p>
         <ul class="mt-4">
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.pedagogy_li1') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.pedagogy_li2') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.pedagogy_li3') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.pedagogy_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.pedagogy_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.pedagogy_li3') }}</li>
         </ul>
       </div>
 
@@ -136,9 +137,9 @@
           {{ $t('services.biz_desc') }}
         </p>
         <ul class="mt-4">
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.biz_li1') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.biz_li2') }}</li>
-          <li class="text-sm text-gray-700"><span class="text-sky-500">✔</span> {{ $t('services.biz_li3') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.biz_li1') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.biz_li2') }}</li>
+          <li class="text-sm text-gray-700"><span class="text-sky-800">✔</span> {{ $t('services.biz_li3') }}</li>
         </ul>
       </div>
 
