@@ -4,7 +4,7 @@
       class="relative backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
       :style="{ backgroundColor: 'var(--app-primary)' }" @click="showWidget = !showWidget">
       <font-awesome-icon icon="trophy" class="text-xl text-amber-500 drop-shadow-md" />
-      <span v-if="levelInfo.level > 1"
+      <span v-if="levelInfo.level > 0"
         class="absolute -top-1 -right-1 bg-gradient-to-br from-yellow-400 to-orange-500 text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold shadow-lg ring-2 ring-white/80">
         {{ levelInfo.level }}
       </span>
