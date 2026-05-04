@@ -917,9 +917,14 @@
       "cv_download": "CV téléchargé 🎯",
       "session_time": "5 minutes sur le portfolio !",
       "chatbot_interaction": "Discussion avec l'IA (+20 XP)",
-      "contact_form": "Formulaire de contact envoyé (+100 XP)"
+      "contact_form": "Formulaire de contact envoyé (+100 XP)",
+      "boss_defeated": "Boss vaincu (+200 XP)"
     },
     "badges": {
+      "first_boss": {
+        "name": "👾 Premier Boss",
+        "description": "Vous avez vaincu le premier boss !"
+      },
       "cv_hunter": {
         "name": "📄 Chasseur de CV",
         "description": "CV téléchargé"

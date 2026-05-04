@@ -917,9 +917,14 @@
       "cv_download": "CV downloaded 🎯",
       "session_time": "5 minutes spent on the portfolio!",
       "chatbot_interaction": "Discussion with AI (+20 XP)",
-      "contact_form": "Contact form sent (+100 XP)"
+      "contact_form": "Contact form sent (+100 XP)",
+      "boss_defeated": "Boss defeated (+200 XP)"
     },
     "badges": {
+      "first_boss": {
+        "name": "👾 First Boss",
+        "description": "You defeated the first boss!"
+      },
       "cv_hunter": {
         "name": "📄 CV Hunter",
         "description": "CV downloaded"

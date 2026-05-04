@@ -11,7 +11,7 @@
             {{ toast.icon }}
           </div>
           <div class="flex-1">
-            <p class="font-bold !text-black text-sm drop-shadow-md">
+            <p class="font-bold text-black text-sm drop-shadow-md">
               {{ toast.title }}
             </p>
             <p class="text-xs text-black/80 mt-0.5 drop-shadow-sm">
@@ -52,7 +52,7 @@ interface Toast {
 }
 
 
-type XPSource = 'project_view' | 'article_read' | 'cv_download' | 'session_time' | 'chatbot_interaction' | 'contact_form'
+type XPSource = 'project_view' | 'article_read' | 'cv_download' | 'session_time' | 'chatbot_interaction' | 'contact_form' | 'boss_defeated'
 
 interface XPGainedDetail {
   amount: number
@@ -98,7 +98,8 @@ const getMessageForSource = (source: XPSource, amount: number): string => {
     cv_download: t('gamification.toast.cv_download'),
     session_time: t('gamification.toast.session_time'),
     chatbot_interaction: t('gamification.toast.chatbot_interaction'),
-    contact_form: t('gamification.toast.contact_form')
+    contact_form: t('gamification.toast.contact_form'),
+    boss_defeated: t('gamification.toast.boss_defeated')
   }
   return `+${amount} XP • ${messages[source]}`
 }
