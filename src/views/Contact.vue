@@ -23,9 +23,28 @@
           <textarea rows="6" v-model="form.message" required></textarea>
           <label class="text-gray-500 !font-semibold">{{ $t('contact.form_message') }}</label>
         </div>
+        <div class="form-group mb-6">
+          <div
+            class="relative h-12 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden flex items-center border border-slate-300 dark:border-slate-700 select-none"
+            ref="sliderTrack">
+            <div class="absolute inset-0 flex items-center justify-center font-semibold text-sm transition-colors"
+              :class="isVerified ? 'text-emerald-500' : 'text-slate-400'">
+              {{ isVerified ? $t('contact.verified') : $t('contact.slide_to_verify') }}
+            </div>
+            <div class="absolute left-0 top-0 bottom-0 bg-emerald-400/20" :style="{ width: `${sliderProgress}%` }">
+            </div>
+            <div
+              class="absolute left-1 top-1 bottom-1 w-10 bg-white dark:bg-slate-600 rounded-lg shadow flex items-center justify-center cursor-grab transition-transform z-10"
+              :class="{ 'cursor-grabbing': isDragging }" :style="{ transform: `translateX(${thumbPosition}px)` }"
+              @mousedown="startDrag" @touchstart.passive="startDrag">
+              <font-awesome-icon :icon="isVerified ? 'fa-solid fa-check' : 'fa-solid fa-chevron-right'"
+                :class="isVerified ? 'text-emerald-500' : 'text-slate-400 dark:text-slate-200'" />
+            </div>
+          </div>
+        </div>
         <button
-          :class="[sending ? 'cursor-not-allowed submit-btn btn-violet btn-effect-5' : 'submit-btn btn-violet btn-effect-5']"
-          type="submit" :disabled="sending" @click="sendEmail">
+          :class="[sending || !isVerified ? 'cursor-not-allowed submit-btn btn-violet btn-effect-5 opacity-50' : 'submit-btn btn-violet btn-effect-5']"
+          type="submit" :disabled="sending || !isVerified" @click="sendEmail">
           {{ sending ? $t('contact.sending') : $t('contact.send') }}
         </button>
       </div>
@@ -38,7 +57,7 @@
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-import { ref, onMounted, computed, watchEffect } from 'vue'
+import { ref, onMounted, computed, watchEffect, onUnmounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import confetti from "canvas-confetti"
 import emailjs from "@emailjs/browser"
@@ -78,6 +97,66 @@ const form = ref({
   email: "",
   message: ""
 });
+
+const isVerified = ref(false)
+const sliderTrack = ref<HTMLElement | null>(null)
+const thumbPosition = ref(0)
+const sliderProgress = ref(0)
+const isDragging = ref(false)
+let startX = 0
+let maxTravel = 0
+
+const startDrag = (e: MouseEvent | TouchEvent) => {
+  if (isVerified.value) return
+  isDragging.value = true
+  startX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX
+  if (sliderTrack.value) {
+    maxTravel = sliderTrack.value.clientWidth - 48 // 40px thumb + 8px padding
+  }
+
+  window.addEventListener('mousemove', onDrag)
+  window.addEventListener('touchmove', onDrag, { passive: false })
+  window.addEventListener('mouseup', stopDrag)
+  window.addEventListener('touchend', stopDrag)
+}
+
+const onDrag = (e: MouseEvent | TouchEvent) => {
+  if (!isDragging.value) return
+  if (e.cancelable) e.preventDefault()
+  const currentX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX
+  let delta = currentX - startX
+
+  if (delta < 0) delta = 0
+  if (delta > maxTravel) delta = maxTravel
+
+  thumbPosition.value = delta
+  sliderProgress.value = (delta / maxTravel) * 100
+
+  if (delta >= maxTravel) {
+    isVerified.value = true
+    stopDrag()
+  }
+}
+
+const stopDrag = () => {
+  isDragging.value = false
+  window.removeEventListener('mousemove', onDrag)
+  window.removeEventListener('touchmove', onDrag)
+  window.removeEventListener('mouseup', stopDrag)
+  window.removeEventListener('touchend', stopDrag)
+
+  if (!isVerified.value) {
+    thumbPosition.value = 0
+    sliderProgress.value = 0
+  }
+}
+
+onUnmounted(() => {
+  window.removeEventListener('mousemove', onDrag)
+  window.removeEventListener('touchmove', onDrag)
+  window.removeEventListener('mouseup', stopDrag)
+  window.removeEventListener('touchend', stopDrag)
+})
 
 
 onMounted(() => {

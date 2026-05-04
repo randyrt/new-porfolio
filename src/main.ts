@@ -84,7 +84,9 @@ import {
   faChevronDown,
   faMousePointer,
   faFire,
-  faShieldVirus
+  faShieldVirus,
+  faCheck,
+  faArrowRightLong
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -116,7 +118,7 @@ library.add(
   faLayerGroup, faDownload, faArrowRight, faThumbsDown,
   faThumbsUp, faBookOpen, faPalette, faEyeSlash, faLock,
   faPlay, faHourglassHalf, faPause, faScroll, faSkull, faLeaf, faChevronUp, faChevronDown,
-  faMousePointer, faFire, faShieldVirus
+  faMousePointer, faFire, faShieldVirus, faCheck, faArrowRightLong
 )
 
 const options = {

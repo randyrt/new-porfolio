@@ -90,6 +90,8 @@
     "toast_invalid_email": "Please enter a valid email address 😏!",
     "toast_error": "Error during sending. Check your internet connection 🥶.",
     "toast_success": "Message sent successfully 🎉!",
+    "slide_to_verify": "Slide to verify you are human",
+    "verified": "Verified!",
     "meta_title": "Randy's Contact",
     "meta_desc": "Contact me here in two ways.",
     "whatsapp": {
