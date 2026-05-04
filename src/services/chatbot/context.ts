@@ -247,4 +247,4 @@ RULES:
 4. If asked something not in the data:
    → Say: "Je n'ai pas cette information précise dans mon portfolio. Voici ce que je sais: [closest match]"
 `
-}
+};
