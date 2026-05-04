@@ -53,11 +53,6 @@
         </span>
         <span class="absolute inset-0 rounded-2xl animate-pulse-purple -z-10"></span>
       </div>
-      <!-- <span
-        class="hidden md:inline-flex items-center gap-1 px-3 py-1 rounded-full ml-2 border border-white/15 bg-white/10 text-emerald-800 text-xs font-semibold select-none"
-        :aria-label="t('chat.drag_hint')">
-        {{ t('chat.drag_hint') }}
-      </span> -->
     </div>
     <AnalyticsDashboard />
   </div>
