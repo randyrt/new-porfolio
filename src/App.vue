@@ -17,6 +17,8 @@
     <GamificationToast />
     <GamificationWidget />
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
+    <GuidedTour v-if="showTour" @close="showTour = false" />
+    <AnalyticsDashboard @open-tour="openTour" />
 
     <div v-if="$route.path !== '/chatbot' && $route.path !== '/github-stats'"
       class="hidden md:flex fixed z-[999] group"
@@ -54,7 +56,7 @@
         <span class="absolute inset-0 rounded-2xl animate-pulse-purple -z-10"></span>
       </div>
     </div>
-    <AnalyticsDashboard />
+
   </div>
 </template>
 
@@ -63,12 +65,20 @@ import { computed, ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
+import GuidedTour from './components/GuidedTour.vue';
+import AnalyticsDashboard from './components/AnalyticsDashboard.vue';
 import { initColor } from './services/theme.js';
 import { analytics } from './composables/analytics';
 import { useGamification } from './composables/useGamification';
 
 const { initSession } = useGamification()
 const isMobile = ref(false);
+const showTour = ref(false);
+
+const openTour = () => {
+  showTour.value = true;
+}
+
 
 const checkMobile = () => {
   isMobile.value = window.innerWidth < 768;

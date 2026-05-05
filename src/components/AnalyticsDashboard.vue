@@ -1,10 +1,15 @@
 <template>
-    <div class="fixed bottom-1 right-4 z-50">
-        <button @click="showDashboard = !showDashboard"
-            class="relative backdrop-blur-md bg-sky-500 border border-white/30 !rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110">
+    <div class="fixed bottom-1 right-4 z-50 flex items-end gap-3">
+        <button @click="$emit('open-tour')"
+            class="relative backdrop-blur-md bg-sky-500 border border-white/30 !rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
+            :title="t('nav.tour')">
+            <font-awesome-icon icon="play-circle" class="text-xl text-amber-500 drop-shadow-md " />
+        </button>
+         <button @click="showDashboard = !showDashboard"
+            class="relative backdrop-blur-md bg-sky-500 border border-white/30 !rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
+            :title="t('analytics.dashboard')">
             <font-awesome-icon icon="chart-line" class="text-xl text-amber-500 drop-shadow-md" />
         </button>
-        <!--no-invert-modal-->
         <div v-if="showDashboard" class="fixed inset-0 backdrop-blur-[5px] flex items-center justify-center p-4 z-[100]"
             :style="{ backgroundColor: 'color-mix(in srgb, #0a0f1a, transparent 40%)' }"
             @click.self="showDashboard = false">
@@ -44,7 +49,7 @@
                         </div>
                     </div>
 
-                    <div class="p-8 space-y-8 !bg-white/85">
+                    <div class="p-8 space-y-8  bg-gradient-to-r from-blue-100 to-white/90">
                         <!-- Stats Grid -->
                         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div
@@ -213,6 +218,10 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { analytics } from '../composables/analytics';
 import { useI18n } from 'vue-i18n';
+
+const emit = defineEmits<{
+    (e: 'open-tour'): void
+}>();
 
 const { t } = useI18n();
 

@@ -17,6 +17,7 @@ declare module 'vue' {
     GitConstruction3D: typeof import('./src/components/GitConstruction3D.vue')['default']
     GitHubStats: typeof import('./src/components/GitHubStats.vue')['default']
     GitTimeMachine: typeof import('./src/components/GitTimeMachine.vue')['default']
+    GuidedTour: typeof import('./src/components/GuidedTour.vue')['default']
     Loading: typeof import('./src/components/Loading.vue')['default']
     LogoSection: typeof import('./src/components/logoSection.vue')['default']
     MultiWorldClock: typeof import('./src/components/MultiWorldClock.vue')['default']
@@ -28,5 +29,6 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SkillSection: typeof import('./src/components/SkillSection.vue')['default']
     TechLogo: typeof import('./src/components/TechLogo.vue')['default']
+    VRMode: typeof import('./src/components/VRMode.vue')['default']
   }
 }

@@ -83,7 +83,7 @@
             <div class="relative group py-3 flex-1" @click="sidebarVisible = !sidebarVisible">
               <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
                 <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
-                <span class="text-sm font-medium">{{ $t('nav.reading_mode') }}</span>
+                <span class="text-sm font-medium">{{ t('nav.reading_mode') }}</span>
               </span>
             </div>
           </div>
@@ -114,11 +114,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
 import { getStoredColor, setPrimaryColor } from '../services/theme.js'
 
+const { t } = useI18n()
 const customPrimaryColor = ref(getStoredColor());
 
 function updateCustomColor() {

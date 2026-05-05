@@ -16,8 +16,22 @@
     "contact": "Contact",
     "about": "À propos",
     "bouton_hidden_menu": "Cacher le menu",
+    "tour": "Visite guidée",
     "prev": "Précédent",
     "next": "Suivant"
+  },
+  "tour": {
+    "title": "Visite guidée interactive",
+    "description": "Parcours les sections clés de mon portfolio de manière guidée.",
+    "exit": "Quitter la visite",
+    "stepIndicator": "Étape {step}/{total}",
+    "steps": {
+      "intro": "Bienvenue dans la visite guidée interactive de mon portfolio !",
+      "step1": "Découvre ma mission et mes valeurs d’innovation.",
+      "step2": "Parcours mes compétences comme un atelier technique.",
+      "step3": "Explore mes projets dans un showroom moderne.",
+      "step4": "Contacte-moi pour passer à la mission suivante."
+    }
   },
   "home": {
     "loading": "Page d'accueil...",

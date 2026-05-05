@@ -10,25 +10,25 @@ const LEVEL_BADGES: LevelBadge = {
   1: null,
   2: {
     id: 'curious_visitor',
-    name: '👀 Visiteur Curieux',
+    name: 'Visiteur Curieux',
     description: 'Niveau 2 atteint',
     earnedAt: new Date()
   },
   3: {
     id: 'frontend_expert',
-    name: '⚛️ Expert Frontend',
+    name: 'Expert Frontend',
     description: 'Niveau 3 - Expert Frontend',
     earnedAt: new Date()
   },
   5: {
     id: 'fullstack_master',
-    name: '🚀 Master Fullstack',
+    name: 'Master Fullstack',
     description: 'Niveau 5 - Maîtrise complète',
     earnedAt: new Date()
   },
   10: {
     id: 'architecture_guru',
-    name: '🏗️ Guru Architecture',
+    name: 'Guru Architecture',
     description: 'Niveau 10 - Légende du développement',
     earnedAt: new Date()
   }
