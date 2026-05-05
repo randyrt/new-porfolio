@@ -60,7 +60,7 @@
                   </button>
                 </div>
 
-                <div class="p-8 space-y-8 !bg-white/85">
+                <div class="p-8 space-y-8 bg-gradient-to-r from-blue-100 to-white/90">
                   <!-- Vue.js 3 -->
                   <div
                     class="bg-white/35 border border-white/10 p-6 rounded-2xl border-l-4 border-l-emerald-500 transition-all hover:bg-white/[0.07]">

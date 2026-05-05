@@ -2,7 +2,7 @@
     <div class="fixed bottom-1 right-4 z-50 flex items-end gap-3">
         <button @click="$emit('open-tour')"
             class="relative backdrop-blur-md bg-sky-500 border border-white/30 !rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
-            :title="t('nav.tour')">
+           >
             <font-awesome-icon icon="play-circle" class="text-xl text-amber-500 drop-shadow-md " />
         </button>
          <button @click="showDashboard = !showDashboard"

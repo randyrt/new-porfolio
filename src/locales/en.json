@@ -19,6 +19,19 @@
     "prev": "Prev",
     "next": "Next"
   },
+  "tour": {
+    "title": "Interactive guided tour",
+    "description": "Browse the key sections of my portfolio in a guided way.",
+    "exit": "Exit tour",
+    "stepIndicator": "Step {step}/{total}",
+    "steps": {
+      "intro": "Welcome to the interactive guided tour of my portfolio!",
+      "step1": "Discover my mission and innovation values.",
+      "step2": "Browse my skills like a technical workshop.",
+      "step3": "Explore my projects in a modern showroom.",
+      "step4": "Contact me to move on to the next mission."
+    }
+  },
   "home": {
     "loading": "Home page...",
     "quote": "\"Code never sleeps, and neither do I until I reach my goals.\"",
