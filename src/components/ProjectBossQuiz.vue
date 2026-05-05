@@ -6,7 +6,7 @@
       data-aos="fade-in">
 
       <!-- Boss Header -->
-      <div class="relative p-8 bg-gradient-to-br from-purple-900/50 to-slate-900 border border-white">
+      <div class="relative p-8 bg-gradient-to-br from-purple-900/50 to-slate-900 border !border-white">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center gap-4">
             <div
@@ -28,7 +28,7 @@
         </div>
 
         <!-- Progress / HP Bar -->
-        <div class="space-y-2">
+        <div class="space-y-2 ">
           <div class="flex justify-between text-[10px] font-mono text-white/60">
             <span>{{ $t('quiz.boss_hp') }}</span>
             <span>{{ hp }} / 100</span>
@@ -42,7 +42,8 @@
       </div>
 
       <!-- Quiz Content -->
-      <div class="bg-gradient-to-r from-blue-100 to-white/90 p-8">
+      <div class="bg-gradient-to-r from-blue-100 to-white/90 p-8 border !border-white/10"
+      >
         <div v-if="!isCompleted" class="space-y-8">
           <div class="space-y-4">
             <div class="flex items-center gap-3">
@@ -57,15 +58,18 @@
 
             <div class="grid grid-cols-1 gap-3 mt-6">
               <button v-for="(option, idx) in currentQuestion.options" :key="idx" @click="checkAnswer(idx)"
-                class="group text-emerald-100 relative flex items-center bg-white/25 p-4 rounded-xl border border-white/25  hover:bg-white/[0.05] hover:border-purple-500/50 transition-all text-left overflow-hidden">
+                class="group relative flex items-center backdrop-blur-md bg-cyan-900/20 p-4 rounded-xl border border-cyan-400/30 hover:bg-cyan-800/40 hover:border-cyan-300/70 transition-all text-left overflow-hidden shadow-md hover:shadow-cyan-500/20">
                 <div
-                  class="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/5 transition-all">
+                  class="absolute inset-0 bg-gradient-to-r from-cyan-400/0 to-cyan-400/0 group-hover:from-cyan-400/10 transition-all">
                 </div>
-                <span
-                  class="w-6 h-6 rounded-md bg-white/50 flex items-center justify-center text-[10px] font-bold text-emerald-300 mr-4 group-hover:text-purple-400 group-hover:bg-purple-500/50 transition-colors">
+                <span class="w-6 h-6 rounded-md flex items-center justify-center text-[11px] font-bold mr-4 transition-all
+             bg-cyan-800/60 text-cyan-200 border border-cyan-400/40
+             group-hover:bg-cyan-500 group-hover:text-white group-hover:border-cyan-200">
                   {{ String.fromCharCode(65 + idx) }}
                 </span>
-                <span class="text-white group-hover:text-white transition-colors">{{ option }}</span>
+                <span class="text-cyan-100 group-hover:text-white transition-colors">
+                  {{ option }}
+                </span>
               </button>
             </div>
           </div>
