@@ -6,7 +6,7 @@
       data-aos="fade-in">
 
       <!-- Boss Header -->
-      <div class="relative p-8 bg-gradient-to-br from-purple-900/50 to-slate-900 border-b border-white/5">
+      <div class="relative p-8 bg-gradient-to-br from-purple-900/50 to-slate-900 border border-white">
         <div class="flex items-center justify-between mb-6">
           <div class="flex items-center gap-4">
             <div
@@ -42,7 +42,7 @@
       </div>
 
       <!-- Quiz Content -->
-      <div class="p-8">
+      <div class="bg-gradient-to-r from-blue-100 to-white/90 p-8">
         <div v-if="!isCompleted" class="space-y-8">
           <div class="space-y-4">
             <div class="flex items-center gap-3">
@@ -57,15 +57,15 @@
 
             <div class="grid grid-cols-1 gap-3 mt-6">
               <button v-for="(option, idx) in currentQuestion.options" :key="idx" @click="checkAnswer(idx)"
-                class="group relative flex items-center p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-purple-500/50 transition-all text-left overflow-hidden">
+                class="group text-emerald-100 relative flex items-center bg-white/25 p-4 rounded-xl border border-white/25  hover:bg-white/[0.05] hover:border-purple-500/50 transition-all text-left overflow-hidden">
                 <div
                   class="absolute inset-0 bg-gradient-to-r from-purple-500/0 to-purple-500/0 group-hover:from-purple-500/5 transition-all">
                 </div>
                 <span
-                  class="w-6 h-6 rounded-md bg-white/5 flex items-center justify-center text-[10px] font-bold !text-emerald-50 mr-4 group-hover:text-purple-400 group-hover:bg-purple-500/10 transition-colors">
+                  class="w-6 h-6 rounded-md bg-white/50 flex items-center justify-center text-[10px] font-bold text-emerald-300 mr-4 group-hover:text-purple-400 group-hover:bg-purple-500/50 transition-colors">
                   {{ String.fromCharCode(65 + idx) }}
                 </span>
-                <span class="text-slate-300 group-hover:text-white transition-colors">{{ option }}</span>
+                <span class="text-white group-hover:text-white transition-colors">{{ option }}</span>
               </button>
             </div>
           </div>
