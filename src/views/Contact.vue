@@ -25,7 +25,7 @@
         </div>
         <div class="form-group mb-6">
           <div
-            class="relative h-12 bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden flex items-center border border-slate-300 dark:border-slate-700 select-none"
+            class="relative h-12 bg-slate-100 rounded-2xl bg-gradient-to-r from-blue-100 to-white/90 overflow-hidden flex items-center border border-amber-300 dark:border-white/70 select-none"
             ref="sliderTrack">
             
             <div class="absolute inset-0 flex items-center justify-center font-semibold text-sm transition-colors"
@@ -36,11 +36,11 @@
             <div class="absolute left-0 top-0 bottom-0 bg-emerald-400/20" :style="{ width: `${sliderProgress}%` }">
             </div>
             <div
-              class="absolute left-1 top-1 bottom-1 w-10 bg-white dark:bg-slate-600 rounded-lg shadow flex items-center justify-center cursor-grab transition-transform z-10"
+              class="absolute left-1 top-1 bottom-1 w-10 dark:bg-amber-500 rounded-lg shadow flex items-center justify-center cursor-grab transition-transform z-10"
               :class="{ 'cursor-grabbing': isDragging }" :style="{ transform: `translateX(${thumbPosition}px)` }"
               @mousedown="startDrag" @touchstart.passive="startDrag">
               <font-awesome-icon :icon="isVerified ? 'fa-solid fa-check' : 'fa-solid fa-chevron-right'"
-                :class="isVerified ? 'text-emerald-500' : 'text-slate-400 dark:text-slate-200'" />
+                :class="isVerified ? 'text-emerald-500' : 'text-emerald-400 dark:text-slate-200'" />
             </div>
           </div>
         </div>
