@@ -78,17 +78,17 @@
             <font-awesome-icon icon="fa-solid fa-trophy" class="text-emerald-400 text-4xl" />
           </div>
           <div>
-            <h3 class="text-2xl font-bold text-white mb-2">{{ $t('quiz.victory') }}</h3>
-            <p class="text-slate-400">{{ $t('quiz.boss_defeated_desc', { project: projectTitle }) }}</p>
+            <h3 class="text-2xl font-bold !text-white mb-2">{{ $t('quiz.victory') }}</h3>
+            <p class="!text-purple-400">{{ $t('quiz.boss_defeated_desc', { project: projectTitle }) }}</p>
           </div>
           <div class="flex items-center justify-center gap-4">
             <div class="text-center">
-              <p class="text-[10px] text-slate-500 uppercase tracking-widest">{{ $t('quiz.reward') }}</p>
-              <p class="text-emerald-400 font-bold">+200 XP</p>
+              <p class="text-[10px] !text-white/90 uppercase tracking-widest">{{ $t('quiz.reward') }}</p>
+              <p class="!text-amber-500 font-bold">+200 XP</p>
             </div>
           </div>
           <button @click="finalize"
-            class="w-full px-8 py-4 bg-violet-600 text-white font-bold rounded-xl shadow-lg shadow-violet-600/20 hover:bg-violet-500 transition-all active:scale-95">
+            class="w-full px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold rounded-xl hover:from-emerald-600 hover:to-blue-600 transition-all">
             {{ $t('quiz.collect_rewards') }}
           </button>
         </div>
