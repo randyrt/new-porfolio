@@ -89,7 +89,7 @@ import {
   faArrowRightLong,
   faPlayCircle,
   faCompass,
-  faMedal
+  faMedal,
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
@@ -121,7 +121,7 @@ library.add(
   faLayerGroup, faDownload, faArrowRight, faThumbsDown,
   faThumbsUp, faBookOpen, faPalette, faEyeSlash, faLock,
   faPlay, faHourglassHalf, faPause, faScroll, faSkull, faLeaf, faChevronUp, faChevronDown,
-  faMousePointer, faFire, faShieldVirus, faCheck, faArrowRightLong, faPlayCircle, faCompass, faMedal
+  faMousePointer, faFire, faShieldVirus, faCheck, faArrowRightLong, faPlayCircle, faCompass, faMedal,
 )
 
 const options = {

@@ -1,16 +1,16 @@
 <template>
-    <div class="fixed bottom-1 right-4 z-50 flex items-end gap-3">
+    <div class="fixed bottom-1 right-22 z-60 flex items-end gap-3">
         <button @click="$emit('open-tour')"
-            class="relative backdrop-blur-md bg-sky-500 border border-white/30 !rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
+            class="relative backdrop-blur-md bg-sky-500 !border !border-amber-300 rounded-2xl  shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
            >
             <font-awesome-icon icon="play-circle" class="text-xl text-amber-500 drop-shadow-md " />
         </button>
          <button @click="showDashboard = !showDashboard"
-            class="relative backdrop-blur-md bg-sky-500 border border-white/30 !rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
+            class="relative backdrop-blur-md bg-sky-500 !border !border-amber-300 rounded-2xl  shadow-xl hover:shadow-2xl transition-all duration-300 w-13 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
             :title="t('analytics.dashboard')">
             <font-awesome-icon icon="chart-line" class="text-xl text-amber-500 drop-shadow-md" />
         </button>
-        <div v-if="showDashboard" class="fixed inset-0 backdrop-blur-[5px] flex items-center justify-center p-4 z-[100]"
+        <div v-if="showDashboard" class="fixed inset-0 backdrop-blur-[5px] flex items-center justify-center p-4 z-[200]"
             :style="{ backgroundColor: 'color-mix(in srgb, #0a0f1a, transparent 40%)' }"
             @click.self="showDashboard = false">
             <div class="relative w-full max-w-3xl bg-slate-100 border border-white/10 rounded-2xl shadow-2xl overflow-hidden"

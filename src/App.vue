@@ -19,6 +19,7 @@
     <Navbar :brand="'randy@art.dev'" :routes="navRoutes" />
     <GuidedTour v-if="showTour" @close="showTour = false" />
     <AnalyticsDashboard @open-tour="openTour" />
+    <stack />
 
     <div v-if="$route.path !== '/chatbot' && $route.path !== '/github-stats'"
       class="hidden md:flex fixed z-[999] group"
@@ -69,6 +70,7 @@ import GuidedTour from './components/Guide_visit/GuidedTour.vue';
 import AnalyticsDashboard from './components/Analitics_Dashboard/AnalyticsDashboard.vue';
 import { initColor } from './services/theme.js';
 import { analytics } from './composables/analytics';
+import stack from './components/technic_stack/stack.vue';
 import { useGamification } from './composables/useGamification';
 
 const { initSession } = useGamification()

@@ -1,7 +1,7 @@
 <template>
-  <div class="fixed bottom-1 right-42 z-50 group">
+  <div class="fixed bottom-1 right-60 z-50 group">
     <div
-      class="relative backdrop-blur-md border border-white/30 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 w-14 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
+      class="relative backdrop-blur-md  !border !border-amber-300 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 w-17 h-14 flex items-center justify-center cursor-pointer hover:scale-110"
       :style="{ backgroundColor: 'var(--app-primary)' }" @click="showWidget = !showWidget">
       <font-awesome-icon icon="trophy" class="text-xl text-amber-500 drop-shadow-md" />
       <span v-if="levelInfo.level > 0"
