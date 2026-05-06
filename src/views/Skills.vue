@@ -175,6 +175,7 @@ import { useHead } from '@vueuse/head'
 import { computed, ref, onMounted, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+
 const { t } = useI18n()
 
 useHead({

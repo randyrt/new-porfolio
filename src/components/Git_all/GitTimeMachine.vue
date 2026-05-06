@@ -13,7 +13,7 @@
             <font-awesome-icon icon="fa-solid fa-hourglass-half" class="text-white text-xl animate-spin-slow" />
           </div>
           <div>
-            <h2 class="text-2xl font-bold text-purple-500">
+            <h2 class="text-2xl font-bold text-purple-800">
               {{ $t('git_time_machine.title') }}
             </h2>
             <p class="text-indigo-300/80 text-sm italic">{{ $t('git_time_machine.subtitle') }}</p>
@@ -132,8 +132,8 @@
 import { ref, onMounted, computed, watch, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 const { t, tm, locale } = useI18n()
-import { useGitTimeMachine, EmotionalState, AnalyzedCommit } from '../composables/useGitTimeMachine'
-import GitConstruction3D from './GitConstruction3D.vue'
+import { useGitTimeMachine, EmotionalState, AnalyzedCommit } from '../../composables/useGitTimeMachine'
+
 
 const { commits, loading, error, fetchHistory, timeGroups } = useGitTimeMachine()
 const selectedDay = ref<string | null>(null)

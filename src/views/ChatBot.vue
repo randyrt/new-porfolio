@@ -296,6 +296,7 @@ import { toggleTheme, getStoredTheme } from '../services/theme.js'
 import { useGitTimeMachine } from '../composables/useGitTimeMachine'
 import { useGamification } from '../composables/useGamification'
 
+
 import { type Action, type Message } from '../services/chatbot/types'
 import {
     isOnTopic,

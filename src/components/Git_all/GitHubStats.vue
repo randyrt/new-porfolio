@@ -1,7 +1,7 @@
 <template>
   <div class="github-stats p-6 git-stat bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl">
     <div class="flex items-center gap-4 mb-8">
-      <h2 class="text-2xl font-bold  text-purple-500">{{ $t('github.title') }}</h2>
+      <h2 class="text-2xl font-bold  text-purple-800">{{ $t('github.title') }}</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6" v-if="!loading && !error">
       <div class="stat-card p-4 bg-gradient-to-br from-blue-400 to-blue-400 rounded-lg text-white">

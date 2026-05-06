@@ -66,10 +66,6 @@
 import { useHead } from '@vueuse/head'
 import { computed, ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
-import AnimatedTitle from '../components/AnimatedTitle.vue'
-import Loading from '../components/Loading.vue'
-import GitHubStats from '../components/GitHubStats.vue'
-import GitTimeMachine from '../components/GitTimeMachine.vue'
 
 const { t } = useI18n()
 const loading = ref(true)

@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch, computed } from 'vue'
-import { AnalyzedCommit, EmotionalState } from '../composables/useGitTimeMachine'
+import { AnalyzedCommit, EmotionalState } from '../../composables/useGitTimeMachine'
 
 const props = defineProps<{
   commits: AnalyzedCommit[]

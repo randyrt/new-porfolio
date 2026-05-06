@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
-import { useGamification } from '../composables/useGamification'
+import { useGamification } from '../../composables/useGamification'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()

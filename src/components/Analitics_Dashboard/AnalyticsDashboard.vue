@@ -216,7 +216,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from 'vue';
-import { analytics } from '../composables/analytics';
+import { analytics } from '../../composables/analytics';
 import { useI18n } from 'vue-i18n';
 
 const emit = defineEmits<{

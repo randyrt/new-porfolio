@@ -71,6 +71,7 @@ import { computed, ref, onMounted, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 
+
 const { t } = useI18n()
 
 useHead({

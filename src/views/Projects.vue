@@ -111,10 +111,6 @@ import { useToast } from 'vue-toastification'
 import { useI18n } from 'vue-i18n'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Pagination, Navigation } from 'swiper/modules'
-import ProjectGallery from '../components/ProjectGallery.vue'
-import Loading from '../components/Loading.vue'
-import AnimatedTitle from '../components/AnimatedTitle.vue'
-import ProjectBossQuiz from '../components/ProjectBossQuiz.vue'
 import { useGamification } from '../composables/useGamification'
 
 

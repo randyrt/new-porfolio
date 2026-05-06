@@ -83,13 +83,40 @@ __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
     ...{ class: "min-h-screen p-8 space-y-16" },
 });
 __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-    ...{ class: "w-full max-w-4xl card p-4 " },
+    ...{ class: "w-full max-w-4xl mx-auto" },
     'data-aos': "fade-right",
+});
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "card p-3 sm:p-4 relative group overflow-hidden" },
+});
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "absolute inset-0 border-2 border-transparent group-hover:border-blue-500 rounded-lg transition-all duration-300 pointer-events-none z-10" },
+});
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "relative overflow-hidden rounded-lg" },
 });
 __VLS_asFunctionalElement(__VLS_elements.img)({
     src: "/images/webcup24/webcup.jpg",
     alt: "WebCup 2024",
-    ...{ class: "w-full rounded-lg shadow-lg filter grayscale brightness-90" },
+    ...{ class: "\u0077\u002d\u0066\u0075\u006c\u006c\u0020\u0074\u0072\u0061\u006e\u0073\u0069\u0074\u0069\u006f\u006e\u002d\u0061\u006c\u006c\u0020\u0064\u0075\u0072\u0061\u0074\u0069\u006f\u006e\u002d\u0037\u0030\u0030\u0020\u000a\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0067\u0072\u006f\u0075\u0070\u002d\u0068\u006f\u0076\u0065\u0072\u003a\u0073\u0063\u0061\u006c\u0065\u002d\u0031\u0030\u0035\u0020\u000a\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0067\u0072\u006f\u0075\u0070\u002d\u0068\u006f\u0076\u0065\u0072\u003a\u0067\u0072\u0061\u0079\u0073\u0063\u0061\u006c\u0065\u002d\u0030\u0020\u000a\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0067\u0072\u0061\u0079\u0073\u0063\u0061\u006c\u0065\u0020\u0062\u0072\u0069\u0067\u0068\u0074\u006e\u0065\u0073\u0073\u002d\u0039\u0030" },
+    loading: "lazy",
+    decoding: "async",
+});
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center" },
+});
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "absolute top-3 right-3 sm:top-4 sm:right-4 z-20" },
+});
+__VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+    ...{ class: "w-28 sm:w-32 md:w-36 lg:w-40 bg-white rounded-lg shadow-lg p-1 transform transition-transform duration-300 hover:scale-105" },
+});
+__VLS_asFunctionalElement(__VLS_elements.img)({
+    alt: "WebCup Logo",
+    ...{ class: "w-full h-auto" },
+    src: "/webCup_logo.png",
+    loading: "lazy",
+    decoding: "async",
 });
 __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
     ...{ class: "w-full card p-4 flex justify-center" },
@@ -177,14 +204,63 @@ __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
 /** @type {__VLS_StyleScopedClasses['space-y-16']} */ ;
 /** @type {__VLS_StyleScopedClasses['w-full']} */ ;
 /** @type {__VLS_StyleScopedClasses['max-w-4xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['mx-auto']} */ ;
 /** @type {__VLS_StyleScopedClasses['card']} */ ;
-/** @type {__VLS_StyleScopedClasses['p-4']} */ ;
-/** @type {__VLS_StyleScopedClasses['w-full']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-3']} */ ;
+/** @type {__VLS_StyleScopedClasses['sm:p-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['group']} */ ;
+/** @type {__VLS_StyleScopedClasses['overflow-hidden']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['inset-0']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-2']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-transparent']} */ ;
+/** @type {__VLS_StyleScopedClasses['group-hover:border-blue-500']} */ ;
 /** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
-/** @type {__VLS_StyleScopedClasses['shadow-lg']} */ ;
-/** @type {__VLS_StyleScopedClasses['filter']} */ ;
+/** @type {__VLS_StyleScopedClasses['transition-all']} */ ;
+/** @type {__VLS_StyleScopedClasses['duration-300']} */ ;
+/** @type {__VLS_StyleScopedClasses['pointer-events-none']} */ ;
+/** @type {__VLS_StyleScopedClasses['z-10']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['overflow-hidden']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-full']} */ ;
+/** @type {__VLS_StyleScopedClasses['transition-all']} */ ;
+/** @type {__VLS_StyleScopedClasses['duration-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['group-hover:scale-105']} */ ;
+/** @type {__VLS_StyleScopedClasses['group-hover:grayscale-0']} */ ;
 /** @type {__VLS_StyleScopedClasses['grayscale']} */ ;
 /** @type {__VLS_StyleScopedClasses['brightness-90']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['inset-0']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-black/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-0']} */ ;
+/** @type {__VLS_StyleScopedClasses['group-hover:opacity-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['transition-all']} */ ;
+/** @type {__VLS_StyleScopedClasses['duration-300']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex']} */ ;
+/** @type {__VLS_StyleScopedClasses['items-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['justify-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['top-3']} */ ;
+/** @type {__VLS_StyleScopedClasses['right-3']} */ ;
+/** @type {__VLS_StyleScopedClasses['sm:top-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['sm:right-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['z-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-28']} */ ;
+/** @type {__VLS_StyleScopedClasses['sm:w-32']} */ ;
+/** @type {__VLS_StyleScopedClasses['md:w-36']} */ ;
+/** @type {__VLS_StyleScopedClasses['lg:w-40']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-white']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
+/** @type {__VLS_StyleScopedClasses['shadow-lg']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-1']} */ ;
+/** @type {__VLS_StyleScopedClasses['transform']} */ ;
+/** @type {__VLS_StyleScopedClasses['transition-transform']} */ ;
+/** @type {__VLS_StyleScopedClasses['duration-300']} */ ;
+/** @type {__VLS_StyleScopedClasses['hover:scale-105']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-full']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-auto']} */ ;
 /** @type {__VLS_StyleScopedClasses['w-full']} */ ;
 /** @type {__VLS_StyleScopedClasses['card']} */ ;
 /** @type {__VLS_StyleScopedClasses['p-4']} */ ;
