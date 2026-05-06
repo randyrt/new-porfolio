@@ -481,8 +481,8 @@ const GEMINI_API_KEYS = [
 ].filter(key => key && key.startsWith('AIza')) as string[]
 
 
-const model_flash = 'gemini-2.5-flash'
-const model_flash_tts = 'gemini-3.1-flash-tts-preview'
+const model_flash = "gemini-2.5-flash"
+const model_flash_tts = 'gemini-3.1-flash-tts-preview' 
 const model_pro = 'gemini-3-pro-preview'
 
 
@@ -802,7 +802,7 @@ const sendMessage = async (): Promise<void> => {
                 for (let i = 0; i < GEMINI_API_KEYS.length; i++) {
                     try {
                         const tempGenAI = new GoogleGenerativeAI(GEMINI_API_KEYS[i])
-                        const tempModel = tempGenAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+                        const tempModel = tempGenAI.getGenerativeModel({ model: model_flash })
                         const conversationHistory: string = messages.value
                             .slice(-5)
                             .map(m => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
@@ -930,7 +930,7 @@ const sendMessage = async (): Promise<void> => {
 
     const callGeminiAPI = async (apiKey: string, keyIndex: number): Promise<string> => {
         const tempGenAI = new GoogleGenerativeAI(apiKey)
-        const tempModel = tempGenAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+        const tempModel = tempGenAI.getGenerativeModel({ model: model_flash })
 
         const conversationHistory: string = messages.value
             .slice(-5)
