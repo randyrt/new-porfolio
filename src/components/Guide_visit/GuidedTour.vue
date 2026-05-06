@@ -19,7 +19,7 @@
 
         <div class="p-4 space-y-8 bg-gradient-to-r from-blue-100 to-white/90">
           <div class="bg-white/5 border border-white/90 rounded-2xl transition-all  groupl p-6">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 text-white/95 text-xs font-semibold uppercase tracking-[0.2em]">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 text-black/55 text-xs font-semibold uppercase tracking-[0.2em]">
               {{ stepLabel }}
             </span>
             <p class="mt-4 !text-purple-500 leading-7">{{ currentMessage }}</p>
