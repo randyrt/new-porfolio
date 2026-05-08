@@ -25,7 +25,7 @@
         </div>
         <div class="form-group mb-6">
           <div
-            class="relative h-12 bg-slate-100 rounded-2xl bg-gradient-to-r from-blue-100 to-white/90 overflow-hidden flex items-center border border-amber-300 dark:border-white/70 select-none"
+            class="relative h-12 bg-slate-100 rounded-lg bg-gradient-to-r from-blue-100 to-white/90 overflow-hidden flex items-center border border-amber-300 dark:border-white/70 select-none"
             ref="sliderTrack">
             
             <div class="absolute inset-0 flex items-center justify-center font-semibold text-sm transition-colors"
