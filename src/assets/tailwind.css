@@ -23,7 +23,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  @apply bg-gradient-to-tl from-[var(--app-primary)] to-sky-100;
+  @apply bg-gradient-to-tl from-[var(--app-primary)] to-white;
 }
 
 
@@ -458,7 +458,7 @@ button {
 
 
 .card {
-  @apply rounded-lg shadow-lg !bg-gradient-to-r !from-[var(--app-primary)] !to-sky-100 p-2;
+  @apply rounded-lg shadow-lg !bg-gradient-to-r !from-[var(--app-primary)] to-white p-2;
   border: 1px solid rgba(14, 193, 224, 0.2) !important;
   box-shadow: 0 20px 25px -5px rgba(15, 192, 183, 0.2), 0 8px 10px -6px rgba(48, 32, 138, 0.1);
 }
