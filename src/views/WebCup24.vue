@@ -25,7 +25,7 @@
 
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent pt-12 pb-3 px-4">
               <div class="text-center mb-2">
-                <h3 class="text-white text-sm sm:text-base font-semibold tracking-wider uppercase">
+                <h3 class="text-white/80 text-sm sm:text-base font-semibold tracking-wider uppercase">
                   {{ $t('webcup.partner_title') }}
                 </h3>
               </div>
