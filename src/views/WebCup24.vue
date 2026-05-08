@@ -168,6 +168,7 @@ function webCup() {
   object-fit: contain;
   opacity: 0.85;
   transition: all 0.3s ease;
+  border-radius: 0.2rem;
 }
 
 .partner-logo:hover {
