@@ -14,16 +14,15 @@
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div class="flex justify-center card h-full items-center w-full md:w-1/3 mr-4">
+            <div class="flex justify-center  h-full items-center w-full md:w-1/3 mr-4">
                 <div class="text-center text-gray-600">
                     <span class="text-lg font-bold text-violet-800 block">{{ title }}</span>
                     <div class="w-20 h-0.5 bg-violet-300 mx-auto"></div>
                     <span class="text-sm font-bold">{{ description }}</span>
                 </div>
             </div>
-
         </div>
-        <div class="demo-header mx-auto px-4 py-2 mt-2 flex flex-col gap-2 w-1/2">
+        <div class="demo-header mx-auto px-4 py-2 mt-6 flex flex-col gap-2 w-1/2">
             <!-- Bouton Combat (Priorité RPG) -->
             <button @click.stop="$emit('fight-boss')"
                 class="group relative overflow-hidden px-6 py-2 rounded-xl font-black text-xs transition-all duration-300 w-full uppercase tracking-widest border border-white/20 flex items-center justify-center gap-2"
