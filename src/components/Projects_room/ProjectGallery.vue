@@ -14,41 +14,41 @@
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div class="flex flex-col justify-center card h-auto w-full md:w-1/3 mt-8 mr-4">
+            <div class="flex flex-col justify-center card h-auto w-full md:w-1/3 mr-4">
                 <div class="text-center text-gray-600">
                     <span class="text-lg font-bold text-violet-800 block">{{ title }}</span>
                     <div class="w-20 h-0.5 bg-violet-300 mx-auto"></div>
                     <span class="text-sm font-bold">{{ description }}</span>
                 </div>
-                <div class="demo-header mx-auto px-4 py-2 mt-2 flex flex-col gap-2 w-full">
-                    <!-- Bouton Combat (Priorité RPG) -->
-                    <button @click.stop="$emit('fight-boss')"
-                        class="group relative overflow-hidden px-6 py-2 rounded-xl font-black text-xs transition-all duration-300 w-full uppercase tracking-widest border border-white/20 flex items-center justify-center gap-2"
-                        :class="isDefeated
-                            ? 'bg-gradient-to-r from-emerald-900/40 to-teal-900/40 text-emerald-500 border-emerald-500/20 cursor-default shadow-inner'
-                            : 'bg-gradient-to-r from-amber-500 to-purple-500 text-white shadow-lg shadow-red-600/30 hover:shadow-red-500/50 hover:scale-105 active:scale-95'"
-                        :disabled="isDefeated">
-                        <span v-if="!isDefeated" class="flex items-center justify-center gap-2">
-                            <font-awesome-icon icon="fa-solid fa-skull" class="group-hover:animate-bounce" />
-                            {{ $t('projects.fight_boss') }}
-                        </span>
-                        <span v-else class="flex items-center justify-center gap-2 italic">
-                            <font-awesome-icon icon="fa-solid fa-trophy" class="text-amber-400" />
-                            {{ $t('projects.boss_defeated') }}
-                        </span>
-                    </button>
-
-                    <!-- Bouton Démo -->
-                    <button @click.stop="toggleDemo"
-                        class="group relative overflow-hidden px-6 py-2 bg-gradient-to-r from-purple-500 to-amber-500 text-white font-black rounded-xl shadow-lg hover:shadow-violet-500/50 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 uppercase text-xs tracking-widest border border-white/20 w-full">
-                        <font-awesome-icon :icon="showDemo ? ['fas', 'eye-slash'] : ['fas', 'rocket']"
-                            :class="{ 'animate-pulse': !showDemo }" />
-                        <span>{{ showDemo ? t('demo.hide') : t('demo.show') }}</span>
-                    </button>
-                </div>
             </div>
-        </div>
 
+        </div>
+        <div class="demo-header mx-auto px-4 py-2 mt-2 flex flex-col gap-2 w-1/2">
+            <!-- Bouton Combat (Priorité RPG) -->
+            <button @click.stop="$emit('fight-boss')"
+                class="group relative overflow-hidden px-6 py-2 rounded-xl font-black text-xs transition-all duration-300 w-full uppercase tracking-widest border border-white/20 flex items-center justify-center gap-2"
+                :class="isDefeated
+                    ? 'bg-gradient-to-r from-emerald-900/40 to-teal-900/40 text-emerald-500 border-emerald-500/20 cursor-default shadow-inner'
+                    : 'bg-gradient-to-r from-amber-500 to-purple-500 text-white shadow-lg shadow-red-600/30 hover:shadow-red-500/50 hover:scale-105 active:scale-95'"
+                :disabled="isDefeated">
+                <span v-if="!isDefeated" class="flex items-center justify-center gap-2">
+                    <font-awesome-icon icon="fa-solid fa-skull" class="group-hover:animate-bounce" />
+                    {{ $t('projects.fight_boss') }}
+                </span>
+                <span v-else class="flex items-center justify-center gap-2 italic">
+                    <font-awesome-icon icon="fa-solid fa-trophy" class="text-amber-400" />
+                    {{ $t('projects.boss_defeated') }}
+                </span>
+            </button>
+
+            <!-- Bouton Démo -->
+            <button @click.stop="toggleDemo"
+                class="group relative overflow-hidden px-6 py-2 bg-gradient-to-r from-purple-500 to-amber-500 text-white font-black rounded-xl shadow-lg hover:shadow-violet-500/50 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 uppercase text-xs tracking-widest border border-white/20 w-full">
+                <font-awesome-icon :icon="showDemo ? ['fas', 'eye-slash'] : ['fas', 'rocket']"
+                    :class="{ 'animate-pulse': !showDemo }" />
+                <span>{{ showDemo ? t('demo.hide') : t('demo.show') }}</span>
+            </button>
+        </div>
         <div class="demo-section mt-16">
             <transition enter-active-class="transition-all duration-300 ease-out"
                 enter-from-class="opacity-0 transform -translate-y-4"
@@ -168,7 +168,7 @@
                                     <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
-                                        }}</div>
+                                    }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -177,7 +177,7 @@
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.total') }}</span>
@@ -247,7 +247,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -286,7 +286,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -427,7 +427,7 @@
                                     <div class="space-y-4">
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
-                                                }}</label>
+                                            }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -444,7 +444,7 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
-                                                }}</label>
+                                            }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
@@ -547,7 +547,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -595,7 +595,7 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
-                                            }}</span>
+                                        }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
                                             {{ t('demo.echo.btn_new') }}
@@ -799,7 +799,7 @@
                                             <div class="flex-1">
                                                 <div class="flex items-center gap-2">
                                                     <span class="font-semibold text-gray-800">{{ mission.hospital
-                                                        }}</span>
+                                                    }}</span>
                                                     <span v-if="mission.urgent"
                                                         class="!text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full animate-pulse">
                                                         {{ t('demo.infi_swap.urgent_badge') }}
@@ -808,12 +808,12 @@
                                                 <div class="text-sm text-gray-600">{{ mission.city }}</div>
                                                 <div class="flex flex-wrap gap-3 mt-2 !text-xs">
                                                     <span class="flex items-center gap-1 !text-xs">📅 {{ mission.date
-                                                    }}</span>
+                                                        }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏰ {{
                                                         t(`demo.infi_swap.shifts.${mission.shift}`) }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏱️ {{
                                                         mission.duration
-                                                    }}</span>
+                                                        }}</span>
                                                 </div>
                                             </div>
                                             <div class="text-right">
@@ -862,7 +862,7 @@
                                                         <div class="flex items-center gap-1">
                                                             <span class="text-amber-500">★</span>
                                                             <span class="text-sm font-semibold">{{ nurse.rating
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                         <div class="text-xs text-gray-500">{{ nurse.missions }}
                                                             {{ t('demo.infi_swap.missions_count') }}</div>
@@ -893,7 +893,7 @@
                                             <div class="text-xl font-bold text-white">{{ infiStats.totalMissions }}
                                             </div>
                                             <div class="text-xs text-purple-200">{{ t('demo.infi_swap.missions_filled')
-                                                }}</div>
+                                            }}</div>
                                         </div>
                                         <div class="text-center bg-white/10 rounded p-2">
                                             <div class="text-xl font-bold text-white">{{ infiStats.activeNurses }}</div>
@@ -1625,6 +1625,7 @@ img {
 .project-container {
     position: relative;
     overflow-x: visible;
+    height: auto !important;
 }
 
 @keyframes fadeIn {
