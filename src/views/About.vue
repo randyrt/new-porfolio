@@ -3,7 +3,7 @@
   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
     <AnimatedTitle :text="$t('about.quote')" aos="fade-down" />
   </div>
-  <div class="p-4 w-full space-y-12 flex flex-col items-center justify-center max-w-4xl mx-auto">
+  <div class="p-4 w-full space-y-12 min-h-screen flex flex-col items-center justify-center max-w-4xl mx-auto">
     <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
       <div v-for="value in values" :key="value.title" class="text-center p-4">
         <div class="text-6xl mb-2">{{ value.icon }}</div>

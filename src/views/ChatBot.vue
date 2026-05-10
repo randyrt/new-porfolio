@@ -9,7 +9,7 @@
                 <span class="text-violet-800 text-lg">»</span>
             </p>
         </div>
-        <div class="chatbot-card p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <div class="chatbot-card p-6 dark:bg-gray-800 rounded-lg shadow-lg">
 
             <div class="fixed top-1/2 right-6 -translate-y-1/2 z-50 space-y-2 pointer-events-none">
                 <transition-group name="toast" tag="div">
