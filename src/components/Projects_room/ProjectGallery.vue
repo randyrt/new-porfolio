@@ -14,7 +14,7 @@
                     </div>
                 </SwiperSlide>
             </Swiper>
-            <div class="flex flex-col justify-center card h-auto w-full md:w-1/3 mr-4">
+            <div class="flex justify-center card h-full items-center w-full md:w-1/3 mr-4">
                 <div class="text-center text-gray-600">
                     <span class="text-lg font-bold text-violet-800 block">{{ title }}</span>
                     <div class="w-20 h-0.5 bg-violet-300 mx-auto"></div>

@@ -592,12 +592,10 @@ onMounted(() => {
 .projects-swiper-container {
     position: relative;
     width: 100%;
-    padding: 0 0 2rem;
 }
 
 .projects-swiper {
     width: 100%;
-    padding: 0.5rem 0 2rem !important;
 }
 
 .project-slide {
