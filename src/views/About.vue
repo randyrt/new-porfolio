@@ -9,10 +9,10 @@
         <span class="text-violet-800 text-lg">»</span>
       </p>
     </div>
-    <div class="bg-white rounded-lg shadow-lg p-1 transform transition-transform duration-300" data-aos="fade-left"
+    <div class="bg-white rounded-lg shadow-lg p-2 transform transition-transform duration-300" data-aos="fade-left"
       data-aos-delay="1000">
-      <img src="/images/me/working_randy.jpeg" alt="Randy's portrait"
-        class="w-full max-w-sm mx-auto border-2 border-white !rounded-lg" />
+      <img src="/images/me/working_randy.png" alt="Randy's portrait"
+        class="max-w-lg mx-auto border-1 border-white rounded-lg" />
     </div>
   </div>
   <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
