@@ -89,7 +89,9 @@
     "web_quality": "Qualité web",
     "view_pagespeed": "Voir sur PageSpeed Insights",
     "meta_title": "A propos de Randy",
-    "meta_desc": "Pour en conclure, voici les statistique"
+    "meta_desc": "Pour en conclure, voici les statistique",
+    "text_italic": "Ce portfolio est le reflet du temps que j’ai consacré à explorer, expérimenter et grandir. Derrière chaque réalisation se cache une part de moi-même, animée par la curiosité et l’envie de transmettre."
+
   },
   "contact": {
     "loading": "Me contacter...",

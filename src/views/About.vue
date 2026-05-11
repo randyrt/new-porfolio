@@ -2,11 +2,22 @@
   <Loading v-if="loading" :message="$t('about.loading')" />
   <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
     <AnimatedTitle :text="$t('about.quote')" aos="fade-down" />
+    <div class="text-center max-w-2xl mx-auto px-4" data-aos="fade-up">
+      <p class="text-lg italic text-gray-700 dark:text-gray-300">
+        <span class="text-violet-800 text-lg">«</span>
+        {{ $t('about.text_italic') }}
+        <span class="text-violet-800 text-lg">»</span>
+      </p>
+    </div>
+    <div class="bg-white rounded-lg shadow-lg p-1 transform transition-transform duration-300" data-aos="fade-left"
+      data-aos-delay="1000">
+      <img src="/images/me/working_randy.jpeg" alt="Randy's portrait"
+        class="w-full max-w-sm mx-auto border-2 border-white !rounded-lg" />
+    </div>
   </div>
-  <div class="p-4 w-full space-y-12 min-h-screen flex flex-col items-center justify-center max-w-4xl mx-auto">
+  <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
     <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
       <div v-for="value in values" :key="value.title" class="text-center p-4">
-        <div class="text-6xl mb-2">{{ value.icon }}</div>
         <h3 class="font-bold">{{ value.title }}</h3>
         <p class="text-sm text-gray-500">{{ value.description }}</p>
       </div>
@@ -54,9 +65,9 @@ let startTime: number | null = null
 const duration = 2000
 
 const values = computed(() => [
-  { icon: "🚀", title: t('about.values.innovation_title'), description: t('about.values.innovation_desc') },
-  { icon: "🤝", title: t('about.values.trust_title'), description: t('about.values.trust_desc') },
-  { icon: "💡", title: t('about.values.creativity_title'), description: t('about.values.creativity_desc') }
+  { title: t('about.values.innovation_title'), description: t('about.values.innovation_desc') },
+  { title: t('about.values.trust_title'), description: t('about.values.trust_desc') },
+  { title: t('about.values.creativity_title'), description: t('about.values.creativity_desc') }
 ])
 
 const animateCounters = (timestamp: number) => {
