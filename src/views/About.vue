@@ -9,7 +9,7 @@
         <span class="text-violet-800 text-lg">»</span>
       </p>
     </div>
-    <div class="bg-white rounded-lg shadow-lg p-2 transform transition-transform duration-300" data-aos="fade-left"
+    <div class="bg-white rounded-lg shadow-lg p-2 transform transition-transform duration-300" data-aos="fade-down"
       data-aos-delay="1000">
       <img src="/images/me/working_randy.png" alt="Randy's portrait"
         class="max-w-lg mx-auto border-1 border-white rounded-lg" />
