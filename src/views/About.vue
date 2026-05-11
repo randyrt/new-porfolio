@@ -4,9 +4,9 @@
     <AnimatedTitle :text="$t('about.quote')" aos="fade-down" />
     <div class="text-center max-w-2xl mx-auto px-4" data-aos="fade-up">
       <p class="text-lg italic text-gray-700 dark:text-gray-300">
-        <span class="text-violet-800 text-lg">«</span>
-        {{ $t('about.text_italic') }}
-        <span class="text-violet-800 text-lg">»</span>
+        <span class="text-violet-800 text-lg">« </span>
+        <span class="typing-text">{{ $t('about.text_italic') }}</span>
+        <span class="text-violet-800 text-lg"> »</span>
       </p>
     </div>
     <div class="bg-white rounded-lg shadow-lg p-2 transform transition-transform duration-300" data-aos="fade-down"
