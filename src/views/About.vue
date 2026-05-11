@@ -16,12 +16,6 @@
     </div>
   </div>
   <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
-    <section class="grid md:grid-cols-3 gap-6 mt-16" data-aos="fade-up">
-      <div v-for="value in values" :key="value.title" class="text-center p-4">
-        <h3 class="font-bold">{{ value.title }}</h3>
-        <p class="text-sm text-gray-500">{{ value.description }}</p>
-      </div>
-    </section>
     <section class="stats-section flex flex-wrap justify-center gap-8 py-8">
       <div v-for="stat in stats" :key="stat.labelKey" class="text-center">
         <div class="text-6xl font-bold text-violet-600">
@@ -30,13 +24,21 @@
         <div class="text-sm text-gray-500">{{ $t(stat.labelKey) }}</div>
       </div>
     </section>
+    <section class="grid md:grid-cols-3 gap-6 " data-aos="fade-up">
+      <div v-for="value in values" :key="value.title" class="text-center p-4 border-2 border-purple-50 rounded-lg bg-gradient-to-br from-purple-50 to-white">
+        <font-awesome-icon :icon="value.icon" class="text-4xl text-violet-600 mb-3" />
+        <h3 class="font-bold">{{ value.title }}</h3>
+        <p class="text-sm text-gray-500">{{ value.description }}</p>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
-import { ref, onMounted, onUnmounted, computed, watchEffect } from "vue"
+import { ref, onMounted, onUnmounted, computed } from "vue"
 import { useI18n } from 'vue-i18n'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 const { t } = useI18n()
@@ -65,9 +67,9 @@ let startTime: number | null = null
 const duration = 2000
 
 const values = computed(() => [
-  { title: t('about.values.innovation_title'), description: t('about.values.innovation_desc') },
-  { title: t('about.values.trust_title'), description: t('about.values.trust_desc') },
-  { title: t('about.values.creativity_title'), description: t('about.values.creativity_desc') }
+  { icon: "fas fa-rocket", title: t('about.values.innovation_title'), description: t('about.values.innovation_desc') },
+  { icon: "fas fa-handshake", title: t('about.values.trust_title'), description: t('about.values.trust_desc') },
+  { icon: "fas fa-lightbulb", title: t('about.values.creativity_title'), description: t('about.values.creativity_desc') }
 ])
 
 const animateCounters = (timestamp: number) => {
