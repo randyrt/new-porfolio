@@ -1,6 +1,6 @@
 <template>
   <Loading v-if="loading" :message="$t('about.loading')" />
-  <div v-else class="p-4 w-full space-y-8 flex flex-col items-center justify-center">
+  <div v-else class="p-4 w-full space-y-4 flex flex-col items-center justify-center">
     <AnimatedTitle :text="$t('about.quote')" aos="fade-down" />
     <div class="text-center max-w-2xl mx-auto px-4" data-aos="fade-up">
       <p class="text-lg italic text-gray-700 dark:text-gray-300">
