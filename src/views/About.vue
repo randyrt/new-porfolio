@@ -9,10 +9,20 @@
         <span class="text-violet-800 text-lg"> »</span>
       </p>
     </div>
-    <div class="bg-white rounded-lg shadow-lg p-2 transform transition-transform duration-300" data-aos="fade-down"
-      data-aos-delay="1000">
-      <img src="/images/me/me_working.png" alt="Randy's portrait"
-        class="max-w-lg mx-auto border-1 border-white rounded-lg" />
+    <div class="relative group" data-aos="fade-down" data-aos-delay="1000">
+      <div class="absolute top-3.5 right-3 z-10">
+        <div class="bg-sky-500 text-blue-500 text-xs px-2 py-1 rounded-lg shadow-lg animate-pulse">
+         working@art.dev
+        </div>
+      </div>
+      <div class="absolute -top-2 -left-2 w-6 h-6 border-t-3 border-l-3 border-sky-800 rounded-tl-lg"></div>
+      <div class="absolute -top-2 -right-2 w-6 h-6 border-t-3 border-r-3 border-sky-800 rounded-tr-lg"></div>
+      <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-3 border-l-3 border-sky-800 rounded-bl-lg"></div>
+      <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-3 border-r-3 border-sky-800 rounded-br-lg"></div>
+
+      <div class="bg-white dark:bg-white rounded-lg p-2 shadow-lg">
+        <img src="/images/me/me_working.png" alt="Randy's portrait" class="max-w-lg mx-auto" />
+      </div>
     </div>
   </div>
   <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
@@ -25,7 +35,8 @@
       </div>
     </section>
     <section class="grid md:grid-cols-3 gap-6 ">
-      <div v-for="value in values" :key="value.title" class="text-center p-4 border-2 border-purple-50 rounded-lg bg-gradient-to-br from-purple-50 to-white">
+      <div v-for="value in values" :key="value.title"
+        class="text-center p-4 border-2 border-purple-50 rounded-lg bg-gradient-to-br from-purple-50 to-white">
         <font-awesome-icon :icon="value.icon" class="text-4xl text-violet-600 mb-3" />
         <h3 class="font-bold">{{ value.title }}</h3>
         <p class="text-sm text-gray-500">{{ value.description }}</p>

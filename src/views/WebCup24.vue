@@ -7,21 +7,14 @@
   <div class="flex justify-between p-8">
     <div class="min-h-screen p-8 space-y-16">
       <div class="w-full max-w-4xl mx-auto" data-aos="fade-right">
-        <div class="card p-3 sm:p-4 relative group overflow-hidden">
-          <div
-            class="absolute inset-0 border-2 border-transparent group-hover:border-blue-500 rounded-lg transition-all duration-300 pointer-events-none z-10">
-          </div>
-
-          <!-- Container principal avec position relative -->
-          <div class="relative overflow-hidden rounded-lg">
+        <div class="card p-2 relative group">
+          <div class="relative rounded-lg">
+            <div class="absolute -top-4 -left-4 w-6 h-6 border-t-3 border-l-3 border-sky-800 rounded-tl-lg"></div>
+            <div class="absolute -top-4 -right-4 w-6 h-6 border-t-3 border-r-3 border-sky-800 rounded-tr-lg"></div>
+            <div class="absolute -bottom-4 -left-4 w-6 h-6 border-b-3 border-l-3 border-sky-800 rounded-bl-lg"></div>
+            <div class="absolute -bottom-4 -right-4 w-6 h-6 border-b-3 border-r-3 border-sky-800 rounded-br-lg"></div>
             <img src="/images/webcup24/webcup.jpg" alt="WebCup 2024" class="w-full transition-all duration-700 
-               group-hover:scale-105 
-               group-hover:grayscale-0 
-               grayscale brightness-90" loading="lazy" decoding="async" />
-
-            <div
-              class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-            </div>
+               grayscale brightness-90 " loading="lazy" decoding="async" />
 
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent pt-12 pb-3 px-4">
               <div class="text-center mb-2">

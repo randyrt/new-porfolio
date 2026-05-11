@@ -3,7 +3,11 @@
   <div v-else class="p-4 flex flex-col">
     <AnimatedTitle :text="$t('home.quote')" aos="fade-down" />
     <div class="flex justify-between items-center flex-col md:flex-row min-h-screen">
-      <div class="box p-2 view" data-aos="fade-down">
+      <div class="relative box p-2 view" data-aos="fade-down">
+        <div class="absolute -top-2 -left-2 w-6 h-6 border-t-3 border-l-3 border-violet-500 rounded-tl-lg"></div>
+        <div class="absolute -top-2 -right-2 w-6 h-6 border-t-3 border-r-3 border-violet-500 rounded-tr-lg"></div>
+        <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-3 border-l-3 border-violet-500 rounded-bl-lg"></div>
+        <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-3 border-r-3 border-violet-500 rounded-br-lg"></div>
         <span class="borderline"></span>
         <img src="/images/me/randy.jpg" alt="Photo de Randy">
       </div>
