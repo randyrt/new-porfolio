@@ -24,7 +24,7 @@
         <div class="text-sm text-gray-500">{{ $t(stat.labelKey) }}</div>
       </div>
     </section>
-    <section class="grid md:grid-cols-3 gap-6 " data-aos="fade-up">
+    <section class="grid md:grid-cols-3 gap-6 ">
       <div v-for="value in values" :key="value.title" class="text-center p-4 border-2 border-purple-50 rounded-lg bg-gradient-to-br from-purple-50 to-white">
         <font-awesome-icon :icon="value.icon" class="text-4xl text-violet-600 mb-3" />
         <h3 class="font-bold">{{ value.title }}</h3>
