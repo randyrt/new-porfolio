@@ -12,7 +12,7 @@
     <div class="relative group" data-aos="fade-down" data-aos-delay="1000">
       <div class="absolute top-3.5 right-3 z-10">
         <div class="bg-sky-500 text-blue-500 text-xs px-2 py-1 rounded-lg shadow-lg animate-pulse">
-         focus@art.dev
+         Focus. Build. Result.
         </div>
       </div>
       <div class="absolute -top-2 -left-2 w-6 h-6 border-t-3 border-l-3 border-sky-800 rounded-tl-lg"></div>
