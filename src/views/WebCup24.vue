@@ -114,7 +114,7 @@ const launchConfetti = () => {
     particleCount: 100,
     spread: 70,
     origin: { y: 0.6 },
-    colors: ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4", "#6A4C93"]
+    colors: ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4", "#6A4C93", "#FF6B6B", "#F0A500", "#4ECDC4", "#C44D58", "#556270", "#C7F464", "#FF6B6B", "#C44D58", "#556270", "#C7F464"],
   })
 }
 
