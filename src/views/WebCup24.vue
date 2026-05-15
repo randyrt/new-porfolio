@@ -9,10 +9,6 @@
       <div class="w-full max-w-4xl mx-auto" data-aos="fade-right">
         <div class="card p-2 relative group">
           <div class="relative rounded-lg">
-            <div class="absolute -top-4 -left-4 w-6 h-6 border-t-3 border-l-3 border-sky-800 rounded-tl-lg"></div>
-            <div class="absolute -top-4 -right-4 w-6 h-6 border-t-3 border-r-3 border-sky-800 rounded-tr-lg"></div>
-            <div class="absolute -bottom-4 -left-4 w-6 h-6 border-b-3 border-l-3 border-sky-800 rounded-bl-lg"></div>
-            <div class="absolute -bottom-4 -right-4 w-6 h-6 border-b-3 border-r-3 border-sky-800 rounded-br-lg"></div>
             <img src="/images/webcup24/webcup.jpg" alt="WebCup 2024" class="w-full transition-all duration-700 
                grayscale brightness-90 " loading="lazy" decoding="async" />
 

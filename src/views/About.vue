@@ -15,11 +15,6 @@
          Focus. Build. Result.
         </div>
       </div>
-      <div class="absolute -top-2 -left-2 w-6 h-6 border-t-3 border-l-3 border-sky-800 rounded-tl-lg"></div>
-      <div class="absolute -top-2 -right-2 w-6 h-6 border-t-3 border-r-3 border-sky-800 rounded-tr-lg"></div>
-      <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-3 border-l-3 border-sky-800 rounded-bl-lg"></div>
-      <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-3 border-r-3 border-sky-800 rounded-br-lg"></div>
-
       <div class="bg-white dark:bg-white rounded-lg p-2 shadow-lg">
         <img src="/images/me/me_working.png" alt="Randy's portrait" class="max-w-lg mx-auto" />
       </div>
