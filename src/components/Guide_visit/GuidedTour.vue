@@ -1,7 +1,7 @@
 <template>
   <div class="fixed inset-0 z-[9999] flex items-center justify-center p-2 backdrop-blur-[5px]"
     :style="{ backgroundColor: 'color-mix(in srgb, #0a0f1a, transparent 40%)' }"
-    role="dialog" aria-modal="true">
+    role="dialog" aria-modal="true" data-aos="fade-in">
     <div class="relative w-full max-w-3xl bg-slate-100 border border-white/10 rounded-2xl shadow-2xl overflow-hidden">
       <div class="relative border border-white/10 rounded-2xl shadow-2xl w-full max-h-[85vh] overflow-y-auto custom-scrollbar"
         :style="{ backgroundColor: 'color-mix(in srgb, #0b1120, #1a2a3a 70%)' }">
