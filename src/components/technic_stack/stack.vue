@@ -21,7 +21,7 @@
                   <h3 class="text-2xl font-black flex items-center gap-3">
                     <font-awesome-icon :icon="['fas', 'tools']" class="text-sky-500" />
                     <span
-                      class="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent uppercase tracking-tight">
+                      class="text-white  uppercase tracking-tight">
                       {{ $t('about.tech_stack') }}
                     </span>
                   </h3>
