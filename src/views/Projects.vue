@@ -152,6 +152,7 @@ const projects = ref([
         title: 'FID-CONNECT',
         description: t('projects.fid_connect'),
         images: [
+            '/images/projects/fid-connect/capture0.png',
             '/images/projects/fid-connect/capture1.png',
             '/images/projects/fid-connect/capture2.png',
             '/images/projects/fid-connect/capture3.png',
