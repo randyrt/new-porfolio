@@ -21,19 +21,14 @@
     <AnalyticsDashboard @open-tour="openTour" />
     <stack />
 
-    <div v-if="$route.path !== '/chatbot' && $route.path !== '/github-stats'"
-      class="hidden md:flex fixed z-[999] group"
+    <div v-if="$route.path !== '/chatbot' && $route.path !== '/github-stats'" class="hidden md:flex fixed z-[999] group"
       :style="{ top: `${botPosition.y}px`, left: `${botPosition.x}px` }">
       <div class="bg-green-500 rounded-lg">
         <div class="absolute top-full left-6 border-8 border-transparent border-t-gray-900/90"></div>
       </div>
 
-      <div role="button" tabindex="0"
-        class="relative flex items-center gap-3"
-        @pointerdown.prevent="startDrag"
-        @click.prevent="handleBotClick"
-        @mouseenter="handleMouseEnter"
-        @mouseleave="handleMouseLeave">
+      <div role="button" tabindex="0" class="relative flex items-center gap-3" @pointerdown.prevent="startDrag"
+        @click.prevent="handleBotClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
         <div
           class="robot-smile w-16 h-16 bg-gradient-to-br from-green-600 to-sky-800 rounded-xl flex items-center justify-center shadow-lg relative cursor-grab"
           :class="{ 'cursor-grabbing': isDragging }">
@@ -395,8 +390,8 @@ const navRoutes = computed(() => [
   { path: '/', name: t('nav.home'), icon: 'home' },
   { path: '/quality', name: t('nav.quality'), icon: 'star' },
   { path: '/skills', name: t('nav.skills'), icon: 'code' },
-  { path: '/technology', name: t('nav.technology'), icon: 'cogs' },
   { path: '/webcup24', name: t('nav.webcup'), icon: 'trophy' },
+  { path: '/technology', name: t('nav.technology'), icon: 'cogs' },
   { path: '/projects', name: t('nav.projects'), icon: 'project-diagram' },
   { path: '/services', name: t('nav.services'), icon: 'briefcase' },
   { path: '/testimoniales', name: t('nav.testimonials'), icon: 'quote-right' },
