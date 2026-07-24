@@ -629,6 +629,7 @@ a {
   font-weight: 300;
   color: #1e2d3c;
   min-height: 200px;
+  min-width: 600px !important;
   height: auto !important;
 }
 
