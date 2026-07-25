@@ -2,7 +2,7 @@
   <Loading v-if="loading" :message="$t('home.loading')" />
   <div v-else class="p-4 flex flex-col">
     <AnimatedTitle :text="$t('home.quote')" aos="fade-down" />
-    <div class="flex justify-around card space-x-9 items-center flex-col md:flex-row min-h-screen ">
+    <div class="flex justify-around space-x-9 items-center flex-col md:flex-row min-h-screen ">
       <div class="relative group" data-aos="fade-down" data-aos-delay="1000">
         <div class="absolute top-3.5 right-3 z-10">
           <div class="bg-sky-500 text-blue-500 text-xs px-2 py-1 rounded-lg shadow-lg animate-pulse">
