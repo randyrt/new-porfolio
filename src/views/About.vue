@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="flex-1 text-center md:text-left space-y-3">
-          <h2 class="text-2xl font-bold text-violet-800 dark:text-violet-400">
+          <h2 class="text-2xl font-bold text-violet-800"> 
             {{ $t('about.who_am_i') }}
           </h2>
           <p class="text-gray-700 dark:text-gray-300 leading-relaxed">

@@ -16,16 +16,16 @@
       <div class="md:text-sm lg:text-base max-w-3xl pad flex flex-col justify-between"
         data-aos="fade-up">
         <div class="mt-6">
-          <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800">{{ $t('home.welcome') }}<span
+          <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800 transition-opacity duration-700" :class="{ 'opacity-100': contentVisible, 'opacity-0': !contentVisible }">{{ $t('home.welcome') }}<span
               class="text-5xl ml-2 text-sky-500 emoji"> 😎</span></h1>
-          <p class="text-lg text-gray-700 mb-4" v-html="$t('home.p1')"></p>
-          <p class="text-lg text-gray-700" v-html="$t('home.p2')"></p>
-          <p class="text-lg text-gray-700 mt-4">
+          <p class="text-lg text-gray-700 mb-4 transition-all duration-700 delay-100" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }" v-html="$t('home.p1')"></p>
+          <p class="text-lg text-gray-700 transition-all duration-700 delay-200" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }" v-html="$t('home.p2')"></p>
+          <p class="text-lg text-gray-700 mt-4 transition-all duration-700 delay-300" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }">
             {{ $t('home.p3_1') }}<span class="text-sky-700 cursor-pointer underline" @click="goToContact">{{
               $t('home.p3_contact') }}</span>{{ $t('home.p3_2') }}
           </p>
         </div>
-        <div class="flex justify-center space-x-4 mt-2">
+        <div class="flex justify-center space-x-4 mt-2 transition-all duration-700 delay-400" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }">
           <button class="btn-violet inline-block text-center btn-effect-5" @click="viewCV">
             {{ $t('home.view_cv') }}
           </button>
@@ -60,6 +60,7 @@ useHead({
 
 const router = useRouter()
 const loading = ref<boolean>(true)
+const contentVisible = ref(false)
 
 function downloadCV() {
   const link = document.createElement('a');
@@ -83,6 +84,9 @@ const goToContact = () => {
 onMounted(() => {
   setTimeout(() => {
     loading.value = false
+    setTimeout(() => {
+      contentVisible.value = true
+    }, 150)
   }, 1000);
 });
 
