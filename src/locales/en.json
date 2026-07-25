@@ -89,6 +89,14 @@
     "view_pagespeed": "View on PageSpeed Insights",
     "meta_title": "About Randy",
     "meta_desc": "In conclusion, here are the statistics",
+    "who_am_i": "Who am I?",
+    "intro_text": "Passionate about web development and innovative technologies, I put my expertise at the service of ambitious projects.",
+    "badge": "Senior developer",
+    "skills": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "devops": "DevOps"
+    },
     "text_italic": "This portfolio is the reflection of the time I have dedicated to exploring, experimenting, and growing. Behind every achievement lies a part of myself, driven by curiosity and the desire to share."
   },
   "contact": {
