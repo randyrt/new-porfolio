@@ -13,14 +13,11 @@
       <div class="relative flex flex-col md:flex-row items-center gap-8 p-6 card">
         <div class="relative flex-shrink-0">
           <div class="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4">
-            <img 
-              src="/images/me/real.jpeg" 
-              alt="Photo de Randy" 
-              class="w-full h-full object-cover"
-            />
+            <img src="/images/me/real.jpeg" alt="Photo de Randy" class="w-full h-full object-cover" />
             <div class="absolute inset-0 rounded-full border-2 border-violet-300/50 animate-pulse"></div>
           </div>
-          <div class="absolute -bottom-2 -right-2 bg-violet-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+          <div
+            class="absolute -bottom-2 -right-2 bg-violet-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
             {{ $t('about.badge') }}
           </div>
         </div>
@@ -33,26 +30,22 @@
           </p>
           <div class="flex flex-wrap gap-2 justify-center md:justify-start">
             <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 !text-white dark:text-blue-300 text-sm rounded-full">
-               {{ $t('about.skills.frontend') }}
+              {{ $t('about.skills.frontend') }}
             </span>
-            <span class="px-3 py-1 bg-violet-300 dark:bg-violet-900/30 !text-white dark:text-violet-300 text-sm rounded-full">
-               {{ $t('about.skills.backend') }}
+            <span
+              class="px-3 py-1 bg-violet-300 dark:bg-violet-900/30 !text-white dark:text-violet-300 text-sm rounded-full">
+              {{ $t('about.skills.backend') }}
             </span>
-            <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 !text-white dark:text-green-300 text-sm rounded-full">
-               {{ $t('about.skills.devops') }}
+            <span
+              class="px-3 py-1 bg-green-100 dark:bg-green-900/30 !text-white dark:text-green-300 text-sm rounded-full">
+              {{ $t('about.skills.devops') }}
             </span>
           </div>
         </div>
-
-        <!-- Éléments décoratifs flottants -->
-        <div class="absolute -top-4 -left-4 w-12 h-12 bg-violet-200/30 dark:bg-violet-800/20 rounded-full blur-xl"></div>
-        <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-200/30 dark:bg-blue-800/20 rounded-full blur-xl"></div>
       </div>
     </div>
   </div>
-  
-  <!-- Le reste du template reste inchangé -->
- <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl  mx-auto">
+  <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl  mx-auto">
     <section class="stats-section flex flex-wrap justify-center gap-8 py-8">
       <div v-for="stat in stats" :key="stat.labelKey" class="text-center">
         <div class="text-6xl font-bold text-violet-600">
@@ -144,5 +137,3 @@ onUnmounted(() => {
 <style scoped>
 /* Vos styles existants... */
 </style>
-
-
