@@ -2,18 +2,20 @@
   <Loading v-if="loading" :message="$t('home.loading')" />
   <div v-else class="p-4 flex flex-col">
     <AnimatedTitle :text="$t('home.quote')" aos="fade-down" />
-    <div class="flex justify-around items-center flex-col md:flex-row min-h-screen ">
-      <div class="relative box p-2 view" data-aos="fade-down">
-        <div class="absolute -top-2 -left-2 w-6 h-6 border-t-3 border-l-3 border-violet-500 rounded-tl-lg"></div>
-        <div class="absolute -top-2 -right-2 w-6 h-6 border-t-3 border-r-3 border-violet-500 rounded-tr-lg"></div>
-        <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-3 border-l-3 border-violet-500 rounded-bl-lg"></div>
-        <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-3 border-r-3 border-violet-500 rounded-br-lg"></div>
-        <span class="borderline"></span>
-        <img src="/images/me/randy.jpg" alt="Photo de Randy">
+    <div class="flex justify-around card space-x-9 items-center flex-col md:flex-row min-h-screen ">
+      <div class="relative group" data-aos="fade-down" data-aos-delay="1000">
+        <div class="absolute top-3.5 right-3 z-10">
+          <div class="bg-sky-500 text-blue-500 text-xs px-2 py-1 rounded-lg shadow-lg animate-pulse">
+            Focus. Build. Result.
+          </div>
+        </div>
+        <div class="bg-white dark:bg-white rounded-lg p-2 shadow-lg">
+          <img src="/images/me/me_working.png" alt="Randy's portrait" class="max-w-lg mx-auto" />
+        </div>
       </div>
       <div class="md:text-sm lg:text-base max-w-3xl pad flex flex-col justify-between"
         data-aos="fade-up">
-        <div class="p-4">
+        <div class="mt-6">
           <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800">{{ $t('home.welcome') }}<span
               class="text-5xl ml-2 text-sky-500 emoji"> 😎</span></h1>
           <p class="text-lg text-gray-700 mb-4" v-html="$t('home.p1')"></p>
@@ -93,10 +95,10 @@ img {
   height: 100%;
   object-fit: cover;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   z-index: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  filter: grayscale(100%) brightness(0.9);
+  /* filter: grayscale(100%) brightness(0.9); */
 }
 
 @media screen and (max-width: 748px) {
@@ -114,10 +116,10 @@ img {
     font-size: 10px !important;
   }
 
-  .box {
+  /* .box {
     margin-left: 40px;
     margin-bottom: 20px;
-  }
+  } */
 
   p,
   span,

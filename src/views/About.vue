@@ -9,18 +9,16 @@
         <span class="text-violet-800 text-lg"> »</span>
       </p>
     </div>
-    <div class="relative group" data-aos="fade-down" data-aos-delay="1000">
-      <div class="absolute top-3.5 right-3 z-10">
-        <div class="bg-sky-500 text-blue-500 text-xs px-2 py-1 rounded-lg shadow-lg animate-pulse">
-         Focus. Build. Result.
-        </div>
-      </div>
-      <div class="bg-white dark:bg-white rounded-lg p-2 shadow-lg">
-        <img src="/images/me/me_working.png" alt="Randy's portrait" class="max-w-lg mx-auto" />
-      </div>
-    </div>
+    <!-- <div class="relative box p-1 mb-10 view" data-aos="fade-down">
+      <div class="absolute -top-2 -left-2 w-6 h-6 border-t-3 border-l-3 border-violet-500 rounded-tl-lg"></div>
+      <div class="absolute -top-2 -right-2 w-6 h-6 border-t-3 border-r-3 border-violet-500 rounded-tr-lg"></div>
+      <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-3 border-l-3 border-violet-500 rounded-bl-lg"></div>
+      <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-3 border-r-3 border-violet-500 rounded-br-lg"></div>
+      <span class="borderline"></span>
+      <img src="/images/me/real.jpeg" alt="Photo de Randy">
+    </div> -->
   </div>
-  <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl mx-auto">
+  <div class="p-4 w-full flex flex-col items-center justify-center max-w-4xl  min-h-screen mx-auto">
     <section class="stats-section flex flex-wrap justify-center gap-8 py-8">
       <div v-for="stat in stats" :key="stat.labelKey" class="text-center">
         <div class="text-6xl font-bold text-violet-600">
