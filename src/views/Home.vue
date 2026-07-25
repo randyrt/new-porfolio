@@ -2,7 +2,7 @@
   <Loading v-if="loading" :message="$t('home.loading')" />
   <div v-else class="p-4 flex flex-col">
     <AnimatedTitle :text="$t('home.quote')" aos="fade-down" />
-    <div class="flex justify-between items-center flex-col md:flex-row min-h-screen">
+    <div class="flex justify-around items-center flex-col md:flex-row min-h-screen ">
       <div class="relative box p-2 view" data-aos="fade-down">
         <div class="absolute -top-2 -left-2 w-6 h-6 border-t-3 border-l-3 border-violet-500 rounded-tl-lg"></div>
         <div class="absolute -top-2 -right-2 w-6 h-6 border-t-3 border-r-3 border-violet-500 rounded-tr-lg"></div>
@@ -11,7 +11,7 @@
         <span class="borderline"></span>
         <img src="/images/me/randy.jpg" alt="Photo de Randy">
       </div>
-      <div class="md:text-sm lg:text-base max-w-3xl pad border  card flex flex-col justify-between min-h-[500px]"
+      <div class="md:text-sm lg:text-base max-w-3xl pad flex flex-col justify-between"
         data-aos="fade-up">
         <div class="p-4">
           <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800">{{ $t('home.welcome') }}<span
@@ -61,8 +61,8 @@ const loading = ref<boolean>(true)
 
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "/images/cv/winner_man.pdf";
-  link.download = "winner_man.pdf";
+  link.href = "/images/cv/winner_real_cv.pdf";
+  link.download = "winner_real_cv.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -70,7 +70,7 @@ function downloadCV() {
 }
 
 function viewCV() {
-  window.open("/images/cv/winner_man.pdf", "_blank");
+  window.open("/images/cv/winner_real_cv.pdf", "_blank");
 }
 
 const goToContact = () => {
