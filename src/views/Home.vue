@@ -61,8 +61,8 @@ const loading = ref<boolean>(true)
 
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "/images/cv/real_cv_new.pdf";
-  link.download = "real_cv_new.pdf";
+  link.href = "/images/cv/winner_man.pdf";
+  link.download = "winner_man.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -70,7 +70,7 @@ function downloadCV() {
 }
 
 function viewCV() {
-  window.open("/images/cv/real_cv_new.pdf", "_blank");
+  window.open("/images/cv/winner_man.pdf", "_blank");
 }
 
 const goToContact = () => {
