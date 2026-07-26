@@ -166,7 +166,11 @@ CORE QUALITIES (THE "RANDY" MINDSET):
 
 TESTIMONIALS:
 - **Olivier Le Grand (Manager, FID-CONNECT, INFISWAP)**: "Randy is dynamic, meticulous, and professional. A developer I love collaborating with."
+  - Olivier Le Grand is the manager who supervised Randy on Fid-Connect and INFISWAP. He values Randy's professionalism, attention to detail, and ability to deliver reliable code.
+  - Olivier is available on LinkedIn: https://www.linkedin.com/in/olivier-legrand-412249126/
 - **Jean-Pierre Behaderovic (Director, MCP Belgium)**: "Impressive adaptability and a constant drive to evolve. A profile that will go far."
+  - Jean-Pierre Behaderovic is a client and director at MCP Belgium. He appreciates Randy's fast adaptation, growth mindset, and strong technical delivery.
+  - More info: https://www.digitalwallonia.be/fr/cartographie/management-consultance-partenaire/
 
 WEBCUP 2024:
 - 2nd Place in Madagascar (Prestige competition). Awarded by Sylvain (Director of FullDigits). Demonstrated extreme speed and code quality under 24h pressure.
