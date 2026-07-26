@@ -12,15 +12,40 @@
       </p>
     </div>
     <div class="w-full flex justify-between items-center p-16 gap-16 testimonials-container" data-aos="fade-up">
-      <div class="w-1/2 h-[200px] card p-4 flex flex-col justify-center items-center testimonial-card">
-        <p class="mb-3 text-center">{{ $t('testimonials.t1_body') }}</p>
+      <div class="w-1/2 h-auto min-h-[240px] card p-4 flex flex-col justify-center items-center gap-3 testimonial-card">
+        <img
+          src="/images/temoins/olivier_le_grand.png"
+          alt="Olivier Le Grand"
+          class="h-16 w-16 rounded-full object-cover border-2 border-violet-300 shadow-sm"
+        />
+        <p class="mb-1 text-center">{{ $t('testimonials.t1_body') }}</p>
         <h6 class="text-xs italic">{{ $t('testimonials.t1_author') }} <em>{{ $t('testimonials.t1_role') }}</em></h6>
+        <a
+          href="https://www.linkedin.com/in/olivier-legrand-412249126/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="testimonial-link"
+        >
+          LinkedIn de Olivier Le Grand ↗
+        </a>
       </div>
 
-      <div class="w-1/2 h-[200px] card p-4 flex flex-col justify-center items-center testimonial-card">
-        <p class="mb-3 text-center">{{ $t('testimonials.t2_body') }}
-        </p>
+      <div class="w-1/2 h-auto min-h-[240px] card p-4 flex flex-col justify-center items-center gap-3 testimonial-card">
+        <img
+          src="/images/temoins/jean-pierre.png"
+          alt="Jean-Pierre"
+          class="h-16 w-16 rounded-full object-cover border-2 border-violet-300 shadow-sm"
+        />
+        <p class="mb-1 text-center">{{ $t('testimonials.t2_body') }}</p>
         <h6 class="text-xs italic">{{ $t('testimonials.t2_author') }} <em>{{ $t('testimonials.t2_role') }}</em></h6>
+        <a
+          href="https://www.digitalwallonia.be/fr/cartographie/management-consultance-partenaire/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="testimonial-link"
+        >
+          Page Digital Wallonia ↗
+        </a>
       </div>
     </div>
   </div>
@@ -57,6 +82,27 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.testimonial-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  background: rgba(124, 58, 237, 0.08);
+  color: #6d28d9;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.testimonial-link:hover {
+  transform: translateY(-1px);
+  background: rgba(124, 58, 237, 0.16);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
 @media screen and (max-width: 748px) {
   .testimonials-container {
     flex-direction: column;

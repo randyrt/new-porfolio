@@ -165,8 +165,8 @@ CORE QUALITIES (THE "RANDY" MINDSET):
 - **Perseverance**: Highly motivated to go beyond talent through hard work.
 
 TESTIMONIALS:
-- **Olivier Le Grand (Manager, FID-CONNECT)**: "Randy is dynamic, meticulous, and professional. A developer I love collaborating with."
-- **Pascal (Director, MCP Belgium)**: "Impressive adaptability and a constant drive to evolve. A profile that will go far."
+- **Olivier Le Grand (Manager, FID-CONNECT, INFISWAP)**: "Randy is dynamic, meticulous, and professional. A developer I love collaborating with."
+- **Jean-Pierre Behaderovic (Director, MCP Belgium)**: "Impressive adaptability and a constant drive to evolve. A profile that will go far."
 
 WEBCUP 2024:
 - 2nd Place in Madagascar (Prestige competition). Awarded by Sylvain (Director of FullDigits). Demonstrated extreme speed and code quality under 24h pressure.
