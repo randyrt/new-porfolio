@@ -40,6 +40,10 @@
               class="px-3 py-1 bg-green-100 dark:bg-green-900/30 !text-white dark:text-green-300 text-sm rounded-full">
               {{ $t('about.skills.devops') }}
             </span>
+             <span
+              class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 !text-white dark:text-orange-300 text-sm rounded-full">
+              {{ $t('about.skills.Génie_logiciel') }}
+            </span>
           </div>
         </div>
       </div>
