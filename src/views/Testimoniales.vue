@@ -26,7 +26,7 @@
           rel="noopener noreferrer"
           class="testimonial-link"
         >
-          LinkedIn de Olivier Le Grand ↗
+          {{ $t('testimonials.t1_link') }}
         </a>
       </div>
 
@@ -44,7 +44,7 @@
           rel="noopener noreferrer"
           class="testimonial-link"
         >
-          Page Digital Wallonia ↗
+          {{ $t('testimonials.t2_link') }}
         </a>
       </div>
     </div>
