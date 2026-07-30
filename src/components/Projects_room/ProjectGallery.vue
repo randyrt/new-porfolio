@@ -15,10 +15,10 @@
                 </SwiperSlide>
             </Swiper>
             <div class="flex justify-center  h-full items-center w-full md:w-1/3 mr-4">
-                <div class="text-center text-gray-600">
+                <div class="text-justify text-gray-600">
                     <span class="text-lg font-bold text-violet-800 block">{{ title }}</span>
-                    <div class="w-20 h-0.5 bg-violet-300 mx-auto"></div>
-                    <span class="text-sm font-bold">{{ description }}</span>
+                    <div class="w-full h-0.5 bg-violet-300 text-justify"></div>
+                    <span class="text-sm font-bold ">{{ description }}</span>
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@
                                     <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
-                                    }}</div>
+                                        }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -176,7 +176,7 @@
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.total') }}</span>
@@ -246,7 +246,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                        }}</span>
+                                                            }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -285,7 +285,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                            }}</span>
+                                                                }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -426,7 +426,7 @@
                                     <div class="space-y-4">
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
-                                            }}</label>
+                                                }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -443,7 +443,7 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
-                                            }}</label>
+                                                }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
@@ -546,7 +546,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                                }}</div>
+                                            }}</div>
                                             <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -594,7 +594,7 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
-                                        }}</span>
+                                            }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
                                             {{ t('demo.echo.btn_new') }}
@@ -798,7 +798,7 @@
                                             <div class="flex-1">
                                                 <div class="flex items-center gap-2">
                                                     <span class="font-semibold text-gray-800">{{ mission.hospital
-                                                    }}</span>
+                                                        }}</span>
                                                     <span v-if="mission.urgent"
                                                         class="!text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full animate-pulse">
                                                         {{ t('demo.infi_swap.urgent_badge') }}
@@ -807,12 +807,12 @@
                                                 <div class="text-sm text-gray-600">{{ mission.city }}</div>
                                                 <div class="flex flex-wrap gap-3 mt-2 !text-xs">
                                                     <span class="flex items-center gap-1 !text-xs">📅 {{ mission.date
-                                                        }}</span>
+                                                    }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏰ {{
                                                         t(`demo.infi_swap.shifts.${mission.shift}`) }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏱️ {{
                                                         mission.duration
-                                                        }}</span>
+                                                    }}</span>
                                                 </div>
                                             </div>
                                             <div class="text-right">
@@ -861,7 +861,7 @@
                                                         <div class="flex items-center gap-1">
                                                             <span class="text-amber-500">★</span>
                                                             <span class="text-sm font-semibold">{{ nurse.rating
-                                                            }}</span>
+                                                                }}</span>
                                                         </div>
                                                         <div class="text-xs text-gray-500">{{ nurse.missions }}
                                                             {{ t('demo.infi_swap.missions_count') }}</div>
@@ -892,7 +892,7 @@
                                             <div class="text-xl font-bold text-white">{{ infiStats.totalMissions }}
                                             </div>
                                             <div class="text-xs text-purple-200">{{ t('demo.infi_swap.missions_filled')
-                                            }}</div>
+                                                }}</div>
                                         </div>
                                         <div class="text-center bg-white/10 rounded p-2">
                                             <div class="text-xl font-bold text-white">{{ infiStats.activeNurses }}</div>
