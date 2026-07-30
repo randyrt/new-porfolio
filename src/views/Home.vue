@@ -6,7 +6,7 @@
       <div class="relative group" data-aos="fade-down">
         <div class="absolute top-3.5 right-3 z-10">
           <div class="bg-sky-500 text-blue-500 text-xs px-2 py-1 rounded-lg shadow-lg animate-pulse">
-            Code. Build. Deploy, Repeat.
+            Code, Build, Deploy, Repeat.
           </div>
         </div>
         <div class="bg-white dark:bg-white rounded-lg p-2 shadow-lg">
