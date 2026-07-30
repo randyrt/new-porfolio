@@ -9,8 +9,8 @@
         <span class="text-violet-800 text-lg">»</span>
       </p>
     </div>
-    <div class="w-full flex justify-center items-center p-16 gap-16 testimonials-container" data-aos="fade-up">
-      <div class="contact-form card p-8 h-auto">
+    <div class="w-full flex justify-center items-center p-16 gap-16 testimonials-container">
+      <div class="contact-form card p-8 h-auto" data-aos="fade-right">
         <div class="form-group">
           <input type="text" v-model="form.name" required />
           <label class="text-gray-500 !font-semibold">{{ $t('contact.form_name') }}</label>
@@ -50,7 +50,7 @@
           {{ sending ? $t('contact.sending') : $t('contact.send') }}
         </button>
       </div>
-      <div class="card contact-form card">
+      <div class="card contact-form card" data-aos="fade-left">
         <QRcode />
       </div>
     </div>
