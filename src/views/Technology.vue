@@ -77,6 +77,7 @@
                         <TechLogo logo="/images/tecnos/node.webp" name="NODEJS" />
                         <TechLogo logo="/images/tecnos/sql.png" name="MYSQL" />
                         <TechLogo logo="/images/tecnos/mariadb.png" name="MARIADB" />
+                        <TechLogo logo="/images/tecnos/redis3D.png" name="REDIS" />
                     </DivSlot>
                 </div>
 
