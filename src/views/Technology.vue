@@ -63,8 +63,9 @@
                         <TechLogo logo="/images/tecnos/html5.png" name="HTML5" />
                         <TechLogo logo="/images/tecnos/css.png" name="CSS3" />
                         <TechLogo logo="/images/tecnos/js.jpeg" name="JAVASCRIPT" />
+                         <TechLogo logo="/images/tecnos/jquery.png" name="JQUERY" />
                         <TechLogo logo="/images/tecnos/tailwinds.png" name="TAILWINDCSS" />
-                        <TechLogo logo="/images/tecnos/jquery.png" name="JQUERY" />
+                         <TechLogo logo="/images/tecnos/bootstrap.png" name="BOOTSTRAP" />
                     </DivSlot>
                 </div>
 
