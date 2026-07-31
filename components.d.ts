@@ -29,6 +29,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     SkillSection: typeof import('./src/components/Helper_components/SkillSection.vue')['default']
     Stack: typeof import('./src/components/technic_stack/stack.vue')['default']
+    TechIcon: typeof import('./src/components/techs/TechIcon.vue')['default']
     TechLogo: typeof import('./src/components/Helper_components/TechLogo.vue')['default']
   }
 }

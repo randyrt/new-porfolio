@@ -38,6 +38,8 @@ import {
   faFigma,
   faBootstrap,
   faWhatsapp,
+  faCss3Alt,
+  faHtml5,
 } from '@fortawesome/free-brands-svg-icons'
 
 import {
@@ -90,10 +92,15 @@ import {
   faPlayCircle,
   faCompass,
   faMedal,
+  faTable,
+  faServer,
+  faPlug,
+  faCube,
+  faPaintbrush,
+  faCode as faCodeSolid,
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faBuilding as faBuildingRegular } from '@fortawesome/free-regular-svg-icons'
-
 
 library.add(
   faUser, faClock, faPlus, faHome, faTrophy, faStar, faCode, faCogs,
@@ -122,6 +129,7 @@ library.add(
   faThumbsUp, faBookOpen, faPalette, faEyeSlash, faLock,
   faPlay, faHourglassHalf, faPause, faScroll, faSkull, faLeaf, faChevronUp, faChevronDown,
   faMousePointer, faFire, faShieldVirus, faCheck, faArrowRightLong, faPlayCircle, faCompass, faMedal,
+  faCss3Alt, faHtml5, faTable, faServer, faPlug, faCube, faPaintbrush, faCodeSolid
 )
 
 const options = {
@@ -152,9 +160,7 @@ app.use(Particles)
 app.use(i18n)
 app.use(pinia)
 
-
 app.mount('#app')
-
 
 AOS.init({
   duration: 1000,
