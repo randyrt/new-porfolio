@@ -37,7 +37,7 @@
     "quote": "\"Code never sleeps, and neither do I until I reach my goals.\"",
     "welcome": "Welcome to my portfolio !",
     "p1": "I’m Randy, a <span class=\"font-semibold\">fullStack</span> developer passionate about building modern, fast, and user-focused web and mobile applications. I enjoy turning ideas into concrete, reliable, and scalable products, from design to production.",
-    "p2": "Across my projects, I’ve developed a pragmatic and technical approach around <span class=\"font-semibold\">Vue.js</span>, <span class=\"font-semibold\">TypeScript</span>, <span class=\"font-semibold\">TailwindCSS</span>, <span class=\"font-semibold\">Laravel</span>, and container tools like <span class=\"font-semibold\">Docker</span>. I also craft polished digital experiences by combining strong technical execution with thoughtful UX/UI design.",
+    "p2": "Across my projects, I’ve developed a pragmatic and technical approach around <span class=\"font-semibold\">Vue.js</span>, <span class=\"font-semibold\">TypeScript</span>, <span class=\"font-semibold\">TailwindCSS</span>, <span class=\"font-semibold\">Laravel</span>, <span class=\"font-semibold\">Redis</span> for optimization, caching, and performance tuning, along with <span class=\"font-semibold\">Docker</span> for development environment consistency and deployment. I also craft polished digital experiences by combining strong technical execution with thoughtful UX/UI design.",
     "p3_1": "I invite you to explore this portfolio to discover my projects, my approach, and the value I can bring to your ideas. If you have a project in mind or a question to ask, feel free to ",
     "p3_contact": "contact me",
     "p3_2": "!",
