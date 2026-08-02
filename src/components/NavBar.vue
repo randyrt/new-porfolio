@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-col md:flex-row h-screen overflow-hidden">
-    <header class="md:hidden flex justify-between items-center p-4 shadow" :style="{ backgroundColor: 'var(--app-primary)' }">
+    <header class="md:hidden flex justify-between items-center p-4 shadow"
+      :style="{ backgroundColor: 'var(--app-primary)' }">
       <div class="flex items-center">
         <span class="animated-gradient-text font-bold text-xl">{{ brand }}</span>
         <button @click="isOpen = !isOpen" class="focus:outline-none">
@@ -102,10 +103,37 @@
       </aside>
     </Transition>
 
-    <button v-if="!sidebarVisible" @click="sidebarVisible = true"
-      class="fixed top-4 left-4 z-50 p-3 w-10 h-10 rounded-full bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-lg shadow-violet-500/30 hover:shadow-[0_0_25px_rgba(9, 162, 201, 0.7)] hover:scale-110 transition-all duration-300 focus:outline-none flex justify-center items-center animate-pulse-slow">
-      <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg" />
-    </button>
+
+
+    <div v-if="!sidebarVisible" class="fixed inset-x-0 bottom-4 z-40 flex justify-center pointer-events-none">
+      <div class="relative pointer-events-auto flex items-center gap-3" @mouseenter="showRouteBubble = true"
+        @mouseleave="showRouteBubble = false">
+
+        <!-- Bouton bars -->
+        <div class="relative">
+          <button v-if="!sidebarVisible" @click="sidebarVisible = true; showRouteBubble = false"
+            class="floating-control-button p-3 w-14 h-14 rounded-full border border-white/40 text-white hover:scale-110 transition-all duration-300 focus:outline-none flex justify-center items-center flex-shrink-0">
+            <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg" />
+          </button>
+
+          <!-- Bulle des routes -->
+          <div v-if="showRouteBubble"
+            class="pointer-events-auto absolute left-1/2 -translate-x-1/2 bottom-[calc(100%+0.75rem)] w-[min(88vw,560px)] rounded-3xl border border-white/40 bg-white/85 backdrop-blur-xl shadow-[0_18px_60px_rgba(59,130,246,0.25)] p-3">
+            <nav class="flex flex-wrap items-center justify-center gap-2">
+              <router-link v-for="route in routes" :key="route.path" :to="route.path"
+                class="rounded-full px-3 py-2 text-xs md:text-sm font-bold text-gray-700 hover:text-violet-700 hover:bg-violet-100 border border-transparent transition-all duration-200"
+                active-class="bg-gradient-to-r from-sky-500 to-violet-500 text-white shadow-lg shadow-sky-500/20 border-white/20">
+                <span class="flex items-center gap-2">
+                  <font-awesome-icon :icon="route.icon" class="text-inherit" />
+                  <span>{{ route.name }}</span>
+                </span>
+              </router-link>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <main class="flex-1 p-6 overflow-y-auto transition-all duration-300" :class="{ 'md:ml-0': !sidebarVisible }">
       <router-view />
@@ -142,6 +170,7 @@ const props = defineProps<{
 const isOpen = ref(false);
 const router = useRouter();
 const sidebarVisible = ref(true);
+const showRouteBubble = ref(false);
 
 function goHome() {
   router.push('/')
@@ -153,6 +182,11 @@ function openGithub() {
 </script>
 
 <style scoped>
+.floating-control-button {
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 45%, #0ea5e9 100%);
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.55);
+}
+
 @media screen and (max-width: 748px) {
   .decoration {
     font-size: 10px !important;
