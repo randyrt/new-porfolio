@@ -18,7 +18,8 @@
                 <div class="text-justify text-gray-600">
                     <span class="text-lg font-bold text-violet-800 block">{{ title }}</span>
                     <div class="w-full h-0.5 bg-violet-300 text-justify"></div>
-                    <span class="text-sm font-bold ">{{ description }}</span>
+                    <span class="text-sm font-bold text-slate-700 dark:text-slate-900"
+                        v-html="formattedDescription"></span>
                 </div>
             </div>
         </div>
@@ -993,6 +994,50 @@ const emit = defineEmits<{
 const toast = useToast();
 const showDemo = ref(false);
 const { t, locale } = useI18n()
+
+const technologyKeywords = [
+    'Vue.js',
+    'Nuxt.js',
+    'Laravel',
+    'Symfony',
+    'TypeScript',
+    'TailwindCSS',
+    'Tailwind',
+    'Node.js',
+    'PHP',
+    'MySQL',
+    'PostgreSQL',
+    'MariaDB',
+    'Docker',
+    'Redis',
+    'Python',
+    'React',
+    'Ionic',
+    'JavaScript',
+    'VISA',
+    'PayPal',
+    'SSR',
+    'SEO'
+];
+
+const escapeHtml = (value: string) =>
+    value
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const formattedDescription = computed(() => {
+    const safeDescription = escapeHtml(props.description);
+
+    return technologyKeywords.reduce((result, keyword) => {
+        const regex = new RegExp(`(${escapeRegExp(keyword)})`, 'gi');
+        return result.replace(regex, '<span class="font-black text-slate-950 dark:text-slate-950">$1</span>');
+    }, safeDescription);
+});
 
 const toggleDemo = () => {
     showDemo.value = !showDemo.value;
