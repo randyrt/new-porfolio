@@ -64,8 +64,8 @@ const contentVisible = ref(false)
 
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "/images/cv/my_final_cv.pdf";
-  link.download = "my_final_cv.pdf";
+  link.href = "/images/cv/real_cv_new_randy.pdf";
+  link.download = "real_cv_new_randy.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -73,7 +73,7 @@ function downloadCV() {
 }
 
 function viewCV() {
-  window.open("/images/cv/my_final_cv.pdf", "_blank");
+  window.open("/images/cv/real_cv_new_randy.pdf", "_blank");
 }
 
 const goToContact = () => {
