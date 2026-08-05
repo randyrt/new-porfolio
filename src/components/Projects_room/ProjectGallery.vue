@@ -165,21 +165,21 @@
 
                         <!-- Stack -->
                         <div
-                            class="bg-white rounded-xl shadow-sm shadow-gray-200/50 p-5 border border-gray-100/80 hover:shadow-md hover:shadow-cyan-100/30 transition-all duration-300 hover:-translate-y-0.5">
+                            class="bg-white rounded-xl shadow-sm shadow-gray-200/50 p-5 border border-gray-100/80 hover:shadow-md hover:shadow-violet-100/30 transition-all duration-300 hover:-translate-y-0.5">
                             <div class="flex items-center justify-center gap-2.5 mb-4">
-                                <div class="w-8 h-8 rounded-lg bg-cyan-50 flex items-center justify-center">
-                                    <svg class="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor"
+                                <div class="w-8 h-8 rounded-lg bg-violet-50 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                     </svg>
                                 </div>
-                                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-cyan-600">{{
+                                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-violet-600">{{
                                     $t('projects.stack') }}</p>
                             </div>
                             <div class="flex flex-wrap gap-2 justify-center">
                                 <span v-for="(stackItem, idx) in caseStudy.stack" :key="idx"
-                                    class="rounded-full border border-cyan-200/60 bg-gradient-to-br from-cyan-50 to-sky-50 px-3.5 py-1.5 text-xs font-semibold text-cyan-700 shadow-sm shadow-cyan-100/30 hover:shadow-cyan-200/50 hover:scale-105 transition-all duration-200 cursor-default">
+                                    class="rounded-full border border-violet-200/60 bg-gradient-to-br from-violet-50 to-violet-50 px-3.5 py-1.5 text-xs font-semibold text-violet-700 shadow-sm shadow-violet-100/30 hover:shadow-violet-200/50 hover:scale-105 transition-all duration-200 cursor-default">
                                     {{ stackItem }}
                                 </span>
                             </div>
