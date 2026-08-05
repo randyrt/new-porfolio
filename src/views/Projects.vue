@@ -58,7 +58,8 @@
                     <div class="project-slide" :id="project.id">
                         <ProjectGallery :id="project.id" :images="project.images" :title="project.title"
                             :description="project.description" :is-defeated="defeatedBosses.has(project.id)"
-                            @open-image="openImage" @fight-boss="startBossFight(project)" />
+                            :case-study="project.caseStudy" @open-image="openImage"
+                            @fight-boss="startBossFight(project)" />
                     </div>
                 </SwiperSlide>
             </Swiper>
@@ -163,6 +164,21 @@ const projects = ref([
             '/images/projects/fid-connect/capture9.png',
             '/images/projects/fid-connect/capture10.png'
         ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Centraliser la gestion comptable, fiscale et administrative tout en gardant une expérience claire pour les équipes.'
+                : 'Centralize accounting, tax, and administrative management while keeping the experience clear for internal teams.',
+            solution: locale.value === 'fr'
+                ? 'Créer une plateforme Vue.js + Laravel qui automatise les tâches, génère les documents et construit un tableau de bord moderne.'
+                : 'Build a Vue.js + Laravel platform that automates tasks, generates required documents, and provides a modern dashboard experience.',
+            impact: locale.value === 'fr'
+                ? 'Réduire les erreurs manuelles, accélérer les opérations et sécuriser les processus critiques pour les entreprises belges.'
+                : 'Reduce manual errors, speed up operations, and secure critical processes for Belgian businesses.',
+            outcomes: locale.value === 'fr'
+                ? ['Automatisation de la TVA et de la fiscalité', 'Suivi des parts et des engagements', 'Documents administratifs générés plus vite']
+                : ['VAT and tax automation', 'Share and engagement tracking', 'Faster administrative document generation'],
+            stack: ['Vue.js', 'Laravel', 'MySQL', 'TailwindCSS', 'Redis']
+        },
         quiz: [
             {
                 question: locale.value === 'fr' ? "Quel framework JavaScript pilote l'interface réactive de Fid-Connect ?" : "Which JavaScript framework powers Fid-Connect's reactive interface?",
@@ -198,6 +214,21 @@ const projects = ref([
             '/images/projects/QCP/capture10.png',
             '/images/projects/QCP/capture11.png'
         ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Faire comprendre des scénarios financiers complexes à des décideurs et faciliter leurs simulations.'
+                : 'Make complex financial scenarios understandable to decision-makers and streamline their simulations.',
+            solution: locale.value === 'fr'
+                ? 'Mettre en place un frontend Vue.js clair et un backend Laravel structuré pour calculer les amortissements et générer les documents utiles.'
+                : 'Provide a clear Vue.js frontend and a structured Laravel backend to calculate amortization and generate useful documents.',
+            impact: locale.value === 'fr'
+                ? 'Rendre l’analyse de crédit plus rapide, plus fiable et plus exploitable pour le client.'
+                : 'Make credit analysis faster, more reliable, and more actionable for the client.',
+            outcomes: locale.value === 'fr'
+                ? ['Simulations de remboursement interactives', 'Calculs financiers automatisés', 'Synthèse lisible pour la prise de décision']
+                : ['Interactive repayment simulations', 'Automated financial calculations', 'Readable decision support'],
+            stack: ['Vue.js', 'Laravel', 'Financial logic', 'Document generation', 'Redis']
+        },
         quiz: [
             {
                 question: locale.value === 'fr' ? "Quelle technologie backend propulse les calculs d'amortissement ?" : "Which backend technology powers the amortization calculations?",
@@ -228,6 +259,21 @@ const projects = ref([
             '/images/projects/nurser-dinner/capture6.png',
             '/images/projects/nurser-dinner/capture7.png'
         ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Créer une expérience de réservation fluide pour une salle à forte affluence tout en restant lisible pour l’équipe gestionnaire.'
+                : 'Create a smooth reservation experience for a high-traffic venue while keeping operations understandable for the management team.',
+            solution: locale.value === 'fr'
+                ? 'Concevoir une interface Vue.js conviviale avec Symfony côté gestion, incluant réservation, agenda événementiel et administration.'
+                : 'Design a friendly Vue.js interface with Symfony behind it, including reservations, event scheduling, and admin management.',
+            impact: locale.value === 'fr'
+                ? 'Simplifier les réservations groupées et améliorer la visibilité sur les événements à venir.'
+                : 'Simplify group reservations and improve visibility into upcoming events.',
+            outcomes: locale.value === 'fr'
+                ? ['Réservation en ligne simplifiée', 'Gestion d’événements centralisée', 'Panneau admin orienté opérations']
+                : ['Simplified online booking', 'Centralized event management', 'Admin-focused operations panel'],
+            stack: ['Vue.js', 'Symfony', 'Reservation flow', 'Admin dashboard', 'Redis']
+        },
         quiz: [
             {
                 question: locale.value === 'fr' ? "Quel framework backend a été choisi pour ce projet ?" : "Which backend framework was chosen for this project?",
@@ -259,6 +305,21 @@ const projects = ref([
             '/images/projects/echo-webLine/echo-8.PNG',
             '/images/projects/echo-webLine/echo-12.PNG'
         ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Rendre les parcours patients plus lisibles pour les équipes médicales tout en centralisant les données d’imagerie cardiovasculaire.'
+                : 'Make patient journeys more readable for medical teams while centralizing cardiovascular imaging data.',
+            solution: locale.value === 'fr'
+                ? 'Concevoir une expérience Nuxt.js et Laravel orientée consultation, suivi et gestion des dossiers pour les professionnels de la santé.'
+                : 'Design a Nuxt.js and Laravel experience focused on consultation, follow-up, and record management for healthcare professionals.',
+            impact: locale.value === 'fr'
+                ? 'Améliorer le suivi médical, accélérer les interventions et offrir une meilleure visibilité sur les parcours patients.'
+                : 'Improve medical follow-up, accelerate interventions, and provide better visibility into patient journeys.',
+            outcomes: locale.value === 'fr'
+                ? ['Interface clinique plus claire', 'Centralisation des dossiers', 'Accélération des prises de décision']
+                : ['Clearer clinical interface', 'Centralized record management', 'Faster decision-making'],
+            stack: ['Nuxt.js', 'Laravel', 'Medical imaging', 'Real-time workflow', 'Redis']
+        },
         quiz: [
             {
                 question: locale.value === 'fr' ? "Quel framework Vue SSR est utilisé ici ?" : "Which Vue SSR framework is used here?",
@@ -287,6 +348,21 @@ const projects = ref([
             '/images/projects/afr/afr-3.PNG',
             '/images/projects/afr/afr-4.PNG'
         ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Créer un réseau social communautaire fluide pour la diaspora africaine, avec des échanges simples et une monétisation claire.'
+                : 'Create a fluid community social network for the African diaspora, with simple interactions and a clear monetization model.',
+            solution: locale.value === 'fr'
+                ? 'Mettre en place une plateforme Nuxt.js + Laravel avec publication, groupes d’intérêt, paiements premium et expérience communautaire engageante.'
+                : 'Build a Nuxt.js + Laravel platform with publishing, interest groups, premium payments, and an engaging community experience.',
+            impact: locale.value === 'fr'
+                ? 'Renforcer le lien entre membres, faciliter la création de communautés et rendre les contenus premium plus accessibles.'
+                : 'Strengthen member connection, simplify community building, and make premium content more accessible.',
+            outcomes: locale.value === 'fr'
+                ? ['Communauté plus active', 'Paiements premium fluides', 'Interactions plus dynamiques']
+                : ['More active community', 'Smooth premium payments', 'More dynamic interactions'],
+            stack: ['Nuxt.js', 'Laravel', 'Social publishing', 'VISA/PayPal', 'Redis']
+        },
         quiz: [
             {
                 question: locale.value === 'fr' ? "Quels modes de paiement sont intégrés ?" : "Which payment methods are integrated?",
@@ -317,6 +393,21 @@ const projects = ref([
             '/images/projects/swap/swap5.png',
             '/images/projects/swap/swap6.png',
         ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Faire correspondre rapidement les établissements de santé avec des infirmiers disponibles sans intermédiaire humain, tout en gardant un processus transparent.'
+                : 'Quickly match healthcare institutions with available nurses without human intermediaries while keeping the process transparent.',
+            solution: locale.value === 'fr'
+                ? 'Créer une plateforme Nuxt.js + Symfony qui automatise l’affectation, la recherche rapide et le suivi des missions de remplacement.'
+                : 'Build a Nuxt.js + Symfony platform that automates assignment, fast matching, and replacement mission tracking.',
+            impact: locale.value === 'fr'
+                ? 'Réduire les délais de remplissage, optimiser les missions et fluidifier la gestion opérationnelle pour les établissements.'
+                : 'Reduce fill time, optimize mission allocation, and streamline operational management for institutions.',
+            outcomes: locale.value === 'fr'
+                ? ['Mise en relation plus rapide', 'Planification plus fiable', 'Moins de friction opérationnelle']
+                : ['Faster matching', 'More reliable scheduling', 'Less operational friction'],
+            stack: ['Nuxt.js', 'Symfony', 'Nurse matching', 'Scheduling', 'Redis']
+        },
         quiz: [
             {
                 question: locale.value === 'fr' ? "Quel est le public cible de InfiSwap ?" : "Who is the target audience for InfiSwap?",

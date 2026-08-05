@@ -143,7 +143,14 @@
     "fight_boss": "Affronter le Boss",
     "boss_defeated": "Boss Vaincu",
     "click_to_zoom_hint": "ESC ou cliquez à l'extérieur pour fermer",
-    "mission_progress": "Progression de la Mission"
+    "mission_progress": "Progression de la Mission",
+    "case_study": "Case Study",
+    "hide_case_study": "Masquer le Case Study",
+    "challenge": "Défi",
+    "solution": "Solution",
+    "impact": "Impact",
+    "outcomes": "Résultats",
+    "stack": "Stack"
   },
   "quiz": {
     "danger_level": "Niveau de danger : Élevé",

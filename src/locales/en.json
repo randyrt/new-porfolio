@@ -141,7 +141,14 @@
     "fight_boss": "Fight Boss",
     "boss_defeated": "Boss Defeated",
     "click_to_zoom_hint": "ESC or Click outside to close",
-    "mission_progress": "Project Journey"
+    "mission_progress": "Project Journey",
+    "case_study": "Case Study",
+    "hide_case_study": "Hide Case Study",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "impact": "Impact",
+    "outcomes": "Outcomes",
+    "stack": "Stack"
   },
   "quiz": {
     "danger_level": "Danger Level: High",

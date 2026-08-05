@@ -41,6 +41,13 @@
                 </span>
             </button>
 
+            <button v-if="caseStudy" @click.stop="toggleCaseStudy" data-testid="project-case-study-btn"
+                class="group relative overflow-hidden px-6 py-2 bg-gradient-to-r from-purple-500 to-amber-500 text-white font-black rounded-xl shadow-lg hover:shadow-violet-500/50 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 uppercase text-xs tracking-widest border border-white/20 w-full">
+                <font-awesome-icon :icon="showCaseStudy ? ['fas', 'book-open'] : ['fas', 'scroll']"
+                    :class="{ 'animate-pulse': !showCaseStudy }" />
+                <span>{{ showCaseStudy ? t('projects.hide_case_study') : t('projects.case_study') }}</span>
+            </button>
+
             <!-- Bouton Démo -->
             <button @click.stop="toggleDemo"
                 class="group relative overflow-hidden px-6 py-2 bg-gradient-to-r from-purple-500 to-amber-500 text-white font-black rounded-xl shadow-lg hover:shadow-violet-500/50 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 uppercase text-xs tracking-widest border border-white/20 w-full">
@@ -49,6 +56,140 @@
                 <span>{{ showDemo ? t('demo.hide') : t('demo.show') }}</span>
             </button>
         </div>
+
+        <transition enter-active-class="transition-all duration-500 ease-out"
+            enter-from-class="opacity-0 transform -translate-y-6 scale-95"
+            enter-to-class="opacity-100 transform translate-y-0 scale-100"
+            leave-active-class="transition-all duration-300 ease-in"
+            leave-from-class="opacity-100 transform translate-y-0 scale-100"
+            leave-to-class="opacity-0 transform -translate-y-6 scale-95">
+            <div v-if="showCaseStudy && caseStudy" ref="caseStudyAnchor"
+                class="demo-wrapper mx-auto mt-6 border-2 border-sky-500/40 rounded-2xl overflow-hidden shadow-2xl shadow-sky-500/10 !w-full backdrop-blur-sm transition-shadow hover:shadow-sky-500/20">
+
+                <!-- Header amélioré -->
+                <div
+                    class="bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 px-6 py-3 flex items-center justify-between border-b border-white/10">
+                    <div class="flex items-center gap-3">
+                        <div class="flex gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-red-400/80 shadow-lg shadow-red-400/20"></span>
+                            <span class="w-3 h-3 rounded-full bg-amber-400/80 shadow-lg shadow-amber-400/20"></span>
+                            <span class="w-3 h-3 rounded-full bg-emerald-400/80 shadow-lg shadow-emerald-400/20"></span>
+                        </div>
+                        <span class="text-white/90 text-xs font-mono tracking-wide border-l border-white/20 pl-3">
+                            {{ t('projects.case_study') }}
+                        </span>
+                    </div>
+                    <span class="text-white/80 text-xs font-medium truncate max-w-[200px]">
+                        {{ title }}
+                    </span>
+                </div>
+
+                <!-- Contenu amélioré -->
+                <div class="p-6 bg-gradient-to-b from-gray-50 to-white">
+                    <div class="grid gap-5 lg:grid-cols-2">
+
+                        <!-- Challenge -->
+                        <div
+                            class="bg-white rounded-xl shadow-sm shadow-gray-200/50 p-5 border border-gray-100/80 hover:shadow-md hover:shadow-sky-100/30 transition-all duration-300 hover:-translate-y-0.5">
+                            <div class="flex items-center justify-center gap-2.5 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-violet-50 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                    </svg>
+                                </div>
+                                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-violet-600">{{
+                                    $t('projects.challenge') }}</p>
+                            </div>
+                            <p class="text-sm leading-relaxed text-slate-700">{{ caseStudy.challenge }}</p>
+                        </div>
+
+                        <!-- Solution -->
+                        <div
+                            class="bg-white rounded-xl shadow-sm shadow-gray-200/50 p-5 border border-gray-100/80 hover:shadow-md hover:shadow-emerald-100/30 transition-all duration-300 hover:-translate-y-0.5">
+                            <div class="flex items-center justify-center gap-2.5 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                </div>
+                                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-emerald-600">{{
+                                    $t('projects.solution') }}</p>
+                            </div>
+                            <p class="text-sm leading-relaxed text-slate-700">{{ caseStudy.solution }}</p>
+                        </div>
+
+                        <!-- Impact - pleine largeur -->
+                        <div
+                            class="lg:col-span-2 bg-white rounded-xl shadow-sm shadow-gray-200/50 p-5 border border-gray-100/80 hover:shadow-md hover:shadow-amber-100/30 transition-all duration-300 hover:-translate-y-0.5">
+                            <div class="flex items-center justify-center gap-2.5 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                    </svg>
+                                </div>
+                                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-amber-600">{{
+                                    $t('projects.impact') }}</p>
+                            </div>
+                            <p class="text-sm leading-relaxed text-slate-700">{{ caseStudy.impact }}</p>
+                        </div>
+
+                        <!-- Outcomes -->
+                        <div
+                            class="bg-white rounded-xl shadow-sm shadow-gray-200/50 p-5 border border-gray-100/80 hover:shadow-md hover:shadow-pink-100/30 transition-all duration-300 hover:-translate-y-0.5">
+                            <div class="flex items-center justify-center gap-2.5 mb-3">
+                                <div class="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-pink-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-pink-600">{{
+                                    $t('projects.outcomes') }}</p>
+                            </div>
+                            <ul class="space-y-2.5">
+                                <li v-for="(outcome, idx) in caseStudy.outcomes" :key="idx"
+                                    class="text-sm text-slate-700 flex items-start gap-2.5 group justify-center">
+                                    <span
+                                        class="mt-1.5 w-1.5 h-1.5 rounded-full bg-sky-500 group-hover:bg-sky-600 transition-colors flex-shrink-0"></span>
+                                    <span class="leading-relaxed">{{ outcome }}</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Stack -->
+                        <div
+                            class="bg-white rounded-xl shadow-sm shadow-gray-200/50 p-5 border border-gray-100/80 hover:shadow-md hover:shadow-cyan-100/30 transition-all duration-300 hover:-translate-y-0.5">
+                            <div class="flex items-center justify-center gap-2.5 mb-4">
+                                <div class="w-8 h-8 rounded-lg bg-cyan-50 flex items-center justify-center">
+                                    <svg class="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                                    </svg>
+                                </div>
+                                <p class="text-[11px] font-black uppercase tracking-[0.3em] text-cyan-600">{{
+                                    $t('projects.stack') }}</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2 justify-center">
+                                <span v-for="(stackItem, idx) in caseStudy.stack" :key="idx"
+                                    class="rounded-full border border-cyan-200/60 bg-gradient-to-br from-cyan-50 to-sky-50 px-3.5 py-1.5 text-xs font-semibold text-cyan-700 shadow-sm shadow-cyan-100/30 hover:shadow-cyan-200/50 hover:scale-105 transition-all duration-200 cursor-default">
+                                    {{ stackItem }}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </transition>
+
         <div class="demo-section mt-16">
             <transition enter-active-class="transition-all duration-300 ease-out"
                 enter-from-class="opacity-0 transform -translate-y-4"
@@ -56,10 +197,25 @@
                 leave-active-class="transition-all duration-200 ease-in"
                 leave-from-class="opacity-100 transform translate-y-0"
                 leave-to-class="opacity-0 transform -translate-y-4">
-                <div v-if="showDemo"
-                    class="demo-wrapper  border-2 border-sky-500 rounded-xl overflow-hidden shadow-lg ">
-                    <div class="bg-gradient-to-r from-sky-700 to-sky-800 px-4 py-2">
-                        <span class="text-white text-sm font-mono">{{ t('demo.live') }} • {{ title }}</span>
+
+                <div v-if="showDemo" ref="demoAnchor"
+                    class="demo-wrapper mx-auto mt-6 border-2 border-sky-500/40 rounded-2xl overflow-hidden shadow-2xl shadow-sky-500/10 !w-full backdrop-blur-sm transition-shadow hover:shadow-sky-500/20">
+                    <div
+                        class="bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 px-6 py-3 flex items-center justify-between border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <div class="flex gap-1.5">
+                                <span class="w-3 h-3 rounded-full bg-red-400/80 shadow-lg shadow-red-400/20"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-400/80 shadow-lg shadow-amber-400/20"></span>
+                                <span
+                                    class="w-3 h-3 rounded-full bg-emerald-400/80 shadow-lg shadow-emerald-400/20"></span>
+                            </div>
+                            <span class="text-white/90 text-xs font-mono tracking-wide border-l border-white/20 pl-3">
+                                {{ t('demo.live') }}
+                            </span>
+                        </div>
+                        <span class="text-white/80 text-xs font-medium truncate max-w-[200px]">
+                            {{ title }}
+                        </span>
                     </div>
 
                     <div v-if="demoType === 'fid-connect'" class="p-6 bg-gray-50">
@@ -168,7 +324,7 @@
                                     <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
-                                        }}</div>
+                                    }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -177,7 +333,7 @@
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.total') }}</span>
@@ -247,7 +403,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -286,7 +442,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -427,7 +583,7 @@
                                     <div class="space-y-4">
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
-                                                }}</label>
+                                            }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -444,7 +600,7 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
-                                                }}</label>
+                                            }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
@@ -547,7 +703,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -595,7 +751,7 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
-                                            }}</span>
+                                        }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
                                             {{ t('demo.echo.btn_new') }}
@@ -799,7 +955,7 @@
                                             <div class="flex-1">
                                                 <div class="flex items-center gap-2">
                                                     <span class="font-semibold text-gray-800">{{ mission.hospital
-                                                        }}</span>
+                                                    }}</span>
                                                     <span v-if="mission.urgent"
                                                         class="!text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full animate-pulse">
                                                         {{ t('demo.infi_swap.urgent_badge') }}
@@ -808,12 +964,12 @@
                                                 <div class="text-sm text-gray-600">{{ mission.city }}</div>
                                                 <div class="flex flex-wrap gap-3 mt-2 !text-xs">
                                                     <span class="flex items-center gap-1 !text-xs">📅 {{ mission.date
-                                                    }}</span>
+                                                        }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏰ {{
                                                         t(`demo.infi_swap.shifts.${mission.shift}`) }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏱️ {{
                                                         mission.duration
-                                                    }}</span>
+                                                        }}</span>
                                                 </div>
                                             </div>
                                             <div class="text-right">
@@ -862,7 +1018,7 @@
                                                         <div class="flex items-center gap-1">
                                                             <span class="text-amber-500">★</span>
                                                             <span class="text-sm font-semibold">{{ nurse.rating
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                         <div class="text-xs text-gray-500">{{ nurse.missions }}
                                                             {{ t('demo.infi_swap.missions_count') }}</div>
@@ -893,7 +1049,7 @@
                                             <div class="text-xl font-bold text-white">{{ infiStats.totalMissions }}
                                             </div>
                                             <div class="text-xs text-purple-200">{{ t('demo.infi_swap.missions_filled')
-                                                }}</div>
+                                            }}</div>
                                         </div>
                                         <div class="text-center bg-white/10 rounded p-2">
                                             <div class="text-xl font-bold text-white">{{ infiStats.activeNurses }}</div>
@@ -970,7 +1126,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, nextTick } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -978,12 +1134,21 @@ import 'swiper/css/pagination';
 import { useToast } from 'vue-toastification';
 import { useI18n } from 'vue-i18n';
 
+interface ProjectCaseStudy {
+    challenge: string
+    solution: string
+    impact: string
+    outcomes: string[]
+    stack: string[]
+}
+
 const props = defineProps<{
     id: string,
     images: string[],
     title: string,
     description: string,
-    isDefeated?: boolean
+    isDefeated?: boolean,
+    caseStudy?: ProjectCaseStudy
 }>();
 
 const emit = defineEmits<{
@@ -993,6 +1158,9 @@ const emit = defineEmits<{
 
 const toast = useToast();
 const showDemo = ref(false);
+const showCaseStudy = ref(false);
+const caseStudyAnchor = ref<HTMLElement | null>(null)
+const demoAnchor = ref<HTMLElement | null>(null)
 const { t, locale } = useI18n()
 
 const technologyKeywords = [
@@ -1028,6 +1196,7 @@ const escapeHtml = (value: string) =>
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&#39;');
 
+
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const formattedDescription = computed(() => {
@@ -1039,9 +1208,35 @@ const formattedDescription = computed(() => {
     }, safeDescription);
 });
 
-const toggleDemo = () => {
-    showDemo.value = !showDemo.value;
-};
+const scrollToAnchor = async (target: 'demo' | 'case-study') => {
+    const element = target === 'demo' ? demoAnchor.value : caseStudyAnchor.value
+    if (!element) return
+
+    await nextTick()
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+const toggleDemo = async () => {
+    if (!showDemo.value) {
+        showDemo.value = true
+        await nextTick()
+        await scrollToAnchor('demo')
+        return
+    }
+
+    showDemo.value = false
+}
+
+const toggleCaseStudy = async () => {
+    if (!showCaseStudy.value) {
+        showCaseStudy.value = true
+        await nextTick()
+        await scrollToAnchor('case-study')
+        return
+    }
+
+    showCaseStudy.value = false
+}
 
 const demoType = computed(() => {
     const title = props.title.toLowerCase();
