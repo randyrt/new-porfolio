@@ -79,11 +79,11 @@
                                 class="w-3 h-3 rounded-full bg-emerald-400/90 shadow-lg shadow-emerald-400/30 ring-1 ring-white/20"></span>
                         </div>
                         <span
-                            class="text-white/80 text-[10px] font-mono tracking-[0.15em] border-l border-white/20 pl-3 uppercase">
+                            class="text-white/80 text-sm font-mono tracking-[0.15em] border-l border-white/20 pl-3 uppercase">
                             {{ t('projects.case_study') }}
                         </span>
                     </div>
-                    <span class="text-white/70 text-xs font-mono truncate max-w-[200px] tracking-wide">
+                    <span class="text-white/70 text-sm font-mono truncate max-w-[200px] tracking-wide">
                         {{ title }}
                     </span>
                 </div>
@@ -104,7 +104,7 @@
                                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
                                 </div>
-                                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-violet-600/90">{{
+                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-violet-600/90">{{
                                     $t('projects.challenge') }}</p>
                             </div>
                             <p class="text-sm leading-relaxed text-slate-700/90 font-medium">{{ caseStudy.challenge }}
@@ -123,7 +123,7 @@
                                             d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                     </svg>
                                 </div>
-                                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600/90">{{
+                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-emerald-600/90">{{
                                     $t('projects.solution') }}</p>
                             </div>
                             <p class="text-sm leading-relaxed text-slate-700/90 font-medium">{{ caseStudy.solution }}
@@ -142,7 +142,7 @@
                                             d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                     </svg>
                                 </div>
-                                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-600/90">{{
+                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-amber-600/90">{{
                                     $t('projects.impact') }}</p>
                             </div>
                             <p class="text-sm leading-relaxed text-slate-700/90 font-medium">{{ caseStudy.impact }}</p>
@@ -160,18 +160,18 @@
                                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
-                                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-pink-600/90">{{
+                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-pink-600/90">{{
                                     $t('projects.outcomes') }}</p>
                             </div>
                             <div class=" flex justify-center flex-wrap gap-2.5 ">
                                 <div v-for="(outcome, idx) in caseStudy.outcomes" :key="idx"
-                                    class="text-xs text-slate-700/90 flex items-start gap-2.5 group/outcome border border-pink-200/30 rounded-lg px-4 py-2 hover:bg-pink-50 hover:shadow-md transition-all duration-300 cursor-default">
+                                    class="text-sm text-slate-700/90 flex items-start gap-2.5 group/outcome border border-pink-200/30 rounded-lg px-4 py-2 hover:bg-pink-50 hover:shadow-md transition-all duration-300 cursor-default">
                                     <svg class="w-4 h-4 text-pink-600 group-hover/outcome:animate-bounce mt-1"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M5 13l4 4L19 7" />
                                     </svg>
-                                    <span class="!text-sm font-medium">{{ outcome }}</span>
+                                    <span class="text-sm font-medium">{{ outcome }}</span>
                                 </div>
                             </div>
                         </div>
@@ -188,12 +188,12 @@
                                             d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                     </svg>
                                 </div>
-                                <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-violet-600/90">{{
+                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-violet-600/90">{{
                                     $t('projects.stack') }}</p>
                             </div>
                             <div class="space-x-2">
                                 <span v-for="(stackItem, idx) in caseStudy.stack" :key="idx"
-                                    class="rounded-full bg-gradient-to-br from-violet-100/90 to-violet-50/90 px-4 py-1.5 text-xs font-medium text-violet-700/90 shadow-sm shadow-violet-200/40 hover:shadow-violet-300/60 hover:scale-105 transition-all duration-200 cursor-default border border-violet-200/40 backdrop-blur-sm">
+                                    class="rounded-full bg-gradient-to-br from-violet-100/90 to-violet-50/90 px-4 py-1.5 text-sm font-medium text-violet-700/90 shadow-sm shadow-violet-200/40 hover:shadow-violet-300/60 hover:scale-105 transition-all duration-200 cursor-default border border-violet-200/40 backdrop-blur-sm">
                                     {{ stackItem }}
                                 </span>
                             </div>
@@ -337,7 +337,7 @@
                                     <label class="text-sm text-gray-600">{{ t('demo.qcp.years') }}</label>
                                     <input type="range" v-model="loan.years" min="1" max="30" class="w-full">
                                     <div class="text-right font-semibold">{{ loan.years }} {{ t('demo.qcp.years_unit')
-                                        }}</div>
+                                    }}</div>
                                 </div>
                             </div>
                             <div class="bg-white p-4 rounded-lg shadow">
@@ -346,7 +346,7 @@
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.monthly') }}</span>
                                         <span class="font-bold text-violet-600">{{ formatCurrency(monthlyPayment)
-                                        }}</span>
+                                            }}</span>
                                     </div>
                                     <div class="flex justify-between">
                                         <span>{{ t('demo.qcp.total') }}</span>
@@ -416,7 +416,7 @@
                                                 <div class="flex justify-between items-start">
                                                     <div>
                                                         <span class="font-semibold text-gray-800">{{ post.author
-                                                            }}</span>
+                                                        }}</span>
                                                         <span class="text-xs text-gray-500 ml-2">{{ post.time }}</span>
                                                     </div>
                                                     <button @click="deletePost(idx)"
@@ -455,7 +455,7 @@
                                                             class="text-sm">
                                                             <span class="font-semibold">{{ comment.author }}:</span>
                                                             <span class="text-gray-600 ml-1">{{ comment.content
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -596,7 +596,7 @@
                                     <div class="space-y-4">
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.guests')
-                                                }}</label>
+                                            }}</label>
                                             <div class="flex items-center gap-2 mt-1">
                                                 <button @click="booking.guests = Math.max(1, booking.guests - 1)"
                                                     class="w-8 h-8 rounded-full bg-violet-400 hover:bg-violet-300 transition flex items-center justify-center text-lg font-bold">
@@ -613,7 +613,7 @@
 
                                         <div>
                                             <label class="text-sm text-gray-600 font-medium">{{ t('demo.nurses.date')
-                                                }}</label>
+                                            }}</label>
                                             <input type="date" v-model="booking.date" :min="minDate"
                                                 class="w-full p-2 border rounded mt-1">
                                         </div>
@@ -716,7 +716,7 @@
                                     <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                                         <div class="bg-white/10 rounded p-2 text-center">
                                             <div class="text-2xl font-bold text-white">{{ adminStats.totalReservations
-                                            }}</div>
+                                                }}</div>
                                             <div class="text-xs text-gray-300">{{ t('demo.nurses.admin_res') }}</div>
                                         </div>
                                         <div class="bg-white/10 rounded p-2 text-center">
@@ -764,7 +764,7 @@
                                 <div class="bg-white rounded-lg shadow p-4">
                                     <div class="flex justify-between items-center mb-3">
                                         <span class="font-semibold text-gray-700">{{ t('demo.nurses.events_title')
-                                            }}</span>
+                                        }}</span>
                                         <button @click="addEvent"
                                             class="btn-violet inline-block text-center btn-effect-5">
                                             {{ t('demo.echo.btn_new') }}
@@ -968,7 +968,7 @@
                                             <div class="flex-1">
                                                 <div class="flex items-center gap-2">
                                                     <span class="font-semibold text-gray-800">{{ mission.hospital
-                                                        }}</span>
+                                                    }}</span>
                                                     <span v-if="mission.urgent"
                                                         class="!text-xs bg-red-100 text-red-700 px-2 py-0.5 rounded-full animate-pulse">
                                                         {{ t('demo.infi_swap.urgent_badge') }}
@@ -977,12 +977,12 @@
                                                 <div class="text-sm text-gray-600">{{ mission.city }}</div>
                                                 <div class="flex flex-wrap gap-3 mt-2 !text-xs">
                                                     <span class="flex items-center gap-1 !text-xs">📅 {{ mission.date
-                                                    }}</span>
+                                                        }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏰ {{
                                                         t(`demo.infi_swap.shifts.${mission.shift}`) }}</span>
                                                     <span class="flex items-center gap-1 !text-xs">⏱️ {{
                                                         mission.duration
-                                                    }}</span>
+                                                        }}</span>
                                                 </div>
                                             </div>
                                             <div class="text-right">
@@ -1031,7 +1031,7 @@
                                                         <div class="flex items-center gap-1">
                                                             <span class="text-amber-500">★</span>
                                                             <span class="text-sm font-semibold">{{ nurse.rating
-                                                                }}</span>
+                                                            }}</span>
                                                         </div>
                                                         <div class="text-xs text-gray-500">{{ nurse.missions }}
                                                             {{ t('demo.infi_swap.missions_count') }}</div>
@@ -1062,7 +1062,7 @@
                                             <div class="text-xl font-bold text-white">{{ infiStats.totalMissions }}
                                             </div>
                                             <div class="text-xs text-purple-200">{{ t('demo.infi_swap.missions_filled')
-                                                }}</div>
+                                            }}</div>
                                         </div>
                                         <div class="text-center bg-white/10 rounded p-2">
                                             <div class="text-xl font-bold text-white">{{ infiStats.activeNurses }}</div>
