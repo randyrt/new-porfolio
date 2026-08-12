@@ -9,6 +9,7 @@ import Projects from '../views/Projects.vue'
 import Testimoniales from '../views/Testimoniales.vue'
 import Services from '../views/Services.vue'
 import About from '../views/About.vue'
+import WorkingMind from '../views/WorkingMind.vue'
 import GitHubStatsView from '../views/GitHubStatsView.vue'
 import ChatBot from '../views/ChatBot.vue'
 
@@ -25,6 +26,7 @@ const routes = [
   { path: '/services', name: 'services', component: Services },
   { path: '/chatbot', name: 'chatbot', component: ChatBot },
   { path: '/github-stats', name: 'github-stats', component: GitHubStatsView },
+  { path: '/working-mind', name: 'working-mind', component: WorkingMind },
   { path: '/about', name: 'about', component: About },
   { path: '/py-torch-test', name: 'pytorch-test-dont-show', component: () => import('../views/Pytorch-ai.vue') },
 ] as RouteRecordRaw[]
