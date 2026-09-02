@@ -7,19 +7,6 @@
     <div class="w-full flex flex-col items-center justify-center">
       <AnimatedTitle  :text="$t('workingmind.quote')" aos="fade-down" />
     </div>
-
-    <div class="text-center max-w-3xl mx-auto px-4 mb-8 w-full">
-      <p class="text-lg italic text-slate-700 dark:text-slate-200">
-        <span class="text-violet-800 text-lg">« </span>
-        <span class="typing-text text-gray-900">{{
-          
-        }}</span>
-        <span class="text-violet-800 text-lg"> »</span>
-      </p>
-    </div>
-
-   
-
     <section
       class="w-full mb-10 rounded-3xl border card p-6 shadow-sm"
       data-aos="fade-up"
