@@ -1094,120 +1094,108 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Démo PetsFollow Pro -->
+                    
+                    <!-- PetsFollow Pro Demo -->
                     <div v-else-if="demoType === 'petsfollow-pro'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <!-- Section Gestion des rendez-vous -->
+                            <!-- Gestion des rendez-vous -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    🐾 {{ t('demo.petsfollow.appointments') }}
-                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                                        {{ appointments.length }} {{ t('demo.petsfollow.today') }}
-                                    </span>
+                                    📅 {{ t('demo.petsfollow_pro.appointments') }}
                                 </h4>
 
-                                <!-- Liste des rendez-vous -->
-                                <div class="space-y-3 max-h-96 overflow-y-auto">
-                                    <div v-for="appt in appointments" :key="appt.id"
-                                        class="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer"
-                                        :class="{ 'border-2 border-violet-500 bg-violet-50': selectedAppointment === appt.id }"
-                                        @click="selectAppointment(appt.id)">
-                                        <div class="flex justify-between items-start">
-                                            <div class="flex-1">
-                                                <div class="flex items-center gap-2">
-                                                    <span class="text-2xl">{{ appt.petIcon }}</span>
-                                                    <div>
-                                                        <span class="font-semibold text-gray-800">{{ appt.petName }}</span>
-                                                        <div class="text-xs text-gray-500">{{ appt.ownerName }}</div>
-                                                    </div>
-                                                </div>
-                                                <div class="flex flex-wrap gap-2 mt-2 text-xs">
-                                                    <span class="flex items-center gap-1">⏰ {{ appt.time }}</span>
-                                                    <span class="flex items-center gap-1">🩺 {{ t(`demo.petsfollow.reasons.${appt.reason}`) }}</span>
-                                                </div>
-                                                <div class="text-xs text-gray-600 mt-1">
-                                                    👨‍⚕️ {{ appt.vet }}
-                                                </div>
-                                            </div>
-                                            <span class="text-xs px-2 py-1 rounded-full"
-                                                :class="{
-                                                    'bg-yellow-100 text-yellow-700': appt.status === 'pending',
-                                                    'bg-green-100 text-green-700': appt.status === 'confirmed',
-                                                    'bg-blue-100 text-blue-700': appt.status === 'in_progress'
-                                                }">
-                                                {{ t(`demo.petsfollow.status.${appt.status}`) }}
-                                            </span>
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <div class="space-y-3">
+                                        <div>
+                                            <label class="text-sm text-gray-600 font-medium">{{ t('demo.petsfollow_pro.owner_name') }}</label>
+                                            <input type="text" v-model="petAppointment.ownerName" 
+                                                class="w-full p-2 border rounded mt-1"
+                                                :placeholder="t('demo.petsfollow_pro.owner_placeholder')">
                                         </div>
-                                        <button v-if="selectedAppointment === appt.id && appt.status === 'pending'"
-                                            @click.stop="confirmAppointment(appt.id)"
-                                            class="mt-3 w-full btn-violet btn-effect-5 py-2 rounded-lg text-sm">
-                                            {{ t('demo.petsfollow.confirm_btn') }}
+
+                                        <div>
+                                            <label class="text-sm text-gray-600 font-medium">{{ t('demo.petsfollow_pro.pet_name') }}</label>
+                                            <input type="text" v-model="petAppointment.petName" 
+                                                class="w-full p-2 border rounded mt-1"
+                                                :placeholder="t('demo.petsfollow_pro.pet_placeholder')">
+                                        </div>
+
+                                        <div>
+                                            <label class="text-sm text-gray-600 font-medium">{{ t('demo.petsfollow_pro.service_type') }}</label>
+                                            <select v-model="petAppointment.serviceType" class="w-full p-2 border rounded mt-1">
+                                                <option value="consultation">{{ t('demo.petsfollow_pro.consultation') }}</option>
+                                                <option value="vaccination">{{ t('demo.petsfollow_pro.vaccination') }}</option>
+                                                <option value="surgery">{{ t('demo.petsfollow_pro.surgery') }}</option>
+                                                <option value="grooming">{{ t('demo.petsfollow_pro.grooming') }}</option>
+                                            </select>
+                                        </div>
+
+                                        <div>
+                                            <label class="text-sm text-gray-600 font-medium">{{ t('demo.petsfollow_pro.date_time') }}</label>
+                                            <input type="datetime-local" v-model="petAppointment.dateTime" 
+                                                :min="minDateTime"
+                                                class="w-full p-2 border rounded mt-1">
+                                        </div>
+
+                                        <button @click="bookPetAppointment" 
+                                            class="w-full btn-violet inline-block text-center btn-effect-5 py-2 rounded-lg">
+                                            {{ t('demo.petsfollow_pro.book_btn') }}
                                         </button>
+
+                                        <div v-if="petAppointmentMessage" 
+                                            :class="['p-3 rounded text-center text-sm', petAppointmentMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700']">
+                                            {{ petAppointmentMessage }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Section Dossiers médicaux -->
+                            <!-- Dossiers médicaux & Staff -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    📋 {{ t('demo.petsfollow.medical_records') }}
+                                    🐾 {{ t('demo.petsfollow_pro.medical_records') }}
                                 </h4>
 
                                 <div class="space-y-3 max-h-96 overflow-y-auto">
-                                    <div v-for="record in medicalRecords" :key="record.id"
-                                        class="bg-white rounded-lg shadow p-4">
+                                    <div v-for="animal in animals" :key="animal.id" 
+                                        class="bg-white rounded-lg shadow p-4 cursor-pointer transition hover:shadow-md"
+                                        :class="{ 'border-2 border-violet-500 bg-violet-50': selectedAnimal === animal.id }"
+                                        @click="selectedAnimal = animal.id">
                                         <div class="flex items-start gap-3">
-                                            <div class="text-3xl">{{ record.petIcon }}</div>
+                                            <div class="text-3xl">{{ animal.icon }}</div>
                                             <div class="flex-1">
-                                                <div class="font-semibold text-gray-800">{{ record.petName }}</div>
-                                                <div class="text-xs text-gray-500 mb-2">{{ record.species }} • {{ record.age }} {{ t('demo.petsfollow.years') }}</div>
-                                                
-                                                <div class="space-y-1 text-xs">
-                                                    <div class="flex justify-between">
-                                                        <span class="text-gray-600">{{ t('demo.petsfollow.weight') }}:</span>
-                                                        <span class="font-medium">{{ record.weight }}</span>
-                                                    </div>
-                                                    <div class="flex justify-between">
-                                                        <span class="text-gray-600">{{ t('demo.petsfollow.last_visit') }}:</span>
-                                                        <span class="font-medium">{{ record.lastVisit }}</span>
-                                                    </div>
-                                                    <div class="flex justify-between">
-                                                        <span class="text-gray-600">{{ t('demo.petsfollow.vaccines') }}:</span>
-                                                        <span class="font-medium" :class="record.vaccinesUpToDate ? 'text-green-600' : 'text-red-600'">
-                                                            {{ record.vaccinesUpToDate ? '✓ ' + t('demo.petsfollow.up_to_date') : '⚠ ' + t('demo.petsfollow.expired') }}
-                                                        </span>
-                                                    </div>
+                                                <div class="font-semibold text-gray-800">{{ animal.name }}</div>
+                                                <div class="text-sm text-gray-600">{{ animal.species }} • {{ animal.breed }}</div>
+                                                <div class="text-xs text-gray-500 mt-1">{{ t('demo.petsfollow_pro.owner') }}: {{ animal.owner }}</div>
+                                                <div class="flex flex-wrap gap-2 mt-2">
+                                                    <span class="text-xs px-2 py-1 rounded-full bg-blue-100 text-blue-700">
+                                                        {{ animal.age }} {{ t('demo.petsfollow_pro.years') }}
+                                                    </span>
+                                                    <span class="text-xs px-2 py-1 rounded-full" 
+                                                        :class="animal.nextVisit ? 'bg-amber-100 text-amber-700' : 'bg-green-100 text-green-700'">
+                                                        {{ animal.nextVisit ? `${t('demo.petsfollow_pro.next_visit')}: ${animal.nextVisit}` : t('demo.petsfollow_pro.up_to_date') }}
+                                                    </span>
                                                 </div>
-
-                                                <button @click="openMedicalHistory(record.id)"
-                                                    class="mt-3 w-full text-sm py-1.5 bg-violet-100 text-violet-700 rounded hover:bg-violet-200 transition">
-                                                    {{ t('demo.petsfollow.view_history') }}
-                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Stats -->
-                                <div class="bg-gradient-to-r from-violet-800 to-purple-800 rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-white mb-2 text-sm">📊 {{ t('demo.petsfollow.stats_title') }}</h5>
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ petsStats.totalPatients }}</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.patients') }}</div>
-                                        </div>
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ petsStats.todayConsults }}</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.consultations') }}</div>
-                                        </div>
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ petsStats.activeVets }}</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.vets') }}</div>
-                                        </div>
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ petsStats.satisfaction }}</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.satisfaction') }}</div>
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold mb-2">👥 {{ t('demo.petsfollow_pro.staff_title') }}</h5>
+                                    <div class="space-y-2">
+                                        <div v-for="staff in vetStaff" :key="staff.id" 
+                                            class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                            <div>
+                                                <div class="text-sm font-medium">{{ staff.name }}</div>
+                                                <div class="text-xs text-gray-500">{{ staff.role }}</div>
+                                            </div>
+                                            <div class="text-xs">
+                                                <span class="px-2 py-1 rounded-full" 
+                                                    :class="staff.available ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'">
+                                                    {{ staff.available ? t('demo.petsfollow_pro.available') : t('demo.petsfollow_pro.busy') }}
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1215,140 +1203,138 @@
                         </div>
                     </div>
 
-                    <!-- Démo E-learning -->
+                    <!-- E-learning Demo -->
                     <div v-else-if="demoType === 'e-learning'" class="p-6 bg-gray-50">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                            <!-- Section Cours disponibles -->
+                            <!-- Catalogue de cours -->
                             <div class="space-y-4">
                                 <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    📚 {{ t('demo.elearning.courses') }}
-                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
-                                        {{ courses.length }} {{ t('demo.elearning.available') }}
+                                    📚 {{ t('demo.e_learning.course_catalog') }}
+                                    <span class="text-xs bg-violet-100 text-violet-700 px-2 py-1 rounded">
+                                        {{ courses.length }} {{ t('demo.e_learning.courses_available') }}
                                     </span>
                                 </h4>
 
-                                <!-- Liste des cours -->
                                 <div class="space-y-3 max-h-96 overflow-y-auto">
-                                    <div v-for="course in courses" :key="course.id"
-                                        class="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer"
+                                    <div v-for="course in courses" :key="course.id" 
+                                        class="bg-white rounded-lg shadow p-4 cursor-pointer transition hover:shadow-md"
                                         :class="{ 'border-2 border-violet-500 bg-violet-50': selectedCourse === course.id }"
                                         @click="selectCourse(course.id)">
                                         <div class="flex justify-between items-start">
                                             <div class="flex-1">
                                                 <div class="flex items-center gap-2">
-                                                    <span class="text-2xl">{{ course.icon }}</span>
-                                                    <div>
-                                                        <span class="font-semibold text-gray-800">{{ course.title }}</span>
-                                                        <div class="text-xs text-gray-500">{{ t(`demo.elearning.instructors.${course.instructor}`) }}</div>
-                                                    </div>
+                                                    <span class="font-semibold text-gray-800">{{ course.title }}</span>
+                                                    <span v-if="course.premium" 
+                                                        class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full">
+                                                        {{ t('demo.e_learning.premium') }}
+                                                    </span>
                                                 </div>
+                                                <div class="text-sm text-gray-600 mt-1">{{ course.instructor }}</div>
                                                 <div class="flex flex-wrap gap-2 mt-2 text-xs">
-                                                    <span class="flex items-center gap-1">👥 {{ course.students }} {{ t('demo.elearning.students') }}</span>
                                                     <span class="flex items-center gap-1">⏱️ {{ course.duration }}</span>
-                                                    <span class="flex items-center gap-1">⭐ {{ course.rating }}</span>
+                                                    <span class="flex items-center gap-1">📊 {{ course.level }}</span>
+                                                    <span class="flex items-center gap-1">👥 {{ course.enrolled }} {{ t('demo.e_learning.students') }}</span>
                                                 </div>
                                                 <div class="mt-2">
-                                                    <div class="flex justify-between text-xs mb-1">
-                                                        <span>{{ t('demo.elearning.progress') }}</span>
-                                                        <span class="font-semibold">{{ course.progress }}%</span>
-                                                    </div>
-                                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                                        <div class="bg-violet-600 h-2 rounded-full transition-all" 
-                                                            :style="{ width: course.progress + '%' }"></div>
+                                                    <div class="flex items-center gap-2">
+                                                        <div class="flex-1 bg-gray-200 rounded-full h-2">
+                                                            <div class="bg-violet-600 h-2 rounded-full transition-all" 
+                                                                :style="{ width: course.progress + '%' }"></div>
+                                                        </div>
+                                                        <span class="text-xs font-medium">{{ course.progress }}%</span>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="text-right ml-3">
+                                                <div class="text-lg font-bold text-violet-600">
+                                                    {{ course.premium ? course.price : t('demo.e_learning.free') }}
+                                                </div>
+                                                <div class="flex items-center gap-1 text-amber-500 text-sm">
+                                                    <span>⭐</span>
+                                                    <span>{{ course.rating }}</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button v-if="selectedCourse === course.id"
-                                            @click.stop="startCourse(course.id)"
-                                            class="mt-3 w-full btn-violet btn-effect-5 py-2 rounded-lg text-sm">
-                                            {{ course.progress > 0 ? t('demo.elearning.continue') : t('demo.elearning.start') }}
+
+                                        <button v-if="selectedCourse === course.id && course.progress < 100" 
+                                            @click.stop="continueCourse(course.id)"
+                                            class="mt-3 w-full btn-violet inline-block text-center btn-effect-5 py-2 rounded-lg text-sm">
+                                            {{ course.progress > 0 ? t('demo.e_learning.continue') : t('demo.e_learning.start') }}
                                         </button>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Section Quiz et progression -->
+                            <!-- Dashboard & Quiz -->
                             <div class="space-y-4">
-                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
-                                    🎯 {{ t('demo.elearning.quizzes') }}
-                                </h4>
+                                <h4 class="font-bold text-gray-800">📊 {{ t('demo.e_learning.dashboard') }}</h4>
 
-                                <div class="space-y-3">
-                                    <div v-for="quiz in quizzes" :key="quiz.id"
-                                        class="bg-white rounded-lg shadow p-4">
-                                        <div class="flex justify-between items-start mb-3">
-                                            <div>
-                                                <div class="font-semibold text-gray-800">{{ quiz.title }}</div>
-                                                <div class="text-xs text-gray-500">{{ quiz.course }}</div>
-                                            </div>
-                                            <span class="text-xs px-2 py-1 rounded-full"
-                                                :class="{
-                                                    'bg-green-100 text-green-700': quiz.status === 'completed',
-                                                    'bg-yellow-100 text-yellow-700': quiz.status === 'in_progress',
-                                                    'bg-gray-100 text-gray-700': quiz.status === 'locked'
-                                                }">
-                                                {{ t(`demo.elearning.quiz_status.${quiz.status}`) }}
-                                            </span>
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold mb-3">{{ t('demo.e_learning.my_progress') }}</h5>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="bg-violet-50 p-3 rounded-lg text-center">
+                                            <div class="text-2xl font-bold text-violet-600">{{ completedCourses }}</div>
+                                            <div class="text-xs text-gray-600">{{ t('demo.e_learning.completed') }}</div>
                                         </div>
-                                        
-                                        <div class="space-y-2 text-xs">
-                                            <div class="flex justify-between">
-                                                <span class="text-gray-600">{{ t('demo.elearning.questions') }}:</span>
-                                                <span class="font-medium">{{ quiz.questions }}</span>
-                                            </div>
-                                            <div class="flex justify-between">
-                                                <span class="text-gray-600">{{ t('demo.elearning.duration') }}:</span>
-                                                <span class="font-medium">{{ quiz.duration }}</span>
-                                            </div>
-                                            <div v-if="quiz.score" class="flex justify-between">
-                                                <span class="text-gray-600">{{ t('demo.elearning.score') }}:</span>
-                                                <span class="font-medium" :class="quiz.score >= 70 ? 'text-green-600' : 'text-red-600'">
-                                                    {{ quiz.score }}%
-                                                </span>
-                                            </div>
+                                        <div class="bg-blue-50 p-3 rounded-lg text-center">
+                                            <div class="text-2xl font-bold text-blue-600">{{ totalStudyTime }}h</div>
+                                            <div class="text-xs text-gray-600">{{ t('demo.e_learning.study_time') }}</div>
                                         </div>
+                                        <div class="bg-amber-50 p-3 rounded-lg text-center">
+                                            <div class="text-2xl font-bold text-amber-600">{{ certificates }}</div>
+                                            <div class="text-xs text-gray-600">{{ t('demo.e_learning.certificates') }}</div>
+                                        </div>
+                                        <div class="bg-emerald-50 p-3 rounded-lg text-center">
+                                            <div class="text-2xl font-bold text-emerald-600">{{ averageRating }}/5</div>
+                                            <div class="text-xs text-gray-600">{{ t('demo.e_learning.avg_rating') }}</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                        <button v-if="quiz.status !== 'locked'" @click="startQuiz(quiz.id)"
-                                            class="mt-3 w-full text-sm py-1.5 bg-violet-100 text-violet-700 rounded hover:bg-violet-200 transition">
-                                            {{ quiz.status === 'completed' ? t('demo.elearning.retry') : t('demo.elearning.take_quiz') }}
+                                <div class="bg-white rounded-lg shadow p-4">
+                                    <h5 class="font-semibold mb-3">🎯 {{ t('demo.e_learning.quiz_title') }}</h5>
+                                    <div v-if="!quizStarted">
+                                        <p class="text-sm text-gray-600 mb-3">{{ t('demo.e_learning.quiz_desc') }}</p>
+                                        <button @click="startQuiz" 
+                                            class="w-full btn-violet inline-block text-center btn-effect-5 py-2 rounded-lg">
+                                            {{ t('demo.e_learning.start_quiz') }}
                                         </button>
                                     </div>
-                                </div>
-
-                                <!-- Stats d'apprentissage -->
-                                <div class="bg-gradient-to-r from-violet-800 to-purple-800 rounded-lg shadow p-4">
-                                    <h5 class="font-semibold text-white mb-2 text-sm">📈 {{ t('demo.elearning.learning_stats') }}</h5>
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ learningStats.coursesCompleted }}</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.completed') }}</div>
+                                    <div v-else-if="quizCompleted">
+                                        <div class="text-center py-4">
+                                            <div class="text-4xl mb-2">🎉</div>
+                                            <div class="text-xl font-bold text-green-600 mb-2">{{ quizScore }}/{{ totalQuestions }}</div>
+                                            <p class="text-sm text-gray-600">{{ t('demo.e_learning.quiz_completed') }}</p>
+                                            <button @click="resetQuiz" 
+                                                class="mt-3 btn-violet inline-block text-center btn-effect-5 py-2 px-4 rounded-lg text-sm">
+                                                {{ t('demo.e_learning.retry_quiz') }}
+                                            </button>
                                         </div>
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ learningStats.certificates }}</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.certificates') }}</div>
+                                    </div>
+                                    <div v-else>
+                                        <div class="mb-3">
+                                            <div class="text-sm text-gray-600 mb-2">{{ t('demo.e_learning.question') }} {{ currentQuestion + 1 }}/{{ totalQuestions }}</div>
+                                            <p class="font-medium">{{ t('demo.e_learning.sample_question') }}</p>
                                         </div>
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ learningStats.hoursLearned }}</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.hours') }}</div>
-                                        </div>
-                                        <div class="text-center bg-white/10 rounded p-2">
-                                            <div class="text-xl font-bold text-white">{{ learningStats.avgScore }}%</div>
-                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.avg_score') }}</div>
+                                        <div class="space-y-2">
+                                            <button v-for="(option, idx) in sampleOptions" :key="idx" 
+                                                @click="answerQuestion(idx)"
+                                                class="w-full text-left p-3 border rounded-lg hover:bg-violet-50 hover:border-violet-500 transition">
+                                                {{ option }}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Badge de certification -->
-                                <div class="bg-amber-50 rounded-lg p-4 text-center border-2 border-amber-200">
-                                    <div class="text-4xl mb-2">🏆</div>
-                                    <div class="font-semibold text-amber-800">{{ t('demo.elearning.premium_access') }}</div>
-                                    <p class="text-xs text-amber-600 mt-1">{{ t('demo.elearning.premium_desc') }}</p>
+                                <div v-if="courseMessage" 
+                                    class="p-3 rounded-lg text-center text-sm"
+                                    :class="courseMessage.includes('✓') ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'">
+                                    {{ courseMessage }}
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>
@@ -1514,6 +1500,8 @@ const demoType = computed(() => {
     if (title.includes('echo') || title.includes('webline')) return 'echo-webLine';
     if (title.includes('afr') || title.includes('fan')) return 'afr-fan';
     if (title.includes('infi') || title.includes('swap')) return 'infi-swap';
+    if (title.includes('petsfollow') || title.includes('pro')) return 'petsfollow-pro';
+    if (title.includes('e-learning') || title.includes('learning')) return 'e-learning';
     return 'generic';
 });
 
@@ -2064,6 +2052,236 @@ const bookMission = async (missionId: number) => {
         }, 3000);
         isLoading.value = false;
     }, 1000);
+};
+
+// ============ PETSFOLLOW PRO DEMO DATA ============
+const petAppointment = ref({
+    ownerName: '',
+    petName: '',
+    serviceType: 'consultation',
+    dateTime: ''
+});
+
+const petAppointmentMessage = ref('');
+const selectedAnimal = ref<number | null>(null);
+
+const minDateTime = computed(() => {
+    const now = new Date();
+    now.setHours(now.getHours() + 1);
+    return now.toISOString().slice(0, 16);
+});
+
+interface Animal {
+    id: number;
+    name: string;
+    species: string;
+    breed: string;
+    age: number;
+    owner: string;
+    icon: string;
+    nextVisit?: string;
+}
+
+const animals = ref<Animal[]>([
+    {
+        id: 1,
+        name: 'Max',
+        species: locale.value === 'fr' ? 'Chien' : 'Dog',
+        breed: 'Labrador',
+        age: 5,
+        owner: 'Jean Dupont',
+        icon: '🐕',
+        nextVisit: '2024-02-15'
+    },
+    {
+        id: 2,
+        name: 'Mia',
+        species: locale.value === 'fr' ? 'Chat' : 'Cat',
+        breed: 'Persan',
+        age: 3,
+        owner: 'Marie Martin',
+        icon: '🐱'
+    },
+    {
+        id: 3,
+        name: 'Coco',
+        species: locale.value === 'fr' ? 'Oiseau' : 'Bird',
+        breed: 'Perroquet',
+        age: 2,
+        owner: 'Paul Bernard',
+        icon: '🦜',
+        nextVisit: '2024-02-20'
+    }
+]);
+
+interface VetStaff {
+    id: number;
+    name: string;
+    role: string;
+    available: boolean;
+}
+
+const vetStaff = ref<VetStaff[]>([
+    { id: 1, name: 'Dr. Sophie Leroux', role: locale.value === 'fr' ? 'Vétérinaire' : 'Veterinarian', available: true },
+    { id: 2, name: 'Dr. Marc Dubois', role: locale.value === 'fr' ? 'Vétérinaire' : 'Veterinarian', available: false },
+    { id: 3, name: 'Julie Lambert', role: locale.value === 'fr' ? 'Assistante' : 'Assistant', available: true }
+]);
+
+const bookPetAppointment = () => {
+    if (!petAppointment.value.ownerName || !petAppointment.value.petName || !petAppointment.value.dateTime) {
+        toast.warning(t('demo.petsfollow_pro.fill_all'));
+        return;
+    }
+
+    const serviceLabel = t(`demo.petsfollow_pro.${petAppointment.value.serviceType}`);
+    const dateTime = new Date(petAppointment.value.dateTime).toLocaleString();
+
+    petAppointmentMessage.value = `✓ ${t('demo.petsfollow_pro.appointment_confirmed')} ${petAppointment.value.petName} (${petAppointment.value.ownerName}) - ${serviceLabel} - ${dateTime}`;
+    
+    petAppointment.value = {
+        ownerName: '',
+        petName: '',
+        serviceType: 'consultation',
+        dateTime: ''
+    };
+
+    setTimeout(() => {
+        petAppointmentMessage.value = '';
+    }, 4000);
+};
+
+// ============ E-LEARNING DEMO DATA ============
+interface Course {
+    id: number;
+    title: string;
+    instructor: string;
+    duration: string;
+    level: string;
+    enrolled: number;
+    progress: number;
+    rating: number;
+    premium: boolean;
+    price?: string;
+}
+
+const selectedCourse = ref<number | null>(null);
+const courseMessage = ref('');
+const quizStarted = ref(false);
+const quizCompleted = ref(false);
+const quizScore = ref(0);
+const currentQuestion = ref(0);
+const totalQuestions = ref(5);
+
+const courses = ref<Course[]>([
+    {
+        id: 1,
+        title: 'Vue.js 3 - Complete Masterclass',
+        instructor: 'Sarah Johnson',
+        duration: '12h',
+        level: locale.value === 'fr' ? 'Intermédiaire' : 'Intermediate',
+        enrolled: 2453,
+        progress: 65,
+        rating: 4.8,
+        premium: true,
+        price: '49€'
+    },
+    {
+        id: 2,
+        title: 'Web Development Fundamentals',
+        instructor: 'Michael Chen',
+        duration: '8h',
+        level: locale.value === 'fr' ? 'Débutant' : 'Beginner',
+        enrolled: 5847,
+        progress: 100,
+        rating: 4.9,
+        premium: false
+    },
+    {
+        id: 3,
+        title: 'Advanced React Patterns',
+        instructor: 'Emma Williams',
+        duration: '15h',
+        level: locale.value === 'fr' ? 'Avancé' : 'Advanced',
+        enrolled: 1234,
+        progress: 25,
+        rating: 4.7,
+        premium: true,
+        price: '79€'
+    },
+    {
+        id: 4,
+        title: 'TypeScript from Zero to Hero',
+        instructor: 'David Kumar',
+        duration: '10h',
+        level: locale.value === 'fr' ? 'Intermédiaire' : 'Intermediate',
+        enrolled: 3621,
+        progress: 0,
+        rating: 4.6,
+        premium: true,
+        price: '59€'
+    }
+]);
+
+const completedCourses = computed(() => courses.value.filter(c => c.progress === 100).length);
+const totalStudyTime = computed(() => 47);
+const certificates = computed(() => completedCourses.value);
+const averageRating = computed(() => 4.8);
+
+const sampleOptions = computed(() => [
+    locale.value === 'fr' ? 'Réponse A' : 'Answer A',
+    locale.value === 'fr' ? 'Réponse B' : 'Answer B',
+    locale.value === 'fr' ? 'Réponse C' : 'Answer C',
+    locale.value === 'fr' ? 'Réponse D' : 'Answer D'
+]);
+
+const selectCourse = (courseId: number) => {
+    selectedCourse.value = courseId;
+};
+
+const continueCourse = (courseId: number) => {
+    const course = courses.value.find(c => c.id === courseId);
+    if (!course) return;
+
+    course.progress = Math.min(100, course.progress + 15);
+    
+    courseMessage.value = `✓ ${course.progress === 100 ? t('demo.e_learning.course_completed') : t('demo.e_learning.progress_updated')} (${course.progress}%)`;
+    
+    setTimeout(() => {
+        courseMessage.value = '';
+    }, 3000);
+};
+
+const startQuiz = () => {
+    quizStarted.value = true;
+    quizCompleted.value = false;
+    quizScore.value = 0;
+    currentQuestion.value = 0;
+};
+
+const answerQuestion = (answerIndex: number) => {
+    // Simuler une réponse correcte de manière aléatoire
+    if (Math.random() > 0.3) {
+        quizScore.value++;
+    }
+    
+    currentQuestion.value++;
+    
+    if (currentQuestion.value >= totalQuestions.value) {
+        quizCompleted.value = true;
+        
+        if (quizScore.value >= totalQuestions.value * 0.7) {
+            toast.success(t('demo.e_learning.quiz_passed'));
+        } else {
+            toast.info(t('demo.e_learning.quiz_failed'));
+        }
+    }
+};
+
+const resetQuiz = () => {
+    quizStarted.value = false;
+    quizCompleted.value = false;
+    quizScore.value = 0;
+    currentQuestion.value = 0;
 };
 </script>
 
