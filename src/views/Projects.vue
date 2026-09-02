@@ -425,6 +425,98 @@ const projects = ref([
                 answer: 1
             }
         ]
+    },
+    {
+        id: 'petsfollow-pro',
+        title: 'PETSFOLLOW PRO',
+        description: t('projects.petsfollow_pro'),
+        images: [
+            '/images/projects/petsfollow-pro/1.webp',
+            '/images/projects/petsfollow-pro/2.webp',
+            '/images/projects/petsfollow-pro/3.webp'
+        ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Améliorer la gestion quotidienne des cliniques vétérinaires en centralisant le personnel, les rendez-vous et le suivi des animaux, tout en renforçant la relation avec les propriétaires.'
+                : 'Improve daily veterinary clinic management by centralizing staff, appointments, and animal tracking while strengthening relationships with pet owners.',
+            solution: locale.value === 'fr'
+                ? 'Développer une application Vue.js + Laravel qui regroupe la gestion des employés, le calendrier des consultations, les dossiers médicaux et la communication client dans une interface unique.'
+                : 'Build a Vue.js + Laravel application that combines staff management, appointment scheduling, medical records, and client communication in a single interface.',
+            impact: locale.value === 'fr'
+                ? "Réduire les erreurs administratives, améliorer l'efficacité opérationnelle et offrir une meilleure expérience aux propriétaires d'animaux."
+                : 'Reduce administrative errors, improve operational efficiency, and offer a better experience for pet owners.',
+            outcomes: locale.value === 'fr'
+                ? ['Gestion centralisée du personnel', 'Suivi médical des animaux optimisé', 'Communication client fluide']
+                : ['Centralized staff management', 'Optimized animal medical tracking', 'Fluid client communication'],
+            stack: ['Vue.js', 'Laravel', 'MySQL', 'TailwindCSS', 'Redis']
+        },
+        quiz: [
+            {
+                question: locale.value === 'fr' ? "Quel framework JavaScript pilote l'interface de PetsFollow Pro ?" : "Which JavaScript framework powers PetsFollow Pro's interface?",
+                options: ["React", "Vue.js", "Angular", "Svelte"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Quel backend est utilisé pour PetsFollow Pro ?" : "Which backend is used for PetsFollow Pro?",
+                options: ["Symfony", "Laravel", "Django", "Express"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Quel type d'établissement utilise PetsFollow Pro ?" : "What type of establishment uses PetsFollow Pro?",
+                options: ["Hôpitaux", "Cliniques vétérinaires", "Écoles", "Pharmacies"],
+                answer: 1
+            }
+        ]
+    },
+    {
+        id: 'e-learning',
+        title: 'E-LEARNING',
+        description: t('projects.e_learning'),
+        images: [
+            '/images/projects/E-learning/1.webp',
+            '/images/projects/E-learning/2.webp',
+            '/images/projects/E-learning/3.webp',
+            '/images/projects/E-learning/4.webp',
+            '/images/projects/E-learning/5.webp',
+            '/images/projects/E-learning/6.webp',
+            '/images/projects/E-learning/7.webp',
+            '/images/projects/E-learning/9.webp',
+            '/images/projects/E-learning/10.webp',
+            '/images/projects/E-learning/11.webp',
+            '/images/projects/E-learning/12.webp'
+        ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Créer une plateforme SaaS d\'apprentissage en ligne évolutive qui permette aux formateurs de gérer des cours interactifs tout en offrant une expérience personnalisée aux apprenants.'
+                : 'Create a scalable online learning SaaS platform that allows trainers to manage interactive courses while offering a personalized experience to learners.',
+            solution: locale.value === 'fr'
+                ? 'Développer une application React.js + Symfony avec création de cours, quiz interactifs, suivi de progression en temps réel, gestion des paiements et tableau de bord analytique.'
+                : 'Build a React.js + Symfony application with course creation, interactive quizzes, real-time progress tracking, payment management, and analytics dashboard.',
+            impact: locale.value === 'fr'
+                ? 'Faciliter l\'apprentissage en ligne pour les établissements éducatifs, les entreprises et les formateurs indépendants, avec une solution complète et accessible.'
+                : 'Facilitate online learning for educational institutions, businesses, and independent trainers with a comprehensive and accessible solution.',
+            outcomes: locale.value === 'fr'
+                ? ['Création de cours interactifs', 'Suivi en temps réel des apprenants', 'Gestion des paiements premium', 'Dashboard analytique complet']
+                : ['Interactive course creation', 'Real-time learner tracking', 'Premium payment management', 'Comprehensive analytics dashboard'],
+            stack: ['React.js', 'Symfony', 'MySQL', 'Payment integration', 'Analytics']
+        },
+        quiz: [
+            {
+                question: locale.value === 'fr' ? "Quel framework frontend est utilisé pour E-learning ?" : "Which frontend framework is used for E-learning?",
+                options: ["Vue.js", "React.js", "Angular", "Svelte"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Quel est le type d'application E-learning ?" : "What is the type of E-learning application?",
+                options: ["E-commerce", "SaaS", "Réseau social", "Blog"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Quel backend assure la gestion de E-learning ?" : "Which backend handles E-learning management?",
+                options: ["Laravel", "Symfony", "Django", "Express"],
+                answer: 1
+            }
+        ]
     }
 ])
 

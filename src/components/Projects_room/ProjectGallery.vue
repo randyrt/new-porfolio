@@ -1094,6 +1094,261 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Démo PetsFollow Pro -->
+                    <div v-else-if="demoType === 'petsfollow-pro'" class="p-6 bg-gray-50">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Section Gestion des rendez-vous -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    🐾 {{ t('demo.petsfollow.appointments') }}
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                                        {{ appointments.length }} {{ t('demo.petsfollow.today') }}
+                                    </span>
+                                </h4>
+
+                                <!-- Liste des rendez-vous -->
+                                <div class="space-y-3 max-h-96 overflow-y-auto">
+                                    <div v-for="appt in appointments" :key="appt.id"
+                                        class="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer"
+                                        :class="{ 'border-2 border-violet-500 bg-violet-50': selectedAppointment === appt.id }"
+                                        @click="selectAppointment(appt.id)">
+                                        <div class="flex justify-between items-start">
+                                            <div class="flex-1">
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-2xl">{{ appt.petIcon }}</span>
+                                                    <div>
+                                                        <span class="font-semibold text-gray-800">{{ appt.petName }}</span>
+                                                        <div class="text-xs text-gray-500">{{ appt.ownerName }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-wrap gap-2 mt-2 text-xs">
+                                                    <span class="flex items-center gap-1">⏰ {{ appt.time }}</span>
+                                                    <span class="flex items-center gap-1">🩺 {{ t(`demo.petsfollow.reasons.${appt.reason}`) }}</span>
+                                                </div>
+                                                <div class="text-xs text-gray-600 mt-1">
+                                                    👨‍⚕️ {{ appt.vet }}
+                                                </div>
+                                            </div>
+                                            <span class="text-xs px-2 py-1 rounded-full"
+                                                :class="{
+                                                    'bg-yellow-100 text-yellow-700': appt.status === 'pending',
+                                                    'bg-green-100 text-green-700': appt.status === 'confirmed',
+                                                    'bg-blue-100 text-blue-700': appt.status === 'in_progress'
+                                                }">
+                                                {{ t(`demo.petsfollow.status.${appt.status}`) }}
+                                            </span>
+                                        </div>
+                                        <button v-if="selectedAppointment === appt.id && appt.status === 'pending'"
+                                            @click.stop="confirmAppointment(appt.id)"
+                                            class="mt-3 w-full btn-violet btn-effect-5 py-2 rounded-lg text-sm">
+                                            {{ t('demo.petsfollow.confirm_btn') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section Dossiers médicaux -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    📋 {{ t('demo.petsfollow.medical_records') }}
+                                </h4>
+
+                                <div class="space-y-3 max-h-96 overflow-y-auto">
+                                    <div v-for="record in medicalRecords" :key="record.id"
+                                        class="bg-white rounded-lg shadow p-4">
+                                        <div class="flex items-start gap-3">
+                                            <div class="text-3xl">{{ record.petIcon }}</div>
+                                            <div class="flex-1">
+                                                <div class="font-semibold text-gray-800">{{ record.petName }}</div>
+                                                <div class="text-xs text-gray-500 mb-2">{{ record.species }} • {{ record.age }} {{ t('demo.petsfollow.years') }}</div>
+                                                
+                                                <div class="space-y-1 text-xs">
+                                                    <div class="flex justify-between">
+                                                        <span class="text-gray-600">{{ t('demo.petsfollow.weight') }}:</span>
+                                                        <span class="font-medium">{{ record.weight }}</span>
+                                                    </div>
+                                                    <div class="flex justify-between">
+                                                        <span class="text-gray-600">{{ t('demo.petsfollow.last_visit') }}:</span>
+                                                        <span class="font-medium">{{ record.lastVisit }}</span>
+                                                    </div>
+                                                    <div class="flex justify-between">
+                                                        <span class="text-gray-600">{{ t('demo.petsfollow.vaccines') }}:</span>
+                                                        <span class="font-medium" :class="record.vaccinesUpToDate ? 'text-green-600' : 'text-red-600'">
+                                                            {{ record.vaccinesUpToDate ? '✓ ' + t('demo.petsfollow.up_to_date') : '⚠ ' + t('demo.petsfollow.expired') }}
+                                                        </span>
+                                                    </div>
+                                                </div>
+
+                                                <button @click="openMedicalHistory(record.id)"
+                                                    class="mt-3 w-full text-sm py-1.5 bg-violet-100 text-violet-700 rounded hover:bg-violet-200 transition">
+                                                    {{ t('demo.petsfollow.view_history') }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Stats -->
+                                <div class="bg-gradient-to-r from-violet-800 to-purple-800 rounded-lg shadow p-4">
+                                    <h5 class="font-semibold text-white mb-2 text-sm">📊 {{ t('demo.petsfollow.stats_title') }}</h5>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ petsStats.totalPatients }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.patients') }}</div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ petsStats.todayConsults }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.consultations') }}</div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ petsStats.activeVets }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.vets') }}</div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ petsStats.satisfaction }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.petsfollow.satisfaction') }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Démo E-learning -->
+                    <div v-else-if="demoType === 'e-learning'" class="p-6 bg-gray-50">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Section Cours disponibles -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    📚 {{ t('demo.elearning.courses') }}
+                                    <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">
+                                        {{ courses.length }} {{ t('demo.elearning.available') }}
+                                    </span>
+                                </h4>
+
+                                <!-- Liste des cours -->
+                                <div class="space-y-3 max-h-96 overflow-y-auto">
+                                    <div v-for="course in courses" :key="course.id"
+                                        class="bg-white rounded-lg shadow p-4 hover:shadow-md transition cursor-pointer"
+                                        :class="{ 'border-2 border-violet-500 bg-violet-50': selectedCourse === course.id }"
+                                        @click="selectCourse(course.id)">
+                                        <div class="flex justify-between items-start">
+                                            <div class="flex-1">
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-2xl">{{ course.icon }}</span>
+                                                    <div>
+                                                        <span class="font-semibold text-gray-800">{{ course.title }}</span>
+                                                        <div class="text-xs text-gray-500">{{ t(`demo.elearning.instructors.${course.instructor}`) }}</div>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-wrap gap-2 mt-2 text-xs">
+                                                    <span class="flex items-center gap-1">👥 {{ course.students }} {{ t('demo.elearning.students') }}</span>
+                                                    <span class="flex items-center gap-1">⏱️ {{ course.duration }}</span>
+                                                    <span class="flex items-center gap-1">⭐ {{ course.rating }}</span>
+                                                </div>
+                                                <div class="mt-2">
+                                                    <div class="flex justify-between text-xs mb-1">
+                                                        <span>{{ t('demo.elearning.progress') }}</span>
+                                                        <span class="font-semibold">{{ course.progress }}%</span>
+                                                    </div>
+                                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                                        <div class="bg-violet-600 h-2 rounded-full transition-all" 
+                                                            :style="{ width: course.progress + '%' }"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button v-if="selectedCourse === course.id"
+                                            @click.stop="startCourse(course.id)"
+                                            class="mt-3 w-full btn-violet btn-effect-5 py-2 rounded-lg text-sm">
+                                            {{ course.progress > 0 ? t('demo.elearning.continue') : t('demo.elearning.start') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Section Quiz et progression -->
+                            <div class="space-y-4">
+                                <h4 class="font-bold text-gray-800 flex items-center gap-2">
+                                    🎯 {{ t('demo.elearning.quizzes') }}
+                                </h4>
+
+                                <div class="space-y-3">
+                                    <div v-for="quiz in quizzes" :key="quiz.id"
+                                        class="bg-white rounded-lg shadow p-4">
+                                        <div class="flex justify-between items-start mb-3">
+                                            <div>
+                                                <div class="font-semibold text-gray-800">{{ quiz.title }}</div>
+                                                <div class="text-xs text-gray-500">{{ quiz.course }}</div>
+                                            </div>
+                                            <span class="text-xs px-2 py-1 rounded-full"
+                                                :class="{
+                                                    'bg-green-100 text-green-700': quiz.status === 'completed',
+                                                    'bg-yellow-100 text-yellow-700': quiz.status === 'in_progress',
+                                                    'bg-gray-100 text-gray-700': quiz.status === 'locked'
+                                                }">
+                                                {{ t(`demo.elearning.quiz_status.${quiz.status}`) }}
+                                            </span>
+                                        </div>
+                                        
+                                        <div class="space-y-2 text-xs">
+                                            <div class="flex justify-between">
+                                                <span class="text-gray-600">{{ t('demo.elearning.questions') }}:</span>
+                                                <span class="font-medium">{{ quiz.questions }}</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="text-gray-600">{{ t('demo.elearning.duration') }}:</span>
+                                                <span class="font-medium">{{ quiz.duration }}</span>
+                                            </div>
+                                            <div v-if="quiz.score" class="flex justify-between">
+                                                <span class="text-gray-600">{{ t('demo.elearning.score') }}:</span>
+                                                <span class="font-medium" :class="quiz.score >= 70 ? 'text-green-600' : 'text-red-600'">
+                                                    {{ quiz.score }}%
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <button v-if="quiz.status !== 'locked'" @click="startQuiz(quiz.id)"
+                                            class="mt-3 w-full text-sm py-1.5 bg-violet-100 text-violet-700 rounded hover:bg-violet-200 transition">
+                                            {{ quiz.status === 'completed' ? t('demo.elearning.retry') : t('demo.elearning.take_quiz') }}
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Stats d'apprentissage -->
+                                <div class="bg-gradient-to-r from-violet-800 to-purple-800 rounded-lg shadow p-4">
+                                    <h5 class="font-semibold text-white mb-2 text-sm">📈 {{ t('demo.elearning.learning_stats') }}</h5>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ learningStats.coursesCompleted }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.completed') }}</div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ learningStats.certificates }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.certificates') }}</div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ learningStats.hoursLearned }}</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.hours') }}</div>
+                                        </div>
+                                        <div class="text-center bg-white/10 rounded p-2">
+                                            <div class="text-xl font-bold text-white">{{ learningStats.avgScore }}%</div>
+                                            <div class="text-xs text-purple-200">{{ t('demo.elearning.avg_score') }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Badge de certification -->
+                                <div class="bg-amber-50 rounded-lg p-4 text-center border-2 border-amber-200">
+                                    <div class="text-4xl mb-2">🏆</div>
+                                    <div class="font-semibold text-amber-800">{{ t('demo.elearning.premium_access') }}</div>
+                                    <p class="text-xs text-amber-600 mt-1">{{ t('demo.elearning.premium_desc') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div v-else class="p-6 bg-gray-50">
                         <div class="text-center">
                             <div class="text-6xl mb-4">🚀</div>

@@ -24,7 +24,7 @@ const launchConfetti = () => {
         particleCount: 200,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4", "#6A4C93"]
+        colors: ["#FF595E", "#FFCA3A", "#8AC926", "#1982C4", "#6A4C93", "#FF6B6B", "#F0A500", "#4ECDC4", "#C44D58", "#556270", "#C7F464", "#FF6B6B", "#C44D58", "#556270", "#C7F464"],
     });
 };
 const form = ref({
@@ -195,10 +195,10 @@ else {
     });
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
         ...{ class: "w-full flex justify-center items-center p-16 gap-16 testimonials-container" },
-        'data-aos': "fade-up",
     });
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
         ...{ class: "contact-form card p-8 h-auto" },
+        'data-aos': "fade-right",
     });
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
         ...{ class: "form-group" },
@@ -252,7 +252,7 @@ else {
         ...{ class: "form-group mb-6" },
     });
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-        ...{ class: "relative h-12 bg-slate-100 rounded-2xl bg-gradient-to-r from-blue-100 to-white/90 overflow-hidden flex items-center border border-amber-300 dark:border-white/70 select-none" },
+        ...{ class: "relative h-12 bg-slate-100 rounded-lg bg-gradient-to-r from-blue-100 to-white/90 overflow-hidden flex items-center border border-amber-300 dark:border-white/70 select-none" },
         ref: "sliderTrack",
     });
     /** @type {typeof __VLS_ctx.sliderTrack} */ ;
@@ -323,6 +323,7 @@ else {
     [$t, $t, sending,];
     __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
         ...{ class: "card contact-form card" },
+        'data-aos': "fade-left",
     });
     const __VLS_21 = {}.QRcode;
     /** @type {[typeof __VLS_components.QRcode, ]} */ ;
@@ -371,7 +372,7 @@ else {
 /** @type {__VLS_StyleScopedClasses['relative']} */ ;
 /** @type {__VLS_StyleScopedClasses['h-12']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-slate-100']} */ ;
-/** @type {__VLS_StyleScopedClasses['rounded-2xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['bg-gradient-to-r']} */ ;
 /** @type {__VLS_StyleScopedClasses['from-blue-100']} */ ;
 /** @type {__VLS_StyleScopedClasses['to-white/90']} */ ;
