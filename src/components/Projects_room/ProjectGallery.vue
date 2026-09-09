@@ -92,31 +92,31 @@
                 <div class="p-6 bg-gradient-to-br from-slate-50 via-white to-slate-50/50">
                     <div class="grid gap-5 lg:grid-cols-2">
 
-                        <!-- Challenge - avec effet glassmorphisme et icône améliorée -->
+                        <!-- Challenge - avec effet glassmorphisme et fond rouge/orange -->
                         <div
-                            class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg shadow-sky-500/5 p-5 border border-sky-200/30 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300 hover:-translate-y-1 group">
+                            class="bg-gradient-to-br from-red-50/95 via-orange-50/90 to-red-50/95 backdrop-blur-sm rounded-2xl shadow-lg shadow-red-500/8 p-5 border border-red-200/40 hover:shadow-xl hover:shadow-red-500/15 transition-all duration-300 hover:-translate-y-1 group">
                             <div class="flex items-center justify-center gap-2.5 mb-3">
                                 <div
-                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500/20 to-violet-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                    <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
+                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-red-500/25 to-orange-600/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                     </svg>
                                 </div>
-                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-violet-600/90">{{
+                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-red-600/90">{{
                                     $t('projects.challenge') }}</p>
                             </div>
                             <p class="text-sm leading-relaxed text-slate-700/90 font-medium">{{ caseStudy.challenge }}
                             </p>
                         </div>
 
-                        <!-- Solution - avec effet glassmorphisme et icône améliorée -->
+                        <!-- Solution - avec effet glassmorphisme et fond vert/teal -->
                         <div
-                            class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg shadow-emerald-500/5 p-5 border border-emerald-200/30 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 hover:-translate-y-1 group">
+                            class="bg-gradient-to-br from-emerald-50/95 via-teal-50/90 to-emerald-50/95 backdrop-blur-sm rounded-2xl shadow-lg shadow-emerald-500/8 p-5 border border-emerald-200/40 hover:shadow-xl hover:shadow-emerald-500/15 transition-all duration-300 hover:-translate-y-1 group">
                             <div class="flex items-center justify-center gap-2.5 mb-3">
                                 <div
-                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500/25 to-teal-600/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -130,30 +130,30 @@
                             </p>
                         </div>
 
-                        <!-- Impact - pleine largeur avec effet amélioré -->
+                        <!-- Impact - pleine largeur avec effet amélioré et fond bleu -->
                         <div
-                            class="lg:col-span-2 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg shadow-amber-500/5 p-5 border border-amber-200/30 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300 hover:-translate-y-1 group">
+                            class="lg:col-span-2 bg-gradient-to-br from-blue-50/95 via-cyan-50/90 to-blue-50/95 backdrop-blur-sm rounded-2xl shadow-lg shadow-blue-500/8 p-5 border border-blue-200/40 hover:shadow-xl hover:shadow-blue-500/15 transition-all duration-300 hover:-translate-y-1 group">
                             <div class="flex items-center justify-center gap-2.5 mb-3">
                                 <div
-                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                    <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor"
+                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-500/25 to-cyan-600/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                                     </svg>
                                 </div>
-                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-amber-600/90">{{
+                                <p class="text-sm font-bold uppercase tracking-[0.2em] text-blue-600/90">{{
                                     $t('projects.impact') }}</p>
                             </div>
                             <p class="text-sm leading-relaxed text-slate-700/90 font-medium">{{ caseStudy.impact }}</p>
                         </div>
 
-                        <!-- Outcomes - avec animation sur les puces -->
+                        <!-- Outcomes - avec animation sur les puces et fond rose/fuchsia -->
                         <div
-                            class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg shadow-pink-500/5 p-5 border border-pink-200/30 hover:shadow-xl hover:shadow-pink-500/10 transition-all duration-300 hover:-translate-y-1 group">
+                            class="bg-gradient-to-br from-pink-50/95 via-fuchsia-50/90 to-pink-50/95 backdrop-blur-sm rounded-2xl shadow-lg shadow-pink-500/8 p-5 border border-pink-200/40 hover:shadow-xl hover:shadow-pink-500/15 transition-all duration-300 hover:-translate-y-1 group">
                             <div class="flex items-center justify-center gap-2.5 mb-3">
                                 <div
-                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-500/20 to-pink-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-500/25 to-fuchsia-600/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <svg class="w-4 h-4 text-pink-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -165,7 +165,7 @@
                             </div>
                             <div class=" flex justify-center flex-wrap gap-2.5 ">
                                 <div v-for="(outcome, idx) in caseStudy.outcomes" :key="idx"
-                                    class="text-sm text-slate-700/90 flex items-start gap-2.5 group/outcome border border-pink-200/30 rounded-lg px-4 py-2 hover:bg-pink-50 hover:shadow-md transition-all duration-300 cursor-default">
+                                    class="text-sm text-slate-700/90 flex items-start gap-2.5 group/outcome border border-pink-300/40 rounded-lg px-4 py-2 bg-white/60 hover:bg-pink-100/70 hover:shadow-md transition-all duration-300 cursor-default">
                                     <svg class="w-4 h-4 text-pink-600 group-hover/outcome:animate-bounce mt-1"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -176,12 +176,12 @@
                             </div>
                         </div>
 
-                        <!-- Stack - avec badges améliorés et gradient -->
+                        <!-- Stack - avec badges améliorés, gradient et fond violet/indigo -->
                         <div
-                            class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg shadow-violet-500/5 p-5 border border-violet-200/30 hover:shadow-xl hover:shadow-violet-500/10 transition-all duration-300 hover:-translate-y-1 group">
+                            class="bg-gradient-to-br from-violet-50/95 via-indigo-50/90 to-violet-50/95 backdrop-blur-sm rounded-2xl shadow-lg shadow-violet-500/8 p-5 border border-violet-200/40 hover:shadow-xl hover:shadow-violet-500/15 transition-all duration-300 hover:-translate-y-1 group">
                             <div class="flex items-center justify-center gap-2.5 mb-4">
                                 <div
-                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500/20 to-violet-600/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    class="w-8 h-8 rounded-xl bg-gradient-to-br from-violet-500/25 to-indigo-600/15 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -193,7 +193,7 @@
                             </div>
                             <div class="space-x-2">
                                 <span v-for="(stackItem, idx) in caseStudy.stack" :key="idx"
-                                    class="rounded-full bg-gradient-to-br from-violet-100/90 to-violet-50/90 px-4 py-1.5 text-sm font-medium text-violet-700/90 shadow-sm shadow-violet-200/40 hover:shadow-violet-300/60 hover:scale-105 transition-all duration-200 cursor-default border border-violet-200/40 backdrop-blur-sm">
+                                    class="rounded-full bg-gradient-to-br from-violet-100/95 to-indigo-100/90 px-4 py-1.5 text-sm font-medium text-violet-700/90 shadow-sm shadow-violet-200/50 hover:shadow-violet-300/70 hover:scale-105 transition-all duration-200 cursor-default border border-violet-300/50 backdrop-blur-sm">
                                     {{ stackItem }}
                                 </span>
                             </div>
