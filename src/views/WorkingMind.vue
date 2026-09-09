@@ -313,17 +313,17 @@ const featuredCaseStudy = computed(() => ({
 
 const personality = computed(() => [
   {
-    icon: "🧠",
+    icon: "",
     title: t("workingmind.personality_curiosity_title"),
     description: t("workingmind.personality_curiosity_desc"),
   },
   {
-    icon: "🛠️",
+    icon: "",
     title: t("workingmind.personality_structure_title"),
     description: t("workingmind.personality_structure_desc"),
   },
   {
-    icon: "🤝",
+    icon: "",
     title: t("workingmind.personality_team_title"),
     description: t("workingmind.personality_team_desc"),
   },
