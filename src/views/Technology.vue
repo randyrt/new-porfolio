@@ -169,7 +169,7 @@ const terminalLines = [
     { text: '✓ Node.js - Backend', class: 'text-green-400', prompt: true },
     { text: '✓ Docker - Containerization', class: 'text-green-400', prompt: true },
     { text: '✓ TypeScript - Type Safety', class: 'text-green-400', prompt: true },
-    { text: '✓ Laravel - PHP Framework', class: 'text-green-400', prompt: true },
+    { text: '✓ Laravel/Symfony - PHP Framework', class: 'text-green-400', prompt: true },
     { text: 'System ready! Type "help" for commands', class: 'text-purple-400', prompt: true }
 ]
 
