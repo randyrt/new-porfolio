@@ -57,7 +57,7 @@
                 <SwiperSlide v-for="(project, index) in projects" :key="index">
                     <div class="project-slide" :id="project.id">
                         <ProjectGallery :id="project.id" :images="project.images" :title="project.title"
-                            :description="project.description" :is-defeated="defeatedBosses.has(project.id)"
+                            :description="project.description" :production-url="project.productionUrl" :is-defeated="defeatedBosses.has(project.id)"
                             :case-study="project.caseStudy" @open-image="openImage"
                             @fight-boss="startBossFight(project)" />
                     </div>
@@ -152,6 +152,7 @@ const projects = ref([
         id: 'fid-connect',
         title: 'FID-CONNECT',
         description: t('projects.fid_connect'),
+        productionUrl: 'https://mastery-pro.be/',
         images: [
             '/images/projects/fid-connect/capture0.png',
             '/images/projects/fid-connect/capture1.png',
@@ -193,6 +194,142 @@ const projects = ref([
             {
                 question: locale.value === 'fr' ? "Fid-Connect est adapté à la réglementation de quel pays ?" : "Fid-Connect is adapted to the regulations of which country?",
                 options: ["France", "Belgique", "Luxembourg", "Suisse"],
+                answer: 1
+            }
+        ]
+    },
+    {
+        id: 'echo-webline',
+        title: 'ECHO WEBLINE',
+        description: t('projects.echo_webline'),
+        productionUrl: 'https://www.echowebline.com/',
+        images: [
+            '/images/projects/echo-webLine/echo-1.PNG',
+            '/images/projects/echo-webLine/echo-3.PNG',
+            '/images/projects/echo-webLine/echo-4.PNG',
+            '/images/projects/echo-webLine/echo-6.PNG',
+            '/images/projects/echo-webLine/echo-7.PNG',
+            '/images/projects/echo-webLine/echo-8.PNG',
+            '/images/projects/echo-webLine/echo-12.PNG'
+        ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Rendre les parcours patients plus lisibles pour les équipes médicales tout en centralisant les données d’imagerie cardiovasculaire.'
+                : 'Make patient journeys more readable for medical teams while centralizing cardiovascular imaging data.',
+            solution: locale.value === 'fr'
+                ? 'Concevoir une expérience Vue.js et Laravel orientée consultation, suivi et gestion des dossiers pour les professionnels de la santé.'
+                : 'Design a Vue.js and Laravel experience focused on consultation, follow-up, and record management for healthcare professionals.',
+            impact: locale.value === 'fr'
+                ? 'Améliorer le suivi médical, accélérer les interventions et offrir une meilleure visibilité sur les parcours patients.'
+                : 'Improve medical follow-up, accelerate interventions, and provide better visibility into patient journeys.',
+            outcomes: locale.value === 'fr'
+                ? ['Interface clinique plus claire', 'Centralisation des dossiers', 'Accélération des prises de décision']
+                : ['Clearer clinical interface', 'Centralized record management', 'Faster decision-making'],
+            stack: ['Vue.js', 'Laravel', 'Medical imaging', 'Real-time workflow', 'Redis']
+        },
+        quiz: [
+            {
+                question: locale.value === 'fr' ? "Quel framework JavaScript est utilisé pour le frontend ?" : "Which JavaScript framework is used for the frontend?",
+                options: ["Vue 2", "Vue.js", "React", "Angular"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Quel est le domaine médical ciblé ?" : "What is the targeted medical field?",
+                options: ["Dentisterie", "Ophtalmologie", "Imagerie Cardiovasculaire", "Pédiatrie"],
+                answer: 2
+            },
+            {
+                question: locale.value === 'fr' ? "Où est basé le client pour ce projet ?" : "Where is the client based for this project?",
+                options: ["Bruxelles", "Paris", "Londres", "New York"],
+                answer: 1
+            }
+        ]
+    },
+    {
+        id: 'infi-swap',
+        title: 'INFI-SWAP',
+        description: t('projects.infi_swap'),
+        productionUrl: 'https://infiswap.be/',
+        images: [
+            '/images/projects/swap/swap1.png',
+            '/images/projects/swap/swap2.png',
+            '/images/projects/swap/swap3.png',
+            '/images/projects/swap/swap4.png',
+            '/images/projects/swap/swap5.png',
+            '/images/projects/swap/swap6.png',
+        ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Faire correspondre rapidement les établissements de santé avec des infirmiers disponibles sans intermédiaire humain, tout en gardant un processus transparent.'
+                : 'Quickly match healthcare institutions with available nurses without human intermediaries while keeping the process transparent.',
+            solution: locale.value === 'fr'
+                ? 'Créer une plateforme Vue.js + Laravel qui automatise l’affectation, la recherche rapide et le suivi des missions de remplacement.'
+                : 'Build a Vue.js + Laravel platform that automates assignment, fast matching, and replacement mission tracking.',
+            impact: locale.value === 'fr'
+                ? 'Réduire les délais de remplissage, optimiser les missions et fluidifier la gestion opérationnelle pour les établissements.'
+                : 'Reduce fill time, optimize mission allocation, and streamline operational management for institutions.',
+            outcomes: locale.value === 'fr'
+                ? ['Mise en relation plus rapide', 'Planification plus fiable', 'Moins de friction opérationnelle']
+                : ['Faster matching', 'More reliable scheduling', 'Less operational friction'],
+            stack: ['Vue.js', 'Laravel', 'Nurse matching', 'Scheduling', 'Redis']
+        },
+        quiz: [
+            {
+                question: locale.value === 'fr' ? "Quel est le public cible de InfiSwap ?" : "Who is the target audience for InfiSwap?",
+                options: ["Pharmaciens", "Médecins", "Infirmiers & Établissements", "Patients"],
+                answer: 2
+            },
+            {
+                question: locale.value === 'fr' ? "Le processus de mise en relation est-il manuel ?" : "Is the matching process manual?",
+                options: ["Oui", "Non, 100% automatisé", "Partiellement", "Par téléphone"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Que réduit InfiSwap pour les établissements ?" : "What does InfiSwap reduce for institutions?",
+                options: ["Le prix des soins", "Les coûts de recrutement", "Le nombre de lits", "Le temps de pause"],
+                answer: 1
+            }
+        ]
+    },
+    {
+        id: 'petsfollow-pro',
+        title: 'PETSFOLLOW PRO',
+        description: t('projects.petsfollow_pro'),
+        productionUrl: 'https://petsfollow.app/',
+        images: [
+            '/images/projects/petsfollow-pro/1.webp',
+            '/images/projects/petsfollow-pro/2.webp',
+            '/images/projects/petsfollow-pro/3.webp'
+        ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Améliorer la gestion quotidienne des cliniques vétérinaires en centralisant le personnel, les rendez-vous et le suivi des animaux, tout en renforçant la relation avec les propriétaires.'
+                : 'Improve daily veterinary clinic management by centralizing staff, appointments, and animal tracking while strengthening relationships with pet owners.',
+            solution: locale.value === 'fr'
+                ? 'Développer une application Vue.js + Laravel qui regroupe la gestion des employés, le calendrier des consultations, les dossiers médicaux et la communication client dans une interface unique.'
+                : 'Build a Vue.js + Laravel application that combines staff management, appointment scheduling, medical records, and client communication in a single interface.',
+            impact: locale.value === 'fr'
+                ? "Réduire les erreurs administratives, améliorer l'efficacité opérationnelle et offrir une meilleure expérience aux propriétaires d'animaux."
+                : 'Reduce administrative errors, improve operational efficiency, and offer a better experience for pet owners.',
+            outcomes: locale.value === 'fr'
+                ? ['Gestion centralisée du personnel', 'Suivi médical des animaux optimisé', 'Communication client fluide']
+                : ['Centralized staff management', 'Optimized animal medical tracking', 'Fluid client communication'],
+            stack: ['Vue.js', 'Laravel', 'MySQL', 'TailwindCSS', 'Redis']
+        },
+        quiz: [
+            {
+                question: locale.value === 'fr' ? "Quel framework JavaScript pilote l'interface de PetsFollow Pro ?" : "Which JavaScript framework powers PetsFollow Pro's interface?",
+                options: ["React", "Vue.js", "Angular", "Svelte"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Quel backend est utilisé pour PetsFollow Pro ?" : "Which backend is used for PetsFollow Pro?",
+                options: ["Symfony", "Laravel", "Django", "Express"],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? "Quel type d'établissement utilise PetsFollow Pro ?" : "What type of establishment uses PetsFollow Pro?",
+                options: ["Hôpitaux", "Cliniques vétérinaires", "Écoles", "Pharmacies"],
                 answer: 1
             }
         ]
@@ -288,232 +425,6 @@ const projects = ref([
             {
                 question: locale.value === 'fr' ? "Pour quel type d'établissement ce site a été conçu ?" : "For what type of establishment was this site designed?",
                 options: ["Hôpital", "Restaurant", "École", "Banque"],
-                answer: 1
-            }
-        ]
-    },
-    {
-        id: 'echo-webline',
-        title: 'ECHO WEBLINE',
-        description: t('projects.echo_webline'),
-        images: [
-            '/images/projects/echo-webLine/echo-1.PNG',
-            '/images/projects/echo-webLine/echo-3.PNG',
-            '/images/projects/echo-webLine/echo-4.PNG',
-            '/images/projects/echo-webLine/echo-6.PNG',
-            '/images/projects/echo-webLine/echo-7.PNG',
-            '/images/projects/echo-webLine/echo-8.PNG',
-            '/images/projects/echo-webLine/echo-12.PNG'
-        ],
-        caseStudy: {
-            challenge: locale.value === 'fr'
-                ? 'Rendre les parcours patients plus lisibles pour les équipes médicales tout en centralisant les données d’imagerie cardiovasculaire.'
-                : 'Make patient journeys more readable for medical teams while centralizing cardiovascular imaging data.',
-            solution: locale.value === 'fr'
-                ? 'Concevoir une expérience Nuxt.js et Laravel orientée consultation, suivi et gestion des dossiers pour les professionnels de la santé.'
-                : 'Design a Nuxt.js and Laravel experience focused on consultation, follow-up, and record management for healthcare professionals.',
-            impact: locale.value === 'fr'
-                ? 'Améliorer le suivi médical, accélérer les interventions et offrir une meilleure visibilité sur les parcours patients.'
-                : 'Improve medical follow-up, accelerate interventions, and provide better visibility into patient journeys.',
-            outcomes: locale.value === 'fr'
-                ? ['Interface clinique plus claire', 'Centralisation des dossiers', 'Accélération des prises de décision']
-                : ['Clearer clinical interface', 'Centralized record management', 'Faster decision-making'],
-            stack: ['Nuxt.js', 'Laravel', 'Medical imaging', 'Real-time workflow', 'Redis']
-        },
-        quiz: [
-            {
-                question: locale.value === 'fr' ? "Quel framework Vue SSR est utilisé ici ?" : "Which Vue SSR framework is used here?",
-                options: ["Vue 2", "Nuxt.js", "Quasar", "Vite"],
-                answer: 1
-            },
-            {
-                question: locale.value === 'fr' ? "Quel est le domaine médical ciblé ?" : "What is the targeted medical field?",
-                options: ["Dentisterie", "Ophtalmologie", "Imagerie Cardiovasculaire", "Pédiatrie"],
-                answer: 2
-            },
-            {
-                question: locale.value === 'fr' ? "Où est basé le client pour ce projet ?" : "Where is the client based for this project?",
-                options: ["Bruxelles", "Paris", "Londres", "New York"],
-                answer: 1
-            }
-        ]
-    },
-    {
-        id: 'afr-fan',
-        title: 'AFR FAN',
-        description: t('projects.afr_fan'),
-        images: [
-            '/images/projects/afr/afr-1.PNG',
-            '/images/projects/afr/afr-2.PNG',
-            '/images/projects/afr/afr-3.PNG',
-            '/images/projects/afr/afr-4.PNG'
-        ],
-        caseStudy: {
-            challenge: locale.value === 'fr'
-                ? 'Créer un réseau social communautaire fluide pour la diaspora africaine, avec des échanges simples et une monétisation claire.'
-                : 'Create a fluid community social network for the African diaspora, with simple interactions and a clear monetization model.',
-            solution: locale.value === 'fr'
-                ? 'Mettre en place une plateforme Nuxt.js + Laravel avec publication, groupes d’intérêt, paiements premium et expérience communautaire engageante.'
-                : 'Build a Nuxt.js + Laravel platform with publishing, interest groups, premium payments, and an engaging community experience.',
-            impact: locale.value === 'fr'
-                ? 'Renforcer le lien entre membres, faciliter la création de communautés et rendre les contenus premium plus accessibles.'
-                : 'Strengthen member connection, simplify community building, and make premium content more accessible.',
-            outcomes: locale.value === 'fr'
-                ? ['Communauté plus active', 'Paiements premium fluides', 'Interactions plus dynamiques']
-                : ['More active community', 'Smooth premium payments', 'More dynamic interactions'],
-            stack: ['Nuxt.js', 'Laravel', 'Social publishing', 'VISA/PayPal', 'Redis']
-        },
-        quiz: [
-            {
-                question: locale.value === 'fr' ? "Quels modes de paiement sont intégrés ?" : "Which payment methods are integrated?",
-                options: ["Crypto", "VISA & PayPal", "Stripe seulement", "Chèque"],
-                answer: 1
-            },
-            {
-                question: locale.value === 'fr' ? "Quel est le type d'application ?" : "What is the type of application?",
-                options: ["Blog", "E-commerce", "Réseau Social", "SaaS"],
-                answer: 2
-            },
-            {
-                question: locale.value === 'fr' ? "Quelle technologie backend est utilisée ?" : "Which backend technology is used?",
-                options: ["Node.js", "Laravel", "Rails", "Go"],
-                answer: 1
-            }
-        ]
-    },
-    {
-        id: 'infi-swap',
-        title: 'INFI-SWAP',
-        description: t('projects.infi_swap'),
-        images: [
-            '/images/projects/swap/swap1.png',
-            '/images/projects/swap/swap2.png',
-            '/images/projects/swap/swap3.png',
-            '/images/projects/swap/swap4.png',
-            '/images/projects/swap/swap5.png',
-            '/images/projects/swap/swap6.png',
-        ],
-        caseStudy: {
-            challenge: locale.value === 'fr'
-                ? 'Faire correspondre rapidement les établissements de santé avec des infirmiers disponibles sans intermédiaire humain, tout en gardant un processus transparent.'
-                : 'Quickly match healthcare institutions with available nurses without human intermediaries while keeping the process transparent.',
-            solution: locale.value === 'fr'
-                ? 'Créer une plateforme Nuxt.js + Symfony qui automatise l’affectation, la recherche rapide et le suivi des missions de remplacement.'
-                : 'Build a Nuxt.js + Symfony platform that automates assignment, fast matching, and replacement mission tracking.',
-            impact: locale.value === 'fr'
-                ? 'Réduire les délais de remplissage, optimiser les missions et fluidifier la gestion opérationnelle pour les établissements.'
-                : 'Reduce fill time, optimize mission allocation, and streamline operational management for institutions.',
-            outcomes: locale.value === 'fr'
-                ? ['Mise en relation plus rapide', 'Planification plus fiable', 'Moins de friction opérationnelle']
-                : ['Faster matching', 'More reliable scheduling', 'Less operational friction'],
-            stack: ['Nuxt.js', 'Symfony', 'Nurse matching', 'Scheduling', 'Redis']
-        },
-        quiz: [
-            {
-                question: locale.value === 'fr' ? "Quel est le public cible de InfiSwap ?" : "Who is the target audience for InfiSwap?",
-                options: ["Pharmaciens", "Médecins", "Infirmiers & Établissements", "Patients"],
-                answer: 2
-            },
-            {
-                question: locale.value === 'fr' ? "Le processus de mise en relation est-il manuel ?" : "Is the matching process manual?",
-                options: ["Oui", "Non, 100% automatisé", "Partiellement", "Par téléphone"],
-                answer: 1
-            },
-            {
-                question: locale.value === 'fr' ? "Que réduit InfiSwap pour les établissements ?" : "What does InfiSwap reduce for institutions?",
-                options: ["Le prix des soins", "Les coûts de recrutement", "Le nombre de lits", "Le temps de pause"],
-                answer: 1
-            }
-        ]
-    },
-    {
-        id: 'petsfollow-pro',
-        title: 'PETSFOLLOW PRO',
-        description: t('projects.petsfollow_pro'),
-        images: [
-            '/images/projects/petsfollow-pro/1.webp',
-            '/images/projects/petsfollow-pro/2.webp',
-            '/images/projects/petsfollow-pro/3.webp'
-        ],
-        caseStudy: {
-            challenge: locale.value === 'fr'
-                ? 'Améliorer la gestion quotidienne des cliniques vétérinaires en centralisant le personnel, les rendez-vous et le suivi des animaux, tout en renforçant la relation avec les propriétaires.'
-                : 'Improve daily veterinary clinic management by centralizing staff, appointments, and animal tracking while strengthening relationships with pet owners.',
-            solution: locale.value === 'fr'
-                ? 'Développer une application Vue.js + Laravel qui regroupe la gestion des employés, le calendrier des consultations, les dossiers médicaux et la communication client dans une interface unique.'
-                : 'Build a Vue.js + Laravel application that combines staff management, appointment scheduling, medical records, and client communication in a single interface.',
-            impact: locale.value === 'fr'
-                ? "Réduire les erreurs administratives, améliorer l'efficacité opérationnelle et offrir une meilleure expérience aux propriétaires d'animaux."
-                : 'Reduce administrative errors, improve operational efficiency, and offer a better experience for pet owners.',
-            outcomes: locale.value === 'fr'
-                ? ['Gestion centralisée du personnel', 'Suivi médical des animaux optimisé', 'Communication client fluide']
-                : ['Centralized staff management', 'Optimized animal medical tracking', 'Fluid client communication'],
-            stack: ['Vue.js', 'Laravel', 'MySQL', 'TailwindCSS', 'Redis']
-        },
-        quiz: [
-            {
-                question: locale.value === 'fr' ? "Quel framework JavaScript pilote l'interface de PetsFollow Pro ?" : "Which JavaScript framework powers PetsFollow Pro's interface?",
-                options: ["React", "Vue.js", "Angular", "Svelte"],
-                answer: 1
-            },
-            {
-                question: locale.value === 'fr' ? "Quel backend est utilisé pour PetsFollow Pro ?" : "Which backend is used for PetsFollow Pro?",
-                options: ["Symfony", "Laravel", "Django", "Express"],
-                answer: 1
-            },
-            {
-                question: locale.value === 'fr' ? "Quel type d'établissement utilise PetsFollow Pro ?" : "What type of establishment uses PetsFollow Pro?",
-                options: ["Hôpitaux", "Cliniques vétérinaires", "Écoles", "Pharmacies"],
-                answer: 1
-            }
-        ]
-    },
-    {
-        id: 'e-learning',
-        title: 'E-LEARNING',
-        description: t('projects.e_learning'),
-        images: [
-            '/images/projects/E-learning/1.webp',
-            '/images/projects/E-learning/2.webp',
-            '/images/projects/E-learning/3.webp',
-            '/images/projects/E-learning/4.webp',
-            '/images/projects/E-learning/5.webp',
-            '/images/projects/E-learning/6.webp',
-            '/images/projects/E-learning/7.webp',
-            '/images/projects/E-learning/9.webp',
-            '/images/projects/E-learning/10.webp',
-            '/images/projects/E-learning/11.webp',
-            '/images/projects/E-learning/12.webp'
-        ],
-        caseStudy: {
-            challenge: locale.value === 'fr'
-                ? 'Créer une plateforme SaaS d\'apprentissage en ligne évolutive qui permette aux formateurs de gérer des cours interactifs tout en offrant une expérience personnalisée aux apprenants.'
-                : 'Create a scalable online learning SaaS platform that allows trainers to manage interactive courses while offering a personalized experience to learners.',
-            solution: locale.value === 'fr'
-                ? 'Développer une application React.js + Symfony avec création de cours, quiz interactifs, suivi de progression en temps réel, gestion des paiements et tableau de bord analytique.'
-                : 'Build a React.js + Symfony application with course creation, interactive quizzes, real-time progress tracking, payment management, and analytics dashboard.',
-            impact: locale.value === 'fr'
-                ? 'Faciliter l\'apprentissage en ligne pour les établissements éducatifs, les entreprises et les formateurs indépendants, avec une solution complète et accessible.'
-                : 'Facilitate online learning for educational institutions, businesses, and independent trainers with a comprehensive and accessible solution.',
-            outcomes: locale.value === 'fr'
-                ? ['Création de cours interactifs', 'Suivi en temps réel des apprenants', 'Gestion des paiements premium', 'Dashboard analytique complet']
-                : ['Interactive course creation', 'Real-time learner tracking', 'Premium payment management', 'Comprehensive analytics dashboard'],
-            stack: ['React.js', 'Symfony', 'MySQL', 'Payment integration', 'Analytics']
-        },
-        quiz: [
-            {
-                question: locale.value === 'fr' ? "Quel framework frontend est utilisé pour E-learning ?" : "Which frontend framework is used for E-learning?",
-                options: ["Vue.js", "React.js", "Angular", "Svelte"],
-                answer: 1
-            },
-            {
-                question: locale.value === 'fr' ? "Quel est le type d'application E-learning ?" : "What is the type of E-learning application?",
-                options: ["E-commerce", "SaaS", "Réseau social", "Blog"],
-                answer: 1
-            },
-            {
-                question: locale.value === 'fr' ? "Quel backend assure la gestion de E-learning ?" : "Which backend handles E-learning management?",
-                options: ["Laravel", "Symfony", "Django", "Express"],
                 answer: 1
             }
         ]

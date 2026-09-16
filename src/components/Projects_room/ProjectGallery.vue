@@ -1401,6 +1401,7 @@ const props = defineProps<{
     images: string[],
     title: string,
     description: string,
+    productionUrl?: string,
     isDefeated?: boolean,
     caseStudy?: ProjectCaseStudy
 }>();
@@ -1456,10 +1457,22 @@ const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\
 const formattedDescription = computed(() => {
     const safeDescription = escapeHtml(props.description);
 
-    return technologyKeywords.reduce((result, keyword) => {
+    let result = technologyKeywords.reduce((result, keyword) => {
         const regex = new RegExp(`(${escapeRegExp(keyword)})`, 'gi');
         return result.replace(regex, '<span class="font-black text-slate-950 dark:text-slate-950">$1</span>');
     }, safeDescription);
+
+    // Ajouter le lien de production à la fin si disponible
+    if (props.productionUrl) {
+        result += ` <a href="${props.productionUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-violet-600 hover:text-violet-800 font-semibold underline decoration-2 underline-offset-2 transition-colors">
+            <span>🔗 Voir en production</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>`;
+    }
+
+    return result;
 });
 
 const scrollToAnchor = async (target: 'demo' | 'case-study') => {
