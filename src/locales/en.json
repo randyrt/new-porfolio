@@ -248,7 +248,8 @@
     "solution": "Solution",
     "impact": "Impact",
     "outcomes": "Outcomes",
-    "stack": "Stack"
+    "stack": "Stack",
+    "view_in_production": "View in production"
   },
   "quiz": {
     "danger_level": "Danger Level: High",
