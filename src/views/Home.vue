@@ -20,6 +20,12 @@
               class="text-5xl ml-2 text-sky-500 emoji"> 😎</span></h1>
           <p class="text-lg text-gray-700 mb-4 transition-all duration-700 delay-100" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }" v-html="$t('home.p1')"></p>
           <p class="text-lg text-gray-700 transition-all duration-700 delay-200" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }" v-html="$t('home.p2')"></p>
+          
+          <!-- Nouvelle section IA générative -->
+          <div class="mt-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border-l-4 border-purple-500 transition-all duration-700 delay-250" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }">
+            <p class="text-lg text-gray-700 dark:text-gray-300" v-html="$t('home.ai_section')"></p>
+          </div>
+
           <p class="text-lg text-gray-700 mt-4 transition-all duration-700 delay-300" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }">
             {{ $t('home.p3_1') }}<span class="text-sky-700 cursor-pointer underline" @click="goToContact">{{
               $t('home.p3_contact') }}</span>{{ $t('home.p3_2') }}
@@ -64,8 +70,8 @@ const contentVisible = ref(false)
 
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "/images/cv/Randy.pdf";
-  link.download = "Randy.pdf";
+  link.href = "/images/cv/Randy_real_cv.pdf";
+  link.download = "Randy_real_cv.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -73,7 +79,7 @@ function downloadCV() {
 }
 
 function viewCV() {
-  window.open("/images/cv/Randy.pdf", "_blank");
+  window.open("/images/cv/Randy_real_cv.pdf", "_blank");
 }
 
 const goToContact = () => {
