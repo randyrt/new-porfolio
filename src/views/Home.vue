@@ -17,7 +17,7 @@
         data-aos="fade-up">
         <div class="mt-6">
           <h1 class="text-2xl font-bold mt-6 mb-2 !text-violet-800 transition-opacity duration-700" :class="{ 'opacity-100': contentVisible, 'opacity-0': !contentVisible }">{{ $t('home.welcome') }}<span
-              class="text-5xl ml-2 text-sky-500 emoji"> 😎</span></h1>
+              class="text-5xl ml-2 text-sky-500 emoji"> 🤓</span></h1>
           <p class="text-lg text-gray-700 mb-4 transition-all duration-700 delay-100" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }" v-html="$t('home.p1')"></p>
           <p class="text-lg text-gray-700 transition-all duration-700 delay-200" :class="{ 'opacity-100 translate-y-0': contentVisible, 'opacity-0 translate-y-3': !contentVisible }" v-html="$t('home.p2')"></p>
           
