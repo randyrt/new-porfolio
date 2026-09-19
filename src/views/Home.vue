@@ -70,8 +70,8 @@ const contentVisible = ref(false)
 
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "/images/cv/Randy_real_cv.pdf";
-  link.download = "Randy_real_cv.pdf";
+  link.href = "/images/cv/Randy_new.pdf";
+  link.download = "Randy_new.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -79,7 +79,7 @@ function downloadCV() {
 }
 
 function viewCV() {
-  window.open("/images/cv/Randy_real_cv.pdf", "_blank");
+  window.open("/images/cv/Randy_new.pdf", "_blank");
 }
 
 const goToContact = () => {
