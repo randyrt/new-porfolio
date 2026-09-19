@@ -335,6 +335,50 @@ const projects = ref([
         ]
     },
     {
+        id: 'afr-fan',
+        title: 'AFR-FAN',
+        description: t('projects.afr_fan'),
+        productionUrl: 'https://www.instagram.com/afrifan_ci/?hl=fr',
+        images: [
+            '/images/projects/afr/afr-1.PNG',
+            '/images/projects/afr/afr-2.PNG',
+            '/images/projects/afr/afr-3.PNG',
+            '/images/projects/afr/afr-4.PNG'
+        ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Créer un espace communautaire dédié à la diaspora africaine pour faciliter les interactions, le partage culturel et renforcer les liens entre membres.'
+                : 'Create a community space dedicated to the African diaspora to facilitate interactions, cultural sharing, and strengthen bonds between members.',
+            solution: locale.value === 'fr'
+                ? 'Développer un réseau social moderne avec Vue.js et Laravel intégrant groupes d\'intérêt, partage de contenu, et paiements en ligne pour fonctionnalités premium.'
+                : 'Build a modern social network with Vue.js and Laravel integrating interest groups, content sharing, and online payments for premium features.',
+            impact: locale.value === 'fr'
+                ? 'Renforcer les liens de la diaspora africaine en célébrant la richesse culturelle et en facilitant les échanges entre membres du monde entier.'
+                : 'Strengthen African diaspora bonds by celebrating cultural richness and facilitating exchanges between members worldwide.',
+            outcomes: locale.value === 'fr'
+                ? ['Interface sociale moderne', 'Groupes d\'intérêt communautaires', 'Partage de contenu culturel', 'Paiements en ligne intégrés']
+                : ['Modern social interface', 'Community interest groups', 'Cultural content sharing', 'Integrated online payments'],
+            stack: ['Vue.js', 'Laravel', 'Social networking', 'Payment integration', 'Redis']
+        },
+        quiz: [
+            {
+                question: locale.value === 'fr' ? 'Quel est le public cible d\'Afr-fan ?' : 'Who is the target audience for Afr-fan?',
+                options: ['Étudiants', 'Communauté africaine', 'Entrepreneurs', 'Touristes'],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? 'Quels modes de paiement sont intégrés ?' : 'Which payment methods are integrated?',
+                options: ['Bitcoin uniquement', 'VISA et PayPal', 'Virement bancaire', 'Chèque'],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? 'Quelle stack backend est utilisée ?' : 'Which backend stack is used?',
+                options: ['Symfony', 'Laravel', 'Django', 'Express'],
+                answer: 1
+            }
+        ]
+    },
+    {
         id: 'qcp',
         title: 'QCP',
         description: t('projects.qcp'),
@@ -425,6 +469,56 @@ const projects = ref([
             {
                 question: locale.value === 'fr' ? "Pour quel type d'établissement ce site a été conçu ?" : "For what type of establishment was this site designed?",
                 options: ["Hôpital", "Restaurant", "École", "Banque"],
+                answer: 1
+            }
+        ]
+    },
+    {
+        id: 'e-learning',
+        title: 'E-LEARNING',
+        description: t('projects.e_learning'),
+        images: [
+            '/images/projects/E-learning/1.webp',
+            '/images/projects/E-learning/2.webp',
+            '/images/projects/E-learning/3.webp',
+            '/images/projects/E-learning/4.webp',
+            '/images/projects/E-learning/5.webp',
+            '/images/projects/E-learning/6.webp',
+            '/images/projects/E-learning/7.webp',
+            '/images/projects/E-learning/9.webp',
+            '/images/projects/E-learning/10.webp',
+            '/images/projects/E-learning/11.webp',
+            '/images/projects/E-learning/12.webp'
+        ],
+        caseStudy: {
+            challenge: locale.value === 'fr'
+                ? 'Offrir une plateforme complète d\'apprentissage en ligne permettant aux formateurs de créer du contenu interactif et de suivre la progression des apprenants en temps réel.'
+                : 'Provide a comprehensive online learning platform enabling trainers to create interactive content and track learner progress in real-time.',
+            solution: locale.value === 'fr'
+                ? 'Développer une solution SaaS avec React.js et Symfony intégrant création de cours, quiz interactifs, certificats, gestion des paiements et analytics.'
+                : 'Build a SaaS solution with React.js and Symfony integrating course creation, interactive quizzes, certificates, payment management, and analytics.',
+            impact: locale.value === 'fr'
+                ? 'Faciliter l\'apprentissage en ligne pour les établissements éducatifs, entreprises et formateurs indépendants avec une expérience évolutive et accessible.'
+                : 'Facilitate online learning for educational institutions, businesses, and independent trainers with a scalable and accessible experience.',
+            outcomes: locale.value === 'fr'
+                ? ['Création de cours interactifs', 'Suivi en temps réel des apprenants', 'Gestion des paiements premium', 'Certificats automatisés']
+                : ['Interactive course creation', 'Real-time learner tracking', 'Premium payment management', 'Automated certificates'],
+            stack: ['React.js', 'Symfony', 'Interactive learning', 'Payment system', 'Analytics']
+        },
+        quiz: [
+            {
+                question: locale.value === 'fr' ? 'Quel framework JavaScript frontend est utilisé pour E-learning ?' : 'Which JavaScript frontend framework is used for E-learning?',
+                options: ['Vue.js', 'React.js', 'Angular', 'Svelte'],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? 'Quel backend propulse la plateforme E-learning ?' : 'Which backend powers the E-learning platform?',
+                options: ['Laravel', 'Symfony', 'Django', 'Express'],
+                answer: 1
+            },
+            {
+                question: locale.value === 'fr' ? 'Quelle fonctionnalité avancée propose E-learning ?' : 'What advanced feature does E-learning offer?',
+                options: ['Chat vidéo', 'Quiz interactifs et certificats', 'Marketplace', 'Réseaux sociaux'],
                 answer: 1
             }
         ]
