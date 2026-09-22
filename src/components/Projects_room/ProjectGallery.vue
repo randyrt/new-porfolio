@@ -1421,7 +1421,7 @@ const { t, locale } = useI18n()
 const technologyKeywords = [
     'Vue.js',
     'Nuxt.js',
-    'Laravel',
+    'Symfony',
     'Symfony',
     'TypeScript',
     'TailwindCSS',

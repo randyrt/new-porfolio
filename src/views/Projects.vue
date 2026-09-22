@@ -217,15 +217,15 @@ const projects = ref([
                 ? 'Rendre les parcours patients plus lisibles pour les équipes médicales tout en centralisant les données d’imagerie cardiovasculaire.'
                 : 'Make patient journeys more readable for medical teams while centralizing cardiovascular imaging data.',
             solution: locale.value === 'fr'
-                ? 'Concevoir une expérience Vue.js et Laravel orientée consultation, suivi et gestion des dossiers pour les professionnels de la santé.'
-                : 'Design a Vue.js and Laravel experience focused on consultation, follow-up, and record management for healthcare professionals.',
+                ? 'Concevoir une expérience Vue.js et Symfony orientée consultation, suivi et gestion des dossiers pour les professionnels de la santé.'
+                : 'Design a Vue.js and Symfony experience focused on consultation, follow-up, and record management for healthcare professionals.',
             impact: locale.value === 'fr'
                 ? 'Améliorer le suivi médical, accélérer les interventions et offrir une meilleure visibilité sur les parcours patients.'
                 : 'Improve medical follow-up, accelerate interventions, and provide better visibility into patient journeys.',
             outcomes: locale.value === 'fr'
                 ? ['Interface clinique plus claire', 'Centralisation des dossiers', 'Accélération des prises de décision']
                 : ['Clearer clinical interface', 'Centralized record management', 'Faster decision-making'],
-            stack: ['Vue.js', 'Laravel', 'Medical imaging', 'Real-time workflow', 'Redis']
+            stack: ['Vue.js', 'Symfony', 'Medical imaging', 'Real-time workflow', 'Redis']
         },
         quiz: [
             {
@@ -263,15 +263,15 @@ const projects = ref([
                 ? 'Faire correspondre rapidement les établissements de santé avec des infirmiers disponibles sans intermédiaire humain, tout en gardant un processus transparent.'
                 : 'Quickly match healthcare institutions with available nurses without human intermediaries while keeping the process transparent.',
             solution: locale.value === 'fr'
-                ? 'Créer une plateforme Vue.js + Laravel qui automatise l’affectation, la recherche rapide et le suivi des missions de remplacement.'
-                : 'Build a Vue.js + Laravel platform that automates assignment, fast matching, and replacement mission tracking.',
+                ? 'Créer une plateforme Vue.js + Symfony qui automatise l’affectation, la recherche rapide et le suivi des missions de remplacement.'
+                : 'Build a Vue.js + Symfony platform that automates assignment, fast matching, and replacement mission tracking.',
             impact: locale.value === 'fr'
                 ? 'Réduire les délais de remplissage, optimiser les missions et fluidifier la gestion opérationnelle pour les établissements.'
                 : 'Reduce fill time, optimize mission allocation, and streamline operational management for institutions.',
             outcomes: locale.value === 'fr'
                 ? ['Mise en relation plus rapide', 'Planification plus fiable', 'Moins de friction opérationnelle']
                 : ['Faster matching', 'More reliable scheduling', 'Less operational friction'],
-            stack: ['Vue.js', 'Laravel', 'Nurse matching', 'Scheduling', 'Redis']
+            stack: ['Vue.js', 'Symfony', 'Nurse matching', 'Scheduling', 'Redis']
         },
         quiz: [
             {
