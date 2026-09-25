@@ -23,7 +23,7 @@ describe('ProjectGallery case study', () => {
       props: {
         id: 'fid-connect',
         title: 'FID-CONNECT',
-        description: 'Fid-Connect is a tax operations platform.',
+        description: 'Fid-Connect is a tax operations platform built with Vue.js and Laravel.',
         images: ['/img.png'],
         isDefeated: false,
         caseStudy: {
@@ -50,5 +50,7 @@ describe('ProjectGallery case study', () => {
 
     expect(wrapper.text()).toContain('Centralize tax operations.')
     expect(wrapper.text()).toContain('Reduce manual operations and improve clarity.')
+    expect(wrapper.html()).toContain('<span class="font-black text-slate-950 dark:text-slate-950">Vue.js</span>')
+    expect(wrapper.html()).toContain('<span class="font-black text-slate-950 dark:text-slate-950">Laravel</span>')
   })
 })

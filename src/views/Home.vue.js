@@ -19,15 +19,15 @@ const loading = ref(true);
 const contentVisible = ref(false);
 function downloadCV() {
     const link = document.createElement('a');
-    link.href = "/images/cv/randy_senior.pdf";
-    link.download = "randy_senior.pdf";
+    link.href = "/images/cv/randy_senior_new.pdf";
+    link.download = "randy_senior_new.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     trackCVDownload();
 }
 function viewCV() {
-    window.open("/images/cv/randy_senior.pdf", "_blank");
+    window.open("/images/cv/randy_senior_new.pdf", "_blank");
 }
 const goToContact = () => {
     router.push('/contact');
@@ -139,6 +139,18 @@ else {
     __VLS_asFunctionalDirective(__VLS_directives.vHtml)(null, { ...__VLS_directiveBindingRestFields, value: (__VLS_ctx.$t('home.p2')) }, null, null);
     // @ts-ignore
     [$t, contentVisible, contentVisible,];
+    __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+        ...{ class: "mt-4 p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-lg border-l-4 border-purple-500 transition-all duration-700 delay-250" },
+        ...{ class: ({ 'opacity-100 translate-y-0': __VLS_ctx.contentVisible, 'opacity-0 translate-y-3': !__VLS_ctx.contentVisible }) },
+    });
+    // @ts-ignore
+    [contentVisible, contentVisible,];
+    __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
+        ...{ class: "text-lg text-gray-700 dark:text-gray-300" },
+    });
+    __VLS_asFunctionalDirective(__VLS_directives.vHtml)(null, { ...__VLS_directiveBindingRestFields, value: (__VLS_ctx.$t('home.ai_section')) }, null, null);
+    // @ts-ignore
+    [$t,];
     __VLS_asFunctionalElement(__VLS_elements.p, __VLS_elements.p)({
         ...{ class: "text-lg text-gray-700 mt-4 transition-all duration-700 delay-300" },
         ...{ class: ({ 'opacity-100 translate-y-0': __VLS_ctx.contentVisible, 'opacity-0 translate-y-3': !__VLS_ctx.contentVisible }) },
@@ -254,6 +266,26 @@ else {
 /** @type {__VLS_StyleScopedClasses['translate-y-0']} */ ;
 /** @type {__VLS_StyleScopedClasses['opacity-0']} */ ;
 /** @type {__VLS_StyleScopedClasses['translate-y-3']} */ ;
+/** @type {__VLS_StyleScopedClasses['mt-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-gradient-to-r']} */ ;
+/** @type {__VLS_StyleScopedClasses['from-purple-50']} */ ;
+/** @type {__VLS_StyleScopedClasses['to-blue-50']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:from-purple-900/20']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:to-blue-900/20']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-lg']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-l-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-purple-500']} */ ;
+/** @type {__VLS_StyleScopedClasses['transition-all']} */ ;
+/** @type {__VLS_StyleScopedClasses['duration-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['delay-250']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['translate-y-0']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-0']} */ ;
+/** @type {__VLS_StyleScopedClasses['translate-y-3']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-lg']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-gray-300']} */ ;
 /** @type {__VLS_StyleScopedClasses['text-lg']} */ ;
 /** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
 /** @type {__VLS_StyleScopedClasses['mt-4']} */ ;
