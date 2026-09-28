@@ -165,12 +165,12 @@ const terminalLines = [
     { text: 'Tech stack!', class: 'text-yellow-400', prompt: false },
     { text: 'Initializing system...', class: 'text-blue-400', prompt: true },
     { text: 'Loading technologies...', class: 'text-blue-400', prompt: true },
-    { text: '✓ Vue.js/React.js - Composition API', class: 'text-green-400', prompt: true },
+    { text: '✓ Vue.js/React.js - powerfull frontend', class: 'text-green-400', prompt: true },
     { text: '✓ TailwindCSS - Styling', class: 'text-green-400', prompt: true },
     { text: '✓ Node.js/Express.js - Backend', class: 'text-green-400', prompt: true },
     { text: '✓ Docker - Containerization', class: 'text-green-400', prompt: true },
     { text: '✓ TypeScript - Type Safety', class: 'text-green-400', prompt: true },
-    { text: '✓ PHP/Laravel/Symfony - PHP Framework', class: 'text-green-400', prompt: true },
+    { text: '✓ PHP/Laravel/Symfony - LAMP', class: 'text-green-400', prompt: true },
      { text: '✓ GitOps - Version Control - CI/CD for automated deployments', class: 'text-green-400', prompt: true },
     { text: 'System ready! Type "help" for commands', class: 'text-purple-400', prompt: true }
 ]
