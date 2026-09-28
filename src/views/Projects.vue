@@ -225,13 +225,13 @@ const projects = ref([
             outcomes: locale.value === 'fr'
                 ? ['Interface clinique plus claire', 'Centralisation des dossiers', 'Accélération des prises de décision']
                 : ['Clearer clinical interface', 'Centralized record management', 'Faster decision-making'],
-            stack: ['Vue.js', 'Symfony', 'Medical imaging', 'Real-time workflow', 'Redis']
+            stack: ['React.js', 'Symfony', 'Medical imaging', 'Real-time workflow', 'Redis']
         },
         quiz: [
             {
                 question: locale.value === 'fr' ? "Quel framework JavaScript est utilisé pour le frontend ?" : "Which JavaScript framework is used for the frontend?",
                 options: ["Vue 2", "Vue.js", "React", "Angular"],
-                answer: 1
+                answer: 2
             },
             {
                 question: locale.value === 'fr' ? "Quel est le domaine médical ciblé ?" : "What is the targeted medical field?",
