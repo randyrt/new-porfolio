@@ -63,9 +63,9 @@
                         <TechLogo logo="/images/tecnos/html5.png" name="HTML5" />
                         <TechLogo logo="/images/tecnos/css.png" name="CSS3" />
                         <TechLogo logo="/images/tecnos/js.jpeg" name="JAVASCRIPT" />
-                         <TechLogo logo="/images/tecnos/jquery.png" name="JQUERY" />
+                        <TechLogo logo="/images/tecnos/jquery.png" name="JQUERY" />
                         <TechLogo logo="/images/tecnos/tailwinds.png" name="TAILWINDCSS" />
-                         <TechLogo logo="/images/tecnos/bootstrap.png" name="BOOTSTRAP" />
+                        <TechLogo logo="/images/tecnos/bootstrap.png" name="BOOTSTRAP" />
                     </DivSlot>
                 </div>
 
@@ -85,6 +85,7 @@
                 <div class="card tech-category">
                     <logoSection :title="$t('technology.frameworks')" />
                     <DivSlot>
+                        <TechLogo logo="/images/tecnos/react.webp" name="REACT.JS" />
                         <TechLogo logo="/images/tecnos/vuejs.jpg" name="VUE.JS" />
                         <TechLogo logo="/images/tecnos/nuxt.png" name="NUXT.JS" />
                         <TechLogo logo="/images/tecnos/ionic.png" name="IONIC" />
