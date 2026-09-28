@@ -147,7 +147,6 @@
     "personality_structure_desc": "Je privilégie des bases solides, du code lisible et une logique de projet saine pour éviter les surprises plus tard.",
     "personality_team_title": "Collaboration",
     "personality_team_desc": "J’apprécie les échanges, la transmission et le travail d’équipe : une bonne idée devient meilleure quand elle est discutée."
-
   },
   "workingmind": {
     "loading_text": "Ma méthode...",
@@ -375,13 +374,13 @@
     "docker_s2_desc": "Je peux orchestrer plusieurs conteneurs avec Docker Compose. Cela simplifie la configuration de projets complexes.",
     "docker_s3_name": "Images et Volumes",
     "docker_s3_desc": "Je peux créer des images optimisées et gérer les volumes de données. Persistance et réutilisabilité des environnements.",
-    "ionic_title": "Compétences en IONIC",
-    "ionic_s1_name": "Applications hybrides",
-    "ionic_s1_desc": "Je peux créer des applications mobiles qui fonctionnent sur Android et iOS. Cela permet de toucher un maximum d’utilisateurs avec un seul codebase.",
-    "ionic_s2_name": "Intégration avec Vue",
-    "ionic_s2_desc": "Je peux intégrer IONIC avec Vue.js pour des interfaces dynamiques. Offre une expérience utilisateur réactive et dynamique.",
-    "ionic_s3_name": "Plugins natifs",
-    "ionic_s3_desc": "Utiliser des plugins natifs pour accéder aux fonctionnalités du téléphone. Cela permet d’ajouter caméra, GPS, notifications et etc.",
+    "ionic_title": "Compétences ReactJs",
+    "ionic_s1_name": "Applications web modernes",
+    "ionic_s1_desc": "Je peux créer des applications web modernes et responsives avec React. Cela permet de développer des interfaces rapides et évolutives.",
+    "ionic_s2_name": "Composants réutilisables",
+    "ionic_s2_desc": "Je peux développer des composants React réutilisables pour créer des interfaces dynamiques et faciles à maintenir. Cela améliore l’efficacité du développement et la cohérence du code.",
+    "ionic_s3_name": "Intégration d’API",
+    "ionic_s3_desc": "Je peux intégrer des API REST dans des applications React pour gérer les données et créer des expériences utilisateur dynamiques.",
     "python_title": "Compétences en Python",
     "python_s1_name": "Machine learning avec PyTorch",
     "python_s1_desc": "Je développe actuellement mes compétences en PyTorch pour concevoir, entraîner et optimiser des réseaux de neurones.",
