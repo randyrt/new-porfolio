@@ -226,7 +226,7 @@
   },
   "discord": {
     "join_button": "Me rejoindre sur Discord",
-    "join_tooltip": "Rejoignez-moi dans le salon Discord",
+    "join_tooltip": "Me rejoindre dans le salon Discord",
     "join_success": "Bienvenue ! Discord et WhatsApp vont s'ouvrir 🎉",
     "join_error": "Erreur lors de l'ouverture. Veuillez réessayer."
   },
