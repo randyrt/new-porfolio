@@ -40,6 +40,7 @@ import {
   faWhatsapp,
   faCss3Alt,
   faHtml5,
+  faDiscord,
 } from '@fortawesome/free-brands-svg-icons'
 
 import {
@@ -123,7 +124,7 @@ library.add(
   faGithub, faLinkedin, faVuejs, faJs, faNodeJs, faNpm, faGitAlt,
   faLaravel, faMicrosoft, faDocker, faPhp, faReact, faAngular,
   faSymfony, faPython, faNode, faGitlab, faFigma, faBootstrap,
-  faWhatsapp,
+  faWhatsapp, faDiscord,
   faCommentDots, faMicrochip, faNetworkWired, faCircleNodes,
   faLayerGroup, faDownload, faArrowRight, faThumbsDown,
   faThumbsUp, faBookOpen, faPalette, faEyeSlash, faLock,

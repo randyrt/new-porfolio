@@ -224,6 +224,12 @@
       "click_link": "Ou cliquez ici pour ouvrir directement WhatsApp web"
     }
   },
+  "discord": {
+    "join_button": "Me rejoindre sur Discord",
+    "join_tooltip": "Rejoignez-moi dans le salon Discord",
+    "join_success": "Bienvenue ! Discord et WhatsApp vont s'ouvrir 🎉",
+    "join_error": "Erreur lors de l'ouverture. Veuillez réessayer."
+  },
   "projects": {
     "loading": "Mes récents projets...",
     "quote": "« Quelques projets dont je suis particulièrement fier »",

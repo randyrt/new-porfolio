@@ -11,6 +11,7 @@ declare module 'vue' {
     AnalyticsDashboard: typeof import('./src/components/Analitics_Dashboard/AnalyticsDashboard.vue')['default']
     AnimatedTitle: typeof import('./src/components/Animated_title/AnimatedTitle.vue')['default']
     CurrentActivity: typeof import('./src/components/My_current_activity/CurrentActivity.vue')['default']
+    DiscordButton: typeof import('./src/components/DiscordButton.vue')['default']
     DivSlot: typeof import('./src/components/Helper_components/DivSlot.vue')['default']
     GamificationToast: typeof import('./src/components/Gamification/GamificationToast.vue')['default']
     GamificationWidget: typeof import('./src/components/Gamification/GamificationWidget.vue')['default']

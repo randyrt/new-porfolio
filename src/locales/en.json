@@ -223,6 +223,12 @@
       "click_link": "Or click here to open WhatsApp web directly"
     }
   },
+  "discord": {
+    "join_button": "Join me on Discord",
+    "join_tooltip": "Join me in the Discord channel",
+    "join_success": "Welcome! Discord and WhatsApp will open 🎉",
+    "join_error": "Error opening. Please try again."
+  },
   "projects": {
     "loading": "My recent projects...",
     "quote": "\"Some projects I am particularly proud of\"",

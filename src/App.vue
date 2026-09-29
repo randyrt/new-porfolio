@@ -53,6 +53,9 @@
       </div>
     </div>
 
+    <!-- Discord Button -->
+    <DiscordButton />
+
   </div>
 </template>
 
@@ -63,6 +66,7 @@ import { useI18n } from 'vue-i18n';
 import Navbar from './components/NavBar.vue';
 import GuidedTour from './components/Guide_visit/GuidedTour.vue';
 import AnalyticsDashboard from './components/Analitics_Dashboard/AnalyticsDashboard.vue';
+import DiscordButton from './components/DiscordButton.vue';
 import { initColor } from './services/theme.js';
 import { analytics } from './composables/analytics';
 import stack from './components/technic_stack/stack.vue';
