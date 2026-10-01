@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # Configuration de base
+      - N8N_BASIC_AUTH_ACTIVE=false
+      - WEBHOOK_URL=http://localhost:5678/
+      
+      # Configuration CORS (Important pour le développement)
+      - N8N_CORS_ENABLED=true
+      - N8N_CORS_ORIGIN=http://localhost:3001
+      
+      # Timezone
+      - GENERIC_TIMEZONE=Europe/Paris
+      - TZ=Europe/Paris
+      
+      # Exécution des workflows
+      - EXECUTIONS_PROCESS=main
+      - EXECUTIONS_MODE=regular
+      
+      # Stockage (optionnel - pour persister les données)
+      # - N8N_USER_FOLDER=/data
+      
+    volumes:
+      # Persister les workflows et credentials
+      - n8n_data:/home/node/.n8n
+      
+    # Réseau (optionnel)
+    networks:
+      - n8n-network
+
+volumes:
+  n8n_data:
+    driver: local
+
+networks:
+  n8n-network:
+    driver: bridge
+
+# Comment utiliser :
+# 1. Copiez ce fichier : cp docker-compose.n8n.example.yml docker-compose.n8n.yml
+# 2. Modifiez les variables si nécessaire
+# 3. Lancez n8n : docker-compose -f docker-compose.n8n.yml up -d
+# 4. Accédez à n8n : http://localhost:5678
+# 5. Créez un workflow avec un webhook
+# 6. Testez depuis /n8n-test dans votre portfolio

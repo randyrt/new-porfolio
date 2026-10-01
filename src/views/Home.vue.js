@@ -19,15 +19,15 @@ const loading = ref(true);
 const contentVisible = ref(false);
 function downloadCV() {
     const link = document.createElement('a');
-    link.href = "/images/cv/randy_senior_new.pdf";
-    link.download = "randy_senior_new.pdf";
+    link.href = "/images/cv/new_cv_randy.pdf";
+    link.download = "new_cv_randy.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
     trackCVDownload();
 }
 function viewCV() {
-    window.open("/images/cv/randy_senior_new.pdf", "_blank");
+    window.open("/images/cv/new_cv_randy.pdf", "_blank");
 }
 const goToContact = () => {
     router.push('/contact');

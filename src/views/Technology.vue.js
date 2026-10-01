@@ -20,12 +20,13 @@ const terminalLines = [
     { text: 'Tech stack!', class: 'text-yellow-400', prompt: false },
     { text: 'Initializing system...', class: 'text-blue-400', prompt: true },
     { text: 'Loading technologies...', class: 'text-blue-400', prompt: true },
-    { text: '✓ Vue.js 3 - Composition API', class: 'text-green-400', prompt: true },
+    { text: '✓ Vue.js/React.js - powerfull frontend', class: 'text-green-400', prompt: true },
     { text: '✓ TailwindCSS - Styling', class: 'text-green-400', prompt: true },
-    { text: '✓ Node.js - Backend', class: 'text-green-400', prompt: true },
+    { text: '✓ Node.js/Express.js - Backend', class: 'text-green-400', prompt: true },
     { text: '✓ Docker - Containerization', class: 'text-green-400', prompt: true },
     { text: '✓ TypeScript - Type Safety', class: 'text-green-400', prompt: true },
-    { text: '✓ Laravel/Symfony - PHP Framework', class: 'text-green-400', prompt: true },
+    { text: '✓ PHP/Laravel/Symfony - LAMP', class: 'text-green-400', prompt: true },
+    { text: '✓ GitOps - Version Control - CI/CD for automated deployments', class: 'text-green-400', prompt: true },
     { text: 'System ready! Type "help" for commands', class: 'text-purple-400', prompt: true }
 ];
 const visibleLines = ref([]);
@@ -556,12 +557,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_152 = __VLS_asFunctionalComponent(__VLS_151, new __VLS_151({
-            logo: "/images/tecnos/vuejs.jpg",
-            name: "VUE.JS",
+            logo: "/images/tecnos/react.webp",
+            name: "REACT.JS",
         }));
         const __VLS_153 = __VLS_152({
-            logo: "/images/tecnos/vuejs.jpg",
-            name: "VUE.JS",
+            logo: "/images/tecnos/react.webp",
+            name: "REACT.JS",
         }, ...__VLS_functionalComponentArgsRest(__VLS_152));
         const __VLS_156 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -569,12 +570,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_157 = __VLS_asFunctionalComponent(__VLS_156, new __VLS_156({
-            logo: "/images/tecnos/nuxt.png",
-            name: "NUXT.JS",
+            logo: "/images/tecnos/vuejs.jpg",
+            name: "VUE.JS",
         }));
         const __VLS_158 = __VLS_157({
-            logo: "/images/tecnos/nuxt.png",
-            name: "NUXT.JS",
+            logo: "/images/tecnos/vuejs.jpg",
+            name: "VUE.JS",
         }, ...__VLS_functionalComponentArgsRest(__VLS_157));
         const __VLS_161 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -582,12 +583,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_162 = __VLS_asFunctionalComponent(__VLS_161, new __VLS_161({
-            logo: "/images/tecnos/ionic.png",
-            name: "IONIC",
+            logo: "/images/tecnos/nuxt.png",
+            name: "NUXT.JS",
         }));
         const __VLS_163 = __VLS_162({
-            logo: "/images/tecnos/ionic.png",
-            name: "IONIC",
+            logo: "/images/tecnos/nuxt.png",
+            name: "NUXT.JS",
         }, ...__VLS_functionalComponentArgsRest(__VLS_162));
         const __VLS_166 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -595,12 +596,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_167 = __VLS_asFunctionalComponent(__VLS_166, new __VLS_166({
-            logo: "/images/tecnos/laravel.png",
-            name: "LARAVEL",
+            logo: "/images/tecnos/ionic.png",
+            name: "IONIC",
         }));
         const __VLS_168 = __VLS_167({
-            logo: "/images/tecnos/laravel.png",
-            name: "LARAVEL",
+            logo: "/images/tecnos/ionic.png",
+            name: "IONIC",
         }, ...__VLS_functionalComponentArgsRest(__VLS_167));
         const __VLS_171 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -608,12 +609,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_172 = __VLS_asFunctionalComponent(__VLS_171, new __VLS_171({
-            logo: "/images/tecnos/synfony.png",
-            name: "SYMFONY",
+            logo: "/images/tecnos/laravel.png",
+            name: "LARAVEL",
         }));
         const __VLS_173 = __VLS_172({
-            logo: "/images/tecnos/synfony.png",
-            name: "SYMFONY",
+            logo: "/images/tecnos/laravel.png",
+            name: "LARAVEL",
         }, ...__VLS_functionalComponentArgsRest(__VLS_172));
         const __VLS_176 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -621,63 +622,63 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_177 = __VLS_asFunctionalComponent(__VLS_176, new __VLS_176({
-            logo: "/images/tecnos/express.png",
-            name: "EXPRESS.JS",
+            logo: "/images/tecnos/synfony.png",
+            name: "SYMFONY",
         }));
         const __VLS_178 = __VLS_177({
-            logo: "/images/tecnos/express.png",
-            name: "EXPRESS.JS",
+            logo: "/images/tecnos/synfony.png",
+            name: "SYMFONY",
         }, ...__VLS_functionalComponentArgsRest(__VLS_177));
-        var __VLS_149;
-        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-            ...{ class: "card tech-category" },
-        });
-        const __VLS_181 = {}.logoSection;
-        /** @type {[typeof __VLS_components.LogoSection, typeof __VLS_components.logoSection, ]} */ ;
-        // @ts-ignore
-        LogoSection;
-        // @ts-ignore
-        const __VLS_182 = __VLS_asFunctionalComponent(__VLS_181, new __VLS_181({
-            title: (__VLS_ctx.$t('technology.dev_env')),
-        }));
-        const __VLS_183 = __VLS_182({
-            title: (__VLS_ctx.$t('technology.dev_env')),
-        }, ...__VLS_functionalComponentArgsRest(__VLS_182));
-        // @ts-ignore
-        [$t,];
-        const __VLS_186 = {}.DivSlot;
-        /** @type {[typeof __VLS_components.DivSlot, typeof __VLS_components.DivSlot, ]} */ ;
-        // @ts-ignore
-        DivSlot;
-        // @ts-ignore
-        const __VLS_187 = __VLS_asFunctionalComponent(__VLS_186, new __VLS_186({}));
-        const __VLS_188 = __VLS_187({}, ...__VLS_functionalComponentArgsRest(__VLS_187));
-        const { default: __VLS_190 } = __VLS_189.slots;
-        const __VLS_191 = {}.TechLogo;
+        const __VLS_181 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
         // @ts-ignore
         TechLogo;
         // @ts-ignore
-        const __VLS_192 = __VLS_asFunctionalComponent(__VLS_191, new __VLS_191({
-            logo: "/images/tecnos/lunix.png",
-            name: "LINUX",
+        const __VLS_182 = __VLS_asFunctionalComponent(__VLS_181, new __VLS_181({
+            logo: "/images/tecnos/express.png",
+            name: "EXPRESS.JS",
         }));
-        const __VLS_193 = __VLS_192({
-            logo: "/images/tecnos/lunix.png",
-            name: "LINUX",
-        }, ...__VLS_functionalComponentArgsRest(__VLS_192));
+        const __VLS_183 = __VLS_182({
+            logo: "/images/tecnos/express.png",
+            name: "EXPRESS.JS",
+        }, ...__VLS_functionalComponentArgsRest(__VLS_182));
+        var __VLS_149;
+        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+            ...{ class: "card tech-category" },
+        });
+        const __VLS_186 = {}.logoSection;
+        /** @type {[typeof __VLS_components.LogoSection, typeof __VLS_components.logoSection, ]} */ ;
+        // @ts-ignore
+        LogoSection;
+        // @ts-ignore
+        const __VLS_187 = __VLS_asFunctionalComponent(__VLS_186, new __VLS_186({
+            title: (__VLS_ctx.$t('technology.dev_env')),
+        }));
+        const __VLS_188 = __VLS_187({
+            title: (__VLS_ctx.$t('technology.dev_env')),
+        }, ...__VLS_functionalComponentArgsRest(__VLS_187));
+        // @ts-ignore
+        [$t,];
+        const __VLS_191 = {}.DivSlot;
+        /** @type {[typeof __VLS_components.DivSlot, typeof __VLS_components.DivSlot, ]} */ ;
+        // @ts-ignore
+        DivSlot;
+        // @ts-ignore
+        const __VLS_192 = __VLS_asFunctionalComponent(__VLS_191, new __VLS_191({}));
+        const __VLS_193 = __VLS_192({}, ...__VLS_functionalComponentArgsRest(__VLS_192));
+        const { default: __VLS_195 } = __VLS_194.slots;
         const __VLS_196 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
         // @ts-ignore
         TechLogo;
         // @ts-ignore
         const __VLS_197 = __VLS_asFunctionalComponent(__VLS_196, new __VLS_196({
-            logo: "/images/tecnos/vscode.png",
-            name: "VS CODE",
+            logo: "/images/tecnos/lunix.png",
+            name: "LINUX",
         }));
         const __VLS_198 = __VLS_197({
-            logo: "/images/tecnos/vscode.png",
-            name: "VS CODE",
+            logo: "/images/tecnos/lunix.png",
+            name: "LINUX",
         }, ...__VLS_functionalComponentArgsRest(__VLS_197));
         const __VLS_201 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -685,12 +686,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_202 = __VLS_asFunctionalComponent(__VLS_201, new __VLS_201({
-            logo: "/images/tecnos/git.png",
-            name: "GIT",
+            logo: "/images/tecnos/vscode.png",
+            name: "VS CODE",
         }));
         const __VLS_203 = __VLS_202({
-            logo: "/images/tecnos/git.png",
-            name: "GIT",
+            logo: "/images/tecnos/vscode.png",
+            name: "VS CODE",
         }, ...__VLS_functionalComponentArgsRest(__VLS_202));
         const __VLS_206 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -698,12 +699,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_207 = __VLS_asFunctionalComponent(__VLS_206, new __VLS_206({
-            logo: "/images/tecnos/docker.png",
-            name: "DOCKER",
+            logo: "/images/tecnos/git.png",
+            name: "GIT",
         }));
         const __VLS_208 = __VLS_207({
-            logo: "/images/tecnos/docker.png",
-            name: "DOCKER",
+            logo: "/images/tecnos/git.png",
+            name: "GIT",
         }, ...__VLS_functionalComponentArgsRest(__VLS_207));
         const __VLS_211 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -711,12 +712,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_212 = __VLS_asFunctionalComponent(__VLS_211, new __VLS_211({
-            logo: "/images/tecnos/pma.png",
-            name: "PHPMYADMIN",
+            logo: "/images/tecnos/docker.png",
+            name: "DOCKER",
         }));
         const __VLS_213 = __VLS_212({
-            logo: "/images/tecnos/pma.png",
-            name: "PHPMYADMIN",
+            logo: "/images/tecnos/docker.png",
+            name: "DOCKER",
         }, ...__VLS_functionalComponentArgsRest(__VLS_212));
         const __VLS_216 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -724,12 +725,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_217 = __VLS_asFunctionalComponent(__VLS_216, new __VLS_216({
-            logo: "/images/tecnos/dbeaver.png",
-            name: "DBEAVER",
+            logo: "/images/tecnos/pma.png",
+            name: "PHPMYADMIN",
         }));
         const __VLS_218 = __VLS_217({
-            logo: "/images/tecnos/dbeaver.png",
-            name: "DBEAVER",
+            logo: "/images/tecnos/pma.png",
+            name: "PHPMYADMIN",
         }, ...__VLS_functionalComponentArgsRest(__VLS_217));
         const __VLS_221 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -737,12 +738,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_222 = __VLS_asFunctionalComponent(__VLS_221, new __VLS_221({
-            logo: "/images/tecnos/typescript.png",
-            name: "TYPESCRIPT",
+            logo: "/images/tecnos/dbeaver.png",
+            name: "DBEAVER",
         }));
         const __VLS_223 = __VLS_222({
-            logo: "/images/tecnos/typescript.png",
-            name: "TYPESCRIPT",
+            logo: "/images/tecnos/dbeaver.png",
+            name: "DBEAVER",
         }, ...__VLS_functionalComponentArgsRest(__VLS_222));
         const __VLS_226 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -750,12 +751,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_227 = __VLS_asFunctionalComponent(__VLS_226, new __VLS_226({
-            logo: "/images/tecnos/postman.png",
-            name: "POSTMAN",
+            logo: "/images/tecnos/typescript.png",
+            name: "TYPESCRIPT",
         }));
         const __VLS_228 = __VLS_227({
-            logo: "/images/tecnos/postman.png",
-            name: "POSTMAN",
+            logo: "/images/tecnos/typescript.png",
+            name: "TYPESCRIPT",
         }, ...__VLS_functionalComponentArgsRest(__VLS_227));
         const __VLS_231 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -763,63 +764,63 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_232 = __VLS_asFunctionalComponent(__VLS_231, new __VLS_231({
-            logo: "/images/tecnos/chrome.png",
-            name: "CHROME DEVTOOLS",
+            logo: "/images/tecnos/postman.png",
+            name: "POSTMAN",
         }));
         const __VLS_233 = __VLS_232({
-            logo: "/images/tecnos/chrome.png",
-            name: "CHROME DEVTOOLS",
+            logo: "/images/tecnos/postman.png",
+            name: "POSTMAN",
         }, ...__VLS_functionalComponentArgsRest(__VLS_232));
-        var __VLS_189;
-        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-            ...{ class: "card tech-category" },
-        });
-        const __VLS_236 = {}.logoSection;
-        /** @type {[typeof __VLS_components.LogoSection, typeof __VLS_components.logoSection, ]} */ ;
-        // @ts-ignore
-        LogoSection;
-        // @ts-ignore
-        const __VLS_237 = __VLS_asFunctionalComponent(__VLS_236, new __VLS_236({
-            title: (__VLS_ctx.$t('technology.gitops')),
-        }));
-        const __VLS_238 = __VLS_237({
-            title: (__VLS_ctx.$t('technology.gitops')),
-        }, ...__VLS_functionalComponentArgsRest(__VLS_237));
-        // @ts-ignore
-        [$t,];
-        const __VLS_241 = {}.DivSlot;
-        /** @type {[typeof __VLS_components.DivSlot, typeof __VLS_components.DivSlot, ]} */ ;
-        // @ts-ignore
-        DivSlot;
-        // @ts-ignore
-        const __VLS_242 = __VLS_asFunctionalComponent(__VLS_241, new __VLS_241({}));
-        const __VLS_243 = __VLS_242({}, ...__VLS_functionalComponentArgsRest(__VLS_242));
-        const { default: __VLS_245 } = __VLS_244.slots;
-        const __VLS_246 = {}.TechLogo;
+        const __VLS_236 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
         // @ts-ignore
         TechLogo;
         // @ts-ignore
-        const __VLS_247 = __VLS_asFunctionalComponent(__VLS_246, new __VLS_246({
-            logo: "/images/tecnos/ci_cd.png",
-            name: "CI/CD",
+        const __VLS_237 = __VLS_asFunctionalComponent(__VLS_236, new __VLS_236({
+            logo: "/images/tecnos/chrome.png",
+            name: "CHROME DEVTOOLS",
         }));
-        const __VLS_248 = __VLS_247({
-            logo: "/images/tecnos/ci_cd.png",
-            name: "CI/CD",
-        }, ...__VLS_functionalComponentArgsRest(__VLS_247));
+        const __VLS_238 = __VLS_237({
+            logo: "/images/tecnos/chrome.png",
+            name: "CHROME DEVTOOLS",
+        }, ...__VLS_functionalComponentArgsRest(__VLS_237));
+        var __VLS_194;
+        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+            ...{ class: "card tech-category" },
+        });
+        const __VLS_241 = {}.logoSection;
+        /** @type {[typeof __VLS_components.LogoSection, typeof __VLS_components.logoSection, ]} */ ;
+        // @ts-ignore
+        LogoSection;
+        // @ts-ignore
+        const __VLS_242 = __VLS_asFunctionalComponent(__VLS_241, new __VLS_241({
+            title: (__VLS_ctx.$t('technology.gitops')),
+        }));
+        const __VLS_243 = __VLS_242({
+            title: (__VLS_ctx.$t('technology.gitops')),
+        }, ...__VLS_functionalComponentArgsRest(__VLS_242));
+        // @ts-ignore
+        [$t,];
+        const __VLS_246 = {}.DivSlot;
+        /** @type {[typeof __VLS_components.DivSlot, typeof __VLS_components.DivSlot, ]} */ ;
+        // @ts-ignore
+        DivSlot;
+        // @ts-ignore
+        const __VLS_247 = __VLS_asFunctionalComponent(__VLS_246, new __VLS_246({}));
+        const __VLS_248 = __VLS_247({}, ...__VLS_functionalComponentArgsRest(__VLS_247));
+        const { default: __VLS_250 } = __VLS_249.slots;
         const __VLS_251 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
         // @ts-ignore
         TechLogo;
         // @ts-ignore
         const __VLS_252 = __VLS_asFunctionalComponent(__VLS_251, new __VLS_251({
-            logo: "/images/tecnos/ftp.png",
-            name: "FTP",
+            logo: "/images/tecnos/ci_cd.png",
+            name: "CI/CD",
         }));
         const __VLS_253 = __VLS_252({
-            logo: "/images/tecnos/ftp.png",
-            name: "FTP",
+            logo: "/images/tecnos/ci_cd.png",
+            name: "CI/CD",
         }, ...__VLS_functionalComponentArgsRest(__VLS_252));
         const __VLS_256 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -827,12 +828,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_257 = __VLS_asFunctionalComponent(__VLS_256, new __VLS_256({
-            logo: "/images/tecnos/tls.webp",
-            name: "TLS",
+            logo: "/images/tecnos/ftp.png",
+            name: "FTP",
         }));
         const __VLS_258 = __VLS_257({
-            logo: "/images/tecnos/tls.webp",
-            name: "TLS",
+            logo: "/images/tecnos/ftp.png",
+            name: "FTP",
         }, ...__VLS_functionalComponentArgsRest(__VLS_257));
         const __VLS_261 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -840,12 +841,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_262 = __VLS_asFunctionalComponent(__VLS_261, new __VLS_261({
-            logo: "/images/tecnos/ssl.png",
-            name: "SSL",
+            logo: "/images/tecnos/tls.webp",
+            name: "TLS",
         }));
         const __VLS_263 = __VLS_262({
-            logo: "/images/tecnos/ssl.png",
-            name: "SSL",
+            logo: "/images/tecnos/tls.webp",
+            name: "TLS",
         }, ...__VLS_functionalComponentArgsRest(__VLS_262));
         const __VLS_266 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -853,12 +854,12 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_267 = __VLS_asFunctionalComponent(__VLS_266, new __VLS_266({
-            logo: "/images/tecnos/ssh.jpg",
-            name: "SSH",
+            logo: "/images/tecnos/ssl.png",
+            name: "SSL",
         }));
         const __VLS_268 = __VLS_267({
-            logo: "/images/tecnos/ssh.jpg",
-            name: "SSH",
+            logo: "/images/tecnos/ssl.png",
+            name: "SSL",
         }, ...__VLS_functionalComponentArgsRest(__VLS_267));
         const __VLS_271 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
@@ -866,52 +867,65 @@ else {
         TechLogo;
         // @ts-ignore
         const __VLS_272 = __VLS_asFunctionalComponent(__VLS_271, new __VLS_271({
-            logo: "/images/tecnos/fl.png",
-            name: "FILEZILLA",
+            logo: "/images/tecnos/ssh.jpg",
+            name: "SSH",
         }));
         const __VLS_273 = __VLS_272({
-            logo: "/images/tecnos/fl.png",
-            name: "FILEZILLA",
+            logo: "/images/tecnos/ssh.jpg",
+            name: "SSH",
         }, ...__VLS_functionalComponentArgsRest(__VLS_272));
-        var __VLS_244;
-        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
-            ...{ class: "card tech-category" },
-        });
-        const __VLS_276 = {}.logoSection;
-        /** @type {[typeof __VLS_components.LogoSection, typeof __VLS_components.logoSection, ]} */ ;
-        // @ts-ignore
-        LogoSection;
-        // @ts-ignore
-        const __VLS_277 = __VLS_asFunctionalComponent(__VLS_276, new __VLS_276({
-            title: (__VLS_ctx.$t('technology.scripting')),
-        }));
-        const __VLS_278 = __VLS_277({
-            title: (__VLS_ctx.$t('technology.scripting')),
-        }, ...__VLS_functionalComponentArgsRest(__VLS_277));
-        // @ts-ignore
-        [$t,];
-        const __VLS_281 = {}.DivSlot;
-        /** @type {[typeof __VLS_components.DivSlot, typeof __VLS_components.DivSlot, ]} */ ;
-        // @ts-ignore
-        DivSlot;
-        // @ts-ignore
-        const __VLS_282 = __VLS_asFunctionalComponent(__VLS_281, new __VLS_281({}));
-        const __VLS_283 = __VLS_282({}, ...__VLS_functionalComponentArgsRest(__VLS_282));
-        const { default: __VLS_285 } = __VLS_284.slots;
-        const __VLS_286 = {}.TechLogo;
+        const __VLS_276 = {}.TechLogo;
         /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
         // @ts-ignore
         TechLogo;
         // @ts-ignore
-        const __VLS_287 = __VLS_asFunctionalComponent(__VLS_286, new __VLS_286({
+        const __VLS_277 = __VLS_asFunctionalComponent(__VLS_276, new __VLS_276({
+            logo: "/images/tecnos/fl.png",
+            name: "FILEZILLA",
+        }));
+        const __VLS_278 = __VLS_277({
+            logo: "/images/tecnos/fl.png",
+            name: "FILEZILLA",
+        }, ...__VLS_functionalComponentArgsRest(__VLS_277));
+        var __VLS_249;
+        __VLS_asFunctionalElement(__VLS_elements.div, __VLS_elements.div)({
+            ...{ class: "card tech-category" },
+        });
+        const __VLS_281 = {}.logoSection;
+        /** @type {[typeof __VLS_components.LogoSection, typeof __VLS_components.logoSection, ]} */ ;
+        // @ts-ignore
+        LogoSection;
+        // @ts-ignore
+        const __VLS_282 = __VLS_asFunctionalComponent(__VLS_281, new __VLS_281({
+            title: (__VLS_ctx.$t('technology.scripting')),
+        }));
+        const __VLS_283 = __VLS_282({
+            title: (__VLS_ctx.$t('technology.scripting')),
+        }, ...__VLS_functionalComponentArgsRest(__VLS_282));
+        // @ts-ignore
+        [$t,];
+        const __VLS_286 = {}.DivSlot;
+        /** @type {[typeof __VLS_components.DivSlot, typeof __VLS_components.DivSlot, ]} */ ;
+        // @ts-ignore
+        DivSlot;
+        // @ts-ignore
+        const __VLS_287 = __VLS_asFunctionalComponent(__VLS_286, new __VLS_286({}));
+        const __VLS_288 = __VLS_287({}, ...__VLS_functionalComponentArgsRest(__VLS_287));
+        const { default: __VLS_290 } = __VLS_289.slots;
+        const __VLS_291 = {}.TechLogo;
+        /** @type {[typeof __VLS_components.TechLogo, ]} */ ;
+        // @ts-ignore
+        TechLogo;
+        // @ts-ignore
+        const __VLS_292 = __VLS_asFunctionalComponent(__VLS_291, new __VLS_291({
             logo: "/images/tecnos/python.png",
             name: "PYTHON",
         }));
-        const __VLS_288 = __VLS_287({
+        const __VLS_293 = __VLS_292({
             logo: "/images/tecnos/python.png",
             name: "PYTHON",
-        }, ...__VLS_functionalComponentArgsRest(__VLS_287));
-        var __VLS_284;
+        }, ...__VLS_functionalComponentArgsRest(__VLS_292));
+        var __VLS_289;
     }
     var __VLS_14;
 }

@@ -8,6 +8,13 @@ export default defineConfig({
   server: {
     port: 3001,
     strictPort: true,
+    proxy: {
+      '/api/n8n': {
+        target: 'http://localhost:5678',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/n8n/, ''),
+      },
+    },
   },
   plugins: [
     vue(),
