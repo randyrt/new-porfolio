@@ -1,14 +1,38 @@
+version: '3.8'
+
 services:
   n8n:
     image: n8nio/n8n:latest
     container_name: n8n
+    restart: unless-stopped
     ports:
       - "5678:5678"
     environment:
-      - N8N_CORS_ALLOW_ORIGIN=http://localhost:3001
+      - N8N_BASIC_AUTH_ACTIVE=false
+      - WEBHOOK_URL=http://localhost:5678/
+      
+      - N8N_CORS_ENABLED=true
+      - N8N_CORS_ORIGIN=http://localhost:3001
+      
+      - GENERIC_TIMEZONE=Europe/Paris
+      - TZ=Europe/Paris
+      
+      - EXECUTIONS_PROCESS=main
+      - EXECUTIONS_MODE=regular
+      
     volumes:
       - n8n_data:/home/node/.n8n
-    restart: unless-stopped
+      
+
+    networks:
+      - n8n-network
 
 volumes:
   n8n_data:
+    driver: local
+
+networks:
+  n8n-network:
+    driver: bridge
+
+
