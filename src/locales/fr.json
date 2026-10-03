@@ -230,6 +230,10 @@
     "join_success": "Bienvenue ! Discord et WhatsApp vont s'ouvrir 🎉",
     "join_error": "Erreur lors de l'ouverture. Veuillez réessayer."
   },
+  "linkedin": {
+    "view_profile": "Voir le profil",
+    "view_profile_tooltip": "Profil LinkedIn"
+  },
   "projects": {
     "loading": "Mes récents projets...",
     "quote": "« Quelques projets dont je suis particulièrement fier »",

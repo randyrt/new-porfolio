@@ -35,6 +35,41 @@
       </button>
     </div>
 
+    <!-- LinkedIn Button avec son tooltip en haut -->
+    <div 
+      class="relative"
+      @mouseenter="showLinkedinTooltip = true"
+      @mouseleave="showLinkedinTooltip = false"
+    >
+      <!-- Tooltip LinkedIn (en haut du bouton, position absolute) -->
+      <Transition
+        enter-active-class="transition-all duration-300 ease-out"
+        enter-from-class="opacity-0 translate-y-2"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition-all duration-200 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 translate-y-2"
+      >
+        <div
+          v-if="showLinkedinTooltip"
+          class="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-[#0A66C2] text-white text-sm font-medium rounded-lg shadow-lg whitespace-nowrap pointer-events-none"
+        >
+          {{ $t('linkedin.view_profile_tooltip') }}
+        </div>
+      </Transition>
+
+      <button
+        @click="handleLinkedinClick"
+        class="linkedin-button relative w-14 h-14 bg-[#0A66C2] hover:bg-[#004182] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
+        :aria-label="$t('linkedin.view_profile')"
+      >
+        <font-awesome-icon 
+          icon="fa-brands fa-linkedin-in" 
+          class="text-white text-2xl"
+        />
+      </button>
+    </div>
+
     <!-- Discord Button avec son tooltip à droite -->
     <div 
       class="relative"
@@ -80,10 +115,12 @@ import { useToast } from 'vue-toastification'
 const { t } = useI18n()
 const toast = useToast()
 const showGithubTooltip = ref(false)
+const showLinkedinTooltip = ref(false)
 const showDiscordTooltip = ref(false)
 
 const DISCORD_CHANNEL_URL = 'https://discord.com/channels/1418543850359754985/1554230864995426314'
 const GITHUB_PROFILE_URL = 'https://github.com/randyrt'
+const LINKEDIN_PROFILE_URL = 'https://www.linkedin.com/in/randy-andriantsiory-3a935828a/'
 
 const handleGithubClick = () => {
   try {
@@ -91,6 +128,15 @@ const handleGithubClick = () => {
   } catch (error) {
     console.error('Erreur lors de l\'ouverture de GitHub:', error)
     toast.error('Erreur lors de l\'ouverture de GitHub')
+  }
+}
+
+const handleLinkedinClick = () => {
+  try {
+    window.open(LINKEDIN_PROFILE_URL, '_blank', 'noopener,noreferrer')
+  } catch (error) {
+    console.error('Erreur lors de l\'ouverture de LinkedIn:', error)
+    toast.error('Erreur lors de l\'ouverture de LinkedIn')
   }
 }
 
@@ -106,13 +152,15 @@ const handleDiscordClick = () => {
 
 <style scoped>
 .discord-button,
-.github-button {
+.github-button,
+.linkedin-button {
   cursor: pointer;
   user-select: none;
 }
 
 .discord-button:active,
-.github-button:active {
+.github-button:active,
+.linkedin-button:active {
   transform: scale(0.95);
 }
 
@@ -130,7 +178,8 @@ const handleDiscordClick = () => {
 /* Responsive */
 @media (max-width: 768px) {
   .discord-button,
-  .github-button {
+  .github-button,
+  .linkedin-button {
     display: none;
   }
 }
