@@ -841,6 +841,7 @@
     "description_3": "Curieux d'en voir plus ? Visitez mon profil ",
     "description_4": " pour explorer mes projets en détail.",
     "view_profile": "Voir le profil",
+    "view_profile_tooltip": "Voir profil GitHub",
     "refresh_stats": "Actualiser les stats",
     "about_title": "À propos de GitHub",
     "about_description": "GitHub est ma plateforme principale pour partager du code, collaborer sur des projets open source et suivre mon activité de développement.",

@@ -840,6 +840,7 @@
     "description_3": "Curious to see more? Visit my profile ",
     "description_4": " to explore my projects in detail.",
     "view_profile": "View profile",
+    "view_profile_tooltip": "View GitHub profile",
     "refresh_stats": "Refresh stats",
     "about_title": "About GitHub",
     "about_description": "GitHub is my main platform for sharing code, collaborating on open source projects and tracking my development activity.",
