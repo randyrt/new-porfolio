@@ -108,7 +108,6 @@ img {
   border-radius: 10px;
   z-index: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* filter: grayscale(100%) brightness(0.9); */
 }
 
 @media screen and (max-width: 748px) {
