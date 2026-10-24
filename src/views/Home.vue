@@ -70,8 +70,8 @@ const contentVisible = ref(false)
 
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "/images/cv/randy_andriantsiory_cv.pdf";
-  link.download = "randy_andriantsiory_cv.pdf";
+  link.href = "/images/cv/CV_Randy_Andriantsiory_Laravel_symfony.pdf";
+  link.download = "CV_Randy_Andriantsiory_Laravel_symfony.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -79,7 +79,7 @@ function downloadCV() {
 }
 
 function viewCV() {
-  window.open("/images/cv/randy_andriantsiory_cv.pdf", "_blank");
+  window.open("/images/cv/CV_Randy_Andriantsiory_Laravel_symfony.pdf", "_blank");
 }
 
 const goToContact = () => {
