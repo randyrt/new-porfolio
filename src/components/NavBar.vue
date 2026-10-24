@@ -63,7 +63,9 @@
         </div>
         <div class="flex flex-col items-center justify-center gap-2 mb-4 p-2 rounded-lg ml-1">
 
-          <div class="flex flex-row w-full gap-2">
+          <!-- Ligne 1 : Palette + Langue + Thème -->
+          <div class="flex flex-row w-full gap-2 items-center">
+            <!-- Color Picker -->
             <div class="relative group py-3 flex items-center justify-center">
               <label class="group relative flex h-10 w-10 items-center justify-center
        bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500
@@ -81,7 +83,59 @@
               </label>
             </div>
             <span class="text-violet-300 flex items-center">|</span>
-            <div class="relative group py-3 flex-1" @click="sidebarVisible = !sidebarVisible">
+
+            <!-- Language Switcher -->
+            <div class="relative group py-3 flex items-center justify-center" @click="toggleLanguage">
+              <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                bg-gray-900 text-white text-xs py-1 px-2 rounded
+                opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                pointer-events-none z-10">
+                {{ t('nav.change_language') }}
+                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2
+                  border-4 border-transparent border-t-gray-900"></div>
+              </div>
+              <span class="group relative flex h-10 w-10 items-center justify-center
+                bg-gradient-to-br from-emerald-500 to-teal-600
+                rounded-xl shadow-lg shadow-emerald-500/30
+                hover:shadow-[0_0_25px_rgba(16,185,129,0.7)]
+                hover:scale-110 hover:from-emerald-400 hover:to-teal-500
+                active:scale-95
+                transition-all duration-300 ease-out cursor-pointer
+                border border-white/30">
+                <span class="text-white text-sm font-bold uppercase tracking-wide filter drop-shadow-md
+                  group-hover:rotate-12 transition-transform duration-300">
+                  {{ currentLocale }}
+                </span>
+              </span>
+            </div>
+
+            <!-- Theme Switcher -->
+            <div class="relative group py-3 flex items-center justify-center" @click="cycleTheme">
+              <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                bg-gray-900 text-white text-xs py-1 px-2 rounded
+                opacity-0 group-hover:opacity-100 transition-opacity duration-200
+                pointer-events-none z-10">
+                {{ t('nav.change_theme') }}
+                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2
+                  border-4 border-transparent border-t-gray-900"></div>
+              </div>
+              <span class="group relative flex h-10 w-10 items-center justify-center
+                bg-gradient-to-br from-violet-500 to-purple-600
+                rounded-xl shadow-lg shadow-violet-500/30
+                hover:shadow-[0_0_25px_rgba(139,92,246,0.7)]
+                hover:scale-110 hover:from-violet-400 hover:to-purple-500
+                active:scale-95
+                transition-all duration-300 ease-out cursor-pointer
+                border border-white/30">
+                <font-awesome-icon :icon="themeIcon" class="text-white text-lg filter drop-shadow-md
+                  group-hover:rotate-12 transition-transform duration-300" />
+              </span>
+            </div>
+          </div>
+
+          <!-- Ligne 2 : Mode Lecture -->
+          <div class="flex flex-row w-full">
+            <div class="relative group flex-1" @click="sidebarVisible = !sidebarVisible">
               <span class="btn-violet btn-effect-5 w-full flex justify-center items-center">
                 <font-awesome-icon :icon="['fas', 'book-open']" class="mr-2" />
                 <span class="text-sm font-medium">{{ t('nav.reading_mode') }}</span>
@@ -142,15 +196,34 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { RouterLink } from 'vue-router';
 import { useRouter } from 'vue-router'
-import { getStoredColor, setPrimaryColor } from '../services/theme.js'
+import { getStoredColor, setPrimaryColor, toggleTheme, getStoredTheme } from '../services/theme.js'
 import MultiWorldClock from './Helpers_api/MultiWorldClock.vue';
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const customPrimaryColor = ref(getStoredColor());
+
+// Theme
+const currentTheme = ref<string>(getStoredTheme());
+const themeIcon = computed(() =>
+  currentTheme.value === 'light' ? ['fas', 'moon'] : ['fas', 'sun']
+);
+function cycleTheme() {
+  const next = toggleTheme();
+  currentTheme.value = next;
+}
+
+// Language
+const currentLocale = ref<string>(localStorage.getItem('locale') || 'fr');
+function toggleLanguage() {
+  const newLocale = currentLocale.value === 'fr' ? 'en' : 'fr';
+  currentLocale.value = newLocale;
+  locale.value = newLocale;
+  localStorage.setItem('locale', newLocale);
+}
 
 function updateCustomColor() {
   setPrimaryColor(customPrimaryColor.value);
