@@ -2,8 +2,10 @@ node_modules/
 .env
 dist/
 build/
-.env
+
+# Ignorer les fichiers JavaScript générés
 *.vue.js
 *.js
 
-echo "src/views/Pytorch-ai.vue" >> .gitignore
+# Ignorer ce fichier spécifique
+/src/views/Pytorch-ai.vue
