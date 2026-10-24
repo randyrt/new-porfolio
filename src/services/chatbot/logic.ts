@@ -188,7 +188,7 @@ export const detectActions = (text: string, t: any): Action[] => {
     actions.push({
       label: t('home.download_his_cv'),
       type: 'download',
-      target: '/images/cv/Randy_real_cv.pdf',
+      target: '/images/cv/CV_Randy_Andriantsiory_Laravel_symfony.pdf',
       icon: 'fa-solid fa-download'
     })
   }
