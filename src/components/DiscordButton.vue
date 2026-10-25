@@ -25,7 +25,7 @@
 
       <button
         @click="handleGithubClick"
-        class="github-button relative w-14 h-14 bg-[#24292e] hover:bg-[#1a1e22] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
+        class="github-button relative w-10 h-14 bg-[#24292e] hover:bg-[#1a1e22] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
         :aria-label="$t('github.view_profile')"
       >
         <font-awesome-icon 
@@ -60,7 +60,7 @@
 
       <button
         @click="handleLinkedinClick"
-        class="linkedin-button relative w-14 h-14 bg-[#0A66C2] hover:bg-[#004182] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
+        class="linkedin-button relative w-10 h-14 bg-[#0A66C2] hover:bg-[#004182] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
         :aria-label="$t('linkedin.view_profile')"
       >
         <font-awesome-icon 
@@ -78,7 +78,7 @@
     >
       <button
         @click="handleDiscordClick"
-        class="discord-button relative w-14 h-14 bg-[#5865F2] hover:bg-[#4752C4] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
+        class="discord-button relative w-10 h-14 bg-[#5865F2] hover:bg-[#4752C4] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
         :aria-label="$t('discord.join_button')"
       >
         <font-awesome-icon 

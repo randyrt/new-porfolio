@@ -61,8 +61,7 @@
             <span class="spray-text">{{ brand }}</span>
           </span>
         </div>
-        <div class="flex flex-col items-center justify-center gap-2 mb-4 p-2 rounded-lg ml-1">
-
+        <div class="flex flex-col items-center justify-center gap-2 mb-2 p-2 rounded-lg ml-1">
           <!-- Ligne 1 : Palette + Langue + Thème -->
           <div class="flex flex-row w-full gap-2 items-center">
             <!-- Color Picker -->
@@ -108,7 +107,7 @@
                 </span>
               </span>
             </div>
-
+            <span class="text-violet-300 flex items-center">|</span>
             <!-- Theme Switcher -->
             <div class="relative group py-3 flex items-center justify-center" @click="cycleTheme">
               <div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap
@@ -132,7 +131,6 @@
               </span>
             </div>
           </div>
-
           <!-- Ligne 2 : Mode Lecture -->
           <div class="flex flex-row w-full">
             <div class="relative group flex-1" @click="sidebarVisible = !sidebarVisible">
@@ -143,7 +141,7 @@
             </div>
           </div>
         </div>
-        <MultiWorldClock />
+        <MultiWorldClock class="mb-2"/>
         <Transition name="menu-slide">
           <nav class="flex-1 flex flex-col px-2 space-y-1 rounded-lg text-sm mt-2 overflow-y-auto scrollbar-thin">
             <router-link v-for="route in routes" :key="route.path" :to="route.path"
