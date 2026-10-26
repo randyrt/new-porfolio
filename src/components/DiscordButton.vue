@@ -70,8 +70,9 @@
       </button>
     </div>
 
-    <!-- Discord Button avec son tooltip à droite -->
-    <div 
+
+     
+    <!-- <div 
       class="relative"
       @mouseenter="showDiscordTooltip = true"
       @mouseleave="showDiscordTooltip = false"
@@ -87,7 +88,7 @@
         />
       </button>
 
-      <!-- Tooltip Discord (à droite du bouton, position absolute) -->
+    
       <Transition
         enter-active-class="transition-all duration-300 ease-out"
         enter-from-class="opacity-0 -translate-x-2"
@@ -103,7 +104,7 @@
           {{ $t('discord.join_tooltip') }}
         </div>
       </Transition>
-    </div>
+    </div> -->
   </div>
 </template>
 

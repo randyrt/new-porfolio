@@ -154,9 +154,6 @@
         </Transition>
       </aside>
     </Transition>
-
-
-
     <div v-if="!sidebarVisible" class="fixed inset-x-0 bottom-4 z-40 flex justify-center pointer-events-none">
       <div class="relative pointer-events-auto flex items-center gap-3" @mouseenter="showRouteBubble = true"
         @mouseleave="showRouteBubble = false">
