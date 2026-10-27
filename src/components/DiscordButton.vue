@@ -1,77 +1,48 @@
 <template>
   <div class="fixed bottom-1 left-76 z-[998] hidden md:flex items-center gap-3">
     <!-- GitHub Button avec son tooltip à gauche -->
-    <div 
-      class="relative"
-      @mouseenter="showGithubTooltip = true"
-      @mouseleave="showGithubTooltip = false"
-    >
+    <div class="relative" @mouseenter="showGithubTooltip = true" @mouseleave="showGithubTooltip = false">
       <!-- Tooltip GitHub (à gauche du bouton, position absolute) -->
-      <Transition
-        enter-active-class="transition-all duration-300 ease-out"
-        enter-from-class="opacity-0 translate-x-2"
-        enter-to-class="opacity-100 translate-x-0"
-        leave-active-class="transition-all duration-200 ease-in"
-        leave-from-class="opacity-100 translate-x-0"
-        leave-to-class="opacity-0 translate-x-2"
-      >
-        <div
-          v-if="showGithubTooltip"
-          class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-4 py-2 bg-[#24292e] text-white text-sm font-medium rounded-lg shadow-lg whitespace-nowrap pointer-events-none"
-        >
+      <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="opacity-0 translate-x-2"
+        enter-to-class="opacity-100 translate-x-0" leave-active-class="transition-all duration-200 ease-in"
+        leave-from-class="opacity-100 translate-x-0" leave-to-class="opacity-0 translate-x-2">
+        <div v-if="showGithubTooltip"
+          class="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-4 py-2 bg-[#24292e] text-white text-sm font-medium rounded-lg shadow-lg whitespace-nowrap pointer-events-none">
           {{ $t('github.view_profile_tooltip') }}
         </div>
       </Transition>
 
-      <button
-        @click="handleGithubClick"
+      <button @click="handleGithubClick"
         class="github-button relative w-10 h-14 bg-[#24292e] hover:bg-[#1a1e22] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
-        :aria-label="$t('github.view_profile')"
-      >
-        <font-awesome-icon 
-          icon="fa-brands fa-github" 
-          class="text-white text-2xl"
-        />
+        :aria-label="$t('github.view_profile')">
+        <font-awesome-icon icon="fa-brands fa-github" class="text-white text-2xl" />
       </button>
     </div>
 
     <!-- LinkedIn Button avec son tooltip en haut -->
-    <div 
-      class="relative"
-      @mouseenter="showLinkedinTooltip = true"
-      @mouseleave="showLinkedinTooltip = false"
-    >
-      <!-- Tooltip LinkedIn (en haut du bouton, position absolute) -->
-      <Transition
-        enter-active-class="transition-all duration-300 ease-out"
-        enter-from-class="opacity-0 translate-y-2"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition-all duration-200 ease-in"
-        leave-from-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-0 translate-y-2"
-      >
-        <div
-          v-if="showLinkedinTooltip"
-          class="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-[#0A66C2] text-white text-sm font-medium rounded-lg shadow-lg whitespace-nowrap pointer-events-none"
-        >
+
+    <!-- LinkedIn Button avec son tooltip à gauche -->
+    <div class="relative" @mouseenter="showLinkedinTooltip = true" @mouseleave="showLinkedinTooltip = false">
+
+      <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="opacity-0 -translate-x-2"
+        enter-to-class="opacity-100 translate-x-0" leave-active-class="transition-all duration-200 ease-in"
+        leave-from-class="opacity-100 translate-x-0" leave-to-class="opacity-0 -translate-x-2">
+        <div v-if="showLinkedinTooltip"
+          class="absolute left-full ml-3 top-1/2 -translate-y-1/2 px-4 py-2 bg-[#0A66C2] text-white text-sm font-medium rounded-lg shadow-lg whitespace-nowrap pointer-events-none">
           {{ $t('linkedin.view_profile_tooltip') }}
         </div>
       </Transition>
 
-      <button
-        @click="handleLinkedinClick"
+
+      <button @click="handleLinkedinClick"
         class="linkedin-button relative w-10 h-14 bg-[#0A66C2] hover:bg-[#004182] rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
-        :aria-label="$t('linkedin.view_profile')"
-      >
-        <font-awesome-icon 
-          icon="fa-brands fa-linkedin-in" 
-          class="text-white text-2xl"
-        />
+        :aria-label="$t('linkedin.view_profile')">
+        <font-awesome-icon icon="fa-brands fa-linkedin-in" class="text-white text-2xl" />
       </button>
     </div>
 
 
-     
+
     <!-- <div 
       class="relative"
       @mouseenter="showDiscordTooltip = true"
@@ -166,7 +137,9 @@ const handleDiscordClick = () => {
 }
 
 @keyframes ping {
-  75%, 100% {
+
+  75%,
+  100% {
     transform: scale(2);
     opacity: 0;
   }
@@ -178,6 +151,7 @@ const handleDiscordClick = () => {
 
 /* Responsive */
 @media (max-width: 768px) {
+
   .discord-button,
   .github-button,
   .linkedin-button {
