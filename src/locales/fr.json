@@ -186,7 +186,7 @@
     "featured_challenge": "Défi",
     "featured_challenge_text": "Centraliser la gestion comptable, fiscale et administrative tout en gardant une expérience claire pour les équipes et les décideurs.",
     "featured_solution": "Solution",
-    "featured_solution_text": "Mise en place d’une architecture React.js + Laravel, automatisation des tâches, dashboard moderne et génération de documents Business-friendly.",
+    "featured_solution_text": "Mise en place d’une architecture Vue.js + Laravel, automatisation des tâches, dashboard moderne et génération de documents Business-friendly.",
     "featured_stack": "Stack",
     "featured_result": "Résultat",
     "featured_result_text": "Un produit plus propre, plus rapide à exploiter et plus prêt pour la croissance de l’activité.",
