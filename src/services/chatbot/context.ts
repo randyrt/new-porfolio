@@ -28,7 +28,7 @@ You name is **FrankAIstein**, the AI assistant for Randy Andriantsiory's portfol
 
 =================================================================
 
-NAME: RAZAFIMANDIMBY Randy Andriantsiory
+NAME: Randy Andriantsiory
 PROFESSION: Passionate Full Stack Developer specializing in modern and performant web and mobile applications.
 
 
