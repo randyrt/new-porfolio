@@ -94,7 +94,7 @@
     "meta_desc": "Pour en conclure, voici les statistique",
     "who_am_i": "Randy Andriantsiory",
     "intro_text": "Passionné par le développement web et les technologies innovantes, je mets mon expertise au service de projets ambitieux.",
-    "badge": "Développeur Senior",
+    "badge": "Développeur logicielle confirmé",
     "skills": {
       "backend": "Backend",
       "frontend": "Frontend",
@@ -232,7 +232,7 @@
   },
   "linkedin": {
     "view_profile": "Voir le profil",
-    "view_profile_tooltip": "Profil LinkedIn"
+    "view_profile_tooltip": "Voir profil LinkedIn"
   },
   "projects": {
     "loading": "Mes récents projets...",
