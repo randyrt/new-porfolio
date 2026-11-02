@@ -426,7 +426,7 @@
     "flutter_s2_desc": "Je peux intégrer Ionic avec Vue.js pour des applications mobiles modernes. Architecture basée sur la Composition API et réutilisation des compétences Vue existantes.",
     "flutter_s3_name": "Multi-plateforme",
     "flutter_s3_desc": "Je peux développer des applications pour mobile, web et desktop depuis une seule codebase. Déploiement sur iOS, Android et PWA avec Capacitor.",
-    "express_title": "Compétences en Express.js",
+    "express_title": "Compétences en Node.js",
     "express_s1_name": "API RESTful",
     "express_s1_desc": "Je peux concevoir et développer des API RESTful robustes avec Express. Gestion des routes, des middlewares et des réponses HTTP adaptées.",
     "express_s2_name": "Middleware personnalisé",

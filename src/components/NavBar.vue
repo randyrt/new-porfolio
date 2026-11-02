@@ -74,7 +74,7 @@
        active:scale-95
        transition-all duration-300 ease-out cursor-pointer
        border border-white/30 overflow-hidden
-       animate-soft-pulse" title="Change Color">
+       animate-soft-pulse">
                 <input type="color" v-model="customPrimaryColor" @input="updateCustomColor"
                   class="absolute inset-0 w-20 h-20 opacity-0 cursor-pointer pointer-events-auto" />
                 <font-awesome-icon :icon="['fas', 'palette']"
