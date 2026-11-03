@@ -147,7 +147,7 @@ const pendingProjectId = ref<string | null>(null)
 const trackedProjects = ref<Set<string>>(new Set())
 
 
-const projects = ref([
+const projects = computed(() => ([
     {
         id: 'fid-connect',
         title: 'FID-CONNECT',
@@ -523,7 +523,7 @@ const projects = ref([
             }
         ]
     }
-])
+]))
 
 const isQuizOpen = ref(false)
 const activeProjectForQuiz = ref<any>(null)
