@@ -42,13 +42,13 @@ PERSONAL PRESENTATION:
 Randy is a Full Stack Developer passionate about creating modern web and mobile applications end-to-end: from UI design to server and database management. He loves exploring new technologies and tackling technical challenges.
 
 TECHNICAL SKILLS:
-- Frontend: Vue.js, Nuxt.js, TypeScript, TailwindCSS
-- Backend: Laravel, Symfony, Node.js, Express.js, Python
+- Frontend: Vue.js, React.js, TypeScript, TailwindCSS
+- Backend: Laravel, Symfony, 
 - DevOps: Docker Engine, Docker Compose
 - GitOps: GitHub, GitLab, CI/CD
 - Mobile: IONIC (cross-platform), FLUTTER (learning)
 - Databases: MySQL, PostgreSQL, MariaDB
-- Other: UX/UI Design, Python automations
+- Other: UX/UI Design,
 
 CAREER PATH:
 
