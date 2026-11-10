@@ -36,13 +36,13 @@
         <!-- Technologies Grid - Apparaît seulement après le terminal -->
         <Transition name="fade-up" appear>
             <div v-if="showTechnologies" data-aos="fade-up" class="tech-grid">
-                <!-- EN COURS D'APPRENTISSAGE -->
+                <!-- DEVOPS -->
                 <div class="card tech-category">
-                    <logoSection :title="$t('technology.learning')" />
+                    <logoSection :title="$t('technology.devops')" />
                     <DivSlot>
-                        <TechLogo logo="/images/tecnos/flutter.png" name="FLUTTER" />
-                        <TechLogo logo="/images/tecnos/c++.png" name="C++" />
-                        <TechLogo logo="/images/tecnos/go.png" name="GOLANG" />
+                        <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
+                        <TechLogo logo="/images/tecnos/kubernates.png" name="KUBERNETES" />
+                        <TechLogo logo="/images/tecnos/terraform.png" name="TERRAFORM" />
                     </DivSlot>
                 </div>
 
@@ -102,7 +102,6 @@
                         <TechLogo logo="/images/tecnos/lunix.png" name="LINUX" />
                         <TechLogo logo="/images/tecnos/vscode.png" name="VS CODE" />
                         <TechLogo logo="/images/tecnos/git.png" name="GIT" />
-                        <TechLogo logo="/images/tecnos/docker.png" name="DOCKER" />
                         <TechLogo logo="/images/tecnos/pma.png" name="PHPMYADMIN" />
                         <TechLogo logo="/images/tecnos/dbeaver.png" name="DBEAVER" />
                         <TechLogo logo="/images/tecnos/typescript.png" name="TYPESCRIPT" />
