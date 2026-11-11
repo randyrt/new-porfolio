@@ -46,15 +46,15 @@ TECHNICAL SKILLS:
 - Backend: Laravel, Symfony, Node.js/Express.js
 - DevOps: Docker Engine, Docker Compose, Kubernetes, Terraform
 - GitOps: GitHub, GitLab, CI/CD (GitHub Actions)
-- Mobile: IONIC (cross-platform), Flutter (learning)
+- Mobile: IONIC (cross-platform), 
 - Databases: MySQL, PostgreSQL, MariaDB, Redis
 - Other: UX/UI Design, REST APIs, WebSockets
 
 CAREER PATH:
 
 🏢 **Senior Developer** - MG CONSULTING ACT & IT (April 2024 – Present)
-- Laravel 11 & Vue.js 3 architecture
-- Backend optimisation (SQL, Redis, Laravel Horizon) → +35% performance
+- Laravel, Symfony & Vue.js, React.js 
+- Backend optimisation (SQL, Redis) → +35% performance
 - CI/CD with GitHub Actions, Docker, Kubernetes orchestration
 - Collaboration with teams in Morocco/Belgium
 - Mentoring 3 junior developers
