@@ -67,16 +67,16 @@ export const skillsExamples = [
 
   // DevOps
   {
-    keywords: 'docker|container|containerization',
-    response: 'Docker est incontournable dans ses projets. Il maîtrise Docker Engine, Docker Compose, et il crée des images optimisées. Il utilise Docker pour la cohérence entre les environnements de développement et de production ainsi que pour le déploiement.',
+    keywords: 'docker|container|containerization|kubernetes|k8s|terraform|iac|infrastructure as code|orchestration',
+    response: '🐳 Randy est expert en DevOps ! Il maîtrise **Docker Engine** et **Docker Compose** pour la conteneurisation. Il est actuellement en train de monter en compétence sur **Kubernetes** pour l\'orchestration de conteneurs et **Terraform** pour l\'Infrastructure as Code (IaC). Il peut gérer le cycle complet de déploiement des applications !',
     category: 'devops',
-    confidence: 0.92
+    confidence: 0.95
   },
   {
     keywords: 'cicd|ci/cd|github actions|gitlab ci|déploiement|deployment|pipeline',
-    response: 'Il configure des pipelines CI/CD robustes avec GitHub Actions et GitLab CI. Tests automatisés, builds optimisés, déploiements sécurisés... C\'est son quotidien pour garantir une qualité et une vitesse de déploiement optimales.',
+    response: 'Il configure des pipelines CI/CD robustes avec **GitHub Actions** et **GitLab CI**. Tests automatisés, builds optimisés, déploiements sécurisés avec **Docker** et **Kubernetes**... C\'est son quotidien pour garantir une qualité et une vitesse de déploiement optimales. Il utilise aussi **Terraform** pour automatiser l\'infrastructure.',
     category: 'devops',
-    confidence: 0.90
+    confidence: 0.93
   },
 
   // Mobile

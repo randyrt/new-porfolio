@@ -538,12 +538,15 @@ const getLocalKnowledgeBase = (): Record<string, string> => ({
     'fid-connect|fidconnect|fid connect': t('chat.local.project_fid'),
     'qcp|crédit|credit|amortissement': t('chat.local.project_qcp'),
     'echo-webline|echo webline|médical|cardio': t('chat.local.project_echo'),
-    'afr-fan|afrfan|réseau social|social network': t('chat.local.project_afrfan'),
+    'afr-fan|afrfan|réseau social|social network|diaspora': t('chat.local.project_afrfan'),
     'nurse|souper of nurses|restaurant|réservation': t('chat.local.project_nurse'),
+    'infi-swap|infiswap|infirmier|infirmière|nurse matching|hôpital': t('chat.local.project_infiswap'),
+    'petsfollow|pets follow|vétérinaire|veterinary|animaux|pet': t('chat.local.project_petsfollowpro'),
+    'e-learning|elearning|formation|learning|cours|training': t('chat.local.project_elearning'),
     'webcup|compétition|award|prix|2ème': t('chat.local.award_webcup'),
     'laravel|php|backend|api|sanctum': t('chat.local.tech_laravel'),
     'vue|vuejs|nuxt|frontend|typescript|ts': t('chat.local.tech_vue'),
-    'docker|container|conteneur|devops': t('chat.local.tech_docker'),
+    'docker|container|conteneur|devops|kubernetes|k8s|terraform|iac|infrastructure as code|orchestration': t('chat.local.tech_docker'),
     'mobile|ionic|flutter|hybride': t('chat.local.tech_mobile'),
 
     // PRIORITÉ 2 : CATÉGORIES GÉNÉRALES

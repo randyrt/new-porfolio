@@ -1,19 +1,19 @@
 export const careerExamples = [
   {
     keywords: 'actuellement|now|today|present|travaille|work|entreprise|company',
-    response: 'il travaille actuellement en tant que Senior Developer chez MG CONSULTING ACT & IT depuis avril 2024. il travaille principalement avec Laravel 11 et Vue.js 3, et je m\'occupe d\'optimisation backend, de CI/CD avec GitHub Actions et Docker, et aussi du mentoring de développeurs juniors. C\'est une belle expérience en équipe distribuée (Maroc, Belgique).',
+    response: 'Il travaille actuellement en tant que **Senior Developer** chez **MG CONSULTING ACT & IT** depuis avril 2024. Il travaille principalement avec **Laravel 11** et **Vue.js 3**, et il s\'occupe d\'optimisation backend, de CI/CD avec **GitHub Actions**, **Docker** et **Kubernetes**, ainsi que du mentoring de développeurs juniors. Il est aussi en train de monter en compétence sur **Terraform** pour l\'Infrastructure as Code. C\'est une belle expérience en équipe distribuée (Maroc, Belgique) !',
     category: 'career',
     confidence: 0.98
   },
   {
     keywords: 'expérience|experience|parcours|career path|cv',
-    response: 'Son parcours a commencé comme stagiaire Frontend chez Fihary Soft (2021), puis il a travaillé comme Backend Developer chez PixelZ (2022). J\'ai ensuite  fait du freelance fullstack de 2023 à 2024, et maintenant je suis Senior Developer chez MG CONSULTING ACT & IT. Chaque étape m\'a permis de progresser et d\'élargir mes compétences !',
+    response: 'Son parcours a commencé comme stagiaire **Frontend** chez **Fihary Soft** (2021), puis il a travaillé comme **Backend Developer** chez **PixelZ** (2022). Il a ensuite fait du **freelance fullstack** de 2023 à 2024, et maintenant il est **Senior Developer** chez **MG CONSULTING ACT & IT**. En 2024, il a aussi renforcé ses compétences **DevOps** avec **Kubernetes** et **Terraform**. Chaque étape lui a permis de progresser et d\'élargir ses compétences !',
     category: 'career',
     confidence: 0.97
   },
   {
     keywords: 'freelance|indépendant|consultant',
-    response: 'J\'ai eu une belle période en freelance fullstack de janvier 2023 à mars 2024. il a créé des applications custom avec Laravel 10 et Vue.js 3, des apps mobiles IONIC 6, et j\'ai géré les intégrations de paiement et APIs tierces. C\'était une bonne expérience d\'indépendance !',
+    response: 'Il a eu une belle période en **freelance fullstack** de janvier 2023 à mars 2024. Il a créé des applications custom avec **Laravel 10** et **Vue.js 3**, des apps mobiles **IONIC 6**, et il a géré les intégrations de paiement et APIs tierces. C\'était une bonne expérience d\'indépendance qui lui a permis de toucher à différents domaines !',
     category: 'career',
     confidence: 0.92
   },
@@ -36,10 +36,10 @@ export const careerExamples = [
     confidence: 0.92
   },
   {
-    keywords: 'défi|challenge|apprentissage|learning',
-    response: 'il suis toujours en quête de nouveaux défis ! il apprécie apprendre de nouvelles technologies, optimiser les performances, résoudre des problèmes complexes, et partager mes connaissances. C\'est ça qui me motive dans le développement.',
+    keywords: 'défi|challenge|apprentissage|learning|veille|monter en compétence',
+    response: 'Il est toujours en quête de nouveaux défis ! Il aime apprendre de nouvelles technologies, optimiser les performances, résoudre des problèmes complexes, et partager ses connaissances. Actuellement, il monte en compétence sur **Kubernetes** et **Terraform** pour le DevOps. C\'est cette curiosité et cette volonté d\'apprendre qui le motivent dans le développement !',
     category: 'career',
-    confidence: 0.88
+    confidence: 0.90
   }
 ]
 
